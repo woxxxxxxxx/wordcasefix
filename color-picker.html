@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Picker — Free Online Color Picker & Converter</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+  .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
+  .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
+
+  header { text-align: center; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: #555; font-size: 15px; margin-top: 4px; }
+
+  .ad-slot {
+    position: relative;
+    background: #e8e9ed;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+  }
+  .ad-top   { width: 100%; height: 90px; margin-bottom: 24px; }
+  .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
+  .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 6px rgba(0,0,0,.04);
+    padding: 28px 32px 32px;
+  }
+
+  /* ── Layout ── */
+  .picker-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+  }
+
+  /* ── Main color preview ── */
+  .color-preview-wrap {
+    text-align: center;
+  }
+  .color-preview {
+    width: 100%; aspect-ratio: 1;
+    border-radius: 14px;
+    border: 2px solid #e8e9ed;
+    margin-bottom: 12px;
+    transition: background .15s;
+  }
+  .color-hex-display {
+    font-size: 20px; font-weight: 700; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Color picker input ── */
+  .picker-input-wrap { margin-bottom: 16px; }
+  .picker-input-wrap label {
+    display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  input[type="color"] {
+    width: 100%; height: 48px;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    padding: 2px; cursor: pointer;
+    background: #fff;
+  }
+  input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+  input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
+
+  /* ── Value fields ── */
+  .val-grid { display: flex; flex-direction: column; gap: 10px; }
+  .val-row {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .val-row .val-label {
+    width: 36px; flex-shrink: 0;
+    font-size: 12px; font-weight: 700; color: #888;
+    text-transform: uppercase;
+  }
+  .val-row .val-input {
+    flex: 1;
+  }
+  .val-row input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px; font-weight: 600; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    border: 1.5px solid #d0d5dd; border-radius: 6px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .val-row input:focus { border-color: #5b5bd6; }
+  .val-row .copy-val {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    font-size: 11px; font-weight: 600;
+    color: #888; background: #f0f0f5;
+    border: 1px solid #d0d5dd; border-radius: 5px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .val-row .copy-val:hover { background: #e4e4ef; color: #1a1a2e; }
+  .val-row .copy-val.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
+
+  /* ── Presets ── */
+  .presets-section { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
+  .presets-section .ps-label {
+    font-size: 13px; font-weight: 700; color: #555; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  .preset-grid {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .preset-swatch {
+    width: 32px; height: 32px; border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform .15s, border-color .15s;
+  }
+  .preset-swatch:hover { transform: scale(1.15); border-color: #5b5bd6; }
+
+  footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
+
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main-area { padding: 20px 16px 36px; }
+    .card { padding: 20px; }
+    .picker-grid { grid-template-columns: 1fr; gap: 16px; }
+    .color-preview { aspect-ratio: auto; height: 120px; }
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 22px; }
+    .color-preview { height: 100px; }
+    .preset-swatch { width: 28px; height: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <main class="main-area">
+
+    <header>
+      <h1>Color Picker</h1>
+      <p>Pick, convert, and copy colors in HEX, RGB, and HSL.</p>
+    </header>
+
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+    <div class="card">
+      <div class="picker-grid">
+        <!-- Left: preview + native picker -->
+        <div class="color-preview-wrap">
+          <div class="color-preview" id="colorPreview" style="background:#5b5bd6;"></div>
+          <div class="color-hex-display" id="hexDisplay">#5B5BD6</div>
+          <div class="picker-input-wrap" style="margin-top:12px;">
+            <label for="colorInput">Pick a color</label>
+            <input type="color" id="colorInput" value="#5b5bd6">
+          </div>
+        </div>
+
+        <!-- Right: values -->
+        <div>
+          <div class="val-grid">
+            <div class="val-row">
+              <span class="val-label">HEX</span>
+              <div class="val-input"><input type="text" id="hexValue" value="#5B5BD6" readonly></div>
+              <button class="copy-val" data-target="hexValue">Copy</button>
+            </div>
+            <div class="val-row">
+              <span class="val-label">RGB</span>
+              <div class="val-input"><input type="text" id="rgbValue" value="rgb(91, 91, 214)" readonly></div>
+              <button class="copy-val" data-target="rgbValue">Copy</button>
+            </div>
+            <div class="val-row">
+              <span class="val-label">HSL</span>
+              <div class="val-input"><input type="text" id="hslValue" value="hsl(240, 60%, 60%)" readonly></div>
+              <button class="copy-val" data-target="hslValue">Copy</button>
+            </div>
+          </div>
+
+          <!-- Presets -->
+          <div class="presets-section">
+            <div class="ps-label">Common Colors</div>
+            <div class="preset-grid" id="presetGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+
+<footer>Color Picker &mdash; Free online color picker and converter</footer>
+
+<script>
+(function() {
+  const colorInput   = document.getElementById('colorInput');
+  const colorPreview = document.getElementById('colorPreview');
+  const hexDisplay   = document.getElementById('hexDisplay');
+  const hexValue     = document.getElementById('hexValue');
+  const rgbValue     = document.getElementById('rgbValue');
+  const hslValue     = document.getElementById('hslValue');
+  const presetGrid   = document.getElementById('presetGrid');
+
+  // ── Helpers ──
+  function hexToRgb(hex) {
+    const r = parseInt(hex.slice(1,3), 16);
+    const g = parseInt(hex.slice(3,5), 16);
+    const b = parseInt(hex.slice(5,7), 16);
+    return { r, g, b };
+  }
+
+  function rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+        case g: h = ((b - r) / d + 2) / 6; break;
+        case b: h = ((r - g) / d + 4) / 6; break;
+      }
+    }
+    return {
+      h: Math.round(h * 360),
+      s: Math.round(s * 100),
+      l: Math.round(l * 100)
+    };
+  }
+
+  function updateColor(hex) {
+    hex = hex.toUpperCase();
+    const rgb = hexToRgb(hex);
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+    colorPreview.style.background = hex;
+    hexDisplay.textContent = hex;
+    hexValue.value = hex;
+    rgbValue.value = 'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')';
+    hslValue.value = 'hsl(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%)';
+    colorInput.value = hex;
+  }
+
+  // ── Color input ──
+  colorInput.addEventListener('input', function() {
+    updateColor(this.value);
+  });
+
+  // ── Copy buttons ──
+  document.querySelectorAll('.copy-val').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetId = this.dataset.target;
+      const input = document.getElementById(targetId);
+      if (!input) return;
+      const text = input.value;
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = this.textContent;
+        this.textContent = 'Copied!';
+        this.classList.add('copied');
+        setTimeout(() => {
+          this.textContent = orig;
+          this.classList.remove('copied');
+        }, 1500);
+      }).catch(() => {
+        input.select();
+        document.execCommand('copy');
+        const orig = this.textContent;
+        this.textContent = 'Copied!';
+        this.classList.add('copied');
+        setTimeout(() => {
+          this.textContent = orig;
+          this.classList.remove('copied');
+        }, 1500);
+      });
+    });
+  });
+
+  // ── Presets ──
+  const presets = [
+    '#FF6B6B', '#FF8E53', '#FFC857', '#51CF66', '#5BBD72',
+    '#20C997', '#339AF0', '#5B5BD6', '#7950F2', '#E64980',
+    '#F06595', '#ED6A5E', '#F4A261', '#E9C46A', '#2A9D8F',
+    '#264653', '#457B9D', '#A8DADC', '#F1FAEE', '#1D3557',
+    '#6D6875', '#B5838D', '#E5989B', '#FFB4A2', '#6F42C1',
+    '#DC3545', '#FD7E14', '#FFC107', '#28A745', '#17A2B8',
+    '#343A40', '#6C757D', '#ADB5BD', '#CED4DA', '#212529',
+    '#000000', '#555555', '#AAAAAA', '#EEEEEE', '#FFFFFF'
+  ];
+
+  presets.forEach(hex => {
+    const swatch = document.createElement('div');
+    swatch.className = 'preset-swatch';
+    swatch.style.background = hex;
+    swatch.title = hex;
+    swatch.addEventListener('click', function() {
+      // Ensure hex is 6-digit
+      let h = hex;
+      if (h.length === 4) {
+        h = '#' + h[1]+h[1] + h[2]+h[2] + h[3]+h[3];
+      }
+      updateColor(h);
+    });
+    presetGrid.appendChild(swatch);
+  });
+
+  // ── HEX manual entry in the readonly input? Make it editable ──
+  hexValue.readOnly = false;
+  hexValue.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      let val = this.value.trim();
+      if (!val.startsWith('#')) val = '#' + val;
+      if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+        updateColor(val);
+      } else {
+        this.value = hexValue.value; // revert
+      }
+    }
+  });
+  hexValue.addEventListener('blur', function() {
+    let val = this.value.trim();
+    if (!val.startsWith('#')) val = '#' + val;
+    if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+      updateColor(val);
+    } else {
+      this.value = hexDisplay.textContent;
+    }
+  });
+
+  // Initial
+  updateColor('#5B5BD6');
+})();
+</script>
+</body>
+</html>
