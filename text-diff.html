@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Diff Checker — Free Online Diff Tool</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+  .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+  .main-area{flex:1;min-width:0;padding:32px 24px 48px}
+  .sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+  header p{color:#555;font-size:15px;margin-top:4px}
+  .ad-slot{position:relative;background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .ad-top{width:100%;height:90px;margin-bottom:24px}
+  .ad-side{width:100%;min-height:300px;margin-bottom:16px}
+  .ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+  .input-group{margin-bottom:12px}
+  .input-group label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:#555;text-transform:uppercase;letter-spacing:.3px}
+  textarea{width:100%;padding:12px 14px;font-size:13px;font-family:'SF Mono','Fira Code','Consolas',monospace;line-height:1.5;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+  textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  textarea::placeholder{color:#bbb}
+  .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .diff-grid textarea{height:180px}
+  .btn-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 26px;font-size:14px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}
+  .btn-primary:hover{background:#4a4ac2}
+  .btn-primary:active{transform:scale(.97)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;font-size:13px;font-weight:600;color:#555;background:#f0f0f5;border:1.5px solid #d0d5dd;border-radius:8px;cursor:pointer;transition:background .15s,color .15s}
+  .btn-secondary:hover{background:#e4e4ef;color:#1a1a2e}
+  .option-group{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .option-group label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#333;cursor:pointer}
+  .option-group input[type="checkbox"]{width:16px;height:16px;accent-color:#5b5bd6;cursor:pointer}
+  .diff-output{border:1.5px solid #e2e4e8;border-radius:8px;background:#fafbfc;min-height:120px;max-height:400px;overflow:auto;padding:12px 14px;font-size:13px;font-family:'SF Mono','Fira Code','Consolas',monospace;line-height:1.6;white-space:pre-wrap;word-break:break-all}
+  .diff-output .added{background:#d4edda;color:#155724}
+  .diff-output .removed{background:#f8d7da;color:#721c24}
+  .diff-output .unchanged{color:#666}
+  .diff-output .line-num{color:#bbb;margin-right:8px;user-select:none}
+  .status-bar{font-size:13px;color:#888;margin-top:8px;min-height:20px}
+  .empty-state{text-align:center;padding:30px 0;color:#ccc;font-size:14px}
+  footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+  @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+  @media(max-width:700px){.diff-grid{grid-template-columns:1fr}}
+  @media(max-width:600px){header h1{font-size:22px}.btn-primary,.btn-secondary{width:100%;justify-content:center}.btn-row{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header><h1>Text Diff Checker</h1><p>Compare two texts and see the differences highlighted.</p></header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="diff-grid">
+<div class="input-group"><label for="textA">Original Text</label><textarea id="textA" placeholder="Paste original text here…" spellcheck="false"></textarea></div>
+<div class="input-group"><label for="textB">Modified Text</label><textarea id="textB" placeholder="Paste modified text here…" spellcheck="false"></textarea></div>
+</div>
+<div class="btn-row">
+<button class="btn-primary" id="diffBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> Compare</button>
+<div class="option-group">
+<label><input type="checkbox" id="chkCase"> Case sensitive</label>
+<label><input type="checkbox" id="chkTrim"> Trim lines</label>
+</div>
+</div>
+<div class="input-group"><label>Diff Output</label><div class="diff-output" id="diffOutput"><div class="empty-state">Enter two texts and click <strong>Compare</strong>.</div></div></div>
+<div class="status-bar" id="statusBar"></div>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<footer>Text Diff Checker &mdash; Free online diff checker tool</footer>
+<script>
+(function(){
+  const textA=document.getElementById('textA'),textB=document.getElementById('textB');
+  const diffBtn=document.getElementById('diffBtn'),diffOutput=document.getElementById('diffOutput');
+  const chkCase=document.getElementById('chkCase'),chkTrim=document.getElementById('chkTrim');
+  const statusBar=document.getElementById('statusBar');
+
+  function diff(){
+    const a=textA.value,b=textB.value;
+    if(!a&&!b){diffOutput.innerHTML='<div class="empty-state">Enter two texts and click <strong>Compare</strong>.</div>';statusBar.textContent='';return}
+    const caseS=chkCase.checked,trim=chkTrim.checked;
+    const linesA=a.split('\n'),linesB=b.split('\n');
+    const maxLen=Math.max(linesA.length,linesB.length);
+    let html='',added=0,removed=0,unchanged=0;
+    for(let i=0;i<maxLen;i++){
+      const la=i<linesA.length?linesA[i]:'',lb=i<linesB.length?linesB[i]:'';
+      let pa=trim?la.trim():la,pb=trim?lb.trim():lb;
+      if(!caseS){pa=pa.toLowerCase();pb=pb.toLowerCase()}
+      const num=i+1;
+      if(i>=linesA.length){
+        html+='<div class="added"><span class="line-num">+'+(i+1)+'</span>'+esc(lb)+'</div>';added++
+      }else if(i>=linesB.length){
+        html+='<div class="removed"><span class="line-num">-'+(i+1)+'</span>'+esc(la)+'</div>';removed++
+      }else if(pa===pb){
+        html+='<div class="unchanged"><span class="line-num"> '+(i+1)+'</span>'+esc(la)+'</div>';unchanged++
+      }else{
+        html+='<div class="removed"><span class="line-num">-'+(i+1)+'</span>'+esc(la)+'</div><div class="added"><span class="line-num">+'+(i+1)+'</span>'+esc(lb)+'</div>';removed++;added++
+      }
+    }
+    diffOutput.innerHTML=html;
+    statusBar.textContent='+'+(added)+'  -'+(removed)+'  unchanged '+unchanged+'  total lines '+(added+removed+unchanged);
+  }
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  diffBtn.addEventListener('click',diff);
+})();
+</script>
+</body>
+</html>
