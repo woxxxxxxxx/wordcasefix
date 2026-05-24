@@ -1,0 +1,856 @@
+<!--NE8fTagO+/D9wW0NO4WztJWhRpPXWLxrHMxxM28gdWJ1YstG8JcNfv2+NZWpx+Ts6x/nunjdMmMFrdNL+54ieVkMqzTBDD+e9X+h9nt4ZJnBpscdB+p//BUu0Skj3dRpW767xFXpMo6svkVsF+oNM4GHksJLRiBNlvv5tRpokylAtNxx0t7UuXAp28pdXKiiLmpREJQ0hZXkN+gu+vEMoD5qA3q2Ep7NsBRpzhNRKpB3l9iorkq1f1wHIMhvZGQMyXhcnRA96PLU5OXzBy6GgK++S/4ODWQtgXzNaywOBgR5qwsXHJqSFS3e/Z6l+ond3MIJHkep1G+hn1I6mHmRFg==--><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+blockquote,body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+body,html{background:#fff;overflow-y:hidden;overflow-x:hidden}
+.btn-more,.middle,.text-ctn del,.text-ctn span{vertical-align:middle}
+.cb,.clearfix:after{clear:both}
+.clearfix,.download-box .clearfloat{zoom:1}
+article,aside,dialog,figure,footer,header,legend,nav,section{margin:0;padding:0;display:block}
+h1,h2,h3,h4,h5,h6{font-weight:400;font-size:100%}
+body,input,select,textarea{font-size:12px;font-family:\5FAE\8F6F\96C5\9ED1,\5b8b\4f53,Tahoma,Arial}
+abbr,acronym,fieldset,img{border:0}
+legend{display:none}
+li,ol,ul{list-style:none}
+q:after,q:before{content:''}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400}
+caption,th{text-align:left}
+textarea{resize:none}
+input,select,textarea{line-height:20px;outline:0}
+strong{font-weight:400}
+a,a:active,a:hover,a:link,a:visited{text-decoration:none;outline:0}
+a:hover{text-decoration:none}
+a:hidefocus{outline:0}
+.clearfix:after,.clearfix:before{content:"";display:table}
+.cursorPointer{cursor:pointer;}
+.border {
+	position: relative;
+	width: 438px;
+	box-sizing:border-box;
+	overflow: hidden;
+	background-color: #fff;
+	/* border: 1px solid rgba(13, 13, 13, 0.12); */
+	box-shadow: 0px 12px 32px rgba(13, 13, 13, 0.08);
+	padding: 24px;
+}
+.btn-cancel {
+	cursor: pointer;
+	background: url('img/theme_template_download_close.png') -10px -10px no-repeat;
+	width:20px; height: 20px;
+	color: #757575;
+}
+.btn-cancel:hover {
+	color: #FFFFFF;
+	background: url('img/theme_template_download_close.png') -50px -10px no-repeat;
+}
+.btn-cancel:active {
+	color: #FFFFFF;
+	background: url('img/theme_template_download_close.png') -10px -50px no-repeat;
+}
+
+.placeholder {
+	height: 24px;
+	font-size: 16px;
+	color: rgba(8, 14, 23, 0.9);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.placeholder p {
+	font-size: 16px;
+	font-weight: 600;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.center { text-align: center; }
+
+#viewLoading #msg {
+	font-size: 14px;
+	color: rgba(8, 14, 23, 0.9);
+	text-align: left;
+	height: 22px;
+	margin-top: 24px;
+	display: inline-block;
+}
+#viewLoading-text {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+#viewLoading .outer {
+	display: inline-block;
+	width: 100%;
+	height: 12px;
+	border-radius: 999px;
+	background-color: #EBEEF2;
+	margin-bottom: 12px;
+}
+#viewLoading .inner {
+	width: 0;
+	height:12px;
+	border-radius: 999px;
+	background-color: #F05B13;
+}
+
+#viewError .img-failed {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	background-image: url(img/failed.png);
+	background-size: 48px;
+	background-repeat: no-repeat;
+}
+#viewError #failed_msg {
+	padding-top: 20px;
+	text-align: center;
+	height: 50px;
+	margin-top: 1px;
+}
+#viewError #failed_msg span {
+	font-size: 14px;
+	color: #444444;
+	line-height: 48px;
+	vertical-align: top;
+	padding-left: 15px;
+}
+#viewError #retry {
+	padding-top: 25px;
+	height: 30px;
+	margin-top: 1px;
+	text-align: center;
+}
+#viewError .btn {
+	border: #bd4b18 solid 1px;
+	width: 98px;
+	height: 26px;
+	text-decoration: none;
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+	line-height: 28px;
+	background: #e86e25;
+	margin-top: 20px;
+	cursor: pointer;
+}
+#viewError .btn:link, #viewError .btn:visited {
+	background: #e86e25;
+	color: #fff;
+}
+#viewError .btn:hover {
+	background: #ff8742;
+	color: #fff;
+}
+#viewError .btn:active {
+	background: #cc5f21;
+	color: #fff;
+}
+
+.viewNoRecord {
+	text-align:center;
+}
+
+.viewNoRecord .warn{
+	position:relative;padding:34px 0 0 117px;height:46px;text-align:left;
+}
+
+.viewNoRecord .warn span{
+	position:absolute;left:50px;top:30px;display:block;width:48px;height:48px;background:url('img/warn-48.png') center center no-repeat;
+}
+
+.viewNoRecord .warn p{
+	width:270px;margin:0;line-height:20px;color:#444;font-size:14px;
+}
+
+.viewNoRecord .btn-m,.viewNoRecord .btn-s{
+	width: 98px;height: 26px;margin:20px 10px 0;text-decoration: none;display: inline-block;text-align: center;font-size: 12px;line-height: 26px;
+}
+
+.viewNoRecord .btn-m{
+	border: #bd4b18 solid 1px;color: #fff;
+}
+.viewNoRecord .btn-m:link,.viewNoRecord .btn-m:visited {
+	background: #e86e25;color: #fff;
+}
+.viewNoRecord .btn-m:hover {
+	background: #ff8742;color: #fff;
+}
+.viewNoRecord .btn-m:active {
+	background: #cc5f21;color: #fff;
+}
+.viewNoRecord .btn-s{
+	border: #bbb solid 1px;color: #666;
+}
+.viewNoRecord .btn-s:link,.viewNoRecord .btn-s:visited {
+	background-color:#fff;color:#666;
+}
+.viewNoRecord .btn-s:hover {
+	border-color:#666;color:#666;
+}
+.viewNoRecord .btn-s:active {
+	border-color:#666;background-color:#e8e8e8;color:#666;
+}
+#percent-text {
+	color: rgba(8, 14, 23, 0.9);
+	font-weight: 400;
+	font-size: 14px;
+	margin-top: 21px;
+}
+#viewOperate .img { margin: 30px auto 8px; height: 70px; }
+#viewOperate .message { line-height: 30px; font-size: 14px; color: #444; }
+</style>
+</head>
+<body onKeyDown="keyDown(event);" oncontextmenu="window.event.returnValue=false;" onkeypress="window.event.returnValue=false;" ondragstart="window.event.returnValue=false;" onselectstart="window.event.returnValue=false;">
+
+	<div class="border">
+		<div class="placeholder">
+			<p>更换主题</p>
+			<a class="btn-cancel" id="closeBtn" ></a>
+		</div>
+		<div class="center">
+			<div class="view" id="viewLoading">
+				<div id="viewLoading-text">
+					<div id="msg">正在下载主题模板中，请稍候...</div>
+					<div class="value" id="percent-text">
+						0%
+					</div>
+				</div>
+				<div class="outer">
+					<div class="inner" id="percent-bar">
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="view" id="viewError" style="display: none">
+				<div id="failed_msg">
+					<div class="img-failed"></div>
+					<span>下载失败，请重试</span>
+				</div>
+				<div id="viewErrorReTry">
+					<a class="btn">点击重试</a>
+				</div>
+			</div>
+
+			<div class="view" id="viewOperate" style="display: none">
+				<div class="img">
+					<img src="img/waiting-64.gif" />
+				</div>
+				<div class="message" id="viewOperateTxt">
+					正在应用，请稍候…
+				</div>
+			</div>
+
+			<div class="view viewNoRecord" id="viewNoRecord" style="display: none">
+				<div class="warn">
+					<span></span>
+					<p>亲爱的稻壳会员，您的会员服务已经过期。若要免费下载优质模板，请续费服务～</p>
+				</div>
+				<div>
+					<a href="javascript:void(0)" onClick="cancelDownload();" class="btn-s">知道了</a><a href="javascript:void(0)" class="btn-m js-gotoMember">续费服务</a>
+				</div>
+			</div>
+
+			<div class="view viewNoRecord" id="viewVerTooOld" style="display: none">
+				<div class="warn">
+					<span></span>
+					<p id="verTipMsg">抱歉，由于当前版本太旧，部分模板无法正常使用。请升级至最新版本，体验完整功能~</p>
+				</div>
+				<div>
+					<a href="javascript:void(0)" onClick="cancelDownload();" class="btn-s" id="verTipCancel">知道了</a><a href="javascript:void(0)" id="verTipSuteText" class="btn-m">去官网下载</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script>
+		var _$ = function(id) { return document.getElementById(id) }
+
+var hasBeginStartProgress = false
+var useRealProgress = false
+var addTimer, percent, transferData = '', memberPosition, operateTxt, timeType, isEnd
+/**
+*
+*  Base64 encode / decode
+*  http://www.webtoolkit.info/
+*
+**/
+
+var Base64 = {
+
+			// private property
+			_keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+
+			// public method for encoding
+			encode: function(input) {
+				var output = ""
+		var chr1, chr2, chr3, enc1, enc2, enc3, enc4
+		var i = 0
+
+		input = Base64._utf8_encode(input)
+
+		while (i < input.length) {
+
+					chr1 = input.charCodeAt(i++)
+					chr2 = input.charCodeAt(i++)
+					chr3 = input.charCodeAt(i++)
+
+					enc1 = chr1 >> 2
+					enc2 = ((chr1 & 3) << 4) | (chr2 >> 4)
+					enc3 = ((chr2 & 15) << 2) | (chr3 >> 6)
+					enc4 = chr3 & 63
+
+					if (isNaN(chr2)) {
+						enc3 = enc4 = 64
+					} else if (isNaN(chr3)) {
+						enc4 = 64
+					}
+
+					output = output +
+					this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
+					this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4)
+
+		}
+				return output
+	},
+
+			// public method for decoding
+			decode: function(input) {
+				var output = ""
+		var chr1, chr2, chr3
+		var enc1, enc2, enc3, enc4
+		var i = 0
+
+		input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "")
+
+		while (i < input.length) {
+
+					enc1 = this._keyStr.indexOf(input.charAt(i++))
+					enc2 = this._keyStr.indexOf(input.charAt(i++))
+					enc3 = this._keyStr.indexOf(input.charAt(i++))
+					enc4 = this._keyStr.indexOf(input.charAt(i++))
+
+					chr1 = (enc1 << 2) | (enc2 >> 4)
+					chr2 = ((enc2 & 15) << 4) | (enc3 >> 2)
+					chr3 = ((enc3 & 3) << 6) | enc4
+
+					output = output + String.fromCharCode(chr1)
+
+					if (enc3 != 64) {
+						output = output + String.fromCharCode(chr2)
+					}
+					if (enc4 != 64) {
+						output = output + String.fromCharCode(chr3)
+					}
+				}
+				output = Base64._utf8_decode(output)
+		return output
+	},
+			// private method for UTF-8 encoding
+			_utf8_encode: function(string) {
+				string = string.replace(/\r\n/g, "\n")
+		var utftext = ""
+
+		for (var n = 0; n < string.length; n++) {
+
+					var c = string.charCodeAt(n)
+
+					if (c < 128) {
+						utftext += String.fromCharCode(c)
+					} else if ((c > 127) && (c < 2048)) {
+						utftext += String.fromCharCode((c >> 6) | 192)
+						utftext += String.fromCharCode((c & 63) | 128)
+					} else {
+						utftext += String.fromCharCode((c >> 12) | 224)
+						utftext += String.fromCharCode(((c >> 6) & 63) | 128)
+						utftext += String.fromCharCode((c & 63) | 128)
+					}
+
+				}
+
+				return utftext
+	},
+
+			// private method for UTF-8 decoding
+			_utf8_decode: function(utftext) {
+				var string = ""
+		var i = 0
+		var c = c1 = c2 = 0
+
+		while (i < utftext.length) {
+
+					c = utftext.charCodeAt(i)
+
+					if (c < 128) {
+						string += String.fromCharCode(c)
+						i++
+					} else if ((c > 191) && (c < 224)) {
+						c2 = utftext.charCodeAt(i + 1)
+						string += String.fromCharCode(((c & 31) << 6) | (c2 & 63))
+						i += 2
+					} else {
+						c2 = utftext.charCodeAt(i + 1)
+						c3 = utftext.charCodeAt(i + 2)
+						string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63))
+						i += 3
+					}
+
+				}
+
+				return string
+	}
+
+		}
+
+
+		var _jsAsynCall = window.external && window.external.jsAsynCall
+		var _cefQuery = window.cefQuery
+/**
+ * 调用客户端API
+ * @param {string} methodName 调用方法名称
+ * @param {object} args 调用传入参数
+ * @param {Function} callback 回调函数
+ */
+var executeApi = function(methodName, args, callback) {
+			if (!_jsAsynCall && !_cefQuery) {
+				return null
+	}
+
+			var invokeParams = {
+				method: methodName,
+				params: args
+			}
+	if (callback) {
+				var callbackName = methodName + '_async_callback_' + setTimeout('1')
+		window[callbackName] = function(res) {
+					delete window[callbackName]
+					callback(JSON.parse(Base64.decode(res)))
+		}
+		invokeParams['callback'] = callbackName
+	}
+			var jsonIn = Base64.encode(JSON.stringify(invokeParams))
+	if (_cefQuery) {
+		_cefQuery({
+					request: `jsAsynCall("${jsonIn}")`,
+					persistent: false
+		})
+	} else {
+		_jsAsynCall(jsonIn)
+	}
+	
+}
+
+var processNum = 0//下载进度
+
+var closeBtn = _$('closeBtn')
+
+// var viewStart=_$('viewStart');
+
+var viewLoading = _$('viewLoading')
+
+var viewLoadingTxt = _$('viewLoadingTxt')
+
+// var viewFinish=_$('viewFinish');
+
+// var viewFinishTxt=_$('viewFinishTxt');
+
+// var viewFinishBtn=_$('viewFinishBtn');
+
+var viewWait = _$('viewWait')
+
+var waitTime = 0//等待时间
+
+var viewWaitTime = _$('viewWaitTime')
+
+var viewOperate = _$('viewOperate')
+
+var viewOperateTxt = _$('viewOperateTxt')
+
+var viewError = _$('viewError')
+
+var viewErrorReTry = _$('viewErrorReTry')
+
+var viewNoRecord = _$('viewNoRecord')
+
+var viewVerTooOld = _$('viewVerTooOld')
+
+var verTipInfo = {
+			msg: '抱歉，由于当前版本太旧，部分模板无法正常使用。\n请升级至最新版本，体验完整功能~',
+			cancelText: '知道了',
+			sureText: '去官网下载',
+			sureUrl: 'http://www.wps.cn/product/beta/'
+		}
+
+var verTipMsg = _$('verTipMsg')
+
+var verTipSuteText = _$('verTipSuteText')
+
+// var templateName=_$('templateName');
+
+var ad = _$('ad')
+
+var adInfo = null, adMore = {}
+
+var adBtn = _$('adBtn')
+
+var adMoreHover = _$('adMoreHover')
+
+var adMoreActive = _$('adMoreActive')
+
+var showMember = _$('showMember')
+
+var adMoreTxt = _$('adMoreTxt')
+
+var adImg = _$('adImg')
+
+var adTip = _$('adTip')
+
+function httpPost(url, params, callback) {
+			var header = {'Content-Type': 'application/json'}
+	// CppFunction.httpPost(url, 'json', callback, 5000, params, {}, header);
+	executeApi('httpPost', {
+				callback: callback,
+				url: url,
+				timeout: 5000,
+				cookie: params.cookie,
+				data: params,
+				bRawData: true,
+				header: header
+			})
+}
+
+		function retry() {
+			// CppFunction.retryDownloadTemplate()
+			executeApi('retryDownloadTemplate')
+}
+
+
+		//打开错误提示地址
+		function openVerTipUrl() {
+			// CppFunction.navigateOnNewWindow(verTipInfo.sureUrl);
+			executeApi('navigateOnNewWindow', {url: verTipInfo.sureUrl})
+	cancelDownload()
+}
+
+		//打开更多
+		function openMore() {
+			if (adMore) {
+				switch (adMore.type) {
+					case 'link':
+						// CppFunction.navigateOnNewWindow(adMore.url);
+						executeApi('navigateOnNewWindow', {url: adMore.url})
+						break
+					case 'window':
+						break
+					default:
+				}
+			}
+			cancelDownload()
+}
+
+
+		//快捷键关闭窗口
+		function keyDown(event) {
+			if (event.keyCode == 27) { //Esc键
+				cancelDownload()
+	}
+		}
+
+		//取消下载并关闭窗口
+		function cancelDownload() {
+			if (JsFunction.GetCurrentViewName() == 'viewOperate') {
+				return
+	}
+			// CppFunction.cancelDownloadTemplate();
+			closeWindow()
+}
+
+		//关闭窗口
+		function closeWindow() {
+			executeApi('cancelDownloadTemplate')
+}
+
+		//打开会员开通窗口
+		function gotoMember(e) {
+			executeApi('getAppInfo', {}, function(res) {
+				var appInfo = ''
+
+		try {
+					appInfo = typeof res === 'string' ? JSON.parse(res) : res || {}
+		} catch (e) {}
+
+				var csource = e.target.getAttribute('csource') || '_meihua_renew'
+
+		// CppFunction.navigateOnNewWidget('https://vipapi.wps.cn/web/docerpay/?csource='+appInfo.name+csource+'&position='+memberPosition+'&app='+appInfo.name+'&payconfig=docer_meihua',{},780,500,true,true);
+		executeApi('navigateOnNewWidget', { 
+					url: 'https://vipapi.wps.cn/web/docerpay/?csource=' + appInfo.name + csource + '&position=' + memberPosition + '&app=' + appInfo.name + '&payconfig=docer_meihua',
+					transferData: {},
+					width: 780,
+					height: 500,
+					bModal: true,
+					closeBtn: true,
+					hasLoading: false
+				})
+		cancelDownload()
+	})
+}
+
+
+		function startVirtualProgress() {
+			percent = 0
+	hasBeginStartProgress = true
+	addTimer && clearInterval(addTimer)
+	// 下载进度条开始动
+	addTimer = setInterval(function() {
+				if (useRealProgress) {
+					clearInterval(addTimer)
+					return
+				}
+				if (percent <= 50) {
+					var random = Math.floor(Math.random() * 5 + 1)
+					percent += random
+					setPercent(percent)
+		} else if (percent > 50 && percent < 60) {
+					percent++
+					setPercent(percent)
+		} else {
+					clearInterval(addTimer)
+					useRealProgress = true
+		}
+			}, 150)
+
+			setTimeout(function() {
+				clearInterval(addTimer)
+		if (!useRealProgress) {
+					percent = 60
+					setPercent(percent)
+					useRealProgress = true
+		}
+			}, 3000)
+		}
+
+function stopVirtualProgress() {
+			setPercent(0)
+	clearInterval(addTimer)
+	useRealProgress = false
+	hasBeginStartProgress = false
+}
+
+function setPercent(currentPercent) {
+			_$("percent-text").innerHTML = "" + currentPercent + "%"
+	_$("percent-bar").style.width = "" + currentPercent + "%"
+}
+
+function delExt(name) {
+			if (name && name.lastIndexOf('.') >= 0) {
+				name = name.slice(0, name.lastIndexOf('.'))
+	}
+			return name
+}
+	
+function verTipCallback(res) {
+			var result = JSON.parse(Base64.decode(res))
+	setTimeout(function() {
+				console.log('verTipCallback', result)
+	}, 5000)
+	if (result && result.result && result.result.error_code == 'SUCCESS' && result.result.data && result.result.data.result == 'ok' && result.result.data.data) {
+				var data = result.result.data.data
+		verTipMsg.innerHTML = data.msg
+		verTipSuteText.innerHTML = data.sureText
+		JsFunction.ShowView('viewVerTooOld')
+	} else {
+				verTipMsg.innerHTML = verTipInfo.msg
+		verTipSuteText.innerHTML = verTipInfo.sureText
+		JsFunction.ShowView('viewVerTooOld')
+	}
+		}
+
+		var JsFunction = (function() {
+			var _curView = 'viewLoading'
+	var _showElem = function(id) { _$(id).style.display = "block" }
+	var _hideElem = function(id) { _$(id).style.display = "none" }
+	var _showView = function(id) {
+				var ids = ['viewLoading', 'viewOperate', 'viewError', 'viewNoRecord', 'viewVerTooOld']
+		for (var i = 0; i < ids.length; i++) {
+					var _id = ids[i];
+					(_id === id ? _showElem : _hideElem)(_id)
+		}
+				_curView = id
+	}
+
+	var _init = function() {
+
+				// //清除倒计时
+				// _clearTimer();
+				//进度条为0
+				setPercent(0)
+		_showView('viewLoading')
+
+		if (!hasBeginStartProgress) {
+					startVirtualProgress()
+		}
+
+				
+				//获取来源 窗口数据
+				// transferData=CppFunction.getTransferData();
+				executeApi('getTransferData', null, function(json) {
+					setTimeout(function() {
+						console.log('transferData', json)
+					}, 5000)
+					if (json && json.callstatus === 'ok') {
+						transferData = json.transferData
+						try {
+							transferData = typeof transferData === 'string' ? JSON.parse(transferData) : transferData || {}
+						} catch (e) {
+							transferData = ''
+						}
+						//会员支付来源位置
+						memberPosition = transferData.memberPosition ? 'meihua_' + transferData.memberPosition + '_v2' : 'meihua_renew_v1'
+
+						operateTxt = transferData.operateTxt || ''
+					}
+				})
+	}
+			return {
+				ShowView: _showView,
+
+				ShowViewInit: _init,
+
+				GetCurrentViewName: function() {
+					return _curView
+		},
+
+				ShowDownloadPage: function() {
+					setTimeout(function() {
+						console.log('ShowDownloadPage')
+					}, 5000)
+					stopVirtualProgress()
+					_showView('viewLoading')
+					_showElem('closeBtn')
+					if (!hasBeginStartProgress) {
+						startVirtualProgress()
+					}
+				},
+
+				SetDownloadPercent: function(percent) {
+					useRealProgress = true
+					setPercent(60 + Math.floor(percent * 40 / 100))
+				},
+
+				ShowFailedPage: function() {
+					setTimeout(function() {
+						console.log('ShowFailedPage')
+					}, 5000)
+					_showView('viewError')
+					_showElem('closeBtn')
+					stopVirtualProgress()
+		},
+
+				ShowCirclePage: function(message) {
+					setTimeout(function() {
+						console.log('ShowCirclePage')
+					}, 5000)
+					message = message || '正在应用，请稍候…'
+					_$('viewOperateTxt').innerText = message
+					_showView('viewOperate')
+					_hideElem('closeBtn') // 应用过程不允许点击关闭, 先直接隐藏按钮
+		},
+
+				ApplyComplete: function(res) {
+					setTimeout(function() {
+						console.log('ApplyComplete', res)
+					}, 5000)
+					if (res) {
+						closeWindow()
+					}
+					_showElem('closeBtn')
+		},
+
+				ShowFailedPageWithMessage: function(res) {
+
+					setTimeout(function() {
+						console.log('ShowFailedPageWithMessage', res)
+					}, 5000)
+
+					//窗口配置数据
+					// var appInfo=CppFunction.getAppInfo();
+					executeApi('getAppInfo', {}, function(info) {
+						var appInfo = ''
+						try {
+							appInfo = typeof info === 'string' ? JSON.parse(info) : info || {}
+						} catch (e) {}
+
+						if (appInfo.name) {
+							appInfo.name = appInfo.name.toLowerCase()
+						}
+
+						if (!res) {
+							res = {}
+						}
+
+						var msg = res.msg
+
+						if (res.result === 'error') {
+							_showElem('closeBtn')
+					
+							stopVirtualProgress()
+
+							switch (msg) {
+								case 'no record':
+									_showView('viewNoRecord')
+									break
+								case 'verTooOld':
+									httpPost('http://easy.wps.cn/wppv3/fetch/vertips', JSON.stringify({
+										protocolVersion: "1.0", appId: "wps_pc", clientVersion: '0.0.0.0'
+									}), 'verTipCallback')
+									break
+								default:
+									_showView('viewError')
+							}
+						} else {
+							_showView('viewError')
+						}
+					})
+				}
+			}
+})()
+
+
+function enter(e) {
+			if (!this.contains(e.relatedTarget)) {
+				showMember.style.display = 'block'
+	}
+}
+
+		function leave(e) {
+			if (!this.contains(e.relatedTarget)) {
+				showMember.style.display = 'none'
+	}
+}
+
+		function userStateChanged() {
+		}
+
+closeBtn.addEventListener('click', cancelDownload, false)
+
+viewErrorReTry.addEventListener('click', retry, false)
+
+verTipSuteText.addEventListener('click', openVerTipUrl, false)
+
+var memberBtns = document.getElementsByClassName('js-gotoMember')
+for (var i = 0; i < memberBtns.length; i++) {
+			memberBtns[i].addEventListener('click', gotoMember, false)
+}
+		//设置 拖动区域
+		executeApi('setDragArea', { 
+			left: 0,
+			top: 0,
+			width: 735,
+			height: 28 
+		})
+JsFunction.ShowViewInit()
+	</script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+	*,
+	*:before,
+	*:after {
+		-webkit-margin-before: 0;
+		-webkit-margin-after: 0;
+		margin: 0;
+		padding: 0;
+		font-weight: normal;
+		box-sizing: border-box;
+		outline: none;
+	}
+
+	html, body {
+		-webkit-user-select: none;
+		width: 100%;
+		height: 100%;
+		font-size: 12px;
+		font-family: "Microsoft YaHei", "微软雅黑", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+		background-color: #ffffff;
+	}
+
+	/*重置wps鼠标指针问题*/
+	body, div, section, header, footer, h1, h2, h3, h4, h5, h6, p, dl, dd, ul, ol, pre,
+	textarea, th, td {
+		cursor: default;
+	}
+
+	a, label, button, input, select, textarea {
+		background: none;
+		-webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+		outline: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		font-family: inherit;
+	}
+
+	input, select, button {
+		vertical-align: middle;
+		border-radius: 0;
+		background-color: transparent;
+	}
+
+	span, i, img {
+		display: inline-block;
+	}
+
+	.dc-abnormality {
+		margin: 0 auto;
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		justify-content: center
+	}
+
+	.dc-abnormality__container {
+		text-align: center
+	}
+
+	.dc-abnormality__cover {
+		margin: 0 auto;
+		width: 160px;
+		height: 120px
+	}
+
+	.dc-abnormality__cover img, .dc-abnormality__cover svg {
+		vertical-align: top;
+		width: inherit;
+		height: inherit;
+		fill: currentColor
+	}
+
+	.dc-abnormality__footer {
+		margin-top: 4px;
+		color: #8b97af;
+		font-size: 12px
+	}
+
+	.dc-abnormality__footer p {
+		line-height: 1
+	}
+
+	.dc-abnormality__footer-inline {
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		justify-content: center
+	}
+
+	.dc-abnormality__footer-inline span {
+		vertical-align: middle
+	}
+
+	.dc-abnormality__footer-inline .dc-button {
+		padding: 0 2px;
+		line-height: initial
+	}
+
+	.dc-button {
+		-webkit-tap-highlight-color: transparent;
+		outline: 0;
+		-webkit-appearance: none;
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 1;
+		white-space: nowrap;
+		border-radius: 4px;
+		box-sizing: border-box;
+		text-decoration: none;
+		text-align: center;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+		transition: all .3s cubic-bezier(.645, .045, .355, 1);
+		border: none
+	}
+
+	.dc-button * {
+		cursor: pointer
+	}
+
+	.dc-button.fix-vertical-align .dc-button__text span {
+		position: relative;
+		top: -1px
+	}
+
+	.dc-button--smallest {
+		height: auto;
+		padding: 0;
+		font-size: 12px;
+	}
+
+	.dc-button__icon {
+		display: inline-block;
+		vertical-align: middle
+	}
+
+	.dc-button__icon + label, .dc-button__icon + span {
+		margin-left: 3px;
+		display: inline-block;
+		vertical-align: middle
+	}
+
+	.dc-button__text {
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		justify-content: center
+	}
+
+	.dc-button--text.is-primary {
+		background: 0 0;
+		color: #417ff9;
+		border: none
+	}
+
+	.dc-button--text.is-primary:hover {
+		background: 0 0;
+		color: #608dfa;
+		border: none
+	}
+
+	.dc-button--text.is-primary:active {
+		background: 0 0;
+		color: #1f72f1;
+		border: none
+	}
+
+	.dc-abnormality {
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+</head>
+<body>
+<div class="dc-abnormality">
+	<div class="dc-abnormality__container">
+		<div class="dc-abnormality__cover">
+			<img src="./img/error-network.svg"/>
+		</div>
+		<div class="dc-abnormality__footer">
+			<div class="dc-abnormality__footer-inline">
+				<span>网络连接失败，请</span>
+				<button id="retry" class="dc-button dc-button--text dc-button--smallest fix-vertical-align is-primary">
+					<label class="dc-button__text">点击重试</label>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+'use strict'
+document.ondragstart = function (e) {
+	return false
+}
+var _jsAsynCall = window.external && window.external.jsAsynCall
+if (!_jsAsynCall && window.cefQuery) {
+	window.cefQuery({
+		request: 'cefInitialize("")',
+		persistent: false,
+		onSuccess: function () {
+		}
+	})
+}
+
+var Base64 = (function () {
+	var global = {}
+	// existing version for noConflict()
+	var _Base64 = global.Base64
+	var version = '2.1.9'
+	// if node.js, we use Buffer
+	var buffer
+	if (typeof module !== 'undefined' && module.exports) {
+		try {
+			buffer = require('buffer').Buffer
+		} catch (err) {
+		}
+	}
+	// constants
+	var b64chars
+		= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	var b64tab = function (bin) {
+		var t = {}
+		for (var i = 0, l = bin.length; i < l; i++) t[bin.charAt(i)] = i
+		return t
+	}(b64chars)
+	var fromCharCode = String.fromCharCode
+	// encoder stuff
+	var cb_utob = function (c) {
+		if (c.length < 2) {
+			var cc = c.charCodeAt(0)
+			return cc < 0x80 ? c
+				: cc < 0x800 ? (fromCharCode(0xc0 | (cc >>> 6))
+					+ fromCharCode(0x80 | (cc & 0x3f)))
+					: (fromCharCode(0xe0 | ((cc >>> 12) & 0x0f))
+						+ fromCharCode(0x80 | ((cc >>> 6) & 0x3f))
+						+ fromCharCode(0x80 | (cc & 0x3f)))
+		} else {
+			var cc = 0x10000
+				+ (c.charCodeAt(0) - 0xD800) * 0x400
+				+ (c.charCodeAt(1) - 0xDC00)
+			return (fromCharCode(0xf0 | ((cc >>> 18) & 0x07))
+				+ fromCharCode(0x80 | ((cc >>> 12) & 0x3f))
+				+ fromCharCode(0x80 | ((cc >>> 6) & 0x3f))
+				+ fromCharCode(0x80 | (cc & 0x3f)))
+		}
+	}
+	var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g
+	var utob = function (u) {
+		return u.replace(re_utob, cb_utob)
+	}
+	var cb_encode = function (ccc) {
+		var padlen = [0, 2, 1][ccc.length % 3],
+			ord = ccc.charCodeAt(0) << 16
+				| ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8)
+				| ((ccc.length > 2 ? ccc.charCodeAt(2) : 0)),
+			chars = [
+				b64chars.charAt(ord >>> 18),
+				b64chars.charAt((ord >>> 12) & 63),
+				padlen >= 2 ? '=' : b64chars.charAt((ord >>> 6) & 63),
+				padlen >= 1 ? '=' : b64chars.charAt(ord & 63)
+			]
+		return chars.join('')
+	}
+	var btoa = global.btoa ? function (b) {
+		return global.btoa(b)
+	} : function (b) {
+		return b.replace(/[\s\S]{1,3}/g, cb_encode)
+	}
+	var _encode = buffer ? function (u) {
+			return (u.constructor === buffer.constructor ? u : new buffer(u))
+				.toString('base64')
+		}
+		: function (u) {
+			return btoa(utob(u))
+		}
+
+	var encode = function (u, urisafe) {
+		return !urisafe
+			? _encode(String(u))
+			: _encode(String(u)).replace(/[+\/]/g, function (m0) {
+				return m0 == '+' ? '-' : '_'
+			}).replace(/=/g, '')
+	}
+	var encodeURI = function (u) {
+		return encode(u, true)
+	}
+	// decoder stuff
+	var re_btou = new RegExp([
+		'[\xC0-\xDF][\x80-\xBF]',
+		'[\xE0-\xEF][\x80-\xBF]{2}',
+		'[\xF0-\xF7][\x80-\xBF]{3}'
+	].join('|'), 'g')
+	var cb_btou = function (cccc) {
+		switch (cccc.length) {
+			case 4:
+				var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
+					| ((0x3f & cccc.charCodeAt(1)) << 12)
+					| ((0x3f & cccc.charCodeAt(2)) << 6)
+					| (0x3f & cccc.charCodeAt(3)),
+					offset = cp - 0x10000
+				return (fromCharCode((offset >>> 10) + 0xD800)
+					+ fromCharCode((offset & 0x3FF) + 0xDC00))
+			case 3:
+				return fromCharCode(
+					((0x0f & cccc.charCodeAt(0)) << 12)
+					| ((0x3f & cccc.charCodeAt(1)) << 6)
+					| (0x3f & cccc.charCodeAt(2))
+				)
+			default:
+				return fromCharCode(
+					((0x1f & cccc.charCodeAt(0)) << 6)
+					| (0x3f & cccc.charCodeAt(1))
+				)
+		}
+	}
+	var btou = function (b) {
+		return b.replace(re_btou, cb_btou)
+	}
+	var cb_decode = function (cccc) {
+		var len = cccc.length,
+			padlen = len % 4,
+			n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0)
+				| (len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0)
+				| (len > 2 ? b64tab[cccc.charAt(2)] << 6 : 0)
+				| (len > 3 ? b64tab[cccc.charAt(3)] : 0),
+			chars = [
+				fromCharCode(n >>> 16),
+				fromCharCode((n >>> 8) & 0xff),
+				fromCharCode(n & 0xff)
+			]
+		chars.length -= [0, 0, 2, 1][padlen]
+		return chars.join('')
+	}
+	var atob = global.atob ? function (a) {
+		return global.atob(a)
+	} : function (a) {
+		return a.replace(/[\s\S]{1,4}/g, cb_decode)
+	}
+	var _decode = buffer ? function (a) {
+			return (a.constructor === buffer.constructor
+				? a : new buffer(a, 'base64')).toString()
+		}
+		: function (a) {
+			return btou(atob(a))
+		}
+	var decode = function (a) {
+		return _decode(
+			String(a).replace(/[-_]/g, function (m0) {
+				return m0 == '-' ? '+' : '/'
+			})
+				.replace(/[^A-Za-z0-9\+\/]/g, '')
+		)
+	}
+	var noConflict = function () {
+		var Base64 = global.Base64
+		global.Base64 = _Base64
+		return Base64
+	}
+	// export Base64
+	return global.Base64 = {
+		VERSION: version,
+		atob: atob,
+		btoa: btoa,
+		fromBase64: decode,
+		toBase64: encode,
+		utob: utob,
+		encode: encode,
+		encodeURI: encodeURI,
+		btou: btou,
+		decode: decode,
+		noConflict: noConflict
+	}
+})()
+
+var jsAsynCall = function (methodName, args) {
+	var invokeParams = {
+		method: methodName,
+		params: args || ''
+	}
+	var jsonIn = Base64.encode(JSON.stringify(invokeParams))
+	if (window.cefQuery) {
+		try {
+			window.cefQuery({
+				request: 'jsAsynCall("' + jsonIn + '")',
+				persistent: false
+			})
+		} catch (e) {
+		}
+	} else {
+		_jsAsynCall(jsonIn)
+	}
+}
+
+var el = document.getElementById('retry')
+el.onclick = function () {
+	jsAsynCall('reload')
+}
+</script>
+</body>
+</html>

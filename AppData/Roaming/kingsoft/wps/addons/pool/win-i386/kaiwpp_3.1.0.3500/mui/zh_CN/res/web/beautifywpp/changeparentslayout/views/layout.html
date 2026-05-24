@@ -1,0 +1,73 @@
+<!--A6uDoT+zpASZpk3z/aaOmrc+mWUZFWZbnIdXa2KDZhLzC5e0NnS7FkMIcq6+DYkVKBFBwTrdY7LPjuSIKFVO/aribJTTve0dcQ9zQlsyAghP36Q3GuTj3KQ6wNcvNFkUyX+MjCX+6SYbgAW+4pN6vKTa/FROCgm8zIUejWDvIN4VQmJVwMMaIlRWOxliQclU1xQ3f8bw4b+LfNe/FwtV7F2NmvuvCn2z+4P+3FLX1vIxj3QIm1dXXR7fr/h8yAVEZRuVYQCtHvvABVnsd1cpHRezfBa0Fw31i74SdK0mK/l0VBUILvJECAEh+pHeRJ0M0XPvHgYNtFPNz8b55/p2Yw==--><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<title>WPS一键美化更改版式</title>
+	<link rel="stylesheet" type="text/css" href="../styles/layout.css" media="all" integrity="sha384-ig61EpqBersYW4D9FWiNfR9YVO/xkNXBaPrwjQnbYQgqm0/7NChZhA/yPet2HNLP" crossorigin="anonymous">
+</head>
+<body ms-controller="LayoutCtrl" class="ms-controller hasTextSplitTab" ms-attr-class="ratioClsName">
+<!-- Tab开始 -->
+<div class="tabpages">
+	<div class="tab-title-ctn">
+		<a class="tab-title" ms-repeat-el="tabTitles" ms-visible="el.visible" ms-class-1="icon-{{el.icon}}" ms-class-2="active: $index == tabSelectedIndex" ms-click="selectTab($index)">{{el.text}}</a>
+		<a class="refresh-btn refresh-btn-disabled icon-refresh icon-refresh-disabled" ms-visible="tabSelectedIndex == 0">刷新</a>
+		<div class="bottom-line"></div>
+	</div>
+
+	<div class="tab-content">
+		<div class="tab-panel" ms-visible="tabSelectedIndex == 0" ms-controller="OnlineCtrl">
+			<div class="content-part">
+				<div class="view status-view" ms-visible="isLoading" ms-css-top="viewTop">
+					<img class="icon" src="../styles/images/icon-loading-96.gif" />
+					<div class="message">正在加载…</div>
+				</div>
+				<div class="view status-view" ms-visible="isNetworkError" ms-css-top="viewTop">
+					<img class="icon" src="../styles/images/icon-network-error-96.png" />
+					<div class="message">无法连接服务器，请检查您的网络</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-panel" ms-visible="tabSelectedIndex == 1" ms-controller="LocalCtrl">
+
+			<div class="content-part">
+				<div class="view status-view" ms-visible="isNoContent" ms-css-top="viewTop">
+					<img class="icon" src="../styles/images/icon-no-content-96.png" />
+					<div class="message">未检索到匹配的项，点击“<a ms-click="selectTab(0)">推荐排版</a>”试试吧~</div>
+				</div>
+				<div class="view" ms-visible="isLoaded">
+					<!-- ImageGroupView组件开始 -->
+					<div class="image-group-view" id="local_group_view">
+						<div class="scroll-area">
+							<div class="x-group" ms-repeat-el="items">
+								<div class="group-title" ms-if="el.displayName.length > 0">{{el.displayName}}</div>
+								<div class="group-line" ms-if="el.displayName.length == 0"></div>
+								<div class="group-content">
+									<div class="item" ms-repeat-elem="el.items">
+										<a href="javascript:void(0)"
+												ms-class-1="selected: elem.bSelect"
+												ms-click="applyLayout($outer.$index, $index, 'thumb')">
+											<div class="border"></div>
+											<img ms-src="elem.bPresetLayout ? elem.thumbData : ('data:image/png;base64,' + elem.thumbData)" />
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- ImageGroupView组件结束 -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Tab结束 -->
+
+</body>
+<script type="text/javascript" src="../../../common/libraries/avalon/avalon.min.js" integrity="sha384-xybJipnzwaKUTUXSMD2E8hqwT1LwgEOFOxeL1kqcfIRJg6ITQLv1WiFf41EQu8hn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../common/libraries/jquery/jquery.min.js" integrity="sha384-F7n3undrbWQvHm0AKtDnmXEJtmwOMrz6OI1A1JpsI13QF+H/j0Mv0W9gHaOXJ65k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../common/libraries/lodash/lodash.min.js" integrity="sha384-qpRRFQYX1smPpNyhxqoiZwVOjV7uDY54ctX9W0WWkc+Asatf+yA4fOgqcWrIICsv" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../scripts/layout.js" integrity="sha384-FvzzUaf/Q2W5sTPU3h5k7fa7LyoGekSLOrjtYCcIk9b3yHcGCb3s+bLA90fGGpAw" crossorigin="anonymous"></script>
+</html>

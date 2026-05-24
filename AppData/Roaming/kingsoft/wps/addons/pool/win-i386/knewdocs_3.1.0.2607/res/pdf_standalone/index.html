@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>pdfcode</title><link href=./css/app.css rel=stylesheet></head><body><div id=App></div><script type=text/javascript src=./js/wps_perf_client.js></script><script>document.addEventListener('DOMContentLoaded', function() {
+                var appName = 'vip_pc_new_pdf';
+                window.WebVitalsWithClient &&
+                    (window.webVitals = new WebVitalsWithClient({
+                        bussiness: appName,
+                        probability: 1,
+                        pluginName: appName,
+                        extendedFields: [
+                            'dom', // 用户可操作时间
+                            'parse_dom', // 解析 DOM 树结构的时间, 期间要加载内嵌资源
+                            'redirect', // 重定向的时间
+                            'appcache', // DNS缓存耗时
+                            'lookup_domain', // DNS查询耗时
+                            'connect', // TCP连接耗时
+                            'request', // 内容加载完成的时间
+                            'request_document', // 开始请求文档到开始接收文档
+                            'response_document', // 开始接收文档到文档接收完成
+                            'ttfb', // 读取页面第一个字节的时间
+                            'init_dom_tree', // 请求完毕至DOM加载耗时
+                            'ready_start', // 准备新页面时间耗时
+                            'c_cb_ts', // 容器开始创建时间戳
+                            'c_cbf_ts', // 容器创建完成时间戳
+                            'c_l_ts', // 容器开始加载资源时间戳
+                            'c_lf_ts' // 容器加载资源完成时间戳
+                        ],
+                        complete: function(perfResult) {
+                            console.log('性能SDK===========')
+                            console.log(perfResult);
+                            // todo: 业务逻辑
+                        }
+                    }));
+            });</script><script type=text/javascript src=./js/manifest.js></script><script type=text/javascript src=./js/common.js></script><script type=text/javascript src=./js/app.js></script></body></html>

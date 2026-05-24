@@ -1,0 +1,24 @@
+<!--lYKIwH7mWJvP3qX/idVncQAO3mLBsFyRYUpzdvxtW7bHJcVvxb9Z/Su3SAHd/CrQ0RVu+eOSFpRO3ChIu7SZRytPWVWEeqXPz9M/gq5GmWL2f6TGuwZOfKn3ohi+r4FHPbivu8KE3ZS/lUjpZt1OMyvp0wzUbSD9cASSWQx0TdHlg4VV31sNTfFpS/3F6a7xQ3ZA62sJD2GYHr5shHYAi7Rpl675e2AqQLnAG92bK+c4jzKunjiOH48iyvSTgootlhTA5KTW6w5wd/l2odbTCGsgMirU27iTMfMMQT5mPvrOGqRcqvY5WiiiTCAQHn8uZ38txUQsp4vJKJ3reMaDiQ==--><!DOCTYPE html><html class=""><head><meta charset=utf-8><title>WPS 虚拟云盘历史版本</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><script>if (!Function.prototype.bind) {
+      Function.prototype.bind = function (oThis) {
+        if (typeof this !== "function") {
+          // closest thing possible to the ECMAScript 5 internal IsCallable function
+          throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+        }
+
+        var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {
+          },
+          fBound = function () {
+            return fToBind.apply(this instanceof fNOP && oThis
+                ? this
+                : oThis,
+              aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
+
+        return fBound;
+      };
+    }</script><link href=static/css/history.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=static/js/history.js></script></body></html>

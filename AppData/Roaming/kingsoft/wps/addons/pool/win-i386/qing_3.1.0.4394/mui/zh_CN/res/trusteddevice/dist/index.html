@@ -1,0 +1,115 @@
+<!--FxfJPd0LQa8T2h7cAFmOFloc/I5MOhmp08Y3AXsYmeds7WYBjdyJ6lKoRNB7cmu4kFmTQJmRHdg7tRKcNmGxgi7N58BDbMIkqe1nVm7sVgCdK8ZVlJtJ0YzG0O7CuzN3J7zqaYxCljmwOQa4iCfV/dv9Hr6JF7cGL/5T3LrmTbDiBzCaq6kfTX5LIzl4GDR2kbhUokKqhGv+Ce+18lmvPImfrqEs0e/KyJeBiBnzR5sCYoXO4n4PJ7dkAdvuDjAsA/EFibKbBTpTpKx+hMUsuC9puDllp7GLdvbJZDRSFKmA/DSS9bstBkqn4luFCFKtTOBZ6k+nK2k1SD8jN0b+5w==--><!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>设置受信任设备</title><style>html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Microsoft YaHei', 'PingFang SC';
+        user-select: none;
+      }
+
+      @keyframes admin {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .wps-trusted-device-skelecton {
+        width: 800px;
+        height: 600px;
+        background: rgba(250, 250, 250, 1);
+        padding: 34px 80px 0 80px;
+        box-sizing: border-box;
+      }
+
+      .wps-trusted-device-skelecton > .title {
+        background: #f0f0f0;
+        height: 35px;
+        width: 200px;
+        margin: 0 auto;
+        border-radius: 4px;
+        animation: admin 2s infinite;
+      }
+
+      .wps-trusted-device-skelecton > .content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+      }
+
+      .wps-trusted-device-skelecton > .content > .content-item {
+        width: 300px;
+        height: 360px;
+        background: #ffffff;
+        padding: 34px 32px 28px 32px;
+        box-sizing: border-box;
+        border-radius: 8px;
+      }
+
+      .wps-trusted-device-skelecton > .content > .content-item > .top {
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+      .wps-trusted-device-skelecton .block1 {
+        width: 110px;
+        height: 110px;
+        border-radius: 55px;
+        margin: 0 auto;
+        background: #fafafa;
+        animation: admin 2s infinite;
+      }
+
+      .wps-trusted-device-skelecton .block2 {
+        width: 110px;
+        height: 28px;
+        background: rgba(250, 250, 250, 1);
+        animation: admin 2s infinite;
+        margin: 21px auto 0 auto;
+      }
+
+      .wps-trusted-device-skelecton .block3 {
+        width: 216px;
+        height: 20px;
+        background: rgba(250, 250, 250, 1);
+        animation: admin 2s infinite;
+        margin: 12px auto 30px auto;
+      }
+
+      .wps-trusted-device-skelecton .block4 {
+        width: 228px;
+        height: 17px;
+        background: rgba(250, 250, 250, 1);
+        animation: admin 2s infinite;
+        margin: 29px 0 13px 0;
+      }
+
+      .wps-trusted-device-skelecton .block5 {
+        width: 228px;
+        height: 17px;
+        background: rgba(250, 250, 250, 1);
+        animation: admin 2s infinite;
+      }
+
+      .wps-trusted-device-skelecton .button {
+        width: 248px;
+        height: 40px;
+        background: #f0f0f0;
+        border-radius: 4px;
+        margin: 40px auto 0 auto;
+      }
+
+      #app {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }</style><link href=static/css/chunk-common.css rel=preload as=style integrity="sha256-gVKUh/lT7m7h38axuQN12GOPQBnRwtVG+BvnJGlZ5nE= sha384-+D7h1oTn5nZnBQhXn6JusAC5jFiWyPryGEPN7ypTgeeHCn9E9OJJOSOvlza6qii/" crossorigin=anonymous><link href=static/css/chunk-vendors.css rel=preload as=style integrity="sha256-AWUkNTTQENEnPc9WQHI8DhgonP9lcuMAscPlncWaWIw= sha384-DqtgvFf9AkOOaab+cTGXN8DrKQyC7teB7c7ivjX7c0M8pxIXaVp1+rLrqnbh7zJk" crossorigin=anonymous><link href=static/css/index.css rel=preload as=style integrity="sha256-ojGgT+E+l6FpPvSn++I8lICKjbk1cBfSX6l8rrihe2o= sha384-ezdc0jwut9Cehu5wb720/0oBc7U4uUHeap709OlBq80egf4l66Pbi8nzyN5XYUXa" crossorigin=anonymous><link href=static/js/chunk-common.js rel=preload as=script integrity="sha256-aAvP1AVr5BqUi59QvJk9JL9NLp2Nk6pg0kDhrlFEo9c= sha384-4TcpR+h8bS4wcGVa+kVchwzTyGVt260/0nGkGMHXk1GhLFbprLwZLLRuNFZv57t8" crossorigin=anonymous><link href=static/js/chunk-vendors.js rel=preload as=script integrity="sha256-tXvkPydXOL09TwQ6eivvCRw8WYXJ6xxqpalDBUAI1hw= sha384-93W+Sqt5UpZgm2CfX1tDrtumJClMS87v+6mVjbBS2bO/+6pApfFgz27JHh9muSxj" crossorigin=anonymous><link href=static/js/index.js rel=preload as=script integrity="sha256-i8E+tRNfbAH/pwHg/HM1xbZsYeDw2aoodQS2N4zMhP0= sha384-G02V2LIgg0Jt0Y+TexQZTrXUf9HkaVssNJq9QfO5avgJvFDoE9TGq43u1o7hHDfY" crossorigin=anonymous><link href=static/css/chunk-vendors.css rel=stylesheet integrity="sha256-AWUkNTTQENEnPc9WQHI8DhgonP9lcuMAscPlncWaWIw= sha384-DqtgvFf9AkOOaab+cTGXN8DrKQyC7teB7c7ivjX7c0M8pxIXaVp1+rLrqnbh7zJk" crossorigin=anonymous><link href=static/css/chunk-common.css rel=stylesheet integrity="sha256-gVKUh/lT7m7h38axuQN12GOPQBnRwtVG+BvnJGlZ5nE= sha384-+D7h1oTn5nZnBQhXn6JusAC5jFiWyPryGEPN7ypTgeeHCn9E9OJJOSOvlza6qii/" crossorigin=anonymous><link href=static/css/index.css rel=stylesheet integrity="sha256-ojGgT+E+l6FpPvSn++I8lICKjbk1cBfSX6l8rrihe2o= sha384-ezdc0jwut9Cehu5wb720/0oBc7U4uUHeap709OlBq80egf4l66Pbi8nzyN5XYUXa" crossorigin=anonymous></head><body><noscript><strong>无法打开云文档说明页，因为你禁用了JavaScript，请开启JavaScript后再使用</strong></noscript><div id=app><div class=wps-trusted-device-skelecton id=wps-trusted-device-skelecton><div class=title></div><div class=content><div class=content-item><div class=top><div class=block1></div><div class=block2></div><div class=block3></div></div><div class=bottom><div class=block4></div><div class=block5></div></div></div><div class=content-item><div class=top><div class=block1></div><div class=block2></div><div class=block3></div></div><div class=bottom><div class=block4></div><div class=block5></div></div></div></div><div class=button></div></div><script>var match = window.location.href.match(/#(.*)$/);
+        if (match) {
+          document.getElementById(
+            'wps-trusted-device-skelecton'
+          ).style.display = 'none';
+        }</script></div><script src=static/js/chunk-vendors.js integrity="sha256-tXvkPydXOL09TwQ6eivvCRw8WYXJ6xxqpalDBUAI1hw= sha384-93W+Sqt5UpZgm2CfX1tDrtumJClMS87v+6mVjbBS2bO/+6pApfFgz27JHh9muSxj" crossorigin=anonymous></script><script src=static/js/chunk-common.js integrity="sha256-aAvP1AVr5BqUi59QvJk9JL9NLp2Nk6pg0kDhrlFEo9c= sha384-4TcpR+h8bS4wcGVa+kVchwzTyGVt260/0nGkGMHXk1GhLFbprLwZLLRuNFZv57t8" crossorigin=anonymous></script><script src=static/js/index.js integrity="sha256-i8E+tRNfbAH/pwHg/HM1xbZsYeDw2aoodQS2N4zMhP0= sha384-G02V2LIgg0Jt0Y+TexQZTrXUf9HkaVssNJq9QfO5avgJvFDoE9TGq43u1o7hHDfY" crossorigin=anonymous></script></body></html>

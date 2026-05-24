@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <style>
+        dl,dt,dd{margin:0;padding:0;outline:none; }
+        a{text-decoration: none;}
+    </style>
+    <style>
+        html,body{
+            width: 100%;
+            height:100%;
+            padding: 0;
+            margin: 0;
+            font-family: "Microsoft YaHei", "微软雅黑", Helvetica, sans-serif;
+        }
+        .wrap {
+            width: 338px;
+            height: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .wrap-content {
+            width: 338px;
+            height: 120px;
+            margin: 166px 0 0;
+        }
+
+        .c_left{
+            float: left;
+            height: 120px;
+            padding-top: 8px;
+            margin-right: 40px;
+        }
+
+        .c_left_img {
+            display: inline-block;
+            width: 96px;
+            height: 96px;
+            background-image: url(error.png);
+        }
+
+        .c_right{
+            float: left;
+            height: 120px;
+            color: #888;
+        }
+
+        .c_r_h2{
+            color: #424242;
+            line-height: 20px;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .c_r_h3{
+            color: #808080;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+
+        .c_r_btn, .c_r_btn:visited{
+            display: inline-block;
+            width: 90px;
+            height: 28px;
+            line-height: 28px;
+            border-radius: 2px;
+            margin-top: 20px;
+            background-color: #3b7aca ;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .c_r_btn:hover {
+            background-color: #4389e6;
+        }
+
+        .c_r_btn:active {
+            background-color: #346bb3;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="wrap-content">
+        <div class="c_left">
+            <span class="c_left_img"></span>
+        </div>
+        <div id="rightDivId" class="c_right">
+            <dl>
+                <dt class="c_r_h2">网络连接失败。</dt>
+                <dd class="c_r_h3">请检查网络连接或代理服务器设置</dd>
+                <dd class="c_r_h3">是否正常，确认后再重新加载。</dd>
+            </dl>
+            <a id="refreshId" class="c_r_btn" onclick="reflesh();">重新加载</a>
+        </div>
+    </div>
+</div>
+<script type=text/javascript src=jquery.min.js></script>
+<script type="text/javascript">
+    window.reflesh = function(){
+        var params = {
+            method:'jsReload'
+        };
+        if(typeof(clientAPI) != "undefined"){
+            clientAPI.jsAsynCall(JSON.stringify(params));
+        }else{
+            window.cefQuery({
+                request: "jsAsynCall('" + JSON.stringify(params) + "')",
+                persistent: false,
+                onSuccess: function (response) {
+                },
+                onFailure: function (error_code, error_message) {
+                }
+            })
+        }
+    };
+	
+$(document).ready(function(){
+    var isWin = (navigator.platform == "Win32") || (navigator.platform == "Windows")
+    if(!isWin)
+    {
+        var rightDiv = document.getElementById("rightDivId");
+		rightDiv.removeChild(document.getElementById("refreshId"));
+    }
+});
+</script>
+</body>
+</html>

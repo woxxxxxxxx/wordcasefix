@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Number Generator — Free Online Random Number Tool</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+  .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
+  .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
+
+  header { text-align: center; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: #555; font-size: 15px; margin-top: 4px; }
+
+  .ad-slot {
+    position: relative;
+    background: #e8e9ed;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+  }
+  .ad-top   { width: 100%; height: 90px; margin-bottom: 24px; }
+  .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
+  .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 6px rgba(0,0,0,.04);
+    padding: 28px 32px 32px;
+  }
+
+  /* ── Controls ── */
+  .control-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  .field input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px; font-weight: 600;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
+  .field input::placeholder { font-weight: 400; color: #bbb; }
+
+  /* ── Checkbox toggle ── */
+  .toggle-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .toggle-row label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 500; color: #333; cursor: pointer;
+  }
+  .toggle-row input[type="checkbox"] {
+    width: 18px; height: 18px; accent-color: #5b5bd6; cursor: pointer;
+  }
+  .toggle-row .hint { font-size: 12px; color: #aaa; }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 32px;
+    font-size: 15px; font-weight: 600;
+    color: #fff; background: #5b5bd6;
+    border: none; border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: #4a4ac2; }
+  .btn-primary:active { transform: scale(.97); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 11px 22px;
+    font-size: 14px; font-weight: 600;
+    color: #555; background: #f0f0f5;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
+  .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
+
+  /* ── Results ── */
+  .result-area { margin-top: 24px; padding-top: 24px; border-top: 1.5px solid #e8e9ed; }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+  }
+  .number-chip {
+    background: #f0f0ff;
+    border: 1.5px solid #e0dffc;
+    border-radius: 8px;
+    padding: 10px 4px;
+    text-align: center;
+    font-size: 16px; font-weight: 700; color: #5b5bd6;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    transition: background .15s;
+  }
+  .number-chip:hover { background: #e6e6ff; }
+
+  .result-empty {
+    text-align: center; padding: 30px 0 10px; color: #ccc; font-size: 14px;
+  }
+  .result-empty svg { display: block; margin: 0 auto 10px; opacity: .35; }
+
+  .stats-line {
+    font-size: 13px; color: #888; margin-bottom: 12px;
+  }
+
+  footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
+
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main-area { padding: 20px 16px 36px; }
+    .card { padding: 20px; }
+  }
+  @media (max-width: 700px) {
+    .control-grid { grid-template-columns: 1fr 1fr; }
+    .numbers-grid { grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); }
+    .number-chip { font-size: 14px; padding: 8px 2px; }
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 22px; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .btn-row { flex-direction: column; align-items: stretch; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <main class="main-area">
+
+    <header>
+      <h1>Random Number Generator</h1>
+      <p>Generate random numbers within a custom range.</p>
+    </header>
+
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+    <div class="card">
+
+      <div class="control-grid">
+        <div class="field">
+          <label for="minVal">Min</label>
+          <input type="number" id="minVal" value="1">
+        </div>
+        <div class="field">
+          <label for="maxVal">Max</label>
+          <input type="number" id="maxVal" value="100">
+        </div>
+        <div class="field">
+          <label for="countVal">Count</label>
+          <input type="number" id="countVal" value="5" min="1" max="100">
+        </div>
+        <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end;">
+          <label style="opacity:0;">_</label>
+          <div class="toggle-row" style="margin-bottom:0;">
+            <label>
+              <input type="checkbox" id="allowDupes">
+              Allow duplicates
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="generateBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.3L23 10M1 14l4.6 4.3A9 9 0 0 0 20.5 15"/></svg>
+          Generate
+        </button>
+        <button class="btn-secondary" id="copyBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy All
+        </button>
+      </div>
+
+      <div class="result-area" id="resultArea">
+        <div class="result-empty" id="emptyState">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+          <p>Set your range and click <strong>Generate</strong>.</p>
+        </div>
+
+        <div id="resultContent" style="display:none;">
+          <div class="stats-line" id="statsLine"></div>
+          <div class="numbers-grid" id="numbersGrid"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+
+<footer>Random Number Generator &mdash; Free online number generator</footer>
+
+<script>
+(function() {
+  const minVal     = document.getElementById('minVal');
+  const maxVal     = document.getElementById('maxVal');
+  const countVal   = document.getElementById('countVal');
+  const allowDupes = document.getElementById('allowDupes');
+  const generateBtn= document.getElementById('generateBtn');
+  const copyBtn    = document.getElementById('copyBtn');
+  const emptyState = document.getElementById('emptyState');
+  const resultContent=document.getElementById('resultContent');
+  const numbersGrid = document.getElementById('numbersGrid');
+  const statsLine   = document.getElementById('statsLine');
+
+  let currentNumbers = [];
+
+  function randomInt(min, max) {
+    // inclusive of both min and max
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function generate() {
+    const min = parseInt(minVal.value, 10);
+    const max = parseInt(maxVal.value, 10);
+    let count = parseInt(countVal.value, 10);
+
+    if (isNaN(min) || isNaN(max) || isNaN(count)) {
+      emptyState.style.display = 'block';
+      resultContent.style.display = 'none';
+      currentNumbers = [];
+      return;
+    }
+
+    if (min > max) {
+      emptyState.style.display = 'block';
+      resultContent.style.display = 'none';
+      currentNumbers = [];
+      return;
+    }
+
+    if (count < 1) count = 1;
+    if (count > 100) count = 100;
+
+    const range = max - min + 1;
+    if (!allowDupes.checked && count > range) {
+      count = range;  // can't generate more unique numbers than the range
+    }
+
+    const numbers = [];
+    if (allowDupes.checked) {
+      for (let i = 0; i < count; i++) {
+        numbers.push(randomInt(min, max));
+      }
+    } else {
+      const pool = [];
+      for (let i = min; i <= max; i++) pool.push(i);
+      // Fisher–Yates shuffle, take first `count`
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      for (let i = 0; i < count; i++) numbers.push(pool[i]);
+    }
+
+    currentNumbers = numbers;
+
+    emptyState.style.display = 'none';
+    resultContent.style.display = 'block';
+
+    // Stats
+    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '–' + max + ')';
+
+    // Render chips
+    let html = '';
+    for (const n of numbers) {
+      html += '<div class="number-chip">' + n + '</div>';
+    }
+    numbersGrid.innerHTML = html;
+  }
+
+  function copyAll() {
+    if (currentNumbers.length === 0) return;
+    const text = currentNumbers.join(', ');
+    navigator.clipboard.writeText(text).then(() => {
+      flashCopied();
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      flashCopied();
+    });
+  }
+
+  function flashCopied() {
+    const orig = copyBtn.innerHTML;
+    copyBtn.innerHTML =
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+      'Copied!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => {
+      copyBtn.innerHTML = orig;
+      copyBtn.classList.remove('copied');
+    }, 1800);
+  }
+
+  generateBtn.addEventListener('click', generate);
+
+  copyBtn.addEventListener('click', copyAll);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+      generate();
+    }
+  });
+
+  // Initial generation
+  generate();
+})();
+</script>
+</body>
+</html>

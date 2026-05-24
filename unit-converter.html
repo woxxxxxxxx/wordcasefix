@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter — Free Online Unit Conversion Tool</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+  .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
+  .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
+
+  header { text-align: center; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: #555; font-size: 15px; margin-top: 4px; }
+
+  .ad-slot {
+    position: relative;
+    background: #e8e9ed;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+  }
+  .ad-top   { width: 100%; height: 90px; margin-bottom: 24px; }
+  .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
+  .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 6px rgba(0,0,0,.04);
+    padding: 28px 32px 32px;
+  }
+
+  /* ── Tabs ── */
+  .tab-bar {
+    display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap;
+    background: #f0f0f5; border-radius: 10px; padding: 4px;
+  }
+  .tab-btn {
+    flex: 1; min-width: 60px;
+    padding: 8px 12px;
+    font-size: 13px; font-weight: 600;
+    color: #666; background: transparent;
+    border: none; border-radius: 7px;
+    cursor: pointer; text-align: center;
+    transition: background .2s, color .2s, box-shadow .15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: #333; }
+  .tab-btn.active {
+    background: #fff; color: #5b5bd6;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  }
+
+  /* ── Unit rows ── */
+  .unit-section { display: none; }
+  .unit-section.active { display: block; }
+
+  .unit-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 6px 0;
+  }
+  .unit-row .unit-label {
+    width: 90px; flex-shrink: 0;
+    font-size: 14px; font-weight: 600; color: #555; text-align: right;
+  }
+  .unit-row input {
+    flex: 1; min-width: 0;
+    padding: 10px 14px;
+    font-size: 15px; font-weight: 600;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .unit-row input:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
+  .unit-row input::placeholder { font-weight: 400; color: #bbb; }
+
+  .unit-row .row-detail {
+    font-size: 12px; color: #aaa; width: 30px; flex-shrink: 0;
+    text-align: right;
+  }
+
+  footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
+
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main-area { padding: 20px 16px 36px; }
+    .card { padding: 20px; }
+    .unit-row .unit-label { width: 70px; font-size: 13px; }
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 22px; }
+    .tab-btn { font-size: 12px; padding: 7px 8px; min-width: 0; }
+    .unit-row { gap: 8px; }
+    .unit-row .unit-label { width: 60px; font-size: 12px; }
+    .unit-row input { font-size: 14px; padding: 9px 10px; }
+    .unit-row .row-detail { display: none; }
+  }
+  @media (max-width: 400px) {
+    .tab-btn { font-size: 11px; padding: 6px 4px; }
+    .unit-row .unit-label { width: 50px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <main class="main-area">
+
+    <header>
+      <h1>Unit Converter</h1>
+      <p>Convert between different units of measurement.</p>
+    </header>
+
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+    <div class="card" id="app">
+      <div class="tab-bar" id="tabBar"></div>
+      <div id="sections"></div>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+
+<footer>Unit Converter &mdash; Free online unit conversion tool</footer>
+
+<script>
+(function() {
+  // ── Unit definitions ──
+  const categories = [
+    {
+      id: 'length',
+      label: 'Length',
+      base: 'm',
+      units: [
+        { id: 'km', label: 'Kilometer',    toBase: v => v * 1000,        fromBase: v => v / 1000 },
+        { id: 'm',  label: 'Meter',        toBase: v => v,               fromBase: v => v },
+        { id: 'cm', label: 'Centimeter',   toBase: v => v / 100,        fromBase: v => v * 100 },
+        { id: 'mm', label: 'Millimeter',   toBase: v => v / 1000,       fromBase: v => v * 1000 },
+        { id: 'mile',label: 'Mile',        toBase: v => v * 1609.344,    fromBase: v => v / 1609.344 },
+        { id: 'yard',label: 'Yard',        toBase: v => v * 0.9144,      fromBase: v => v / 0.9144 },
+        { id: 'foot',label: 'Foot',        toBase: v => v * 0.3048,      fromBase: v => v / 0.3048 },
+        { id: 'inch',label: 'Inch',        toBase: v => v * 0.0254,      fromBase: v => v / 0.0254 },
+      ]
+    },
+    {
+      id: 'weight',
+      label: 'Weight',
+      base: 'g',
+      units: [
+        { id: 'kg',   label: 'Kilogram',   toBase: v => v * 1000,             fromBase: v => v / 1000 },
+        { id: 'g',    label: 'Gram',       toBase: v => v,                    fromBase: v => v },
+        { id: 'mg',   label: 'Milligram',  toBase: v => v / 1000,            fromBase: v => v * 1000 },
+        { id: 'lb',   label: 'Pound',      toBase: v => v * 453.59237,        fromBase: v => v / 453.59237 },
+        { id: 'oz',   label: 'Ounce',      toBase: v => v * 28.349523125,     fromBase: v => v / 28.349523125 },
+        { id: 'ton',  label: 'Metric ton', toBase: v => v * 1000000,          fromBase: v => v / 1000000 },
+      ]
+    },
+    {
+      id: 'temperature',
+      label: 'Temperature',
+      base: 'C',
+      units: [
+        { id: 'C', label: 'Celsius',      toBase: v => v,             fromBase: v => v },
+        { id: 'F', label: 'Fahrenheit',   toBase: v => (v - 32) * 5/9, fromBase: v => v * 9/5 + 32 },
+        { id: 'K', label: 'Kelvin',       toBase: v => v - 273.15,    fromBase: v => v + 273.15 },
+      ]
+    },
+    {
+      id: 'area',
+      label: 'Area',
+      base: 'm²',
+      units: [
+        { id: 'km2',   label: 'km²',      toBase: v => v * 1e6,               fromBase: v => v / 1e6 },
+        { id: 'm2',    label: 'm²',       toBase: v => v,                     fromBase: v => v },
+        { id: 'cm2',   label: 'cm²',      toBase: v => v / 10000,            fromBase: v => v * 10000 },
+        { id: 'mi2',   label: 'mi²',      toBase: v => v * 2589988.110336,    fromBase: v => v / 2589988.110336 },
+        { id: 'yd2',   label: 'yd²',      toBase: v => v * 0.83612736,        fromBase: v => v / 0.83612736 },
+        { id: 'ft2',   label: 'ft²',      toBase: v => v * 0.09290304,        fromBase: v => v / 0.09290304 },
+        { id: 'acre',  label: 'Acre',     toBase: v => v * 4046.8564224,       fromBase: v => v / 4046.8564224 },
+        { id: 'ha',    label: 'Hectare',  toBase: v => v * 10000,             fromBase: v => v / 10000 },
+      ]
+    },
+    {
+      id: 'volume',
+      label: 'Volume',
+      base: 'L',
+      units: [
+        { id: 'L',     label: 'Liter',        toBase: v => v,                   fromBase: v => v },
+        { id: 'mL',    label: 'Milliliter',   toBase: v => v / 1000,            fromBase: v => v * 1000 },
+        { id: 'gal',   label: 'Gallon (US)',  toBase: v => v * 3.785411784,     fromBase: v => v / 3.785411784 },
+        { id: 'qt',    label: 'Quart (US)',   toBase: v => v * 0.946352946,     fromBase: v => v / 0.946352946 },
+        { id: 'pint',  label: 'Pint (US)',    toBase: v => v * 0.473176473,     fromBase: v => v / 0.473176473 },
+        { id: 'cup',   label: 'Cup (US)',     toBase: v => v * 0.2365882365,    fromBase: v => v / 0.2365882365 },
+        { id: 'floz',  label: 'Fluid oz (US)',toBase: v => v * 0.0295735295625, fromBase: v => v / 0.0295735295625 },
+      ]
+    }
+  ];
+
+  // ── State ──
+  let activeCategory = categories[0].id;
+
+  // ── Render ──
+  const tabBar    = document.getElementById('tabBar');
+  const sections  = document.getElementById('sections');
+
+  // Build tab buttons and sections
+  categories.forEach(cat => {
+    // Tab
+    const tab = document.createElement('button');
+    tab.className = 'tab-btn' + (cat.id === activeCategory ? ' active' : '');
+    tab.textContent = cat.label;
+    tab.dataset.cat = cat.id;
+    tab.addEventListener('click', () => switchTab(cat.id));
+    tabBar.appendChild(tab);
+
+    // Section
+    const section = document.createElement('div');
+    section.className = 'unit-section' + (cat.id === activeCategory ? ' active' : '');
+    section.id = 'section-' + cat.id;
+
+    cat.units.forEach((unit, idx) => {
+      const row = document.createElement('div');
+      row.className = 'unit-row';
+
+      const label = document.createElement('span');
+      label.className = 'unit-label';
+      label.textContent = unit.label;
+
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.id = 'input-' + cat.id + '-' + unit.id;
+      input.placeholder = '0';
+      input.step = 'any';
+      if (idx === 0) input.value = '1';
+
+      input.addEventListener('input', function() {
+        updateFrom(cat.id, unit.id, parseFloat(this.value));
+      });
+
+      row.appendChild(label);
+      row.appendChild(input);
+      section.appendChild(row);
+    });
+
+    sections.appendChild(section);
+  });
+
+  // ── Tab switching ──
+  function switchTab(catId) {
+    activeCategory = catId;
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.cat === catId);
+    });
+    document.querySelectorAll('.unit-section').forEach(sec => {
+      sec.classList.toggle('active', sec.id === 'section-' + catId);
+    });
+  }
+
+  // ── Conversion ──
+  function updateFrom(catId, unitId, value) {
+    const cat = categories.find(c => c.id === catId);
+    if (!cat) return;
+
+    if (isNaN(value) || value === '' || value === null) {
+      cat.units.forEach(u => {
+        const inp = document.getElementById('input-' + catId + '-' + u.id);
+        if (u.id !== unitId) inp.value = '';
+      });
+      return;
+    }
+
+    const srcUnit = cat.units.find(u => u.id === unitId);
+    if (!srcUnit) return;
+
+    // Convert to base
+    let baseVal;
+    try { baseVal = srcUnit.toBase(value); } catch(e) { baseVal = 0; }
+
+    // Convert from base to all units
+    cat.units.forEach(u => {
+      if (u.id === unitId) return;
+      const inp = document.getElementById('input-' + catId + '-' + u.id);
+      let result;
+      try { result = u.fromBase(baseVal); } catch(e) { result = 0; }
+      // Round to avoid floating point noise
+      if (Math.abs(result) < 1e-15) result = 0;
+      inp.value = result.toPrecision(10).replace(/\.?0+$/, '');
+      if (inp.value === '' || inp.value === '-0') inp.value = '0';
+    });
+  }
+
+  // Trigger initial conversion for the first unit of each active category
+  // For the default active tab, convert from the first input
+  const defaultCat = categories[0];
+  const firstInput = document.getElementById('input-' + defaultCat.id + '-' + defaultCat.units[0].id);
+  if (firstInput && firstInput.value) {
+    updateFrom(defaultCat.id, defaultCat.units[0].id, parseFloat(firstInput.value));
+  }
+})();
+</script>
+</body>
+</html>

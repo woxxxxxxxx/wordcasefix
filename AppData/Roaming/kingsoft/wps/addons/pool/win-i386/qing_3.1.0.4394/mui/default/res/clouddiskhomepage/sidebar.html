@@ -1,0 +1,24 @@
+<!--VLr5GKAp6UyfPWieAHp/aKkh0MO4/ovb5KgGajEvbpZnEUVBLn4fhlbMKlPt57lDj4ZxHWe73QFdxIje9kpS96zBUcIRF0u0uBmP/WNmETMUcilXvLnxMLut3dy2ybijCw3GCbdqLXeSmyh4FntI9/auGuxP+G8KdyfjQTa5eOt0DenecLM2jvYJZvLIm6R2fEiI1Ge1uns+DeBbAvsfDQKYcORWWFTngbc5LHxhFV0f+veKOGXqSEPzE4ZAr0p5H2eZ7/69rqXFsYwJhuuy5O1rXlDRnXY+RySQTog3Xiv24X/YiwlmnWv3KCsFx7fdb1BnlZwixNgacFTOerkiVQ==--><!DOCTYPE html><html class=""><head><meta charset=utf-8><title>WPS 虚拟云盘侧边栏</title><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><script>if (!Function.prototype.bind) {
+      Function.prototype.bind = function (oThis) {
+        if (typeof this !== "function") {
+          // closest thing possible to the ECMAScript 5 internal IsCallable function
+          throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+        }
+
+        var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {
+          },
+          fBound = function () {
+            return fToBind.apply(this instanceof fNOP && oThis
+                ? this
+                : oThis,
+              aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
+
+        return fBound;
+      };
+    }</script><link href=static/css/sidebar.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=static/js/sidebar.js></script></body></html>

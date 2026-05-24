@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter — Free Online Word Count Tool</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Layout ── */
+  .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+  .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
+  .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
+
+  /* ── Header ── */
+  header { text-align: center; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: #555; font-size: 15px; margin-top: 4px; }
+
+  /* ── Ad slots ── */
+  .ad-slot {
+    position: relative;
+    background: #e8e9ed;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+  }
+  .ad-top   { width: 100%; height: 90px; margin-bottom: 24px; }
+  .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
+  .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
+
+  /* ── Card ── */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 6px rgba(0,0,0,.04);
+    padding: 28px 32px 32px;
+  }
+
+  /* ── Input ── */
+  .input-group { margin-bottom: 20px; }
+  .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
+  textarea {
+    width: 100%;
+    height: 220px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    line-height: 1.6;
+    border: 1.5px solid #d0d5dd;
+    border-radius: 8px;
+    resize: vertical;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
+  textarea::placeholder { color: #aaa; }
+
+  /* ── Stats bar (char counter only) ── */
+  .stats-bar { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .char-count { font-size: 13px; color: #888; }
+
+  /* ── Stat grid ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .stat-card {
+    background: #fafbfc;
+    border: 1.5px solid #e8e9ed;
+    border-radius: 10px;
+    padding: 18px 16px 16px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .stat-card:hover { border-color: #d0d5dd; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+  .stat-card .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #5b5bd6;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .stat-card .stat-label {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-weight: 600;
+  }
+  .stat-card .stat-sub {
+    font-size: 12px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  /* ── Footer ── */
+  footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
+
+  /* ── Responsive ── */
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main-area { padding: 20px 16px 36px; }
+    .card { padding: 20px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  }
+  @media (max-width: 480px) {
+    header h1 { font-size: 22px; }
+    textarea { height: 160px; font-size: 14px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-card { padding: 14px 12px; }
+    .stat-card .stat-value { font-size: 22px; }
+    .card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Ad: Top ─── -->
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <main class="main-area">
+
+    <header>
+      <h1>Word Counter</h1>
+      <p>Type or paste your text to see real-time word and character counts.</p>
+    </header>
+
+    <!-- ─── Ad: Top (in-content) ─── -->
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+    <div class="card">
+      <div class="input-group">
+        <label for="inputText">Your text</label>
+        <textarea id="inputText" placeholder="Paste or type your text here…" spellcheck="false"></textarea>
+      </div>
+
+      <div class="stats-bar">
+        <span class="char-count" id="charCount">0 characters</span>
+      </div>
+
+      <div class="stat-grid" id="statGrid">
+        <div class="stat-card">
+          <div class="stat-value" id="statWords">0</div>
+          <div class="stat-label">Words</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statCharsWith">0</div>
+          <div class="stat-label">Characters</div>
+          <div class="stat-sub">with spaces</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statCharsWithout">0</div>
+          <div class="stat-label">Characters</div>
+          <div class="stat-sub">without spaces</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statSentences">0</div>
+          <div class="stat-label">Sentences</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statParagraphs">0</div>
+          <div class="stat-label">Paragraphs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="statReading">0 min</div>
+          <div class="stat-label">Reading Time</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ─── Sidebar ─── -->
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+
+<footer>Word Counter &mdash; Free online word count tool</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('inputText');
+  const charCount  = document.getElementById('charCount');
+  const statWords  = document.getElementById('statWords');
+  const statCharsWith   = document.getElementById('statCharsWith');
+  const statCharsWithout = document.getElementById('statCharsWithout');
+  const statSentences   = document.getElementById('statSentences');
+  const statParagraphs  = document.getElementById('statParagraphs');
+  const statReading     = document.getElementById('statReading');
+
+  function updateStats() {
+    const text = input.value;
+    const len = text.length;
+
+    // Character count in bar
+    charCount.textContent = len + ' character' + (len !== 1 ? 's' : '');
+
+    // Words
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    statWords.textContent = words.toLocaleString();
+
+    // Characters with spaces
+    statCharsWith.textContent = len.toLocaleString();
+
+    // Characters without spaces
+    const noSpaces = text.replace(/\s/g, '').length;
+    statCharsWithout.textContent = noSpaces.toLocaleString();
+
+    // Sentences — split by sentence-ending punctuation followed by space or end
+    const sentences = text.trim()
+      ? text.split(/[.!?]+(?:\s+|$)/).filter(s => s.trim().length > 0).length
+      : 0;
+    statSentences.textContent = sentences.toLocaleString();
+
+    // Paragraphs — split by two or more newlines
+    const paragraphs = text.trim()
+      ? text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length
+      : 0;
+    // Also count single-line as a paragraph if no double breaks
+    const paraFinal = paragraphs === 0 && text.trim() ? 1 : paragraphs;
+    statParagraphs.textContent = paraFinal.toLocaleString();
+
+    // Reading Time — 200 words per minute
+    if (words === 0) {
+      statReading.textContent = '0 min';
+    } else {
+      const minutes = words / 200;
+      if (minutes < 1) {
+        const secs = Math.max(1, Math.round(minutes * 60));
+        statReading.textContent = secs + ' sec' + (secs !== 1 ? 's' : '');
+      } else {
+        const m = Math.floor(minutes);
+        const s = Math.round((minutes - m) * 60);
+        if (s > 0) {
+          statReading.textContent = m + ' min ' + s + ' sec';
+        } else {
+          statReading.textContent = m + ' min' + (m !== 1 ? 's' : '');
+        }
+      }
+    }
+  }
+
+  input.addEventListener('input', updateStats);
+
+  // Run once on load so the initial state is correct
+  updateStats();
+})();
+</script>
+</body>
+</html>

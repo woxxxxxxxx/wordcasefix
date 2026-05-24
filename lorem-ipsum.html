@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorem Ipsum Generator — Free Dummy Text Generator</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+  .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
+  .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
+
+  header { text-align: center; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: #555; font-size: 15px; margin-top: 4px; }
+
+  .ad-slot {
+    position: relative;
+    background: #e8e9ed;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+  }
+  .ad-top   { width: 100%; height: 90px; margin-bottom: 24px; }
+  .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
+  .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 6px rgba(0,0,0,.04);
+    padding: 28px 32px 32px;
+  }
+
+  /* ── Controls ── */
+  .control-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+    align-items: end;
+  }
+  .field label {
+    display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  .field input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px; font-weight: 600;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
+
+  .type-options {
+    display: flex; gap: 4px;
+  }
+  .type-btn {
+    flex: 1; text-align: center;
+    padding: 10px 14px;
+    font-size: 14px; font-weight: 600;
+    color: #555; background: #f0f0f5;
+    border: 1.5px solid #d0d5dd; border-radius: 6px;
+    cursor: pointer; user-select: none;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .type-btn:hover { background: #e4e4ef; color: #1a1a2e; }
+  .type-btn.active { background: #5b5bd6; color: #fff; border-color: #5b5bd6; }
+
+  .toggle-row {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px;
+  }
+  .toggle-row label {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 14px; font-weight: 500; color: #333; cursor: pointer;
+  }
+  .toggle-row input[type="checkbox"] {
+    width: 17px; height: 17px; accent-color: #5b5bd6; cursor: pointer;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 28px;
+    font-size: 15px; font-weight: 600;
+    color: #fff; background: #5b5bd6;
+    border: none; border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: #4a4ac2; }
+  .btn-primary:active { transform: scale(.97); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px;
+    font-size: 14px; font-weight: 600;
+    color: #555; background: #f0f0f5;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
+  .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
+
+  /* ── Output ── */
+  .output-area { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
+  .output-label {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; font-weight: 700; color: #555; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  .output-label .word-count { font-weight: 400; color: #999; text-transform: none; letter-spacing: 0; }
+  .output-box {
+    width: 100%; min-height: 140px; max-height: 400px;
+    padding: 14px 16px;
+    font-size: 14px; font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.7;
+    border: 1.5px solid #e2e4e8;
+    border-radius: 8px;
+    background: #fafbfc;
+    color: #333;
+    overflow-y: auto; resize: vertical;
+  }
+  .output-box p { margin-bottom: 14px; }
+  .output-box p:last-child { margin-bottom: 0; }
+
+  .empty-state {
+    text-align: center; padding: 30px 0; color: #ccc; font-size: 14px;
+  }
+
+  footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
+
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main-area { padding: 20px 16px 36px; }
+    .card { padding: 20px; }
+  }
+  @media (max-width: 700px) {
+    .control-grid { grid-template-columns: 1fr; gap: 12px; }
+    .type-btn { padding: 8px 10px; font-size: 13px; }
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 22px; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .btn-row { flex-direction: column; align-items: stretch; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <main class="main-area">
+
+    <header>
+      <h1>Lorem Ipsum Generator</h1>
+      <p>Generate placeholder text for your designs and layouts.</p>
+    </header>
+
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+    <div class="card">
+
+      <div class="control-grid">
+        <div class="field">
+          <label>Type</label>
+          <div class="type-options">
+            <span class="type-btn active" data-type="paragraphs">Paragraphs</span>
+            <span class="type-btn" data-type="sentences">Sentences</span>
+            <span class="type-btn" data-type="words">Words</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="countVal">Count</label>
+          <input type="number" id="countVal" value="3" min="1" max="100">
+        </div>
+        <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end;">
+          <label style="opacity:0;">_</label>
+          <div class="toggle-row" style="margin-bottom:0;">
+            <label><input type="checkbox" id="chkLorem" checked> Start with <em>"Lorem ipsum"</em></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="generateBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.3L23 10M1 14l4.6 4.3A9 9 0 0 0 20.5 15"/></svg>
+          Generate
+        </button>
+        <button class="btn-secondary" id="copyBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Text
+        </button>
+      </div>
+
+      <div class="output-area">
+        <div class="output-label">
+          <span>Generated Text</span>
+          <span class="word-count" id="wordCount"></span>
+        </div>
+        <div class="output-box" id="outputBox">
+          <div class="empty-state">Click <strong>Generate</strong> to create placeholder text.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+
+<footer>Lorem Ipsum Generator &mdash; Free dummy text generator</footer>
+
+<script>
+(function() {
+  const generateBtn = document.getElementById('generateBtn');
+  const copyBtn     = document.getElementById('copyBtn');
+  const countVal    = document.getElementById('countVal');
+  const chkLorem    = document.getElementById('chkLorem');
+  const outputBox   = document.getElementById('outputBox');
+  const wordCount   = document.getElementById('wordCount');
+
+  let currentType = 'paragraphs';
+
+  // ── Type buttons ──
+  document.querySelectorAll('.type-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentType = this.dataset.type;
+    });
+  });
+
+  // ── Word pool (standard Lorem Ipsum) ──
+  const WORDS = [
+    'lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit',
+    'sed','do','eiusmod','tempor','incididunt','ut','labore','et','dolore',
+    'magna','aliqua','enim','ad','minim','veniam','quis','nostrud','exercitation',
+    'ullamco','laboris','nisi','ut','aliquip','ex','ea','commodo','consequat',
+    'duis','aute','irure','dolor','in','reprehenderit','in','voluptate','velit',
+    'esse','cillum','dolore','eu','fugiat','nulla','pariatur','excepteur',
+    'sint','occaecat','cupidatat','non','proident','sunt','in','culpa','qui',
+    'officia','deserunt','mollit','anim','id','est','laborum',
+    'fusce','dapibus','tellus','ac','cursus','commodo',
+    'maecenas','condimentum','massa','ut','sem','feugiat','sed','blandit',
+    'praesent','porttitor','massa','id','nulla','mattis','et','cursus','nunc',
+    'vivamus','vel','diam','at','libero','tincidunt','congue','in','ac','lectus',
+    'phasellus','vitae','purus','vitae','purus','mattis','fermentum',
+    'cras','porta','nunc','ut','massa','consequat','quisque','sit','amet',
+    'neque','et','ipsum','venenatis','vestibulum','donec','eget','elit',
+    'ac','mauris','eleifend','tincidunt','nam','vitae','leo','vel','quam',
+    'faucibus','tristique','pellentesque','habitant','morbi','tristique',
+    'senectus','et','netus','et','malesuada','fames','ac','turpis','egestas',
+    'integer','nec','odio','quis','lacus','suscipit','ultrices','aliquam',
+    'ultricies','mi','vitae','est','vehicula','rutrum','aenean','auctor',
+    'quam','vitae','sodales','aliquet','ligula','quam','lacinia','sapien',
+    'vitae','facilisis','nunc','risus','et','lectus','morbi','quis','commodo',
+    'odio','aenean','mollis','lectus','vitae','tortor','interdum','pharetra',
+    'donec','vitae','erat','non','nisl','pellentesque','eleifend',
+    'vestibulum','ante','ipsum','primis','in','faucibus','orci','luctus',
+    'et','ultrices','posuere','cubilia','curae','nulla','facilisi',
+    'cras','consequat','leo','eget','bibendum','sodales','augue','velit',
+    'cursus','nunc','quis','gravida','magna','mi','in','libero','donec',
+    'lacus','lectus','feugiat','at','ultricies','sed','blandit','nec','elit',
+    'proin','vitae','erat','ut','diam','malesuada','auctor','nullam','ac',
+    'nisl','at','libero','tincidunt','blandit','quisque','ut','erat','sit',
+    'amet','urna','tristique','pharetra'
+  ];
+
+  function pickWord() {
+    return WORDS[Math.floor(Math.random() * WORDS.length)];
+  }
+
+  function capitalize(w) {
+    return w.charAt(0).toUpperCase() + w.slice(1);
+  }
+
+  function generateSentence(startLorem) {
+    const len = 8 + Math.floor(Math.random() * 10); // 8–17 words
+    const words = [];
+    if (startLorem) {
+      words.push('Lorem', 'ipsum');
+      const remaining = len - 2;
+      for (let i = 0; i < remaining; i++) {
+        words.push(pickWord());
+      }
+    } else {
+      for (let i = 0; i < len; i++) {
+        words.push(pickWord());
+      }
+    }
+    words[0] = capitalize(words[0]);
+    return words.join(' ') + '.';
+  }
+
+  function generateParagraph(startLorem, firstPara) {
+    const sentences = 4 + Math.floor(Math.random() * 4); // 4–7 sentences
+    const parts = [];
+    for (let i = 0; i < sentences; i++) {
+      // Only start first sentence with "Lorem ipsum" if firstPara and requested
+      parts.push(generateSentence(firstPara && i === 0 && startLorem));
+    }
+    return parts.join(' ');
+  }
+
+  function generate() {
+    const count = parseInt(countVal.value, 10);
+    const startLorem = chkLorem.checked;
+    const type = currentType;
+
+    if (isNaN(count) || count < 1) {
+      countVal.value = 1;
+      return generate();
+    }
+    const finalCount = Math.min(count, 100);
+
+    let html = '';
+    let plainText = '';
+    let totalWords = 0;
+
+    if (type === 'paragraphs') {
+      const paras = [];
+      for (let i = 0; i < finalCount; i++) {
+        const p = generateParagraph(startLorem, i === 0);
+        paras.push(p);
+        totalWords += p.split(/\s+/).length;
+      }
+      html = paras.map(p => '<p>' + p + '</p>').join('');
+      plainText = paras.join('\n\n');
+    } else if (type === 'sentences') {
+      const sentences = [];
+      for (let i = 0; i < finalCount; i++) {
+        const s = generateSentence(startLorem && i === 0);
+        sentences.push(s);
+        totalWords += s.split(/\s+/).length;
+      }
+      html = '<p>' + sentences.join(' ') + '</p>';
+      plainText = sentences.join(' ');
+    } else { // words
+      const words = [];
+      for (let i = 0; i < finalCount; i++) {
+        let w;
+        if (startLorem && i === 0) {
+          w = 'Lorem';
+        } else if (startLorem && i === 1) {
+          w = 'ipsum';
+        } else {
+          w = pickWord();
+        }
+        words.push(w);
+      }
+      totalWords = words.length;
+      const text = words.join(' ');
+      html = '<p>' + text + '</p>';
+      // Capitalize first word
+      html = '<p>' + text.charAt(0).toUpperCase() + text.slice(1) + '.</p>';
+      // Actually for words output, just the words
+      const capitalized = words.map((w, idx) => idx === 0 && startLorem ? 'Lorem' : w);
+      capitalized[0] = capitalized[0].charAt(0).toUpperCase() + capitalized[0].slice(1);
+      const finalText = capitalized.join(' ') + '.';
+      html = '<p>' + finalText + '</p>';
+      plainText = finalText;
+    }
+
+    outputBox.innerHTML = html;
+    outputBox._plainText = plainText;
+    wordCount.textContent = '~' + totalWords + ' words';
+  }
+
+  // ── Copy ──
+  function copyText() {
+    const text = outputBox._plainText || outputBox.textContent || '';
+    if (!text.trim() || text === 'Click Generate to create placeholder text.') return;
+
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = copyBtn.innerHTML;
+      copyBtn.innerHTML = 'Copied!';
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        copyBtn.innerHTML = orig;
+        copyBtn.classList.remove('copied');
+      }, 1800);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      const orig = copyBtn.innerHTML;
+      copyBtn.innerHTML = 'Copied!';
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        copyBtn.innerHTML = orig;
+        copyBtn.classList.remove('copied');
+      }, 1800);
+    });
+  }
+
+  // ── Events ──
+  generateBtn.addEventListener('click', generate);
+  copyBtn.addEventListener('click', copyText);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') generate();
+  });
+
+  // Initial
+  generate();
+})();
+</script>
+</body>
+</html>
