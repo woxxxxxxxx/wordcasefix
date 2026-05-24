@@ -41,9 +41,10 @@
   footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
   @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
   @media(max-width:600px){header h1{font-size:22px}.now-row{flex-direction:column}}
-</style>
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-links{display:flex;gap:18px;align-items:center}.navbar .nav-links a{font-size:13px;font-weight:600;color:#555;text-decoration:none;transition:color .15s}.navbar .nav-links a:hover{color:#5b5bd6}@media(max-width:600px){.navbar .nav-links{display:none}}</style>
 </head>
 <body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><div class="nav-links"><a href="/case-converter.html">Case Converter</a><a href="/word-counter.html">Word Counter</a><a href="/password-generator.html">Password Generator</a><a href="/unit-converter.html">Unit Converter</a></div></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
 <main class="main-area">
