@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Name Picker - Free Online Random Picker Tool | WordCaseFix</title>
+<meta name="description" content="Pick random names or items from a list. Free online random name picker tool for giveaways, classroom activities, team selections and contests.">
+<meta name="keywords" content="random name picker, random picker, name picker wheel, random selector, pick random winner">
+<meta property="og:title" content="Random Name Picker | WordCaseFix">
+<meta property="og:description" content="Pick random names or items from a list. Free online random name picker for giveaways, classrooms, and contests.">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+  .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+  .main-area{flex:1;min-width:0;padding:32px 24px 48px}
+  .sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+  header p{color:#555;font-size:15px;margin-top:4px}
+  .ad-slot{position:relative;background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .ad-top{width:100%;height:90px;margin-bottom:24px}
+  .ad-side{width:100%;min-height:300px;margin-bottom:16px}
+  .ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+  .card+.card{margin-top:16px}
+  .section-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:12px}
+  .input-group{margin-bottom:14px}
+  .input-group label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:#555;text-transform:uppercase;letter-spacing:.3px}
+  textarea{width:100%;padding:12px 14px;font-size:14px;font-family:inherit;line-height:1.5;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+  textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  textarea::placeholder{color:#bbb}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 26px;font-size:14px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}
+  .btn-primary:hover{background:#4a4ac2}
+  .btn-primary:active{transform:scale(.97)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;font-size:13px;font-weight:600;color:#555;background:#f0f0f5;border:1.5px solid #d0d5dd;border-radius:8px;cursor:pointer;transition:background .15s,color .15s}
+  .btn-secondary:hover{background:#e4e4ef;color:#1a1a2e}
+  .btn-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .pick-options{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .pick-options label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#333;cursor:pointer}
+  .pick-options input[type="number"]{width:70px;padding:8px 10px;font-size:14px;font-weight:600;border:1.5px solid #d0d5dd;border-radius:6px;outline:none;text-align:center}
+  .pick-options input[type="number"]:focus{border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  .pick-options input[type="checkbox"]{width:16px;height:16px;accent-color:#5b5bd6;cursor:pointer}
+  .result-spin{text-align:center;padding:24px 0 8px;min-height:100px}
+  .result-spin .winner-name{font-size:42px;font-weight:800;color:#5b5bd6;transition:all .15s;min-height:52px}
+  .result-spin .winner-name.spinning{color:#1a1a2e}
+  .result-spin .winner-label{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .chip-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding:10px;background:#f8f9fc;border-radius:8px;min-height:20px;border:1.5px solid #e8e9ed}
+  .chip{padding:4px 12px;background:#eef0ff;color:#5b5bd6;border-radius:16px;font-size:12px;font-weight:600}
+  .chip.picked{background:#d4edda;color:#155724;text-decoration:line-through}
+  .chip-count{font-size:12px;color:#888;margin-bottom:6px}
+  footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+  @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+  @media(max-width:600px){header h1{font-size:22px}.result-spin .winner-name{font-size:30px}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header><h1>Random Name Picker</h1><p>Enter a list of names or items and pick one or more randomly.</p></header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="input-group"><label for="itemInput">Items (one per line)</label><textarea id="itemInput" placeholder="Enter names or items, one per line&#10;e.g.&#10;Alice&#10;Bob&#10;Charlie" spellcheck="false" rows="6"></textarea></div>
+<div class="pick-options">
+<label>Pick <input type="number" id="pickCount" value="1" min="1" max="100"></label>
+<label><input type="checkbox" id="allowDupes" checked> Allow picking same item again</label>
+</div>
+<div class="btn-row">
+<button class="btn-primary" id="pickBtn">Pick Random</button>
+<button class="btn-secondary" id="resetBtn">Reset</button>
+<button class="btn-secondary" id="shuffleBtn">Shuffle All</button>
+</div>
+<div class="result-spin"><div class="winner-label" id="winnerLabel">Click Pick Random to start</div><div class="winner-name" id="winnerName">—</div></div>
+<div class="chip-count" id="chipCount"></div>
+<div class="chip-grid" id="chipGrid"></div>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About the Random Name Picker Tool</h2><p>The Random Name Picker is a free online tool that randomly selects names or items from a list you provide. Simply type or paste your list with one item per line, choose how many winners to pick, and click the button. The tool instantly displays the randomly selected item with a fun spinning animation. You can allow or prevent duplicate selections, shuffle the entire list, and reset the picker at any time. This random picker is perfect for teachers selecting students for classroom activities, contest organizers drawing giveaway winners, team captains picking members, and anyone who needs a fair, unbiased random selection. Unlike physical methods like drawing names from a hat, this online random selector ensures truly random results every time.</p></div>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/number-generator.html"><div class="rc-name">Number Generator</div><div class="rc-desc">Random number gen</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create passwords</div></a><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words</div></a><a class="related-card" href="/calculator.html"><div class="rc-name">Online Calculator</div><div class="rc-desc">Basic calculator</div></a></div></div>
+<footer>Random Name Picker &mdash; Free online random picker tool</footer>
+<script>
+(function(){
+  const input=document.getElementById('itemInput'),pickCount=document.getElementById('pickCount');
+  const allowDupes=document.getElementById('allowDupes'),pickBtn=document.getElementById('pickBtn');
+  const resetBtn=document.getElementById('resetBtn'),shuffleBtn=document.getElementById('shuffleBtn');
+  const winnerName=document.getElementById('winnerName'),winnerLabel=document.getElementById('winnerLabel');
+  const chipGrid=document.getElementById('chipGrid'),chipCount=document.getElementById('chipCount');
+  let picked=new Set();
+
+  function getItems(){return input.value.split('\n').map(function(s){return s.trim()}).filter(function(s){return s.length>0})}
+
+  function renderChips(items){
+    let h='';for(const item of items){h+='<span class="chip'+(picked.has(item)?' picked':'')+'">'+esc(item)+'</span>'}
+    chipGrid.innerHTML=h;chipCount.textContent=items.length+' items'+(picked.size?' ('+picked.size+' picked)':'')
+  }
+
+  function updateChips(){renderChips(getItems())}
+  input.addEventListener('input',updateChips);
+
+  function pickRandom(){
+    const items=getItems();if(items.length===0){winnerName.textContent='Add some items!';return}
+    let available=allowDupes.checked?items:items.filter(function(i){return!picked.has(i)});
+    if(available.length===0){available=items;picked.clear()}
+    const count=Math.min(parseInt(pickCount.value)||1,available.length);
+    const selected=[];
+    const temp=[...available];
+    for(let i=0;i<count;i++){const idx=Math.floor(Math.random()*temp.length);selected.push(temp[idx]);temp.splice(idx,1)}
+    winnerLabel.textContent=count===1?'Selected:'+'Selected '+count+':';
+    const names=selected.map(function(s){return esc(s)});
+    let idx=0;winnerName.textContent='?';winnerName.className='winner-name spinning';
+    const spin=setInterval(function(){winnerName.textContent=available[Math.floor(Math.random()*available.length)];idx++},60);
+    setTimeout(function(){clearInterval(spin);winnerName.textContent=names.join(', ');winnerName.className='winner-name';
+      for(const s of selected){picked.add(s)}updateChips()},400)
+  }
+
+  function resetPicks(){picked.clear();updateChips();winnerName.textContent='—';winnerLabel.textContent='Click Pick Random to start'}
+  function shuffleAll(){const items=getItems();if(items.length<2)return;
+    for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]]}
+    input.value=items.join('\n');resetPicks()
+  }
+
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  pickBtn.addEventListener('click',pickRandom);
+  resetBtn.addEventListener('click',resetPicks);
+  shuffleBtn.addEventListener('click',shuffleAll);
+  updateChips();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Generator - Free Online MD5 SHA Hash Generator Tool | WordCaseFix</title>
+<meta name="description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text. Free online hash generator for developers and security professionals.">
+<meta name="keywords" content="hash generator, MD5 generator, SHA-256 generator, SHA hash, online hash tool">
+<meta property="og:title" content="Hash Generator | WordCaseFix">
+<meta property="og:description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text. Free online hash generator for developers.">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+  .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+  .main-area{flex:1;min-width:0;padding:32px 24px 48px}
+  .sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+  header p{color:#555;font-size:15px;margin-top:4px}
+  .ad-slot{position:relative;background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .ad-top{width:100%;height:90px;margin-bottom:24px}
+  .ad-side{width:100%;min-height:300px;margin-bottom:16px}
+  .ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+  .card+.card{margin-top:16px}
+  .input-group{margin-bottom:16px}
+  .input-group label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:#555;text-transform:uppercase;letter-spacing:.3px}
+  textarea{width:100%;padding:12px 14px;font-size:14px;font-family:'SF Mono','Fira Code','Consolas',monospace;line-height:1.5;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+  textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  textarea::placeholder{color:#bbb}
+  .hash-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f8f9fc;border:1.5px solid #e8e9ed;border-radius:8px;margin-bottom:8px;transition:border-color .2s}
+  .hash-row:hover{border-color:#d0d0ee}
+  .hash-row .hash-label{font-size:11px;font-weight:700;width:80px;flex-shrink:0;color:#5b5bd6;text-transform:uppercase;letter-spacing:.3px}
+  .hash-row .hash-value{flex:1;font-size:12px;font-family:'SF Mono','Fira Code','Consolas',monospace;color:#333;word-break:break-all;line-height:1.5}
+  .hash-row .hash-copy{padding:4px 10px;font-size:11px;font-weight:600;color:#555;background:#fff;border:1.5px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s;flex-shrink:0}
+  .hash-row .hash-copy:hover{background:#5b5bd6;color:#fff;border-color:#5b5bd6}
+  .hash-row .hash-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+  .hash-empty{padding:20px;text-align:center;color:#ccc;font-size:13px}
+  footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+  @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+  @media(max-width:600px){header h1{font-size:22px}.hash-row{flex-wrap:wrap}.hash-row .hash-label{width:100%}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header><h1>Hash Generator</h1><p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text input.</p></header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="input-group"><label for="hashInput">Input Text</label><textarea id="hashInput" placeholder="Type or paste text to generate hashes…" spellcheck="false" rows="4"></textarea></div>
+<div id="hashResults"></div>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About the Hash Generator Tool</h2><p>The Hash Generator is a free online tool that computes cryptographic hash values for any text input using multiple algorithms including MD5, SHA-1, SHA-256, and SHA-512. Simply type or paste your text, and all four hash values are generated instantly in real time. Each hash result can be copied to your clipboard with a single click. This hash generator is essential for developers verifying file integrity, security professionals checking password hashes, system administrators comparing data fingerprints, and anyone working with digital signatures or data validation. Hash functions are one-way algorithms that produce a fixed-length string from any input, making them ideal for storing passwords securely, detecting data tampering, and creating unique identifiers for content.</p></div>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Encode &amp; decode</div></a><a class="related-card" href="/uuid-generator.html"><div class="rc-name">UUID Generator</div><div class="rc-desc">Generate UUIDs</div></a><a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format JSON</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Strong passwords</div></a></div></div>
+<footer>Hash Generator &mdash; Free online MD5 SHA hash generator</footer>
+<script>
+(function(){
+  const input=document.getElementById('hashInput'),results=document.getElementById('hashResults');
+  const algos=['MD5','SHA-1','SHA-256','SHA-512'];
+
+  async function generateHashes(text){
+    if(!text){results.innerHTML='<div class="hash-empty">Enter text above to generate hashes.</div>';return}
+    const encoder=new TextEncoder();
+    let html='';
+    for(const algo of algos){
+      const data=encoder.encode(text);
+      const hashBuffer=await crypto.subtle.digest(algo.replace('-',''),data);
+      const hashArray=Array.from(new Uint8Array(hashBuffer));
+      const hashHex=hashArray.map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      html+='<div class="hash-row"><span class="hash-label">'+algo+'</span><span class="hash-value">'+hashHex+'</span><button class="hash-copy" data-hash="'+hashHex+'">Copy</button></div>'
+    }
+    results.innerHTML=html;
+    results.querySelectorAll('.hash-copy').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        const h=this.dataset.hash;if(!h)return;
+        navigator.clipboard.writeText(h).then(function(){btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied')},1800)})
+      })
+    })
+  }
+
+  input.addEventListener('input',function(){generateHashes(this.value)});
+  generateHashes('');
+})();
+</script>
+</body>
+</html>
