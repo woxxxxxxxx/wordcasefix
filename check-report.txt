@@ -1,0 +1,42 @@
+WordCaseFix Tool HTML Check Report
+====================================
+Date: 2026-05-25
+
+Summary:
+All 48 HTML tool files scanned and fixed. Complete structural and encoding cleanup.
+
+Fixes Applied:
+1. SVG-in-button restructure (8 files):
+   - Moved <svg> elements inside <button> tags
+   - Fixed broken </svg> closing tags (were corrupted to /svg>)
+   - Fixed <<button double-angle corruption
+   Files: age-calculator.html, base64-encoder.html, json-formatter.html,
+          morse-translator.html, qr-generator.html, slug-converter.html,
+          word-frequency.html
+
+2. Button text corruption (2 files):
+   - Fixed ?Start→Start, ?Stop→Stop, ?Lap→Lap, ?Reset→Reset
+   - Fixed broken <div class="btn-group"> placement
+   Files: stopwatch.html
+
+3. Missing HTML tag fix (1 file):
+   - Fixed </div> missing opening <
+   Files: slug-converter.html
+
+4. Doubled swap button content (1 file):
+   - Fixed currency-converter swap button deduplication
+   Files: currency-converter.html
+
+5. Previous round fixes (from earlier session):
+   - Back-to-top button CSS/HTML missing from password-generator.html (added)
+   - << before back-to-top buttons fixed across 21 files
+   - ?Title?→?to? conversions (epoch-converter, html-encoder, roman-numeral-converter)
+   - Broken button text patterns (Text<<button→<button>Text) in 6 files
+   - tip-calculator.html complete rewrite due to sed corruption
+   - Invoice item template literal fixed
+
+Verification:
+- Zero remaining <<button patterns
+- Zero bare /svg> patterns (all properly closed)
+- Zero garbled button text
+- All files have navbar and meta charset

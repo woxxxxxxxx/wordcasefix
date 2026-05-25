@@ -23,8 +23,8 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
 <div class="mode-toggle">
-Encode ?HTML Entities<<button class="active" data-mode="encode"></button>
-Decode ?Plain Text<<button data-mode="decode"></button>
+<button class="active" data-mode="encode">Encode HTML Entities</button>
+<button data-mode="decode">Decode Plain Text</button>
 </div>
 <div class="options">
 <label><input type="checkbox" id="encQuotes"> Encode quotes (&amp;quot; &amp;apos;)</label>
@@ -35,10 +35,10 @@ Decode ?Plain Text<<button data-mode="decode"></button>
 <div class="io-box"><label id="outputLabel">Output</label><textarea id="outputText" placeholder="Result will appear here…" readonly></textarea><div class="char-count"><span id="outputChars">0</span> chars</div></div>
 </div>
 <div class="btn-row">
-Encode<<button class="btn-primary" id="processBtn"></button>
-Swap Input/Output<<button class="btn-secondary" id="swapBtn"></button>
-Copy Output<<button class="btn-secondary" id="copyBtn"></button>
-Clear All<<button class="btn-secondary" id="clearBtn"></button>
+<button class="btn-primary" id="processBtn">Encode</button>
+<button class="btn-secondary" id="swapBtn">Swap Input/Output</button>
+<button class="btn-secondary" id="copyBtn">Copy Output</button>
+<button class="btn-secondary" id="clearBtn">Clear All</button>
 </div>
 </div>
 </main>
@@ -55,6 +55,6 @@ Clear All<<button class="btn-secondary" id="clearBtn"></button>
 (function(){ const inputText=document.getElementById('inputText'),outputText=document.getElementById('outputText'); const inputChars=document.getElementById('inputChars'),outputChars=document.getElementById('outputChars'); const processBtn=document.getElementById('processBtn'),swapBtn=document.getElementById('swapBtn'); const copyBtn=document.getElementById('copyBtn'),clearBtn=document.getElementById('clearBtn'); const inputLabel=document.getElementById('inputLabel'),outputLabel=document.getElementById('outputLabel'); const encQuotes=document.getElementById('encQuotes'),encAllChars=document.getElementById('encAllChars'); const modeBtns=document.querySelectorAll('.mode-toggle button'); let mode='encode'; function encodeHTML(str,quote,all){ let r=str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); if(quote)r=r.replace(/"/g,'&quot;').replace(/'/g,'&#39;'); if(all){ r=r.replace(/[^\x20-\x7E]/g,function(c){return'&#'+c.charCodeAt(0)+';'}) } return r } function decodeHTML(str){ const t=document.createElement('textarea'); t.innerHTML=str; return t.value } function process(){ const txt=inputText.value; let result; if(mode==='encode'){result=encodeHTML(txt,encQuotes.checked,encAllChars.checked)} else{result=decodeHTML(txt)} outputText.value=result; inputChars.textContent=txt.length; outputChars.textContent=result.length } for(const btn of modeBtns){ btn.addEventListener('click',function(){ modeBtns.forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); mode=this.dataset.mode; inputLabel.textContent=mode==='encode'?'Input (Plain Text)':'Input (HTML Entities)'; outputLabel.textContent=mode==='encode'?'Output (HTML Entities)':'Output (Plain Text)'; processBtn.textContent=mode==='encode'?'Encode':'Decode'; process() }) } processBtn.addEventListener('click',process); inputText.addEventListener('input',process); encQuotes.addEventListener('change',process); encAllChars.addEventListener('change',process); swapBtn.addEventListener('click',function(){const t=inputText.value;inputText.value=outputText.value;outputText.value=t;process()}); copyBtn.addEventListener('click',function(){navigator.clipboard.writeText(outputText.value).catch(function(){})}); clearBtn.addEventListener('click',function(){inputText.value='';outputText.value='';process()}); process();
 })();
 </script>
-<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>

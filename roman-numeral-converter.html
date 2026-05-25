@@ -23,20 +23,20 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
 <div class="mode-toggle">
-Number ?Roman<<button class="active" data-mode="toRoman"></button>
-Roman ?Number<<button data-mode="toNumber"></button>
+<button class="active" data-mode="toRoman">Number to Roman</button>
+<button data-mode="toNumber">Roman to Number</button>
 </div>
 <div class="field"><label id="inputLabel">Enter Number</label><input id="inputVal" type="text" value="2024" placeholder="Enter a number or Roman numeral…"></div>
 <div class="result-box"><div class="result-label" id="resultLabel">Roman Numeral</div><div class="result-value" id="resultValue">MMXXIV</div><div class="result-desc" id="resultDesc">Roman numeral for 2024</div></div>
 <div class="quick-convert">
-1 ?I<<button data-val="1"></button>
-5 ?V<<button data-val="5"></button>
-10 ?X<<button data-val="10"></button>
-50 ?L<<button data-val="50"></button>
-100 ?C<<button data-val="100"></button>
-500 ?D<<button data-val="500"></button>
-1000 ?M<<button data-val="1000"></button>
-3999 ?MMMCMXCIX<<button data-val="3999"></button>
+<button data-val="1">1 = I</button>
+<button data-val="5">5 = V</button>
+<button data-val="10">10 = X</button>
+<button data-val="50">50 = L</button>
+<button data-val="100">100 = C</button>
+<button data-val="500">500 = D</button>
+<button data-val="1000">1000 = M</button>
+<button data-val="3999">3999 = MMMCMXCIX</button>
 </div>
 </div>
 <div class="card"><div class="section-title" style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:10px">Reference Chart</div>
@@ -67,6 +67,6 @@ Roman ?Number<<button data-mode="toNumber"></button>
 (function(){ const inputVal=document.getElementById('inputVal'),inputLabel=document.getElementById('inputLabel'); const resultValue=document.getElementById('resultValue'),resultLabel=document.getElementById('resultLabel'); const resultDesc=document.getElementById('resultDesc'); const modeBtns=document.querySelectorAll('.mode-toggle button'); let mode='toRoman'; function toRoman(n){ if(n<1||n>3999)return null; const val=[1000,900,500,400,100,90,50,40,10,9,5,4,1]; const sym=['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']; let r='',i=0; while(n>0){const c=Math.floor(n/val[i]);n-=c*val[i];r+=sym[i].repeat(c);i++} return r } function fromRoman(r){ const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}; let t=0; for(let i=0;i<r.length;i++){ const c=m[r[i]],n=m[r[i+1]]; if(n&&c<n){t-=c}else{t+=c} } return t } function isValidRoman(s){ return/^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/.test(s) } function convert(){ const raw=inputVal.value.trim(); if(!raw){resultValue.textContent='—';resultDesc.textContent='Enter a value to convert';return} if(mode==='toRoman'){ const n=parseInt(raw); if(isNaN(n)||n<1||n>3999){ resultValue.textContent='?'; resultDesc.textContent='Please enter a number between 1 and 3999'; return } const r=toRoman(n); resultValue.textContent=r; resultDesc.textContent='Roman numeral for'+n.toLocaleString() }else{ const s=raw.toUpperCase(); if(!isValidRoman(s)){ resultValue.textContent='?'; resultDesc.textContent='Please enter a valid Roman numeral (I, V, X, L, C, D, M)'; return } const n=fromRoman(s); resultValue.textContent=n.toLocaleString(); resultDesc.textContent=s+' ='+n.toLocaleString() } } for(const btn of modeBtns){ btn.addEventListener('click',function(){ modeBtns.forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); mode=this.dataset.mode; inputLabel.textContent=mode==='toRoman'?'Enter Number':'Enter Roman Numeral'; resultLabel.textContent=mode==='toRoman'?'Roman Numeral':'Arabic Number'; inputVal.placeholder=mode==='toRoman'?'e.g. 2024':'e.g. MMXXIV'; inputVal.value=''; resultValue.textContent='—'; resultDesc.textContent='Enter a value to convert'; inputVal.focus() }) } inputVal.addEventListener('input',convert); document.querySelectorAll('.quick-convert button').forEach(function(btn){ btn.addEventListener('click',function(){inputVal.value=this.dataset.val;if(mode==='toNumber'){inputVal.value=toRoman(parseInt(this.dataset.val))||''}convert()}) }); convert();
 })();
 </script>
-<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>

@@ -29,22 +29,22 @@
 </div>
 </div>
 <div class="card">
-<div class="section-title">Timestamp ?Date</div>
+<div class="section-title">Timestamp to Date</div>
 <div class="field"><label for="tsInput">Unix Timestamp</label><input type="text" id="tsInput" placeholder="e.g. 1716518400…"></div>
 <div class="btn-row">
-Convert to Date<<button class="btn-primary" id="tsToDateBtn"></button>
-Use Current Time<<button class="btn-secondary" id="tsNowBtn"></button>
+<button class="btn-primary" id="tsToDateBtn">Convert to Date</button>
+<button class="btn-secondary" id="tsNowBtn">Use Current Time</button>
 </div>
 <div class="result-card"><div class="rc-label">Date (UTC)</div><div class="rc-value" id="tsResultUtc">—</div></div>
 <div class="result-card"><div class="rc-label">Date (Local)</div><div class="rc-value" id="tsResultLocal">—</div></div>
 </div>
 <div class="card">
-<div class="section-title">Date ?Timestamp</div>
+<div class="section-title">Date to Timestamp</div>
 <div class="field"><label for="dateInput">Date &amp; Time</label><input type="datetime-local" id="dateInput"></div>
 <div class="btn-row">
-Convert to Timestamp<<button class="btn-primary" id="dateToTsBtn"></button>
-Use Current Time<<button class="btn-secondary" id="dateNowBtn"></button>
-Copy Timestamp<<button class="btn-secondary" id="copyTsBtn"></button>
+<button class="btn-primary" id="dateToTsBtn">Convert to Timestamp</button>
+<button class="btn-secondary" id="dateNowBtn">Use Current Time</button>
+<button class="btn-secondary" id="copyTsBtn">Copy Timestamp</button>
 </div>
 <div class="result-card"><div class="rc-label">Unix Timestamp (Seconds)</div><div class="rc-value" id="tsOutput">—</div></div>
 </div>
@@ -62,6 +62,6 @@ Copy Timestamp<<button class="btn-secondary" id="copyTsBtn"></button>
 (function(){ const nowSec=document.getElementById('nowSec'),nowMs=document.getElementById('nowMs'),nowUtc=document.getElementById('nowUtc'); const tsInput=document.getElementById('tsInput'),tsResultUtc=document.getElementById('tsResultUtc'),tsResultLocal=document.getElementById('tsResultLocal'); const dateInput=document.getElementById('dateInput'),tsOutput=document.getElementById('tsOutput'); const tsToDateBtn=document.getElementById('tsToDateBtn'),tsNowBtn=document.getElementById('tsNowBtn'); const dateToTsBtn=document.getElementById('dateToTsBtn'),dateNowBtn=document.getElementById('dateNowBtn'),copyTsBtn=document.getElementById('copyTsBtn'); function updateNow(){const n=Date.now();nowSec.textContent=Math.floor(n/1000);nowMs.textContent=n;nowUtc.textContent=new Date(n).toUTCString()} setInterval(updateNow,1000);updateNow(); tsToDateBtn.addEventListener('click',function(){ let val=tsInput.value.trim();if(!val)return; let ms=parseFloat(val);if(ms<1e12)ms*=1000; const d=new Date(ms);if(isNaN(d.getTime())){tsResultUtc.textContent='Invalid timestamp';tsResultLocal.textContent='Invalid timestamp';return} tsResultUtc.textContent=d.toUTCString();tsResultLocal.textContent=d.toString() }); tsNowBtn.addEventListener('click',function(){tsInput.value=Math.floor(Date.now()/1000);tsToDateBtn.click()}); dateToTsBtn.addEventListener('click',function(){ let val=dateInput.value;if(!val){tsOutput.textContent='Select a date/time';return} const d=new Date(val+':00');if(isNaN(d.getTime())){tsOutput.textContent='Invalid date';return} tsOutput.textContent=Math.floor(d.getTime()/1000) }); dateNowBtn.addEventListener('click',function(){ const n=new Date();const pad=function(x){return String(x).padStart(2,'0')}; dateInput.value=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate())+'T'+pad(n.getHours())+':'+pad(n.getMinutes()); dateToTsBtn.click() }); copyTsBtn.addEventListener('click',function(){ const text=tsOutput.textContent;if(!text||text==='—'||text==='Invalid date'||text==='Select a date/time')return; navigator.clipboard.writeText(text).then(function(){copyTsBtn.innerHTML='Copied!';copyTsBtn.classList.add('copied');setTimeout(function(){copyTsBtn.innerHTML='Copy Timestamp';copyTsBtn.classList.remove('copied')},1800)}) }); dateNowBtn.click();
 })();
 </script>
-<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>

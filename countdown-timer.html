@@ -39,9 +39,9 @@
 <div class="countdown-time" id="countdownDisplay">00:05:00</div>
 </div>
 <div class="btn-group">
-?Start<<button class="btn-start" id="startBtn"></button>
-?Stop<<button class="btn-stop" id="stopBtn" disabled></button>
-?Reset<<button class="btn-reset" id="resetBtn"></button>
+<button class="btn-start" id="startBtn">Start</button>
+<button class="btn-stop" id="stopBtn" disabled>Stop</button>
+<button class="btn-reset" id="resetBtn">Reset</button>
 </div>
 <div class="alarm-text" id="alarmText"></div>
 </div>
@@ -59,6 +59,6 @@
 (function(){ const hoursIn=document.getElementById('hours'),minutesIn=document.getElementById('minutes'),secondsIn=document.getElementById('seconds'); const display=document.getElementById('countdownDisplay'),startBtn=document.getElementById('startBtn'); const stopBtn=document.getElementById('stopBtn'),resetBtn=document.getElementById('resetBtn'),alarmText=document.getElementById('alarmText'); let totalSecs=0,remaining=0,running=false,interval=null; function getTotal(){return parseInt(hoursIn.value||0,10)*3600+parseInt(minutesIn.value||0,10)*60+parseInt(secondsIn.value||0,10)} function fmt(secs){const h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')} function updateDisplay(){display.textContent=fmt(remaining);if(remaining===0&&running){clearInterval(interval);running=false;startBtn.disabled=false;stopBtn.disabled=true;display.className='countdown-time finished';alarmText.textContent='?Time\'s up!';return}} function start(){const t=getTotal();if(t<=0)return;if(running)return;if(remaining<=0)remaining=t;running=true;startBtn.disabled=true;stopBtn.disabled=false;display.className='countdown-time running';alarmText.textContent='';interval=setInterval(function(){remaining--;if(remaining<0)remaining=0;updateDisplay()},1000)} function stop(){if(!running)return;running=false;clearInterval(interval);startBtn.disabled=false;stopBtn.disabled=true;display.className='countdown-time'} function reset(){clearInterval(interval);running=false;startBtn.disabled=false;stopBtn.disabled=true;remaining=0;display.className='countdown-time';alarmText.textContent='';const t=getTotal();display.textContent=fmt(t)} startBtn.addEventListener('click',start); stopBtn.addEventListener('click',stop); resetBtn.addEventListener('click',reset); document.querySelectorAll('.preset-btn').forEach(function(btn){btn.addEventListener('click',function(){reset();hoursIn.value=this.dataset.h;minutesIn.value=this.dataset.m;secondsIn.value=this.dataset.s;display.textContent=fmt(getTotal())})}); [hoursIn,minutesIn,secondsIn].forEach(function(inp){inp.addEventListener('input',reset)});
 })();
 </script>
-<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>

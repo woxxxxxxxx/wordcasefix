@@ -28,7 +28,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </div>
 <div class="input-row">
 <select id="toCurrency"><option value="EUR">EUR</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="JPY">JPY</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="CNY">CNY</option><option value="INR">INR</option><option value="BRL">BRL</option><option value="KRW">KRW</option><option value="MXN">MXN</option><option value="CHF">CHF</option></select>
-?<button class="swap-btn" id="swapBtn"></button>
+<button class="swap-btn" id="swapBtn">⇄</button>
 </div>
 <div class="result-box"><div class="rate" id="rateDisplay">1 USD = 0.92 EUR</div><div class="converted" id="convertedDisplay">0.92</div></div>
 <div class="last-updated" id="lastUpdated">Rates are approximate and may differ from live market rates.</div>
@@ -49,6 +49,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 (function(){ const rates={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CAD:1.36,AUD:1.53,CNY:7.24,INR:83.1,BRL:4.97,KRW:1320,MXN:17.1,CHF:0.88}; const fromSel=document.getElementById('fromCurrency'),toSel=document.getElementById('toCurrency'); const amount=document.getElementById('amount'),swapBtn=document.getElementById('swapBtn'); const rateDisplay=document.getElementById('rateDisplay'),convertedDisplay=document.getElementById('convertedDisplay'); const rateBody=document.getElementById('rateBody'); function convert(){ const amt=parseFloat(amount.value)||0; const from=fromSel.value,to=toSel.value; const inUsd=amt/rates[from]; const result=inUsd*rates[to]; rateDisplay.textContent='1'+from+' ='+(rates[to]/rates[from]).toFixed(4)+''+to; convertedDisplay.textContent=result.toFixed(2)+''+to } function renderRates(){ let h='';for(const cur in rates){h+='<tr><td>'+cur+'</td><td class="rt-rate">'+rates[cur].toFixed(4)+'</td></tr>'} rateBody.innerHTML=h } fromSel.addEventListener('change',convert); toSel.addEventListener('change',convert); amount.addEventListener('input',convert); swapBtn.addEventListener('click',function(){const t=fromSel.value;fromSel.value=toSel.value;toSel.value=t;convert()}); convert();renderRates();
 })();
 </script>
-<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>
+
