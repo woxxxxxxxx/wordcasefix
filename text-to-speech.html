@@ -64,7 +64,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <header><h1>Text to Speech</h1><p>Convert any text to speech and listen with natural-sounding voices directly in your browser.</p></header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
-<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear…" spellcheck="true" rows="5"></textarea></div>
+<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear鈥? spellcheck="true" rows="5"></textarea></div>
 <div class="sample-btns">
 <span class="sample-btn" data-sample="Hello! Welcome to Text to Speech. This is a free online tool that reads your text aloud.">Hello</span>
 <span class="sample-btn" data-sample="The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.">Quick Brown Fox</span>
@@ -80,7 +80,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <button class="btn-secondary" id="pauseBtn" disabled>Pause</button>
 <button class="btn-secondary" id="stopBtn" disabled>Stop</button>
 </div>
-<div class="status-box" id="statusBox">Ready — enter text and press Play</div>
+<div class="status-box" id="statusBox">Ready 鈥?enter text and press Play</div>
 </div>
 </main>
 <aside class="sidebar">
@@ -88,75 +88,146 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
 </aside>
 </div>
-<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server — your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
+<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server 鈥?your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words</div></a><a class="related-card" href="/fancy-text.html"><div class="rc-name">Fancy Text</div><div class="rc-desc">Stylish text</div></a><a class="related-card" href="/typing-test.html"><div class="rc-name">Typing Test</div><div class="rc-desc">Typing speed</div></a><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Convert case</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text to Speech &mdash; Free online text to speech tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+
 <script>
 (function(){
-  const input=document.getElementById('ttsInput'),voiceSelect=document.getElementById('voiceSelect');
-  const rateRange=document.getElementById('rateRange'),rateVal=document.getElementById('rateVal');
-  const pitchRange=document.getElementById('pitchRange'),pitchVal=document.getElementById('pitchVal');
-  const speakBtn=document.getElementById('speakBtn'),pauseBtn=document.getElementById('pauseBtn');
-  const stopBtn=document.getElementById('stopBtn'),statusBox=document.getElementById('statusBox');
-  let voices=[],utterance=null;
+  var input = document.getElementById('ttsInput');
+  var voiceSelect = document.getElementById('voiceSelect');
+  var rateRange = document.getElementById('rateRange');
+  var rateVal = document.getElementById('rateVal');
+  var pitchRange = document.getElementById('pitchRange');
+  var pitchVal = document.getElementById('pitchVal');
+  var speakBtn = document.getElementById('speakBtn');
+  var pauseBtn = document.getElementById('pauseBtn');
+  var stopBtn = document.getElementById('stopBtn');
+  var statusBox = document.getElementById('statusBox');
+  var voices = [];
+  var utterance = null;
 
-  function loadVoices(){
-    voices=window.speechSynthesis.getVoces();
-    if(!voices.length){setTimeout(loadVoices,200);return}
-    voiceSelect.innerHTML='';
-    for(const v of voices){
-      const opt=document.createElement('option');
-      opt.value=v.name;opt.textContent=v.name+' ('+v.lang+')';
-      voiceSelect.appendChild(opt)
+  function populateVoices() {
+    var v = window.speechSynthesis.getVoices();
+    if (!v || !v.length) { setTimeout(populateVoices, 200); return; }
+    voices = v;
+    voiceSelect.innerHTML = '';
+    var enOpts = [];
+    var otherOpts = [];
+    for (var i = 0; i < voices.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = voices[i].name;
+      opt.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+      if (voices[i].lang && voices[i].lang.indexOf('en') === 0) {
+        enOpts.push(opt);
+      } else {
+        otherOpts.push(opt);
+      }
     }
-  }
-  loadVoices();
-  if(window.speechSynthesis.onvoiceschanged!==undefined)window.speechSynthesis.onvoiceschanged=loadVoices;
-
-  rateRange.addEventListener('input',function(){rateVal.textContent=this.value+'x'});
-  pitchRange.addEventListener('input',function(){pitchVal.textContent=this.value});
-
-  function getSelectedVoice(){
-    const name=voiceSelect.value;
-    for(const v of voices){if(v.name===name)return v}
-    return voices[0]||null
+    for (var ei = 0; ei < enOpts.length; ei++) voiceSelect.appendChild(enOpts[ei]);
+    for (var oi = 0; oi < otherOpts.length; oi++) voiceSelect.appendChild(otherOpts[oi]);
+    if (voiceSelect.options.length > 0) voiceSelect.selectedIndex = 0;
   }
 
-  function speak(){
-    if(!input.value.trim()){statusBox.textContent='Please enter some text to speak.';return}
+  populateVoices();
+  if (window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = populateVoices;
+  } else {
+    // Fallback: some browsers need a one-shot override
+    var orig = window.speechSynthesis.onvoiceschanged;
+    window.speechSynthesis.onvoiceschanged = function() {
+      populateVoices();
+      window.speechSynthesis.onvoiceschanged = orig || null;
+    };
+  }
+
+  rateRange.addEventListener('input', function() { rateVal.textContent = this.value + 'x'; });
+  pitchRange.addEventListener('input', function() { pitchVal.textContent = this.value; });
+
+  function getSelectedVoice() {
+    var name = voiceSelect.value;
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].name === name) return voices[i];
+    }
+    return voices[0] || null;
+  }
+
+  function speak() {
+    if (!input.value.trim()) { statusBox.textContent = 'Please enter some text to speak.'; return; }
     window.speechSynthesis.cancel();
-    utterance=new SpeechSynthesisUtterance(input.value);
-    const v=getSelectedVoice();if(v)utterance.voice=v;
-    utterance.rate=parseFloat(rateRange.value);
-    utterance.pitch=parseFloat(pitchRange.value);
-    utterance.onstart=function(){statusBox.textContent='Speaking…';statusBox.className='status-box speaking';speakBtn.disabled=true;pauseBtn.disabled=false;stopBtn.disabled=false};
-    utterance.onend=function(){statusBox.textContent='Finished speaking.';statusBox.className='status-box done';speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true};
-    utterance.onerror=function(){statusBox.textContent='An error occurred during speech.';statusBox.className='status-box';speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true};
-    utterance.onpause=function(){statusBox.textContent='Paused.';statusBox.className='status-box';pauseBtn.textContent='Resume'};
-    utterance.onresume=function(){statusBox.textContent='Speaking…';statusBox.className='status-box speaking';pauseBtn.textContent='Pause'};
-    window.speechSynthesis.speak(utterance)
+    utterance = new SpeechSynthesisUtterance(input.value);
+    var v = getSelectedVoice();
+    if (v) utterance.voice = v;
+    utterance.rate = parseFloat(rateRange.value);
+    utterance.pitch = parseFloat(pitchRange.value);
+    utterance.onstart = function() {
+      statusBox.textContent = 'Speaking…';
+      statusBox.className = 'status-box speaking';
+      speakBtn.disabled = true;
+      pauseBtn.disabled = false;
+      stopBtn.disabled = false;
+    };
+    utterance.onend = function() {
+      statusBox.textContent = 'Done';
+      statusBox.className = 'status-box done';
+      speakBtn.disabled = false;
+      pauseBtn.disabled = true;
+      stopBtn.disabled = true;
+      pauseBtn.textContent = 'Pause';
+    };
+    utterance.onerror = function() {
+      statusBox.textContent = 'An error occurred during speech.';
+      statusBox.className = 'status-box';
+      speakBtn.disabled = false;
+      pauseBtn.disabled = true;
+      stopBtn.disabled = true;
+      pauseBtn.textContent = 'Pause';
+    };
+    utterance.onpause = function() {
+      statusBox.textContent = 'Paused.';
+      statusBox.className = 'status-box';
+      pauseBtn.textContent = 'Resume';
+    };
+    utterance.onresume = function() {
+      statusBox.textContent = 'Speaking…';
+      statusBox.className = 'status-box speaking';
+      pauseBtn.textContent = 'Pause';
+    };
+    window.speechSynthesis.speak(utterance);
   }
 
-  speakBtn.addEventListener('click',speak);
+  speakBtn.addEventListener('click', speak);
 
-  pauseBtn.addEventListener('click',function(){
-    if(window.speechSynthesis.speaking){
-      if(window.speechSynthesis.paused){window.speechSynthesis.resume()}
-      else{window.speechSynthesis.pause()}
+  pauseBtn.addEventListener('click', function() {
+    if (window.speechSynthesis.speaking) {
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      } else {
+        window.speechSynthesis.pause();
+      }
     }
   });
 
-  stopBtn.addEventListener('click',function(){
+  stopBtn.addEventListener('click', function() {
     window.speechSynthesis.cancel();
-    statusBox.textContent='Stopped.';statusBox.className='status-box';
-    speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true;pauseBtn.textContent='Pause'
+    statusBox.textContent = 'Stopped.';
+    statusBox.className = 'status-box';
+    speakBtn.disabled = false;
+    pauseBtn.disabled = true;
+    stopBtn.disabled = true;
+    pauseBtn.textContent = 'Pause';
   });
 
-  document.querySelectorAll('.sample-btn').forEach(function(btn){
-    btn.addEventListener('click',function(){input.value=this.dataset.sample;speak()})
-  });
-})();</script>
+  var sampleBtns = document.querySelectorAll('.sample-btn');
+  for (var si = 0; si < sampleBtns.length; si++) {
+    sampleBtns[si].addEventListener('click', function() {
+      input.value = this.getAttribute('data-sample');
+      speak();
+    });
+  }
+})();
+</script>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
