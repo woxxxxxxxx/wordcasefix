@@ -45,10 +45,151 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Morse Code Translator &mdash; Free online Morse code converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
-(function(){ const inputText=document.getElementById('inputText'),outputText=document.getElementById('outputText'); const translateBtn=document.getElementById('translateBtn'),copyBtn=document.getElementById('copyBtn'),playBtn=document.getElementById('playBtn'); const modeToMorse=document.getElementById('modeToMorse'),modeToText=document.getElementById('modeToText'); const MORSE={'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..','M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.','.':'.-.-.-',',':'--..--','?':'..--..',"'":'.----.','!':'-.-.--','/':'-..-.','(':'-.--.',')':'-.--.-','&':'.-...',':':'---...',';':'-.-.-.','=':'-...-','+':'.-.-.','-':'-....-','_':'..--.-','"':'.-..-.','$':'...-..-','@':'.--.-.','':'/'}; const REV={};for(const[k,v]of Object.entries(MORSE))REV[v]=k;REV['/']=''; const refChars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split(''); const refGrid=document.getElementById('refGrid'); let refHtml='';for(const c of refChars){refHtml+='<div class="ref-item"><span class="ref-char">'+c+'</span><br>'+MORSE[c]+'</div>'} refGrid.innerHTML=refHtml; function translate(){ const text=inputText.value;if(!text){outputText.value='';return} if(modeToMorse.checked){ const words=text.toUpperCase().split(''); const parts=[];for(const w of words){const p=[];for(const c of w){if(MORSE[c])p.push(MORSE[c])}parts.push(p.join(''))} outputText.value=parts.join('/') }else{ const words=text.split('/');const parts=[]; for(const w of words){const p=[];for(const sym of w.trim().split(/\s+/)){if(sym&&REV[sym])p.push(REV[sym])}parts.push(p.join(''))} outputText.value=parts.join('').toLowerCase() } } translateBtn.addEventListener('click',translate); copyBtn.addEventListener('click',function(){const t=outputText.value;if(!t)return;navigator.clipboard.writeText(t).then(function(){copyBtn.innerHTML='Copied!';copyBtn.classList.add('copied');setTimeout(function(){copyBtn.innerHTML='Copy';copyBtn.classList.remove('copied')},1800)})}); playBtn.addEventListener('click',function(){const morse=modeToMorse.checked?outputText.value:inputText.value;if(!morse)return;const dot=60,dash=180,gap=60,letterGap=200,wordGap=500;const ctx=new(window.AudioContext||window.webkitAudioContext)();let time=ctx.currentTime;for(const ch of morse){if(ch==='.'){playTone(ctx,time,dot/1000);time+=dot/1000+gap/1000}else if(ch==='-'){playTone(ctx,time,dash/1000);time+=dash/1000+gap/1000}else if(ch===''){time+=letterGap/1000}else if(ch==='/'){time+=wordGap/1000}}); function playTone(ctx,start,dur){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=700;gain.gain.value=0.3;osc.connect(gain);gain.connect(ctx.destination);osc.start(start);osc.stop(start+dur);gain.gain.setValueAtTime(0.3,start);gain.gain.exponentialRampToValueAtTime(0.01,start+dur-0.01)}}
+(function(){
+  'use strict';
+  var inputText = document.getElementById('inputText');
+  var outputText = document.getElementById('outputText');
+  var translateBtn = document.getElementById('translateBtn');
+  var copyBtn = document.getElementById('copyBtn');
+  var playBtn = document.getElementById('playBtn');
+  var modeToMorse = document.getElementById('modeToMorse');
+  var modeToText = document.getElementById('modeToText');
+  var refGrid = document.getElementById('refGrid');
+
+  var MORSE = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
+    'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+    'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+    'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+    'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+    'Y': '-.--', 'Z': '--..',
+    '0': '-----', '1': '.----', '2': '..---', '3': '...--',
+    '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+    '8': '---..', '9': '----.',
+    '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
+    '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-',
+    '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-',
+    '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.',
+    '$': '...-..-', '@': '.--.-.'
+  };
+
+  var REV = {};
+  for (var k in MORSE) {
+    if (MORSE.hasOwnProperty(k)) REV[MORSE[k]] = k;
+  }
+  REV['/'] = ' ';
+
+  var refChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var refHtml = '';
+  for (var i = 0; i < refChars.length; i++) {
+    var c = refChars[i];
+    refHtml += '<div class="ref-item"><span class="ref-char">' + c + '</span><br>' + MORSE[c] + '</div>';
+  }
+  refGrid.innerHTML = refHtml;
+
+  function translate() {
+    var text = inputText.value;
+    if (!text) { outputText.value = ''; return; }
+    if (modeToMorse.checked) {
+      var words = text.toUpperCase().split(' ');
+      var result = [];
+      for (var w = 0; w < words.length; w++) {
+        var word = words[w];
+        var letters = [];
+        for (var i = 0; i < word.length; i++) {
+          var ch = word[i];
+          letters.push(MORSE[ch] || ch);
+        }
+        result.push(letters.join(' '));
+      }
+      outputText.value = result.join(' / ');
+    } else {
+      var words = text.trim().split(/\s*\/\s*/);
+      var result = [];
+      for (var w = 0; w < words.length; w++) {
+        var word = words[w].trim();
+        if (!word) continue;
+        var symbols = word.split(/\s+/);
+        var decoded = '';
+        for (var i = 0; i < symbols.length; i++) {
+          decoded += REV[symbols[i]] || '?';
+        }
+        result.push(decoded);
+      }
+      outputText.value = result.join(' ').toLowerCase();
+    }
+  }
+
+  function copyOutput() {
+    var t = outputText.value;
+    if (!t) return;
+    navigator.clipboard.writeText(t).then(function() {
+      copyBtn.textContent = 'Copied!';
+      copyBtn.classList.add('copied');
+      setTimeout(function() {
+        copyBtn.textContent = 'Copy';
+        copyBtn.classList.remove('copied');
+      }, 1800);
+    });
+  }
+
+  function playMorse() {
+    var morse = modeToMorse.checked ? outputText.value : inputText.value;
+    if (!morse) return;
+    var dot = 60, dash = 180, gap = 60, letterGap = 200, wordGap = 500;
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var time = ctx.currentTime;
+    for (var i = 0; i < morse.length; i++) {
+      var ch = morse[i];
+      if (ch === '.') {
+        playTone(ctx, time, dot / 1000);
+        time += (dot + gap) / 1000;
+      } else if (ch === '-') {
+        playTone(ctx, time, dash / 1000);
+        time += (dash + gap) / 1000;
+      } else if (ch === ' ') {
+        time += letterGap / 1000;
+      } else if (ch === '/') {
+        time += wordGap / 1000;
+      }
+    }
+  }
+
+  function playTone(ctx, start, dur) {
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = 700;
+    gain.gain.value = 0.3;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(start);
+    osc.stop(start + dur);
+    gain.gain.setValueAtTime(0.3, start);
+    gain.gain.exponentialRampToValueAtTime(0.01, start + dur - 0.01);
+  }
+
+  translateBtn.addEventListener('click', translate);
+  copyBtn.addEventListener('click', copyOutput);
+  playBtn.addEventListener('click', playMorse);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+    if (e.key === 'Enter') translate();
+  });
+})();
+(function(){
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  function toggle() {
+    btn.classList.toggle('show', window.scrollY > 300);
+  }
+  window.addEventListener('scroll', toggle);
+  toggle();
 })();
 </script>
-<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button>
 </body>
 </html>
 
