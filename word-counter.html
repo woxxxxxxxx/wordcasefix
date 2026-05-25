@@ -20,17 +20,17 @@
     flex-direction: column;
   }
 
-  /* 鈹€鈹€ Layout 鈹€鈹€ */
+  /* ── Layout ── */
   .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
   .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
   .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
 
-  /* 鈹€鈹€ Header 鈹€鈹€ */
+  /* ── Header ── */
   header { text-align: center; margin-bottom: 16px; }
   header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
   header p { color: #555; font-size: 15px; margin-top: 4px; }
 
-  /* 鈹€鈹€ Ad slots 鈹€鈹€ */
+  /* ── Ad slots ── */
   .ad-slot {
     position: relative;
     background: #e8e9ed;
@@ -46,7 +46,7 @@
   .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
   .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
 
-  /* 鈹€鈹€ Card 鈹€鈹€ */
+  /* ── Card ── */
   .card {
     background: #fff;
     border-radius: 12px;
@@ -54,7 +54,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Input 鈹€鈹€ */
+  /* ── Input ── */
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -72,11 +72,11 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* 鈹€鈹€ Stats bar (char counter only) 鈹€鈹€ */
+  /* ── Stats bar (char counter only) ── */
   .stats-bar { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .char-count { font-size: 13px; color: #888; }
 
-  /* 鈹€鈹€ Stat grid 鈹€鈹€ */
+  /* ── Stat grid ── */
   .stat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -111,10 +111,10 @@
     margin-top: 2px;
   }
 
-  /* 鈹€鈹€ Footer 鈹€鈹€ */
+  /* ── Footer ── */
   footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
 
-  /* 鈹€鈹€ Responsive 鈹€鈹€ */
+  /* ── Responsive ── */
   @media (max-width: 820px) {
     .sidebar { display: none; }
     .main-area { padding: 20px 16px 36px; }
@@ -135,7 +135,7 @@
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
 
-<!-- 鈹€鈹€鈹€ Ad: Top 鈹€鈹€鈹€ -->
+<!-- ──── Ad: Top ──── -->
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 
 <div class="page-wrap">
@@ -146,13 +146,13 @@
       <p>Type or paste your text to see real-time word and character counts.</p>
     </header>
 
-    <!-- 鈹€鈹€鈹€ Ad: Top (in-content) 鈹€鈹€鈹€ -->
+    <!-- ──── Ad: Top (in-content) ──── -->
     <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 
     <div class="card">
       <div class="input-group">
         <label for="inputText">Your text</label>
-        <textarea id="inputText" placeholder="Paste or type your text here鈥? spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="Paste or type your text here…" spellcheck="false"></textarea>
       </div>
 
       <div class="stats-bar">
@@ -191,7 +191,7 @@
 
   </main>
 
-  <!-- 鈹€鈹€鈹€ Sidebar 鈹€鈹€鈹€ -->
+  <!-- ──── Sidebar ──── -->
   <aside class="sidebar">
     <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
     <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
@@ -232,13 +232,13 @@
     const noSpaces = text.replace(/\s/g, '').length;
     statCharsWithout.textContent = noSpaces.toLocaleString();
 
-    // Sentences 鈥?split by sentence-ending punctuation followed by space or end
+    // Sentences — split by sentence-ending punctuation followed by space or end
     const sentences = text.trim()
       ? text.split(/[.!?]+(?:\s+|$)/).filter(s => s.trim().length > 0).length
       : 0;
     statSentences.textContent = sentences.toLocaleString();
 
-    // Paragraphs 鈥?split by two or more newlines
+    // Paragraphs — split by two or more newlines
     const paragraphs = text.trim()
       ? text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length
       : 0;
@@ -246,7 +246,7 @@
     const paraFinal = paragraphs === 0 && text.trim() ? 1 : paragraphs;
     statParagraphs.textContent = paraFinal.toLocaleString();
 
-    // Reading Time 鈥?200 words per minute
+    // Reading Time — 200 words per minute
     if (words === 0) {
       statReading.textContent = '0 min';
     } else {

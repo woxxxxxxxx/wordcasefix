@@ -73,7 +73,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="stat-box"><div class="stat-value" id="timerDisplay">0s</div><div class="stat-label">Time</div></div>
 </div>
 <div class="passage-box" id="passageBox"></div>
-<textarea id="userInput" placeholder="Type the text above here鈥? spellcheck="false" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" disabled></textarea>
+<textarea id="userInput" placeholder="Type the text above here…" spellcheck="false" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" disabled></textarea>
 <div class="btn-row">
 <button class="btn-primary" id="startBtn">Start Test</button>
 <button class="btn-secondary" id="resetBtn">Reset</button>
@@ -160,7 +160,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     else if(stats.wpm>=40)rating='馃憤 Good';
     else if(stats.wpm>=20)rating='馃挭 Keep Practicing';
     else rating='馃弫 Start Again';
-    hintText.innerHTML='<b>Done!</b> '+rating+' 鈥?'+stats.wpm+' WPM, '+stats.acc+'% accuracy'
+    hintText.innerHTML='<b>Done!</b> '+rating+' — '+stats.wpm+' WPM, '+stats.acc+'% accuracy'
   }
 
   function startTest(){
@@ -168,7 +168,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     startTime=Date.now();
     started=true;finished=false;
     userInput.disabled=false;userInput.focus();
-    hintText.textContent='Type the passage above鈥?;
+    hintText.textContent='Type the passage above…;
     timerInterval=setInterval(function(){if(started&&!finished)calcStats()},200)
   }
 

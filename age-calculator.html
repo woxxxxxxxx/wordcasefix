@@ -20,17 +20,17 @@
     flex-direction: column;
   }
 
-  /* 鈹€鈹€ Layout 鈹€鈹€ */
+  /* ── Layout ── */
   .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
   .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
   .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
 
-  /* 鈹€鈹€ Header 鈹€鈹€ */
+  /* ── Header ── */
   header { text-align: center; margin-bottom: 16px; }
   header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
   header p { color: #555; font-size: 15px; margin-top: 4px; }
 
-  /* 鈹€鈹€ Ad slots 鈹€鈹€ */
+  /* ── Ad slots ── */
   .ad-slot {
     position: relative;
     background: #e8e9ed;
@@ -46,7 +46,7 @@
   .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
   .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
 
-  /* 鈹€鈹€ Card 鈹€鈹€ */
+  /* ── Card ── */
   .card {
     background: #fff;
     border-radius: 12px;
@@ -54,7 +54,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Form 鈹€鈹€ */
+  /* ── Form ── */
   .form-group { margin-bottom: 18px; }
   .form-group label {
     display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px; color: #555;
@@ -73,7 +73,7 @@
     border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15);
   }
 
-  /* 鈹€鈹€ Unit toggle (To date) 鈹€鈹€ */
+  /* ── Unit toggle (To date) ── */
   .unit-toggle {
     display: flex; gap: 0; margin-bottom: 18px;
     background: #f0f0f5; border-radius: 8px; padding: 3px;
@@ -95,7 +95,7 @@
   #toDateGroup { display: none; }
   #toDateGroup.visible { display: block; }
 
-  /* 鈹€鈹€ Calc button 鈹€鈹€ */
+  /* ── Calc button ── */
   .calc-row { margin: 20px 0 0; }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
@@ -109,7 +109,7 @@
   .btn-primary:hover { background: #4a4ac2; }
   .btn-primary:active { transform: scale(.97); }
 
-  /* 鈹€鈹€ Results 鈹€鈹€ */
+  /* ── Results ── */
   .result-area {
     margin-top: 24px; padding-top: 24px;
     border-top: 1.5px solid #e8e9ed;
@@ -136,7 +136,7 @@
   }
   .birth-day strong { color: #5b5bd6; }
 
-  /* 鈹€鈹€ Stat grid 鈹€鈹€ */
+  /* ── Stat grid ── */
   .stat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -181,10 +181,10 @@
   }
   .result-empty .big-icon { font-size: 40px; display: block; margin-bottom: 6px; }
 
-  /* 鈹€鈹€ Footer 鈹€鈹€ */
+  /* ── Footer ── */
   footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
 
-  /* 鈹€鈹€ Responsive 鈹€鈹€ */
+  /* ── Responsive ── */
   @media (max-width: 820px) {
     .sidebar { display: none; }
     .main-area { padding: 20px 16px 36px; }
@@ -203,7 +203,7 @@
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
 
-<!-- 鈹€鈹€鈹€ Ad: Top 鈹€鈹€鈹€ -->
+<!-- ──── Ad: Top ──── -->
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 
 <div class="page-wrap">
@@ -214,7 +214,7 @@
       <p>Find out your exact age in years, months, and days.</p>
     </header>
 
-    <!-- 鈹€鈹€鈹€ Ad: Top (in-content) 鈹€鈹€鈹€ -->
+    <!-- ──── Ad: Top (in-content) ──── -->
     <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 
     <div class="card">
@@ -257,28 +257,28 @@
           <div class="birth-day" id="birthDayInfo"></div>
 
           <div class="age-main">
-            <div class="age-big" id="ageMain">鈥?/div>
-            <div class="age-sub" id="ageSub">鈥?/div>
+            <div class="age-big" id="ageMain">—</div>
+            <div class="age-sub" id="ageSub">—</div>
           </div>
 
           <div class="stat-grid">
             <div class="stat-card">
-              <div class="stat-value" id="totalDays">鈥?/div>
+              <div class="stat-value" id="totalDays">—</div>
               <div class="stat-label">Total Days</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value" id="totalHours">鈥?/div>
+              <div class="stat-value" id="totalHours">—</div>
               <div class="stat-label">Total Hours</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value" id="totalMinutes">鈥?/div>
+              <div class="stat-value" id="totalMinutes">—</div>
               <div class="stat-label">Total Minutes</div>
             </div>
           </div>
 
           <div class="countdown-box" id="countdownBox">
             <div class="countdown-label">Next Birthday In</div>
-            <div class="countdown-value" id="countdownValue">鈥?/div>
+            <div class="countdown-value" id="countdownValue">—</div>
           </div>
         </div>
       </div>
@@ -287,7 +287,7 @@
 
   </main>
 
-  <!-- 鈹€鈹€鈹€ Sidebar 鈹€鈹€鈹€ -->
+  <!-- ──── Sidebar ──── -->
   <aside class="sidebar">
     <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
     <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
@@ -301,7 +301,7 @@
 
 <script>
 (function() {
-  // 鈹€鈹€ DOM refs 鈹€鈹€
+  // ── DOM refs ──
   const birthDate   = document.getElementById('birthDate');
   const modeToday   = document.getElementById('modeToday');
   const modeCustom  = document.getElementById('modeCustom');
@@ -321,7 +321,7 @@
 
   const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-  // 鈹€鈹€ Toggle custom date 鈹€鈹€
+  // ── Toggle custom date ──
   modeToday.addEventListener('change', function() {
     if (this.checked) toDateGroup.classList.remove('visible');
   });
@@ -329,7 +329,7 @@
     if (this.checked) toDateGroup.classList.add('visible');
   });
 
-  // 鈹€鈹€ Set defaults 鈹€鈹€
+  // ── Set defaults ──
   const now = new Date();
   const pad = n => String(n).padStart(2, '0');
   const todayStr = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
@@ -342,7 +342,7 @@
   toDate.max = todayStr;  // can't pick future
   birthDate.max = todayStr;
 
-  // 鈹€鈹€ Date diff helper 鈹€鈹€
+  // ── Date diff helper ──
   function dateDiff(start, end) {
     // Ensure start <= end
     if (start > end) { const t = start; start = end; end = t; }
@@ -389,7 +389,7 @@
 
   function plural(n, s) { return n + ' ' + s + (n !== 1 ? 's' : ''); }
 
-  // 鈹€鈹€ Calculate 鈹€鈹€
+  // ── Calculate ──
   function calculate() {
     const bdStr = birthDate.value;
     if (!bdStr) {

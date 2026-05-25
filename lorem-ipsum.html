@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Controls 鈹€鈹€ */
+  /* ── Controls ── */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -98,7 +98,7 @@
     width: 17px; height: 17px; accent-color: #5b5bd6; cursor: pointer;
   }
 
-  /* 鈹€鈹€ Buttons 鈹€鈹€ */
+  /* ── Buttons ── */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -126,7 +126,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 鈹€鈹€ Output 鈹€鈹€ */
+  /* ── Output ── */
   .output-area { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
   .output-label {
     display: flex; align-items: center; justify-content: space-between;
@@ -255,7 +255,7 @@
 
   let currentType = 'paragraphs';
 
-  // 鈹€鈹€ Type buttons 鈹€鈹€
+  // ── Type buttons ──
   document.querySelectorAll('.type-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
@@ -264,7 +264,7 @@
     });
   });
 
-  // 鈹€鈹€ Word pool (standard Lorem Ipsum) 鈹€鈹€
+  // ── Word pool (standard Lorem Ipsum) ──
   const WORDS = [
     'lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit',
     'sed','do','eiusmod','tempor','incididunt','ut','labore','et','dolore',
@@ -309,7 +309,7 @@
   }
 
   function generateSentence(startLorem) {
-    const len = 8 + Math.floor(Math.random() * 10); // 8鈥?7 words
+    const len = 8 + Math.floor(Math.random() * 10); // 8-17 words
     const words = [];
     if (startLorem) {
       words.push('Lorem', 'ipsum');
@@ -327,7 +327,7 @@
   }
 
   function generateParagraph(startLorem, firstPara) {
-    const sentences = 4 + Math.floor(Math.random() * 4); // 4鈥? sentences
+    const sentences = 4 + Math.floor(Math.random() * 4); // 4-7 sentences
     const parts = [];
     for (let i = 0; i < sentences; i++) {
       // Only start first sentence with "Lorem ipsum" if firstPara and requested
@@ -400,7 +400,7 @@
     wordCount.textContent = '~' + totalWords + ' words';
   }
 
-  // 鈹€鈹€ Copy 鈹€鈹€
+  // ── Copy ──
   function copyText() {
     const text = outputBox._plainText || outputBox.textContent || '';
     if (!text.trim() || text === 'Click Generate to create placeholder text.') return;
@@ -431,7 +431,7 @@
     });
   }
 
-  // 鈹€鈹€ Events 鈹€鈹€
+  // ── Events ──
   generateBtn.addEventListener('click', generate);
   copyBtn.addEventListener('click', copyText);
   document.addEventListener('keydown', function(e) {

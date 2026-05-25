@@ -54,7 +54,7 @@
     font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px;
   }
 
-  /* 鈹€鈹€ Input 鈹€鈹€ */
+  /* ── Input ── */
   .field { margin-bottom: 18px; }
   .field label {
     display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
@@ -78,7 +78,7 @@
     font-size: 14px; font-weight: 600; color: #999; pointer-events: none;
   }
 
-  /* 鈹€鈹€ Tip buttons 鈹€鈹€ */
+  /* ── Tip buttons ── */
   .tip-grid {
     display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
   }
@@ -111,13 +111,13 @@
   .custom-tip-wrap { display: flex; align-items: center; gap: 4px; }
   .custom-tip-wrap .pct-suffix { font-size: 14px; font-weight: 600; color: #999; }
 
-  /* 鈹€鈹€ Split row 鈹€鈹€ */
+  /* ── Split row ── */
   .split-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
   .split-row .field { margin-bottom: 0; flex: 1; min-width: 80px; }
 
-  /* 鈹€鈹€ Results 鈹€鈹€ */
+  /* ── Results ── */
   .result-area { margin-top: 22px; padding-top: 22px; border-top: 1.5px solid #e8e9ed; }
 
   .result-grid {
@@ -262,7 +262,7 @@
   let selectedPct = 15;
   let isCustom = false;
 
-  // 鈹€鈹€ Tip buttons 鈹€鈹€
+  // ── Tip buttons ──
   document.querySelectorAll('.tip-btn[data-pct]').forEach(btn => {
     btn.addEventListener('click', function() {
       const pct = this.dataset.pct;
@@ -292,7 +292,7 @@
     }
   });
 
-  // 鈹€鈹€ Split buttons 鈹€鈹€
+  // ── Split buttons ──
   splitDec.addEventListener('click', function() {
     let v = parseInt(splitCount.value, 10);
     if (isNaN(v) || v <= 1) v = 1;
@@ -310,7 +310,7 @@
     calculate();
   });
 
-  // 鈹€鈹€ Calculation 鈹€鈹€
+  // ── Calculation ──
   function calculate() {
     const bill = parseFloat(billAmount.value);
     const people = parseInt(splitCount.value, 10);
@@ -335,7 +335,7 @@
     perPersonSub.textContent = people + ' person' + (people !== 1 ? 's' : '');
   }
 
-  // 鈹€鈹€ Input events 鈹€鈹€
+  // ── Input events ──
   billAmount.addEventListener('input', calculate);
   splitCount.addEventListener('input', function() {
     let v = parseInt(this.value, 10);

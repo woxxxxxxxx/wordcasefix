@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Input 鈹€鈹€ */
+  /* ── Input ── */
   .input-group { margin-bottom: 16px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -67,7 +67,7 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* 鈹€鈹€ Options 鈹€鈹€ */
+  /* ── Options ── */
   .options-row {
     display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;
   }
@@ -98,7 +98,7 @@
     width: 17px; height: 17px; accent-color: #5b5bd6; cursor: pointer;
   }
 
-  /* 鈹€鈹€ Output 鈹€鈹€ */
+  /* ── Output ── */
   .output-area { margin-top: 18px; padding-top: 18px; border-top: 1.5px solid #e8e9ed; }
   .output-label {
     font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px;
@@ -175,7 +175,7 @@
 
       <div class="input-group">
         <label for="inputText">Text to convert</label>
-        <textarea id="inputText" placeholder="Type or paste any text 鈥?including Chinese, symbols, etc." spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="Type or paste any text — including Chinese, symbols, etc." spellcheck="false"></textarea>
       </div>
 
       <div class="options-row">
@@ -194,7 +194,7 @@
       <div class="output-area">
         <div class="output-label">Slug</div>
         <div class="output-wrap">
-          <div class="output-box empty" id="outputBox">Your slug will appear here鈥?/div>
+          <div class="output-box empty" id="outputBox">Your slug will appear here…/div>
           <button class="btn-copy" id="copyBtn">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             Copy
@@ -232,7 +232,7 @@
   let currentSlug = '';
   let separator = '-';
 
-  // 鈹€鈹€ Separator buttons 鈹€鈹€
+  // ── Separator buttons ──
   document.querySelectorAll('.sep-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.sep-btn').forEach(b => b.classList.remove('active'));
@@ -242,12 +242,12 @@
     });
   });
 
-  // 鈹€鈹€ Slug conversion 鈹€鈹€
+  // ── Slug conversion ──
   function convert() {
     const text = inputText.value;
 
     if (!text.trim()) {
-      outputBox.textContent = 'Your slug will appear here鈥?;
+      outputBox.textContent = 'Your slug will appear here…;
       outputBox.className = 'output-box empty';
       urlPreview.textContent = '/your-slug-here';
       currentSlug = '';
@@ -301,7 +301,7 @@
     urlPreview.textContent = '/' + slug;
   }
 
-  // 鈹€鈹€ Copy 鈹€鈹€
+  // ── Copy ──
   function copySlug() {
     if (!currentSlug) return;
     navigator.clipboard.writeText(currentSlug).then(() => {
@@ -330,7 +330,7 @@
     });
   }
 
-  // 鈹€鈹€ Events 鈹€鈹€
+  // ── Events ──
   inputText.addEventListener('input', convert);
   chkDigits.addEventListener('change', convert);
 

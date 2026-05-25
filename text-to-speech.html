@@ -64,7 +64,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <header><h1>Text to Speech</h1><p>Convert any text to speech and listen with natural-sounding voices directly in your browser.</p></header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
-<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear鈥? spellcheck="true" rows="5"></textarea></div>
+<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear…" spellcheck="true" rows="5"></textarea></div>
 <div class="sample-btns">
 <span class="sample-btn" data-sample="Hello! Welcome to Text to Speech. This is a free online tool that reads your text aloud.">Hello</span>
 <span class="sample-btn" data-sample="The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.">Quick Brown Fox</span>
@@ -80,7 +80,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <button class="btn-secondary" id="pauseBtn" disabled>Pause</button>
 <button class="btn-secondary" id="stopBtn" disabled>Stop</button>
 </div>
-<div class="status-box" id="statusBox">Ready 鈥?enter text and press Play</div>
+<div class="status-box" id="statusBox">Ready — enter text and press Play</div>
 </div>
 </main>
 <aside class="sidebar">
@@ -88,7 +88,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
 </aside>
 </div>
-<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server 鈥?your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
+<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server — your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words</div></a><a class="related-card" href="/fancy-text.html"><div class="rc-name">Fancy Text</div><div class="rc-desc">Stylish text</div></a><a class="related-card" href="/typing-test.html"><div class="rc-name">Typing Test</div><div class="rc-desc">Typing speed</div></a><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Convert case</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text to Speech &mdash; Free online text to speech tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
@@ -130,11 +130,11 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     const v=getSelectedVoice();if(v)utterance.voice=v;
     utterance.rate=parseFloat(rateRange.value);
     utterance.pitch=parseFloat(pitchRange.value);
-    utterance.onstart=function(){statusBox.textContent='Speaking鈥?;statusBox.className='status-box speaking';speakBtn.disabled=true;pauseBtn.disabled=false;stopBtn.disabled=false};
+    utterance.onstart=function(){statusBox.textContent='Speaking…;statusBox.className='status-box speaking';speakBtn.disabled=true;pauseBtn.disabled=false;stopBtn.disabled=false};
     utterance.onend=function(){statusBox.textContent='Finished speaking.';statusBox.className='status-box done';speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true};
     utterance.onerror=function(){statusBox.textContent='An error occurred during speech.';statusBox.className='status-box';speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true};
     utterance.onpause=function(){statusBox.textContent='Paused.';statusBox.className='status-box';pauseBtn.textContent='Resume'};
-    utterance.onresume=function(){statusBox.textContent='Speaking鈥?;statusBox.className='status-box speaking';pauseBtn.textContent='Pause'};
+    utterance.onresume=function(){statusBox.textContent='Speaking…;statusBox.className='status-box speaking';pauseBtn.textContent='Pause'};
     window.speechSynthesis.speak(utterance)
   }
 

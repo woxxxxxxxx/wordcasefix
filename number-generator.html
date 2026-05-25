@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Controls 鈹€鈹€ */
+  /* ── Controls ── */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -72,7 +72,7 @@
   .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   .field input::placeholder { font-weight: 400; color: #bbb; }
 
-  /* 鈹€鈹€ Checkbox toggle 鈹€鈹€ */
+  /* ── Checkbox toggle ── */
   .toggle-row {
     display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
   }
@@ -85,7 +85,7 @@
   }
   .toggle-row .hint { font-size: 12px; color: #aaa; }
 
-  /* 鈹€鈹€ Buttons 鈹€鈹€ */
+  /* ── Buttons ── */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -113,7 +113,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 鈹€鈹€ Results 鈹€鈹€ */
+  /* ── Results ── */
   .result-area { margin-top: 24px; padding-top: 24px; border-top: 1.5px solid #e8e9ed; }
 
   .numbers-grid {
@@ -296,7 +296,7 @@
     } else {
       const pool = [];
       for (let i = min; i <= max; i++) pool.push(i);
-      // Fisher鈥揧ates shuffle, take first `count`
+      // Fisher-Yatesates shuffle, take first `count`
       for (let i = pool.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -310,7 +310,7 @@
     resultContent.style.display = 'block';
 
     // Stats
-    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '鈥? + max + ')';
+    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '—' + max + ')';
 
     // Render chips
     let html = '';

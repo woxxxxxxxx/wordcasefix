@@ -59,9 +59,9 @@
 <div class="card">
 <div class="section-title">Current Unix Time</div>
 <div class="now-row">
-<div class="now-item"><div class="ni-label">Seconds</div><div class="ni-value" id="nowSec">鈥?/div></div>
-<div class="now-item"><div class="ni-label">Milliseconds</div><div class="ni-value" id="nowMs">鈥?/div></div>
-<div class="now-item"><div class="ni-label">Date (UTC)</div><div class="ni-value" id="nowUtc">鈥?/div></div>
+<div class="now-item"><div class="ni-label">Seconds</div><div class="ni-value" id="nowSec">—</div></div>
+<div class="now-item"><div class="ni-label">Milliseconds</div><div class="ni-value" id="nowMs">—</div></div>
+<div class="now-item"><div class="ni-label">Date (UTC)</div><div class="ni-value" id="nowUtc">—</div></div>
 </div>
 </div>
 <div class="card">
@@ -71,8 +71,8 @@
 <button class="btn-primary" id="tsToDateBtn">Convert to Date</button>
 <button class="btn-secondary" id="tsNowBtn">Use Current Time</button>
 </div>
-<div class="result-card"><div class="rc-label">Date (UTC)</div><div class="rc-value" id="tsResultUtc">鈥?/div></div>
-<div class="result-card"><div class="rc-label">Date (Local)</div><div class="rc-value" id="tsResultLocal">鈥?/div></div>
+<div class="result-card"><div class="rc-label">Date (UTC)</div><div class="rc-value" id="tsResultUtc">—</div></div>
+<div class="result-card"><div class="rc-label">Date (Local)</div><div class="rc-value" id="tsResultLocal">—</div></div>
 </div>
 <div class="card">
 <div class="section-title">Date 鈫?Timestamp</div>
@@ -82,7 +82,7 @@
 <button class="btn-secondary" id="dateNowBtn">Use Current Time</button>
 <button class="btn-secondary" id="copyTsBtn">Copy Timestamp</button>
 </div>
-<div class="result-card"><div class="rc-label">Unix Timestamp (Seconds)</div><div class="rc-value" id="tsOutput">鈥?/div></div>
+<div class="result-card"><div class="rc-label">Unix Timestamp (Seconds)</div><div class="rc-value" id="tsOutput">—</div></div>
 </div>
 </main>
 <aside class="sidebar">
@@ -127,7 +127,7 @@
   });
 
   copyTsBtn.addEventListener('click',function(){
-    const text=tsOutput.textContent;if(!text||text==='鈥?||text==='Invalid date'||text==='Select a date/time')return;
+    const text=tsOutput.textContent;if(!text||text==='—'||text==='Invalid date'||text==='Select a date/time')return;
     navigator.clipboard.writeText(text).then(function(){copyTsBtn.innerHTML='Copied!';copyTsBtn.classList.add('copied');setTimeout(function(){copyTsBtn.innerHTML='Copy Timestamp';copyTsBtn.classList.remove('copied')},1800)})
   });
 

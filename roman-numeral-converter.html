@@ -51,7 +51,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <tr><td class="rt-val">7</td><td class="rt-roman">VII</td><td class="rt-val">70</td><td class="rt-roman">LXX</td><td class="rt-val">700</td><td class="rt-roman">DCC</td></tr>
 <tr><td class="rt-val">8</td><td class="rt-roman">VIII</td><td class="rt-val">80</td><td class="rt-roman">LXXX</td><td class="rt-val">800</td><td class="rt-roman">DCCC</td></tr>
 <tr><td class="rt-val">9</td><td class="rt-roman">IX</td><td class="rt-val">90</td><td class="rt-roman">XC</td><td class="rt-val">900</td><td class="rt-roman">CM</td></tr>
-<tr><td class="rt-val">鈥?/td><td class="rt-roman">鈥?/td><td class="rt-val">鈥?/td><td class="rt-roman">鈥?/td><td class="rt-val">1000</td><td class="rt-roman">M</td></tr>
+<tr><td class="rt-val">—</td><td class="rt-roman">—</td><td class="rt-val">—</td><td class="rt-roman">—</td><td class="rt-val">1000</td><td class="rt-roman">M</td></tr>
 </tbody></table></div>
 </main>
 <aside class="sidebar">
@@ -96,7 +96,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
   function convert(){
     const raw=inputVal.value.trim();
-    if(!raw){resultValue.textContent='鈥?;resultDesc.textContent='Enter a value to convert';return}
+    if(!raw){resultValue.textContent='—';resultDesc.textContent='Enter a value to convert';return}
 
     if(mode==='toRoman'){
       const n=parseInt(raw);
@@ -130,7 +130,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       resultLabel.textContent=mode==='toRoman'?'Roman Numeral':'Arabic Number';
       inputVal.placeholder=mode==='toRoman'?'e.g. 2024':'e.g. MMXXIV';
       inputVal.value='';
-      resultValue.textContent='鈥?;
+      resultValue.textContent='—';
       resultDesc.textContent='Enter a value to convert';
       inputVal.focus()
     })

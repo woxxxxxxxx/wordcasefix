@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Tabs 鈹€鈹€ */
+  /* ── Tabs ── */
   .tab-bar {
     display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap;
     background: #f0f0f5; border-radius: 10px; padding: 4px;
@@ -71,7 +71,7 @@
     box-shadow: 0 1px 4px rgba(0,0,0,.08);
   }
 
-  /* 鈹€鈹€ Unit rows 鈹€鈹€ */
+  /* ── Unit rows ── */
   .unit-section { display: none; }
   .unit-section.active { display: block; }
 
@@ -157,7 +157,7 @@
 
 <script>
 (function() {
-  // 鈹€鈹€ Unit definitions 鈹€鈹€
+  // ── Unit definitions ──
   const categories = [
     {
       id: 'length',
@@ -228,10 +228,10 @@
     }
   ];
 
-  // 鈹€鈹€ State 鈹€鈹€
+  // ── State ──
   let activeCategory = categories[0].id;
 
-  // 鈹€鈹€ Render 鈹€鈹€
+  // ── Render ──
   const tabBar    = document.getElementById('tabBar');
   const sections  = document.getElementById('sections');
 
@@ -277,7 +277,7 @@
     sections.appendChild(section);
   });
 
-  // 鈹€鈹€ Tab switching 鈹€鈹€
+  // ── Tab switching ──
   function switchTab(catId) {
     activeCategory = catId;
     document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -288,7 +288,7 @@
     });
   }
 
-  // 鈹€鈹€ Conversion 鈹€鈹€
+  // ── Conversion ──
   function updateFrom(catId, unitId, value) {
     const cat = categories.find(c => c.id === catId);
     if (!cat) return;

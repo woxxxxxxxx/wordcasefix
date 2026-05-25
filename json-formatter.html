@@ -72,7 +72,7 @@
         <button class="btn-secondary" id="copyBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button>
         <div class="indent-options"><label>Indent</label><select id="indentSize"><option value="2">2 spaces</option><option value="4" selected>4 spaces</option><option value="tab">Tab</option></select></div>
       </div>
-      <div class="input-group"><label for="jsonOutput">Formatted JSON</label><textarea id="jsonOutput" placeholder="Formatted JSON will appear here鈥? spellcheck="false" readonly></textarea></div>
+      <div class="input-group"><label for="jsonOutput">Formatted JSON</label><textarea id="jsonOutput" placeholder="Formatted JSON will appear here…" spellcheck="false" readonly></textarea></div>
       <div class="status-bar" id="statusBar"><span>Enter JSON and click <strong>Format &amp; Validate</strong>.</span></div>
     </div>
   </main>
@@ -110,10 +110,10 @@
       const formatted = minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, indent);
       jsonOutput.value = formatted;
       lastValid = formatted;
-      statusBar.innerHTML = '<span class="valid">鉁?Valid JSON</span> 鈥?' + raw.length + ' chars 鈫?' + formatted.length + ' chars';
+      statusBar.innerHTML = '<span class="valid">✓ Valid JSON</span> — ' + raw.length + ' chars 鈫?' + formatted.length + ' chars';
     } catch (e) {
       jsonOutput.value = '';
-      statusBar.innerHTML = '<span class="invalid">鉁?Invalid JSON</span> 鈥?' + e.message;
+      statusBar.innerHTML = '<span class="invalid">✗ Invalid JSON</span> — ' + e.message;
     }
   }
 
