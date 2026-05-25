@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -50,14 +50,14 @@
     padding: 28px 32px 32px;
   }
 
-  /* ── Layout ── */
+  /* 鈹€鈹€ Layout 鈹€鈹€ */
   .picker-grid {
     display: grid;
     grid-template-columns: 240px 1fr;
     gap: 24px;
   }
 
-  /* ── Main color preview ── */
+  /* 鈹€鈹€ Main color preview 鈹€鈹€ */
   .color-preview-wrap {
     text-align: center;
   }
@@ -73,7 +73,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* ── Color picker input ── */
+  /* 鈹€鈹€ Color picker input 鈹€鈹€ */
   .picker-input-wrap { margin-bottom: 16px; }
   .picker-input-wrap label {
     display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
@@ -88,7 +88,7 @@
   input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
   input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
 
-  /* ── Value fields ── */
+  /* 鈹€鈹€ Value fields 鈹€鈹€ */
   .val-grid { display: flex; flex-direction: column; gap: 10px; }
   .val-row {
     display: flex; align-items: center; gap: 8px;
@@ -122,7 +122,7 @@
   .val-row .copy-val:hover { background: #e4e4ef; color: #1a1a2e; }
   .val-row .copy-val.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* ── Presets ── */
+  /* 鈹€鈹€ Presets 鈹€鈹€ */
   .presets-section { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
   .presets-section .ps-label {
     font-size: 13px; font-weight: 700; color: #555; margin-bottom: 8px;
@@ -221,6 +221,7 @@
 
 <div class="seo-content"><h2>About the Color Picker Tool</h2><p>The Color Picker is a free online tool for selecting, previewing, and converting colors between HEX, RGB, and HSL color formats. It features a visual color picker interface along with 40 preset color swatches for quick selection. Each color displays its HEX code, RGB values, and HSL values simultaneously, and you can copy any format with a single click. This color converter is invaluable for web designers, graphic designers, developers, and artists who need to work with colors across different platforms and formats. Whether you are designing a website, creating digital artwork, or developing an app interface, this online color picker helps you find the perfect color and get its code in any format you need.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Color Picker &mdash; Free online color picker and converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
 <script>
@@ -233,7 +234,7 @@
   const hslValue     = document.getElementById('hslValue');
   const presetGrid   = document.getElementById('presetGrid');
 
-  // ── Helpers ──
+  // 鈹€鈹€ Helpers 鈹€鈹€
   function hexToRgb(hex) {
     const r = parseInt(hex.slice(1,3), 16);
     const g = parseInt(hex.slice(3,5), 16);
@@ -276,12 +277,12 @@
     colorInput.value = hex;
   }
 
-  // ── Color input ──
+  // 鈹€鈹€ Color input 鈹€鈹€
   colorInput.addEventListener('input', function() {
     updateColor(this.value);
   });
 
-  // ── Copy buttons ──
+  // 鈹€鈹€ Copy buttons 鈹€鈹€
   document.querySelectorAll('.copy-val').forEach(btn => {
     btn.addEventListener('click', function() {
       const targetId = this.dataset.target;
@@ -310,7 +311,7 @@
     });
   });
 
-  // ── Presets ──
+  // 鈹€鈹€ Presets 鈹€鈹€
   const presets = [
     '#FF6B6B', '#FF8E53', '#FFC857', '#51CF66', '#5BBD72',
     '#20C997', '#339AF0', '#5B5BD6', '#7950F2', '#E64980',
@@ -338,7 +339,7 @@
     presetGrid.appendChild(swatch);
   });
 
-  // ── HEX manual entry in the readonly input? Make it editable ──
+  // 鈹€鈹€ HEX manual entry in the readonly input? Make it editable 鈹€鈹€
   hexValue.readOnly = false;
   hexValue.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {

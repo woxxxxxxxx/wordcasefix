@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -75,9 +75,9 @@
 <div class="countdown-time" id="countdownDisplay">00:05:00</div>
 </div>
 <div class="btn-group">
-<button class="btn-start" id="startBtn">▶ Start</button>
-<button class="btn-stop" id="stopBtn" disabled>■ Stop</button>
-<button class="btn-reset" id="resetBtn">↺ Reset</button>
+<button class="btn-start" id="startBtn">鈻?Start</button>
+<button class="btn-stop" id="stopBtn" disabled>鈻?Stop</button>
+<button class="btn-reset" id="resetBtn">鈫?Reset</button>
 </div>
 <div class="alarm-text" id="alarmText"></div>
 </div>
@@ -89,6 +89,7 @@
 </div>
 <div class="seo-content"><h2>About the Countdown Timer Tool</h2><p>The Countdown Timer is a free online tool that counts down from a specified amount of time and alerts you when the time is up. Set hours, minutes, and seconds using the input fields, or choose from quick preset buttons including 1 minute, 5 minutes, 10 minutes, 15 minutes, 30 minutes, and 1 hour. The large digital display shows the remaining time clearly, and an alarm message appears when the countdown reaches zero. This online timer is perfect for cooking, workout intervals, study sessions, presentation timing, meditation, and any activity that requires time management. Unlike a stopwatch that measures elapsed time, this countdown timer helps you work within a defined time boundary.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Countdown Timer &mdash; Free online countdown timer | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
 (function(){
@@ -99,7 +100,7 @@
 
   function getTotal(){return parseInt(hoursIn.value||0,10)*3600+parseInt(minutesIn.value||0,10)*60+parseInt(secondsIn.value||0,10)}
   function fmt(secs){const h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
-  function updateDisplay(){display.textContent=fmt(remaining);if(remaining===0&&running){clearInterval(interval);running=false;startBtn.disabled=false;stopBtn.disabled=true;display.className='countdown-time finished';alarmText.textContent='⏰ Time\'s up!';return}}
+  function updateDisplay(){display.textContent=fmt(remaining);if(remaining===0&&running){clearInterval(interval);running=false;startBtn.disabled=false;stopBtn.disabled=true;display.className='countdown-time finished';alarmText.textContent='鈴?Time\'s up!';return}}
   function start(){const t=getTotal();if(t<=0)return;if(running)return;if(remaining<=0)remaining=t;running=true;startBtn.disabled=true;stopBtn.disabled=false;display.className='countdown-time running';alarmText.textContent='';interval=setInterval(function(){remaining--;if(remaining<0)remaining=0;updateDisplay()},1000)}
   function stop(){if(!running)return;running=false;clearInterval(interval);startBtn.disabled=false;stopBtn.disabled=true;display.className='countdown-time'}
   function reset(){clearInterval(interval);running=false;startBtn.disabled=false;stopBtn.disabled=true;remaining=0;display.className='countdown-time';alarmText.textContent='';const t=getTotal();display.textContent=fmt(t)}

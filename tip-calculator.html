@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -54,7 +54,7 @@
     font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px;
   }
 
-  /* ── Input ── */
+  /* 鈹€鈹€ Input 鈹€鈹€ */
   .field { margin-bottom: 18px; }
   .field label {
     display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
@@ -78,7 +78,7 @@
     font-size: 14px; font-weight: 600; color: #999; pointer-events: none;
   }
 
-  /* ── Tip buttons ── */
+  /* 鈹€鈹€ Tip buttons 鈹€鈹€ */
   .tip-grid {
     display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
   }
@@ -111,13 +111,13 @@
   .custom-tip-wrap { display: flex; align-items: center; gap: 4px; }
   .custom-tip-wrap .pct-suffix { font-size: 14px; font-weight: 600; color: #999; }
 
-  /* ── Split row ── */
+  /* 鈹€鈹€ Split row 鈹€鈹€ */
   .split-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
   .split-row .field { margin-bottom: 0; flex: 1; min-width: 80px; }
 
-  /* ── Results ── */
+  /* 鈹€鈹€ Results 鈹€鈹€ */
   .result-area { margin-top: 22px; padding-top: 22px; border-top: 1.5px solid #e8e9ed; }
 
   .result-grid {
@@ -203,7 +203,7 @@
         <div class="field">
           <label for="splitCount">Split</label>
           <div style="display:flex;align-items:center;gap:8px;">
-            <button class="tip-btn" id="splitDec" style="padding:6px 14px;font-size:16px;">−</button>
+            <button class="tip-btn" id="splitDec" style="padding:6px 14px;font-size:16px;">鈭?/button>
             <input type="number" id="splitCount" value="1" min="1" max="20" step="1" style="text-align:center;width:70px;">
             <button class="tip-btn" id="splitInc" style="padding:6px 14px;font-size:16px;">+</button>
             <span style="font-size:13px;color:#888;white-space:nowrap;">person(s)</span>
@@ -242,6 +242,7 @@
 
 <div class="seo-content"><h2>About the Tip Calculator Tool</h2><p>The Tip Calculator is a free online tool that calculates tips and splits bills among multiple people. Enter the bill amount, select a tip percentage from preset options or customize your own, and specify how many people are sharing the bill. The calculator instantly shows the tip amount, total bill including tip, and the amount each person should pay. This tip calculator is perfect for dining out with friends, group travel expenses, business lunch splitting, and any scenario where you need to divide a bill fairly. The preset tip percentages cover common tipping standards, while the custom option lets you enter any percentage for complete flexibility in your gratuity calculations.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Tip Calculator &mdash; Free online tip and bill split calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
 <script>
@@ -260,7 +261,7 @@
   let selectedPct = 15;
   let isCustom = false;
 
-  // ── Tip buttons ──
+  // 鈹€鈹€ Tip buttons 鈹€鈹€
   document.querySelectorAll('.tip-btn[data-pct]').forEach(btn => {
     btn.addEventListener('click', function() {
       const pct = this.dataset.pct;
@@ -290,7 +291,7 @@
     }
   });
 
-  // ── Split buttons ──
+  // 鈹€鈹€ Split buttons 鈹€鈹€
   splitDec.addEventListener('click', function() {
     let v = parseInt(splitCount.value, 10);
     if (isNaN(v) || v <= 1) v = 1;
@@ -308,7 +309,7 @@
     calculate();
   });
 
-  // ── Calculation ──
+  // 鈹€鈹€ Calculation 鈹€鈹€
   function calculate() {
     const bill = parseFloat(billAmount.value);
     const people = parseInt(splitCount.value, 10);
@@ -333,7 +334,7 @@
     perPersonSub.textContent = people + ' person' + (people !== 1 ? 's' : '');
   }
 
-  // ── Input events ──
+  // 鈹€鈹€ Input events 鈹€鈹€
   billAmount.addEventListener('input', calculate);
   splitCount.addEventListener('input', function() {
     let v = parseInt(this.value, 10);

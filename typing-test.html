@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -72,7 +72,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="stat-box"><div class="stat-value" id="timerDisplay">0s</div><div class="stat-label">Time</div></div>
 </div>
 <div class="passage-box" id="passageBox"></div>
-<textarea id="userInput" placeholder="Type the text above here…" spellcheck="false" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" disabled></textarea>
+<textarea id="userInput" placeholder="Type the text above here鈥? spellcheck="false" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" disabled></textarea>
 <div class="btn-row">
 <button class="btn-primary" id="startBtn">Start Test</button>
 <button class="btn-secondary" id="resetBtn">Reset</button>
@@ -87,6 +87,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </div>
 <div class="seo-content"><h2>About the Typing Speed Test Tool</h2><p>The Typing Speed Test is a free online tool that measures how fast and accurately you type. A random passage is displayed and you type it character by character. The tool tracks your Words Per Minute (WPM), Characters Per Minute (CPM), accuracy percentage, and elapsed time in real time as you type. Each correctly typed character turns green and errors are highlighted in red. After completing the passage, you get a final summary of your performance including a speed rating. This typing test is ideal for job seekers preparing for typing assessments, students improving their keyboarding skills, writers wanting to boost productivity, and anyone curious about their typing speed. Regular practice with this typing speed checker can help you identify areas for improvement and track your progress over time.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words</div></a><a class="related-card" href="/text-to-speech.html"><div class="rc-name">Text to Speech</div><div class="rc-desc">Listen to text</div></a><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Convert case</div></a><a class="related-card" href="/stopwatch.html"><div class="rc-name">Stopwatch</div><div class="rc-desc">Track time</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Typing Speed Test &mdash; Free online typing test tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
 (function(){
@@ -153,12 +154,12 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     finished=true;userInput.disabled=true;clearInterval(timerInterval);
     const stats=calcStats();
     let rating='';
-    if(stats.wpm>=80)rating='🚀 Excellent';
-    else if(stats.wpm>=60)rating='🔥 Great';
-    else if(stats.wpm>=40)rating='👍 Good';
-    else if(stats.wpm>=20)rating='💪 Keep Practicing';
-    else rating='🏁 Start Again';
-    hintText.innerHTML='<b>Done!</b> '+rating+' — '+stats.wpm+' WPM, '+stats.acc+'% accuracy'
+    if(stats.wpm>=80)rating='馃殌 Excellent';
+    else if(stats.wpm>=60)rating='馃敟 Great';
+    else if(stats.wpm>=40)rating='馃憤 Good';
+    else if(stats.wpm>=20)rating='馃挭 Keep Practicing';
+    else rating='馃弫 Start Again';
+    hintText.innerHTML='<b>Done!</b> '+rating+' 鈥?'+stats.wpm+' WPM, '+stats.acc+'% accuracy'
   }
 
   function startTest(){
@@ -166,7 +167,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     startTime=Date.now();
     started=true;finished=false;
     userInput.disabled=false;userInput.focus();
-    hintText.textContent='Type the passage above…';
+    hintText.textContent='Type the passage above鈥?;
     timerInterval=setInterval(function(){if(started&&!finished)calcStats()},200)
   }
 

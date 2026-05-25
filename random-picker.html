@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -73,7 +73,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <button class="btn-secondary" id="resetBtn">Reset</button>
 <button class="btn-secondary" id="shuffleBtn">Shuffle All</button>
 </div>
-<div class="result-spin"><div class="winner-label" id="winnerLabel">Click Pick Random to start</div><div class="winner-name" id="winnerName">—</div></div>
+<div class="result-spin"><div class="winner-label" id="winnerLabel">Click Pick Random to start</div><div class="winner-name" id="winnerName">鈥?/div></div>
 <div class="chip-count" id="chipCount"></div>
 <div class="chip-grid" id="chipGrid"></div>
 </div>
@@ -85,6 +85,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </div>
 <div class="seo-content"><h2>About the Random Name Picker Tool</h2><p>The Random Name Picker is a free online tool that randomly selects names or items from a list you provide. Simply type or paste your list with one item per line, choose how many winners to pick, and click the button. The tool instantly displays the randomly selected item with a fun spinning animation. You can allow or prevent duplicate selections, shuffle the entire list, and reset the picker at any time. This random picker is perfect for teachers selecting students for classroom activities, contest organizers drawing giveaway winners, team captains picking members, and anyone who needs a fair, unbiased random selection. Unlike physical methods like drawing names from a hat, this online random selector ensures truly random results every time.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/number-generator.html"><div class="rc-name">Number Generator</div><div class="rc-desc">Random number gen</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create passwords</div></a><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words</div></a><a class="related-card" href="/calculator.html"><div class="rc-name">Online Calculator</div><div class="rc-desc">Basic calculator</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Random Name Picker &mdash; Free online random picker tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
 (function(){
@@ -121,7 +122,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       for(const s of selected){picked.add(s)}updateChips()},400)
   }
 
-  function resetPicks(){picked.clear();updateChips();winnerName.textContent='—';winnerLabel.textContent='Click Pick Random to start'}
+  function resetPicks(){picked.clear();updateChips();winnerName.textContent='鈥?;winnerLabel.textContent='Click Pick Random to start'}
   function shuffleAll(){const items=getItems();if(items.length<2)return;
     for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]]}
     input.value=items.join('\n');resetPicks()

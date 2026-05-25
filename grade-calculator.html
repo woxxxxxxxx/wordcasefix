@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -38,6 +38,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </div>
 <div class="seo-content"><h2>About the Grade Calculator Tool</h2><p>The Grade Calculator is a free online tool that helps students calculate their weighted grades based on assignments, exams, and projects. Simply add each assignment with its score percentage and weight, and the calculator automatically computes your overall grade. The built-in "what-if" feature lets you predict how a final exam score would affect your final grade, helping you set target scores for your goals. This weighted grade calculator is ideal for college and high school students tracking their performance throughout the semester, teachers quickly computing class grades, and parents monitoring their children's academic progress. The tool supports percentage-based grading systems and displays both your numeric grade and letter grade equivalent.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/gpa-calculator.html"><div class="rc-name">GPA Calculator</div><div class="rc-desc">Calculate GPA</div></a><a class="related-card" href="/percentage-calculator.html"><div class="rc-name">Percentage Calc</div><div class="rc-desc">Percentages</div></a><a class="related-card" href="/age-calculator.html"><div class="rc-name">Age Calculator</div><div class="rc-desc">Calculate age</div></a><a class="related-card" href="/calculator.html"><div class="rc-name">Online Calculator</div><div class="rc-desc">Basic calculator</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Grade Calculator &mdash; Free online grade calculator tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
 (function(){
@@ -77,7 +78,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     const nIn=document.createElement('input');nIn.className='e-name';nIn.placeholder='Assignment';nIn.value=name;
     const sIn=document.createElement('input');sIn.className='e-grade';sIn.type='number';sIn.placeholder='Score %';sIn.value=score;nIn.min='0';sIn.max='100';sIn.step='any';
     const wIn=document.createElement('input');wIn.className='e-weight';wIn.type='number';wIn.placeholder='Weight %';wIn.value=weight;wIn.min='0';wIn.max='100';wIn.step='any';
-    const dBtn=document.createElement('button');dBtn.className='e-del';dBtn.textContent='×';
+    const dBtn=document.createElement('button');dBtn.className='e-del';dBtn.textContent='脳';
     dBtn.addEventListener('click',function(){div.remove();calc()});
     sIn.addEventListener('input',calc);wIn.addEventListener('input',calc);
     div.appendChild(nIn);div.appendChild(sIn);div.appendChild(wIn);div.appendChild(dBtn);

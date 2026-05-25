@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* ── Controls ── */
+  /* 鈹€鈹€ Controls 鈹€鈹€ */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -72,7 +72,7 @@
   .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   .field input::placeholder { font-weight: 400; color: #bbb; }
 
-  /* ── Checkbox toggle ── */
+  /* 鈹€鈹€ Checkbox toggle 鈹€鈹€ */
   .toggle-row {
     display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
   }
@@ -85,7 +85,7 @@
   }
   .toggle-row .hint { font-size: 12px; color: #aaa; }
 
-  /* ── Buttons ── */
+  /* 鈹€鈹€ Buttons 鈹€鈹€ */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -113,7 +113,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* ── Results ── */
+  /* 鈹€鈹€ Results 鈹€鈹€ */
   .result-area { margin-top: 24px; padding-top: 24px; border-top: 1.5px solid #e8e9ed; }
 
   .numbers-grid {
@@ -237,6 +237,7 @@
 
 <div class="seo-content"><h2>About the Random Number Generator Tool</h2><p>The Random Number Generator is a free online tool that produces random numbers within a specified range. Set the minimum and maximum values, choose how many numbers to generate, and decide whether duplicates are allowed. Results display as clean chip elements for easy reading and copying. This number generator is perfect for lottery number selection, contest winners, classroom activities, game development, statistical sampling, and any scenario requiring unbiased random selection. Unlike manually picking numbers or using physical dice, this online randomizer provides instant results with complete control over the range and quantity of numbers generated.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Random Number Generator &mdash; Free online number generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
 <script>
@@ -294,7 +295,7 @@
     } else {
       const pool = [];
       for (let i = min; i <= max; i++) pool.push(i);
-      // Fisher–Yates shuffle, take first `count`
+      // Fisher鈥揧ates shuffle, take first `count`
       for (let i = pool.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -308,7 +309,7 @@
     resultContent.style.display = 'block';
 
     // Stats
-    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '–' + max + ')';
+    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '鈥? + max + ')';
 
     // Render chips
     let html = '';

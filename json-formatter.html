@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -71,7 +71,7 @@
         <button class="btn-secondary" id="copyBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button>
         <div class="indent-options"><label>Indent</label><select id="indentSize"><option value="2">2 spaces</option><option value="4" selected>4 spaces</option><option value="tab">Tab</option></select></div>
       </div>
-      <div class="input-group"><label for="jsonOutput">Formatted JSON</label><textarea id="jsonOutput" placeholder="Formatted JSON will appear here…" spellcheck="false" readonly></textarea></div>
+      <div class="input-group"><label for="jsonOutput">Formatted JSON</label><textarea id="jsonOutput" placeholder="Formatted JSON will appear here鈥? spellcheck="false" readonly></textarea></div>
       <div class="status-bar" id="statusBar"><span>Enter JSON and click <strong>Format &amp; Validate</strong>.</span></div>
     </div>
   </main>
@@ -82,6 +82,7 @@
 </div>
 <div class="seo-content"><h2>About the JSON Formatter Tool</h2><p>The JSON Formatter is a free online tool that formats, validates, and beautifies JSON data. Paste your raw or minified JSON into the input area, choose your preferred indentation level, and instantly get well-structured, readable JSON output. The tool also supports minification, converting formatted JSON back to a compact string. This JSON beautifier is essential for developers, API testers, and data analysts who work with JSON data regularly. It helps debug API responses, prepare configuration files, and make complex nested JSON structures human-readable. With syntax validation built in, you can quickly catch JSON formatting errors that might otherwise cause issues in your applications.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>JSON Formatter &mdash; Free online JSON formatter and validator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
 (function() {
@@ -108,10 +109,10 @@
       const formatted = minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, indent);
       jsonOutput.value = formatted;
       lastValid = formatted;
-      statusBar.innerHTML = '<span class="valid">✓ Valid JSON</span> — ' + raw.length + ' chars → ' + formatted.length + ' chars';
+      statusBar.innerHTML = '<span class="valid">鉁?Valid JSON</span> 鈥?' + raw.length + ' chars 鈫?' + formatted.length + ' chars';
     } catch (e) {
       jsonOutput.value = '';
-      statusBar.innerHTML = '<span class="invalid">✗ Invalid JSON</span> — ' + e.message;
+      statusBar.innerHTML = '<span class="invalid">鉁?Invalid JSON</span> 鈥?' + e.message;
     }
   }
 

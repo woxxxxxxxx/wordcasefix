@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* ── Controls ── */
+  /* 鈹€鈹€ Controls 鈹€鈹€ */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -98,7 +98,7 @@
     width: 17px; height: 17px; accent-color: #5b5bd6; cursor: pointer;
   }
 
-  /* ── Buttons ── */
+  /* 鈹€鈹€ Buttons 鈹€鈹€ */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -126,7 +126,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* ── Output ── */
+  /* 鈹€鈹€ Output 鈹€鈹€ */
   .output-area { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
   .output-label {
     display: flex; align-items: center; justify-content: space-between;
@@ -240,6 +240,7 @@
 
 <div class="seo-content"><h2>About the Lorem Ipsum Generator Tool</h2><p>The Lorem Ipsum Generator is a free online tool that creates placeholder text for design and layout projects. Choose to generate text by paragraphs, sentences, or words, and specify exactly how many units you need. The tool also offers an option to include or exclude the classic Lorem Ipsum starting text. This dummy text generator is essential for web designers, graphic designers, typographers, and developers who need realistic-looking text to fill layouts during the design phase. Instead of copying and pasting Lorem Ipsum from various sources, this placeholder text generator produces exactly the right amount of text in your preferred format, saving time and keeping your design workflow smooth.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Lorem Ipsum Generator &mdash; Free dummy text generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
 <script>
@@ -253,7 +254,7 @@
 
   let currentType = 'paragraphs';
 
-  // ── Type buttons ──
+  // 鈹€鈹€ Type buttons 鈹€鈹€
   document.querySelectorAll('.type-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
@@ -262,7 +263,7 @@
     });
   });
 
-  // ── Word pool (standard Lorem Ipsum) ──
+  // 鈹€鈹€ Word pool (standard Lorem Ipsum) 鈹€鈹€
   const WORDS = [
     'lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit',
     'sed','do','eiusmod','tempor','incididunt','ut','labore','et','dolore',
@@ -307,7 +308,7 @@
   }
 
   function generateSentence(startLorem) {
-    const len = 8 + Math.floor(Math.random() * 10); // 8–17 words
+    const len = 8 + Math.floor(Math.random() * 10); // 8鈥?7 words
     const words = [];
     if (startLorem) {
       words.push('Lorem', 'ipsum');
@@ -325,7 +326,7 @@
   }
 
   function generateParagraph(startLorem, firstPara) {
-    const sentences = 4 + Math.floor(Math.random() * 4); // 4–7 sentences
+    const sentences = 4 + Math.floor(Math.random() * 4); // 4鈥? sentences
     const parts = [];
     for (let i = 0; i < sentences; i++) {
       // Only start first sentence with "Lorem ipsum" if firstPara and requested
@@ -398,7 +399,7 @@
     wordCount.textContent = '~' + totalWords + ' words';
   }
 
-  // ── Copy ──
+  // 鈹€鈹€ Copy 鈹€鈹€
   function copyText() {
     const text = outputBox._plainText || outputBox.textContent || '';
     if (!text.trim() || text === 'Click Generate to create placeholder text.') return;
@@ -429,7 +430,7 @@
     });
   }
 
-  // ── Events ──
+  // 鈹€鈹€ Events 鈹€鈹€
   generateBtn.addEventListener('click', generate);
   copyBtn.addEventListener('click', copyText);
   document.addEventListener('keydown', function(e) {

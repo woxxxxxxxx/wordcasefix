@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -58,30 +58,30 @@
 <div class="card">
 <div class="section-title">Current Unix Time</div>
 <div class="now-row">
-<div class="now-item"><div class="ni-label">Seconds</div><div class="ni-value" id="nowSec">—</div></div>
-<div class="now-item"><div class="ni-label">Milliseconds</div><div class="ni-value" id="nowMs">—</div></div>
-<div class="now-item"><div class="ni-label">Date (UTC)</div><div class="ni-value" id="nowUtc">—</div></div>
+<div class="now-item"><div class="ni-label">Seconds</div><div class="ni-value" id="nowSec">鈥?/div></div>
+<div class="now-item"><div class="ni-label">Milliseconds</div><div class="ni-value" id="nowMs">鈥?/div></div>
+<div class="now-item"><div class="ni-label">Date (UTC)</div><div class="ni-value" id="nowUtc">鈥?/div></div>
 </div>
 </div>
 <div class="card">
-<div class="section-title">Timestamp → Date</div>
+<div class="section-title">Timestamp 鈫?Date</div>
 <div class="field"><label for="tsInput">Unix Timestamp</label><input type="text" id="tsInput" placeholder="e.g. 1716518400"></div>
 <div class="btn-row">
 <button class="btn-primary" id="tsToDateBtn">Convert to Date</button>
 <button class="btn-secondary" id="tsNowBtn">Use Current Time</button>
 </div>
-<div class="result-card"><div class="rc-label">Date (UTC)</div><div class="rc-value" id="tsResultUtc">—</div></div>
-<div class="result-card"><div class="rc-label">Date (Local)</div><div class="rc-value" id="tsResultLocal">—</div></div>
+<div class="result-card"><div class="rc-label">Date (UTC)</div><div class="rc-value" id="tsResultUtc">鈥?/div></div>
+<div class="result-card"><div class="rc-label">Date (Local)</div><div class="rc-value" id="tsResultLocal">鈥?/div></div>
 </div>
 <div class="card">
-<div class="section-title">Date → Timestamp</div>
+<div class="section-title">Date 鈫?Timestamp</div>
 <div class="field"><label for="dateInput">Date &amp; Time</label><input type="datetime-local" id="dateInput"></div>
 <div class="btn-row">
 <button class="btn-primary" id="dateToTsBtn">Convert to Timestamp</button>
 <button class="btn-secondary" id="dateNowBtn">Use Current Time</button>
 <button class="btn-secondary" id="copyTsBtn">Copy Timestamp</button>
 </div>
-<div class="result-card"><div class="rc-label">Unix Timestamp (Seconds)</div><div class="rc-value" id="tsOutput">—</div></div>
+<div class="result-card"><div class="rc-label">Unix Timestamp (Seconds)</div><div class="rc-value" id="tsOutput">鈥?/div></div>
 </div>
 </main>
 <aside class="sidebar">
@@ -91,6 +91,7 @@
 </div>
 <div class="seo-content"><h2>About the Unix Timestamp Converter Tool</h2><p>The Unix Timestamp Converter is a free online tool that converts between Unix timestamps and human-readable dates and times. It features a live display of the current Unix time in both seconds and milliseconds, updating every second. Convert any timestamp to its corresponding UTC and local date, or use the date picker to generate a Unix timestamp from a specific date and time. This epoch converter is essential for developers working with databases, APIs, log files, and systems that store time as Unix timestamps. System administrators, backend developers, and data analysts frequently need to translate between timestamp formats for debugging, data analysis, and configuration tasks.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Unix Timestamp Converter &mdash; Free epoch timestamp converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
 (function(){
@@ -125,7 +126,7 @@
   });
 
   copyTsBtn.addEventListener('click',function(){
-    const text=tsOutput.textContent;if(!text||text==='—'||text==='Invalid date'||text==='Select a date/time')return;
+    const text=tsOutput.textContent;if(!text||text==='鈥?||text==='Invalid date'||text==='Select a date/time')return;
     navigator.clipboard.writeText(text).then(function(){copyTsBtn.innerHTML='Copied!';copyTsBtn.classList.add('copied');setTimeout(function(){copyTsBtn.innerHTML='Copy Timestamp';copyTsBtn.classList.remove('copied')},1800)})
   });
 

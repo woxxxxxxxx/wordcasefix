@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* ── Input ── */
+  /* 鈹€鈹€ Input 鈹€鈹€ */
   .input-group { margin-bottom: 16px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -67,7 +67,7 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* ── Options ── */
+  /* 鈹€鈹€ Options 鈹€鈹€ */
   .options-row {
     display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;
   }
@@ -98,7 +98,7 @@
     width: 17px; height: 17px; accent-color: #5b5bd6; cursor: pointer;
   }
 
-  /* ── Output ── */
+  /* 鈹€鈹€ Output 鈹€鈹€ */
   .output-area { margin-top: 18px; padding-top: 18px; border-top: 1.5px solid #e8e9ed; }
   .output-label {
     font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px;
@@ -174,7 +174,7 @@
 
       <div class="input-group">
         <label for="inputText">Text to convert</label>
-        <textarea id="inputText" placeholder="Type or paste any text — including Chinese, symbols, etc." spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="Type or paste any text 鈥?including Chinese, symbols, etc." spellcheck="false"></textarea>
       </div>
 
       <div class="options-row">
@@ -193,7 +193,7 @@
       <div class="output-area">
         <div class="output-label">Slug</div>
         <div class="output-wrap">
-          <div class="output-box empty" id="outputBox">Your slug will appear here…</div>
+          <div class="output-box empty" id="outputBox">Your slug will appear here鈥?/div>
           <button class="btn-copy" id="copyBtn">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             Copy
@@ -217,6 +217,7 @@
 
 <div class="seo-content"><h2>About the Slug Converter Tool</h2><p>The Slug Converter is a free online tool that transforms any text into clean, URL-friendly slugs suitable for web addresses. Enter your text and instantly get a properly formatted slug with options for hyphen or underscore separators. The tool includes a live URL preview so you can see exactly how the slug will look in a complete URL. This URL slug generator supports Chinese characters and other Unicode text, making it useful for multilingual websites and international SEO. Web developers, content managers, and SEO specialists use this slug converter to create optimized URLs for blog posts, product pages, and articles, ensuring web addresses are clean, readable, and search-engine friendly.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text to Slug Converter &mdash; Free online URL slug generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
 <script>
@@ -230,7 +231,7 @@
   let currentSlug = '';
   let separator = '-';
 
-  // ── Separator buttons ──
+  // 鈹€鈹€ Separator buttons 鈹€鈹€
   document.querySelectorAll('.sep-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.sep-btn').forEach(b => b.classList.remove('active'));
@@ -240,12 +241,12 @@
     });
   });
 
-  // ── Slug conversion ──
+  // 鈹€鈹€ Slug conversion 鈹€鈹€
   function convert() {
     const text = inputText.value;
 
     if (!text.trim()) {
-      outputBox.textContent = 'Your slug will appear here…';
+      outputBox.textContent = 'Your slug will appear here鈥?;
       outputBox.className = 'output-box empty';
       urlPreview.textContent = '/your-slug-here';
       currentSlug = '';
@@ -254,11 +255,11 @@
 
     const keepDigits = chkDigits.checked;
 
-    // 1. Normalize Unicode (NFD decomposes accented chars like é → e + combining)
+    // 1. Normalize Unicode (NFD decomposes accented chars like 茅 鈫?e + combining)
     let slug = text.normalize('NFD');
 
     // 2. Remove combining diacritical marks
-    slug = slug.replace(/[̀-ͯ]/g, '');
+    slug = slug.replace(/[虁-童]/g, '');
 
     // 3. Remove or replace unwanted characters
     // Keep: a-z, A-Z, digits (optional), hyphen, underscore, spaces
@@ -299,7 +300,7 @@
     urlPreview.textContent = '/' + slug;
   }
 
-  // ── Copy ──
+  // 鈹€鈹€ Copy 鈹€鈹€
   function copySlug() {
     if (!currentSlug) return;
     navigator.clipboard.writeText(currentSlug).then(() => {
@@ -328,7 +329,7 @@
     });
   }
 
-  // ── Events ──
+  // 鈹€鈹€ Events 鈹€鈹€
   inputText.addEventListener('input', convert);
   chkDigits.addEventListener('change', convert);
 
