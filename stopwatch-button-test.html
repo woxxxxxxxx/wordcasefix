@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Stopwatch Button Test</title>  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<button id="startBtn">Start</button>
+<button id="stopBtn" disabled>Stop</button>
+<button id="lapBtn" disabled>Lap</button>
+<button id="resetBtn">Reset</button>
+<div id="timerDisplay">00:00:00<span class="ms">.00</span></div>
+<div id="lapsList"></div>
+<div id="lapCount">0 laps</div>
+<script>
+(function(){
+  var timerDisplay = document.getElementById('timerDisplay');
+  var startBtn = document.getElementById('startBtn');
+  var stopBtn = document.getElementById('stopBtn');
+  var lapBtn = document.getElementById('lapBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var lapsList = document.getElementById('lapsList');
+  var lapCount = document.getElementById('lapCount');
+  var startTime = 0, elapsed = 0, running = false, timerInterval = null;
+  var laps = [], lastLapTime = 0;
+
+  function formatTime(ms){
+    var totalMs = Math.floor(ms);
+    var minutes = Math.floor(totalMs / 60000);
+    var seconds = Math.floor((totalMs % 60000) / 1000);
+    var centiseconds = Math.floor((totalMs % 1000) / 10);
+    return String(minutes).padStart(2,'0') + ':' + String(seconds).padStart(2,'0') + '.<span class="ms">' + String(centiseconds).padStart(2,'0') + '</span>';
+  }
+
+  function updateDisplay(){
+    var now = Date.now();
+    var diff = elapsed + (running ? now - startTime : 0);
+    timerDisplay.innerHTML = formatTime(diff);
+    return diff;
+  }
+
+  function tick(){ updateDisplay(); }
+
+  function start(){
+    if(running) return;
+    running = true;
+    startTime = Date.now();
+    timerInterval = setInterval(tick, 20);
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+    lapBtn.disabled = false;
+    window.__test_started = true;
+    window.__test_running = running;
+    window.__test_startTime = startTime;
+  }
+
+  function stop(){
+    if(!running) return;
+    running = false;
+    elapsed += Date.now() - startTime;
+    clearInterval(timerInterval);
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    lapBtn.disabled = true;
+    window.__test_stopped = true;
+    window.__test_running = running;
+  }
+
+  function reset(){
+    running = false;
+    clearInterval(timerInterval);
+    elapsed = 0;
+    startTime = 0;
+    lastLapTime = 0;
+    laps = [];
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    lapBtn.disabled = true;
+    timerDisplay.innerHTML = formatTime(0);
+    renderLaps();
+    window.__test_reset = true;
+  }
+
+  function recordLap(){
+    if(!running) return;
+    var now = Date.now();
+    var totalElapsed = elapsed + (now - startTime);
+    var lapElapsed = laps.length === 0 ? totalElapsed : totalElapsed - lastLapTime;
+    laps.push({ total: totalElapsed, diff: lapElapsed });
+    lastLapTime = totalElapsed;
+    renderLaps();
+  }
+
+  function renderLaps(){
+    if(laps.length === 0){
+      lapsList.innerHTML = '<div>No laps recorded yet.</div>';
+      lapCount.textContent = '0 laps';
+      return;
+    }
+    var diffTimes = laps.map(function(l){ return l.diff; });
+    var best = Math.min.apply(null, diffTimes);
+    var worst = Math.max.apply(null, diffTimes);
+    var html = '';
+    for(var i = laps.length - 1; i >= 0; i--){
+      var l = laps[i];
+      var cls = l.diff === best && laps.length > 1 ? ' best' : l.diff === worst && laps.length > 1 ? ' worst' : '';
+      html += '<div>' + (i+1) + '</div>';
+    }
+    lapsList.innerHTML = html;
+    lapCount.textContent = laps.length + ' lap' + (laps.length !== 1 ? 's' : '');
+  }
+
+  startBtn.addEventListener('click', start);
+  stopBtn.addEventListener('click', stop);
+  resetBtn.addEventListener('click', reset);
+  lapBtn.addEventListener('click', recordLap);
+  
+  // Record initialization
+  window.__test_init = true;
+  window.__test_startBtn = !!startBtn;
+  window.__test_stopBtn = !!stopBtn;
+  window.__test_lapBtn = !!lapBtn;
+  window.__test_resetBtn = !!resetBtn;
+  window.__test_listeners = typeof start === 'function' && typeof stop === 'function' && 
+                            typeof reset === 'function' && typeof recordLap === 'function';
+  
+  // Simulate clicks
+  setTimeout(function() {
+    window.__test_phase = 'clicking_start';
+    startBtn.click();
+    
+    setTimeout(function() {
+      window.__test_phase = 'clicked_start';
+      
+      stopBtn.click();
+      
+      setTimeout(function() {
+        window.__test_phase = 'clicked_stop';
+        
+        resetBtn.click();
+        
+        setTimeout(function() {
+          window.__test_phase = 'done';
+          // Dump results
+          document.title = 'TEST: init=' + window.__test_init + 
+            ' btns=' + window.__test_startBtn + window.__test_stopBtn + window.__test_lapBtn + window.__test_resetBtn +
+            ' listeners=' + window.__test_listeners +
+            ' started=' + window.__test_started +
+            ' stopped=' + window.__test_stopped +
+            ' reset=' + window.__test_reset +
+            ' phase=' + window.__test_phase;
+        }, 50);
+      }, 50);
+    }, 50);
+  }, 100);
+})();
+</script>
+</body>
+</html>

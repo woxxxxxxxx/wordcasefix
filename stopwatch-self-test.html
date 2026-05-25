@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>SW_TEST_INIT</title>  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<button id="startBtn">Start</button>
+<button id="stopBtn" disabled>Stop</button>
+<button id="lapBtn" disabled>Lap</button>
+<button id="resetBtn">Reset</button>
+<div id="timerDisplay">00:00:00<span class="ms">.00</span></div>
+<div id="lapsList"></div>
+<div id="lapCount">0 laps</div>
+
+<script>
+// EXACT stopwatch JS (copied from stopwatch.html)
+(function(){
+  var timerDisplay = document.getElementById('timerDisplay');
+  var startBtn = document.getElementById('startBtn');
+  var stopBtn = document.getElementById('stopBtn');
+  var lapBtn = document.getElementById('lapBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var lapsList = document.getElementById('lapsList');
+  var lapCount = document.getElementById('lapCount');
+  var startTime = 0, elapsed = 0, running = false, timerInterval = null;
+  var laps = [], lastLapTime = 0;
+
+  function formatTime(ms){
+    var totalMs = Math.floor(ms);
+    var minutes = Math.floor(totalMs / 60000);
+    var seconds = Math.floor((totalMs % 60000) / 1000);
+    var centiseconds = Math.floor((totalMs % 1000) / 10);
+    return String(minutes).padStart(2,'0') + ':' + String(seconds).padStart(2,'0') + '.<span class="ms">' + String(centiseconds).padStart(2,'0') + '</span>';
+  }
+
+  function updateDisplay(){
+    var now = Date.now();
+    var diff = elapsed + (running ? now - startTime : 0);
+    timerDisplay.innerHTML = formatTime(diff);
+    return diff;
+  }
+
+  function tick(){ updateDisplay(); }
+
+  function start(){
+    if(running) return;
+    running = true;
+    startTime = Date.now();
+    timerInterval = setInterval(tick, 20);
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+    lapBtn.disabled = false;
+    timerDisplay.classList.add('running');
+  }
+
+  function stop(){
+    if(!running) return;
+    running = false;
+    elapsed += Date.now() - startTime;
+    clearInterval(timerInterval);
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    lapBtn.disabled = true;
+    timerDisplay.classList.remove('running');
+    updateDisplay();
+  }
+
+  function reset(){
+    running = false;
+    clearInterval(timerInterval);
+    elapsed = 0;
+    startTime = 0;
+    lastLapTime = 0;
+    laps = [];
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    lapBtn.disabled = true;
+    timerDisplay.classList.remove('running');
+    timerDisplay.innerHTML = formatTime(0);
+    renderLaps();
+  }
+
+  function recordLap(){
+    if(!running) return;
+    var now = Date.now();
+    var totalElapsed = elapsed + (now - startTime);
+    var lapElapsed = laps.length === 0 ? totalElapsed : totalElapsed - lastLapTime;
+    laps.push({ total: totalElapsed, diff: lapElapsed });
+    lastLapTime = totalElapsed;
+    renderLaps();
+  }
+
+  function renderLaps(){
+    if(laps.length === 0){
+      lapsList.innerHTML = '<div class="empty-laps">No laps recorded yet.</div>';
+      lapCount.textContent = '0 laps';
+      return;
+    }
+    var diffTimes = laps.map(function(l){ return l.diff; });
+    var best = Math.min.apply(null, diffTimes);
+    var worst = Math.max.apply(null, diffTimes);
+    var html = '';
+    for(var i = laps.length - 1; i >= 0; i--){
+      var l = laps[i];
+      var cls = l.diff === best && laps.length > 1 ? ' best' : l.diff === worst && laps.length > 1 ? ' worst' : '';
+      html += '<div class="lap-item' + cls + '">' +
+        '<span class="lap-num">Lap ' + (i + 1) + '</span>' +
+        '<span class="lap-time">' + formatTime(l.total).replace(/<[^>]*>/g,'') + '</span>' +
+        '<span class="lap-diff">+' + formatTime(l.diff).replace(/<[^>]*>/g,'') + '</span>' +
+        '</div>';
+    }
+    lapsList.innerHTML = html;
+    lapCount.textContent = laps.length + ' lap' + (laps.length !== 1 ? 's' : '');
+  }
+
+  startBtn.addEventListener('click', start);
+  stopBtn.addEventListener('click', stop);
+  resetBtn.addEventListener('click', reset);
+  lapBtn.addEventListener('click', recordLap);
+
+  document.addEventListener('keydown', function(e){
+    if(e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+    if(e.key === ' ' || e.key === 's'){
+      e.preventDefault();
+      running ? stop() : start();
+    }
+    if(e.key === 'l'){
+      e.preventDefault();
+      recordLap();
+    }
+    if(e.key === 'r'){
+        e.preventDefault();
+      reset();
+    }
+  });
+  
+  // === TEST HARNESS ===
+  var t = [];
+  t.push('init=' + (typeof startBtn !== 'undefined' && startBtn !== null));
+  t.push('startBtn=' + (startBtn.id || 'null'));
+  t.push('stopBtn=' + (stopBtn.id || 'null'));
+  t.push('lapBtn=' + (lapBtn.id || 'null'));
+  t.push('resetBtn=' + (resetBtn.id || 'null'));
+  t.push('running=' + running);
+  t.push('listeners_bound=1');
+  t.push('formatTime_0=' + formatTime(0));
+  t.push('formatTime_1000=' + formatTime(1000));
+  
+  // Simulate click Start
+  startBtn.click();
+  t.push('after_start_running=' + running);
+  t.push('after_start_startDisabled=' + startBtn.disabled);
+  t.push('after_start_stopDisabled=' + stopBtn.disabled);
+  t.push('after_start_lapDisabled=' + lapBtn.disabled);
+  
+  // Simulate click Stop
+  stopBtn.click();
+  t.push('after_stop_running=' + running);
+  t.push('after_stop_startDisabled=' + startBtn.disabled);
+  
+  // Simulate click Start again + Lap
+  startBtn.click();
+  recordLap();
+  t.push('after_lap_laps=' + laps.length);
+  
+  // Reset
+  resetBtn.click();
+  t.push('after_reset_running=' + running);
+  t.push('after_reset_elapsed=' + elapsed);
+  t.push('after_reset_laps=' + laps.length);
+  t.push('after_reset_display=' + timerDisplay.innerHTML.replace(/<[^>]*>/g,''));
+  
+  // Set title with results
+  document.title = 'SW_RESULT: ' + t.join(' | ');
+})();
+</script>
+</body>
+</html>
