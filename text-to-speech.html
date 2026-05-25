@@ -64,7 +64,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <header><h1>Text to Speech</h1><p>Convert any text to speech and listen with natural-sounding voices directly in your browser.</p></header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
-<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear鈥? spellcheck="true" rows="5"></textarea></div>
+<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear..." spellcheck="true" rows="5"></textarea></div>
 <div class="sample-btns">
 <span class="sample-btn" data-sample="Hello! Welcome to Text to Speech. This is a free online tool that reads your text aloud.">Hello</span>
 <span class="sample-btn" data-sample="The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.">Quick Brown Fox</span>
@@ -127,7 +127,17 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     }
     for (var ei = 0; ei < enOpts.length; ei++) voiceSelect.appendChild(enOpts[ei]);
     for (var oi = 0; oi < otherOpts.length; oi++) voiceSelect.appendChild(otherOpts[oi]);
-    if (voiceSelect.options.length > 0) voiceSelect.selectedIndex = 0;
+    if (voiceSelect.options.length > 0) {
+      var foundEn = false;
+      for (var sci = 0; sci < voiceSelect.options.length; sci++) {
+        if (voiceSelect.options[sci].text.indexOf('(en') !== -1) {
+          voiceSelect.selectedIndex = sci;
+          foundEn = true;
+          break;
+        }
+      }
+      if (!foundEn) voiceSelect.selectedIndex = 0;
+    }
   }
 
   populateVoices();
