@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 閳光偓閳光偓 Inputs 閳光偓閳光偓 */
+  /* In */
   .input-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -79,7 +79,7 @@
     font-size: 14px; font-weight: 600; color: #999; pointer-events: none;
   }
 
-  /* 閳光偓閳光偓 Summary cards 閳光偓閳光偓 */
+  /* Su */
   .summary-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -104,7 +104,7 @@
     font-size: 12px; color: #999; margin-top: 2px;
   }
 
-  /* 閳光偓閳光偓 Table 閳光偓閳光偓 */
+  /* Ta */
   .table-wrap { overflow-x: auto; }
   .section-title {
     font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px;
@@ -144,7 +144,7 @@
 
   footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
 
-  /* 閳光偓閳光偓 Responsive 閳光偓閳光偓 */
+  /* Re */
   @media (max-width: 820px) {
     .sidebar { display: none; }
     .main-area { padding: 20px 16px 36px; }
@@ -164,10 +164,10 @@
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "WebApplication",
   "name": "Loan Calculator",
-  "url": "https://wordcasefix.com/loan-calculator.html",
+  "url": "https:// wo
   "description": "Loan Calculator - Free online tool at WordCaseFix",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Any",
@@ -175,10 +175,10 @@
 }
 </script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://wordcasefix.com/loan-calculator.html">
+  <link rel="canonical" href="https:// wo
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -248,17 +248,14 @@
       <div class="summary-grid" id="summaryGrid">
         <div class="summary-card">
           <div class="sum-label">Monthly Payment</div>
-          <div class="sum-value" id="monthlyPayment">$閳?/div>
-        </div>
+          <div class="sum-value" id="monthlyPayment">$--</div>
         <div class="summary-card">
           <div class="sum-label">Total Repayment</div>
-          <div class="sum-value" id="totalRepayment">$閳?/div>
-          <div class="sum-sub" id="totalInterest">Interest: $閳?/div>
+          <div class="sum-value" id="totalRepayment">$--<div class="sum-sub" id="totalInterest">Interest: $--</div>
         </div>
         <div class="summary-card">
           <div class="sum-label">Total Interest</div>
-          <div class="sum-value" id="totalInterestOnly">$閳?/div>
-        </div>
+          <div class="sum-value" id="totalInterestOnly">$--</div>
       </div>
 
       <div class="section-title">Amortization Schedule</div>
@@ -338,16 +335,16 @@
     const n = parseInt(loanTerm.value, 10);
 
     if (isNaN(P) || isNaN(rAnnual) || isNaN(n) || P <= 0 || rAnnual < 0 || n <= 0) {
-      monthlyPayment.textContent = '$閳?;
-      totalRepayment.textContent = '$閳?;
-      totalInterest.textContent = 'Interest: $閳?;
-      totalInterestOnly.textContent = '$閳?;
+      monthlyPayment.textContent = '$--';
+      totalRepayment.textContent = '$--';
+      totalInterest.textContent = 'Interest: $--';
+      totalInterestOnly.textContent = '$--';
       tableBody.innerHTML = '<tr><td colspan="5" class="table-empty">Enter valid values to see the schedule.</td></tr>';
       showMoreWrap.style.display = 'none';
       return;
     }
 
-    const r = rAnnual / 100 / 12;  // monthly interest rate
+    const r = rAnnual / 100 / 12;  // mo
 
     let pmt;
     if (r === 0) {
@@ -364,7 +361,7 @@
     totalInterest.textContent = 'Interest: ' + fmt(totalInt);
     totalInterestOnly.textContent = fmt(totalInt);
 
-    // 閳光偓閳光偓 Build amortization rows 閳光偓閳光偓
+    // Bu
     const showRows = showAll ? n : Math.min(12, n);
     let balance = P;
     let rows = [];
@@ -373,7 +370,7 @@
       const interest = balance * r;
       const principal = pmt - interest;
       balance -= principal;
-      if (balance < 0.01) balance = 0;  // avoid floating point noise
+      if (balance < 0.01) balance = 0;  // av
 
       rows.push({
         num: i,
@@ -384,7 +381,7 @@
       });
     }
 
-    // Render only requested rows
+    // Re
     let html = '';
     for (let i = 0; i < showRows; i++) {
       const row = rows[i];
@@ -398,7 +395,7 @@
     }
     tableBody.innerHTML = html;
 
-    // Show "Show more" button if term > 12
+    // Sh
     if (n > 12) {
       showMoreWrap.style.display = 'block';
       showMoreBtn.textContent = showAll ? 'Show First 12 Months' : 'Show Full Schedule (' + n + ' months)';
@@ -407,10 +404,10 @@
     }
   }
 
-  // 閳光偓閳光偓 Events 閳光偓閳光偓
+  // Ev
   [loanAmount, interestRate, loanTerm].forEach(el => {
     el.addEventListener('input', function() {
-      showAll = false;  // reset on input change
+      showAll = false;  // re
       calculate();
     });
   });
@@ -420,7 +417,7 @@
     calculate();
   });
 
-  // Initial calc
+  // In
   calculate();
 })();
 </script>

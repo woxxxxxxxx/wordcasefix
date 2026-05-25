@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 閳光偓閳光偓 Controls 閳光偓閳光偓 */
+  /* Co */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -98,7 +98,7 @@
     width: 17px; height: 17px; accent-color: #5b5bd6; cursor: pointer;
   }
 
-  /* 閳光偓閳光偓 Buttons 閳光偓閳光偓 */
+  /* Bu */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -126,7 +126,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 閳光偓閳光偓 Output 閳光偓閳光偓 */
+  /* Ou */
   .output-area { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
   .output-label {
     display: flex; align-items: center; justify-content: space-between;
@@ -172,10 +172,10 @@
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "WebApplication",
   "name": "Lorem Ipsum Generator",
-  "url": "https://wordcasefix.com/lorem-ipsum.html",
+  "url": "https:// wo
   "description": "Lorem Ipsum Generator - Free online tool at WordCaseFix",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any",
@@ -183,10 +183,10 @@
 }
 </script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://wordcasefix.com/lorem-ipsum.html">
+  <link rel="canonical" href="https:// wo
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -318,7 +318,7 @@
 
   let currentType = 'paragraphs';
 
-  // 閳光偓閳光偓 Type buttons 閳光偓閳光偓
+  // Ty
   document.querySelectorAll('.type-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
@@ -327,7 +327,7 @@
     });
   });
 
-  // 閳光偓閳光偓 Word pool (standard Lorem Ipsum) 閳光偓閳光偓
+  // Wo
   const WORDS = [
     'lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit',
     'sed','do','eiusmod','tempor','incididunt','ut','labore','et','dolore',
@@ -372,7 +372,7 @@
   }
 
   function generateSentence(startLorem) {
-    const len = 8 + Math.floor(Math.random() * 10); // 8-17 words
+    const len = 8 + Math.floor(Math.random() * 10); // wo
     const words = [];
     if (startLorem) {
       words.push('Lorem', 'ipsum');
@@ -390,10 +390,10 @@
   }
 
   function generateParagraph(startLorem, firstPara) {
-    const sentences = 4 + Math.floor(Math.random() * 4); // 4-7 sentences
+    const sentences = 4 + Math.floor(Math.random() * 4); // se
     const parts = [];
     for (let i = 0; i < sentences; i++) {
-      // Only start first sentence with "Lorem ipsum" if firstPara and requested
+      // On
       parts.push(generateSentence(firstPara && i === 0 && startLorem));
     }
     return parts.join(' ');
@@ -432,7 +432,7 @@
       }
       html = '<p>' + sentences.join(' ') + '</p>';
       plainText = sentences.join(' ');
-    } else { // words
+    } else { // wo
       const words = [];
       for (let i = 0; i < finalCount; i++) {
         let w;
@@ -448,9 +448,9 @@
       totalWords = words.length;
       const text = words.join(' ');
       html = '<p>' + text + '</p>';
-      // Capitalize first word
+      // Ca
       html = '<p>' + text.charAt(0).toUpperCase() + text.slice(1) + '.</p>';
-      // Actually for words output, just the words
+      // Ac
       const capitalized = words.map((w, idx) => idx === 0 && startLorem ? 'Lorem' : w);
       capitalized[0] = capitalized[0].charAt(0).toUpperCase() + capitalized[0].slice(1);
       const finalText = capitalized.join(' ') + '.';
@@ -463,7 +463,7 @@
     wordCount.textContent = '~' + totalWords + ' words';
   }
 
-  // 閳光偓閳光偓 Copy 閳光偓閳光偓
+  // Co
   function copyText() {
     const text = outputBox._plainText || outputBox.textContent || '';
     if (!text.trim() || text === 'Click Generate to create placeholder text.') return;
@@ -494,14 +494,14 @@
     });
   }
 
-  // 閳光偓閳光偓 Events 閳光偓閳光偓
+  // Ev
   generateBtn.addEventListener('click', generate);
   copyBtn.addEventListener('click', copyText);
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') generate();
   });
 
-  // Initial
+  // In
   generate();
 })();
 </script>

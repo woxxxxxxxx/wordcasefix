@@ -20,17 +20,17 @@
     flex-direction: column;
   }
 
-  /* 閳光偓閳光偓 Layout 閳光偓閳光偓 */
+  /* La */
   .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
   .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
   .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
 
-  /* 閳光偓閳光偓 Header 閳光偓閳光偓 */
+  /* He */
   header { text-align: center; margin-bottom: 16px; }
   header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
   header p { color: #555; font-size: 15px; margin-top: 4px; }
 
-  /* 閳光偓閳光偓 Ad slots 閳光偓閳光偓 */
+  /* Ad */
   .ad-slot {
     position: relative;
     background: #e8e9ed;
@@ -46,7 +46,7 @@
   .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
   .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
 
-  /* 閳光偓閳光偓 Card 閳光偓閳光偓 */
+  /* Ca */
   .card {
     background: #fff;
     border-radius: 12px;
@@ -54,7 +54,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 閳光偓閳光偓 Input 閳光偓閳光偓 */
+  /* In */
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -72,11 +72,11 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* 閳光偓閳光偓 Stats bar (char counter only) 閳光偓閳光偓 */
+  /* St */
   .stats-bar { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .char-count { font-size: 13px; color: #888; }
 
-  /* 閳光偓閳光偓 Stat grid 閳光偓閳光偓 */
+  /* St */
   .stat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -111,10 +111,10 @@
     margin-top: 2px;
   }
 
-  /* 閳光偓閳光偓 Footer 閳光偓閳光偓 */
+  /* Fo */
   footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
 
-  /* 閳光偓閳光偓 Responsive 閳光偓閳光偓 */
+  /* Re */
   @media (max-width: 820px) {
     .sidebar { display: none; }
     .main-area { padding: 20px 16px 36px; }
@@ -134,10 +134,10 @@
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "WebApplication",
   "name": "Word Counter",
-  "url": "https://wordcasefix.com/word-counter.html",
+  "url": "https:// wo
   "description": "Word Counter - Free online tool at WordCaseFix",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any",
@@ -145,10 +145,10 @@
 }
 </script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://wordcasefix.com/word-counter.html">
+  <link rel="canonical" href="https:// wo
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -182,7 +182,7 @@
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
 
-<!-- 閳光偓閳光偓閳光偓閳光偓 Ad: Top 閳光偓閳光偓閳光偓閳光偓 -->
+<!-- Ad -->
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 
 <div class="page-wrap">
@@ -194,13 +194,13 @@
       <p>Type or paste your text to see real-time word and character counts.</p>
     </header>
 
-    <!-- 閳光偓閳光偓閳光偓閳光偓 Ad: Top (in-content) 閳光偓閳光偓閳光偓閳光偓 -->
+    <!-- Ad -->
     <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 
     <div class="card">
       <div class="input-group">
         <label for="inputText">Your text</label>
-        <textarea id="inputText" placeholder="Paste or type your text here閳? spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="..."false"></textarea>
       </div>
 
       <div class="stats-bar">
@@ -239,7 +239,7 @@
 
   </main>
 
-  <!-- 閳光偓閳光偓閳光偓閳光偓 Sidebar 閳光偓閳光偓閳光偓閳光偓 -->
+  <!-- Si -->
   <aside class="sidebar">
     <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
     <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
@@ -281,35 +281,35 @@
     const text = input.value;
     const len = text.length;
 
-    // Character count in bar
+    // Ch
     charCount.textContent = len + ' character' + (len !== 1 ? 's' : '');
 
-    // Words
+    // Wo
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
     statWords.textContent = words.toLocaleString();
 
-    // Characters with spaces
+    // Ch
     statCharsWith.textContent = len.toLocaleString();
 
-    // Characters without spaces
+    // Ch
     const noSpaces = text.replace(/\s/g, '').length;
     statCharsWithout.textContent = noSpaces.toLocaleString();
 
-    // Sentences 閳?split by sentence-ending punctuation followed by space or end
+    // Se
     const sentences = text.trim()
       ? text.split(/[.!?]+(?:\s+|$)/).filter(s => s.trim().length > 0).length
       : 0;
     statSentences.textContent = sentences.toLocaleString();
 
-    // Paragraphs 閳?split by two or more newlines
+    // Pa
     const paragraphs = text.trim()
       ? text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length
       : 0;
-    // Also count single-line as a paragraph if no double breaks
+    // Al
     const paraFinal = paragraphs === 0 && text.trim() ? 1 : paragraphs;
     statParagraphs.textContent = paraFinal.toLocaleString();
 
-    // Reading Time 閳?200 words per minute
+    // Re
     if (words === 0) {
       statReading.textContent = '0 min';
     } else {
@@ -331,7 +331,7 @@
 
   input.addEventListener('input', updateStats);
 
-  // Run once on load so the initial state is correct
+  // Ru
   updateStats();
 })();
 </script>

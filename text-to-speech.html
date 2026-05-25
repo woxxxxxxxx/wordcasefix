@@ -58,10 +58,10 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "WebApplication",
   "name": "Text to Speech",
-  "url": "https://wordcasefix.com/text-to-speech.html",
+  "url": "https:// wo
   "description": "Text to Speech - Free online tool at WordCaseFix",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any",
@@ -69,10 +69,10 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 }
 </script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://wordcasefix.com/text-to-speech.html">
+  <link rel="canonical" href="https:// wo
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -136,7 +136,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
 </aside>
 </div>
-<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server 闁?your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
+<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server  -- your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
 <section class="faq-section">
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -207,7 +207,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   if (window.speechSynthesis.onvoiceschanged !== undefined) {
     window.speechSynthesis.onvoiceschanged = populateVoices;
   } else {
-    // Fallback: some browsers need a one-shot override
+    // Fa
     var orig = window.speechSynthesis.onvoiceschanged;
     window.speechSynthesis.onvoiceschanged = function() {
       populateVoices();
@@ -235,7 +235,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     utterance.rate = parseFloat(rateRange.value);
     utterance.pitch = parseFloat(pitchRange.value);
     utterance.onstart = function() {
-      statusBox.textContent = 'Speaking閳?;
+      statusBox.textContent = 'Speaking?;
       statusBox.className = 'status-box speaking';
       speakBtn.disabled = true;
       pauseBtn.disabled = false;
@@ -263,7 +263,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       pauseBtn.textContent = 'Resume';
     };
     utterance.onresume = function() {
-      statusBox.textContent = 'Speaking閳?;
+      statusBox.textContent = 'Speaking?;
       statusBox.className = 'status-box speaking';
       pauseBtn.textContent = 'Pause';
     };

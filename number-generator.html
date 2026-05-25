@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 閳光偓閳光偓 Controls 閳光偓閳光偓 */
+  /* Co */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -72,7 +72,7 @@
   .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   .field input::placeholder { font-weight: 400; color: #bbb; }
 
-  /* 閳光偓閳光偓 Checkbox toggle 閳光偓閳光偓 */
+  /* Ch */
   .toggle-row {
     display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
   }
@@ -85,7 +85,7 @@
   }
   .toggle-row .hint { font-size: 12px; color: #aaa; }
 
-  /* 閳光偓閳光偓 Buttons 閳光偓閳光偓 */
+  /* Bu */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -113,7 +113,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 閳光偓閳光偓 Results 閳光偓閳光偓 */
+  /* Re */
   .result-area { margin-top: 24px; padding-top: 24px; border-top: 1.5px solid #e8e9ed; }
 
   .numbers-grid {
@@ -164,10 +164,10 @@
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "WebApplication",
   "name": "Random Number Generator",
-  "url": "https://wordcasefix.com/number-generator.html",
+  "url": "https:// wo
   "description": "Random Number Generator - Free online tool at WordCaseFix",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
@@ -175,10 +175,10 @@
 }
 </script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://wordcasefix.com/number-generator.html">
+  <link rel="canonical" href="https:// wo
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -320,7 +320,7 @@
   let currentNumbers = [];
 
   function randomInt(min, max) {
-    // inclusive of both min and max
+    // in
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
@@ -348,7 +348,7 @@
 
     const range = max - min + 1;
     if (!allowDupes.checked && count > range) {
-      count = range;  // can't generate more unique numbers than the range
+      count = range;  // ca
     }
 
     const numbers = [];
@@ -359,7 +359,7 @@
     } else {
       const pool = [];
       for (let i = min; i <= max; i++) pool.push(i);
-      // Fisher-Yatesates shuffle, take first `count`
+      // Fi
       for (let i = pool.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -372,10 +372,10 @@
     emptyState.style.display = 'none';
     resultContent.style.display = 'block';
 
-    // Stats
-    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '閳? + max + ')';
+    // St
+    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '--')';
 
-    // Render chips
+    // Re
     let html = '';
     for (const n of numbers) {
       html += '<div class="number-chip">' + n + '</div>';
@@ -422,7 +422,7 @@
     }
   });
 
-  // Initial generation
+  // In
   generate();
 })();
 </script>

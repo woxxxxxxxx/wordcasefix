@@ -12,7 +12,7 @@
 <div id="lapCount">0 laps</div>
 
 <script>
-// EXACT stopwatch JS (copied from stopwatch.html)
+// EX
 (function(){
   var timerDisplay = document.getElementById('timerDisplay');
   var startBtn = document.getElementById('startBtn');
@@ -133,7 +133,7 @@
     }
   });
   
-  // === TEST HARNESS ===
+  // TE
   var t = [];
   t.push('init=' + (typeof startBtn !== 'undefined' && startBtn !== null));
   t.push('startBtn=' + (startBtn.id || 'null'));
@@ -145,31 +145,31 @@
   t.push('formatTime_0=' + formatTime(0));
   t.push('formatTime_1000=' + formatTime(1000));
   
-  // Simulate click Start
+  // Si
   startBtn.click();
   t.push('after_start_running=' + running);
   t.push('after_start_startDisabled=' + startBtn.disabled);
   t.push('after_start_stopDisabled=' + stopBtn.disabled);
   t.push('after_start_lapDisabled=' + lapBtn.disabled);
   
-  // Simulate click Stop
+  // Si
   stopBtn.click();
   t.push('after_stop_running=' + running);
   t.push('after_stop_startDisabled=' + startBtn.disabled);
   
-  // Simulate click Start again + Lap
+  // Si
   startBtn.click();
   recordLap();
   t.push('after_lap_laps=' + laps.length);
   
-  // Reset
+  // Re
   resetBtn.click();
   t.push('after_reset_running=' + running);
   t.push('after_reset_elapsed=' + elapsed);
   t.push('after_reset_laps=' + laps.length);
   t.push('after_reset_display=' + timerDisplay.innerHTML.replace(/<[^>]*>/g,''));
   
-  // Set title with results
+  // Se
   document.title = 'SW_RESULT: ' + t.join(' | ');
 })();
 </script>

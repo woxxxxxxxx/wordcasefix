@@ -113,7 +113,7 @@
   resetBtn.addEventListener('click', reset);
   lapBtn.addEventListener('click', recordLap);
   
-  // Record initialization
+  // Re
   window.__test_init = true;
   window.__test_startBtn = !!startBtn;
   window.__test_stopBtn = !!stopBtn;
@@ -122,7 +122,7 @@
   window.__test_listeners = typeof start === 'function' && typeof stop === 'function' && 
                             typeof reset === 'function' && typeof recordLap === 'function';
   
-  // Simulate clicks
+  // Si
   setTimeout(function() {
     window.__test_phase = 'clicking_start';
     startBtn.click();
@@ -139,7 +139,7 @@
         
         setTimeout(function() {
           window.__test_phase = 'done';
-          // Dump results
+          // Du
           document.title = 'TEST: init=' + window.__test_init + 
             ' btns=' + window.__test_startBtn + window.__test_stopBtn + window.__test_lapBtn + window.__test_resetBtn +
             ' listeners=' + window.__test_listeners +

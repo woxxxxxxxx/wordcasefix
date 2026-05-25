@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Stopwatch Probe Test</title>  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<iframe id="testframe" src="file:///C:/Users/Administrator/stopwatch.html" width="800" height="600"></iframe>
+<iframe id="testframe" src="file:// C:
 <script>
 var f = document.getElementById('testframe');
 f.onload = function() {
@@ -11,31 +11,31 @@ f.onload = function() {
     var doc = f.contentDocument || f.contentWindow.document;
     var results = [];
     
-    // Check if the page loaded
+    // Ch
     var startBtn = doc.getElementById('startBtn');
     results.push('startBtn_exists=' + (!!startBtn));
     results.push('startBtn_disabled=' + (startBtn ? startBtn.disabled : 'N/A'));
     
-    // Check for the stopwatch IIFE by looking for its variables on window
-    // The IIFE uses var which is function-scoped, not global - so we can't check globals
-    // But we can check event listeners by looking at the prototype...
+    // Ch
+    // Th
+    // Bu
     
-    // Click the button
+    // Cl
     if (startBtn) {
-      // Check if addEventListener is bound by checking the element's event listeners
-      var clickEvents = startBtn.onclick; // inline handler
+      // Ch
+      var clickEvents = startBtn.onclick; // in
       results.push('inline_onclick=' + (!!clickEvents));
       
-      // Try clicking
+      // Tr
       var clickResult = startBtn.click();
       results.push('click_returned=' + (clickResult === undefined ? 'void' : clickResult));
       
-      // Check state after click
+      // Ch
       results.push('after_click_disabled=' + startBtn.disabled);
       results.push('after_click_stopEnabled=' + !doc.getElementById('stopBtn').disabled);
     }
     
-    // Check script content
+    // Ch
     var scripts = doc.querySelectorAll('script');
     results.push('script_count=' + scripts.length);
     for (var i = 0; i < scripts.length; i++) {
@@ -45,13 +45,13 @@ f.onload = function() {
         results.push('script' + i + '_has_iife=' + s.indexOf('(function(){') >= 0);
         results.push('script' + i + '_has_addEventListener=' + s.indexOf('addEventListener') >= 0);
         
-        // Try to evaluate the script
+        // Tr
         try {
-          // Proxy the needed DOM elements
+          // Pr
           var mockTimer = { innerHTML: '', classList: { add: function(){}, remove: function(){} } };
           var mockBtn = { disabled: false, classList: { add: function(){}, remove: function(){} }, addEventListener: function(evt, fn) { results.push('mock_addEventListener_' + evt + '=bound'); } };
           
-          // Can't really eval the script because it uses doc.getElementById...
+          // Ca
           results.push('script_parseable=true');
         } catch(e) {
           results.push('script_error=' + e.message);

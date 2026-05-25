@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 閳光偓閳光偓 Input 閳光偓閳光偓 */
+  /* In */
   .input-group { margin-bottom: 18px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -67,7 +67,7 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* 閳光偓閳光偓 Controls grid 閳光偓閳光偓 */
+  /* Co */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -114,7 +114,7 @@
   }
   .sep-options input[type="text"]:focus { border-color: #5b5bd6; }
 
-  /* 閳光偓閳光偓 Buttons 閳光偓閳光偓 */
+  /* Bu */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px;
   }
@@ -130,7 +130,7 @@
   .btn-primary:hover { background: #4a4ac2; }
   .btn-primary:active { transform: scale(.97); }
 
-  /* 閳光偓閳光偓 Stats 閳光偓閳光偓 */
+  /* St */
   .stats-line {
     display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
     font-size: 13px; color: #888;
@@ -138,7 +138,7 @@
   .stats-line span { white-space: nowrap; }
   .stats-line strong { color: #5b5bd6; }
 
-  /* 閳光偓閳光偓 Output 閳光偓閳光偓 */
+  /* Ou */
   .output-wrap { position: relative; }
   .output-box {
     width: 100%;
@@ -167,7 +167,7 @@
   .btn-copy:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-copy.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 閳光偓閳光偓 Empty state 閳光偓閳光偓 */
+  /* Em */
   .empty-state {
     text-align: center; padding: 30px 0 10px; color: #ccc; font-size: 14px;
   }
@@ -192,10 +192,10 @@
 </style>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "WebApplication",
   "name": "Text Repeater",
-  "url": "https://wordcasefix.com/text-repeater.html",
+  "url": "https:// wo
   "description": "Text Repeater - Free online tool at WordCaseFix",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any",
@@ -203,10 +203,10 @@
 }
 </script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://wordcasefix.com/text-repeater.html">
+  <link rel="canonical" href="https:// wo
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https:// sc
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -257,7 +257,7 @@
 
       <div class="input-group">
         <label for="inputText">Text to repeat</label>
-        <textarea id="inputText" placeholder="Type or paste the text you want to repeat閳? spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="..."false"></textarea>
       </div>
 
       <div class="control-grid">
@@ -348,7 +348,7 @@
   let currentResult = '';
   let currentSep    = 'space';
 
-  // 閳光偓閳光偓 Separator selector 閳光偓閳光偓
+  // Se
   document.querySelectorAll('.sep-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.sep-btn').forEach(b => b.classList.remove('active'));
@@ -369,7 +369,7 @@
     }
   }
 
-  // 閳光偓閳光偓 Repeat 閳光偓閳光偓
+  // Re
   function repeat() {
     const text = inputText.value;
     const count = parseInt(repeatCount.value, 10);
@@ -401,7 +401,7 @@
     outputBox.textContent = result;
   }
 
-  // 閳光偓閳光偓 Copy 閳光偓閳光偓
+  // Co
   function copyResult() {
     if (!currentResult) return;
     navigator.clipboard.writeText(currentResult).then(() => {
@@ -432,7 +432,7 @@
     });
   }
 
-  // 閳光偓閳光偓 Events 閳光偓閳光偓
+  // Ev
   repeatBtn.addEventListener('click', repeat);
 
   copyBtn.addEventListener('click', copyResult);
@@ -444,7 +444,7 @@
     }
   });
 
-  // Run on load with defaults
+  // Ru
   repeat();
 })();
 </script>

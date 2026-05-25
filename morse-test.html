@@ -13,11 +13,11 @@
 <div id="refGrid"></div>
 
 <script>
-// EXACT code from morse-translator.html
+// EX
 (function(){ const inputText=document.getElementById('inputText'),outputText=document.getElementById('outputText'); const translateBtn=document.getElementById('translateBtn'),copyBtn=document.getElementById('copyBtn'),playBtn=document.getElementById('playBtn'); const modeToMorse=document.getElementById('modeToMorse'),modeToText=document.getElementById('modeToText'); const MORSE={'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..','M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.','.':'.-.-.-',',':'--..--','?':'..--..',"'":'.----.','!':'-.-.--','/':'-..-.','(':'-.--.',')':'-.--.-','&':'.-...',':':'---...',';':'-.-.-.','=':'-...-','+':'.-.-.','-':'-....-','_':'..--.-','"':'.-..-.','$':'...-..-','@':'.--.-.','':'/'}; const REV={};for(const[k,v]of Object.entries(MORSE))REV[v]=k;REV['/']=''; const refChars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split(''); const refGrid=document.getElementById('refGrid'); let refHtml='';for(const c of refChars){refHtml+='<div class="ref-item"><span class="ref-char">'+c+'</span><br>'+MORSE[c]+'</div>'} refGrid.innerHTML=refHtml; function translate(){ const text=inputText.value;if(!text){outputText.value='';return} if(modeToMorse.checked){ const words=text.toUpperCase().split(''); const parts=[];for(const w of words){const p=[];for(const c of w){if(MORSE[c])p.push(MORSE[c])}parts.push(p.join(''))} outputText.value=parts.join('/') }else{ const words=text.split('/');const parts=[]; for(const w of words){const p=[];for(const sym of w.trim().split(/\\s+/)){if(sym&&REV[sym])p.push(REV[sym])}parts.push(p.join(''))} outputText.value=parts.join('').toLowerCase() } } translateBtn.addEventListener('click',translate); copyBtn.addEventListener('click',function(){const t=outputText.value;if(!t)return;navigator.clipboard.writeText(t).then(function(){copyBtn.innerHTML='Copied!';copyBtn.classList.add('copied');setTimeout(function(){copyBtn.innerHTML='Copy';copyBtn.classList.remove('copied')},1800)})}); playBtn.addEventListener('click',function(){const morse=modeToMorse.checked?outputText.value:inputText.value;if(!morse)return;const dot=60,dash=180,gap=60,letterGap=200,wordGap=500;const ctx=new(window.AudioContext||window.webkitAudioContext)();let time=ctx.currentTime;for(const ch of morse){if(ch==='.'){playTone(ctx,time,dot/1000);time+=dot/1000+gap/1000}else if(ch==='-'){playTone(ctx,time,dash/1000);time+=dash/1000+gap/1000}else if(ch===''){time+=letterGap/1000}else if(ch==='/'){time+=wordGap/1000}} function playTone(ctx,start,dur){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=700;gain.gain.value=0.3;osc.connect(gain);gain.connect(ctx.destination);osc.start(start);osc.stop(start+dur);gain.gain.setValueAtTime(0.3,start);gain.gain.exponentialRampToValueAtTime(0.01,start+dur-0.01)}});
 })();
 
-// Test harness
+// Te
 var t = [];
 try {
   t.push('init=ok');
@@ -26,12 +26,12 @@ try {
   var btn = document.getElementById('translateBtn');
   t.push('elements=' + (!!inp && !!out && !!btn));
   
-  // Set test text and click translate
+  // Se
   inp.value = 'SOS';
   btn.click();
   t.push('translated=' + out.value);
   
-  // Test reverse
+  // Te
   document.getElementById('modeToText').checked = true;
   inp.value = '.../---/...';
   btn.click();

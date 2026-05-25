@@ -106,7 +106,7 @@
   resetBtn.addEventListener('click', reset);
   lapBtn.addEventListener('click', recordLap);
 
-  // Self test: simulate clicks
+  // Se
   var testResults = [];
   testResults.push('script_loaded=true');
   
@@ -117,25 +117,25 @@
     testResults.push('startBtn_found=false');
   }
 
-  // Check event listeners by inspecting
+  // Ch
   testResults.push('listeners_bound=' + (typeof start === 'function' && typeof stop === 'function' ? 'true' : 'false'));
   
-  // Simulate click
+  // Si
   startBtn.click();
   testResults.push('after_click_running=' + running);
   testResults.push('after_click_startBtn_disabled=' + startBtn.disabled);
   testResults.push('after_click_stopBtn_disabled=' + stopBtn.disabled);
   
-  // Try stop
+  // Tr
   stopBtn.click();
   testResults.push('after_stop_running=' + running);
   
-  // Reset
+  // Re
   resetBtn.click();
   testResults.push('after_reset_running=' + running);
   testResults.push('after_reset_elapsed=' + elapsed);
   
-  // Show all results
+  // Sh
   document.getElementById('testResults').textContent = testResults.join(', ');
 })();
 </script>
