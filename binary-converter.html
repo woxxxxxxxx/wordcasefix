@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary Converter - Free Online Binary Hex Decimal Converter | WordCaseFix</title>
+<meta name="description" content="Convert numbers between binary, hexadecimal, decimal, and octal formats instantly. Free online number base converter for developers and students.">
+<meta name="keywords" content="binary converter, hex converter, decimal to binary, binary to hex, octal converter, number base converter">
+<meta property="og:title" content="Binary Converter | WordCaseFix">
+<meta property="og:description" content="Convert numbers between binary, hexadecimal, decimal, and octal formats instantly. Free online number base converter.">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+  .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+  .main-area{flex:1;min-width:0;padding:32px 24px 48px}
+  .sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+  header p{color:#555;font-size:15px;margin-top:4px}
+  .ad-slot{position:relative;background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .ad-top{width:100%;height:90px;margin-bottom:24px}
+  .ad-side{width:100%;min-height:300px;margin-bottom:16px}
+  .ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px;max-width:560px;margin:0 auto}
+  .card+.card{margin-top:16px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:#555;text-transform:uppercase;letter-spacing:.3px}
+  .field input{width:100%;padding:14px 16px;font-size:16px;font-weight:600;font-family:'SF Mono','Fira Code','Consolas',monospace;border:1.5px solid #d0d5dd;border-radius:8px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .field input:focus{border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  .field input::placeholder{color:#ccc}
+  .field .prefix{font-size:11px;color:#888;margin-top:3px;font-family:'SF Mono','Fira Code','Consolas',monospace}
+  .quick-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .quick-btn{padding:5px 12px;font-size:11px;font-weight:600;color:#555;background:#f0f0f5;border:1.5px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
+  .quick-btn:hover{background:#e4e4ef;color:#5b5bd6}
+  .btn-copy{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;margin-top:4px;font-size:12px;font-weight:600;color:#555;background:#f0f0f5;border:1.5px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
+  .btn-copy:hover{background:#e4e4ef;color:#1a1a2e}
+  .btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+  footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+  @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+  @media(max-width:600px){header h1{font-size:22px}.field input{font-size:14px}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header><h1>Binary Converter</h1><p>Convert numbers between binary, hexadecimal, decimal, and octal formats instantly.</p></header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="field"><label for="decInput">Decimal</label><input type="text" id="decInput" placeholder="0" autocomplete="off"><div class="prefix">e.g. 42</div></div>
+<div class="field"><label for="binInput">Binary</label><input type="text" id="binInput" placeholder="0" autocomplete="off"><div class="prefix">e.g. 101010</div></div>
+<div class="field"><label for="hexInput">Hexadecimal</label><input type="text" id="hexInput" placeholder="0" autocomplete="off"><div class="prefix">e.g. 2A</div></div>
+<div class="field"><label for="octInput">Octal</label><input type="text" id="octInput" placeholder="0" autocomplete="off"><div class="prefix">e.g. 52</div></div>
+<div class="quick-btns">
+<span class="quick-btn" data-bin="1010">10</span>
+<span class="quick-btn" data-bin="11111111">255</span>
+<span class="quick-btn" data-bin="100000000">256</span>
+<span class="quick-btn" data-bin="1111111111111111">65535</span>
+<span class="quick-btn" data-bin="1000000000000000000000000">16M</span>
+</div>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About the Binary Converter Tool</h2><p>The Binary Converter is a free online tool that instantly converts numbers between four numbering systems: decimal (base-10), binary (base-2), hexadecimal (base-16), and octal (base-8). Type a value in any field and all other fields update automatically in real time. This number base converter is indispensable for programmers and software developers who frequently work with different number representations, computer science students learning digital logic and data representation, network engineers calculating IP addresses and subnets, electronics hobbyists working with microcontrollers, and anyone studying or working with computer architecture. The tool supports positive integers and provides quick example buttons for common values like 255 (the maximum value of a byte) and 65535 (the maximum value of a 16-bit number).</p></div>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/number-generator.html"><div class="rc-name">Number Generator</div><div class="rc-desc">Random numbers</div></a><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">Generate hashes</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Encode &amp; decode</div></a><a class="related-card" href="/calculator.html"><div class="rc-name">Online Calculator</div><div class="rc-desc">Basic calculator</div></a></div></div>
+<footer>Binary Converter &mdash; Free online binary hex decimal converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<script>
+(function(){
+  const decIn=document.getElementById('decInput'),binIn=document.getElementById('binInput');
+  const hexIn=document.getElementById('hexInput'),octIn=document.getElementById('octInput');
+  let updating=false;
+
+  function isValidBin(s){return /^[01]+$/.test(s)}
+  function isValidHex(s){return /^[0-9a-fA-F]+$/.test(s)}
+  function isValidOct(s){return /^[0-7]+$/.test(s)}
+  function isValidDec(s){return /^\d+$/.test(s)}
+
+  function updateFrom(source){
+    if(updating)return;
+    updating=true;
+    let val=NaN;
+    const raw=source.value.trim();
+    if(!raw){decIn.value='';binIn.value='';hexIn.value='';octIn.value='';updating=false;return}
+    if(source===binIn&&isValidBin(raw)){val=parseInt(raw,2)}
+    else if(source===hexIn&&isValidHex(raw)){val=parseInt(raw,16)}
+    else if(source===octIn&&isValidOct(raw)){val=parseInt(raw,8)}
+    else if(source===decIn&&isValidDec(raw)){val=parseInt(raw,10)}
+    else{decIn.value=raw;binIn.value='';hexIn.value='';octIn.value='';updating=false;return}
+    if(isNaN(val)||val>9007199254740991){decIn.value=raw;binIn.value='';hexIn.value='';octIn.value='';updating=false;return}
+    decIn.value=val.toString();
+    binIn.value=val.toString(2);
+    hexIn.value=val.toString(16).toUpperCase();
+    octIn.value=val.toString(8);
+    updating=false
+  }
+
+  decIn.addEventListener('input',function(){updateFrom(decIn)});
+  binIn.addEventListener('input',function(){updateFrom(binIn)});
+  hexIn.addEventListener('input',function(){updateFrom(hexIn)});
+  octIn.addEventListener('input',function(){updateFrom(octIn)});
+
+  document.querySelectorAll('.quick-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      binIn.value=this.dataset.bin;updateFrom(binIn)
+    })
+  });
+})();
+</script>
+</body>
+</html>
