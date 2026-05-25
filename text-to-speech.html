@@ -130,11 +130,11 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     const v=getSelectedVoice();if(v)utterance.voice=v;
     utterance.rate=parseFloat(rateRange.value);
     utterance.pitch=parseFloat(pitchRange.value);
-    utterance.onstart=function(){statusBox.textContent='Speaking…;statusBox.className='status-box speaking';speakBtn.disabled=true;pauseBtn.disabled=false;stopBtn.disabled=false};
+    utterance.onstart=function(){statusBox.textContent='Speaking…';statusBox.className='status-box speaking';speakBtn.disabled=true;pauseBtn.disabled=false;stopBtn.disabled=false};
     utterance.onend=function(){statusBox.textContent='Finished speaking.';statusBox.className='status-box done';speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true};
     utterance.onerror=function(){statusBox.textContent='An error occurred during speech.';statusBox.className='status-box';speakBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true};
     utterance.onpause=function(){statusBox.textContent='Paused.';statusBox.className='status-box';pauseBtn.textContent='Resume'};
-    utterance.onresume=function(){statusBox.textContent='Speaking…;statusBox.className='status-box speaking';pauseBtn.textContent='Pause'};
+    utterance.onresume=function(){statusBox.textContent='Speaking…';statusBox.className='status-box speaking';pauseBtn.textContent='Pause'};
     window.speechSynthesis.speak(utterance)
   }
 
@@ -156,8 +156,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   document.querySelectorAll('.sample-btn').forEach(function(btn){
     btn.addEventListener('click',function(){input.value=this.dataset.sample;speak()})
   });
-})();
-}}</script>
+})();</script>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>

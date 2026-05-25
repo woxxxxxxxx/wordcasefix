@@ -1,15 +1,15 @@
 ========================================================================
   WordCaseFix HTML Tool Files - Final Test Report
-  Date: 2026-05-25 22:12:16
+  Date: 2026-05-26 00:42:43
 ========================================================================
 
   Total files: 48
 
   RESULTS SUMMARY
-  Passed:          48
+  Passed:          47
   Warnings:        0
-  Issues:          0
-  Auto-fixes:      1
+  Issues:          1
+  Auto-fixes:      0
 
 ────────────────────────────────────────────────────────────────────────
 
@@ -202,17 +202,20 @@
   Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
   Viewport: YES       WordCaseFix in title: YES
 
-[PASS  ] slug-converter.html
+[ISSUES] slug-converter.html
   Title:    Slug Converter - Free Online URL Slug Generator Tool | WordCaseFix
   Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
   Viewport: YES       WordCaseFix in title: YES
+  ⚠ HTML: Tag <main> out of order, inner unclosed: <div>
+  ⚠ HTML: Mismatched </script> (no matching open tag)
+  ❌ HTML: Tag <main> out of order, inner unclosed: <div>
+  ❌ HTML: Mismatched </script> (no matching open tag)
 
 [PASS  ] stopwatch.html
   Title:    Stopwatch - Free Online Stopwatch Timer Tool | WordCaseFix
   Inputs:   NO        Buttons: YES       Events: addEventListener()    Result: YES
   Viewport: YES       WordCaseFix in title: YES
   ⚠ Tool page has no input fields
-  ✅ Auto-fixes: 1
 
 [PASS  ] text-diff.html
   Title:    Text Diff Checker - Free Online Diff Checker Tool | WordCaseFix

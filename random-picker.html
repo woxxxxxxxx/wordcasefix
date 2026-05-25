@@ -115,7 +115,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     const selected=[];
     const temp=[...available];
     for(let i=0;i<count;i++){const idx=Math.floor(Math.random()*temp.length);selected.push(temp[idx]);temp.splice(idx,1)}
-    winnerLabel.textContent=count===1?'Selected:'+'Selected '+count+':';
+    winnerLabel.textContent=count===1?'Selected:':'Selected '+count+':';
     const names=selected.map(function(s){return esc(s)});
     let idx=0;winnerName.textContent='?';winnerName.className='winner-name spinning';
     const spin=setInterval(function(){winnerName.textContent=available[Math.floor(Math.random()*available.length)];idx++},60);

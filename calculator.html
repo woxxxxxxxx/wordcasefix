@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -57,8 +57,103 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Online Calculator &mdash; Free online basic calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
-(function(){ const display=document.getElementById('calcDisplay'),preview=document.getElementById('calcPreview'); let current='0',prev='',op='',resetNext=false; function updateDisplay(){display.value=current.length>15?parseFloat(current).toExponential(6):current} function inputDigit(d){if(resetNext){current=d;resetNext=false}else{current=current==='0'?d:current+d}updateDisplay()} function inputDecimal(){if(resetNext){current='0.';resetNext=false;updateDisplay();return}if(!current.includes('.')){current+='.'}updateDisplay()} function handleOp(nextOp){ if(op&&!resetNext){calculate()} prev=current;op=nextOp;resetNext=true;preview.textContent=prev+''+getOpChar(op) } function getOpChar(o){return o==='add'?'+':o==='subtract'?'?:o==='multiply'?'':''} function calculate(){ if(!op||!prev)return; const a=parseFloat(prev),b=parseFloat(current); let r=0; switch(op){ case'add':r=a+b;break; case'subtract':r=a-b;break; case'multiply':r=a*b;break; case'divide':r=b!==0?a/b:'Error';break } if(r==='Error'){current='Error';display.value='Error';preview.textContent='';op='';prev='';resetNext=true;return} current=String(parseFloat(r.toFixed(10))); preview.textContent=prev+''+getOpChar(op)+''+current+' ='; op='';prev='';resetNext=true;updateDisplay() } function clearAll(){current='0';prev='';op='';resetNext=false;preview.textContent='';updateDisplay()} function toggleSign(){if(current!=='0'){current=current.startsWith('-')?current.slice(1):'-'+current}updateDisplay()} function percent(){current=String(parseFloat(current)/100);updateDisplay()} document.querySelector('.calc-grid').addEventListener('click',function(e){ const btn=e.target.closest('.calc-btn');if(!btn)return; if(btn.dataset.value!==undefined){inputDigit(btn.dataset.value)} else if(btn.dataset.action==='decimal'){inputDecimal()} else if(btn.dataset.action==='clear'){clearAll()} else if(btn.dataset.action==='sign'){toggleSign()} else if(btn.dataset.action==='percent'){percent()} else if(btn.dataset.action==='equals'){calculate();preview.textContent=''} else if(btn.dataset.action){handleOp(btn.dataset.action)} }); document.addEventListener('keydown',function(e){ if(e.key>='0'&&e.key<='9'){inputDigit(e.key)} else if(e.key==='.'){inputDecimal()} else if(e.key==='+'){handleOp('add')} else if(e.key==='-'){handleOp('subtract')} else if(e.key==='*'){handleOp('multiply')} else if(e.key==='/'){e.preventDefault();handleOp('divide')} else if(e.key==='Enter'||e.key==='='){e.preventDefault();calculate();preview.textContent=''} else if(e.key==='Escape'){clearAll()} else if(e.key==='Backspace'){if(!resetNext){current=current.length>1?current.slice(0,-1):'0';updateDisplay()}} });
-})();}</script>
+(function(){
+  var display = document.getElementById('calcDisplay');
+  var preview = document.getElementById('calcPreview');
+  var current = '0', prev = '', op = '', resetNext = false;
+
+  function updateDisplay() {
+    display.value = current.length > 15 ? parseFloat(current).toExponential(6) : current;
+  }
+
+  function inputDigit(d) {
+    if (resetNext) { current = d; resetNext = false; }
+    else { current = current === '0' ? d : current + d; }
+    updateDisplay();
+  }
+
+  function inputDecimal() {
+    if (resetNext) { current = '0.'; resetNext = false; updateDisplay(); return; }
+    if (current.indexOf('.') === -1) current += '.';
+    updateDisplay();
+  }
+
+  function getOpChar(o) {
+    if (o === 'add') return '+';
+    if (o === 'subtract') return '−';
+    if (o === 'multiply') return '×';
+    if (o === 'divide') return '÷';
+    return '';
+  }
+
+  function calculate() {
+    if (!op || !prev) return;
+    var a = parseFloat(prev), b = parseFloat(current);
+    var r = 0;
+    if (op === 'add') r = a + b;
+    else if (op === 'subtract') r = a - b;
+    else if (op === 'multiply') r = a * b;
+    else if (op === 'divide') r = b !== 0 ? a / b : 'Error';
+    if (r === 'Error') {
+      current = 'Error'; display.value = 'Error'; preview.textContent = '';
+      op = ''; prev = ''; resetNext = true; return;
+    }
+    current = String(parseFloat(r.toFixed(10)));
+    preview.textContent = prev + ' ' + getOpChar(op) + ' ' + current + ' =';
+    op = ''; prev = ''; resetNext = true;
+    updateDisplay();
+  }
+
+  function handleOp(nextOp) {
+    if (op && !resetNext) calculate();
+    prev = current; op = nextOp; resetNext = true;
+    preview.textContent = prev + ' ' + getOpChar(op);
+  }
+
+  function clearAll() {
+    current = '0'; prev = ''; op = ''; resetNext = false;
+    preview.textContent = ''; updateDisplay();
+  }
+
+  function toggleSign() {
+    if (current !== '0') {
+      current = current.charAt(0) === '-' ? current.slice(1) : '-' + current;
+    }
+    updateDisplay();
+  }
+
+  function percent() {
+    current = String(parseFloat(current) / 100);
+    updateDisplay();
+  }
+
+  document.querySelector('.calc-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('.calc-btn');
+    if (!btn) return;
+    if (btn.dataset.value !== undefined) { inputDigit(btn.dataset.value); }
+    else if (btn.dataset.action === 'decimal') { inputDecimal(); }
+    else if (btn.dataset.action === 'clear') { clearAll(); }
+    else if (btn.dataset.action === 'sign') { toggleSign(); }
+    else if (btn.dataset.action === 'percent') { percent(); }
+    else if (btn.dataset.action === 'equals') { calculate(); preview.textContent = ''; }
+    else if (btn.dataset.action) { handleOp(btn.dataset.action); }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key >= '0' && e.key <= '9') { inputDigit(e.key); }
+    else if (e.key === '.') { inputDecimal(); }
+    else if (e.key === '+') { handleOp('add'); }
+    else if (e.key === '-') { handleOp('subtract'); }
+    else if (e.key === '*') { handleOp('multiply'); }
+    else if (e.key === '/') { e.preventDefault(); handleOp('divide'); }
+    else if (e.key === 'Enter' || e.key === '=') { e.preventDefault(); calculate(); preview.textContent = ''; }
+    else if (e.key === 'Escape') { clearAll(); }
+    else if (e.key === 'Backspace') {
+      if (!resetNext) { current = current.length > 1 ? current.slice(0, -1) : '0'; updateDisplay(); }
+    }
+  });
+})();
+</script>
 <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>
