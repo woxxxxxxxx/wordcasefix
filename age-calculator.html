@@ -16,21 +16,123 @@
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
-<!-- ──── Ad: Top ──── -->
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
-<div class="page-wrap"> <main class="main-area"> <header> <h1>Age Calculator</h1> <p>Find out your exact age in years, months, and days.</p> </header> <!-- ──── Ad: Top (in-content) ──── --> <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div> <div class="card"> <!-- Birth date --> <div class="form-group"> <label for="birthDate">Date of Birth</label> <input type="date" id="birthDate"> </div> <!-- To date: Today or custom --> <div class="unit-toggle"> <input type="radio" name="toMode" id="modeToday" value="today" checked> <label for="modeToday">To Today</label> <input type="radio" name="toMode" id="modeCustom" value="custom"> <label for="modeCustom">To a Date</label> </div> <div class="form-group" id="toDateGroup"> <label for="toDate">End Date</label> <input type="date" id="toDate"> </div> <!-- Calculate --> <div class="calc-row">  <button class="btn-primary" id="calcBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg> Calculate Age </button> </div> <!-- Results --> <div class="result-area" id="resultArea"> <div class="result-empty" id="emptyState"> <span class="big-icon"></span> Enter your date of birth and click <strong>Calculate</strong>. </div> <div id="resultContent" style="display:none;"> <div class="birth-day" id="birthDayInfo"></div> <div class="age-main"> <div class="age-big" id="ageMain">—</div> <div class="age-sub" id="ageSub">—</div> </div> <div class="stat-grid"> <div class="stat-card"> <div class="stat-value" id="totalDays">—</div> <div class="stat-label">Total Days</div> </div> <div class="stat-card"> <div class="stat-value" id="totalHours">—</div> <div class="stat-label">Total Hours</div> </div> <div class="stat-card"> <div class="stat-value" id="totalMinutes">—</div> <div class="stat-label">Total Minutes</div> </div> </div> <div class="countdown-box" id="countdownBox"> <div class="countdown-label">Next Birthday In</div> <div class="countdown-value" id="countdownValue">—</div> </div> </div> </div> </div> </main> <!-- ──── Sidebar ──── --> <aside class="sidebar"> <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div> <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div> </aside>
+<div class="page-wrap"> <main class="main-area"> <header> <h1>Age Calculator</h1> <p>Find out your exact age in years, months, and days.</p> </header> <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div> <div class="card"> <div class="form-group"> <label for="birthDate">Date of Birth</label> <input type="date" id="birthDate"> </div> <div class="unit-toggle"> <input type="radio" name="toMode" id="modeToday" value="today" checked> <label for="modeToday">To Today</label> <input type="radio" name="toMode" id="modeCustom" value="custom"> <label for="modeCustom">To a Date</label> </div> <div class="form-group" id="toDateGroup"> <label for="toDate">End Date</label> <input type="date" id="toDate"> </div> <div class="calc-row"> <button class="btn-primary" id="calcBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg> Calculate Age </button> </div> <div class="result-area" id="resultArea"> <div class="result-empty" id="emptyState"> <span class="big-icon"></span> Enter your date of birth and click <strong>Calculate</strong>. </div> <div id="resultContent" style="display:none;"> <div class="birth-day" id="birthDayInfo"></div> <div class="age-main"> <div class="age-big" id="ageMain">—</div> <div class="age-sub" id="ageSub">—</div> </div> <div class="stat-grid"> <div class="stat-card"> <div class="stat-value" id="totalDays">—</div> <div class="stat-label">Total Days</div> </div> <div class="stat-card"> <div class="stat-value" id="totalHours">—</div> <div class="stat-label">Total Hours</div> </div> <div class="stat-card"> <div class="stat-value" id="totalMinutes">—</div> <div class="stat-label">Total Minutes</div> </div> </div> <div class="countdown-box" id="countdownBox"> <div class="countdown-label">Next Birthday In</div> <div class="countdown-value" id="countdownValue">—</div> </div> </div> </div> </div> </main> <aside class="sidebar"> <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div> <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div> </aside>
 </div>
 <div class="seo-content"><h2>About the Age Calculator Tool</h2><p>The Age Calculator is a free online tool that computes your exact age in years, months, days, hours, and minutes based on your date of birth. It also shows your next birthday countdown and the total time you have lived since birth. Simply select your birth date using the date picker, and the calculator instantly displays your precise age. This age calculator is perfect for birthday planning, milestone tracking, filling out forms that require exact age, or simply satisfying your curiosity about how many days old you are. Unlike basic age calculators that only show years, this tool provides a comprehensive breakdown of your age across multiple time units, giving you a complete picture of your time spent on earth.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words &amp; chars</div></a><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Create strong passwords</div></a><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Generate QR codes</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Age Calculator &mdash; Free online age calculation tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
-(function() {
-// ── DOM refs ── const birthDate = document.getElementById('birthDate'); const modeToday = document.getElementById('modeToday'); const modeCustom = document.getElementById('modeCustom'); const toDateGroup = document.getElementById('toDateGroup'); const toDate = document.getElementById('toDate'); const calcBtn = document.getElementById('calcBtn'); const emptyState = document.getElementById('emptyState'); const resultContent=document.getElementById('resultContent'); const ageMain = document.getElementById('ageMain'); const ageSub = document.getElementById('ageSub'); const birthDayInfo = document.getElementById('birthDayInfo'); const totalDays = document.getElementById('totalDays'); const totalHours = document.getElementById('totalHours'); const totalMinutes = document.getElementById('totalMinutes'); const countdownValue=document.getElementById('countdownValue'); const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];// ── Toggle custom date ── modeToday.addEventListener('change', function() { if (this.checked) toDateGroup.classList.remove('visible'); }); modeCustom.addEventListener('change', function() { if (this.checked) toDateGroup.classList.add('visible'); });// ── Set defaults ── const now = new Date(); const pad = n => String(n).padStart(2,'0'); const todayStr = now.getFullYear() +'-' + pad(now.getMonth()+1) +'-' + pad(now.getDate()); if (!birthDate.value) {// default to 30 years ago const d = new Date(now.getFullYear() - 30, now.getMonth(), now.getDate()); birthDate.value = d.getFullYear() +'-' + pad(d.getMonth()+1) +'-' + pad(d.getDate()); } toDate.value = todayStr; toDate.max = todayStr;// can't pick future birthDate.max = todayStr;// ── Date diff helper ── function dateDiff(start, end) {// Ensure start <= end if (start> end) { const t = start; start = end; end = t; } let years = end.getFullYear() - start.getFullYear(); let months = end.getMonth() - start.getMonth(); let days = end.getDate() - start.getDate(); if (days < 0) { months--;// Get days in previous month const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0); days += prevMonth.getDate(); } if (months < 0) { years--; months += 12; } return { years, months, days }; } function daysBetween(a, b) { const ms = b.getTime() - a.getTime(); return Math.floor(ms/ (1000 * 60 * 60 * 24)); } function hoursBetween(a, b) { const ms = b.getTime() - a.getTime(); return Math.floor(ms/ (1000 * 60 * 60)); } function minutesBetween(a, b) { const ms = b.getTime() - a.getTime(); return Math.floor(ms/ (1000 * 60)); } function nextBirthday(birth, from) { const bdThisYear = new Date(from.getFullYear(), birth.getMonth(), birth.getDate()); if (bdThisYear>= new Date(from.getFullYear(), from.getMonth(), from.getDate())) { return bdThisYear; } return new Date(from.getFullYear() + 1, birth.getMonth(), birth.getDate()); } function plural(n, s) { return n +'' + s + (n !== 1 ?'s' :''); }// ── Calculate ── function calculate() { const bdStr = birthDate.value; if (!bdStr) { emptyState.style.display ='block'; resultContent.style.display ='none'; return; } const birth = new Date(bdStr +'T00:00:00'); if (isNaN(birth.getTime())) { emptyState.style.display ='block'; resultContent.style.display ='none'; return; } const useToday = modeToday.checked; let end; if (useToday) { end = new Date(todayStr +'T00:00:00'); } else { const toStr = toDate.value; if (!toStr) { emptyState.style.display ='block'; resultContent.style.display ='none'; return; } end = new Date(toStr +'T00:00:00'); if (isNaN(end.getTime())) { emptyState.style.display ='block'; resultContent.style.display ='none'; return; } } if (birth> end) { emptyState.style.display ='block'; resultContent.style.display ='none'; return; } emptyState.style.display ='none'; resultContent.style.display ='block'; const diff = dateDiff(birth, end);// Main age ageMain.textContent = plural(diff.years,'year') +',' + plural(diff.months,'month') +',' + plural(diff.days,'day'); ageSub.textContent ='Age as of' + end.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });// Birth day of week const wd = WEEKDAYS[birth.getDay()]; birthDayInfo.innerHTML ='Born on <strong>' + wd +'</strong>,' + birth.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });// Total days/ hours/ minutes const td = daysBetween(birth, end); totalDays.textContent = td.toLocaleString(); totalHours.textContent = hoursBetween(birth, end).toLocaleString(); totalMinutes.textContent = minutesBetween(birth, end).toLocaleString();// Next birthday countdown const nextBd = nextBirthday(birth, end); const diffBd = daysBetween(end, nextBd); if (diffBd === 0) { countdownValue.textContent =' Today!'; } else { const bdMonths = Math.floor(diffBd/ 30); const bdDays = diffBd % 30;// more precise: use dateDiff const bdDiff = dateDiff(end, nextBd); if (bdDiff.years> 0) { countdownValue.textContent = plural(bdDiff.years,'year') +',' + plural(bdDiff.months,'month') +',' + plural(bdDiff.days,'day'); } else if (bdDiff.months> 0) { countdownValue.textContent = plural(bdDiff.months,'month') +',' + plural(bdDiff.days,'day'); } else { countdownValue.textContent = plural(bdDiff.days,'day'); } } } calcBtn.addEventListener('click', calculate);// Enter key document.addEventListener('keydown', function(e) { if (e.key ==='Enter' && e.target.tagName !=='TEXTAREA') { calculate(); } });// Run once on load calculate();
+(function(){
+  var birthDate = document.getElementById('birthDate');
+  var modeToday = document.getElementById('modeToday');
+  var modeCustom = document.getElementById('modeCustom');
+  var toDateGroup = document.getElementById('toDateGroup');
+  var toDate = document.getElementById('toDate');
+  var calcBtn = document.getElementById('calcBtn');
+  var emptyState = document.getElementById('emptyState');
+  var resultContent = document.getElementById('resultContent');
+  var ageMain = document.getElementById('ageMain');
+  var ageSub = document.getElementById('ageSub');
+  var birthDayInfo = document.getElementById('birthDayInfo');
+  var totalDays = document.getElementById('totalDays');
+  var totalHours = document.getElementById('totalHours');
+  var totalMinutes = document.getElementById('totalMinutes');
+  var countdownValue = document.getElementById('countdownValue');
+  var WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
+  modeToday.addEventListener('change', function(){ if(this.checked) toDateGroup.classList.remove('visible'); });
+  modeCustom.addEventListener('change', function(){ if(this.checked) toDateGroup.classList.add('visible'); });
+
+  var now = new Date();
+  var pad = function(n){ return String(n).padStart(2,'0'); };
+  var todayStr = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
+  if(!birthDate.value){
+    var d = new Date(now.getFullYear() - 30, now.getMonth(), now.getDate());
+    birthDate.value = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+  }
+  toDate.value = todayStr;
+  toDate.max = todayStr;
+  birthDate.max = todayStr;
+
+  function dateDiff(start, end){
+    if(start > end){ var t = start; start = end; end = t; }
+    var years = end.getFullYear() - start.getFullYear();
+    var months = end.getMonth() - start.getMonth();
+    var days = end.getDate() - start.getDate();
+    if(days < 0){ months--; var prevMonth = new Date(end.getFullYear(), end.getMonth(), 0); days += prevMonth.getDate(); }
+    if(months < 0){ years--; months += 12; }
+    return { years: years, months: months, days: days };
+  }
+
+  function daysBetween(a, b){ return Math.floor((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24)); }
+  function hoursBetween(a, b){ return Math.floor((b.getTime() - a.getTime()) / (1000 * 60 * 60)); }
+  function minutesBetween(a, b){ return Math.floor((b.getTime() - a.getTime()) / (1000 * 60)); }
+
+  function nextBirthday(birth, from){
+    var bdThisYear = new Date(from.getFullYear(), birth.getMonth(), birth.getDate());
+    if(bdThisYear >= new Date(from.getFullYear(), from.getMonth(), from.getDate())) return bdThisYear;
+    return new Date(from.getFullYear() + 1, birth.getMonth(), birth.getDate());
+  }
+
+  function plural(n, s){ return n + ' ' + s + (n !== 1 ? 's' : ''); }
+
+  function calculate(){
+    var bdStr = birthDate.value;
+    if(!bdStr){ emptyState.style.display = 'block'; resultContent.style.display = 'none'; return; }
+    var birth = new Date(bdStr + 'T00:00:00');
+    if(isNaN(birth.getTime())){ emptyState.style.display = 'block'; resultContent.style.display = 'none'; return; }
+    var useToday = modeToday.checked;
+    var end;
+    if(useToday){
+      end = new Date(todayStr + 'T00:00:00');
+    } else {
+      var toStr = toDate.value;
+      if(!toStr){ emptyState.style.display = 'block'; resultContent.style.display = 'none'; return; }
+      end = new Date(toStr + 'T00:00:00');
+      if(isNaN(end.getTime())){ emptyState.style.display = 'block'; resultContent.style.display = 'none'; return; }
+    }
+    if(birth > end){ emptyState.style.display = 'block'; resultContent.style.display = 'none'; return; }
+
+    emptyState.style.display = 'none';
+    resultContent.style.display = 'block';
+
+    var diff = dateDiff(birth, end);
+    ageMain.textContent = plural(diff.years, 'year') + ', ' + plural(diff.months, 'month') + ', ' + plural(diff.days, 'day');
+    ageSub.textContent = 'Age as of ' + end.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    var wd = WEEKDAYS[birth.getDay()];
+    birthDayInfo.innerHTML = 'Born on <strong>' + wd + '</strong>, ' + birth.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    var td = daysBetween(birth, end);
+    totalDays.textContent = td.toLocaleString();
+    totalHours.textContent = hoursBetween(birth, end).toLocaleString();
+    totalMinutes.textContent = minutesBetween(birth, end).toLocaleString();
+
+    var nextBd = nextBirthday(birth, end);
+    var diffBd = daysBetween(end, nextBd);
+    if(diffBd === 0){
+      countdownValue.textContent = 'Today!';
+    } else {
+      var bdDiff = dateDiff(end, nextBd);
+      if(bdDiff.years > 0){
+        countdownValue.textContent = plural(bdDiff.years, 'year') + ', ' + plural(bdDiff.months, 'month') + ', ' + plural(bdDiff.days, 'day');
+      } else if(bdDiff.months > 0){
+        countdownValue.textContent = plural(bdDiff.months, 'month') + ', ' + plural(bdDiff.days, 'day');
+      } else {
+        countdownValue.textContent = plural(bdDiff.days, 'day');
+      }
+    }
+  }
+
+  calcBtn.addEventListener('click', calculate);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') calculate();
+  });
+  calculate();
 })();
 </script>
 <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>
-
