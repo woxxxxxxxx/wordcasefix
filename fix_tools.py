@@ -135,38 +135,8 @@ def get_tool_name(filename):
 
 
 def fix_stopwatch_html(html):
-    """Fix single-line // comment in stopwatch.html and HTML structure."""
-    if 'stopwatch.html' not in html and 'Stopwatch' not in html:
-        return html, 0
-
-    fixes = 0
-    result = html
-
-    # Fix 1: The // Keyboard shortcuts comment on the single-line JS
-    # Pattern: ...recordLap());// Keyboard shortcuts document.addEventListener('keydown',...
-    # Fix: break into multiple lines
-    old = r'(recordLap\(\)\);// Keyboard shortcuts document\.addEventListener\(\s*\'keydown\'\s*,\s*function\s*\(e\)\s*\{)'
-    replacement = r'recordLap());\n    // Keyboard shortcuts\n    document.addEventListener(\x27keydown\x27, function(e) {'
-    if re.search(old, result):
-        result = re.sub(old, replacement, result)
-        fixes += 1
-
-    # Fix 2: The remaining event listener code and braces after comment
-    # The closing braces of the keyboard handler need to be on their own line
-    # The pattern at end of the single line: ... } });
-    # This needs to be on multiple lines
-    # Find: `e.preventDefault(); reset(); } });` at the end of the keydown handler
-    # And split it properly
-    pattern2 = r'if\s*\(e\.key\s*===\s*[\'"]r[\'"]\)\s*\{[^}]*\}\s*\}\);'
-    if re.search(pattern2, result):
-        result = re.sub(
-            r"(if\s*\(e\.key\s*===\s*['\"]r['\"]\)\s*\{)\s*(e\.preventDefault\(\);\s*reset\(\);\s*\}\s*\}\);)",
-            r'\1\n        \2\n    });',
-            result
-        )
-        fixes += 1
-
-    return result, fixes
+    """No longer needed - stopwatch script has been rewritten as multi-line."""
+    return html, 0
 
 
 def fix_single_line_scripts(html):
