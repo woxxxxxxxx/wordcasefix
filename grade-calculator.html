@@ -26,10 +26,10 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="section-title">Assignments</div>
 <div id="entryList"></div>
 <div class="btn-row">
-<button class="btn-primary" id="addBtn">+ Add Assignment</button>
-<button class="btn-secondary" id="clearBtn">Clear All</button>
++ Add Assignment<<button class="btn-primary" id="addBtn"></button>
+Clear All<<button class="btn-secondary" id="clearBtn"></button>
 </div>
-<div class="what-if"><label for="finalExam">What-if: Final Exam Score (%)</label><input type="number" id="finalExam" placeholder="Enter projected exam score" min="0" max="100" step="any"></div>
+<div class="what-if"><label for="finalExam">What-if: Final Exam Score (%)</label><input type="number" id="finalExam" placeholder="Enter projected exam score…" min="0" max="100" step="any"></div>
 </div>
 </main>
 <aside class="sidebar">
@@ -37,62 +37,14 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
 </aside>
 </div>
-<div class="seo-content"><h2>About the Grade Calculator Tool</h2><p>The Grade Calculator is a free online tool that helps students calculate their weighted grades based on assignments, exams, and projects. Simply add each assignment with its score percentage and weight, and the calculator automatically computes your overall grade. The built-in "what-if" feature lets you predict how a final exam score would affect your final grade, helping you set target scores for your goals. This weighted grade calculator is ideal for college and high school students tracking their performance throughout the semester, teachers quickly computing class grades, and parents monitoring their children's academic progress. The tool supports percentage-based grading systems and displays both your numeric grade and letter grade equivalent.</p></div>
+<div class="seo-content"><h2>About the Grade Calculator Tool</h2><p>The Grade Calculator is a free online tool that helps students calculate their weighted grades based on assignments, exams, and projects. Simply add each assignment with its score percentage and weight, and the calculator automatically computes your overall grade. The built-in"what-if" feature lets you predict how a final exam score would affect your final grade, helping you set target scores for your goals. This weighted grade calculator is ideal for college and high school students tracking their performance throughout the semester, teachers quickly computing class grades, and parents monitoring their children's academic progress. The tool supports percentage-based grading systems and displays both your numeric grade and letter grade equivalent.</p></div>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/gpa-calculator.html"><div class="rc-name">GPA Calculator</div><div class="rc-desc">Calculate GPA</div></a><a class="related-card" href="/percentage-calculator.html"><div class="rc-name">Percentage Calc</div><div class="rc-desc">Percentages</div></a><a class="related-card" href="/age-calculator.html"><div class="rc-name">Age Calculator</div><div class="rc-desc">Calculate age</div></a><a class="related-card" href="/calculator.html"><div class="rc-name">Online Calculator</div><div class="rc-desc">Basic calculator</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Grade Calculator &mdash; Free online grade calculator tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
-(function(){
-  const entryList=document.getElementById('entryList'),gradeValue=document.getElementById('gradeValue');
-  const gradeLetter=document.getElementById('gradeLetter'),gradeDetail=document.getElementById('gradeDetail');
-  const addBtn=document.getElementById('addBtn'),clearBtn=document.getElementById('clearBtn');
-  const finalExam=document.getElementById('finalExam');
-
-  function getLetter(p){
-    if(p>=97)return 'A+';if(p>=93)return 'A';if(p>=90)return 'A-';if(p>=87)return 'B+';if(p>=83)return 'B';
-    if(p>=80)return 'B-';if(p>=77)return 'C+';if(p>=73)return 'C';if(p>=70)return 'C-';if(p>=67)return 'D+';
-    if(p>=63)return 'D';if(p>=60)return 'D-';return 'F'
-  }
-
-  function calc(){
-    const entries=entryList.querySelectorAll('.entry');
-    let totalWeight=0,weightedSum=0,count=0;
-    for(const e of entries){
-      const score=parseFloat(e.querySelector('.e-grade').value);
-      const weight=parseFloat(e.querySelector('.e-weight').value);
-      if(!isNaN(score)&&!isNaN(weight)&&weight>0){weightedSum+=score*weight/100;totalWeight+=weight;count++}
-    }
-    const fe=parseFloat(finalExam.value);
-    if(!isNaN(fe)&&totalWeight<100){
-      const remWeight=100-totalWeight;weightedSum+=fe*remWeight/100;totalWeight=100
-    }
-    if(totalWeight>0&&count>0){
-      const pct=weightedSum/totalWeight*100;
-      gradeValue.textContent=pct.toFixed(1)+'%';
-      gradeLetter.textContent=getLetter(pct);
-      gradeDetail.textContent=count+' assignments'+(totalWeight<100?', '+totalWeight.toFixed(0)+'% weighted so far':'');
-    }else{gradeValue.textContent='0.0%';gradeLetter.textContent='-';gradeDetail.textContent='Add assignments to calculate'}
-  }
-
-  function addEntry(name='',score='',weight=''){
-    const div=document.createElement('div');div.className='entry';
-    const nIn=document.createElement('input');nIn.className='e-name';nIn.placeholder='Assignment';nIn.value=name;
-    const sIn=document.createElement('input');sIn.className='e-grade';sIn.type='number';sIn.placeholder='Score %';sIn.value=score;nIn.min='0';sIn.max='100';sIn.step='any';
-    const wIn=document.createElement('input');wIn.className='e-weight';wIn.type='number';wIn.placeholder='Weight %';wIn.value=weight;wIn.min='0';wIn.max='100';wIn.step='any';
-    const dBtn=document.createElement('button');dBtn.className='e-del';dBtn.textContent='脳';
-    dBtn.addEventListener('click',function(){div.remove();calc()});
-    sIn.addEventListener('input',calc);wIn.addEventListener('input',calc);
-    div.appendChild(nIn);div.appendChild(sIn);div.appendChild(wIn);div.appendChild(dBtn);
-    entryList.appendChild(div);calc()
-  }
-
-  addBtn.addEventListener('click',function(){addEntry()});
-  clearBtn.addEventListener('click',function(){entryList.innerHTML='';calc()});
-  finalExam.addEventListener('input',calc);
-  addEntry('Homework','85','20');addEntry('Midterm','78','30');addEntry('Final','','50');
+(function(){ const entryList=document.getElementById('entryList'),gradeValue=document.getElementById('gradeValue'); const gradeLetter=document.getElementById('gradeLetter'),gradeDetail=document.getElementById('gradeDetail'); const addBtn=document.getElementById('addBtn'),clearBtn=document.getElementById('clearBtn'); const finalExam=document.getElementById('finalExam'); function getLetter(p){ if(p>=97)return'A+';if(p>=93)return'A';if(p>=90)return'A-';if(p>=87)return'B+';if(p>=83)return'B'; if(p>=80)return'B-';if(p>=77)return'C+';if(p>=73)return'C';if(p>=70)return'C-';if(p>=67)return'D+'; if(p>=63)return'D';if(p>=60)return'D-';return'F' } function calc(){ const entries=entryList.querySelectorAll('.entry'); let totalWeight=0,weightedSum=0,count=0; for(const e of entries){ const score=parseFloat(e.querySelector('.e-grade').value); const weight=parseFloat(e.querySelector('.e-weight').value); if(!isNaN(score)&&!isNaN(weight)&&weight>0){weightedSum+=score*weight/100;totalWeight+=weight;count++} } const fe=parseFloat(finalExam.value); if(!isNaN(fe)&&totalWeight<100){ const remWeight=100-totalWeight;weightedSum+=fe*remWeight/100;totalWeight=100 } if(totalWeight>0&&count>0){ const pct=weightedSum/totalWeight*100; gradeValue.textContent=pct.toFixed(1)+'%'; gradeLetter.textContent=getLetter(pct); gradeDetail.textContent=count+' assignments'+(totalWeight<100?','+totalWeight.toFixed(0)+'% weighted so far':''); }else{gradeValue.textContent='0.0%';gradeLetter.textContent='-';gradeDetail.textContent='Add assignments to calculate'} } function addEntry(name='',score='',weight=''){ const div=document.createElement('div');div.className='entry'; const nIn=document.createElement('input');nIn.className='e-name';nIn.placeholder='Assignment';nIn.value=name; const sIn=document.createElement('input');sIn.className='e-grade';sIn.type='number';sIn.placeholder='Score %';sIn.value=score;nIn.min='0';sIn.max='100';sIn.step='any'; const wIn=document.createElement('input');wIn.className='e-weight';wIn.type='number';wIn.placeholder='Weight %';wIn.value=weight;wIn.min='0';wIn.max='100';wIn.step='any'; const dBtn=document.createElement('button');dBtn.className='e-del';dBtn.textContent=''; dBtn.addEventListener('click',function(){div.remove();calc()}); sIn.addEventListener('input',calc);wIn.addEventListener('input',calc); div.appendChild(nIn);div.appendChild(sIn);div.appendChild(wIn);div.appendChild(dBtn); entryList.appendChild(div);calc() } addBtn.addEventListener('click',function(){addEntry()}); clearBtn.addEventListener('click',function(){entryList.innerHTML='';calc()}); finalExam.addEventListener('input',calc); addEntry('Homework','85','20');addEntry('Midterm','78','30');addEntry('Final','','50');
 })();
 </script>
-
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>

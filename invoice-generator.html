@@ -29,12 +29,12 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="field"><label>Tax Rate (%)</label><input type="number" id="taxRate" value="0" min="0" step="0.1"></div>
 </div>
 <div class="inv-header">
-<div class="field"><label>Bill To</label><input id="billTo" placeholder="Client name"></div>
+<div class="field"><label>Bill To</label><input id="billTo" placeholder="Client name…"></div>
 </div>
 <table class="inv-table"><thead><tr><th style="width:40%">Item</th><th style="width:15%">Qty</th><th style="width:20%">Price</th><th style="width:20%">Total</th><th></th></tr></thead><tbody id="itemBody"></tbody></table>
-<div class="btn-row"><button class="btn-secondary" id="addItemBtn">+ Add Item</button></div>
+<div class="btn-row">+ Add Item<<button class="btn-secondary" id="addItemBtn"></button></div>
 <div class="inv-summary" id="summaryArea"><div>Subtotal: <span id="subtotal">0.00</span></div><div>Tax (<span id="taxPct">0</span>%): <span id="taxAmt">0.00</span></div><div class="grand-total">Total: $<span id="grandTotal">0.00</span></div></div>
-<div class="btn-row"><button class="btn-primary" id="printBtn">Print Invoice</button><button class="btn-secondary" id="resetInvBtn">Reset</button></div>
+<div class="btn-row">Print Invoice<<button class="btn-primary" id="printBtn"></button>Reset<<button class="btn-secondary" id="resetInvBtn"></button></div>
 </div>
 </main>
 <aside class="sidebar">
@@ -47,53 +47,9 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Invoice Generator &mdash; Free online invoice generator tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
-(function(){
-  const itemBody=document.getElementById('itemBody'),addItemBtn=document.getElementById('addItemBtn');
-  const subtotalEl=document.getElementById('subtotal'),taxPct=document.getElementById('taxPct');
-  const taxAmt=document.getElementById('taxAmt'),grandTotal=document.getElementById('grandTotal');
-  const taxRate=document.getElementById('taxRate'),invDate=document.getElementById('invDate');
-  invDate.value=new Date().toISOString().slice(0,10);
-
-  function calc(){
-    const rows=itemBody.querySelectorAll('tr');
-    let sub=0;
-    for(const r of rows){
-      const qty=parseFloat(r.querySelector('.iqty').value)||0;
-      const price=parseFloat(r.querySelector('.iprice').value)||0;
-      const total=qty*price;
-      r.querySelector('.line-total').textContent=total.toFixed(2);
-      sub+=total
-    }
-    const taxP=parseFloat(taxRate.value)||0;
-    const tax=sub*taxP/100;
-    subtotalEl.textContent=sub.toFixed(2);
-    taxPct.textContent=taxP;
-    taxAmt.textContent=tax.toFixed(2);
-    grandTotal.textContent=(sub+tax).toFixed(2)
-  }
-
-  function addItem(name='',qty='1',price='0'){
-    const tr=document.createElement('tr');
-    tr.innerHTML='<td><input class="iname" value="'+name+'" placeholder="Item description"></td>'+
-      '<td><input class="iqty" type="number" value="'+qty+'" min="0" step="1"></td>'+
-      '<td><input class="iprice" type="number" value="'+price+'" min="0" step="0.01"></td>'+
-      '<td class="line-total">0.00</td>'+
-      '<td><button class="item-del">脳</button></td>';
-    tr.querySelector('.item-del').addEventListener('click',function(){tr.remove();calc()});
-    tr.querySelector('.iname').addEventListener('input',calc);
-    tr.querySelector('.iqty').addEventListener('input',calc);
-    tr.querySelector('.iprice').addEventListener('input',calc);
-    itemBody.appendChild(tr);calc()
-  }
-
-  addItemBtn.addEventListener('click',function(){addItem()});
-  taxRate.addEventListener('input',calc);
-  document.getElementById('printBtn').addEventListener('click',function(){window.print()});
-  document.getElementById('resetInvBtn').addEventListener('click',function(){itemBody.innerHTML='';addItem('Service 1','1','100');addItem('Service 2','1','50')});
-  addItem('Web Design','1','500');addItem('Development','10','75');
+(function(){ const itemBody=document.getElementById('itemBody'),addItemBtn=document.getElementById('addItemBtn'); const subtotalEl=document.getElementById('subtotal'),taxPct=document.getElementById('taxPct'); const taxAmt=document.getElementById('taxAmt'),grandTotal=document.getElementById('grandTotal'); const taxRate=document.getElementById('taxRate'),invDate=document.getElementById('invDate'); invDate.value=new Date().toISOString().slice(0,10); function calc(){ const rows=itemBody.querySelectorAll('tr'); let sub=0; for(const r of rows){ const qty=parseFloat(r.querySelector('.iqty').value)||0; const price=parseFloat(r.querySelector('.iprice').value)||0; const total=qty*price; r.querySelector('.line-total').textContent=total.toFixed(2); sub+=total } const taxP=parseFloat(taxRate.value)||0; const tax=sub*taxP/100; subtotalEl.textContent=sub.toFixed(2); taxPct.textContent=taxP; taxAmt.textContent=tax.toFixed(2); grandTotal.textContent=(sub+tax).toFixed(2) } function addItem(name='',qty='1',price='0'){ const tr=document.createElement('tr'); tr.innerHTML='<td><input class="iname" value="'+name+'" placeholder="Item description…"></td>'+'<td><input class="iqty" type="number" value="'+qty+'" min="0" step="1"></td>'+'<td><input class="iprice" type="number" value="'+price+'" min="0" step="0.01"></td>'+'<td class="line-total">0.00</td>'+'<td><<button class="item-del"></button></td>'; tr.querySelector('.item-del').addEventListener('click',function(){tr.remove();calc()}); tr.querySelector('.iname').addEventListener('input',calc); tr.querySelector('.iqty').addEventListener('input',calc); tr.querySelector('.iprice').addEventListener('input',calc); itemBody.appendChild(tr);calc() } addItemBtn.addEventListener('click',function(){addItem()}); taxRate.addEventListener('input',calc); document.getElementById('printBtn').addEventListener('click',function(){window.print()}); document.getElementById('resetInvBtn').addEventListener('click',function(){itemBody.innerHTML='';addItem('Service 1','1','100');addItem('Service 2','1','50')}); addItem('Web Design','1','500');addItem('Development','10','75');
 })();
 </script>
-
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg><<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>
