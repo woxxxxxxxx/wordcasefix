@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordCaseFix 鈥?Free Online Text & Utility Tools</title>
+<title>WordCaseFix — Free Online Text & Utility Tools</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -15,12 +15,12 @@
     flex-direction: column;
   }
 
-  /* 鈹€鈹€ Layout 鈹€鈹€ */
+  /* ── Layout ── */
   .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
   .main-area { flex: 1; min-width: 0; padding: 40px 24px 48px; }
   .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
 
-  /* 鈹€鈹€ Ad slots 鈹€鈹€ */
+  /* ── Ad slots ── */
   .ad-slot {
     position: relative;
     background: #e8e9ed;
@@ -36,7 +36,7 @@
   .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
   .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
 
-  /* 鈹€鈹€ Hero 鈹€鈹€ */
+  /* ── Hero ── */
   .hero { text-align: center; margin-bottom: 36px; }
   .hero h1 {
     font-size: 32px; font-weight: 800;
@@ -50,7 +50,7 @@
     color: #666; font-size: 16px; margin-top: 8px; max-width: 520px; margin-left: auto; margin-right: auto;
   }
 
-  /* 鈹€鈹€ Tool grid 鈹€鈹€ */
+  /* ── Tool grid ── */
   .tool-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -101,10 +101,10 @@
     color: #fff;
   }
 
-  /* 鈹€鈹€ Footer 鈹€鈹€ */
+  /* ── Footer ── */
   footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
 
-  /* 鈹€鈹€ Responsive 鈹€鈹€ */
+  /* ── Responsive ── */
   @media (max-width: 820px) {
     .sidebar { display: none; }
     .main-area { padding: 28px 16px 36px; }
@@ -147,7 +147,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </script></head>
 <body>
 
-<!-- 鈹€鈹€鈹€ Ad: Top 鈹€鈹€鈹€ -->
+<!-- ─── Ad: Top ─── -->
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 
 <div class="page-wrap">
@@ -155,16 +155,16 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
     <div class="hero">
       <h1>WordCaseFix</h1>
-      <p>Free online tools for text transformation, counting, password generation, and health calculations 鈥?fast and private.</p>
+      <p>Free online tools for text transformation, counting, password generation, and health calculations — fast and private.</p>
     </div>
 
-    <!-- 鈹€鈹€鈹€ Ad: Top (in-content) 鈹€鈹€鈹€ -->
+    <!-- ─── Ad: Top (in-content) ─── -->
     <div class="ad-slot ad-top" style="height:70px;margin-bottom:28px;"><span class="ad-label">Advertisement</span></div>
 
     <div class="filter-bar">
       <div class="search-wrap">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="searchInput" placeholder="Search tools鈥? autocomplete="off">
+        <input type="text" id="searchInput" placeholder="Search tools…" autocomplete="off">
       </div>
       <div class="cat-tabs">
         <span class="cat-tab active" data-cat="all">All Tools</span>
@@ -247,7 +247,11 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
       <!-- Color Picker -->
       <div class="tool-card" data-category="dev">
-        <div class="tool-icon">馃帹</div>
+        <div class="tool-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M9 16c1.5 1.5 4.5 1.5 6 0"/>
+          </svg>
+        </div>
         <div class="tool-name">Color Picker</div>
         <div class="tool-desc">Pick, preview, and convert colors between HEX, RGB, and HSL formats with a library of preset swatches.</div>
         <a class="tool-btn" href="/color-picker.html">
@@ -289,7 +293,8 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       </div>
 
       <!-- Base64 Encoder -->
-      <div class="tool-card" data-category="dev">  <div class="tool-icon">
+      <div class="tool-card" data-category="dev">
+        <div class="tool-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
             <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/>
@@ -571,7 +576,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
           </svg>
         </div>
         <div class="tool-name">Online Calculator</div>
-        <div class="tool-desc">Perform basic arithmetic 鈥?addition, subtraction, multiplication, division 鈥?with a clean interface and keyboard support.</div>
+        <div class="tool-desc">Perform basic arithmetic — addition, subtraction, multiplication, division — with a clean interface and keyboard support.</div>
         <a class="tool-btn" href="/calculator.html">
           Open Tool
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -644,7 +649,11 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
       <!-- Emoji Picker -->
       <div class="tool-card" data-category="text">
-        <div class="tool-icon">馃榾</div>
+        <div class="tool-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b5bd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1.5" fill="#5b5bd6"/><circle cx="15" cy="10" r="1.5" fill="#5b5bd6"/><path d="M8 14c1.5 2.5 6.5 2.5 8 0"/>
+          </svg>
+        </div>
         <div class="tool-name">Emoji Picker</div>
         <div class="tool-desc">Browse and copy emojis by category with instant search. Click any emoji to copy it to your clipboard.</div>
         <a class="tool-btn" href="/emoji-picker.html">
@@ -718,7 +727,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
   </main>
 
-  <!-- 鈹€鈹€鈹€ Sidebar 鈹€鈹€鈹€ -->
+  <!-- ─── Sidebar ─── -->
   <aside class="sidebar">
     <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
     <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
