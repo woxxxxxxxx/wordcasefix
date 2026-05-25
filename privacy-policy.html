@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,7 +20,8 @@
   footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
   footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
   @media(max-width:600px){.page-wrap{padding:24px 16px 36px}.card{padding:24px 20px}}
-</style>
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:#5b5bd6;color:#fff;border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,background .2s;z-index:999;box-shadow:0 2px 12px rgba(91,91,214,.3)}.back-to-top.show{opacity:1;visibility:visible}.back-to-top:hover{background:#4a4ac2}.back-to-top svg{width:22px;height:22px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
@@ -32,7 +33,7 @@
 <p>Welcome to WordCaseFix (wordcasefix.com). We respect your privacy and are committed to protecting any personal information you may provide while using our website. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website and use our free online tools.</p>
 
 <h2>Information We Collect</h2>
-<p>WordCaseFix is designed to work entirely in your browser. Our tools process text and data locally on your device — we do not collect, store, or transmit the content you enter into any of our tools, including text conversions, passwords, calculations, or uploaded content.</p>
+<p>WordCaseFix is designed to work entirely in your browser. Our tools process text and data locally on your device 鈥?we do not collect, store, or transmit the content you enter into any of our tools, including text conversions, passwords, calculations, or uploaded content.</p>
 <p>We may collect the following non-personal information automatically when you visit our site:</p>
 <ul>
   <li>Browser type and version</li>
@@ -51,7 +52,7 @@
   <li><strong>Advertising cookies:</strong> Used to deliver relevant ads and measure ad performance.</li>
 </ul>
 
-<h2>Third-Party Advertising — Google AdSense</h2>
+<h2>Third-Party Advertising 鈥?Google AdSense</h2>
 <p>We use <strong>Google AdSense</strong> to display advertisements on our website. Google AdSense uses cookies and web beacons to serve ads based on your visits to our site and other websites on the internet.</p>
 <p>Google's use of advertising cookies enables it and its partners to serve ads based on your browsing activity. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
 <p>For more information about how Google uses data, please visit <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses data when you use our partners' sites or apps</a>.</p>
@@ -73,5 +74,7 @@
 </div>
 </div>
 <footer>WordCaseFix &mdash; Free online tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
 </body>
 </html>
