@@ -907,7 +907,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   var prevBtn=document.getElementById('prevPage');
   var nextBtn=document.getElementById('nextPage');
   var pageInfo=document.getElementById('pageInfo');
-  var activeCat='all',currentPage=1;
+  var activeCat='all',currentPage=1,totalPages=1;
 
   function render(){
     var q=searchInput.value.toLowerCase().trim();
@@ -924,7 +924,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       if(show){matchIdx.push(i)}
     }
     var totalVisible=matchIdx.length;
-    var totalPages=Math.max(1,Math.ceil(totalVisible/PER_PAGE));
+    totalPages=Math.max(1,Math.ceil(totalVisible/PER_PAGE));
     if(currentPage>totalPages)currentPage=totalPages;
 
     // Remove old ads and no-results
@@ -978,7 +978,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     })
   }
   prevBtn.addEventListener('click',function(){if(currentPage>1){currentPage--;render()}});
-  nextBtn.addEventListener('click',function(){var tp=Math.ceil(cards.length/PER_PAGE);if(currentPage<tp){currentPage++;render()}});
+  nextBtn.addEventListener('click',function(){if(currentPage<totalPages){currentPage++;render()}});
   render();
 })();
 </script>
