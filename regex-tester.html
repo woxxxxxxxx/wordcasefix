@@ -65,7 +65,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
 <main class="main-area">
-<header><nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;">鈥?/span><span style="color:#999;">Regex Tester</span></nav>
+<header><nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;"> > </span></nav>
       <h1>Regex Tester</h1><p>Test regular expressions in real time. Match, replace, or split text with flexible flags.</p></header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
@@ -98,7 +98,7 @@ Call +1-555-1234 for more information.</textarea></div>
 <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
 </aside>
 </div>
-<div class="seo-content"><h2>About the Regex Tester Tool</h2><p>The Regex Tester is a free online tool that lets you test regular expressions against any text in real time. Enter your regex pattern, toggle flags (global, case insensitive, multiline, dotall, unicode, sticky), and see matches highlighted instantly. Three modes let you match patterns, perform replacements, or split text by a pattern. This regex testing tool is essential for developers debugging regular expressions in their code, data analysts cleaning and extracting text patterns, QA engineers validating input formats, and students learning regex syntax. The tool provides instant feedback showing match count, the full pattern with flags, and a visual display of all matches found in your test string. All processing happens locally in your browser 鈥?nothing is sent to any server.</p></div>
+<div class="seo-content"><h2>About the Regex Tester Tool</h2><p>The Regex Tester is a free online tool that lets you test regular expressions against any text in real time. Enter your regex pattern, toggle flags (global, case insensitive, multiline, dotall, unicode, sticky), and see matches highlighted instantly. Three modes let you match patterns, perform replacements, or split text by a pattern. This regex testing tool is essential for developers debugging regular expressions in their code, data analysts cleaning and extracting text patterns, QA engineers validating input formats, and students learning regex syntax. The tool provides instant feedback showing match count, the full pattern with flags, and a visual display of all matches found in your test string. All processing happens locally in your browser 閳?nothing is sent to any server.</p></div>
 <section class="faq-section">
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item">
@@ -170,11 +170,11 @@ Call +1-555-1234 for more information.</textarea></div>
         const result=text.replace(regex,repl);
         const diff=result!==text;
         matchCount.textContent=diff?'1+':'0';
-        if(!diff){resultBox.innerHTML='<span class="match-info">No matches 鈥?text unchanged.</span>';return}
+        if(!diff){resultBox.innerHTML='<span class="match-info">No matches 閳?text unchanged.</span>';return}
         const before=escapeHtml(text.slice(0,200)),after=escapeHtml(result.slice(0,200));
         resultBox.innerHTML='<div class="match-info"><strong>Before:</strong> (showing first 200 chars)</div><div>'+before+'</div>'+
           '<div class="match-info" style="margin-top:8px"><strong>After:</strong></div><div>'+after+'</div>'+
-          (result.length>200?'<div class="match-info">鈥?truncated, full result: '+result.length+' chars)</div>':'')
+          (result.length>200?'<div class="match-info">閳?truncated, full result: '+result.length+' chars)</div>':'')
       }catch(e){
         errorBox.textContent='Error: '+e.message;errorBox.style.display='block'
       }
@@ -182,12 +182,12 @@ Call +1-555-1234 for more information.</textarea></div>
       try{
         const parts=text.split(regex);
         matchCount.textContent=parts.length-1;
-        if(parts.length===1){resultBox.innerHTML='<span class="match-info">No splits 鈥?pattern not found.</span>';return}
+        if(parts.length===1){resultBox.innerHTML='<span class="match-info">No splits 閳?pattern not found.</span>';return}
         let html='<div class="match-info">Split into <strong>'+parts.length+'</strong> part'+(parts.length>1?'s':'')+':</div>';
         for(let i=0;i<parts.length&&i<20;i++){
-          html+='<div class="match-info">'+(i+1)+'. "'+escapeHtml(parts[i].slice(0,100))+(parts[i].length>100?'鈥?:'')+'"'+(parts[i].length>100?' <span style="color:#888">('+parts[i].length+' chars)</span>':'')+'</div>'
+          html+='<div class="match-info">'+(i+1)+'. "'+escapeHtml(parts[i].slice(0,100))+(parts[i].length>100?'閳?:'')+'"'+(parts[i].length>100?' <span style="color:#888">('+parts[i].length+' chars)</span>':'')+'</div>'
         }
-        if(parts.length>20)html+='<div class="match-info">鈥?and '+(parts.length-20)+' more parts</div>';
+        if(parts.length>20)html+='<div class="match-info">閳?and '+(parts.length-20)+' more parts</div>';
         resultBox.innerHTML=html
       }catch(e){
         errorBox.textContent='Error: '+e.message;errorBox.style.display='block'

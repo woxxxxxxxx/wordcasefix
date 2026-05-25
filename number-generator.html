@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Controls 鈹€鈹€ */
+  /* 閳光偓閳光偓 Controls 閳光偓閳光偓 */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -72,7 +72,7 @@
   .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   .field input::placeholder { font-weight: 400; color: #bbb; }
 
-  /* 鈹€鈹€ Checkbox toggle 鈹€鈹€ */
+  /* 閳光偓閳光偓 Checkbox toggle 閳光偓閳光偓 */
   .toggle-row {
     display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
   }
@@ -85,7 +85,7 @@
   }
   .toggle-row .hint { font-size: 12px; color: #aaa; }
 
-  /* 鈹€鈹€ Buttons 鈹€鈹€ */
+  /* 閳光偓閳光偓 Buttons 閳光偓閳光偓 */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
@@ -113,7 +113,7 @@
   .btn-secondary:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-secondary.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 鈹€鈹€ Results 鈹€鈹€ */
+  /* 閳光偓閳光偓 Results 閳光偓閳光偓 */
   .result-area { margin-top: 24px; padding-top: 24px; border-top: 1.5px solid #e8e9ed; }
 
   .numbers-grid {
@@ -218,7 +218,7 @@
   <main class="main-area">
 
     <header>
-      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;">鈥?/span><span style="color:#999;">Random Number Generator</span></nav>
+      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;"> > </span></nav>
       <h1>Random Number Generator</h1>
       <p>Generate random numbers within a custom range.</p>
     </header>
@@ -373,7 +373,7 @@
     resultContent.style.display = 'block';
 
     // Stats
-    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '鈥? + max + ')';
+    statsLine.textContent = 'Generated ' + numbers.length + ' number' + (numbers.length !== 1 ? 's' : '') + ' (range: ' + min + '閳? + max + ')';
 
     // Render chips
     let html = '';

@@ -50,7 +50,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Input 鈹€鈹€ */
+  /* 閳光偓閳光偓 Input 閳光偓閳光偓 */
   .input-group { margin-bottom: 18px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -67,7 +67,7 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* 鈹€鈹€ Controls grid 鈹€鈹€ */
+  /* 閳光偓閳光偓 Controls grid 閳光偓閳光偓 */
   .control-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -114,7 +114,7 @@
   }
   .sep-options input[type="text"]:focus { border-color: #5b5bd6; }
 
-  /* 鈹€鈹€ Buttons 鈹€鈹€ */
+  /* 閳光偓閳光偓 Buttons 閳光偓閳光偓 */
   .btn-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px;
   }
@@ -130,7 +130,7 @@
   .btn-primary:hover { background: #4a4ac2; }
   .btn-primary:active { transform: scale(.97); }
 
-  /* 鈹€鈹€ Stats 鈹€鈹€ */
+  /* 閳光偓閳光偓 Stats 閳光偓閳光偓 */
   .stats-line {
     display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
     font-size: 13px; color: #888;
@@ -138,7 +138,7 @@
   .stats-line span { white-space: nowrap; }
   .stats-line strong { color: #5b5bd6; }
 
-  /* 鈹€鈹€ Output 鈹€鈹€ */
+  /* 閳光偓閳光偓 Output 閳光偓閳光偓 */
   .output-wrap { position: relative; }
   .output-box {
     width: 100%;
@@ -167,7 +167,7 @@
   .btn-copy:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-copy.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 鈹€鈹€ Empty state 鈹€鈹€ */
+  /* 閳光偓閳光偓 Empty state 閳光偓閳光偓 */
   .empty-state {
     text-align: center; padding: 30px 0 10px; color: #ccc; font-size: 14px;
   }
@@ -246,7 +246,7 @@
   <main class="main-area">
 
     <header>
-      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;">鈥?/span><span style="color:#999;">Text Repeater</span></nav>
+      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;"> > </span></nav>
       <h1>Text Repeater</h1>
       <p>Repeat any text multiple times with custom separators.</p>
     </header>
@@ -257,7 +257,7 @@
 
       <div class="input-group">
         <label for="inputText">Text to repeat</label>
-        <textarea id="inputText" placeholder="Type or paste the text you want to repeat鈥? spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="Type or paste the text you want to repeat閳? spellcheck="false"></textarea>
       </div>
 
       <div class="control-grid">
@@ -348,7 +348,7 @@
   let currentResult = '';
   let currentSep    = 'space';
 
-  // 鈹€鈹€ Separator selector 鈹€鈹€
+  // 閳光偓閳光偓 Separator selector 閳光偓閳光偓
   document.querySelectorAll('.sep-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.sep-btn').forEach(b => b.classList.remove('active'));
@@ -369,7 +369,7 @@
     }
   }
 
-  // 鈹€鈹€ Repeat 鈹€鈹€
+  // 閳光偓閳光偓 Repeat 閳光偓閳光偓
   function repeat() {
     const text = inputText.value;
     const count = parseInt(repeatCount.value, 10);
@@ -401,7 +401,7 @@
     outputBox.textContent = result;
   }
 
-  // 鈹€鈹€ Copy 鈹€鈹€
+  // 閳光偓閳光偓 Copy 閳光偓閳光偓
   function copyResult() {
     if (!currentResult) return;
     navigator.clipboard.writeText(currentResult).then(() => {
@@ -432,7 +432,7 @@
     });
   }
 
-  // 鈹€鈹€ Events 鈹€鈹€
+  // 閳光偓閳光偓 Events 閳光偓閳光偓
   repeatBtn.addEventListener('click', repeat);
 
   copyBtn.addEventListener('click', copyResult);

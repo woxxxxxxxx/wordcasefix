@@ -50,14 +50,14 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Layout 鈹€鈹€ */
+  /* 閳光偓閳光偓 Layout 閳光偓閳光偓 */
   .picker-grid {
     display: grid;
     grid-template-columns: 240px 1fr;
     gap: 24px;
   }
 
-  /* 鈹€鈹€ Main color preview 鈹€鈹€ */
+  /* 閳光偓閳光偓 Main color preview 閳光偓閳光偓 */
   .color-preview-wrap {
     text-align: center;
   }
@@ -73,7 +73,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* 鈹€鈹€ Color picker input 鈹€鈹€ */
+  /* 閳光偓閳光偓 Color picker input 閳光偓閳光偓 */
   .picker-input-wrap { margin-bottom: 16px; }
   .picker-input-wrap label {
     display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
@@ -88,7 +88,7 @@
   input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
   input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
 
-  /* 鈹€鈹€ Value fields 鈹€鈹€ */
+  /* 閳光偓閳光偓 Value fields 閳光偓閳光偓 */
   .val-grid { display: flex; flex-direction: column; gap: 10px; }
   .val-row {
     display: flex; align-items: center; gap: 8px;
@@ -122,7 +122,7 @@
   .val-row .copy-val:hover { background: #e4e4ef; color: #1a1a2e; }
   .val-row .copy-val.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 鈹€鈹€ Presets 鈹€鈹€ */
+  /* 閳光偓閳光偓 Presets 閳光偓閳光偓 */
   .presets-section { margin-top: 20px; padding-top: 20px; border-top: 1.5px solid #e8e9ed; }
   .presets-section .ps-label {
     font-size: 13px; font-weight: 700; color: #555; margin-bottom: 8px;
@@ -212,7 +212,7 @@
   <main class="main-area">
 
     <header>
-      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;">鈥?/span><span style="color:#999;">Color Picker</span></nav>
+      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;"> > </span></nav>
       <h1>Color Picker</h1>
       <p>Pick, convert, and copy colors in HEX, RGB, and HSL.</p>
     </header>
@@ -298,7 +298,7 @@
   const hslValue     = document.getElementById('hslValue');
   const presetGrid   = document.getElementById('presetGrid');
 
-  // 鈹€鈹€ Helpers 鈹€鈹€
+  // 閳光偓閳光偓 Helpers 閳光偓閳光偓
   function hexToRgb(hex) {
     const r = parseInt(hex.slice(1,3), 16);
     const g = parseInt(hex.slice(3,5), 16);
@@ -341,12 +341,12 @@
     colorInput.value = hex;
   }
 
-  // 鈹€鈹€ Color input 鈹€鈹€
+  // 閳光偓閳光偓 Color input 閳光偓閳光偓
   colorInput.addEventListener('input', function() {
     updateColor(this.value);
   });
 
-  // 鈹€鈹€ Copy buttons 鈹€鈹€
+  // 閳光偓閳光偓 Copy buttons 閳光偓閳光偓
   document.querySelectorAll('.copy-val').forEach(btn => {
     btn.addEventListener('click', function() {
       const targetId = this.dataset.target;
@@ -375,7 +375,7 @@
     });
   });
 
-  // 鈹€鈹€ Presets 鈹€鈹€
+  // 閳光偓閳光偓 Presets 閳光偓閳光偓
   const presets = [
     '#FF6B6B', '#FF8E53', '#FFC857', '#51CF66', '#5BBD72',
     '#20C997', '#339AF0', '#5B5BD6', '#7950F2', '#E64980',
@@ -403,7 +403,7 @@
     presetGrid.appendChild(swatch);
   });
 
-  // 鈹€鈹€ HEX manual entry in the readonly input? Make it editable 鈹€鈹€
+  // 閳光偓閳光偓 HEX manual entry in the readonly input? Make it editable 閳光偓閳光偓
   hexValue.readOnly = false;
   hexValue.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {

@@ -20,17 +20,17 @@
     flex-direction: column;
   }
 
-  /* 鈹€鈹€ Layout 鈹€鈹€ */
+  /* 閳光偓閳光偓 Layout 閳光偓閳光偓 */
   .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
   .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
   .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
 
-  /* 鈹€鈹€ Header 鈹€鈹€ */
+  /* 閳光偓閳光偓 Header 閳光偓閳光偓 */
   header { text-align: center; margin-bottom: 16px; }
   header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
   header p { color: #555; font-size: 15px; margin-top: 4px; }
 
-  /* 鈹€鈹€ Ad slots 鈹€鈹€ */
+  /* 閳光偓閳光偓 Ad slots 閳光偓閳光偓 */
   .ad-slot {
     background: #e8e9ed;
     border: 1px dashed #bbb;
@@ -46,7 +46,7 @@
   .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
   .ad-slot { position: relative; }
 
-  /* 鈹€鈹€ Card 鈹€鈹€ */
+  /* 閳光偓閳光偓 Card 閳光偓閳光偓 */
   .card {
     background: #fff;
     border-radius: 12px;
@@ -54,7 +54,7 @@
     padding: 28px 32px 32px;
   }
 
-  /* 鈹€鈹€ Input 鈹€鈹€ */
+  /* 閳光偓閳光偓 Input 閳光偓閳光偓 */
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
   textarea {
@@ -72,7 +72,7 @@
   textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   textarea::placeholder { color: #aaa; }
 
-  /* 鈹€鈹€ Convert button 鈹€鈹€ */
+  /* 閳光偓閳光偓 Convert button 閳光偓閳光偓 */
   .convert-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
@@ -87,7 +87,7 @@
   .btn-primary:active { transform: scale(.97); }
   .char-count { font-size: 13px; color: #888; margin-left: auto; }
 
-  /* 鈹€鈹€ Results 鈹€鈹€ */
+  /* 閳光偓閳光偓 Results 閳光偓閳光偓 */
   .results { display: flex; flex-direction: column; gap: 14px; }
   .result-item {
     display: flex; align-items: flex-start; gap: 10px;
@@ -127,17 +127,17 @@
   .btn-copy:hover { background: #e4e4ef; color: #1a1a2e; }
   .btn-copy.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
-  /* 鈹€鈹€ Empty state 鈹€鈹€ */
+  /* 閳光偓閳光偓 Empty state 閳光偓閳光偓 */
   .empty-state {
     text-align: center; padding: 40px 0 20px; color: #999;
   }
   .empty-state svg { display: block; margin: 0 auto 12px; opacity: .35; }
   .empty-state p { font-size: 14px; }
 
-  /* 鈹€鈹€ Footer 鈹€鈹€ */
+  /* 閳光偓閳光偓 Footer 閳光偓閳光偓 */
   footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
 
-  /* 鈹€鈹€ Responsive 鈹€鈹€ */
+  /* 閳光偓閳光偓 Responsive 閳光偓閳光偓 */
   @media (max-width: 820px) {
     .sidebar { display: none; }
     .main-area { padding: 20px 16px 36px; }
@@ -205,25 +205,25 @@
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
 
-<!-- 鈹€鈹€鈹€鈹€ Ad: Top 鈹€鈹€鈹€鈹€ -->
+<!-- 閳光偓閳光偓閳光偓閳光偓 Ad: Top 閳光偓閳光偓閳光偓閳光偓 -->
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 
 <div class="page-wrap">
   <main class="main-area">
 
     <header>
-      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;">鈥?/span><span style="color:#999;">Case Converter</span></nav>
+      <nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;"> > </span></nav>
       <h1>Case Converter</h1>
       <p>Paste or type your text and choose a case style.</p>
     </header>
 
-    <!-- 鈹€鈹€鈹€鈹€ Ad: Top (in-content) 鈹€鈹€鈹€鈹€ -->
+    <!-- 閳光偓閳光偓閳光偓閳光偓 Ad: Top (in-content) 閳光偓閳光偓閳光偓閳光偓 -->
     <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 
     <div class="card">
       <div class="input-group">
         <label for="inputText">Your text</label>
-        <textarea id="inputText" placeholder="Paste or type your text here鈥? spellcheck="false"></textarea>
+        <textarea id="inputText" placeholder="Paste or type your text here閳? spellcheck="false"></textarea>
       </div>
 
       <div class="convert-row">
@@ -245,7 +245,7 @@
 
   </main>
 
-  <!-- 鈹€鈹€鈹€鈹€ Sidebar 鈹€鈹€鈹€鈹€ -->
+  <!-- 閳光偓閳光偓閳光偓閳光偓 Sidebar 閳光偓閳光偓閳光偓閳光偓 -->
   <aside class="sidebar">
     <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
     <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
@@ -280,13 +280,13 @@
   const emptyState = document.getElementById('emptyState');
   const resultsList = document.getElementById('resultsList');
 
-  // 鈹€鈹€ Character count 鈹€鈹€
+  // 閳光偓閳光偓 Character count 閳光偓閳光偓
   input.addEventListener('input', function() {
     const len = this.value.length;
     charCount.textContent = len + ' character' + (len !== 1 ? 's' : '');
   });
 
-  // 鈹€鈹€ Case transforms 鈹€鈹€
+  // 閳光偓閳光偓 Case transforms 閳光偓閳光偓
   function toTitleCase(str) {
     return str.replace(/\S+/g, w => w[0].toUpperCase() + w.slice(1).toLowerCase());
   }
@@ -316,7 +316,7 @@
     { label: 'aLtErNaTiNg cAsE', fn: toAlternatingCase },
   ];
 
-  // 鈹€鈹€ Render 鈹€鈹€
+  // 閳光偓閳光偓 Render 閳光偓閳光偓
   function render(text) {
     if (!text) {
       emptyState.style.display = 'block';
@@ -388,7 +388,7 @@
     });
   }
 
-  // 鈹€鈹€ Events 鈹€鈹€
+  // 閳光偓閳光偓 Events 閳光偓閳光偓
   function convert() {
     render(input.value);
   }

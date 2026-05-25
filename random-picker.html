@@ -108,7 +108,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
 <main class="main-area">
-<header><nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;">鈥?/span><span style="color:#999;">Random Name Picker</span></nav>
+<header><nav aria-label="breadcrumb" style="font-size:13px;color:#888;margin-bottom:10px;text-align:center;"><a href="/" style="color:#5b5bd6;text-decoration:none;">Home</a><span style="margin:0 6px;"> > </span></nav>
       <h1>Random Name Picker</h1><p>Enter a list of names or items and pick one or more randomly.</p></header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
@@ -122,7 +122,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <button class="btn-secondary" id="resetBtn">Reset</button>
 <button class="btn-secondary" id="shuffleBtn">Shuffle All</button>
 </div>
-<div class="result-spin"><div class="winner-label" id="winnerLabel">Click Pick Random to start</div><div class="winner-name" id="winnerName">鈥?/div></div>
+<div class="result-spin"><div class="winner-label" id="winnerLabel">Click Pick Random to start</div><div class="winner-name" id="winnerName">閳?/div></div>
 <div class="chip-count" id="chipCount"></div>
 <div class="chip-grid" id="chipGrid"></div>
 </div>
@@ -186,7 +186,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       for(const s of selected){picked.add(s)}updateChips()},400)
   }
 
-  function resetPicks(){picked.clear();updateChips();winnerName.textContent='鈥?;winnerLabel.textContent='Click Pick Random to start'}
+  function resetPicks(){picked.clear();updateChips();winnerName.textContent='閳?;winnerLabel.textContent='Click Pick Random to start'}
   function shuffleAll(){const items=getItems();if(items.length<2)return;
     for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]]}
     input.value=items.join('\n');resetPicks()
