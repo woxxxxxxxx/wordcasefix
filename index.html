@@ -139,7 +139,7 @@
 .seo-content{margin:28px auto 0;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
 .pagination .page-info{font-size:13px;color:#888;font-weight:600}
 footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
-.back-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:#5b5bd6;color:#fff;border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,background .2s;z-index:999;box-shadow:0 2px 12px rgba(91,91,214,.3)}.back-to-top.show{opacity:1;visibility:visible}.back-to-top:hover{background:#4a4ac2}.back-to-top svg{width:22px;height:22px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}</style>
+.back-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:#5b5bd6;color:#fff;border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,background .2s;z-index:999;box-shadow:0 2px 12px rgba(91,91,214,.3)}.back-to-top.show{opacity:1;visibility:visible}.back-to-top:hover{background:#4a4ac2}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -317,7 +317,13 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 })();
 </script>
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button><script>!function(){var b=document.getElementById('backToTop');function t(){window.scrollY>300?b.classList.add('show'):b.classList.remove('show')}window.addEventListener('scroll',t);t()}();</script>
+<button id="back-to-top" title="Back to top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;line-height:1;">^</button>
+<script>
+window.addEventListener('scroll',function(){
+  var btn=document.getElementById('back-to-top');
+  if(btn)btn.style.display=window.scrollY>300?'block':'none';
+});
+</script>
 </body>
 </html>
 
