@@ -126,6 +126,19 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Binary Converter &mdash; Free online binary hex decimal converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var d=document.getElementById('decInput'),b=document.getElementById('binInput'),h=document.getElementById('hexInput'),o=document.getElementById('octInput');
+function fmt(v,base){try{return parseInt(v,base).toString(10);}catch(e){return '';}}
+function fromDec(v){var n=parseInt(v,10);if(isNaN(n)||n<0||n>999999999){b.value='';h.value='';o.value='';return;}b.value=n.toString(2);h.value=n.toString(16).toUpperCase();o.value=n.toString(8);}
+d.addEventListener('input',function(){var v=d.value.replace(/[^0-9]/g,'');d.value=v;if(v===''){b.value='';h.value='';o.value='';return;}var n=parseInt(v,10);if(!isNaN(n)&&n>=0)fromDec(v);});
+b.addEventListener('input',function(){var v=b.value.replace(/[^01]/g,'');b.value=v;if(v===''){d.value='';h.value='';o.value='';return;}var n=parseInt(v,2);if(!isNaN(n)){d.value=n;h.value=n.toString(16).toUpperCase();o.value=n.toString(8);}});
+h.addEventListener('input',function(){var v=h.value.replace(/[^0-9a-fA-F]/g,'').toUpperCase();h.value=v;if(v===''){d.value='';b.value='';o.value='';return;}var n=parseInt(v,16);if(!isNaN(n)){d.value=n;b.value=n.toString(2);o.value=n.toString(8);}});
+o.addEventListener('input',function(){var v=o.value.replace(/[^0-7]/g,'');o.value=v;if(v===''){d.value='';b.value='';h.value='';return;}var n=parseInt(v,8);if(!isNaN(n)){d.value=n;b.value=n.toString(2);h.value=n.toString(16).toUpperCase();}});
+var qb=document.querySelectorAll('.quick-btn');for(var i=0;i<qb.length;i++){qb[i].addEventListener('click',function(){var bn=this.getAttribute('data-bin');if(bn){b.value=bn;var n=parseInt(bn,2);if(!isNaN(n)){d.value=n;h.value=n.toString(16).toUpperCase();o.value=n.toString(8);}}});}
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

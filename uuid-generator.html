@@ -142,6 +142,18 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>UUID Generator &mdash; Free online UUID v4 generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var g=document.getElementById('generateBtn'),ca=document.getElementById('copyAllBtn'),
+uc=document.getElementById('uuidCount'),us=document.getElementById('uuidCase'),ul=document.getElementById('uuidList');
+function genUUID(){var d=Date.now();return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=(d+Math.random()*16)%16|0;d=Math.floor(d/16);return(c==='x'?r:r&0x3|0x8).toString(16);});}
+function generate(){var n=parseInt(uc.value)||1;var items=[];for(var i=0;i<n;i++){var id=genUUID();if(us.value==='upper')id=id.toUpperCase();items.push(id);}
+ul.innerHTML='';items.forEach(function(id,i){var d=document.createElement('div');d.style.cssText='display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #f0f0f5;font-family:monospace;font-size:13px';d.innerHTML='<span>'+(i+1)+'. '+id+'</span><button class="btn-secondary" style="padding:2px 8px;font-size:11px">Copy</button>';d.querySelector('button').addEventListener('click',function(){navigator.clipboard.writeText(id);this.textContent='Copied!';setTimeout(function(){d.querySelector('button').textContent='Copy';},1000);});ul.appendChild(d);});}
+g.addEventListener('click',generate);us.addEventListener('change',generate);uc.addEventListener('change',generate);
+generate();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

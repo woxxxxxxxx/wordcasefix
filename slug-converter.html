@@ -75,11 +75,23 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text to Slug Converter &mdash; Free online URL slug generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var it=document.getElementById('inputText'),ob=document.getElementById('outputBox'),up=document.getElementById('urlPreview'),
+cb=document.getElementById('copyBtn'),cd=document.getElementById('chkDigits');
+var sep='-';
+document.querySelectorAll('[data-sep]').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('[data-sep]').forEach(function(x){x.classList.remove('active');});this.classList.add('active');sep=this.getAttribute('data-sep');convert();});});
+function convert(){var t=it.value;if(!t){ob.textContent='Your slug will appear here';ob.className='output-box empty';up.textContent='/';return;}
+var slug=t.toLowerCase().trim();slug=slug.replace(/[^a-z0-9\s-]/g,'');if(!cd.checked)slug=slug.replace(/[0-9]/g,'');slug=slug.replace(/\s+/g,sep).replace(/-+/g,sep).replace(/^[^a-z]+/,'').replace(/[^a-z]+$/,'');
+ob.textContent=slug;ob.className='output-box';up.textContent='/'+slug;}
+it.addEventListener('input',convert);cd.addEventListener('change',convert);
+cb.addEventListener('click',function(){var t=ob.textContent;if(t&&t!=='Your slug will appear here'){navigator.clipboard.writeText(t);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy';},1500);}});
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
 </script>
 </body>
 </html>
-
-

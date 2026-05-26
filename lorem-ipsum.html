@@ -294,6 +294,22 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Lorem Ipsum Generator &mdash; Free dummy text generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var gn=document.getElementById('generateBtn'),cp=document.getElementById('copyBtn'),
+cv=document.getElementById('countVal'),ob=document.getElementById('outputBox');
+var lipsum='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+var words=lipsum.split(/\s+/);
+function gen(){var n=parseInt(cv.value)||5;var res='';var typeEl=document.querySelector('.type-btn.active');var type=typeEl?typeEl.getAttribute('data-type'):'paras';
+var startLorem=document.getElementById('chkStart')?document.getElementById('chkStart').checked:true;var asHtml=document.getElementById('chkHtml')?document.getElementById('chkHtml').checked:false;
+if(type==='words'){for(var i=0;i<n;i++){var ri=Math.floor(Math.random()*words.length);res+=words.map(function(w){return words[Math.floor(Math.random()*words.length)];}).slice(0,n).join(' ');}}else if(type==='sentences'){for(var s=0;s<n;s++){var sn=Math.floor(Math.random()*15)+5;var sent='';for(var w=0;w<sn;w++){sent+=words[Math.floor(Math.random()*words.length)]+(w<sn-1?' ':'');}res+=(s>0?' ':'')+sent.charAt(0).toUpperCase()+sent.slice(1)+'.';}}else{for(var p=0;p<n;p++){var pn=Math.floor(Math.random()*4)+3;var para='';for(var s2=0;s2<pn;s2++){var sn2=Math.floor(Math.random()*12)+8;var sent2='';for(var w2=0;w2<sn2;w2++){sent2+=words[Math.floor(Math.random()*words.length)]+(w2<sn2-1?' ':'');}para+=sent2.charAt(0).toUpperCase()+sent2.slice(1)+'. ';}res+=para+(asHtml?'<br><br>':'\n\n');}}
+if(startLorem&&(type==='paras'||type==='sentences'))res=lipsum.split('. ').slice(0,2).join('. ')+'. '+(type==='paras'?'<br><br>':' ')+res;ob.innerHTML=asHtml?res:'<p>'+res.replace(/\n\n/g,'</p><p>')+'</p>';}
+gn.addEventListener('click',gen);
+document.querySelectorAll('.type-btn').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('.type-btn').forEach(function(x){x.classList.remove('active');});this.classList.add('active');gen();});});
+cp.addEventListener('click',function(){var t=ob.textContent;navigator.clipboard.writeText(t);cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy';},1500);});
+cv.addEventListener('change',gen);gen();
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>

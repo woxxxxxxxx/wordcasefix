@@ -109,6 +109,28 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Resume Builder &mdash; Free online resume builder | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var rn=document.getElementById('resName'),re=document.getElementById('resEmail'),rp=document.getElementById('resPhone'),
+rl=document.getElementById('resLocation'),rs=document.getElementById('resSkills'),
+ae=document.getElementById('addExpBtn'),ad=document.getElementById('addEduBtn'),prb=document.getElementById('printResBtn'),
+ec=document.getElementById('expContainer'),edc=document.getElementById('eduContainer'),rv=document.getElementById('resumePreview');
+var expCount=1,eduCount=1;
+function render(){var html='<div class="rp-name">'+(rn.value||'Your Name')+'</div><div class="rp-contact">'+(re.value||'')+(rp.value?' | '+rp.value:'')+(rl.value?' | '+rl.value:'')+'</div>';if(ec.children.length>0){html+='<div class="rp-section"><h3>Experience</h3>';ec.querySelectorAll('.exp-entry').forEach(function(e){var t=e.querySelector('.exp-title').value,c=e.querySelector('.exp-company').value,d=e.querySelector('.exp-dates').value,desc=e.querySelector('.exp-desc').value;if(t||c)html+='<div class="rp-item"><div class="rp-item-title">'+t+(c?' at '+c:'')+'</div><div class="rp-item-sub">'+d+'</div><p style="font-size:12px;color:#666">'+desc+'</p></div>';});html+='</div>';}
+if(edc.children.length>0){html+='<div class="rp-section"><h3>Education</h3>';edc.querySelectorAll('.edu-entry').forEach(function(e){var d=e.querySelector('.edu-degree').value,s=e.querySelector('.edu-school').value,dd=e.querySelector('.edu-dates').value;if(d||s)html+='<div class="rp-item"><div class="rp-item-title">'+d+(s?' at '+s:'')+'</div><div class="rp-item-sub">'+dd+'</div></div>';});html+='</div>';}
+if(rs.value){html+='<div class="rp-section"><h3>Skills</h3><p style="font-size:13px;color:#555">'+rs.value+'</p></div>';}
+rv.innerHTML=html;}
+function addExp(){var d=document.createElement('div');d.className='entry-row exp-entry';d.innerHTML='<div style="flex:1"><div class="input-group"><input type="text" class="exp-title" placeholder="Job Title" value="Job Title"></div><div class="input-group"><input type="text" class="exp-company" placeholder="Company"></div><div class="input-group"><input type="text" class="exp-dates" placeholder="Dates"></div><div class="input-group"><textarea class="exp-desc" rows="2" placeholder="Description"></textarea></div></div><button class="btn-danger exp-del">&times;</button>';d.querySelector('.exp-del').addEventListener('click',function(){d.remove();render();});ec.appendChild(d);render();}
+function addEdu(){var d=document.createElement('div');d.className='entry-row edu-entry';d.innerHTML='<div style="flex:1"><div class="input-group"><input type="text" class="edu-degree" placeholder="Degree" value="Degree"></div><div class="input-group"><input type="text" class="edu-school" placeholder="School"></div><div class="input-group"><input type="text" class="edu-dates" placeholder="Dates"></div></div><button class="btn-danger edu-del">&times;</button>';d.querySelector('.edu-del').addEventListener('click',function(){d.remove();render();});edc.appendChild(d);render();}
+ae.addEventListener('click',addExp);ad.addEventListener('click',addEdu);
+prb.addEventListener('click',function(){window.print();});
+rn.addEventListener('input',render);re.addEventListener('input',render);rp.addEventListener('input',render);
+rl.addEventListener('input',render);rs.addEventListener('input',render);
+document.querySelectorAll('.exp-entry input,.exp-entry textarea,.edu-entry input').forEach(function(el){el.addEventListener('input',render);});
+render();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

@@ -141,6 +141,22 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Random Name Picker &mdash; Free online random picker tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var pb=document.getElementById('pickBtn'),rb=document.getElementById('resetBtn'),sb_=document.getElementById('shuffleBtn'),
+ii=document.getElementById('itemInput'),pc=document.getElementById('pickCount'),ad=document.getElementById('allowDupes'),
+wn=document.getElementById('winnerName'),wl=document.getElementById('winnerLabel'),
+cg=document.getElementById('chipGrid'),cc=document.getElementById('chipCount');
+var picked=[];var allItems=[];
+function updateChips(){var items=ii.value.split('\n').filter(function(s){return s.trim();});allItems=items;cc.textContent='Total: '+items.length+' items';cg.innerHTML='';items.forEach(function(item,i){var d=document.createElement('span');d.className='chip'+(picked.indexOf(i)>=0?' picked':'');d.textContent=item;cg.appendChild(d);});}
+ii.addEventListener('input',function(){picked=[];updateChips();wl.textContent='Click Pick Random to start';wn.textContent='--';});
+pb.addEventListener('click',function(){var items=ii.value.split('\n').filter(function(s){return s.trim();});if(items.length===0){wn.textContent='Add some items first!';return;}var count=parseInt(pc.value)||1;var results=[];var available=items.map(function(_,i){return i;}).filter(function(i){return ad.checked||picked.indexOf(i)<0;});for(var i=0;i<count&&available.length>0;i++){var idx=Math.floor(Math.random()*available.length);results.push(available[idx]);if(!ad.checked){picked.push(available[idx]);available.splice(idx,1);}}wn.textContent=results.map(function(i){return items[i];}).join(', ');wl.textContent='Winner'+(results.length>1?'s':'');updateChips();});
+rb.addEventListener('click',function(){picked=[];updateChips();wl.textContent='Click Pick Random to start';wn.textContent='--';});
+sb_.addEventListener('click',function(){picked=[];var items=ii.value.split('\n').filter(function(s){return s.trim();});for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=items[i];items[i]=items[j];items[j]=tmp;}ii.value=items.join('\n');updateChips();});
+updateChips();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

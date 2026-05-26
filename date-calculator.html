@@ -134,6 +134,22 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Date Duration Calculator &mdash; Free online date calculator tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var sd=document.getElementById('startDate'),ed=document.getElementById('endDate'),cd=document.getElementById('calcDiffBtn'),
+cb=document.getElementById('chkBusiness'),dr=document.getElementById('diffResult'),dd=document.getElementById('diffDetail'),
+td=document.getElementById('targetDate'),di=document.getElementById('daysInput'),ca=document.getElementById('calcAddBtn'),
+ar=document.getElementById('addResult'),ad=document.getElementById('addDetail');
+sd.valueAsDate=new Date();var tom=new Date();tom.setDate(tom.getDate()+7);ed.valueAsDate=tom;
+td.valueAsDate=new Date();
+function calcDiff(){var s=sd.valueAsDate,e=ed.valueAsDate;if(!s||!e){dr.textContent='--';dd.textContent='';return;}var d=Math.abs(e-s);var days=Math.round(d/86400000);var bus=0;if(cb.checked){var cur=new Date(Math.min(s,e));var end=new Date(Math.max(s,e));while(cur<=end){var day=cur.getDay();if(day>=1&&day<=5)bus++;cur.setDate(cur.getDate()+1);}}dr.textContent=cb.checked?bus+' business days':days+' days';var yrs=Math.floor(days/365.25),m=Math.floor((days%365.25)/30.44),d2=Math.round(days%30.44);dd.textContent=yrs+'y '+m+'m '+d2+'d';}
+function calcAdd(){var d=td.valueAsDate;if(!d){ar.textContent='--';ad.textContent='';return;}var n=parseInt(di.value)||0;d.setDate(d.getDate()+n);ar.textContent=d.toDateString();ad.textContent=d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});}
+cd.addEventListener('click',calcDiff);ca.addEventListener('click',calcAdd);cb.addEventListener('change',calcDiff);
+sd.addEventListener('change',calcDiff);ed.addEventListener('change',calcDiff);td.addEventListener('change',calcAdd);di.addEventListener('change',calcAdd);
+calcDiff();calcAdd();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

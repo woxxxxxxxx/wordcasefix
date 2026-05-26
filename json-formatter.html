@@ -75,10 +75,20 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>JSON Formatter &mdash; Free online JSON formatter and validator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var ji=document.getElementById('jsonInput'),jo=document.getElementById('jsonOutput'),
+fb=document.getElementById('formatBtn'),mb=document.getElementById('minifyBtn'),cb=document.getElementById('copyBtn'),
+is_=document.getElementById('indentSize'),sb=document.getElementById('statusBar');
+fb.addEventListener('click',function(){try{var v=ji.value;if(!v){sb.textContent='Please enter JSON';return;}var ind=parseInt(is_.value)||2;var p=JSON.stringify(JSON.parse(v),null,ind);jo.value=p;sb.textContent='Formatted successfully';}catch(e){sb.textContent='Error: '+e.message;}});
+mb.addEventListener('click',function(){try{var v=ji.value;if(!v){sb.textContent='Please enter JSON';return;}var p=JSON.stringify(JSON.parse(v));jo.value=p;sb.textContent='Minified successfully';}catch(e){sb.textContent='Error: '+e.message;}});
+cb.addEventListener('click',function(){if(!jo.value)return;navigator.clipboard.writeText(jo.value);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy';},1500);});
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
 </script>
 </body>
 </html>
-

@@ -104,6 +104,23 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Invoice Generator &mdash; Free online invoice generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var cn=document.getElementById('clientName'),cny=document.getElementById('companyName'),
+inv=document.getElementById('invoiceNum'),tx=document.getElementById('taxRate'),
+ic=document.getElementById('itemsContainer'),ab=document.getElementById('addItemBtn'),
+sv=document.getElementById('subtotalVal'),tv=document.getElementById('taxVal'),
+tt=document.getElementById('totalVal'),trd=document.getElementById('taxRateDisplay'),
+pr=document.getElementById('printBtn');
+function addItem(desc,qty,price){var d=document.createElement('div');d.className='entry-row';d.innerHTML='<div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 40px;gap:8px;align-items:center"><input class="inv-desc" value="'+desc+'" placeholder="Description"><input type="number" class="inv-qty" value="'+qty+'" min="0" step="1"><input type="number" class="inv-price" value="'+price+'" min="0" step="0.01"><span class="inv-line-total">$'+(parseFloat(qty||0)*parseFloat(price||0)).toFixed(2)+'</span><button class="btn-danger" style="padding:4px 8px;font-size:14px">X</button></div>';d.querySelector('.btn-danger').addEventListener('click',function(){d.remove();calc();});d.querySelectorAll('.inv-qty,.inv-price').forEach(function(el){el.addEventListener('input',function(){var q=parseFloat(d.querySelector('.inv-qty').value)||0,p=parseFloat(d.querySelector('.inv-price').value)||0;d.querySelector('.inv-line-total').textContent='$'+(q*p).toFixed(2);calc();});});ic.appendChild(d);calc();}
+function calc(){var rows=ic.querySelectorAll('.entry-row');var sub=0;rows.forEach(function(r){var q=parseFloat(r.querySelector('.inv-qty').value)||0,p=parseFloat(r.querySelector('.inv-price').value)||0;sub+=q*p;});var rate=parseFloat(tx.value)||0;var tax=sub*rate/100;var total=sub+tax;sv.textContent='$'+sub.toFixed(2);tv.textContent='$'+tax.toFixed(2);tt.textContent='$'+total.toFixed(2);trd.textContent=rate;}
+ab.addEventListener('click',function(){addItem('Item '+(ic.children.length+1),1,0);});
+pr.addEventListener('click',function(){window.print();});
+tx.addEventListener('input',calc);cn.addEventListener('input',calc);cny.addEventListener('input',calc);inv.addEventListener('input',calc);
+addItem('Web Design',1,500);addItem('Hosting',12,25);
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

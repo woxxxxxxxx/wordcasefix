@@ -76,6 +76,34 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>BMI Calculator &mdash; Free online Body Mass Index tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var heightCm=document.getElementById('heightCm'),weightKg=document.getElementById('weightKg'),
+heightFt=document.getElementById('heightFt'),heightIn=document.getElementById('heightIn'),weightLbs=document.getElementById('weightLbs'),
+unitMetric=document.getElementById('unitMetric'),unitImperial=document.getElementById('unitImperial'),
+bmiValue=document.getElementById('bmiValue'),bmiCategory=document.getElementById('bmiCategory'),
+rangeMarker=document.getElementById('rangeMarker'),idealWeight=document.getElementById('idealWeight'),
+bmiPrecise=document.getElementById('bmiPrecise'),adviceText=document.getElementById('adviceText'),
+emptyState=document.getElementById('emptyState'),resultContent=document.getElementById('resultContent'),
+inputsMetric=document.getElementById('inputsMetric'),inputsImperial=document.getElementById('inputsImperial');
+function calc(){var h=-1,w=-1;if(unitMetric.checked){h=parseFloat(heightCm.value)||0;w=parseFloat(weightKg.value)||0;}else{var ft=parseFloat(heightFt.value)||0,inn=parseFloat(heightIn.value)||0;h=ft*30.48+inn*2.54;w=parseFloat(weightLbs.value)||0;}
+if(h<=0||w<=0){emptyState.style.display='block';resultContent.style.display='none';return;}
+emptyState.style.display='none';resultContent.style.display='block';
+var bmi=unitMetric.checked?w/((h/100)*(h/100)):w/((h/39.37)*(h/39.37));
+bmi=Math.round(bmi*10)/10;bmiPrecise.textContent=bmi.toFixed(1);bmiValue.textContent=bmi;
+var cat='',advice='',pct=0;if(bmi<18.5){cat='Underweight';catClass='cat-underweight';advice='Consider consulting a healthcare provider about healthy weight gain strategies.';pct=(bmi/18.5)*23.33;}else if(bmi<25){cat='Normal weight';catClass='cat-normal';advice='Great job! Maintain your current weight with a balanced diet and regular exercise.';pct=23.33+(bmi-18.5)/6.5*25;}else if(bmi<30){cat='Overweight';catClass='cat-overweight';advice='Consider increasing physical activity and reviewing your diet with a professional.';pct=48.33+(bmi-25)/5*18.34;}else{cat='Obese';catClass='cat-obese';advice='Please consult a healthcare provider for personalized guidance on weight management.';pct=66.67+Math.min((bmi-30)/10*33.33,33.33);}
+bmiCategory.textContent=cat;bmiCategory.className='bmi-category cat-'+cat.toLowerCase().replace(' ','');adviceText.textContent=advice;
+rangeMarker.style.left=Math.min(Math.max(pct,0),100)+'%';
+var ih=unitMetric.checked?(18.5*((h/100)*(h/100))).toFixed(1)+'-'+(24.9*((h/100)*(h/100))).toFixed(1)+' kg':(18.5*((h/39.37)*(h/39.37))).toFixed(1)+'-'+(24.9*((h/39.37)*(h/39.37))).toFixed(1)+' lbs';
+idealWeight.textContent=ih;}
+function toggleUnit(){if(unitMetric.checked){inputsMetric.style.display='';inputsImperial.style.display='none';}else{inputsMetric.style.display='none';inputsImperial.style.display='';}calc();}
+unitMetric.addEventListener('change',toggleUnit);unitImperial.addEventListener('change',toggleUnit);
+heightCm.addEventListener('input',calc);weightKg.addEventListener('input',calc);
+heightFt.addEventListener('input',calc);heightIn.addEventListener('input',calc);weightLbs.addEventListener('input',calc);
+calc();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

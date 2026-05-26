@@ -75,6 +75,25 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Unit Converter &mdash; Free online unit conversion tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var app=document.getElementById('app');
+var cats={length:{label:'Length',units:['Meters','Kilometers','Miles','Feet','Inches','Centimeters','Millimeters','Yards'],base:{Meters:1,Kilometers:1000,Miles:1609.34,Feet:0.3048,Inches:0.0254,Centimeters:0.01,Millimeters:0.001,Yards:0.9144}},
+weight:{label:'Weight',units:['Kilograms','Grams','Pounds','Ounces','Tons','Milligrams'],base:{Kilograms:1,Grams:0.001,Pounds:0.453592,Ounces:0.0283495,Tons:1000,Milligrams:0.000001}},
+temperature:{label:'Temperature',units:['Celsius','Fahrenheit','Kelvin'],custom:true}};
+var current='length';
+function build(){var html='<div style="display:flex;gap:4px;margin-bottom:16px">';Object.keys(cats).forEach(function(k){html+='<button class="cat-btn" data-cat="'+k+'" style="flex:1;padding:8px;font-size:13px;font-weight:600;border-radius:6px;border:1.5px solid #d0d5dd;cursor:pointer;background:'+(k===current?'#5b5bd6;color:#fff':'#f0f0f5;color:#555')+'">'+cats[k].label+'</button>';});html+='</div>';html+='<div id="convRows"></div>';app.innerHTML=html;
+document.querySelectorAll('.cat-btn').forEach(function(b){b.addEventListener('click',function(){current=this.getAttribute('data-cat');build();buildRows();});});
+buildRows();}
+function buildRows(){var cat=cats[current];var units=cat.units;var container=document.getElementById('convRows');var html='';units.forEach(function(u,i){var val=i===0?'1':'';html+='<div style="margin-bottom:8px"><label style="display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;margin-bottom:2px">'+u+'</label><input type="text" class="conv-input" data-unit="'+u+'" value="'+val+'" style="width:100%;padding:10px 12px;font-size:16px;font-weight:600;border:1.5px solid #d0d5dd;border-radius:8px;outline:none;font-family:monospace"></div>';});container.innerHTML=html;
+var inputs=container.querySelectorAll('.conv-input');
+inputs.forEach(function(inp){inp.addEventListener('input',function(){var val=parseFloat(this.value);if(isNaN(val))return;var unit=this.getAttribute('data-unit');var other=inputs;if(cat.custom){other.forEach(function(o){if(o===inp)return;var u=o.getAttribute('data-unit');var result=convertTemp(unit,u,val);o.value=result;});return;}
+var baseVal=val*(cat.base[unit]||1);other.forEach(function(o){if(o===inp)return;var u=o.getAttribute('data-unit');var result=baseVal/(cat.base[u]||1);o.value=parseFloat(result.toFixed(6)).toString();});});});}
+function convertTemp(from,to,val){if(from===to)return val;var c;if(from==='Celsius')c=val;else if(from==='Fahrenheit')c=(val-32)*5/9;else c=val-273.15;if(to==='Celsius')return parseFloat(c.toFixed(2));if(to==='Fahrenheit')return parseFloat((c*9/5+32).toFixed(2));return parseFloat((c+273.15).toFixed(2));}
+build();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

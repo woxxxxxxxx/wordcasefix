@@ -129,6 +129,22 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>CSS Minifier &mdash; Free online CSS minifier and compressor tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var ic=document.getElementById('inputCss'),oc=document.getElementById('outputCss'),mn=document.getElementById('minifyBtn'),cp=document.getElementById('copyCss'),cl=document.getElementById('clearCss'),
+os=document.getElementById('originalSize'),ms=document.getElementById('minifiedSize'),sp=document.getElementById('savedPercent');
+function minify(){var t=ic.value;os.textContent=t.length;if(!t){oc.value='';ms.textContent='0';sp.textContent='0%';return;}
+var m=t.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s*\{\s*/g,'{').replace(/\s*\}\s*/g,'}').replace(/\s*:\s*/g,':').replace(/\s*;\s*/g,';').replace(/\s*,\s*/g,',').replace(/\s*\+\s*/g,'+').replace(/;}/g,'}').replace(/^\s+|\s+$/g,'').replace(/\s+/g,' ');
+oc.value=m;ms.textContent=m.length;sp.textContent=t.length>0?Math.round((t.length-m.length)/t.length*100)+'%':'0%';}
+mn.addEventListener('click',minify);cp.addEventListener('click',function(){if(!oc.value)return;navigator.clipboard.writeText(oc.value);this.textContent='Copied!';setTimeout(function(){cp.textContent='Copy Output';},1500);});
+cl.addEventListener('click',function(){ic.value='';oc.value='';os.textContent='0';ms.textContent='0';sp.textContent='0%';});
+document.querySelectorAll('[data-sample]').forEach(function(el){el.addEventListener('click',function(){var samples={simple:'.container{max-width:1200px;margin:0 auto}.header{background:#5b5bd6;color:#fff}.btn{padding:10px 20px;border-radius:6px}',
+complex:'/* Complex CSS */ .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:768px){.grid{grid-template-columns:1fr}}.item{padding:16px;background:#fff;border-radius:8px;transition:transform .2s}.item:hover{transform:translateY(-2px)}',
+bootstrap:'/* Bootstrap-like */ .container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.col{flex-basis:0;flex-grow:1;max-width:100%}'};
+ic.value=samples[this.getAttribute('data-sample')]||'';minify();});});
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

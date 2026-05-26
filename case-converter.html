@@ -259,6 +259,23 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Case Converter &mdash; Free online text case transformer | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var btn=document.getElementById('convertBtn'),ta=document.getElementById('inputText'),r=document.getElementById('resultsList'),cc=document.getElementById('charCount');
+function conv(){var t=ta.value;if(!t){r.innerHTML='<div class="conv-row"><span class="conv-label">Enter text above</span></div>';cc.textContent='0';return;}
+cc.textContent=t.length;
+var up=t.toUpperCase(),low=t.toLowerCase(),ti=t.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.substr(1).toLowerCase();});
+var alt='';for(var i=0;i<t.length;i++){alt+=i%2===0?t[i].toUpperCase():t[i].toLowerCase();}
+var inv='';for(var i=t.length-1;i>=0;i--)inv+=t[i];
+r.innerHTML='<div class="conv-row"><span class="conv-label">UPPER CASE</span><span class="conv-value">'+esc(up)+'</span></div>'+
+'<div class="conv-row"><span class="conv-label">lower case</span><span class="conv-value">'+esc(low)+'</span></div>'+
+'<div class="conv-row"><span class="conv-label">Title Case</span><span class="conv-value">'+esc(ti)+'</span></div>'+
+'<div class="conv-row"><span class="conv-label">aLtErNaTiNg</span><span class="conv-value">'+esc(alt)+'</span></div>'+
+'<div class="conv-row"><span class="conv-label">Inverse</span><span class="conv-value">'+esc(inv)+'</span></div>';}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+btn.addEventListener('click',conv);ta.addEventListener('input',conv);
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>

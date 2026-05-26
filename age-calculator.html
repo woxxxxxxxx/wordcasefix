@@ -75,6 +75,15 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Age Calculator &mdash; Free online age calculation tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var calcBtn=document.getElementById('calcBtn'),birthDate=document.getElementById('birthDate'),toDate=document.getElementById('toDate'),modeToday=document.getElementById('modeToday'),modeCustom=document.getElementById('modeCustom'),resultArea=document.getElementById('resultArea'),ageMain=document.getElementById('ageMain'),ageSub=document.getElementById('ageSub'),totalDays=document.getElementById('totalDays'),countdownValue=document.getElementById('countdownValue');
+function calc(){var bd=birthDate.value;if(!bd){resultArea.style.display='none';return;}var start=new Date(bd);var end=modeCustom.checked&&toDate.value?new Date(toDate.value):new Date();if(isNaN(start))return;var y=end.getFullYear()-start.getFullYear(),m=end.getMonth()-start.getMonth(),d=end.getDate()-start.getDate();if(d<0){m--;d+=new Date(end.getFullYear(),end.getMonth(),0).getDate();}if(m<0){y--;m+=12;}ageMain.textContent=y+' years';ageSub.textContent=m+' months, '+d+' days';totalDays.textContent=Math.floor((end-start)/86400000).toLocaleString();var next=new Date(start);next.setFullYear(end.getFullYear()+(end>start?1:0));if(next<=end)next.setFullYear(next.getFullYear()+1);var diff=next-end;var days=Math.floor(diff/86400000);var hrs=Math.floor((diff%86400000)/3600000);countdownValue.textContent=days+'d '+hrs+'h';resultArea.style.display='block';}
+calcBtn.addEventListener('click',calc);modeToday.addEventListener('change',function(){toDate.disabled=modeToday.checked;if(modeToday.checked)calc();});modeCustom.addEventListener('change',function(){toDate.disabled=!modeCustom.checked;});
+toDate.addEventListener('change',calc);calc();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

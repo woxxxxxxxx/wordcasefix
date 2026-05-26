@@ -75,6 +75,19 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Base64 Encoder &mdash; Free online Base64 encoding and decoding tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var convertBtn=document.getElementById('convertBtn'),swapBtn=document.getElementById('swapBtn'),copyBtn=document.getElementById('copyBtn'),
+inputText=document.getElementById('inputText'),outputText=document.getElementById('outputText'),
+modeEncode=document.getElementById('modeEncode'),modeDecode=document.getElementById('modeDecode'),
+statusBar=document.getElementById('statusBar');
+function convert(){try{var t=inputText.value;if(!t){outputText.value='';statusBar.textContent='Waiting for input...';return;}if(modeEncode.checked){outputText.value=btoa(t);statusBar.textContent='Encoded successfully';}else{outputText.value=atob(t);statusBar.textContent='Decoded successfully';}}catch(e){outputText.value='Error: '+e.message;statusBar.textContent='Conversion failed';}}
+convertBtn.addEventListener('click',convert);swapBtn.addEventListener('click',function(){var tmp=inputText.value;inputText.value=outputText.value;outputText.value=tmp;convert();});
+copyBtn.addEventListener('click',function(){if(!outputText.value)return;navigator.clipboard.writeText(outputText.value).then(function(){copyBtn.textContent='Copied!';setTimeout(function(){copyBtn.textContent='Copy';},1500);});});
+modeEncode.addEventListener('change',convert);modeDecode.addEventListener('change',convert);
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

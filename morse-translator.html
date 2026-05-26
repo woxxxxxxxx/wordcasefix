@@ -97,10 +97,26 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Morse Code Translator &mdash; Free online Morse code converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var tb=document.getElementById('translateBtn'),cb=document.getElementById('copyBtn'),pb=document.getElementById('playBtn'),
+it=document.getElementById('inputText'),ot=document.getElementById('outputText'),
+tM=document.getElementById('modeToMorse'),tT=document.getElementById('modeToText'),rg=document.getElementById('refGrid');
+var morse={'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..','M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.'};
+var rev={};for(var k in morse)rev[morse[k]]=k;
+function toMorse(t){return t.toUpperCase().split('').map(function(c){return morse[c]||(c===' '?'/':'?');}).join(' ');}
+function fromMorse(t){return t.split(' ').map(function(c){return rev[c]||(c==='/'?' ':'?');}).join('');}
+function translate(){var t=it.value;if(!t){ot.value='';return;}ot.value=tM.checked?toMorse(t):fromMorse(t);}
+tb.addEventListener('click',translate);tM.addEventListener('change',function(){it.placeholder='Type text...';translate();});tT.addEventListener('change',function(){it.placeholder='Enter Morse code...';translate();});
+cb.addEventListener('click',function(){if(!ot.value)return;navigator.clipboard.writeText(ot.value);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy';},1500);});
+pb.addEventListener('click',function(){var m=ot.value;if(!m)return;var AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;var ctx=new AudioContext();var time=ctx.currentTime;var parts=m.split(' ');parts.forEach(function(p){if(p==='/'){time+=0.4;return;}p.split('').forEach(function(c){var dur=c==='.'?0.1:0.3;var osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=700;osc.connect(ctx.destination);osc.start(time);osc.stop(time+dur);time+=dur+0.05;});time+=0.15;});});
+rg.innerHTML='';var chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';for(var i=0;i<chars.length;i++){var c=chars[i];var d=document.createElement('div');d.className='ref-item';d.innerHTML='<div class="ref-char">'+c+'</div><div>'+morse[c]+'</div>';rg.appendChild(d);}
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
 </script>
 </body>
 </html>
-

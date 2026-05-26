@@ -290,6 +290,18 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Random Number Generator &mdash; Free online number generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var gn=document.getElementById('generateBtn'),cb=document.getElementById('copyBtn'),
+mn=document.getElementById('minVal'),mx=document.getElementById('maxVal'),cv=document.getElementById('countVal'),
+ad=document.getElementById('allowDupes'),ng=document.querySelector('.numbers-grid');
+function gen(){var min=parseInt(mn.value)||0,max=parseInt(mx.value)||100,c=parseInt(cv.value)||1;if(min>max){var t=min;min=max;max=t;}if(max-min<0||c<=0){ng.innerHTML='';return;}var nums=[];if(ad.checked||(max-min+1)>=c){for(var i=0;i<c;i++){var n;if(ad.checked){n=Math.floor(Math.random()*(max-min+1))+min;}else{do{n=Math.floor(Math.random()*(max-min+1))+min;}while(nums.indexOf(n)!==-1);}nums.push(n);}}else{for(var i=min;i<=max;i++)nums.push(i);}
+ng.innerHTML=nums.map(function(n){return'<div class="number-chip">'+n+'</div>';}).join('');}
+gn.addEventListener('click',gen);
+cb.addEventListener('click',function(){var txt=Array.from(ng.querySelectorAll('.number-chip')).map(function(el){return el.textContent;}).join(', ');if(txt){navigator.clipboard.writeText(txt);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy All';},1500);}});
+gen();
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>

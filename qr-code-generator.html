@@ -86,7 +86,20 @@
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/stopwatch.html"><div class="rc-name">Stopwatch</div><div class="rc-desc">Track time & laps</div></a><a class="related-card" href="/qr-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Create QR codes</div></a><a class="related-card" href="/typing-test.html"><div class="rc-name">Typing Speed Test</div><div class="rc-desc">Measure WPM speed</div></a><a class="related-card" href="/pomodoro-timer.html"><div class="rc-name">Pomodoro Timer</div><div class="rc-desc">Focus session timer</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>QR Code Generator &mdash; Free online QR code generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
-<script src="https:// cd
+
+<script>
+(function(){
+var gn=document.getElementById('generateBtn'),dw=document.getElementById('downloadBtn'),
+qi=document.getElementById('qrInput'),qs=document.getElementById('qrSize'),
+qm=document.getElementById('qrImage'),es=document.getElementById('emptyState'),
+rc=document.getElementById('resultContent'),em=document.getElementById('errorMsg');
+function generate(){var t=qi.value.trim();if(!t){es.style.display='block';rc.style.display='none';return;}
+var size=parseInt(qs.value)||200;var url='https://api.qrserver.com/v1/create-qr-code/?size='+size+'x'+size+'&data='+encodeURIComponent(t);
+qm.src=url;es.style.display='none';rc.style.display='block';em.textContent='';}
+gn.addEventListener('click',generate);
+dw.addEventListener('click',function(){if(qm.src){var a=document.createElement('a');a.href=qm.src;a.download='qrcode.png';document.body.appendChild(a);a.click();document.body.removeChild(a);}});
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>

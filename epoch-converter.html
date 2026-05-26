@@ -110,6 +110,22 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Unix Timestamp Converter &mdash; Free epoch timestamp converter | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var ts=document.getElementById('tsInput'),tsd=document.getElementById('tsToDateBtn'),tsn=document.getElementById('tsNowBtn'),
+dt=document.getElementById('dateInput'),dtt=document.getElementById('dateToTsBtn'),dtn=document.getElementById('dateNowBtn'),cpy=document.getElementById('copyTsBtn'),
+ns=document.getElementById('nowSec'),nm=document.getElementById('nowMs'),nu=document.getElementById('nowUtc'),
+tru=document.getElementById('tsResultUtc'),trl=document.getElementById('tsResultLocal'),tso=document.getElementById('tsOutput');
+function updateNow(){var n=Date.now();ns.textContent=Math.floor(n/1000);nm.textContent=n;nu.textContent=new Date().toISOString().slice(0,19).replace('T',' ');}
+setInterval(updateNow,1000);updateNow();
+tsd.addEventListener('click',function(){var v=ts.value.trim();if(!v){tru.textContent='--';trl.textContent='--';return;}var n=parseInt(v,10);if(v.length<=10)n*=1000;var d=new Date(n);if(isNaN(d)){tru.textContent='Invalid';trl.textContent='Invalid';return;}tru.textContent=d.toISOString().slice(0,19).replace('T',' ');trl.textContent=d.toLocaleString();});
+tsn.addEventListener('click',function(){ts.value=Math.floor(Date.now()/1000);tsd.click();});
+dtt.addEventListener('click',function(){var v=dt.value;if(!v){tso.textContent='--';return;}var d=new Date(v);if(isNaN(d)){tso.textContent='Invalid';return;}tso.textContent=Math.floor(d.getTime()/1000);});
+dtn.addEventListener('click',function(){var n=new Date();dt.value=n.toISOString().slice(0,16);dtt.click();});
+cpy.addEventListener('click',function(){var v=tso.textContent;if(v&&v!=='--'){navigator.clipboard.writeText(v);this.textContent='Copied!';setTimeout(function(){cpy.textContent='Copy Timestamp';},1500);}});
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

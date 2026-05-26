@@ -104,6 +104,25 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>HTML Encoder/Decoder &mdash; Free online HTML entity encoder decoder tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var it=document.getElementById('inputText'),ot=document.getElementById('outputText'),pb=document.getElementById('processBtn'),
+sw=document.getElementById('swapBtn'),cp=document.getElementById('copyBtn'),cl=document.getElementById('clearBtn'),
+ic=document.getElementById('inputChars'),oc=document.getElementById('outputChars'),
+eq=document.getElementById('encQuotes'),ea=document.getElementById('encAllChars');
+var mode='encode';
+document.querySelectorAll('[data-mode]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-mode]').forEach(function(x){x.classList.remove('active');});this.classList.add('active');mode=this.getAttribute('data-mode');pb.textContent=mode==='encode'?'Encode':'Decode';process();});});
+function process(){var t=it.value;ic.textContent=t.length;if(!t){ot.value='';oc.textContent='0';return;}var r;if(mode==='encode'){r=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');if(eq.checked){r=r.replace(/"/g,'&quot;').replace(/'/g,'&apos;');}if(ea.checked){r=r.split('').map(function(c){return c.charCodeAt(0)>127?'&#'+c.charCodeAt(0)+';':c;}).join('');}}else{r=t.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").
+replace(/&#(\d+);/g,function(m,n){return String.fromCharCode(n);});}
+ot.value=r;oc.textContent=r.length;}
+pb.addEventListener('click',process);sw.addEventListener('click',function(){var tmp=it.value;it.value=ot.value;ot.value=tmp;process();});
+cp.addEventListener('click',function(){if(!ot.value)return;navigator.clipboard.writeText(ot.value);cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy Output';},1500);});
+cl.addEventListener('click',function(){it.value='';ot.value='';ic.textContent='0';oc.textContent='0';});
+it.addEventListener('input',process);eq.addEventListener('change',process);ea.addEventListener('change',process);
+process();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

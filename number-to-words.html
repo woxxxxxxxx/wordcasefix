@@ -133,6 +133,20 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Number to Words Converter &mdash; Free online number to words tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var inp=document.getElementById('numInput'),wo=document.getElementById('wordsOutput'),nd=document.getElementById('numDisplay'),cb=document.getElementById('copyWordsBtn');
+var ones=['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+var tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function numToWords(n){if(n===0)return'zero';if(n<0)return'negative '+numToWords(-n);var r='';if(n>=1000000000){r+=numToWords(Math.floor(n/1000000000))+' billion ';n%=1000000000;}if(n>=1000000){r+=numToWords(Math.floor(n/1000000))+' million ';n%=1000000;}if(n>=1000){r+=numToWords(Math.floor(n/1000))+' thousand ';n%=1000;}if(n>=100){r+=ones[Math.floor(n/100)]+' hundred ';n%=100;}if(n>0){if(r)r+='and ';if(n<20)r+=ones[n];else r+=tens[Math.floor(n/10)]+(n%10>0?'-'+ones[n%10]:'');}return r.trim();}
+function convert(){var v=inp.value.replace(/,/g,'').trim();if(!v||!/^-?\d+\.?\d*$/.test(v)){wo.textContent='Enter a valid number';nd.textContent='';return;}var parts=v.split('.');var intPart=parseInt(parts[0],10);if(Math.abs(intPart)>999999999999){wo.textContent='Number is too large (max 999 billion)';nd.textContent='';return;}var words=numToWords(intPart);if(parts[1]){var dec=parts[1].slice(0,2);words+=' point ';for(var i=0;i<dec.length;i++)words+=ones[parseInt(dec[i])]+' ';}wo.textContent=words.charAt(0).toUpperCase()+words.slice(1);nd.textContent='Number: '+(intPart>=0?'':'-')+Math.abs(intPart).toLocaleString();}
+inp.addEventListener('input',convert);
+document.querySelectorAll('[data-val]').forEach(function(el){el.addEventListener('click',function(){inp.value=this.getAttribute('data-val');convert();});});
+cb.addEventListener('click',function(){navigator.clipboard.writeText(wo.textContent);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy Result';},1500);});
+convert();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

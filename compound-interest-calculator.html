@@ -93,6 +93,14 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Compound Interest Calculator &mdash; Free online compound interest calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var btn=document.getElementById('calcBtn2'),p=document.getElementById('principal'),r=document.getElementById('annualRate2'),y=document.getElementById('years'),f=document.getElementById('compoundFreq'),fa=document.getElementById('finalAmount'),ti=document.getElementById('totalInt'),gb=document.getElementById('growthBody');
+function calc(){var pv=parseFloat(p.value)||0,ra=parseFloat(r.value)||0,ny=parseFloat(y.value)||0,n=parseFloat(f.value)||12;if(pv<=0||ra<=0||ny<=0){fa.textContent='$0.00';ti.textContent='$0.00';gb.innerHTML='';return;}var rr=ra/100;var fv=pv*Math.pow(1+rr/n,ny*n);fa.textContent='$'+fv.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');var t=fv-pv;ti.textContent='$'+t.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');gb.innerHTML='';for(var i=1;i<=Math.min(ny,30);i++){var v=pv*Math.pow(1+rr/n,i*n);var row=document.createElement('div');row.style.cssText='display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f5;font-size:13px';row.innerHTML='<span>Year '+i+'</span><span style="font-weight:600">$'+v.toFixed(2)+'</span>';gb.appendChild(row);}}
+btn.addEventListener('click',calc);calc();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

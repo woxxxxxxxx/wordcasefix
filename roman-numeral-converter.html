@@ -115,6 +115,22 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Roman Numeral Converter &mdash; Free online Roman numeral converter tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var inp=document.getElementById('inputVal'),rv2=document.getElementById('resultValue'),
+rl2=document.getElementById('resultLabel'),rd2=document.getElementById('resultDesc');
+var mode='toRoman';
+document.querySelectorAll('[data-mode]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-mode]').forEach(function(x){x.classList.remove('active');});this.classList.add('active');mode=this.getAttribute('data-mode');inp.placeholder=mode==='toRoman'?'Enter a number (e.g. 2024)':'Enter Roman numerals (e.g. MMXXIV)';inp.value='';rv2.textContent='--';rl2.textContent='Waiting for input';rd2.textContent='';});});
+function toRoman(n){if(n<=0||n>=4000)return'';var v=[1000,900,500,400,100,90,50,40,10,9,5,4,1];var r=['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];var res='';for(var i=0;i<v.length;i++){while(n>=v[i]){res+=r[i];n-=v[i];}}return res;}
+function fromRoman(r){var m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};var t=r.toUpperCase(),res=0;for(var i=0;i<t.length;i++){var c=m[t[i]]||0,cn=m[t[i+1]]||0;res+=c<cn?-c:c;}return res;}
+function convert(){var v=inp.value.trim();if(!v){rv2.textContent='--';rl2.textContent='Waiting for input';rd2.textContent='';return;}
+if(mode==='toRoman'){var n=parseInt(v,10);if(isNaN(n)||n<=0||n>=4000){rv2.textContent='Invalid';rl2.textContent='Enter a number between 1 and 3999';rd2.textContent='';return;}var r=toRoman(n);rv2.textContent=r;rl2.textContent='Roman numeral for '+n;rd2.textContent='';}else{var r3=v;var n2=fromRoman(r3);if(n2<=0){rv2.textContent='Invalid';rl2.textContent='Please enter valid Roman numerals';rd2.textContent='';return;}rv2.textContent=n2;rl2.textContent='Arabic number for '+r3.toUpperCase();rd2.textContent='';}}
+inp.addEventListener('input',convert);
+document.querySelectorAll('[data-val]').forEach(function(el){el.addEventListener('click',function(){var v=this.getAttribute('data-val');if(mode==='toRoman'){if(/^\d+$/.test(v))inp.value=v;}else inp.value=v;convert();});});
+convert();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

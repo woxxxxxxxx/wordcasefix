@@ -103,6 +103,22 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Calorie Calculator &mdash; Free online daily calorie needs calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var btn=document.getElementById('calcBtn'),age=document.getElementById('age'),gender=document.getElementById('gender'),
+weight=document.getElementById('weight'),height=document.getElementById('height'),activity=document.getElementById('activity'),
+rc=document.getElementById('resultCards');
+function calc(){var a=parseInt(age.value)||25,g=gender.value,w=parseFloat(weight.value)||70,h=parseFloat(height.value)||175,act=parseFloat(activity.value)||1.55;
+var bmr=g==='male'?10*w+6.25*h-5*a+5:10*w+6.25*h-5*a-161;var tdee=bmr*act;
+rc.innerHTML='<div class="rcard full"><div class="rc-value">'+Math.round(tdee)+'</div><div class="rc-label">Maintenance Calories (TDEE)</div><div class="rc-desc">BMR: '+Math.round(bmr)+' cal</div></div>'+
+'<div class="rcard"><div class="rc-value">'+Math.round(tdee-250)+'</div><div class="rc-label">Mild Weight Loss</div><div class="rc-desc">-0.5 lb/week</div></div>'+
+'<div class="rcard"><div class="rc-value">'+Math.round(tdee-500)+'</div><div class="rc-label">Moderate Weight Loss</div><div class="rc-desc">-1 lb/week</div></div>'+
+'<div class="rcard"><div class="rc-value">'+Math.round(tdee+250)+'</div><div class="rc-label">Mild Weight Gain</div><div class="rc-desc">+0.5 lb/week</div></div>'+
+'<div class="rcard"><div class="rc-value">'+Math.round(tdee+500)+'</div><div class="rc-label">Moderate Weight Gain</div><div class="rc-desc">+1 lb/week</div></div>';}
+btn.addEventListener('click',calc);calc();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

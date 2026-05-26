@@ -119,6 +119,33 @@ console.log(greeting);
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Markdown Editor &mdash; Free online Markdown editor with live preview | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var md=document.getElementById('mdInput'),pr=document.getElementById('mdPreview'),
+cl=document.getElementById('clearMd'),cp=document.getElementById('copyMd');
+function simpleMarkdown(t){
+t=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+t=t.replace(/^#{1,6}\s+(.+)$/gm,function(m,c){var l=m.trim().indexOf(' ');return'<h'+l+'>'+c+'</h'+l+'>';});
+t=t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
+t=t.replace(/```([\s\S]*?)```/g,'<pre><code>$1</code></pre>');
+t=t.replace(/`([^`]+)`/g,'<code>$1</code>');
+t=t.replace(/^-\s+(.+)$/gm,'<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g,'<ul>$&</ul>');
+t=t.replace(/^>\s+(.+)$/gm,'<blockquote>$1</blockquote>');
+t=t.replace(/!\[(.*?)\]\((.*?)\)/g,'<img src="$2" alt="$1">');
+t=t.replace(/\[(.*?)\]\((.*?)\)/g,'<a href="$2">$1</a>');
+t=t.replace(/\n\n/g,'</p><p>');
+t='<p>'+t+'</p>';
+return t;}
+function render(){var t=md.value;if(!t){pr.innerHTML='<div style="color:#bbb;padding:20px;text-align:center">Start typing Markdown...</div>';return;}pr.innerHTML=simpleMarkdown(t);}
+md.addEventListener('input',render);
+cl.addEventListener('click',function(){md.value='';render();});
+cp.addEventListener('click',function(){navigator.clipboard.writeText(md.value);cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy';},1500);});
+document.querySelectorAll('[data-s]').forEach(function(b){b.addEventListener('click',function(){var s=this.getAttribute('data-s'),e=this.getAttribute('data-e');var ta=md,st=ta.selectionStart,en=ta.selectionEnd||st;var sel=ta.value.substring(st,en)||'text';ta.value=ta.value.substring(0,st)+s+sel+e+ta.value.substring(en);ta.focus();ta.selectionStart=st+s.length;ta.selectionEnd=st+s.length+sel.length;render();});});
+document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){var v=this.getAttribute('data-view');document.querySelectorAll('[data-view]').forEach(function(x){x.classList.remove('active');});this.classList.add('active');pr.style.display=v==='edit'?'none':'';md.style.display=v==='preview'?'none':'';if(v==='preview')render();});});
+render();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

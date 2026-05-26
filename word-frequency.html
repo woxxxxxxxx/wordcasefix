@@ -75,10 +75,27 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Word Frequency Counter &mdash; Free online text analysis tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var it=document.getElementById('inputText'),cc2=document.getElementById('chkCase'),swf=document.getElementById('chkStopWords'),
+tb=document.getElementById('tableBody'),cb2=document.getElementById('copyBtn'),sh=document.getElementById('statsHint'),ui=document.getElementById('uniqueInfo');
+var stopWords='the a an and or but in on at to for of with by from as is are was were be been has have had do does did will would shall should may might can could must nor not so if than that this these those its it he she they we you my me your his her their our all each which who whom what when where why how'.split(' ');
+function analyze(){var t=it.value;if(!t){tb.innerHTML='<tr><td colspan="5" class="empty-state">Enter text above to see word frequency.</td></tr>';sh.textContent='0 unique words';ui.textContent='--';return;}
+if(!cc2.checked)t=t.toLowerCase();var words=t.match(/[a-zA-Z]+(?:'[a-zA-Z]+)?/g)||[];var filtered=swf.checked?words.filter(function(w){return stopWords.indexOf(w)<0;}):words;
+var freq={};filtered.forEach(function(w){freq[w]=(freq[w]||0)+1;});
+var sorted=Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];});
+var total=filtered.length;sh.textContent=sorted.length+' unique words';ui.textContent='Showing top '+Math.min(sorted.length,50)+' of '+sorted.length+' unique words';
+var maxCount=sorted.length>0?freq[sorted[0]]:1;tb.innerHTML='';var limit=Math.min(sorted.length,50);for(var i=0;i<limit;i++){var w=sorted[i];var cnt=freq[w];var pct=(cnt/total*100).toFixed(1);var barW=(cnt/maxCount*100).toFixed(0);var tr=document.createElement('tr');tr.innerHTML='<td>'+(i+1)+'</td><td>'+escHtml(w)+'</td><td>'+cnt+'</td><td>'+pct+'%</td><td><div class="bar-wrap"><div class="bar-fill" style="width:'+barW+'%"></div></div></td>';tb.appendChild(tr);}}
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+it.addEventListener('input',analyze);cc2.addEventListener('change',analyze);swf.addEventListener('change',analyze);
+cb2.addEventListener('click',function(){var rows=tb.querySelectorAll('tr');var txt='Word,Frequency,Percentage\n';rows.forEach(function(r){var cells=r.querySelectorAll('td');if(cells.length>=4){txt+=cells[1].textContent+','+cells[2].textContent+','+cells[3].textContent+'\n';}});navigator.clipboard.writeText(txt);cb2.textContent='Copied!';setTimeout(function(){cb2.textContent='Copy Result';},1500);});
+analyze();
+})();
+</script>
+
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
 </script>
 </body>
 </html>
-

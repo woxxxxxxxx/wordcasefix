@@ -255,6 +255,17 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Word Counter &mdash; Free online word count tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var ta=document.querySelector('textarea');
+if(!ta)return;
+function count(){var t=ta.value;var words=t.trim()?t.trim().split(/\s+/).length:0;var chars=t.length;var charsNoSpace=t.replace(/\s/g,'').length;var sents=t.split(/[.!?]+/).filter(function(s){return s.trim();}).length;var paras=t.split('\n').filter(function(p){return p.trim();}).length;var readTime=Math.ceil(words/200);var speakTime=Math.ceil(words/150);
+document.querySelectorAll('.stat-value').forEach(function(el,i){if(i===0)el.textContent=words;else if(i===1)el.textContent=chars;else if(i===2)el.textContent=charsNoSpace;else if(i===3)el.textContent=sents;else if(i===4)el.textContent=paras;else if(i===5)el.textContent=readTime+' min';});
+if(document.querySelector('.stat-sub')){var subs=document.querySelectorAll('.stat-sub');if(subs[0])subs[0].textContent=words===1?'1 word':words+' words';if(subs[5])subs[5].textContent='~'+speakTime+' min speaking';}
+document.querySelectorAll('.char-count').forEach(function(el){el.textContent=chars+' chars';});}
+ta.addEventListener('input',count);count();
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
