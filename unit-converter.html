@@ -96,7 +96,7 @@ build();
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
+var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
 </script>
 </body>
 </html>
