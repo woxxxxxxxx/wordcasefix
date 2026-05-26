@@ -79,19 +79,20 @@
 <script>
 (function(){
 var input=document.getElementById('inputText');
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function analyze(){
 var text=input.value.trim();
 if(!text){document.getElementById('totalWords').textContent='0';document.getElementById('uniqueWords').textContent='0';document.getElementById('avgLength').textContent='0';document.getElementById('freqBody').innerHTML='<tr><td colspan="4" style="text-align:center;color:#888;padding:24px;font-size:13px;">Enter text and click Analyze to see word frequencies.</td></tr>';return;}
-var words=text.toLowerCase().replace(/[^a-z0-9\s'-]/g,'').split(/\s+/).filter(function(w){return w.length>0;});
+var words=text.toLowerCase().match(/[a-z0-9'-]+/g)||[];
 document.getElementById('totalWords').textContent=words.length;
-var freq={};for(var i=0;i<words.length;i++){freq[words[i]]=(freq[words[i]]||0)+1;}
+var freq=Object.create(null);for(var i=0;i<words.length;i++){freq[words[i]]=(freq[words[i]]||0)+1;}
 var unique=Object.keys(freq);document.getElementById('uniqueWords').textContent=unique.length;
 var totalLen=0;for(var i=0;i<words.length;i++){totalLen+=words[i].length;}
 document.getElementById('avgLength').textContent=(words.length>0?(totalLen/words.length).toFixed(1):'0');
-var sortBy=document.getElementById('sortBy').value;
-if(sortBy==='freq'){unique.sort(function(a,b){return freq[b]-freq[a]||a.localeCompare(b);});}else{unique.sort();}
+var sb=document.getElementById('sortBy').value;
+if(sb==='freq'){unique.sort(function(a,b){return freq[b]-freq[a]||a.localeCompare(b);});}else{unique.sort();}
 var maxCount=0;for(var i=0;i<unique.length;i++){if(freq[unique[i]]>maxCount)maxCount=freq[unique[i]];}
-var html='';for(var i=0;i<unique.length;i++){var w=unique[i];var c=freq[w];var pct=maxCount>0?(c/maxCount*100).toFixed(0):0;html+='<tr><td class="rank">'+(i+1)+'</td><td class="word">'+w+'</td><td class="count">'+c+'</td><td><div class="bar-wrap"><div class="bar-fill" style="width:'+pct+'%"></div></div></td></tr>';}
+var html='';for(var i=0;i<unique.length;i++){var w=unique[i];var c=freq[w];var pct=maxCount>0?(c/maxCount*100).toFixed(0):0;html+='<tr><td class="rank">'+(i+1)+'</td><td class="word">'+esc(w)+'</td><td class="count">'+c+'</td><td><div class="bar-wrap"><div class="bar-fill" style="width:'+pct+'%"></div></div></td></tr>';}
 document.getElementById('freqBody').innerHTML=html;
 }
 document.getElementById('analyzeBtn').addEventListener('click',analyze);
