@@ -150,6 +150,7 @@ function genUUID(){var d=Date.now();return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
 function generate(){var n=parseInt(uc.value)||1;var items=[];for(var i=0;i<n;i++){var id=genUUID();if(us.value==='upper')id=id.toUpperCase();items.push(id);}
 ul.innerHTML='';items.forEach(function(id,i){var d=document.createElement('div');d.style.cssText='display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #f0f0f5;font-family:monospace;font-size:13px';d.innerHTML='<span>'+(i+1)+'. '+id+'</span><button class="btn-secondary" style="padding:2px 8px;font-size:11px">Copy</button>';d.querySelector('button').addEventListener('click',function(){navigator.clipboard.writeText(id);this.textContent='Copied!';setTimeout(function(){d.querySelector('button').textContent='Copy';},1000);});ul.appendChild(d);});}
 g.addEventListener('click',generate);us.addEventListener('change',generate);uc.addEventListener('change',generate);
+ca.addEventListener('click',function(){var items=ul.querySelectorAll('span');var txt='';items.forEach(function(s){txt+=s.textContent.replace(/^\d+\.\s*/,'')+'\n';});if(txt){navigator.clipboard.writeText(txt.trim());ca.textContent='Copied All!';setTimeout(function(){ca.textContent='Copy All';},1500);}});
 generate();
 })();
 </script>

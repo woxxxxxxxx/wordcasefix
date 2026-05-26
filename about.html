@@ -68,13 +68,9 @@
 </div>
 <footer>WordCaseFix &mdash; Free online tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
-<button id="back-to-top" title="Back to top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;line-height:1;">^</button>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-window.addEventListener('scroll',function(){
-  var btn=document.getElementById('back-to-top');
-  if(btn)btn.style.display=window.scrollY>300?'block':'none';
-});
+(function(){var btn=document.getElementById('back-to-top');function toggle(){btn.style.display=window.scrollY>300?'block':'none';}window.addEventListener('scroll',toggle);toggle();btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
-<button id="btt" class="btt" onclick="document.documentElement.scrollTop=0">^</button>
-<script>!function(){var b=document.getElementById("btt");function t(){b.style.display=document.documentElement.scrollTop>300?"block":"none"}window.addEventListener("scroll",t);t()}();</script></body>
+</body>
 </html>
