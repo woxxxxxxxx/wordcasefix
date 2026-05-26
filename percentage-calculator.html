@@ -264,10 +264,21 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Percentage Calculator &mdash; Free online percentage calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+function c1(){var p=parseFloat(document.getElementById("pct1").value)||0;var n=parseFloat(document.getElementById("num1").value)||0;document.getElementById("result1").textContent=(p*n/100).toFixed(2);}
+function c2(){var a=parseFloat(document.getElementById("num2a").value)||0;var b=parseFloat(document.getElementById("num2b").value)||0;if(b===0){document.getElementById("result2").textContent="0%";return;}document.getElementById("result2").textContent=(a/b*100).toFixed(2)+"%";}
+function c3(){var a=parseFloat(document.getElementById("num3a").value)||0;var b=parseFloat(document.getElementById("num3b").value)||0;if(a===0){document.getElementById("result3").textContent="0%";return;}var c=(b-a)/a*100;document.getElementById("result3").textContent=(c>=0?"+":"")+c.toFixed(2)+"%";}
+function c4(){var n=parseFloat(document.getElementById("num4").value)||0;var p=parseFloat(document.getElementById("pct4").value)||0;document.getElementById("result4").textContent=(n*(1+p/100)).toFixed(2);}
+document.getElementById("pct1").addEventListener("input",c1);document.getElementById("num1").addEventListener("input",c1);
+document.getElementById("num2a").addEventListener("input",c2);document.getElementById("num2b").addEventListener("input",c2);
+document.getElementById("num3a").addEventListener("input",c3);document.getElementById("num3b").addEventListener("input",c3);
+document.getElementById("num4").addEventListener("input",c4);document.getElementById("pct4").addEventListener("input",c4);
+c1();c2();c3();c4();
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
-<script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
-</script>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>

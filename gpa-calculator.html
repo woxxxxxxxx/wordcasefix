@@ -97,9 +97,41 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>GPA Calculator &mdash; Free online GPA calculator tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
-<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
+(function(){
+var s=document.getElementById("scaleSelect"),w=document.getElementById("weightedToggle"),
+g=document.getElementById("gpaValue"),d=document.getElementById("gpaDetail"),
+l=document.getElementById("courseList"),a=document.getElementById("addCourseBtn"),
+cl=document.getElementById("clearBtn");
+var g4={},g5={};["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","F"].forEach(function(g,i){var v=[4.0,4.0,3.7,3.3,3.0,2.7,2.3,2.0,1.7,1.3,1.0,0.0][i];g4[g]=v;g5[g]=i<11?v+1:v;});
+function pts(grade,scale,weighted){var map=scale==="5.0"?g5:g4;var p=map[grade]||0;if(weighted&&grade!=="F")p+=1;if(scale==="5.0"&&p>5)p=5;return p;}
+function add(name,grade,credits){
+var div=document.createElement("div");div.className="course-entry";
+div.innerHTML='<input type="text" class="ce-name" placeholder="Course name" value="'+name+'"><select class="ce-grade">'+
+'<option value="A+">A+</option><option value="A">A</option><option value="A-">A-</option>'+
+'<option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option>'+
+'<option value="C+">C+</option><option value="C">C</option><option value="C-">C-</option>'+
+'<option value="D+">D+</option><option value="D">D</option><option value="F">F</option>'+
+'</select><input type="number" class="ce-credits" placeholder="Credits" value="'+credits+'" min="0.5" max="20" step="0.5"><button class="ce-del">X</button>';
+div.querySelector("select").value=grade;
+div.querySelector(".ce-del").addEventListener("click",function(){div.parentNode.removeChild(div);calc();});
+var inp=div.querySelectorAll("input,select");for(var i=0;i<inp.length;i++)inp[i].addEventListener("change",calc);
+l.appendChild(div);calc();}
+function calc(){
+var entries=l.querySelectorAll(".course-entry");if(entries.length===0){g.textContent="0.00";d.textContent="Add courses below to calculate";return;}
+var tp=0,tc=0,sc=s.value,wg=w.checked;
+for(var i=0;i<entries.length;i++){
+var gr=entries[i].querySelector(".ce-grade").value;var cr=parseFloat(entries[i].querySelector(".ce-credits").value)||0;
+tp+=pts(gr,sc,wg)*cr;tc+=cr;}
+var gpa=tc>0?tp/tc:0;g.textContent=gpa.toFixed(2);
+d.textContent="Total credits: "+tc.toFixed(1)+" \u00b7 "+(wg?"Weighted":"Unweighted")+" \u00b7 "+sc+" scale";}
+a.addEventListener("click",function(){add("","A",3);});
+cl.addEventListener("click",function(){l.innerHTML="";calc();});
+s.addEventListener("change",calc);w.addEventListener("change",calc);add("","A",3);
+})();
 </script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>

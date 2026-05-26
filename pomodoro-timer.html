@@ -101,6 +101,84 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Pomodoro Timer &mdash; Free online Pomodoro timer | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var display=document.getElementById('timerDisplay');
+var phaseEl=document.getElementById('timerPhase');
+var countEl=document.getElementById('pomodoroCount');
+var startBtn=document.getElementById('startBtn');
+var pauseBtn=document.getElementById('pauseBtn');
+var resetBtn=document.getElementById('resetBtn');
+var customInput=document.getElementById('customMinutes');
+var applyBtn=document.getElementById('applyCustomBtn');
+var modeBtns=document.querySelectorAll('.mode-btn:not(#applyCustomBtn)');
+var totalSeconds=25*60,remaining=25*60,timerId=null,running=false,pomodoroCount=0;
+
+function fmt(s){var m=Math.floor(s/60);var sec=s%60;return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;}
+function updateDisplay(){display.textContent=fmt(remaining);}
+function phaseName(minutes){
+if(minutes===25)return 'Focus';
+if(minutes===5)return 'Short Break';
+if(minutes===15)return 'Long Break';
+return 'Custom ('+minutes+' min)';
+}
+function setPhase(minutes){
+totalSeconds=minutes*60;
+remaining=totalSeconds;
+updateDisplay();
+phaseEl.textContent=phaseName(minutes);
+for(var i=0;i<modeBtns.length;i++){modeBtns[i].classList.remove('active');if(parseInt(modeBtns[i].dataset.minutes)===minutes)modeBtns[i].classList.add('active');}
+customInput.value=minutes;
+}
+function tick(){
+if(remaining<=0){
+clearInterval(timerId);timerId=null;running=false;
+startBtn.textContent='Start';startBtn.disabled=false;pauseBtn.disabled=true;
+if(phaseEl.textContent==='Focus'){pomodoroCount++;countEl.textContent='Pomodoros completed: '+pomodoroCount;}
+display.textContent='00:00';
+alert('Time is up!');
+return;
+}
+remaining--;
+updateDisplay();
+}
+function startTimer(){
+if(running)return;
+if(remaining<=0)resetTimer();
+running=true;
+startBtn.textContent='Running';startBtn.disabled=true;pauseBtn.disabled=false;
+timerId=setInterval(tick,1000);
+}
+function pauseTimer(){
+if(!running)return;
+clearInterval(timerId);timerId=null;running=false;
+startBtn.textContent='Resume';startBtn.disabled=false;pauseBtn.disabled=true;
+}
+function resetTimer(){
+if(timerId){clearInterval(timerId);timerId=null;}
+running=false;startBtn.textContent='Start';startBtn.disabled=false;pauseBtn.disabled=true;
+remaining=totalSeconds;updateDisplay();
+}
+
+startBtn.addEventListener('click',startTimer);
+pauseBtn.addEventListener('click',pauseTimer);
+resetBtn.addEventListener('click',resetTimer);
+for(var i=0;i<modeBtns.length;i++){
+modeBtns[i].addEventListener('click',function(){
+if(running){clearInterval(timerId);timerId=null;running=false;startBtn.textContent='Start';startBtn.disabled=false;pauseBtn.disabled=true;}
+setPhase(parseInt(this.dataset.minutes));
+});
+}
+applyBtn.addEventListener('click',function(){
+var val=parseInt(customInput.value);
+if(!val||val<1)val=1;if(val>120)val=120;
+customInput.value=val;
+if(running){clearInterval(timerId);timerId=null;running=false;startBtn.textContent='Start';startBtn.disabled=false;pauseBtn.disabled=true;}
+setPhase(val);
+});
+pauseBtn.disabled=true;
+})();
+</script>
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();

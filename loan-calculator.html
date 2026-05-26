@@ -298,10 +298,33 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Loan Calculator &mdash; Free online amortization calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var a=document.getElementById("loanAmount"),r=document.getElementById("interestRate"),
+t=document.getElementById("loanTerm"),m=document.getElementById("monthlyPayment"),
+p=document.getElementById("totalRepayment"),i=document.getElementById("totalInterest"),
+o=document.getElementById("totalInterestOnly"),b=document.getElementById("tableBody"),
+w=document.getElementById("showMoreWrap"),s=document.getElementById("showMoreBtn"),M=12,S=false;
+function calc(){
+var P=parseFloat(a.value)||0,R=parseFloat(r.value)||0,N=parseFloat(t.value)||1,MR=R/100/12,PMT=0;
+if(MR===0){PMT=P/N;}else{PMT=P*MR*Math.pow(1+MR,N)/(Math.pow(1+MR,N)-1);}
+if(!isFinite(PMT)||isNaN(PMT))PMT=0;m.textContent="$"+PMT.toFixed(2);
+var TT=PMT*N;p.textContent="$"+TT.toFixed(2);var II=TT-P;i.textContent="Interest: $"+II.toFixed(2);o.textContent="$"+II.toFixed(2);
+var rows="",bal=P,sc=S?Math.ceil(N):Math.min(M,Math.ceil(N)),iP,pP;
+for(var n=1;n<=sc;n++){if(!S&&n>M)break;
+if(MR===0){iP=0;pP=Math.min(PMT,bal);}else{iP=bal*MR;pP=Math.min(PMT-iP,bal);}
+bal-=pP;if(bal<0)bal=0;
+rows+="<tr><td>"+n+"</td><td>$"+PMT.toFixed(2)+"</td><td>$"+pP.toFixed(2)+"</td><td>$"+iP.toFixed(2)+"</td><td>$"+bal.toFixed(2)+"</td></tr>";if(n>=sc)break;}
+if(!S&&N>M){rows+="<tr><td colspan=\"5\" style=\"text-align:center;color:#888;padding:10px;\">... and "+(Math.ceil(N)-M)+" more months</td></tr>";w.style.display="block";}
+else{w.style.display="none";}b.innerHTML=rows;}
+s.addEventListener("click",function(){S=true;calc();});
+a.addEventListener("input",function(){S=false;calc();});
+r.addEventListener("input",function(){S=false;calc();});
+t.addEventListener("input",function(){S=false;calc();});calc();
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
-<script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
-</script>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>

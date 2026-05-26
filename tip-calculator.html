@@ -74,9 +74,28 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Tip Calculator &mdash; Free online tip and bill split calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
-<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
+(function(){
+var b=document.getElementById("billAmount"),t=document.querySelectorAll(".tip-btn"),
+c=document.getElementById("customPct"),s=document.getElementById("splitCount"),
+i=document.getElementById("splitInc"),d=document.getElementById("splitDec"),
+T=document.getElementById("tipAmount"),A=document.getElementById("totalAmount"),
+P=document.getElementById("perPerson"),S=document.getElementById("perPersonSub"),p=15;
+for(var z=0;z<t.length;z++){t[z].addEventListener("click",function(){
+for(var j=0;j<t.length;j++)t[j].classList.remove("active");
+this.classList.add("active");
+if(this.dataset.pct==="custom"){c.style.display="inline-block";c.nextElementSibling.style.display="inline";p=parseFloat(c.value)||0;}
+else{c.style.display="none";c.nextElementSibling.style.display="none";p=parseFloat(this.dataset.pct);}cal();});}
+c.addEventListener("input",function(){if(document.querySelector(".tip-btn.active").dataset.pct==="custom"){p=parseFloat(this.value)||0;cal();}});
+function cal(){var amt=parseFloat(b.value)||0,tip=amt*p/100,total=amt+tip,ppl=parseInt(s.value)||1;if(ppl<1)ppl=1;
+T.textContent="$"+tip.toFixed(2);A.textContent="$"+total.toFixed(2);P.textContent="$"+(total/ppl).toFixed(2);S.textContent=ppl+" person(s)";}
+i.addEventListener("click",function(){var n=parseInt(s.value)||1;if(n<20)s.value=n+1;cal();});
+d.addEventListener("click",function(){var n=parseInt(s.value)||1;if(n>1)s.value=n-1;cal();});
+s.addEventListener("input",cal);b.addEventListener("input",cal);cal();
+})();
 </script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>

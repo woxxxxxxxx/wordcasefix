@@ -246,7 +246,7 @@
 
       <div class="input-group">
         <label for="inputText">Text to repeat</label>
-        <textarea id="inputText" placeholder="..."false"></textarea>
+        <textarea id="inputText" placeholder="e.g. Hello World"></textarea>
       </div>
 
       <div class="control-grid">
@@ -319,10 +319,40 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text Repeater &mdash; Free online text repetition tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var t=document.getElementById("inputText"),c=document.getElementById("repeatCount"),
+s=document.querySelectorAll(".sep-btn"),u=document.getElementById("customSep"),
+o=document.getElementById("outputBox"),e=document.getElementById("emptyState"),
+r=document.getElementById("resultContent"),l=document.getElementById("statsLine"),
+b=document.getElementById("copyBtn"),g=document.getElementById("repeatBtn"),p="space";
+for(var i=0;i<s.length;i++){s[i].addEventListener("click",function(){
+if(this.classList.contains("active"))return;
+for(var j=0;j<s.length;j++)s[j].classList.remove("active");
+this.classList.add("active");
+if(this.dataset.sep==="custom"){u.style.display="inline-block";p=u.value||", ";}
+else{u.style.display="none";p=this.dataset.sep;}});}
+u.addEventListener("input",function(){
+if(document.querySelector(".sep-btn.active").dataset.sep==="custom")p=this.value||", ";});
+function gs(){if(p==="none")return"";if(p==="space")return" ";if(p==="newline")return"\n";if(p==="comma")return", ";return p;}
+function rep(){var w=t.value;if(!w){o.textContent="";e.style.display="block";r.style.display="none";return;}
+var n=parseInt(c.value)||1;if(n<1)n=1;if(n>1000)n=1000;c.value=n;var a="";
+for(var i=0;i<n;i++){a+=w;if(i<n-1)a+=gs();}
+o.textContent=a;e.style.display="none";r.style.display="block";
+l.innerHTML="Repeated <strong>"+n+"</strong> times &middot; <strong>"+a.length+"</strong> characters";}
+g.addEventListener("click",rep);
+b.addEventListener("click",function(){var a=o.textContent;if(!a)return;
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(a).then(function(){b.textContent="Copied!";b.classList.add("copied");
+setTimeout(function(){b.textContent="Copy";b.classList.remove("copied");},2000);});}
+else{var q=document.createElement("textarea");q.value=a;q.style.position="fixed";q.style.opacity="0";
+document.body.appendChild(q);q.select();try{document.execCommand("copy");b.textContent="Copied!";
+b.classList.add("copied");setTimeout(function(){b.textContent="Copy";b.classList.remove("copied");},2000);}catch(ex){}
+document.body.removeChild(q);}});
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
-<script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
-</script>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>

@@ -145,10 +145,43 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text to Speech &mdash; Free online text to speech tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+<script>
+(function(){
+var t=document.getElementById("ttsInput"),v=document.getElementById("voiceSelect"),
+r=document.getElementById("rateRange"),rv=document.getElementById("rateVal"),
+p=document.getElementById("pitchRange"),pv=document.getElementById("pitchVal"),
+s=document.getElementById("speakBtn"),u=document.getElementById("pauseBtn"),
+o=document.getElementById("stopBtn"),st=document.getElementById("statusBox"),
+sm=document.querySelectorAll(".sample-btn"),V=[],U=null,P=false;
+function ld(){V=window.speechSynthesis.getVoices();v.innerHTML="";
+for(var i=0;i<V.length;i++){var e=document.createElement("option");
+e.value=i;e.textContent=V[i].name+" ("+V[i].lang+")";v.appendChild(e);}}
+ld();if(window.speechSynthesis.onvoiceschanged!==undefined)window.speechSynthesis.onvoiceschanged=ld;
+r.addEventListener("input",function(){rv.textContent=this.value+"x";});
+p.addEventListener("input",function(){pv.textContent=this.value;});
+for(var i=0;i<sm.length;i++){sm[i].addEventListener("click",function(){t.value=this.dataset.sample;});}
+function spk(){
+if(speechSynthesis.speaking&&!P){speechSynthesis.cancel();}
+var w=t.value.trim();if(!w){st.textContent="Please enter some text to speak.";st.className="status-box";return;}
+U=new SpeechSynthesisUtterance(w);var idx=parseInt(v.value);if(V[idx])U.voice=V[idx];
+U.rate=parseFloat(r.value);U.pitch=parseFloat(p.value);
+U.onstart=function(){st.textContent="Speaking...";st.className="status-box speaking";
+s.textContent="Play";u.disabled=false;o.disabled=false;};
+U.onend=function(){st.textContent="Finished speaking.";st.className="status-box done";
+s.textContent="Play";u.disabled=true;o.disabled=true;P=false;};
+U.onerror=function(){st.textContent="An error occurred.";st.className="status-box";
+s.textContent="Play";u.disabled=true;o.disabled=true;P=false;};
+speechSynthesis.speak(U);P=false;s.textContent="Play";}
+function ps(){
+if(P){speechSynthesis.resume();P=false;u.textContent="Pause";st.textContent="Speaking...";st.className="status-box speaking";}
+else{speechSynthesis.pause();P=true;u.textContent="Resume";st.textContent="Paused";st.className="status-box";}}
+function stp(){speechSynthesis.cancel();P=false;u.textContent="Pause";
+s.textContent="Play";u.disabled=true;o.disabled=true;st.textContent="Stopped.";st.className="status-box";}
+s.addEventListener("click",spk);u.addEventListener("click",ps);o.addEventListener("click",stp);
+})();
+</script>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
-<script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
-</script>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>

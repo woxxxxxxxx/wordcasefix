@@ -73,10 +73,25 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Stopwatch &mdash; Free online stopwatch and lap timer | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
-<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
+(function(){
+var d=document.getElementById("timerDisplay"),s=document.getElementById("startBtn"),
+o=document.getElementById("stopBtn"),l=document.getElementById("lapBtn"),
+r=document.getElementById("resetBtn"),L=document.getElementById("lapsList"),
+C=document.getElementById("lapCount"),I=null,R=false,S=0,E=0,A=[],T=0;
+function fmt(ms){var t=Math.floor(ms/10);var c=t%100;var se=Math.floor(t/100)%60;var m=Math.floor(t/6000)%60;var h=Math.floor(t/360000);return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(se<10?"0":"")+se+"<span class=\"ms\">."+(c<10?"0":"")+c+"</span>";}
+function fmtL(ms){var t=Math.floor(ms/10);var c=t%100;var se=Math.floor(t/100)%60;var m=Math.floor(t/6000)%60;var h=Math.floor(t/360000);return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(se<10?"0":"")+se+"."+(c<10?"0":"")+c;}
+function upd(){var n=Date.now();E=S?n-S:0;d.innerHTML=fmt(E);}
+function start(){if(R)return;R=true;S=Date.now()-(E||0);I=setInterval(upd,10);d.className="timer-time running";s.disabled=true;o.disabled=false;l.disabled=false;}
+function stop(){if(!R)return;R=false;clearInterval(I);I=null;E=S?Date.now()-S:0;S=0;d.className="timer-time";s.disabled=false;s.textContent="Resume";o.disabled=true;l.disabled=true;}
+function reset(){if(I){clearInterval(I);I=null;}R=false;S=0;E=0;A=[];T=0;d.innerHTML=fmt(0);d.className="timer-time";s.disabled=false;s.textContent="Start";o.disabled=true;l.disabled=true;L.innerHTML="<div class=\"empty-laps\">No laps recorded yet.</div>";C.textContent="0 laps";}
+function lap(){if(!R)return;var n=Date.now(),te=n-S,le=te-T;A.push(le);T=te;rL();}
+function rL(){if(A.length===0){L.innerHTML="<div class=\"empty-laps\">No laps recorded yet.</div>";C.textContent="0 laps";return;}var b=Math.min.apply(null,A),ww=Math.max.apply(null,A),h="";for(var i=0;i<A.length;i++){var cc="lap-item";if(A.length>2){if(A[i]===b)cc+=" best";else if(A[i]===ww)cc+=" worst";}h+="<div class=\""+cc+"\"><span class=\"lap-num\">Lap "+(i+1)+"</span><span class=\"lap-time\">"+fmtL(A[i])+"</span></div>";}L.innerHTML=h;C.textContent=A.length+" lap(s)";}
+s.addEventListener("click",start);o.addEventListener("click",stop);l.addEventListener("click",lap);r.addEventListener("click",reset);
+})();
 </script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();</script>
 </body>
 </html>
-
