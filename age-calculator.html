@@ -58,12 +58,12 @@
       <h1>Age Calculator</h1><p>Find out your exact age in years, months, and days.</p></header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
-<div class="form-group"><label for="birthDate">Date of Birth</label><input type="text" id="birthDate" lang="en" placeholder="MM/DD/YYYY" inputmode="numeric" autocomplete="off"></div>
+<div class="form-group"><label for="birthDate">Date of Birth</label><input type="date" id="birthDate"></div>
 <div class="mode-toggle">
 <input type="radio" name="toMode" id="modeToday" value="today" checked><label for="modeToday">To Today</label>
 <input type="radio" name="toMode" id="modeCustom" value="custom"><label for="modeCustom">To a Date</label>
 </div>
-<div class="form-group" id="toDateGroup"><label for="toDate">End Date</label><input type="text" id="toDate" lang="en" placeholder="MM/DD/YYYY" inputmode="numeric" autocomplete="off"></div>
+<div class="form-group" id="toDateGroup"><label for="toDate">End Date</label><input type="date" id="toDate"></div>
 <div style="margin-top:4px;"><button class="btn-primary" id="calcBtn">Calculate Age</button></div>
 <div class="result-area" id="resultArea">
 <div class="result-box">
@@ -122,15 +122,14 @@
   var statWeeks = document.getElementById('statWeeks');
   var statDays = document.getElementById('statDays');
 
-  function parseDate(str) {
+  function parseDateInput(str) {
     if (!str) return null;
-    var parts = str.split('/');
+    var parts = str.split('-');
     if (parts.length !== 3) return null;
-    var m = parseInt(parts[0], 10);
-    var d = parseInt(parts[1], 10);
-    var y = parseInt(parts[2], 10);
-    if (isNaN(m) || isNaN(d) || isNaN(y)) return null;
-    if (m < 1 || m > 12 || d < 1 || d > 31) return null;
+    var y = parseInt(parts[0], 10);
+    var m = parseInt(parts[1], 10);
+    var d = parseInt(parts[2], 10);
+    if (isNaN(y) || isNaN(m) || isNaN(d)) return null;
     return new Date(y, m - 1, d);
   }
 
@@ -143,7 +142,7 @@
   }
 
   function calcAge() {
-    var bd = parseDate(birthInput.value);
+    var bd = parseDateInput(birthInput.value);
     if (!bd) {
       resultArea.style.display = 'none';
       emptyState.style.display = 'block';
@@ -153,7 +152,7 @@
     var end;
     var modeLabel;
     if (modeCustom.checked && toDateInput.value) {
-      end = parseDate(toDateInput.value);
+      end = parseDateInput(toDateInput.value);
       if (!end) {
         resultArea.style.display = 'none';
         emptyState.style.display = 'block';
