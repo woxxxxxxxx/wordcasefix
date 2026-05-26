@@ -131,7 +131,7 @@
     if (unitMetric.checked) {
       bmi = w / ((h / 100) * (h / 100));
     } else {
-      bmi = w / ((h / 39.37) * (h / 39.37));
+      bmi = w / ((h / 2.54) * (h / 2.54)) * 703;
     }
     bmi = Math.round(bmi * 10) / 10;
 
@@ -163,8 +163,9 @@
     rangeMarker.style.left = Math.min(Math.max(pct, 0), 100) + '%';
 
     var hM = unitMetric.checked ? h : h * 0.3937;
-    var lowW = 18.5 * ((hM / 39.37) * (hM / 39.37));
-    var highW = 24.9 * ((hM / 39.37) * (hM / 39.37));
+    var divisor = unitMetric.checked ? 10000 : 703;
+    var lowW = 18.5 * hM * hM / divisor;
+    var highW = 24.9 * hM * hM / divisor;
     var unit = unitMetric.checked ? ' kg' : ' lbs';
     idealWeight.textContent = lowW.toFixed(1) + ' - ' + highW.toFixed(1) + unit;
   }

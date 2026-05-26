@@ -126,7 +126,7 @@ function fromRoman(r){var m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};var t=r.toUpp
 function convert(){var v=inp.value.trim();if(!v){rv2.textContent='--';rl2.textContent='Waiting for input';rd2.textContent='';return;}
 if(mode==='toRoman'){var n=parseInt(v,10);if(isNaN(n)||n<=0||n>=4000){rv2.textContent='Invalid';rl2.textContent='Enter a number between 1 and 3999';rd2.textContent='';return;}var r=toRoman(n);rv2.textContent=r;rl2.textContent='Roman numeral for '+n;rd2.textContent='';}else{var r3=v;var n2=fromRoman(r3);if(n2<=0){rv2.textContent='Invalid';rl2.textContent='Please enter valid Roman numerals';rd2.textContent='';return;}rv2.textContent=n2;rl2.textContent='Arabic number for '+r3.toUpperCase();rd2.textContent='';}}
 inp.addEventListener('input',convert);
-document.querySelectorAll('[data-val]').forEach(function(el){el.addEventListener('click',function(){var v=this.getAttribute('data-val');if(mode==='toRoman'){if(/^\d+$/.test(v))inp.value=v;}else inp.value=v;convert();});});
+document.querySelectorAll('[data-val]').forEach(function(el){el.addEventListener('click',function(){var v=this.getAttribute('data-val');if(mode==='toRoman'){if(/^\d+$/.test(v))inp.value=v;}else inp.value=toRoman(parseInt(v,10));convert();});});
 convert();
 })();
 </script>

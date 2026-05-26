@@ -80,7 +80,7 @@
 var ji=document.getElementById('jsonInput'),jo=document.getElementById('jsonOutput'),
 fb=document.getElementById('formatBtn'),mb=document.getElementById('minifyBtn'),cb=document.getElementById('copyBtn'),
 is_=document.getElementById('indentSize'),sb=document.getElementById('statusBar');
-fb.addEventListener('click',function(){try{var v=ji.value;if(!v){sb.textContent='Please enter JSON';return;}var ind=parseInt(is_.value)||2;var p=JSON.stringify(JSON.parse(v),null,ind);jo.value=p;sb.textContent='Formatted successfully';}catch(e){sb.textContent='Error: '+e.message;}});
+fb.addEventListener('click',function(){try{var v=ji.value;if(!v){sb.textContent='Please enter JSON';return;}var ind=is_.value==='tab'?'\t':parseInt(is_.value)||2;var p=JSON.stringify(JSON.parse(v),null,ind);jo.value=p;sb.textContent='Formatted successfully';}catch(e){sb.textContent='Error: '+e.message;}});
 mb.addEventListener('click',function(){try{var v=ji.value;if(!v){sb.textContent='Please enter JSON';return;}var p=JSON.stringify(JSON.parse(v));jo.value=p;sb.textContent='Minified successfully';}catch(e){sb.textContent='Error: '+e.message;}});
 cb.addEventListener('click',function(){if(!jo.value)return;navigator.clipboard.writeText(jo.value);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy';},1500);});
 })();

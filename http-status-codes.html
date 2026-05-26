@@ -146,7 +146,7 @@ ct.innerHTML='';var cats=[{id:0,name:'All'},{id:1,name:'1xx Info'},{id:2,name:'2
 si.addEventListener('input',function(){render(this.value,null);});
 mcl.addEventListener('click',function(){mo.classList.remove('show');});
 mo.addEventListener('click',function(e){if(e.target===mo)mo.classList.remove('show');});
-clr.addEventListener('click',function(){si.value='';render('',null);});
+clr.addEventListener('click',function(){si.value='';ct.querySelectorAll('.cat-tab').forEach(function(x){x.classList.remove('active');});if(ct.firstChild)ct.firstChild.classList.add('active');render('',null);});
 render('',null);
 })();
 </script>

@@ -112,8 +112,8 @@ ic=document.getElementById('inputChars'),oc=document.getElementById('outputChars
 eq=document.getElementById('encQuotes'),ea=document.getElementById('encAllChars');
 var mode='encode';
 document.querySelectorAll('[data-mode]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-mode]').forEach(function(x){x.classList.remove('active');});this.classList.add('active');mode=this.getAttribute('data-mode');pb.textContent=mode==='encode'?'Encode':'Decode';process();});});
-function process(){var t=it.value;ic.textContent=t.length;if(!t){ot.value='';oc.textContent='0';return;}var r;if(mode==='encode'){r=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');if(eq.checked){r=r.replace(/"/g,'&quot;').replace(/'/g,'&apos;');}if(ea.checked){r=r.split('').map(function(c){return c.charCodeAt(0)>127?'&#'+c.charCodeAt(0)+';':c;}).join('');}}else{r=t.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").
-replace(/&#(\d+);/g,function(m,n){return String.fromCharCode(n);});}
+function process(){var t=it.value;ic.textContent=t.length;if(!t){ot.value='';oc.textContent='0';return;}var r;if(mode==='encode'){r=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');if(eq.checked){r=r.replace(/"/g,'&quot;').replace(/'/g,'&apos;');}if(ea.checked){r=r.split('').map(function(c){return c.charCodeAt(0)>127?'&#'+c.charCodeAt(0)+';':c;}).join('');}}else{r=t.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").
+replace(/&#(\d+);/g,function(m,n){return String.fromCharCode(n);}).replace(/&amp;/g,'&');}
 ot.value=r;oc.textContent=r.length;}
 pb.addEventListener('click',process);sw.addEventListener('click',function(){var tmp=it.value;it.value=ot.value;ot.value=tmp;process();});
 cp.addEventListener('click',function(){if(!ot.value)return;navigator.clipboard.writeText(ot.value);cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy Output';},1500);});

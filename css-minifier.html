@@ -134,7 +134,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 var ic=document.getElementById('inputCss'),oc=document.getElementById('outputCss'),mn=document.getElementById('minifyBtn'),cp=document.getElementById('copyCss'),cl=document.getElementById('clearCss'),
 os=document.getElementById('originalSize'),ms=document.getElementById('minifiedSize'),sp=document.getElementById('savedPercent');
 function minify(){var t=ic.value;os.textContent=t.length;if(!t){oc.value='';ms.textContent='0';sp.textContent='0%';return;}
-var m=t.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s*\{\s*/g,'{').replace(/\s*\}\s*/g,'}').replace(/\s*:\s*/g,':').replace(/\s*;\s*/g,';').replace(/\s*,\s*/g,',').replace(/\s*\+\s*/g,'+').replace(/;}/g,'}').replace(/^\s+|\s+$/g,'').replace(/\s+/g,' ');
+var m=t.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s*\{\s*/g,'{').replace(/\s*\}\s*/g,'}').replace(/\s*:\s*/g,':').replace(/\s*;\s*/g,';').replace(/\s*,\s*/g,',').replace(/;}/g,'}').replace(/^\s+|\s+$/g,'').replace(/\s+/g,' ');
 oc.value=m;ms.textContent=m.length;sp.textContent=t.length>0?Math.round((t.length-m.length)/t.length*100)+'%':'0%';}
 mn.addEventListener('click',minify);cp.addEventListener('click',function(){if(!oc.value)return;navigator.clipboard.writeText(oc.value);this.textContent='Copied!';setTimeout(function(){cp.textContent='Copy Output';},1500);});
 cl.addEventListener('click',function(){ic.value='';oc.value='';os.textContent='0';ms.textContent='0';sp.textContent='0%';});

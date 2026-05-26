@@ -83,7 +83,7 @@ modeEncode=document.getElementById('modeEncode'),modeDecode=document.getElementB
 statusBar=document.getElementById('statusBar');
 function convert(){try{var t=inputText.value;if(!t){outputText.value='';statusBar.textContent='Waiting for input...';return;}if(modeEncode.checked){outputText.value=btoa(t);statusBar.textContent='Encoded successfully';}else{outputText.value=atob(t);statusBar.textContent='Decoded successfully';}}catch(e){outputText.value='Error: '+e.message;statusBar.textContent='Conversion failed';}}
 convertBtn.addEventListener('click',convert);swapBtn.addEventListener('click',function(){var tmp=inputText.value;inputText.value=outputText.value;outputText.value=tmp;convert();});
-copyBtn.addEventListener('click',function(){if(!outputText.value)return;navigator.clipboard.writeText(outputText.value).then(function(){copyBtn.textContent='Copied!';setTimeout(function(){copyBtn.textContent='Copy';},1500);});});
+copyBtn.addEventListener('click',function(){if(!outputText.value)return;navigator.clipboard.writeText(outputText.value).then(function(){copyBtn.textContent='Copied!';setTimeout(function(){copyBtn.textContent='Copy Result';},1500);});});
 modeEncode.addEventListener('change',convert);modeDecode.addEventListener('change',convert);
 })();
 </script>

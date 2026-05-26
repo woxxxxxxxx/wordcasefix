@@ -144,10 +144,10 @@ var ta=document.getElementById('textA'),tb=document.getElementById('textB'),db=d
 cc=document.getElementById('chkCase'),ct2=document.getElementById('chkTrim'),
 do2=document.getElementById('diffOutput'),sb2=document.getElementById('statusBar');
 function diff(){var a=ta.value,b=tb.value;if(!a&&!b){do2.innerHTML='<div class="empty-state">Enter two texts and click <strong>Compare</strong>.</div>';sb2.textContent='';return;}
-var linesA=a.split('\n'),linesB=b.split('\n');if(!cc.checked){linesA=linesA.map(function(l){return l.toLowerCase();});linesB=linesB.map(function(l){return l.toLowerCase();});}
-if(ct2.checked){linesA=linesA.map(function(l){return l.trim();});linesB=linesB.map(function(l){return l.trim();});}
+var linesA=a.split('\n'),linesB=b.split('\n');var compA=linesA.slice(),compB=linesB.slice();if(!cc.checked){compA=compA.map(function(l){return l.toLowerCase();});compB=compB.map(function(l){return l.toLowerCase();});}
+if(ct2.checked){linesA=linesA.map(function(l){return l.trim();});linesB=linesB.map(function(l){return l.trim();});compA=compA.map(function(l){return l.trim();});compB=compB.map(function(l){return l.trim();});}
 var maxLen=Math.max(linesA.length,linesB.length);var html='';var added=0,removed=0,unchanged=0;
-for(var i=0;i<maxLen;i++){var la=linesA[i]||'',lb=linesB[i]||'';if(la===lb){html+='<div class="unchanged"><span class="line-num">'+(i+1)+'</span>'+escHtml(la)+'</div>';unchanged++;}else if(!la&&lb){html+='<div class="added"><span class="line-num">'+(i+1)+'</span>'+escHtml(lb)+'</div>';added++;}else if(la&&!lb){html+='<div class="removed"><span class="line-num">'+(i+1)+'</span>'+escHtml(la)+'</div>';removed++;}else{html+='<div class="removed"><span class="line-num">'+(i+1)+'</span>'+escHtml(la)+'</div>';html+='<div class="added"><span class="line-num">'+(i+1)+'</span>'+escHtml(lb)+'</div>';added++;removed++;}}
+for(var i=0;i<maxLen;i++){var la=linesA[i]||'',lb=linesB[i]||'';var ca=compA[i]||'',cb=compB[i]||'';if(ca===cb){html+='<div class="unchanged"><span class="line-num">'+(i+1)+'</span>'+escHtml(la)+'</div>';unchanged++;}else if(!ca&&cb){html+='<div class="added"><span class="line-num">'+(i+1)+'</span>'+escHtml(lb)+'</div>';added++;}else if(ca&&!cb){html+='<div class="removed"><span class="line-num">'+(i+1)+'</span>'+escHtml(la)+'</div>';removed++;}else{html+='<div class="removed"><span class="line-num">'+(i+1)+'</span>'+escHtml(la)+'</div>';html+='<div class="added"><span class="line-num">'+(i+1)+'</span>'+escHtml(lb)+'</div>';added++;removed++;}}
 do2.innerHTML=html;sb2.textContent='Added: '+added+' lines, Removed: '+removed+' lines, Unchanged: '+unchanged+' lines';}
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 db.addEventListener('click',diff);
