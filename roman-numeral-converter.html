@@ -42,7 +42,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <button class="active" data-mode="toRoman">Number to Roman</button>
 <button data-mode="toNumber">Roman to Number</button>
 </div>
-<div class="field"><label id="inputLabel">Enter Number</label><input id="inputVal" type="text" value="2024" placeholder="..."result-box"><div class="result-label" id="resultLabel">Roman Numeral</div><div class="result-value" id="resultValue">MMXXIV</div><div class="result-desc" id="resultDesc">Roman numeral for 2024</div></div>
+<div class="field"><label id="inputLabel">Enter Number</label><input id="inputVal" type="text" value="2024" placeholder="e.g. 2024"><div class="result-label" id="resultLabel">Roman Numeral</div><div class="result-value" id="resultValue">MMXXIV</div><div class="result-desc" id="resultDesc">Roman numeral for 2024</div></div>
 <div class="quick-convert">
 <button data-val="1">1 = I</button>
 <button data-val="5">5 = V</button>
@@ -94,7 +94,34 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Roman Numeral Converter &mdash; Free online Roman numeral converter tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <script>
-(function(){ const inputVal=document.getElementById('inputVal'),inputLabel=document.getElementById('inputLabel'); const resultValue=document.getElementById('resultValue'),resultLabel=document.getElementById('resultLabel'); const resultDesc=document.getElementById('resultDesc'); const modeBtns=document.querySelectorAll('.mode-toggle button'); let mode='toRoman'; function toRoman(n){ if(n<1||n>3999)return null; const val=[1000,900,500,400,100,90,50,40,10,9,5,4,1]; const sym=['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']; let r='',i=0; while(n>0){const c=Math.floor(n/val[i]);n-=c*val[i];r+=sym[i].repeat(c);i++} return r } function fromRoman(r){ const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}; let t=0; for(let i=0;i<r.length;i++){ const c=m[r[i]],n=m[r[i+1]]; if(n&&c<n){t-=c}else{t+=c} } return t } function isValidRoman(s){ return/^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/.test(s) } function convert(){ const raw=inputVal.value.trim(); if(!raw){resultValue.textContent='--'Enter a value to convert';return} if(mode==='toRoman'){ const n=parseInt(raw); if(isNaN(n)||n<1||n>3999){ resultValue.textContent='?'; resultDesc.textContent='Please enter a number between 1 and 3999'; return } const r=toRoman(n); resultValue.textContent=r; resultDesc.textContent='Roman numeral for'+n.toLocaleString() }else{ const s=raw.toUpperCase(); if(!isValidRoman(s)){ resultValue.textContent='?'; resultDesc.textContent='Please enter a valid Roman numeral (I, V, X, L, C, D, M)'; return } const n=fromRoman(s); resultValue.textContent=n.toLocaleString(); resultDesc.textContent=s+' ='+n.toLocaleString() } } for(const btn of modeBtns){ btn.addEventListener('click',function(){ modeBtns.forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); mode=this.dataset.mode; inputLabel.textContent=mode==='toRoman'?'Enter Number':'Enter Roman Numeral'; resultLabel.textContent=mode==='toRoman'?'Roman Numeral':'Arabic Number'; inputVal.placeholder=mode==='toRoman'?'e.g. 2024':'e.g. MMXXIV'; inputVal.value=''; resultValue.textContent='--'Enter a value to convert'; inputVal.focus() }) } inputVal.addEventListener('input',convert); document.querySelectorAll('.quick-convert button').forEach(function(btn){ btn.addEventListener('click',function(){inputVal.value=this.dataset.val;if(mode==='toNumber'){inputVal.value=toRoman(parseInt(this.dataset.val))||''}convert()}) }); convert();
+(function(){ const inputVal=document.getElementById('inputVal'),inputLabel=document.getElementById('inputLabel'); const resultValue=document.getElementById('resultValue'),resultLabel=document.getElementById('resultLabel'); const resultDesc=document.getElementById('resultDesc'); const modeBtns=document.querySelectorAll('.mode-toggle button'); let mode='toRoman'; function toRoman(n){ if(n<1||n>3999)return null; const val=[1000,900,500,400,100,90,50,40,10,9,5,4,1]; const sym=['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']; let r='',i=0; while(n>0){const c=Math.floor(n/val[i]);n-=c*val[i];r+=sym[i].repeat(c);i++} return r } function fromRoman(r){ const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}; let t=0; for(let i=0;i<r.length;i++){ const c=m[r[i]],n=m[r[i+1]]; if(n&&c<n){t-=c}else{t+=c} } return t } function isValidRoman(s){ return/^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/.test(s) } function convert(){ const raw=inputVal.value.trim(); if(!raw){resultValue.textContent='-- Enter a value to convert';return} if(mode==='toRoman'){ const n=parseInt(raw); if(isNaN(n)||n<1||n>3999){ resultValue.textContent='?'; resultDesc.textContent='Please enter a number between 1 and 3999'; return } const r=toRoman(n); resultValue.textContent=r; resultDesc.textContent='Roman numeral for'+n.toLocaleString() }else{ const s=raw.toUpperCase(); if(!isValidRoman(s)){ resultValue.textContent='?'; resultDesc.textContent='Please enter a valid Roman numeral (I, V, X, L, C, D, M)'; return } const n=fromRoman(s); resultValue.textContent=n.toLocaleString(); resultDesc.textContent=s+' ='+n.toLocaleString() } } for(const btn of modeBtns){ btn.addEventListener('click',function(){ modeBtns.forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); mode=this.dataset.mode; inputLabel.textContent=mode==='toRoman'?'Enter Number':'Enter Roman Numeral'; resultLabel.textContent=mode==='toRoman'?'Roman Numeral':'Arabic Number'; inputVal.placeholder=mode==='toRoman'?'e.g. 2024':'e.g. MMXXIV'; inputVal.value=''; resultValue.textContent='-- Enter a value to convert'; inputVal.focus() }) } inputVal.addEventListener('input',convert); document.querySelectorAll('.quick-convert button').forEach(function(btn){ btn.addEventListener('click',function(){inputVal.value=this.dataset.val;if(mode==='toNumber'){inputVal.value=toRoman(parseInt(this.dataset.val))||''}convert()}) }); convert();
+document.querySelectorAll('.ref-table td').forEach(function(td){
+  td.addEventListener('click',function(){
+    var txt=this.textContent.trim();
+    if(txt==='--'||txt==='Value'||txt==='Roman'||!txt)return;
+    inputVal.value=txt;
+    if(/^\d+$/.test(txt)){
+      if(mode==='toNumber'){
+        mode='toRoman';
+        modeBtns.forEach(function(b){b.classList.remove('active');});
+        document.querySelector('[data-mode=toRoman]').classList.add('active');
+        inputLabel.textContent='Enter Number';
+        resultLabel.textContent='Roman Numeral';
+        inputVal.placeholder='e.g. 2024';
+      }
+    }else{
+      if(mode==='toRoman'){
+        mode='toNumber';
+        modeBtns.forEach(function(b){b.classList.remove('active');});
+        document.querySelector('[data-mode=toNumber]').classList.add('active');
+        inputLabel.textContent='Enter Roman Numeral';
+        resultLabel.textContent='Arabic Number';
+        inputVal.placeholder='e.g. MMXXIV';
+      }
+    }
+    convert();
+  });
+});
 })();
 </script>
 <button id="back-to-top" title="Back to top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;line-height:1;">^</button>
