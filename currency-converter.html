@@ -97,7 +97,7 @@
 <script>
 (function(){
 var fc=document.getElementById('fromCurrency'),tc=document.getElementById('toCurrency'),fa=document.getElementById('fromAmount'),ta=document.getElementById('toAmount'),rd=document.getElementById('rateDisplay'),sw=document.getElementById('swapBtn');
-var rates={USD:1,EUR:0.92,GBP:0.79,JPY:149.50,CNY:7.24,AUD:1.54,CAD:1.37,CHF:0.88,INR:83.15,MXN:17.05,BRL:4.95,KRW:1320.00};
+var rates={USD:1,EUR:0.92,GBP:0.79,JPY:149.50,CNY:7.24,AUD:1.54,CAD:1.37,CHF:0.88,INR:83.15,MXN:17.05,BRL:4.95,KRW:1320.00,SGD:1.35,HKD:7.83,NZD:1.65,SEK:10.45,NOK:10.70,TRY:30.50,RUB:92.00,ZAR:18.50};
 function convert(){var from=fc.value,to=tc.value,amt=parseFloat(fa.value)||0;if(from&&to){var rate=rates[to]/rates[from];ta.value=(amt*rate).toFixed(4);rd.textContent='1 '+from+' = '+rate.toFixed(4)+' '+to;}}
 fc.addEventListener('change',convert);tc.addEventListener('change',convert);fa.addEventListener('input',convert);
 sw.addEventListener('click',function(){var tmp=fc.value;fc.value=tc.value;tc.value=tmp;convert();});
