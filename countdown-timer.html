@@ -115,8 +115,8 @@ st=document.getElementById('startBtn'),sp=document.getElementById('stopBtn'),rs=
 dp=document.getElementById('countdownDisplay'),at=document.getElementById('alarmText');
 var total=0,remaining=0,timer=null,running=false;
 function fmt(sec){var hh=Math.floor(sec/3600),mm=Math.floor((sec%3600)/60),ss=sec%60;return(hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm+':'+(ss<10?'0':'')+ss;}
-function tick(){if(remaining<=0){clearInterval(timer);timer=null;running=false;dp.textContent='00:00:00';dp.style.color='#ef4444';if(at)at.textContent='Time is up!';st.textContent='Start';sp.disabled=true;return;}remaining--;dp.textContent=fmt(remaining);}
-function start(){if(running)return;if(remaining<=0){var hh=parseInt(h.value)||0,mm=parseInt(m.value)||0,ss=parseInt(s.value)||0;total=hh*3600+mm*60+ss;if(total<=0)return;remaining=total;}running=true;timer=setInterval(tick,1000);dp.style.color='';st.textContent='Running...';sp.disabled=false;if(at)at.textContent='';}
+function tick(){remaining--;if(remaining<=0){clearInterval(timer);timer=null;running=false;dp.textContent='00:00:00';dp.style.color='#ef4444';if(at)at.textContent='Time is up!';st.textContent='Start';sp.disabled=true;return;}dp.textContent=fmt(remaining);}
+function start(){if(running)return;if(remaining<=0){var hh=parseInt(h.value)||0,mm=parseInt(m.value)||0,ss=parseInt(s.value)||0;total=hh*3600+mm*60+ss;if(total<=0)return;remaining=total;dp.textContent=fmt(remaining);}running=true;timer=setInterval(tick,1000);dp.style.color='';st.textContent='Running...';sp.disabled=false;if(at)at.textContent='';}
 function pause(){if(!running)return;running=false;clearInterval(timer);timer=null;st.textContent='Resume';sp.disabled=true;}
 function reset(){running=false;if(timer){clearInterval(timer);timer=null;}total=0;remaining=0;dp.textContent='00:00:00';dp.style.color='';st.textContent='Start';sp.disabled=true;if(at)at.textContent='';h.value='';m.value='';s.value='';}
 st.addEventListener('click',start);sp.addEventListener('click',pause);rs.addEventListener('click',reset);
