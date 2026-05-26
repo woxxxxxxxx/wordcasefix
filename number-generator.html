@@ -294,12 +294,28 @@
 (function(){
 var gn=document.getElementById('generateBtn'),cb=document.getElementById('copyBtn'),
 mn=document.getElementById('minVal'),mx=document.getElementById('maxVal'),cv=document.getElementById('countVal'),
-ad=document.getElementById('allowDupes'),ng=document.querySelector('.numbers-grid');
-function gen(){var min=parseInt(mn.value)||0,max=parseInt(mx.value)||100,c=parseInt(cv.value)||1;if(min>max){var t=min;min=max;max=t;}if(max-min<0||c<=0){ng.innerHTML='';return;}var nums=[];if(ad.checked||(max-min+1)>=c){for(var i=0;i<c;i++){var n;if(ad.checked){n=Math.floor(Math.random()*(max-min+1))+min;}else{do{n=Math.floor(Math.random()*(max-min+1))+min;}while(nums.indexOf(n)!==-1);}nums.push(n);}}else{for(var i=min;i<=max;i++)nums.push(i);}
+ad=document.getElementById('allowDupes'),ng=document.getElementById('numbersGrid'),
+es=document.getElementById('emptyState'),rc=document.getElementById('resultContent'),
+sl=document.getElementById('statsLine');
+function gen(){
+var min=parseInt(mn.value),max=parseInt(mx.value),c=parseInt(cv.value);
+if(isNaN(min)||isNaN(max)||isNaN(c)||c<1)c=1;
+if(isNaN(min))min=1;if(isNaN(max))max=100;
+if(min>=max){es.style.display='block';es.innerHTML='<p style="color:#ef4444;">Error: Min must be less than Max.</p>';rc.style.display='none';return;}
+var rangeSize=max-min+1;
+if(!ad.checked&&c>rangeSize){es.style.display='block';es.innerHTML='<p style="color:#ef4444;">Error: Cannot generate '+c+' unique numbers in range '+min+'-'+max+'.</p>';rc.style.display='none';return;}
+var nums=[];
+if(!ad.checked&&c>1){
+  var pool=[];for(var i=min;i<=max;i++)pool.push(i);
+  for(var i=0;i<c&&pool.length>0;i++){var idx=Math.floor(Math.random()*pool.length);nums.push(pool[idx]);pool.splice(idx,1);}
+}else{
+  for(var i=0;i<c;i++)nums.push(Math.floor(Math.random()*(max-min+1))+min);
+}
+es.style.display='none';rc.style.display='block';
+sl.textContent='Generated '+nums.length+' number'+(nums.length!==1?'s':'')+' (range: '+min+'-'+max+')'+(ad.checked?' with duplicates allowed':'');
 ng.innerHTML=nums.map(function(n){return'<div class="number-chip">'+n+'</div>';}).join('');}
 gn.addEventListener('click',gen);
 cb.addEventListener('click',function(){var txt=Array.from(ng.querySelectorAll('.number-chip')).map(function(el){return el.textContent;}).join(', ');if(txt){navigator.clipboard.writeText(txt);cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy All';},1500);}});
-gen();
 })();
 </script>
 
