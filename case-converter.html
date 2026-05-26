@@ -128,10 +128,10 @@
   .btn-copy.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
 
   /* Em */
+  .case-options{display:flex;gap:8px;flex-wrap:wrap}.case-btn{padding:8px 16px;font-size:13px;font-weight:600;border:1.5px solid #d0d5dd;border-radius:6px;background:#fff;color:#555;cursor:pointer;transition:all .15s;font-family:inherit}.case-btn:hover{border-color:#9b9bd6;color:#5b5bd6}.case-btn.active{border-color:#5b5bd6;background:#5b5bd6;color:#fff}
   .empty-state {
     text-align: center; padding: 40px 0 20px; color: #999;
   }
-  .empty-state svg { display: block; margin: 0 auto 12px; opacity: .35; }
   .empty-state p { font-size: 14px; }
 
   /* Fo */
@@ -212,21 +212,33 @@
     <div class="card">
       <div class="input-group">
         <label for="inputText">Your text</label>
-        <textarea id="inputText" placeholder="..."false"></textarea>
+        <textarea id="inputText" placeholder="Paste or type your text here..."></textarea>
       </div>
 
-      <div class="convert-row">
-        <button class="btn-primary" id="convertBtn">
-          Convert
-        </button>
+      <div class="case-options" id="caseOptions">
+        <button class="case-btn active" data-case="upper">UPPERCASE</button>
+        <button class="case-btn" data-case="lower">lowercase</button>
+        <button class="case-btn" data-case="title">Title Case</button>
+        <button class="case-btn" data-case="sentence">Sentence case</button>
+        <button class="case-btn" data-case="alternating">aLtErNaTiNg</button>
+      </div>
+
+      <div class="convert-row" style="margin-top:12px">
+        <button class="btn-primary" id="convertBtn">Convert</button>
         <span class="char-count" id="charCount">0 characters</span>
       </div>
 
       <div id="results">
         <div class="empty-state" id="emptyState">
-          <p>Enter text above and click <strong>Convert</strong> to see results.</p>
+          <p>Enter text above, select a case style, and click <strong>Convert</strong>.</p>
         </div>
-        <div class="results" id="resultsList" style="display:none"></div>
+        <div class="result-item" id="resultItem" style="display:none">
+          <div class="tag" id="resultLabel">UPPERCASE</div>
+          <div class="output-wrap">
+            <textarea class="output" id="outputText" readonly rows="3"></textarea>
+            <button class="btn-copy" id="copyBtn">Copy</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -261,19 +273,27 @@
 
 <script>
 (function(){
-var btn=document.getElementById('convertBtn'),ta=document.getElementById('inputText'),r=document.getElementById('resultsList'),cc=document.getElementById('charCount');
-function conv(){var t=ta.value;if(!t){r.innerHTML='<div class="conv-row"><span class="conv-label">Enter text above</span></div>';cc.textContent='0';return;}
-cc.textContent=t.length;
-var up=t.toUpperCase(),low=t.toLowerCase(),ti=t.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.substr(1).toLowerCase();});
-var alt='';for(var i=0;i<t.length;i++){alt+=i%2===0?t[i].toUpperCase():t[i].toLowerCase();}
-var inv='';for(var i=t.length-1;i>=0;i--)inv+=t[i];
-r.innerHTML='<div class="conv-row"><span class="conv-label">UPPER CASE</span><span class="conv-value">'+esc(up)+'</span></div>'+
-'<div class="conv-row"><span class="conv-label">lower case</span><span class="conv-value">'+esc(low)+'</span></div>'+
-'<div class="conv-row"><span class="conv-label">Title Case</span><span class="conv-value">'+esc(ti)+'</span></div>'+
-'<div class="conv-row"><span class="conv-label">aLtErNaTiNg</span><span class="conv-value">'+esc(alt)+'</span></div>'+
-'<div class="conv-row"><span class="conv-label">Inverse</span><span class="conv-value">'+esc(inv)+'</span></div>';}
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-btn.addEventListener('click',conv);ta.addEventListener('input',conv);
+var ta=document.getElementById('inputText'),opts=document.querySelectorAll('.case-btn'),
+btn=document.getElementById('convertBtn'),cc=document.getElementById('charCount'),
+resLabel=document.getElementById('resultLabel'),resText=document.getElementById('outputText'),
+resItem=document.getElementById('resultItem'),emp=document.getElementById('emptyState'),
+cp=document.getElementById('copyBtn');
+function getSel(){for(var i=0;i<opts.length;i++){if(opts[i].classList.contains('active'))return opts[i].getAttribute('data-case');}return 'upper';}
+function convert(){
+var t=ta.value,sel=getSel();
+if(!t){emp.style.display='';resItem.style.display='none';cc.textContent='0 characters';return;}
+cc.textContent=t.length+' characters';
+var r=t,lab='UPPERCASE';
+if(sel==='upper'){r=t.toUpperCase();lab='UPPERCASE';}
+else if(sel==='lower'){r=t.toLowerCase();lab='lowercase';}
+else if(sel==='title'){r=t.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.substr(1).toLowerCase();});lab='Title Case';}
+else if(sel==='sentence'){r=t.replace(/(^\s*\w|[.!?]\s*\w)/g,function(c){return c.toUpperCase();});lab='Sentence case';}
+else if(sel==='alternating'){r='';for(var i=0;i<t.length;i++){r+=i%2===0?t[i].toUpperCase():t[i].toLowerCase();}lab='aLtErNaTiNg';}
+resText.value=r;resLabel.textContent=lab;emp.style.display='none';resItem.style.display='flex';}
+opts.forEach(function(b){b.addEventListener('click',function(){opts.forEach(function(x){x.classList.remove('active');});this.classList.add('active');});});
+btn.addEventListener('click',convert);
+cp.addEventListener('click',function(){navigator.clipboard.writeText(resText.value);cp.textContent='Copied!';cp.classList.add('copied');setTimeout(function(){cp.textContent='Copy';cp.classList.remove('copied');},1500);});
+ta.addEventListener('input',function(){var t=ta.value;cc.textContent=(t?t.length+' ':'0 ')+'characters';});
 })();
 </script>
 
