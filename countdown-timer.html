@@ -120,7 +120,7 @@ function start(){if(running)return;if(remaining<=0){var hh=parseInt(h.value)||0,
 function pause(){if(!running)return;running=false;clearInterval(timer);timer=null;st.textContent='Resume';sp.disabled=true;}
 function reset(){running=false;if(timer){clearInterval(timer);timer=null;}total=0;remaining=0;dp.textContent='00:00:00';dp.style.color='';st.textContent='Start';sp.disabled=true;if(at)at.textContent='';h.value='';m.value='';s.value='';}
 st.addEventListener('click',start);sp.addEventListener('click',pause);rs.addEventListener('click',reset);
-document.querySelectorAll('[data-h]').forEach(function(el){el.addEventListener('click',function(){h.value=this.getAttribute('data-h');m.value=this.getAttribute('data-m');s.value=this.getAttribute('data-s');reset();});});
+document.querySelectorAll('[data-h]').forEach(function(el){el.addEventListener('click',function(){reset();h.value=this.getAttribute('data-h');m.value=this.getAttribute('data-m');s.value=this.getAttribute('data-s');var hh=parseInt(h.value)||0,mm=parseInt(m.value)||0,ss=parseInt(s.value)||0;total=hh*3600+mm*60+ss;remaining=total;dp.textContent=fmt(remaining);});});
 sp.disabled=true;
 })();
 </script>
