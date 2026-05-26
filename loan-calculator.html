@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loan Calculator - Free Online Loan Calculator Tool | WordCaseFix</title>
+<title>Loan Calculator - Free Online Tool | WordCaseFix</title>
 <meta name="description" content="Estimate monthly payments, total interest and view amortization schedules. Free online loan calculator for any loan type.">
 <meta name="keywords" content="loan calculator, mortgage calculator, monthly payment calculator, amortization schedule, finance calculator">
 <meta property="og:title" content="Loan Calculator | WordCaseFix">
@@ -161,21 +161,42 @@
   }
 .navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
 .faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px;cursor:pointer}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
-.btt{position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:#fff;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999}</style>
+</style>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://wordcasefix.com/loan-calculator.html">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Loan Calculator",
-  "url": "https://wordcasefix.com/loan-calculator.html",
-  "description": "Loan Calculator - Free online tool at WordCaseFix",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript"
-}
-</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Loan Calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A loan calculator is a free online tool that calculates monthly loan payments, total interest, and amortization schedules based on loan amount, interest rate, and term."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use this Loan Calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the loan amount, annual interest rate, and loan term in years or months. Click Calculate to see your monthly payment, total interest paid, and a full amortization schedule."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this Loan Calculator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this tool is completely free to use with no signup required."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
@@ -277,126 +298,10 @@
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Loan Calculator &mdash; Free online amortization calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-(function() {
-  const loanAmount  = document.getElementById('loanAmount');
-  const interestRate= document.getElementById('interestRate');
-  const loanTerm    = document.getElementById('loanTerm');
-
-  const monthlyPayment   = document.getElementById('monthlyPayment');
-  const totalRepayment   = document.getElementById('totalRepayment');
-  const totalInterest    = document.getElementById('totalInterest');
-  const totalInterestOnly= document.getElementById('totalInterestOnly');
-  const tableBody        = document.getElementById('tableBody');
-  const showMoreWrap     = document.getElementById('showMoreWrap');
-  const showMoreBtn      = document.getElementById('showMoreBtn');
-
-  let showAll = false;
-
-  function fmt(n) {
-    return '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-
-  function calculate() {
-    const P = parseFloat(loanAmount.value);
-    const rAnnual = parseFloat(interestRate.value);
-    const n = parseInt(loanTerm.value, 10);
-
-    if (isNaN(P) || isNaN(rAnnual) || isNaN(n) || P <= 0 || rAnnual < 0 || n <= 0) {
-      monthlyPayment.textContent = '$--';
-      totalRepayment.textContent = '$--';
-      totalInterest.textContent = 'Interest: $--';
-      totalInterestOnly.textContent = '$--';
-      tableBody.innerHTML = '<tr><td colspan="5" class="table-empty">Enter valid values to see the schedule.</td></tr>';
-      showMoreWrap.style.display = 'none';
-      return;
-    }
-
-    const r = rAnnual / 100 / 12;  // mo
-
-    let pmt;
-    if (r === 0) {
-      pmt = P / n;
-    } else {
-      pmt = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    }
-
-    const totalPay = pmt * n;
-    const totalInt = totalPay - P;
-
-    monthlyPayment.textContent = fmt(pmt);
-    totalRepayment.textContent = fmt(totalPay);
-    totalInterest.textContent = 'Interest: ' + fmt(totalInt);
-    totalInterestOnly.textContent = fmt(totalInt);
-
-    // Bu
-    const showRows = showAll ? n : Math.min(12, n);
-    let balance = P;
-    let rows = [];
-
-    for (let i = 1; i <= n; i++) {
-      const interest = balance * r;
-      const principal = pmt - interest;
-      balance -= principal;
-      if (balance < 0.01) balance = 0;  // av
-
-      rows.push({
-        num: i,
-        payment: pmt,
-        principal: principal,
-        interest: interest,
-        balance: balance
-      });
-    }
-
-    // Re
-    let html = '';
-    for (let i = 0; i < showRows; i++) {
-      const row = rows[i];
-      html += '<tr>' +
-        '<td>' + row.num + '</td>' +
-        '<td>' + fmt(row.payment) + '</td>' +
-        '<td>' + fmt(row.principal) + '</td>' +
-        '<td>' + fmt(row.interest) + '</td>' +
-        '<td>' + fmt(row.balance) + '</td>' +
-        '</tr>';
-    }
-    tableBody.innerHTML = html;
-
-    // Sh
-    if (n > 12) {
-      showMoreWrap.style.display = 'block';
-      showMoreBtn.textContent = showAll ? 'Show First 12 Months' : 'Show Full Schedule (' + n + ' months)';
-    } else {
-      showMoreWrap.style.display = 'none';
-    }
-  }
-
-  // Ev
-  [loanAmount, interestRate, loanTerm].forEach(el => {
-    el.addEventListener('input', function() {
-      showAll = false;  // re
-      calculate();
-    });
-  });
-
-  showMoreBtn.addEventListener('click', function() {
-    showAll = !showAll;
-    calculate();
-  });
-
-  // In
-  calculate();
-})();
+var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
 </script>
-
-<button id="back-to-top" title="Back to top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;line-height:1;">^</button>
-<script>
-window.addEventListener('scroll',function(){
-  var btn=document.getElementById('back-to-top');
-  if(btn)btn.style.display=window.scrollY>300?'block':'none';
-});
-</script>
-<button id="btt" class="btt" onclick="document.documentElement.scrollTop=0">^</button>
-<script>!function(){var b=document.getElementById("btt");function t(){b.style.display=document.documentElement.scrollTop>300?"block":"none"}window.addEventListener("scroll",t);t()}();</script></body>
+</body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Text Diff Checker - Free Online Diff Checker Tool | WordCaseFix</title>
+<title>Text Diff Checker - Free Online Tool | WordCaseFix</title>
 <meta name="description" content="Compare two texts side by side and see line-by-line differences. Free online diff checker with added and removed highlighting.">
 <meta name="keywords" content="text diff checker, compare text, diff tool, text comparison, line diff">
 <meta property="og:title" content="Text Diff Checker | WordCaseFix">
@@ -52,21 +52,42 @@
   @media(max-width:600px){header h1{font-size:22px}.btn-primary,.btn-secondary{width:100%;justify-content:center}.btn-row{flex-direction:column;align-items:stretch}}
 .navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
 .faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px;cursor:pointer}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
-.btt{position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:#fff;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999}</style>
+</style>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://wordcasefix.com/text-diff.html">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Text Diff Checker",
-  "url": "https://wordcasefix.com/text-diff.html",
-  "description": "Text Diff Checker - Free online tool at WordCaseFix",
-  "applicationCategory": "MultimediaApplication",
-  "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript"
-}
-</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Text Diff Checker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A text diff checker is a free online tool that compares two text blocks and highlights the differences between them for programmers, writers, and editors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use this Text Diff Checker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paste the original text in the left box and the modified text in the right box. The tool highlights added, removed, and changed sections in color for easy comparison."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this Text Diff Checker free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this tool is completely free to use with no signup required."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
@@ -82,7 +103,7 @@
 <div class="input-group"><label for="textB">Modified Text</label><textarea id="textB" placeholder="..."false"></textarea></div>
 </div>
 <div class="btn-row">
-<button class="btn-primary" id="diffBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> Compare</button>
+<button class="btn-primary" id="diffBtn">Compare</button>
 <div class="option-group">
 <label><input type="checkbox" id="chkCase"> Case sensitive</label>
 <label><input type="checkbox" id="chkTrim"> Trim lines</label>
@@ -116,50 +137,10 @@
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/text-repeater.html"><div class="rc-name">Text Repeater</div><div class="rc-desc">Repeat text strings</div></a><a class="related-card" href="/slug-converter.html"><div class="rc-name">Slug Converter</div><div class="rc-desc">Create URL slugs</div></a><a class="related-card" href="/fancy-text.html"><div class="rc-name">Fancy Text Generator</div><div class="rc-desc">Fancy Unicode text</div></a><a class="related-card" href="/text-to-speech.html"><div class="rc-name">Text to Speech</div><div class="rc-desc">Read text aloud</div></a><a class="related-card" href="/morse-translator.html"><div class="rc-name">Morse Code Translator</div><div class="rc-desc">Translate Morse code</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>Text Diff Checker &mdash; Free online diff checker tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
-<script>
-(function(){
-  const textA=document.getElementById('textA'),textB=document.getElementById('textB');
-  const diffBtn=document.getElementById('diffBtn'),diffOutput=document.getElementById('diffOutput');
-  const chkCase=document.getElementById('chkCase'),chkTrim=document.getElementById('chkTrim');
-  const statusBar=document.getElementById('statusBar');
 
-  function diff(){
-    const a=textA.value,b=textB.value;
-    if(!a&&!b){diffOutput.innerHTML='<div class="empty-state">Enter two texts and click <strong>Compare</strong>.</div>';statusBar.textContent='';return}
-    const caseS=chkCase.checked,trim=chkTrim.checked;
-    const linesA=a.split('\n'),linesB=b.split('\n');
-    const maxLen=Math.max(linesA.length,linesB.length);
-    let html='',added=0,removed=0,unchanged=0;
-    for(let i=0;i<maxLen;i++){
-      const la=i<linesA.length?linesA[i]:'',lb=i<linesB.length?linesB[i]:'';
-      let pa=trim?la.trim():la,pb=trim?lb.trim():lb;
-      if(!caseS){pa=pa.toLowerCase();pb=pb.toLowerCase()}
-      const num=i+1;
-      if(i>=linesA.length){
-        html+='<div class="added"><span class="line-num">+'+(i+1)+'</span>'+esc(lb)+'</div>';added++
-      }else if(i>=linesB.length){
-        html+='<div class="removed"><span class="line-num">-'+(i+1)+'</span>'+esc(la)+'</div>';removed++
-      }else if(pa===pb){
-        html+='<div class="unchanged"><span class="line-num"> '+(i+1)+'</span>'+esc(la)+'</div>';unchanged++
-      }else{
-        html+='<div class="removed"><span class="line-num">-'+(i+1)+'</span>'+esc(la)+'</div><div class="added"><span class="line-num">+'+(i+1)+'</span>'+esc(lb)+'</div>';removed++;added++
-      }
-    }
-    diffOutput.innerHTML=html;
-    statusBar.textContent='+'+(added)+'  -'+(removed)+'  unchanged '+unchanged+'  total lines '+(added+removed+unchanged);
-  }
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-  diffBtn.addEventListener('click',diff);
-})();
-</script>
-
-<button id="back-to-top" title="Back to top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;line-height:1;">^</button>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
-window.addEventListener('scroll',function(){
-  var btn=document.getElementById('back-to-top');
-  if(btn)btn.style.display=window.scrollY>300?'block':'none';
-});
+var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
 </script>
-<button id="btt" class="btt" onclick="document.documentElement.scrollTop=0">^</button>
-<script>!function(){var b=document.getElementById("btt");function t(){b.style.display=document.documentElement.scrollTop>300?"block":"none"}window.addEventListener("scroll",t);t()}();</script></body>
+</body>
 </html>
