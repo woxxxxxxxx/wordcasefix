@@ -61,7 +61,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="card">
 <div class="calc-preview" id="calcPreview"></div>
 <input class="calc-display" id="calcDisplay" value="0" readonly>
-<div class="calc-grid">
+<div class="calc-grid" id="calcGrid">
 <div class="calc-btn clr" data-action="clear">AC</div>
 <div class="calc-btn fn" data-action="sign">&plusmn;</div>
 <div class="calc-btn fn" data-action="percent">%</div>
@@ -73,8 +73,8 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="calc-btn" data-value="4">4</div>
 <div class="calc-btn" data-value="5">5</div>
 <div class="calc-btn" data-value="6">6</div>
-<div class="calc-btn op" data-action="subtract">-</div>
-	<div class="calc-btn" data-value="1">1</div>
+<div class="calc-btn op" data-action="subtract">&minus;</div>
+<div class="calc-btn" data-value="1">1</div>
 <div class="calc-btn" data-value="2">2</div>
 <div class="calc-btn" data-value="3">3</div>
 <div class="calc-btn op" data-action="add">+</div>
@@ -112,25 +112,25 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <script>
 (function(){
 var display=document.getElementById('calcDisplay'),preview=document.getElementById('calcPreview');
-var cur='0',prev='',op='',res=false;
-function upd(){display.value=cur;preview.textContent=prev+op;}
-var btns=document.querySelectorAll('[data-action]');
-for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){
-var a=this.getAttribute('data-action'),v=this.getAttribute('data-value');
-if(a==='clear'){cur='0';prev='';op='';res=false;upd();return;}
-if(a==='sign'){if(cur!=='0'){cur=cur.charAt(0)==='-'?cur.slice(1):'-'+cur;}upd();return;}
-if(a==='percent'){cur=String(parseFloat(cur)/100);upd();return;}
-if(a==='divide'){setOp('/');return;}
-if(a==='multiply'){setOp('*');return;}
-if(a==='subtract'){setOp('-');return;}
-if(a==='add'){setOp('+');return;}
-if(a==='equals'){calcRes();return;}
-if(a==='decimal'){if(!cur.includes('.'))cur+='.';upd();return;}
-if(v){inputDigit(v);}
-});}
-function inputDigit(v){if(res){cur=v;res=false;}else{cur=cur==='0'?v:cur+v;}upd();}
-function setOp(o){if(op&&prev)calcRes();prev=cur;op=o;cur='0';upd();}
-function calcRes(){if(!op||!prev)return;var a=parseFloat(prev),b=parseFloat(cur);if(isNaN(a)||isNaN(b))return;var r=0;switch(op){case'+':r=a+b;break;case'-':r=a-b;break;case'*':r=a*b;break;case'/':r=b!==0?a/b:'Error';break;}cur=String(r);prev='';op='';res=true;upd();}
+var cur='0',prev='',op='',reset=false;
+function upd(){display.value=cur;preview.textContent=prev+' '+op;}
+document.getElementById('calcGrid').addEventListener('click',function(e){
+var btn=e.target.closest('.calc-btn');if(!btn)return;
+var action=btn.getAttribute('data-action'),value=btn.getAttribute('data-value');
+if(action==='clear'){cur='0';prev='';op='';reset=false;upd();return;}
+if(action==='sign'){if(cur!=='0')cur=cur.charAt(0)==='-'?cur.slice(1):'-'+cur;upd();return;}
+if(action==='percent'){cur=String(parseFloat(cur)/100);upd();return;}
+if(action==='divide'){setOp('/');return;}
+if(action==='multiply'){setOp('*');return;}
+if(action==='subtract'){setOp('-');return;}
+if(action==='add'){setOp('+');return;}
+if(action==='equals'){calcRes();return;}
+if(action==='decimal'){if(!cur.includes('.'))cur+='.';upd();return;}
+if(value){inputDigit(value);}
+});
+function inputDigit(v){if(reset){cur=v;reset=false;}else{cur=cur==='0'?v:cur+v;}upd();}
+function setOp(o){if(op&&prev)calcRes();prev=cur;op=o;cur='0';reset=false;upd();}
+function calcRes(){if(!op||prev==='')return;var a=parseFloat(prev),b=parseFloat(cur);if(isNaN(a)||isNaN(b))return;var r;switch(op){case'+':r=a+b;break;case'-':r=a-b;break;case'*':r=a*b;break;case'/':r=b!==0?a/b:'Error';break;}cur=String(r);prev='';op='';reset=true;upd();}
 upd();
 })();
 </script>
