@@ -12,7 +12,7 @@
 .btn-lap { background: #5b5bd6; color: #fff; }
 .btn-start:disabled, .btn-stop:disabled, .btn-lap:disabled { opacity: .4; }
 .card { background: #fff; border-radius: 12px; padding: 28px 32px; }
-</style>
+.btt{position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:#fff;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999}</style>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -121,5 +121,6 @@
   document.title = 'RESULT_DUPE: ' + results.join(' | ');
 })();
 </script>
-</body>
+<button id="btt" class="btt" onclick="document.documentElement.scrollTop=0">^</button>
+<script>!function(){var b=document.getElementById("btt");function t(){b.style.display=document.documentElement.scrollTop>300?"block":"none"}window.addEventListener("scroll",t);t()}();</script></body>
 </html>
