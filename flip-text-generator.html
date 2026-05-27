@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Percentage Calculator - Free Online Tool | WordCaseFix</title>
-<meta name="description" content="Calculate percentages instantly in three modes: X% of Y, X is what percent of Y, and percent change from X to Y.">
-<meta name="keywords" content="percentage calculator, percent of number, percentage change calculator, what percent is x of y">
-<meta property="og:title" content="Percentage Calculator | WordCaseFix">
-<meta property="og:description" content="Calculate percentages in three modes instantly.">
+<title>Flip Text Generator - Free Online Tool | WordCaseFix</title>
+<meta name="description" content="Flip text upside down, create mirror text, and reverse text using Unicode characters. Real-time conversion, copy with one click.">
+<meta name="keywords" content="flip text generator, upside down text, mirror text, reverse text, flip text online, unicode text flip">
+<meta property="og:title" content="Flip Text Generator | WordCaseFix">
+<meta property="og:description" content="Flip text upside down, mirror, or reverse it instantly.">
 <meta property="og:type" content="website">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="canonical" href="https://wordcasefix.com/percentage-calculator.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Percentage Calculator","url":"https://wordcasefix.com/percentage-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<link rel="canonical" href="https://wordcasefix.com/flip-text-generator.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Flip Text Generator","url":"https://wordcasefix.com/flip-text-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
 .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
@@ -76,68 +76,53 @@ footer a:hover{text-decoration:underline}
 <div class="page-wrap">
 <main class="main-area">
 <header>
-<nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">&gt;</span><span style="color:#555;">Percentage Calculator</span></nav>
-<h1>Percentage Calculator</h1>
-<p>Three modes: X% of Y, X is what % of Y, and % change.</p>
+<nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">&gt;</span><span style="color:#555;">Flip Text Generator</span></nav>
+<h1>Flip Text Generator</h1>
+<p>Upside down, mirror, and reverse text in real time.</p>
 </header>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-<button class="btn-primary" id="pM1">X% of Y</button>
-<button class="btn-secondary" id="pM2">X is what % of Y?</button>
-<button class="btn-secondary" id="pM3">% Change X to Y</button>
+<div class="input-group"><label for="ftIn">Your Text</label><textarea id="ftIn" rows="4" placeholder="Type or paste text here..." style="font-family:inherit;font-size:15px;"></textarea></div>
+<div style="display:flex;flex-direction:column;gap:14px;margin-top:4px;">
+<div style="background:#f8f9fb;border-radius:10px;padding:16px;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:13px;font-weight:700;color:#5b5bd6;text-transform:uppercase;letter-spacing:.5px;">&#9660; Upside Down Text</span>
+<button class="btn-copy" id="ftCopy1">Copy</button>
 </div>
-<div id="pMode1">
-<div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px;margin-bottom:16px;">
-<div class="input-group" style="margin:0"><label>X (percent)</label><input type="number" id="p1x" placeholder="e.g. 20"></div>
-<span style="font-size:22px;font-weight:700;color:#5b5bd6;padding-top:20px;">% of</span>
-<div class="input-group" style="margin:0"><label>Y (value)</label><input type="number" id="p1y" placeholder="e.g. 150"></div>
-<span style="font-size:22px;font-weight:700;color:#5b5bd6;padding-top:20px;">=</span>
-<div class="result-box" style="margin:0;padding-top:24px"><div class="result-value" id="p1r">—</div></div>
+<div id="ftOut1" style="font-size:16px;line-height:1.6;color:#1a1a2e;min-height:28px;word-break:break-all;">&#8212;</div>
 </div>
+<div style="background:#f8f9fb;border-radius:10px;padding:16px;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:13px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.5px;">&#8596; Mirror Text</span>
+<button class="btn-copy" id="ftCopy2">Copy</button>
 </div>
-<div id="pMode2" style="display:none">
-<div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px;margin-bottom:16px;">
-<div class="input-group" style="margin:0"><label>X (value)</label><input type="number" id="p2x" placeholder="e.g. 30"></div>
-<span style="font-size:14px;font-weight:700;color:#5b5bd6;padding-top:20px;">is what % of</span>
-<div class="input-group" style="margin:0"><label>Y (total)</label><input type="number" id="p2y" placeholder="e.g. 200"></div>
-<span style="font-size:22px;font-weight:700;color:#5b5bd6;padding-top:20px;">?</span>
-<div class="result-box" style="margin:0;padding-top:24px"><div class="result-value" id="p2r">—</div><div class="result-label">%</div></div>
+<div id="ftOut2" style="font-size:16px;line-height:1.6;color:#1a1a2e;min-height:28px;word-break:break-all;">&#8212;</div>
 </div>
+<div style="background:#f8f9fb;border-radius:10px;padding:16px;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+<span style="font-size:13px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:.5px;">&#8635; Reverse Text</span>
+<button class="btn-copy" id="ftCopy3">Copy</button>
 </div>
-<div id="pMode3" style="display:none">
-<div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px;margin-bottom:16px;">
-<div class="input-group" style="margin:0"><label>From X</label><input type="number" id="p3x" placeholder="e.g. 80"></div>
-<span style="font-size:14px;font-weight:700;color:#5b5bd6;padding-top:20px;">to</span>
-<div class="input-group" style="margin:0"><label>To Y</label><input type="number" id="p3y" placeholder="e.g. 100"></div>
-<span style="font-size:14px;font-weight:700;color:#5b5bd6;padding-top:20px;">= change</span>
-<div class="result-box" style="margin:0;padding-top:24px"><div class="result-value" id="p3r">—</div><div class="result-label" id="p3lbl">%</div></div>
+<div id="ftOut3" style="font-size:16px;line-height:1.6;color:#1a1a2e;min-height:28px;word-break:break-all;">&#8212;</div>
 </div>
 </div>
-<button class="btn-danger" id="pClear" style="margin-top:8px">Clear</button>
 <script>
 (function(){
-var mode=1;
-function setMode(m){
-  mode=m;
-  document.getElementById('pMode1').style.display=m===1?'block':'none';
-  document.getElementById('pMode2').style.display=m===2?'block':'none';
-  document.getElementById('pMode3').style.display=m===3?'block':'none';
-  ['pM1','pM2','pM3'].forEach(function(id,i){
-    var b=document.getElementById(id);b.className=i+1===m?'btn-primary':'btn-secondary';
-  });
-}
-function fmt(n){return isNaN(n)||!isFinite(n)?'Error':Math.round(n*10000)/10000;}
-function calc(){
-  if(mode===1){var x=parseFloat(document.getElementById('p1x').value),y=parseFloat(document.getElementById('p1y').value);document.getElementById('p1r').textContent=(!isNaN(x)&&!isNaN(y))?fmt(x/100*y):'—';}
-  else if(mode===2){var x=parseFloat(document.getElementById('p2x').value),y=parseFloat(document.getElementById('p2y').value);document.getElementById('p2r').textContent=(!isNaN(x)&&!isNaN(y)&&y!==0)?fmt(x/y*100)+'%':'—';}
-  else{var x=parseFloat(document.getElementById('p3x').value),y=parseFloat(document.getElementById('p3y').value);if(!isNaN(x)&&!isNaN(y)&&x!==0){var ch=(y-x)/Math.abs(x)*100;document.getElementById('p3r').textContent=fmt(ch)+'%';document.getElementById('p3lbl').textContent=ch>=0?'increase':'decrease';}else document.getElementById('p3r').textContent='—';}
-}
-document.getElementById('pM1').onclick=function(){setMode(1);};
-document.getElementById('pM2').onclick=function(){setMode(2);};
-document.getElementById('pM3').onclick=function(){setMode(3);};
-document.getElementById('pClear').onclick=function(){['p1x','p1y','p2x','p2y','p3x','p3y'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});['p1r','p2r','p3r'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent='—';});};
-document.querySelectorAll('#pMode1 input,#pMode2 input,#pMode3 input').forEach(function(el){el.addEventListener('input',calc);});
+var UD={'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ɓ','h':'ɥ','i':'ı','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z','A':'∀','B':'ᗺ','C':'Ɔ','D':'ᗡ','E':'Ǝ','F':'Ⅎ','G':'⅁','H':'H','I':'I','J':'ſ','K':'⋊','L':'J','M':'W','N':'N','O':'O','P':'Ԁ','Q':'ό','R':'ᴚ','S':'S','T':'⊥','U':'n','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z','0':'0','1':'Ɩ','2':'ᄅ','3':'Ɛ','4':'ᔾ','5':'Ƽ','6':'9','7':'Ɫ','8':'8','9':'6','!':'¡','?':'¿','.':'˙',',':'‘',"'":'“','_':'‾','&':'⅋','(':')',')':'(','{':'}','}':'{','[':']',']':'[','<':'>','>':'<',' ':' '};
+var MIRROR={'a':'ɐ','b':'d','c':'ɔ','d':'b','e':'Ǝ','f':'ɟ','g':'ᵷ','h':'ɥ','i':'i','j':'ɿ','k':'ʞ','l':'l','m':'m','n':'n','o':'o','p':'q','q':'p','r':'ʀ','s':'s','t':'t','u':'u','v':'v','w':'w','x':'x','y':'y','z':'z','A':'A','B':'ᗺ','C':'Ɔ','D':'ᗡ','E':'Ǝ','F':'F','G':'G','H':'H','I':'I','J':'J','K':'K','L':'J','M':'M','N':'N','O':'O','P':'P','Q':'Q','R':'R','S':'S','T':'T','U':'U','V':'V','W':'W','X':'X','Y':'Y','Z':'Z','(':')',')':'(','[':']',']':'[','{':'}','}':'{','<':'>','>':'<',' ':' '};
+function flipUD(t){return t.split('').reverse().map(function(c){return UD[c]||c;}).join('');}
+function flipMirror(t){return t.split('').reverse().map(function(c){return MIRROR[c]||c;}).join('');}
+function flipRev(t){return t.split('').reverse().join('');}
+function copyBtn(id,getVal){document.getElementById(id).onclick=function(){var t=getVal();if(!t||t==='—')return;navigator.clipboard.writeText(t);var b=document.getElementById(id);b.textContent='Copied!';b.classList.add('copied');setTimeout(function(){b.textContent='Copy';b.classList.remove('copied');},1500);};}
+document.getElementById('ftIn').addEventListener('input',function(){
+  var t=this.value;
+  document.getElementById('ftOut1').textContent=t?flipUD(t):'—';
+  document.getElementById('ftOut2').textContent=t?flipMirror(t):'—';
+  document.getElementById('ftOut3').textContent=t?flipRev(t):'—';
+});
+copyBtn('ftCopy1',function(){return document.getElementById('ftOut1').textContent;});
+copyBtn('ftCopy2',function(){return document.getElementById('ftOut2').textContent;});
+copyBtn('ftCopy3',function(){return document.getElementById('ftOut3').textContent;});
 })();
 </script>
 </div>
@@ -147,11 +132,11 @@ document.querySelectorAll('#pMode1 input,#pMode2 input,#pMode3 input').forEach(f
 <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
 </aside>
 </div>
-<div class="seo-content"><h2>About the Percentage Calculator Tool</h2><p>The Percentage Calculator offers three calculation modes to cover every percentage problem. Mode 1 calculates what X percent of Y equals. Mode 2 finds what percentage X is of Y. Mode 3 calculates the percentage change (increase or decrease) between two values. All calculations update in real time as you type.</p></div>
-<section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>How do I calculate X% of Y?</h3><p>Enter X in the percent field and Y in the value field. The result updates automatically.</p></div><div class="faq-item"><h3>How do I find percentage change?</h3><p>Switch to the "% Change" mode, enter the starting value in X and the ending value in Y. The tool shows the percentage increase or decrease.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free.</p></div></section>
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/discount-calculator.html"><div class="rc-name">Discount Calculator</div><div class="rc-desc">Save on any discount</div></a><a class="related-card" href="/tip-calculator.html"><div class="rc-name">Tip Calculator</div><div class="rc-desc">Split bills & tips</div></a><a class="related-card" href="/loan-calculator.html"><div class="rc-name">Loan Calculator</div><div class="rc-desc">Monthly payments</div></a><a class="related-card" href="/bmi-calculator.html"><div class="rc-name">BMI Calculator</div><div class="rc-desc">Body mass index</div></a></div></div>
+<div class="seo-content"><h2>About the Flip Text Generator Tool</h2><p>The Flip Text Generator transforms your text in three ways simultaneously. Upside Down Text flips each character vertically using Unicode look-alike characters, so the text appears as if it was rotated 180 degrees. Mirror Text reflects characters horizontally. Reverse Text simply reverses the order of all characters. All three outputs update in real time as you type, and each has its own copy button.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>How does upside down text work?</h3><p>It maps each character to a Unicode character that looks like a flipped or rotated version of the original letter.</p></div><div class="faq-item"><h3>Can I use flipped text on social media?</h3><p>Yes. The output is standard Unicode text that works on Twitter, Instagram, Discord, and most platforms.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free.</p></div></section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/fancy-text.html"><div class="rc-name">Fancy Text</div><div class="rc-desc">Unicode text styles</div></a><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Change text case</div></a><a class="related-card" href="/text-repeater.html"><div class="rc-name">Text Repeater</div><div class="rc-desc">Repeat text strings</div></a><a class="related-card" href="/morse-translator.html"><div class="rc-name">Morse Code</div><div class="rc-desc">Text to Morse code</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Percentage Calculator &mdash; Free online percentage tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Flip Text Generator &mdash; Free upside down and mirror text tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});</script>
 </body>
