@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Intake Calculator | WordCaseFix</title>
+<meta name="description" content="Calculate your recommended daily water intake based on body weight, activity level, and climate.">
+<meta name="keywords" content="water intake calculator, daily water intake, how much water should I drink, hydration calculator">
+<meta property="og:title" content="Water Intake Calculator | WordCaseFix">
+<meta property="og:description" content="Calculate your recommended daily water intake based on body weight, activity level, and climate.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://wordcasefix.com/water-intake-calculator.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Water Intake Calculator","url":"https://wordcasefix.com/water-intake-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+.main-area{flex:1;min-width:0;padding:32px 24px 48px}
+.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}
+header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-side{width:100%;min-height:300px;margin-bottom:16px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
+input[type=text],input[type=number],select{width:100%;padding:10px 14px;font-size:15px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:8px;transition:border-color .2s,box-shadow .2s;background:#fff;color:#1a1a2e}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+textarea{width:100%;padding:12px 14px;font-size:14px;font-family:inherit;line-height:1.6;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s;background:#fafbfc;color:#1a1a2e}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-size:14px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s;font-family:inherit}
+.btn-primary:hover{background:#4a4ac2}
+.btn-primary:active{transform:scale(.97)}
+.btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;font-size:14px;font-weight:600;color:#5b5bd6;background:#fff;border:1.5px solid #5b5bd6;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-secondary:hover{background:#f0f0fb}
+.btn-danger{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;font-size:14px;font-weight:600;color:#dc3545;background:#fff;border:1.5px solid #dc3545;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-danger:hover{background:#fff0f1}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.result-box{background:#f0f0fb;border-radius:8px;padding:16px 20px;text-align:center}
+.result-value{font-size:26px;font-weight:700;color:#5b5bd6}
+.result-label{font-size:13px;color:#666;margin-top:4px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center;display:block}
+.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}
+.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}
+.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}
+.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}
+.seo-content p{font-size:13px;color:#666;line-height:1.7}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.faq-item{margin-bottom:16px}
+.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.faq-item p{font-size:13px;color:#666;line-height:1.7}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.err-box{display:none;background:#fff0f0;border:1.5px solid #f5c6cb;border-radius:8px;padding:10px 14px;color:#721c24;font-size:13px;margin-bottom:12px}
+.note{background:#f0f4ff;border-left:3px solid #5b5bd6;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#444;margin-bottom:16px}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){header h1{font-size:22px}}</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/index.html">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+<nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">&gt;</span><span style="color:#555;">Water Intake Calculator</span></nav>
+<h1>Water Intake Calculator</h1>
+<p>Find your recommended daily water intake based on weight, activity level, and climate conditions.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+<div class="input-group"><label for="wiWeight">Body Weight</label><input type="number" id="wiWeight" placeholder="70" min="1" step="0.5" oninput="doWI()"></div>
+<div class="input-group"><label for="wiUnit">Unit</label><select id="wiUnit" onchange="doWI()"><option value="kg">kg</option><option value="lbs">lbs</option></select></div>
+<div class="input-group"><label for="wiActivity">Activity Level</label><select id="wiActivity" onchange="doWI()">
+<option value="1.0">Sedentary (little or no exercise)</option>
+<option value="1.2">Lightly active (light exercise 1-3 days/week)</option>
+<option value="1.4">Moderately active (moderate exercise 3-5 days/week)</option>
+<option value="1.6">Very active (hard exercise 6-7 days/week)</option>
+<option value="1.9">Athlete (intense training twice per day)</option>
+</select></div>
+<div class="input-group"><label for="wiClimate">Climate</label><select id="wiClimate" onchange="doWI()">
+<option value="1.0">Temperate</option>
+<option value="1.15">Hot / Humid</option>
+<option value="0.9">Cold / Dry</option>
+</select></div>
+</div>
+<div class="stat-row" id="wiRes" style="display:none;margin-top:4px;">
+<div class="result-box"><div class="result-value" id="wiLiters">-</div><div class="result-label">Daily Water (Liters)</div></div>
+<div class="result-box"><div class="result-value" id="wiOz">-</div><div class="result-label">Daily Water (fl oz)</div></div>
+<div class="result-box"><div class="result-value" id="wiCups">-</div><div class="result-label">Daily Water (Cups)</div></div>
+<div class="result-box"><div class="result-value" id="wiGlasses">-</div><div class="result-label">8 oz Glasses</div></div>
+</div>
+<div id="wiNote" style="display:none;margin-top:12px;font-size:13px;color:#666;background:#f8f9ff;border-radius:8px;padding:12px 14px;line-height:1.7;"></div>
+<script>(function(){
+window.doWI=function(){
+  var wt=parseFloat(document.getElementById('wiWeight').value);
+  var unit=document.getElementById('wiUnit').value;
+  var act=parseFloat(document.getElementById('wiActivity').value);
+  var climate=parseFloat(document.getElementById('wiClimate').value);
+  var res=document.getElementById('wiRes'),note=document.getElementById('wiNote');
+  if(isNaN(wt)||wt<=0){res.style.display='none';note.style.display='none';return;}
+  var kg=unit==='lbs'?wt/2.205:wt;
+  var base=kg*0.033;
+  var total=base*act*climate;
+  var oz=total*33.814,cups=total*4.227,glasses=oz/8;
+  document.getElementById('wiLiters').textContent=total.toFixed(2)+' L';
+  document.getElementById('wiOz').textContent=oz.toFixed(0)+' fl oz';
+  document.getElementById('wiCups').textContent=cups.toFixed(1)+' cups';
+  document.getElementById('wiGlasses').textContent=Math.round(glasses)+' glasses';
+  note.textContent='This estimate is based on the general guideline of 33 ml per kg of body weight, adjusted for activity and climate. Your actual needs may vary based on health conditions, diet, and humidity. Spread your water intake throughout the day and drink more before, during, and after exercise.';
+  res.style.display='grid';note.style.display='block';
+};
+})();</script>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About Water Intake Calculator</h2><p>The Water Intake Calculator estimates how much water you should drink per day based on body weight, physical activity level, and climate. The base formula uses 33 ml per kg of body weight, which is then scaled by an activity multiplier and a climate factor. Athletes and people in hot climates need significantly more water. Results are shown in liters, fluid ounces, cups, and 8 oz glasses.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>How much water should I drink per day?</h3><p>A common guideline is 8 glasses (2 liters) per day, but actual needs depend on body weight, activity, and climate. This calculator personalizes the recommendation.</p></div><div class="faq-item"><h3>Does coffee or tea count toward water intake?</h3><p>Yes, most beverages including coffee and tea contribute to hydration, though plain water is the most efficient. Alcohol is dehydrating.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no login required.</p></div></section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/bmi-calculator.html"><div class="rc-name">BMI Calculator</div><div class="rc-desc">Body mass index</div></a><a class="related-card" href="/calorie-calculator.html"><div class="rc-name">Calorie Calc</div><div class="rc-desc">Daily calorie needs</div></a><a class="related-card" href="/body-fat-calculator.html"><div class="rc-name">Body Fat Calc</div><div class="rc-desc">Body fat percentage</div></a><a class="related-card" href="/sleep-calculator.html"><div class="rc-name">Sleep Calculator</div><div class="rc-desc">Sleep cycle timing</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Water Intake Calculator &mdash; Free online calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
+</body>
+</html>

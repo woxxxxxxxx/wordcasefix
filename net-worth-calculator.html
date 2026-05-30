@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Net Worth Calculator | WordCaseFix</title>
+<meta name="description" content="Calculate your net worth by entering your assets and liabilities. Add multiple items in each category.">
+<meta name="keywords" content="net worth calculator, calculate net worth, assets liabilities calculator, personal net worth">
+<meta property="og:title" content="Net Worth Calculator | WordCaseFix">
+<meta property="og:description" content="Calculate your net worth by entering your assets and liabilities. Add multiple items in each category.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://wordcasefix.com/net-worth-calculator.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Net Worth Calculator","url":"https://wordcasefix.com/net-worth-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+.main-area{flex:1;min-width:0;padding:32px 24px 48px}
+.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}
+header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-side{width:100%;min-height:300px;margin-bottom:16px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
+input[type=text],input[type=number],select{width:100%;padding:10px 14px;font-size:15px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:8px;transition:border-color .2s,box-shadow .2s;background:#fff;color:#1a1a2e}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+textarea{width:100%;padding:12px 14px;font-size:14px;font-family:inherit;line-height:1.6;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s;background:#fafbfc;color:#1a1a2e}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-size:14px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s;font-family:inherit}
+.btn-primary:hover{background:#4a4ac2}
+.btn-primary:active{transform:scale(.97)}
+.btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;font-size:14px;font-weight:600;color:#5b5bd6;background:#fff;border:1.5px solid #5b5bd6;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-secondary:hover{background:#f0f0fb}
+.btn-danger{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;font-size:14px;font-weight:600;color:#dc3545;background:#fff;border:1.5px solid #dc3545;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-danger:hover{background:#fff0f1}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.result-box{background:#f0f0fb;border-radius:8px;padding:16px 20px;text-align:center}
+.result-value{font-size:26px;font-weight:700;color:#5b5bd6}
+.result-label{font-size:13px;color:#666;margin-top:4px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center;display:block}
+.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}
+.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}
+.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}
+.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}
+.seo-content p{font-size:13px;color:#666;line-height:1.7}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.faq-item{margin-bottom:16px}
+.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.faq-item p{font-size:13px;color:#666;line-height:1.7}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.err-box{display:none;background:#fff0f0;border:1.5px solid #f5c6cb;border-radius:8px;padding:10px 14px;color:#721c24;font-size:13px;margin-bottom:12px}
+.note{background:#f0f4ff;border-left:3px solid #5b5bd6;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#444;margin-bottom:16px}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){header h1{font-size:22px}}</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/index.html">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+<nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">&gt;</span><span style="color:#555;">Net Worth Calculator</span></nav>
+<h1>Net Worth Calculator</h1>
+<p>List your assets and liabilities to calculate your total net worth instantly.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+<div>
+<div style="font-size:15px;font-weight:700;color:#155724;margin-bottom:10px;padding:8px 12px;background:#d4edda;border-radius:6px;">Assets</div>
+<div id="assetList">
+<div class="nw-row" style="display:flex;gap:8px;margin-bottom:8px;"><input type="text" placeholder="Asset name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Value" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="doNW()"></div>
+<div class="nw-row" style="display:flex;gap:8px;margin-bottom:8px;"><input type="text" placeholder="Asset name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Value" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="doNW()"></div>
+<div class="nw-row" style="display:flex;gap:8px;margin-bottom:8px;"><input type="text" placeholder="Asset name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Value" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="doNW()"></div>
+</div>
+<button class="btn-secondary" style="font-size:13px;padding:6px 12px;margin-top:4px;" onclick="addRow('assetList','doNW')">+ Add Asset</button>
+<div style="margin-top:10px;font-size:14px;font-weight:700;color:#155724;">Total Assets: <span id="nwTotalA">$0.00</span></div>
+</div>
+<div>
+<div style="font-size:15px;font-weight:700;color:#721c24;margin-bottom:10px;padding:8px 12px;background:#f8d7da;border-radius:6px;">Liabilities</div>
+<div id="liabList">
+<div class="nw-row" style="display:flex;gap:8px;margin-bottom:8px;"><input type="text" placeholder="Liability name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Amount" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="doNW()"></div>
+<div class="nw-row" style="display:flex;gap:8px;margin-bottom:8px;"><input type="text" placeholder="Liability name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Amount" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="doNW()"></div>
+<div class="nw-row" style="display:flex;gap:8px;margin-bottom:8px;"><input type="text" placeholder="Liability name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Amount" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="doNW()"></div>
+</div>
+<button class="btn-secondary" style="font-size:13px;padding:6px 12px;margin-top:4px;" onclick="addRow('liabList','doNW')">+ Add Liability</button>
+<div style="margin-top:10px;font-size:14px;font-weight:700;color:#721c24;">Total Liabilities: <span id="nwTotalL">$0.00</span></div>
+</div>
+</div>
+<div id="nwResult" style="margin-top:16px;text-align:center;padding:20px;border-radius:10px;background:#f0f0fb;display:none;">
+<div style="font-size:14px;color:#666;margin-bottom:4px;">Your Net Worth</div>
+<div id="nwValue" style="font-size:36px;font-weight:800;"></div>
+<div id="nwSub" style="font-size:13px;color:#666;margin-top:6px;"></div>
+</div>
+<script>(function(){
+window.addRow=function(listId,fn){
+  var list=document.getElementById(listId);
+  var row=document.createElement('div');row.className='nw-row';row.style.cssText='display:flex;gap:8px;margin-bottom:8px;';
+  row.innerHTML='<input type="text" placeholder="Name" style="flex:1;font-size:13px;" class="nw-name"><input type="number" placeholder="Value" min="0" step="0.01" style="width:120px;font-size:13px;" class="nw-val" oninput="'+fn+'()">';
+  list.appendChild(row);
+};
+window.doNW=function(){
+  function sumList(id){var s=0;document.querySelectorAll('#'+id+' .nw-val').forEach(function(i){var v=parseFloat(i.value);if(!isNaN(v))s+=v;});return s;}
+  var a=sumList('assetList'),l=sumList('liabList'),nw=a-l;
+  document.getElementById('nwTotalA').textContent='$'+a.toFixed(2);
+  document.getElementById('nwTotalL').textContent='$'+l.toFixed(2);
+  var res=document.getElementById('nwResult'),val=document.getElementById('nwValue');
+  if(a===0&&l===0){res.style.display='none';return;}
+  val.textContent=(nw>=0?'$':'-$')+Math.abs(nw).toFixed(2);
+  val.style.color=nw>=0?'#5b5bd6':'#dc3545';
+  document.getElementById('nwSub').textContent='Assets $'+a.toFixed(2)+' - Liabilities $'+l.toFixed(2)+(nw>=0?' = Positive net worth':' = Negative net worth');
+  res.style.display='block';
+};
+})();</script>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About Net Worth Calculator</h2><p>The Net Worth Calculator helps you understand your financial position by subtracting your total liabilities from your total assets. Assets include everything you own with monetary value: cash, savings, investments, property, and vehicles. Liabilities include all amounts you owe: mortgages, car loans, credit card balances, and student loans. A positive net worth means your assets exceed your debts.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>What is net worth?</h3><p>Net worth = Total Assets - Total Liabilities. It is the true measure of your financial position at any point in time.</p></div><div class="faq-item"><h3>What counts as an asset?</h3><p>Assets include cash, bank savings, investment accounts, retirement accounts, property value, vehicle value, and any other owned items of monetary value.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no login required.</p></div></section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/inflation-calculator.html"><div class="rc-name">Inflation Calc</div><div class="rc-desc">Inflation adjustment</div></a><a class="related-card" href="/compound-interest-calculator.html"><div class="rc-name">Compound Interest</div><div class="rc-desc">Investment growth</div></a><a class="related-card" href="/loan-calculator.html"><div class="rc-name">Loan Calculator</div><div class="rc-desc">Loan repayment</div></a><a class="related-card" href="/budget-tracker.html"><div class="rc-name">Budget Tracker</div><div class="rc-desc">Track budget</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Net Worth Calculator &mdash; Free online calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
+</body>
+</html>
