@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palindrome Checker | WordCaseFix</title>
+<meta name="description" content="Check if a word, phrase, or sentence is a palindrome online. Ignores spaces and punctuation for phrase checks.">
+<meta name="keywords" content="palindrome checker, is this a palindrome, palindrome tester online, check palindrome">
+<meta property="og:title" content="Palindrome Checker | WordCaseFix">
+<meta property="og:description" content="Check if a word, phrase, or sentence is a palindrome online. Ignores spaces and punctuation for phrase checks.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://wordcasefix.com/palindrome-checker.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Palindrome Checker","url":"https://wordcasefix.com/palindrome-checker.html","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+.main-area{flex:1;min-width:0;padding:32px 24px 48px}
+.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}
+header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-side{width:100%;min-height:300px;margin-bottom:16px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
+input[type=text],input[type=number],select{width:100%;padding:10px 14px;font-size:15px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:8px;transition:border-color .2s,box-shadow .2s;background:#fff;color:#1a1a2e}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+textarea{width:100%;padding:12px 14px;font-size:14px;font-family:'Courier New',Courier,monospace;line-height:1.6;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s;background:#fafbfc;color:#1a1a2e}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-size:14px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s;font-family:inherit}
+.btn-primary:hover{background:#4a4ac2}
+.btn-primary:active{transform:scale(.97)}
+.btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;font-size:14px;font-weight:600;color:#5b5bd6;background:#fff;border:1.5px solid #5b5bd6;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-secondary:hover{background:#f0f0fb}
+.btn-danger{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;font-size:14px;font-weight:600;color:#dc3545;background:#fff;border:1.5px solid #dc3545;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-danger:hover{background:#fff0f1}
+.btn-copy{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;font-size:13px;font-weight:600;color:#555;background:#f0f0f5;border:1px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s;font-family:inherit}
+.btn-copy:hover{background:#e4e4ef;color:#1a1a2e}
+.btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.result-box{background:#f0f0fb;border-radius:8px;padding:16px 20px;margin-top:16px;text-align:center}
+.result-value{font-size:26px;font-weight:700;color:#5b5bd6}
+.result-label{font-size:13px;color:#666;margin-top:4px}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center;display:block}
+.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}
+.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}
+.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}
+.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}
+.seo-content p{font-size:13px;color:#666;line-height:1.7}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.faq-item{margin-bottom:16px}
+.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.faq-item p{font-size:13px;color:#666;line-height:1.7}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.err-box{display:none;background:#fff0f0;border:1.5px solid #f5c6cb;border-radius:8px;padding:10px 14px;color:#721c24;font-size:13px;font-family:monospace;margin-bottom:12px}
+.ok-box{background:#d4edda;border:1.5px solid #8cc99c;border-radius:8px;padding:10px 14px;color:#155724;font-size:13px;margin-bottom:12px;display:none}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:14px}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){header h1{font-size:22px}}</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/index.html">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+<nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">&gt;</span><span style="color:#555;">Palindrome Checker</span></nav>
+<h1>Palindrome Checker</h1>
+<p>Enter any word or phrase to check if it reads the same forwards and backwards.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="input-group"><label for="palIn">Word or Phrase</label><input type="text" id="palIn" placeholder="racecar, A man a plan a canal Panama..." style="font-size:16px;"></div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:16px;">
+<div style="display:flex;align-items:center;gap:8px;"><input type="checkbox" id="palSpace" checked style="width:16px;height:16px;accent-color:#5b5bd6;"><label for="palSpace" style="font-size:14px;font-weight:600;color:#333;cursor:pointer;">Ignore spaces and punctuation</label></div>
+<div style="display:flex;align-items:center;gap:8px;"><input type="checkbox" id="palCase" checked style="width:16px;height:16px;accent-color:#5b5bd6;"><label for="palCase" style="font-size:14px;font-weight:600;color:#333;cursor:pointer;">Case-insensitive</label></div>
+</div>
+<div class="btn-row">
+<button class="btn-primary" id="palCheck">Check</button>
+<button class="btn-danger" id="palClr">Clear</button>
+</div>
+<div id="palResult" style="display:none;">
+<div id="palVerdict" style="text-align:center;padding:18px;border-radius:10px;margin-bottom:14px;font-size:20px;font-weight:700;"></div>
+<div class="stat-row">
+<div class="result-box"><div class="result-value" id="palClean" style="font-size:16px;word-break:break-all;">-</div><div class="result-label">Cleaned (compared) string</div></div>
+<div class="result-box"><div class="result-value" id="palRev" style="font-size:16px;word-break:break-all;">-</div><div class="result-label">Reversed string</div></div>
+</div>
+</div>
+<script>(function(){
+var inp=document.getElementById('palIn'),res=document.getElementById('palResult');
+function check(){
+  var t=inp.value;if(!t.trim()){res.style.display='none';return;}
+  var cleaned=t;
+  if(document.getElementById('palSpace').checked)cleaned=cleaned.replace(/[^a-zA-Z0-9]/g,'');
+  if(document.getElementById('palCase').checked)cleaned=cleaned.toLowerCase();
+  var rev=cleaned.split('').reverse().join('');
+  var isPal=cleaned===rev;
+  var verdict=document.getElementById('palVerdict');
+  verdict.textContent=isPal?'"'+t+'" IS a palindrome!':'"'+t+'" is NOT a palindrome.';
+  verdict.style.background=isPal?'#d4edda':'#fff0f0';
+  verdict.style.color=isPal?'#155724':'#721c24';
+  document.getElementById('palClean').textContent=cleaned||'(empty after cleaning)';
+  document.getElementById('palRev').textContent=rev||'(empty)';
+  res.style.display='block';
+}
+document.getElementById('palCheck').onclick=check;
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+document.getElementById('palClr').onclick=function(){inp.value='';res.style.display='none';};
+})();</script>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About Palindrome Checker</h2><p>The Palindrome Checker determines whether a word or phrase reads the same forwards and backwards. Classic palindromes include "racecar", "level", and "madam". When checking phrases, spaces and punctuation are optionally ignored so that "A man a plan a canal Panama" correctly identifies as a palindrome. Case-insensitive mode treats upper and lowercase letters as equal.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>What is a palindrome?</h3><p>A palindrome is a word, phrase, or sequence that reads the same forward and backward. Examples: "racecar", "level", "madam", "A man a plan a canal Panama".</p></div><div class="faq-item"><h3>Why does the phrase check ignore spaces?</h3><p>A phrase palindrome like "Never odd or even" only works when spaces and punctuation are removed. Ignoring them is the standard way to check phrase palindromes.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no login required.</p></div></section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/anagram-checker.html"><div class="rc-name">Anagram Checker</div><div class="rc-desc">Check anagrams</div></a><a class="related-card" href="/vowel-counter.html"><div class="rc-name">Vowel Counter</div><div class="rc-desc">Count vowels</div></a><a class="related-card" href="/reverse-text.html"><div class="rc-name">Reverse Text</div><div class="rc-desc">Reverse any text</div></a><a class="related-card" href="/prime-checker.html"><div class="rc-name">Prime Checker</div><div class="rc-desc">Check prime numbers</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Palindrome Checker &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
+</body>
+</html>
