@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternating Case Generator - aLtErNaTiNg Text Online | WordCaseFix</title>
+<meta name="description" content="Convert text to alternating case (aLtErNaTiNg). Also known as mock case or spongebob case. Free online alternating case text generator.">
+<meta name="keywords" content="alternating case, alternating caps, spongebob text, mock case, aLtErNaTiNg text generator">
+<meta property="og:title" content="Alternating Case Generator | WordCaseFix">
+<meta property="og:description" content="Convert text to aLtErNaTiNg case instantly. Multiple alternating patterns.">
+<meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+.main-area{flex:1;min-width:0;padding:32px 24px 48px}
+.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}
+header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}
+header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-side{width:100%;min-height:300px;margin-bottom:16px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.input-group{margin-bottom:20px}
+.input-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
+textarea{width:100%;height:160px;padding:14px 16px;font-size:15px;font-family:inherit;line-height:1.6;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+textarea::placeholder{color:#aaa}
+.mode-cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.mode-card{flex:1;min-width:150px;padding:12px 14px;border:1.5px solid #e0e0f0;border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;background:#fafbfc;text-align:center}
+.mode-card:hover{border-color:#5b5bd6;background:#f5f5ff}
+.mode-card.active{border-color:#5b5bd6;background:#f0f0ff}
+.mode-card input{display:none}
+.mode-card .mc-title{font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:3px}
+.mode-card .mc-preview{font-size:12px;color:#5b5bd6;font-weight:600}
+.mode-card.active .mc-title{color:#5b5bd6}
+.options-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.opt-check{display:flex;align-items:center;gap:6px;font-size:14px;color:#333;cursor:pointer;user-select:none}
+.opt-check input{width:16px;height:16px;accent-color:#5b5bd6;cursor:pointer}
+.convert-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:15px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}
+.btn-primary:hover{background:#4a4ac2}
+.btn-primary:active{transform:scale(.97)}
+.output-wrap{position:relative}
+.output-area{width:100%;min-height:160px;padding:14px 56px 14px 16px;font-size:15px;font-family:inherit;line-height:1.6;border:1.5px solid #e2e4e8;border-radius:8px;background:#fafbfc;color:#1a1a2e;resize:vertical}
+.btn-copy{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:4px;padding:5px 12px;font-size:12px;font-weight:600;color:#555;background:#f0f0f5;border:1px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
+.btn-copy:hover{background:#e4e4ef;color:#1a1a2e}
+.btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+.empty-state{text-align:center;padding:30px 0 10px;color:#999}
+.empty-state p{font-size:14px}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+@media(max-width:600px){header h1{font-size:22px}textarea{height:120px;font-size:14px}.btn-primary{width:100%;justify-content:center}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://wordcasefix.com/alternating-case.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+  <main class="main-area">
+    <header>
+      <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Alternating Case</span></nav>
+      <h1>Alternating Case Generator</h1>
+      <p>Convert text to aLtErNaTiNg CaSe for mocking and fun posts.</p>
+    </header>
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+    <div class="card">
+      <div class="input-group">
+        <label for="inputText">Enter your text</label>
+        <textarea id="inputText" placeholder="Type something here and watch it alternate..."></textarea>
+      </div>
+      <div class="mode-cards" id="modeCards">
+        <label class="mode-card active">
+          <input type="radio" name="mode" value="lower" checked>
+          <div class="mc-title">Start Lowercase</div>
+          <div class="mc-preview">hElLo WoRlD</div>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="upper">
+          <div class="mc-title">Start Uppercase</div>
+          <div class="mc-preview">HeLlO wOrLd</div>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="word">
+          <div class="mc-title">By Word</div>
+          <div class="mc-preview">hello WORLD hello</div>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="random">
+          <div class="mc-title">Random</div>
+          <div class="mc-preview">hEllO wORld</div>
+        </label>
+      </div>
+      <div class="options-row">
+        <label class="opt-check"><input type="checkbox" id="optSkipSpaces" checked> Skip spaces when alternating</label>
+      </div>
+      <div class="convert-row">
+        <button class="btn-primary" id="convertBtn">Generate</button>
+      </div>
+      <div id="resultArea">
+        <div class="empty-state" id="emptyState"><p>Enter text above and click <strong>Generate</strong>.</p></div>
+        <div id="outputSection" style="display:none">
+          <div class="output-wrap">
+            <textarea class="output-area" id="outputText" readonly></textarea>
+            <button class="btn-copy" id="copyBtn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+<div class="seo-content"><h2>About the Alternating Case Generator</h2><p>This free Alternating Case Generator converts any text into alternating upper and lowercase letters. Also known as "mock case" or "Spongebob case" (popularized by the Mocking SpongeBob meme), this style is widely used in internet humor to mock or parody a statement. Choose between starting with lowercase, starting with uppercase, alternating by whole word, or fully random case. The "skip spaces" option ensures the alternating pattern continues across word boundaries without resetting.</p></div>
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What is "Spongebob case"?</h3><p>Spongebob case (also mock case) is the style popularized by the "Mocking SpongeBob" meme where text alternates between uppercase and lowercase letters, like "wHy WoUlD yOu Do ThAt". It is used to mock or mimic someone sarcastically.</p></div>
+  <div class="faq-item"><h3>What does "skip spaces" do?</h3><p>When enabled, spaces do not count as a character in the alternating sequence — so the pattern continues smoothly across word boundaries. When disabled, the space itself takes a slot in the sequence and may shift the pattern.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">All case conversions</div></a><a class="related-card" href="/text-capitalize.html"><div class="rc-name">Capitalize Text</div><div class="rc-desc">Title case converter</div></a><a class="related-card" href="/sentence-case-converter.html"><div class="rc-name">Sentence Case</div><div class="rc-desc">Sentence case converter</div></a><a class="related-card" href="/upside-down-text.html"><div class="rc-name">Upside Down Text</div><div class="rc-desc">Flip text upside down</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Alternating Case Generator &mdash; Free mock case text tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  document.querySelectorAll('.mode-card').forEach(function(card){
+    card.addEventListener('click',function(){
+      document.querySelectorAll('.mode-card').forEach(function(c){c.classList.remove('active');});
+      card.classList.add('active');
+    });
+  });
+
+  var btn=document.getElementById('convertBtn'),out=document.getElementById('outputText'),
+      emp=document.getElementById('emptyState'),sec=document.getElementById('outputSection'),
+      cp=document.getElementById('copyBtn');
+
+  function altChar(text,startUpper,skipSpaces){
+    var result='',upper=startUpper,idx=0;
+    for(var i=0;i<text.length;i++){
+      var ch=text[i];
+      if(ch===' '&&skipSpaces){result+=' ';continue;}
+      result+=upper?ch.toUpperCase():ch.toLowerCase();
+      upper=!upper;
+    }
+    return result;
+  }
+  function altWord(text){
+    return text.split(' ').map(function(w,i){return i%2===0?w.toLowerCase():w.toUpperCase();}).join(' ');
+  }
+  function altRandom(text){
+    return text.split('').map(function(c){return Math.random()>.5?c.toUpperCase():c.toLowerCase();}).join('');
+  }
+
+  btn.addEventListener('click',function(){
+    var text=document.getElementById('inputText').value;
+    if(!text){emp.style.display='';sec.style.display='none';return;}
+    var mode=document.querySelector('input[name="mode"]:checked').value;
+    var skip=document.getElementById('optSkipSpaces').checked;
+    var result;
+    if(mode==='lower') result=altChar(text,false,skip);
+    else if(mode==='upper') result=altChar(text,true,skip);
+    else if(mode==='word') result=altWord(text);
+    else result=altRandom(text);
+    out.value=result;
+    emp.style.display='none';sec.style.display='';
+    out.style.height='auto';out.style.height=out.scrollHeight+'px';
+  });
+
+  cp.addEventListener('click',function(){
+    navigator.clipboard.writeText(out.value);
+    cp.textContent='Copied!';cp.classList.add('copied');
+    setTimeout(function(){cp.textContent='Copy';cp.classList.remove('copied');},1500);
+  });
+
+  var b=document.getElementById('back-to-top');
+  window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});
+  b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>

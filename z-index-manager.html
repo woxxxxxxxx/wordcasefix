@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Index Manager - Visual Z-Index Reference Tool | WordCaseFix</title>
+<meta name="description" content="Visualize and manage CSS z-index values. See layer stacking order, common z-index patterns, and find the right z-index for modals, tooltips, navbars, and dropdowns.">
+<meta name="keywords" content="z-index manager, z-index reference, css z-index tool, layer stacking, z-index chart">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px;margin-bottom:16px}
+.layer-viz{position:relative;height:360px;background:#f9f9ff;border-radius:10px;border:1.5px solid #e0e0f7;overflow:hidden;margin-bottom:20px}
+.layer-item{position:absolute;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;border:2px solid rgba(255,255,255,.4)}
+.layer-item .lz{font-size:11px;opacity:.8;margin-top:2px}
+.z-table{width:100%;border-collapse:collapse}
+.z-table th{text-align:left;font-size:11px;font-weight:700;color:#888;text-transform:uppercase;padding:8px 12px;border-bottom:2px solid #e8e9ed}
+.z-table td{padding:9px 12px;font-size:14px;border-bottom:1px solid #f0f0f5;vertical-align:middle}
+.z-table tr:last-child td{border:none}
+.z-table tr:hover td{background:#f9f9ff}
+.z-val{font-family:monospace;font-weight:700;color:#5b5bd6;font-size:15px}
+.z-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.add-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.add-row input{padding:8px 12px;font-size:14px;font-family:monospace;border:1.5px solid #d0d5dd;border-radius:7px;flex:1;min-width:100px}
+.add-row input:focus{outline:none;border-color:#5b5bd6}
+.btn-sm{padding:8px 16px;font-size:13px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:7px;cursor:pointer}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}.related-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/z-index-manager.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Z-Index Manager</span></nav>
+  <h1>Z-Index Manager</h1><p>Visualize CSS z-index layer stacking and find the right z-index for UI elements.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Layer Stack Visualizer (3D view)</div>
+  <div class="layer-viz" id="layerViz"></div>
+  <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Common Z-Index Reference</div>
+  <table class="z-table" id="zTable">
+    <thead><tr><th>Z-Index</th><th>Element</th><th>Framework</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="add-row">
+    <input type="text" id="addName" placeholder="Element name (e.g. My Modal)">
+    <input type="number" id="addZ" placeholder="Z-index value" min="0">
+    <button class="btn-sm" id="addBtn">Add Layer</button>
+  </div>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the Z-Index Manager</h2><p>Z-index controls the stacking order of positioned elements. Higher values appear in front of lower ones. This tool provides a visual layer stack and a reference chart of commonly used z-index values in popular CSS frameworks and UI patterns — from page backgrounds to modals and toasts.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>Why doesn't my z-index work?</h3><p>Z-index only works on positioned elements (position: relative, absolute, fixed, or sticky). Also, z-index is scoped to stacking contexts — a child element cannot appear above a parent element from a different stacking context, no matter how high its z-index is.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/css-flexbox-generator.html"><div class="rc-name">Flexbox Generator</div><div class="rc-desc">CSS flexbox</div></a>
+  <a class="related-card" href="/css-animation-generator.html"><div class="rc-name">CSS Animations</div><div class="rc-desc">Keyframe generator</div></a>
+  <a class="related-card" href="/tailwind-cheatsheet.html"><div class="rc-name">Tailwind CSS</div><div class="rc-desc">Class reference</div></a>
+  <a class="related-card" href="/css-unit-converter.html"><div class="rc-name">CSS Units</div><div class="rc-desc">px/em/rem/vw</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Z-Index Manager &mdash; Free CSS layer tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+var LAYERS=[
+  {z:0,name:'Default (no z-index)',color:'#94a3b8',fw:'Standard'},
+  {z:10,name:'Raised elements',color:'#60a5fa',fw:'Tailwind z-10'},
+  {z:20,name:'Sticky headers',color:'#34d399',fw:'Tailwind z-20'},
+  {z:30,name:'Fixed navbar',color:'#a78bfa',fw:'Tailwind z-30'},
+  {z:40,name:'Dropdown menus',color:'#f472b6',fw:'Tailwind z-40'},
+  {z:50,name:'Overlays/Backdrop',color:'#fb923c',fw:'Tailwind z-50'},
+  {z:100,name:'Tooltips',color:'#fbbf24',fw:'Bootstrap'},
+  {z:200,name:'Popovers',color:'#4ade80',fw:'Bootstrap'},
+  {z:1000,name:'Navigation',color:'#38bdf8',fw:'Bootstrap / MUI'},
+  {z:1050,name:'Drawer/Sidebar',color:'#c084fc',fw:'Bootstrap'},
+  {z:1060,name:'Modal backdrop',color:'#f87171',fw:'Bootstrap'},
+  {z:1070,name:'Modal dialog',color:'#fb923c',fw:'Bootstrap'},
+  {z:1080,name:'Popover',color:'#facc15',fw:'Bootstrap'},
+  {z:1090,name:'Tooltip top',color:'#4ade80',fw:'Bootstrap'},
+  {z:1100,name:'Toast notification',color:'#60a5fa',fw:'Bootstrap / MUI'},
+  {z:9999,name:'Full-screen overlay',color:'#f472b6',fw:'Custom'},
+];
+function render(){
+  var viz=document.getElementById('layerViz');
+  viz.innerHTML='';
+  var maxZ=Math.max.apply(null,LAYERS.map(function(l){return l.z;}));
+  var minZ=Math.min.apply(null,LAYERS.map(function(l){return l.z;}));
+  var w=viz.offsetWidth||600;var h=360;var n=LAYERS.length;
+  var sorted=LAYERS.slice().sort(function(a,b){return a.z-b.z;});
+  sorted.forEach(function(l,i){
+    var el=document.createElement('div');el.className='layer-item';
+    var progress=maxZ===minZ?0.5:(l.z-minZ)/(maxZ-minZ);
+    var width=Math.round(w*0.6+i*8);var layerH=32;
+    var left=Math.round((w-width)/2);
+    var top=h-40-(i*(h-40)/(n>1?n-1:1));
+    el.style.cssText='width:'+width+'px;height:'+layerH+'px;left:'+left+'px;top:'+Math.max(4,top-layerH/2)+'px;background:'+l.color+';color:#fff;opacity:'+(0.7+0.3*progress)+';z-index:'+(i+1);
+    el.innerHTML='<span>'+l.name+'</span><span class="lz">z-index: '+l.z+'</span>';
+    el.title='z-index: '+l.z;
+    viz.appendChild(el);
+  });
+  var tbody=document.getElementById('zTable').querySelector('tbody');
+  tbody.innerHTML=sorted.slice().reverse().map(function(l){
+    return '<tr><td class="z-val">'+l.z+'</td><td>'+l.name+'</td><td><span class="z-badge" style="background:'+l.color+'22;color:'+l.color+'">'+l.fw+'</span></td></tr>';
+  }).join('');
+}
+document.getElementById('addBtn').addEventListener('click',function(){
+  var name=document.getElementById('addName').value.trim();var z=parseInt(document.getElementById('addZ').value);
+  if(!name||isNaN(z))return;
+  var colors=['#5b5bd6','#ec4899','#14b8a6','#f59e0b'];
+  LAYERS.push({z:z,name:name,color:colors[LAYERS.length%colors.length],fw:'Custom'});
+  document.getElementById('addName').value='';document.getElementById('addZ').value='';
+  render();
+});
+render();
+var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>

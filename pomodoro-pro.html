@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Pro - Advanced Pomodoro Timer with Tasks & Stats | WordCaseFix</title>
+<meta name="description" content="Advanced Pomodoro timer with task management, session tracking, and productivity statistics. Customize work/break durations. Free online Pomodoro technique timer.">
+<meta name="keywords" content="pomodoro timer, pomodoro technique, productivity timer, focus timer, task timer, work break timer">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px;margin-bottom:20px}
+.timer-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.timer-panel{text-align:center}
+.mode-tabs{display:flex;gap:6px;justify-content:center;margin-bottom:20px}
+.mode-tab{padding:7px 16px;font-size:13px;font-weight:600;border:1.5px solid #e0e0f7;background:#f9f9ff;color:#555;border-radius:6px;cursor:pointer;transition:all .2s}
+.mode-tab.active{border-color:#5b5bd6;background:#5b5bd6;color:#fff}
+.clock-ring{position:relative;display:inline-block;margin-bottom:20px}
+.clock-ring svg{transform:rotate(-90deg)}
+.clock-bg{fill:none;stroke:#e0e0f7;stroke-width:8}
+.clock-fg{fill:none;stroke:#5b5bd6;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .5s ease,stroke .3s}
+.clock-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.clock-time{font-size:48px;font-weight:700;font-variant-numeric:tabular-nums;color:#1a1a2e;line-height:1}
+.clock-phase{font-size:13px;font-weight:600;color:#888;margin-top:4px}
+.ctrl-btns{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:15px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s}.btn-primary:hover{background:#4a4ac2}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;font-size:14px;font-weight:600;color:#5b5bd6;background:#f0f0ff;border:1.5px solid #5b5bd6;border-radius:8px;cursor:pointer;transition:all .2s}.btn-secondary:hover{background:#5b5bd6;color:#fff}
+.session-dots{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
+.dot{width:10px;height:10px;border-radius:50%;background:#e0e0f7;transition:background .3s}
+.dot.done{background:#5b5bd6}.dot.current{background:#a5b4fc}
+.settings-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.sett-item{background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:8px;padding:10px;text-align:center}
+.sett-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.sett-val{display:flex;align-items:center;justify-content:center;gap:6px}
+.sett-val button{width:24px;height:24px;border-radius:50%;border:1.5px solid #d0d5dd;background:#fff;cursor:pointer;font-size:14px;line-height:1;color:#555;font-weight:700;display:flex;align-items:center;justify-content:center}
+.sett-val button:hover{border-color:#5b5bd6;color:#5b5bd6}
+.sett-num{font-size:18px;font-weight:700;color:#1a1a2e;min-width:28px;text-align:center}
+.task-panel{}
+.task-input-row{display:flex;gap:8px;margin-bottom:12px}
+.task-input{flex:1;padding:10px 12px;font-size:14px;border:1.5px solid #d0d5dd;border-radius:7px;font-family:inherit}
+.task-input:focus{outline:none;border-color:#5b5bd6}
+.task-list{display:flex;flex-direction:column;gap:6px;max-height:260px;overflow-y:auto}
+.task-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:8px;cursor:pointer;transition:border-color .2s}
+.task-item.active-task{border-color:#5b5bd6;background:#f0f0ff}
+.task-item.done-task{opacity:.5}
+.task-item.done-task .task-name{text-decoration:line-through}
+.task-check{width:18px;height:18px;border-radius:50%;border:2px solid #d0d5dd;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.task-item.done-task .task-check{background:#5b5bd6;border-color:#5b5bd6;color:#fff}
+.task-name{flex:1;font-size:14px;color:#333}
+.task-pomos{font-size:12px;color:#888;white-space:nowrap}
+.task-del{padding:2px 6px;font-size:11px;color:#ef4444;background:transparent;border:1px solid #ef4444;border-radius:4px;cursor:pointer}
+.task-del:hover{background:#ef4444;color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:0}
+.stat-card{background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:10px;padding:14px;text-align:center}
+.stat-num{font-size:28px;font-weight:700;color:#5b5bd6}
+.stat-lbl{font-size:12px;color:#888;margin-top:2px}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}.timer-wrap{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){header h1{font-size:22px}.related-grid{grid-template-columns:repeat(2,1fr)}.settings-row{grid-template-columns:1fr 1fr}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/pomodoro-pro.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Pomodoro Pro</span></nav>
+  <h1>Pomodoro Pro</h1><p>Advanced Pomodoro timer with task management and productivity statistics.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+<div class="card">
+  <div class="timer-wrap">
+    <div class="timer-panel">
+      <div class="mode-tabs">
+        <button class="mode-tab active" id="tabWork">Focus</button>
+        <button class="mode-tab" id="tabShort">Short Break</button>
+        <button class="mode-tab" id="tabLong">Long Break</button>
+      </div>
+      <div class="clock-ring">
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle class="clock-bg" cx="100" cy="100" r="88"/>
+          <circle class="clock-fg" id="clockFg" cx="100" cy="100" r="88" stroke-dasharray="553" stroke-dashoffset="0"/>
+        </svg>
+        <div class="clock-center">
+          <div class="clock-time" id="clockTime">25:00</div>
+          <div class="clock-phase" id="clockPhase">Focus Time</div>
+        </div>
+      </div>
+      <div class="session-dots" id="sessionDots"></div>
+      <div class="ctrl-btns">
+        <button class="btn-primary" id="startBtn">Start</button>
+        <button class="btn-secondary" id="resetBtn">Reset</button>
+      </div>
+      <div class="settings-row">
+        <div class="sett-item">
+          <div class="sett-label">Focus (min)</div>
+          <div class="sett-val">
+            <button id="wDec">-</button>
+            <span class="sett-num" id="wVal">25</span>
+            <button id="wInc">+</button>
+          </div>
+        </div>
+        <div class="sett-item">
+          <div class="sett-label">Short Break</div>
+          <div class="sett-val">
+            <button id="sDec">-</button>
+            <span class="sett-num" id="sVal">5</span>
+            <button id="sInc">+</button>
+          </div>
+        </div>
+        <div class="sett-item">
+          <div class="sett-label">Long Break</div>
+          <div class="sett-val">
+            <button id="lDec">-</button>
+            <span class="sett-num" id="lVal">15</span>
+            <button id="lInc">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-panel">
+      <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Tasks</div>
+      <div class="task-input-row">
+        <input class="task-input" id="taskInput" placeholder="Add a task and press Enter..." maxlength="80">
+        <button class="btn-primary" id="addTaskBtn" style="padding:10px 14px;white-space:nowrap">Add</button>
+      </div>
+      <div class="task-list" id="taskList"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px">Today's Stats</div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num" id="statPomos">0</div><div class="stat-lbl">Pomodoros</div></div>
+    <div class="stat-card"><div class="stat-num" id="statFocus">0m</div><div class="stat-lbl">Focus Time</div></div>
+    <div class="stat-card"><div class="stat-num" id="statTasks">0</div><div class="stat-lbl">Tasks Done</div></div>
+    <div class="stat-card"><div class="stat-num" id="statStreak">0</div><div class="stat-lbl">Best Streak</div></div>
+  </div>
+</div>
+
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About Pomodoro Pro</h2><p>Pomodoro Pro is a fully-featured Pomodoro technique timer with task management and productivity statistics. The Pomodoro Technique was developed by Francesco Cirillo in the late 1980s — work in focused 25-minute sessions, separated by short 5-minute breaks, with a longer 15-minute break every 4 sessions. Use the task list to track what you're working on, and watch your focus stats build throughout the day.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What is the Pomodoro Technique?</h3><p>The Pomodoro Technique is a time management method that breaks work into 25-minute focused sessions (called "pomodoros") separated by short breaks. After 4 pomodoros, you take a longer break. This rhythm helps maintain concentration and prevents mental fatigue.</p></div>
+  <div class="faq-item"><h3>Can I customize the timer durations?</h3><p>Yes. Use the +/- buttons below the timer to adjust focus duration (1–60 minutes), short break (1–30 minutes), and long break (1–60 minutes) to fit your personal work rhythm.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/unix-timestamp-converter.html"><div class="rc-name">Timestamp Converter</div><div class="rc-desc">Convert timestamps</div></a>
+  <a class="related-card" href="/cron-expression-generator.html"><div class="rc-name">Cron Generator</div><div class="rc-desc">Schedule expressions</div></a>
+  <a class="related-card" href="/password-pattern-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Secure passwords</div></a>
+  <a class="related-card" href="/placeholder-text-generator.html"><div class="rc-name">Placeholder Text</div><div class="rc-desc">Lorem ipsum</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Pomodoro Pro &mdash; Free focus timer with task management | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  var CIRCUMFERENCE=2*Math.PI*88;
+  var settings={work:25,short:5,long:15,pomosPerSet:4};
+  var state={mode:'work',running:false,timeLeft:settings.work*60,pomoDone:0,setCount:0,timerID:null,activeTask:null};
+  var stats={pomos:0,focusSecs:0,tasksDone:0,streak:0,curStreak:0};
+  var tasks=[];
+
+  var PHASE_NAMES={work:'Focus Time',short:'Short Break',long:'Long Break'};
+  var PHASE_COLORS={work:'#5b5bd6',short:'#22c55e',long:'#f97316'};
+
+  function pad(n){return n<10?'0'+n:String(n);}
+  function fmtTime(s){return pad(Math.floor(s/60))+':'+pad(s%60);}
+  function totalSecs(){return settings[state.mode]*60;}
+
+  function renderClock(){
+    var el=document.getElementById('clockTime');
+    el.textContent=fmtTime(state.timeLeft);
+    var frac=state.timeLeft/totalSecs();
+    var fg=document.getElementById('clockFg');
+    fg.style.strokeDashoffset=CIRCUMFERENCE*(1-frac);
+    fg.style.stroke=PHASE_COLORS[state.mode];
+    document.getElementById('clockPhase').textContent=PHASE_NAMES[state.mode];
+    document.title=fmtTime(state.timeLeft)+' — Pomodoro Pro';
+  }
+
+  function renderDots(){
+    var c=document.getElementById('sessionDots');c.innerHTML='';
+    for(var i=0;i<settings.pomosPerSet;i++){
+      var d=document.createElement('div');d.className='dot';
+      if(i<state.pomoDone%settings.pomosPerSet||(state.pomoDone>0&&state.pomoDone%settings.pomosPerSet===0&&state.mode!=='work'))d.classList.add('done');
+      c.appendChild(d);
+    }
+  }
+
+  function renderStats(){
+    document.getElementById('statPomos').textContent=stats.pomos;
+    var m=Math.round(stats.focusSecs/60);
+    document.getElementById('statFocus').textContent=m+'m';
+    document.getElementById('statTasks').textContent=stats.tasksDone;
+    document.getElementById('statStreak').textContent=stats.streak;
+  }
+
+  function renderTasks(){
+    var list=document.getElementById('taskList');list.innerHTML='';
+    if(!tasks.length){list.innerHTML='<div style="color:#aaa;font-size:13px;text-align:center;padding:20px">No tasks yet. Add one above!</div>';return;}
+    tasks.forEach(function(t,i){
+      var item=document.createElement('div');item.className='task-item'+(t.done?' done-task':'')+(state.activeTask===i?' active-task':'');
+      item.innerHTML='<div class="task-check">'+(t.done?'✓':'')+'</div><div class="task-name">'+escHtml(t.name)+'</div><div class="task-pomos">'+t.pomos+' 🍅</div><button class="task-del" data-i="'+i+'">✕</button>';
+      item.querySelector('.task-check').addEventListener('click',function(e){e.stopPropagation();toggleTask(i);});
+      item.querySelector('.task-del').addEventListener('click',function(e){e.stopPropagation();tasks.splice(i,1);if(state.activeTask===i)state.activeTask=null;else if(state.activeTask>i)state.activeTask--;renderTasks();});
+      item.addEventListener('click',function(){state.activeTask=(state.activeTask===i?null:i);renderTasks();});
+      list.appendChild(item);
+    });
+  }
+
+  function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  function toggleTask(i){
+    tasks[i].done=!tasks[i].done;
+    if(tasks[i].done){stats.tasksDone++;renderStats();}
+    else{stats.tasksDone=Math.max(0,stats.tasksDone-1);renderStats();}
+    renderTasks();
+  }
+
+  function addTask(){
+    var inp=document.getElementById('taskInput');
+    var name=inp.value.trim();if(!name)return;
+    tasks.push({name:name,done:false,pomos:0});
+    inp.value='';renderTasks();
+  }
+
+  function switchMode(mode){
+    clearInterval(state.timerID);state.timerID=null;
+    state.mode=mode;state.running=false;
+    state.timeLeft=settings[mode]*60;
+    document.getElementById('startBtn').textContent='Start';
+    ['tabWork','tabShort','tabLong'].forEach(function(id){document.getElementById(id).classList.remove('active');});
+    document.getElementById(mode==='work'?'tabWork':mode==='short'?'tabShort':'tabLong').classList.add('active');
+    renderClock();renderDots();
+  }
+
+  function tick(){
+    if(state.timeLeft>0){
+      state.timeLeft--;
+      if(state.mode==='work')stats.focusSecs++;
+      renderClock();renderStats();
+    } else {
+      clearInterval(state.timerID);state.timerID=null;state.running=false;
+      document.getElementById('startBtn').textContent='Start';
+      if(state.mode==='work'){
+        stats.pomos++;stats.curStreak++;if(stats.curStreak>stats.streak)stats.streak=stats.curStreak;
+        if(state.activeTask!==null&&tasks[state.activeTask])tasks[state.activeTask].pomos++;
+        state.pomoDone++;
+        if(state.pomoDone%settings.pomosPerSet===0){switchMode('long');}
+        else{switchMode('short');}
+      } else {
+        switchMode('work');
+      }
+      renderStats();renderTasks();
+      try{var audio=new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2hCKjhkm8bWpW1POEFjkb3Sp3ZbT1Bql7bMpoBsY2BtjKvAp4xxaWdxiqO2oIp3cmtyiZulm4yBenl4hJCdloyChXuCipOQjomFg4eNkZCOiomKjI+Rj46KiouNj5COjImKi42PkI+NioqLjY+Qj42KiouNj4+OjYqLjI6Pj42KiouNj4+OjIqLjI6Pj42LiouNj4+OjIqKjI6Pj42LiouNj4+Oi4qKjI+Pj42LiouNj4+Oi4qKjI+PkIyLi42Pj46MioqMjo+QjIuLjY6PjoyKioyOj5CLi4uNjo+OjYqKjI6PkIuLi42Pjo6MioqMjo+Qi4uLjY+Ojo2KioyOj5CLi4uNj46OjIqKjI+PkA==');audio.play().catch(function(){});}catch(e){}
+    }
+  }
+
+  function startStop(){
+    if(state.running){
+      clearInterval(state.timerID);state.timerID=null;state.running=false;
+      document.getElementById('startBtn').textContent='Resume';
+      stats.curStreak=0;
+    } else {
+      state.running=true;
+      document.getElementById('startBtn').textContent='Pause';
+      state.timerID=setInterval(tick,1000);
+    }
+  }
+
+  function makeStepper(valId,settKey,min,max){
+    document.getElementById(valId.replace('Val','Dec')).addEventListener('click',function(){
+      if(settings[settKey]>min){settings[settKey]--;document.getElementById(valId).textContent=settings[settKey];if(state.mode===settKey&&!state.running){state.timeLeft=settings[settKey]*60;renderClock();}}
+    });
+    document.getElementById(valId.replace('Val','Inc')).addEventListener('click',function(){
+      if(settings[settKey]<max){settings[settKey]++;document.getElementById(valId).textContent=settings[settKey];if(state.mode===settKey&&!state.running){state.timeLeft=settings[settKey]*60;renderClock();}}
+    });
+  }
+
+  makeStepper('wVal','work',1,60);
+  makeStepper('sVal','short',1,30);
+  makeStepper('lVal','long',1,60);
+
+  document.getElementById('startBtn').addEventListener('click',startStop);
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    clearInterval(state.timerID);state.timerID=null;state.running=false;
+    state.timeLeft=settings[state.mode]*60;
+    document.getElementById('startBtn').textContent='Start';
+    renderClock();
+  });
+  document.getElementById('tabWork').addEventListener('click',function(){switchMode('work');});
+  document.getElementById('tabShort').addEventListener('click',function(){switchMode('short');});
+  document.getElementById('tabLong').addEventListener('click',function(){switchMode('long');});
+  document.getElementById('addTaskBtn').addEventListener('click',addTask);
+  document.getElementById('taskInput').addEventListener('keydown',function(e){if(e.key==='Enter')addTask();});
+
+  document.getElementById('clockFg').style.strokeDasharray=CIRCUMFERENCE;
+  renderClock();renderDots();renderStats();renderTasks();
+
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>

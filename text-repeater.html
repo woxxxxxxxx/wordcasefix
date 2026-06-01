@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Repeater - Free Online Tool | WordCaseFix</title>
+<meta name="description" content="Repeat any text multiple times with customizable separators and see a real-time preview of the output. Free online text repeater for repetitive content.">
+<meta name="keywords" content="text repeater, repeat text, text generator, text duplicator, pattern maker">
+<meta property="og:title" content="Text Repeater | WordCaseFix">
+<meta property="og:description" content="Repeat text multiple times with customizable separators. Free online text repeater with real-time preview.">
+<meta property="og:type" content="website">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-wrap { display: flex; flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; }
+  .main-area { flex: 1; min-width: 0; padding: 32px 24px 48px; }
+  .sidebar { width: 200px; flex-shrink: 0; padding: 32px 16px; }
+
+  header { text-align: center; margin-bottom: 16px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { color: #555; font-size: 15px; margin-top: 4px; }
+
+  .ad-slot {
+    position: relative;
+    background: #e8e9ed;
+    border: 1px dashed #bbb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+  }
+  .ad-top   { width: 100%; height: 90px; margin-bottom: 24px; }
+  .ad-side  { width: 100%; min-height: 300px; margin-bottom: 16px; }
+  .ad-label { position: absolute; top: 6px; left: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #999; }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 6px rgba(0,0,0,.04);
+    padding: 28px 32px 32px;
+  }
+
+  /* In */
+  .input-group { margin-bottom: 18px; }
+  .input-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #333; }
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px 14px;
+    font-size: 15px; font-family: inherit;
+    line-height: 1.5;
+    border: 1.5px solid #d0d5dd;
+    border-radius: 8px;
+    resize: vertical;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  textarea:focus { outline: none; border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
+  textarea::placeholder { color: #aaa; }
+
+  /* Co */
+  .control-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 14px;
+    margin-bottom: 18px;
+    align-items: end;
+  }
+  .field label {
+    display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  .field input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px; font-weight: 600;
+    border: 1.5px solid #d0d5dd; border-radius: 8px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .field input[type="number"]:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
+
+  .sep-options {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .sep-options .sep-btn {
+    padding: 7px 14px;
+    font-size: 13px; font-weight: 600;
+    color: #555; background: #f0f0f5;
+    border: 1.5px solid #d0d5dd; border-radius: 6px;
+    cursor: pointer; user-select: none;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .sep-options .sep-btn:hover { background: #e4e4ef; color: #1a1a2e; }
+  .sep-options .sep-btn.active {
+    background: #5b5bd6; color: #fff; border-color: #5b5bd6;
+  }
+  .sep-options input[type="text"] {
+    width: 100px;
+    padding: 7px 10px;
+    font-size: 13px;
+    border: 1.5px solid #d0d5dd; border-radius: 6px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .sep-options input[type="text"]:focus { border-color: #5b5bd6; }
+
+  /* Bu */
+  .btn-row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 28px;
+    font-size: 15px; font-weight: 600;
+    color: #fff; background: #5b5bd6;
+    border: none; border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: #4a4ac2; }
+  .btn-primary:active { transform: scale(.97); }
+
+  /* St */
+  .stats-line {
+    display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
+    font-size: 13px; color: #888;
+  }
+  .stats-line span { white-space: nowrap; }
+  .stats-line strong { color: #5b5bd6; }
+
+  /* Ou */
+  .output-wrap { position: relative; }
+  .output-box {
+    width: 100%;
+    min-height: 120px; max-height: 400px;
+    padding: 14px 48px 14px 14px;
+    font-size: 14px; font-family: inherit; line-height: 1.5;
+    border: 1.5px solid #e2e4e8;
+    border-radius: 8px;
+    background: #fafbfc;
+    color: #1a1a2e;
+    resize: vertical; overflow: auto;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  .btn-copy {
+    position: absolute; top: 8px; right: 8px;
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 5px 12px;
+    font-size: 12px; font-weight: 600;
+    color: #555; background: #f0f0f5;
+    border: 1px solid #d0d5dd; border-radius: 6px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .btn-copy:hover { background: #e4e4ef; color: #1a1a2e; }
+  .btn-copy.copied { background: #d4edda; border-color: #8cc99c; color: #155724; }
+
+  /* Em */
+  .empty-state {
+    text-align: center; padding: 30px 0 10px; color: #ccc; font-size: 14px;
+  }
+  .empty-state svg { display: block; margin: 0 auto 10px; opacity: .35; }
+
+  footer { text-align: center; padding: 24px 16px 32px; font-size: 13px; color: #999; }
+
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main-area { padding: 20px 16px 36px; }
+    .card { padding: 20px; }
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 22px; }
+    .control-grid { grid-template-columns: 1fr; gap: 12px; }
+    .btn-primary { width: 100%; justify-content: center; }
+    .btn-row { flex-direction: column; align-items: stretch; }
+    .stats-line { flex-direction: column; gap: 4px; }
+  }
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px;cursor:pointer}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://wordcasefix.com/text-repeater.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Text Repeater?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A text repeater is a free online tool that repeats any text a specified number of times with optional separator and formatting options for generating repetitive content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use this Text Repeater?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the text you want to repeat, set the number of repetitions, and optionally choose a separator. Click Generate to produce the repeated text output ready to copy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this Text Repeater free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this tool is completely free to use with no signup required."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <main class="main-area">
+
+    <header>
+      <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Text Repeater</span></nav>
+      <h1>Text Repeater</h1>
+      <p>Repeat any text multiple times with custom separators.</p>
+    </header>
+
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+
+    <div class="card">
+
+      <div class="input-group">
+        <label for="inputText">Text to repeat</label>
+        <textarea id="inputText" placeholder="e.g. Hello World"></textarea>
+      </div>
+
+      <div class="control-grid">
+        <div class="field">
+          <label for="repeatCount">Repeat count</label>
+          <input type="number" id="repeatCount" value="5" min="1" max="1000">
+        </div>
+        <div class="field">
+          <label>Separator</label>
+          <div class="sep-options">
+            <span class="sep-btn" data-sep="none">None</span>
+            <span class="sep-btn active" data-sep="space">Space</span>
+            <span class="sep-btn" data-sep="newline">New line</span>
+            <span class="sep-btn" data-sep="comma">Comma</span>
+            <span class="sep-btn" data-sep="custom">Custom</span>
+            <input type="text" id="customSep" placeholder="separator" style="display:none;">
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="repeatBtn">
+          Repeat
+        </button>
+      </div>
+
+      <div id="resultArea">
+        <div class="empty-state" id="emptyState">
+          <p>Enter text above and click <strong>Repeat</strong>.</p>
+        </div>
+
+        <div id="resultContent" style="display:none;">
+          <div class="stats-line" id="statsLine"></div>
+          <div class="output-wrap">
+            <div class="output-box" id="outputBox"></div>
+            <button class="btn-copy" id="copyBtn">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+
+<div class="seo-content"><h2>About the Text Repeater Tool</h2><p>The Text Repeater is a free online tool that repeats any text a specified number of times with customizable separators. Enter your text, set the repeat count, choose a separator such as space, comma, new line, or custom separator, and instantly see the repeated output in a real-time preview. This text duplicator is useful for developers generating test data, designers creating repeating patterns, social media managers preparing formatted posts, and anyone who needs to quickly produce repeated text content. The real-time preview means you can adjust the repeat count and separator style until the output looks exactly right, then copy the result with a single click.</p></div>
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>What is Text Repeater?</h3>
+    <p>A text repeater is a free online tool that repeats any text a specified number of times with optional separator and formatting options for generating repetitive content.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do I use this Text Repeater?</h3>
+    <p>Enter the text you want to repeat, set the number of repetitions, and optionally choose a separator. Click Generate to produce the repeated text output ready to copy.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is this Text Repeater free?</h3>
+    <p>Yes, this tool is completely free to use with no signup required.</p>
+  </div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Transform text case</div></a><a class="related-card" href="/slug-converter.html"><div class="rc-name">Slug Converter</div><div class="rc-desc">Create URL slugs</div></a><a class="related-card" href="/word-frequency-counter.html"><div class="rc-name">Word Frequency Counter</div><div class="rc-desc">Analyze word frequency</div></a><a class="related-card" href="/fancy-text.html"><div class="rc-name">Fancy Text Generator</div><div class="rc-desc">Fancy Unicode text</div></a><a class="related-card" href="/morse-translator.html"><div class="rc-name">Morse Code Translator</div><div class="rc-desc">Translate Morse code</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Text Repeater &mdash; Free online text repetition tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+
+<script>
+(function(){
+var t=document.getElementById("inputText"),c=document.getElementById("repeatCount"),
+s=document.querySelectorAll(".sep-btn"),u=document.getElementById("customSep"),
+o=document.getElementById("outputBox"),e=document.getElementById("emptyState"),
+r=document.getElementById("resultContent"),l=document.getElementById("statsLine"),
+b=document.getElementById("copyBtn"),g=document.getElementById("repeatBtn"),p="space";
+for(var i=0;i<s.length;i++){s[i].addEventListener("click",function(){
+if(this.classList.contains("active"))return;
+for(var j=0;j<s.length;j++)s[j].classList.remove("active");
+this.classList.add("active");
+if(this.dataset.sep==="custom"){u.style.display="inline-block";p=u.value||", ";}
+else{u.style.display="none";p=this.dataset.sep;}});}
+u.addEventListener("input",function(){
+if(document.querySelector(".sep-btn.active").dataset.sep==="custom")p=this.value||", ";});
+function gs(){if(p==="none")return"";if(p==="space")return" ";if(p==="newline")return"\n";if(p==="comma")return", ";return p;}
+function rep(){var w=t.value;if(!w){o.textContent="";e.style.display="block";r.style.display="none";return;}
+var n=parseInt(c.value)||1;if(n<1)n=1;if(n>1000)n=1000;c.value=n;var a="";
+for(var i=0;i<n;i++){a+=w;if(i<n-1)a+=gs();}
+o.textContent=a;e.style.display="none";r.style.display="block";
+l.innerHTML="Repeated <strong>"+n+"</strong> times &middot; <strong>"+a.length+"</strong> characters";}
+g.addEventListener("click",rep);
+b.addEventListener("click",function(){var a=o.textContent;if(!a)return;
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(a).then(function(){b.textContent="Copied!";b.classList.add("copied");
+setTimeout(function(){b.textContent="Copy";b.classList.remove("copied");},2000);});}
+else{var q=document.createElement("textarea");q.value=a;q.style.position="fixed";q.style.opacity="0";
+document.body.appendChild(q);q.select();try{document.execCommand("copy");b.textContent="Copied!";
+b.classList.add("copied");setTimeout(function(){b.textContent="Copy";b.classList.remove("copied");},2000);}catch(ex){}
+document.body.removeChild(q);}});
+})();
+</script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});</script>
+</body>
+</html>

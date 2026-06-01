@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text to Speech - Free Online Tool | WordCaseFix</title>
+<meta name="description" content="Convert text to speech online for free. Listen to any text with natural-sounding voices, adjust speed and pitch. Works in your browser.">
+<meta name="keywords" content="text to speech, TTS, text to voice, online text reader, listen to text, speech synthesis">
+<meta property="og:title" content="Text to Speech | WordCaseFix">
+<meta property="og:description" content="Convert text to speech online for free. Listen to any text with natural-sounding voices, adjust speed and pitch.">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+  .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+  .main-area{flex:1;min-width:0;padding:32px 24px 48px}
+  .sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+  header p{color:#555;font-size:15px;margin-top:4px}
+  .ad-slot{position:relative;background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .ad-top{width:100%;height:90px;margin-bottom:24px}
+  .ad-side{width:100%;min-height:300px;margin-bottom:16px}
+  .ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px;max-width:620px;margin:0 auto}
+  .card+.card{margin-top:16px}
+  .input-group{margin-bottom:14px}
+  .input-group label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:#555;text-transform:uppercase;letter-spacing:.3px}
+  textarea{width:100%;padding:12px 14px;font-size:15px;font-family:inherit;line-height:1.5;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+  textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  textarea::placeholder{color:#bbb}
+  .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .controls label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#555}
+  .controls select{padding:8px 10px;font-size:13px;border:1.5px solid #d0d5dd;border-radius:6px;outline:none;background:#fff;font-family:inherit}
+  .controls select:focus{border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  .controls input[type="range"]{width:80px;accent-color:#5b5bd6;cursor:pointer}
+  .controls .range-val{font-size:12px;font-weight:600;color:#5b5bd6;min-width:30px}
+  .btn-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 26px;font-size:14px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}
+  .btn-primary:hover{background:#4a4ac2}
+  .btn-primary:active{transform:scale(.97)}
+  .btn-primary:disabled{background:#b0b0d0;cursor:not-allowed;transform:none}
+  .btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;font-size:13px;font-weight:600;color:#555;background:#f0f0f5;border:1.5px solid #d0d5dd;border-radius:8px;cursor:pointer;transition:background .15s,color .15s}
+  .btn-secondary:hover{background:#e4e4ef;color:#1a1a2e}
+  .btn-secondary:disabled{opacity:.5;cursor:not-allowed}
+  .status-box{padding:12px 16px;border-radius:8px;font-size:13px;color:#888;background:#f8f9fc;border:1.5px solid #e8e9ed;text-align:center;min-height:48px;display:flex;align-items:center;justify-content:center}
+  .status-box.speaking{color:#5b5bd6;border-color:#d0d0ee;background:#f8f8ff}
+  .status-box.done{color:#155724;border-color:#8cc99c;background:#d4edda}
+  .sample-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .sample-btn{padding:5px 12px;font-size:11px;font-weight:600;color:#555;background:#f0f0f5;border:1.5px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
+  .sample-btn:hover{background:#e4e4ef;color:#5b5bd6}
+  footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+  @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+  @media(max-width:600px){header h1{font-size:22px}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px;cursor:pointer}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://wordcasefix.com/text-to-speech.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Text to Speech?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A text to speech tool is a free online tool that converts written text into spoken audio using browser-based speech synthesis for accessibility and convenience."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use this Text to Speech?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Type or paste text into the input area, choose a voice and speech rate if desired, then click Play. The tool reads the text aloud using your browser built-in speech synthesis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this Text to Speech free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this tool is completely free to use with no signup required."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header><nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Text to Speech</span></nav>
+      <h1>Text to Speech</h1><p>Convert any text to speech and listen with natural-sounding voices directly in your browser.</p></header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="input-group"><label for="ttsInput">Text to Speak</label><textarea id="ttsInput" placeholder="Type or paste the text you want to hear..." spellcheck="true" rows="5"></textarea></div>
+<div class="sample-btns">
+<span class="sample-btn" data-sample="Hello! Welcome to Text to Speech. This is a free online tool that reads your text aloud.">Hello</span>
+<span class="sample-btn" data-sample="The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.">Quick Brown Fox</span>
+<span class="sample-btn" data-sample="Success is not final, failure is not fatal. It is the courage to continue that counts.">Inspiration</span>
+</div>
+<div class="controls">
+<label>Voice <select id="voiceSelect"></select></label>
+<label>Speed <input type="range" id="rateRange" min="0.25" max="3" step="0.25" value="1"><span class="range-val" id="rateVal">1x</span></label>
+<label>Pitch <input type="range" id="pitchRange" min="0" max="2" step="0.1" value="1"><span class="range-val" id="pitchVal">1</span></label>
+</div>
+<div class="btn-row">
+<button class="btn-primary" id="speakBtn">Play</button>
+<button class="btn-secondary" id="pauseBtn" disabled>Pause</button>
+<button class="btn-secondary" id="stopBtn" disabled>Stop</button>
+</div>
+<div class="status-box" id="statusBox">Ready - enter text and press Play</div>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About the Text to Speech Tool</h2><p>The Text to Speech tool is a free online TTS (text-to-speech) converter that reads any text aloud using your browser's built-in speech synthesis. Type or paste any text, choose from available voices, adjust the speaking speed and pitch, and click play to listen. This text reader is perfect for students who want to listen to study materials, writers proofreading their work by ear, people with reading difficulties or visual impairments, language learners improving pronunciation and listening skills, and anyone who prefers listening over reading. Since everything runs locally in your browser using the Web Speech API, no text is ever sent to a server  -- your privacy is fully protected. The online text reader supports multiple languages and voices depending on your operating system and browser.</p></div>
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>What is Text to Speech?</h3>
+    <p>A text to speech tool is a free online tool that converts written text into spoken audio using browser-based speech synthesis for accessibility and convenience.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do I use this Text to Speech?</h3>
+    <p>Type or paste text into the input area, choose a voice and speech rate if desired, then click Play. The tool reads the text aloud using your browser built-in speech synthesis.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is this Text to Speech free?</h3>
+    <p>Yes, this tool is completely free to use with no signup required.</p>
+  </div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Transform text case</div></a><a class="related-card" href="/text-repeater.html"><div class="rc-name">Text Repeater</div><div class="rc-desc">Repeat text strings</div></a><a class="related-card" href="/lorem-ipsum-generator.html"><div class="rc-name">Lorem Ipsum Generator</div><div class="rc-desc">Generate placeholder text</div></a><a class="related-card" href="/word-frequency-counter.html"><div class="rc-name">Word Frequency Counter</div><div class="rc-desc">Analyze word frequency</div></a><a class="related-card" href="/morse-translator.html"><div class="rc-name">Morse Code Translator</div><div class="rc-desc">Translate Morse code</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Text to Speech &mdash; Free online text to speech tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+
+<script>
+(function(){
+var t=document.getElementById("ttsInput"),v=document.getElementById("voiceSelect"),
+r=document.getElementById("rateRange"),rv=document.getElementById("rateVal"),
+p=document.getElementById("pitchRange"),pv=document.getElementById("pitchVal"),
+s=document.getElementById("speakBtn"),u=document.getElementById("pauseBtn"),
+o=document.getElementById("stopBtn"),st=document.getElementById("statusBox"),
+sm=document.querySelectorAll(".sample-btn"),V=[],U=null,P=false;
+function ld(){V=window.speechSynthesis.getVoices();v.innerHTML="";
+for(var i=0;i<V.length;i++){var e=document.createElement("option");
+e.value=i;e.textContent=V[i].name+" ("+V[i].lang+")";v.appendChild(e);}}
+ld();if(window.speechSynthesis.onvoiceschanged!==undefined)window.speechSynthesis.onvoiceschanged=ld;
+r.addEventListener("input",function(){rv.textContent=this.value+"x";});
+p.addEventListener("input",function(){pv.textContent=this.value;});
+for(var i=0;i<sm.length;i++){sm[i].addEventListener("click",function(){t.value=this.dataset.sample;});}
+function spk(){
+if(speechSynthesis.speaking&&!P){speechSynthesis.cancel();}
+var w=t.value.trim();if(!w){st.textContent="Please enter some text to speak.";st.className="status-box";return;}
+U=new SpeechSynthesisUtterance(w);var idx=parseInt(v.value);if(V[idx])U.voice=V[idx];
+U.rate=parseFloat(r.value);U.pitch=parseFloat(p.value);
+U.onstart=function(){st.textContent="Speaking...";st.className="status-box speaking";
+s.textContent="Play";u.disabled=false;o.disabled=false;};
+U.onend=function(){st.textContent="Finished speaking.";st.className="status-box done";
+s.textContent="Play";u.disabled=true;o.disabled=true;P=false;};
+U.onerror=function(){st.textContent="An error occurred.";st.className="status-box";
+s.textContent="Play";u.disabled=true;o.disabled=true;P=false;};
+speechSynthesis.speak(U);P=false;s.textContent="Play";}
+function ps(){
+if(P){speechSynthesis.resume();P=false;u.textContent="Pause";st.textContent="Speaking...";st.className="status-box speaking";}
+else{speechSynthesis.pause();P=true;u.textContent="Resume";st.textContent="Paused";st.className="status-box";}}
+function stp(){speechSynthesis.cancel();P=false;u.textContent="Pause";
+s.textContent="Play";u.disabled=true;o.disabled=true;st.textContent="Stopped.";st.className="status-box";}
+s.addEventListener("click",spk);u.addEventListener("click",ps);o.addEventListener("click",stp);
+})();
+</script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});</script>
+</body>
+</html>

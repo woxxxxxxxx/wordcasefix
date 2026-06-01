@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Animation Generator - Generate CSS Keyframe Animations | WordCaseFix</title>
+<meta name="description" content="Generate CSS keyframe animations visually. Choose presets or customize properties, duration, easing, and iteration. Copy ready-to-use CSS animation code.">
+<meta name="keywords" content="css animation generator, css keyframe generator, css animation maker, css animations tool">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field label{display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:6px}
+.field input[type=text],.field input[type=number],.field select{width:100%;padding:9px 12px;font-size:14px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:7px;transition:border-color .2s}
+.field input:focus,.field select:focus{outline:none;border-color:#5b5bd6}
+.field input[type=range]{width:100%;accent-color:#5b5bd6}
+.ctrl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+.preset-grid{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.preset-btn{padding:7px 14px;font-size:13px;font-weight:600;border:1.5px solid #e0e0f7;background:#f9f9ff;color:#555;border-radius:6px;cursor:pointer;transition:all .2s}
+.preset-btn:hover,.preset-btn.active{background:#5b5bd6;color:#fff;border-color:#5b5bd6}
+.preview-area{background:#1a1a2e;border-radius:10px;padding:32px;display:flex;align-items:center;justify-content:center;min-height:160px;margin-bottom:20px}
+.preview-box{width:80px;height:80px;background:#5b5bd6;border-radius:10px}
+.code-block{background:#1a1a2e;border-radius:8px;padding:16px;position:relative}
+.code-block code{color:#a5f3fc;font-size:13px;font-family:monospace;white-space:pre-wrap;display:block}
+.copy-btn{position:absolute;top:10px;right:10px;padding:4px 10px;font-size:12px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:5px;cursor:pointer}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}.two-col{grid-template-columns:1fr}}@media(max-width:600px){header h1{font-size:22px}.related-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/css-animation-generator.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">CSS Animation Generator</span></nav>
+  <h1>CSS Animation Generator</h1><p>Generate CSS keyframe animations with live preview and copy-ready code.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div style="font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Animation Presets</div>
+  <div class="preset-grid" id="presetGrid"></div>
+  <div class="ctrl-grid">
+    <div class="field"><label>Duration (s)</label><input type="number" id="duration" value="1" min="0.1" step="0.1"></div>
+    <div class="field"><label>Timing Function</label>
+      <select id="easing">
+        <option>ease</option><option>ease-in</option><option>ease-out</option><option>ease-in-out</option>
+        <option>linear</option><option>cubic-bezier(0.68,-0.55,0.27,1.55)</option>
+      </select>
+    </div>
+    <div class="field"><label>Iteration Count</label>
+      <select id="iteration"><option value="infinite">infinite</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+    </div>
+    <div class="field"><label>Direction</label>
+      <select id="direction"><option>normal</option><option>reverse</option><option>alternate</option><option>alternate-reverse</option></select>
+    </div>
+    <div class="field"><label>Fill Mode</label>
+      <select id="fillMode"><option>none</option><option>forwards</option><option>backwards</option><option>both</option></select>
+    </div>
+    <div class="field"><label>Delay (s)</label><input type="number" id="delay" value="0" min="0" step="0.1"></div>
+  </div>
+  <div class="preview-area"><div class="preview-box" id="previewBox"></div></div>
+  <div style="margin-bottom:10px;font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px">Generated CSS</div>
+  <div class="code-block"><code id="cssCode"></code><button class="copy-btn" id="copyBtn">Copy</button></div>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the CSS Animation Generator</h2><p>CSS animations use @keyframes to define animation states and the animation property to apply them. This generator lets you pick from common presets (fade, slide, bounce, pulse, rotate, shake) or customize any animation parameter, then copies the complete CSS code including the @keyframes rule.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What's better: CSS animations or JavaScript animations?</h3><p>CSS animations are preferred for simple, declarative animations — they run on the compositor thread, are more performant, and require no JavaScript. Use JavaScript animations (GSAP, Framer Motion) for complex, interactive, or sequence-based animations that need fine-grained control.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/css-flexbox-generator.html"><div class="rc-name">Flexbox Generator</div><div class="rc-desc">CSS flexbox</div></a>
+  <a class="related-card" href="/css-beautifier.html"><div class="rc-name">CSS Beautifier</div><div class="rc-desc">Format CSS</div></a>
+  <a class="related-card" href="/tailwind-cheatsheet.html"><div class="rc-name">Tailwind CSS</div><div class="rc-desc">Class reference</div></a>
+  <a class="related-card" href="/gradient-generator.html"><div class="rc-name">Gradient Generator</div><div class="rc-desc">CSS gradients</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>CSS Animation Generator &mdash; Free keyframe animation tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+var PRESETS={
+  'Fade In':{name:'fadeIn',keyframes:'@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}'},
+  'Fade Out':{name:'fadeOut',keyframes:'@keyframes fadeOut {\n  from { opacity: 1; }\n  to { opacity: 0; }\n}'},
+  'Slide Up':{name:'slideUp',keyframes:'@keyframes slideUp {\n  from { transform: translateY(30px); opacity: 0; }\n  to { transform: translateY(0); opacity: 1; }\n}'},
+  'Slide Down':{name:'slideDown',keyframes:'@keyframes slideDown {\n  from { transform: translateY(-30px); opacity: 0; }\n  to { transform: translateY(0); opacity: 1; }\n}'},
+  'Slide Left':{name:'slideLeft',keyframes:'@keyframes slideLeft {\n  from { transform: translateX(30px); opacity: 0; }\n  to { transform: translateX(0); opacity: 1; }\n}'},
+  'Bounce':{name:'bounce',keyframes:'@keyframes bounce {\n  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }\n  50% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }\n}'},
+  'Pulse':{name:'pulse',keyframes:'@keyframes pulse {\n  0%, 100% { transform: scale(1); }\n  50% { transform: scale(1.05); }\n}'},
+  'Rotate':{name:'rotate',keyframes:'@keyframes rotate {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}'},
+  'Shake':{name:'shake',keyframes:'@keyframes shake {\n  0%, 100% { transform: translateX(0); }\n  10%, 50%, 90% { transform: translateX(-5px); }\n  30%, 70% { transform: translateX(5px); }\n}'},
+  'Ping':{name:'ping',keyframes:'@keyframes ping {\n  75%, 100% { transform: scale(2); opacity: 0; }\n}'},
+  'Spin':{name:'spin',keyframes:'@keyframes spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}'},
+  'Flip':{name:'flip',keyframes:'@keyframes flip {\n  from { transform: rotateY(0); }\n  to { transform: rotateY(360deg); }\n}'}
+};
+var active='Fade In';
+var pg=document.getElementById('presetGrid');
+Object.keys(PRESETS).forEach(function(name){
+  var btn=document.createElement('button');btn.className='preset-btn'+(name===active?' active':'');btn.textContent=name;
+  btn.addEventListener('click',function(){active=name;pg.querySelectorAll('.preset-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');generate();});
+  pg.appendChild(btn);
+});
+var styleEl=document.createElement('style');document.head.appendChild(styleEl);
+function generate(){
+  var preset=PRESETS[active];
+  var dur=document.getElementById('duration').value||'1';
+  var ease=document.getElementById('easing').value;
+  var iter=document.getElementById('iteration').value;
+  var dir=document.getElementById('direction').value;
+  var fill=document.getElementById('fillMode').value;
+  var delay=document.getElementById('delay').value||'0';
+  var css=preset.keyframes+'\n\n.element {\n  animation-name: '+preset.name+';\n  animation-duration: '+dur+'s;\n  animation-timing-function: '+ease+';\n  animation-iteration-count: '+iter+';\n  animation-direction: '+dir+';\n  animation-fill-mode: '+fill+';\n  animation-delay: '+delay+'s;\n}\n\n/* Shorthand */\n.element {\n  animation: '+preset.name+' '+dur+'s '+ease+' '+delay+'s '+iter+' '+dir+' '+fill+';\n}';
+  document.getElementById('cssCode').textContent=css;
+  styleEl.textContent=preset.keyframes+'\n#previewBox{animation:'+preset.name+' '+dur+'s '+ease+' '+delay+'s '+iter+' '+dir+' '+fill+';}';
+}
+['duration','easing','iteration','direction','fillMode','delay'].forEach(function(id){document.getElementById(id).addEventListener('change',generate);});
+document.getElementById('copyBtn').addEventListener('click',function(){navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('cssCode').textContent);this.textContent='Copied!';setTimeout(function(){document.getElementById('copyBtn').textContent='Copy';},1500);});
+generate();
+var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>

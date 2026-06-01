@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Generator - Free Online Tool | WordCaseFix</title>
+<meta name="description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text. Free online hash generator for developers and security professionals.">
+<meta name="keywords" content="hash generator, MD5 generator, SHA-256 generator, SHA hash, online hash tool">
+<meta property="og:title" content="Hash Generator | WordCaseFix">
+<meta property="og:description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes from text. Free online hash generator for developers.">
+<meta property="og:type" content="website">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+  .page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+  .main-area{flex:1;min-width:0;padding:32px 24px 48px}
+  .sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+  header{text-align:center;margin-bottom:16px}
+  header h1{font-size:28px;font-weight:700;letter-spacing:-0.3px}
+  header p{color:#555;font-size:15px;margin-top:4px}
+  .ad-slot{position:relative;background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .ad-top{width:100%;height:90px;margin-bottom:24px}
+  .ad-side{width:100%;min-height:300px;margin-bottom:16px}
+  .ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+  .card+.card{margin-top:16px}
+  .input-group{margin-bottom:16px}
+  .input-group label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:#555;text-transform:uppercase;letter-spacing:.3px}
+  textarea{width:100%;padding:12px 14px;font-size:14px;font-family:'SF Mono','Fira Code','Consolas',monospace;line-height:1.5;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+  textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+  textarea::placeholder{color:#bbb}
+  .hash-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f8f9fc;border:1.5px solid #e8e9ed;border-radius:8px;margin-bottom:8px;transition:border-color .2s}
+  .hash-row:hover{border-color:#d0d0ee}
+  .hash-row .hash-label{font-size:11px;font-weight:700;width:80px;flex-shrink:0;color:#5b5bd6;text-transform:uppercase;letter-spacing:.3px}
+  .hash-row .hash-value{flex:1;font-size:12px;font-family:'SF Mono','Fira Code','Consolas',monospace;color:#333;word-break:break-all;line-height:1.5}
+  .hash-row .hash-copy{padding:4px 10px;font-size:11px;font-weight:600;color:#555;background:#fff;border:1.5px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s;flex-shrink:0}
+  .hash-row .hash-copy:hover{background:#5b5bd6;color:#fff;border-color:#5b5bd6}
+  .hash-row .hash-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+  .hash-empty{padding:20px;text-align:center;color:#ccc;font-size:13px}
+  footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+  @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+  @media(max-width:600px){header h1{font-size:22px}.hash-row{flex-wrap:wrap}.hash-row .hash-label{width:100%}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.related-tools{margin:20px auto;padding:16px}.related-grid{grid-template-columns:repeat(2,1fr)}}.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px;cursor:pointer}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://wordcasefix.com/hash-generator.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Hash Generator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A hash generator is a free online tool that computes cryptographic hash values of text using algorithms like MD5, SHA-1, SHA-256, and SHA-512 for data integrity verification."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use this Hash Generator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Type or paste your text into the input field. The tool automatically generates hash values using multiple algorithms simultaneously, displayed in separate output fields ready for copying."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this Hash Generator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, this tool is completely free to use with no signup required."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header><nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Hash Generator</span></nav>
+      <h1>Hash Generator</h1><p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text input.</p></header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+<div class="input-group"><label for="hashInput">Input Text</label><textarea id="hashInput" placeholder="Enter text to hash..." rows="4"></textarea></div>
+<div id="hashResults"></div>
+</div>
+</main>
+<aside class="sidebar">
+<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+</aside>
+</div>
+<div class="seo-content"><h2>About the Hash Generator Tool</h2><p>The Hash Generator is a free online tool that computes cryptographic hash values for any text input using multiple algorithms including MD5, SHA-1, SHA-256, and SHA-512. Simply type or paste your text, and all four hash values are generated instantly in real time. Each hash result can be copied to your clipboard with a single click. This hash generator is essential for developers verifying file integrity, security professionals checking password hashes, system administrators comparing data fingerprints, and anyone working with digital signatures or data validation. Hash functions are one-way algorithms that produce a fixed-length string from any input, making them ideal for storing passwords securely, detecting data tampering, and creating unique identifiers for content.</p></div>
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>What is Hash Generator?</h3>
+    <p>A hash generator is a free online tool that computes cryptographic hash values of text using algorithms like MD5, SHA-1, SHA-256, and SHA-512 for data integrity verification.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do I use this Hash Generator?</h3>
+    <p>Type or paste your text into the input field. The tool automatically generates hash values using multiple algorithms simultaneously, displayed in separate output fields ready for copying.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is this Hash Generator free?</h3>
+    <p>Yes, this tool is completely free to use with no signup required.</p>
+  </div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Strong password creator</div></a><a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format & validate JSON</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder/Decoder</div><div class="rc-desc">Base64 encode & decode</div></a><a class="related-card" href="/epoch-converter.html"><div class="rc-name">Unix Timestamp Converter</div><div class="rc-desc">Epoch & date converter</div></a><a class="related-card" href="/color-palette-generator.html"><div class="rc-name">Color Palette Generator</div><div class="rc-desc">Color scheme designer</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Hash Generator &mdash; Free online MD5 SHA hash generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+
+<script>
+(function(){
+var inp=document.getElementById('hashInput'),hr=document.getElementById('hashResults');
+function generate(){var t=inp.value;if(!t){hr.innerHTML='<div style="text-align:center;color:#ccc;padding:30px 0;font-size:14px">Enter text to generate hashes.</div>';return;}
+var md5=function(s){function md5cycle(x,k){var a=x[0],b=x[1],c=x[2],d=x[3];a=ff(a,b,c,d,k[0],7,-680876936);d=ff(d,a,b,c,k[1],12,-389564586);c=ff(c,d,a,b,k[2],17,606105819);b=ff(b,c,d,a,k[3],22,-1044525330);a=ff(a,b,c,d,k[4],7,-176418897);d=ff(d,a,b,c,k[5],12,1200080426);c=ff(c,d,a,b,k[6],17,-1473231341);b=ff(b,c,d,a,k[7],22,-45705983);a=ff(a,b,c,d,k[8],7,1770035416);d=ff(d,a,b,c,k[9],12,-1958414417);c=ff(c,d,a,b,k[10],17,-42063);b=ff(b,c,d,a,k[11],22,-1990404162);a=ff(a,b,c,d,k[12],7,1804603682);d=ff(d,a,b,c,k[13],12,-40341101);c=ff(c,d,a,b,k[14],17,-1502002290);b=ff(b,c,d,a,k[15],22,1236535329);a=gg(a,b,c,d,k[1],5,-165796510);d=gg(d,a,b,c,k[6],9,-1069501632);c=gg(c,d,a,b,k[11],14,643717713);b=gg(b,c,d,a,k[0],20,-373897302);a=gg(a,b,c,d,k[5],5,-701558691);d=gg(d,a,b,c,k[10],9,38016083);c=gg(c,d,a,b,k[15],14,-660478335);b=gg(b,c,d,a,k[4],20,-405537848);a=gg(a,b,c,d,k[9],5,568446438);d=gg(d,a,b,c,k[14],9,-1019803690);c=gg(c,d,a,b,k[3],14,-187363961);b=gg(b,c,d,a,k[8],20,1163531501);a=gg(a,b,c,d,k[13],5,-1444681467);d=gg(d,a,b,c,k[2],9,-51403784);c=gg(c,d,a,b,k[7],14,1735328473);b=gg(b,c,d,a,k[12],20,-1926607734);a=hh(a,b,c,d,k[5],4,-378558);d=hh(d,a,b,c,k[8],11,-2022574463);c=hh(c,d,a,b,k[11],16,1839030562);b=hh(b,c,d,a,k[14],23,-35309556);a=hh(a,b,c,d,k[1],4,-1530992060);d=hh(d,a,b,c,k[4],11,1272893353);c=hh(c,d,a,b,k[7],16,-155497632);b=hh(b,c,d,a,k[10],23,-1094730640);a=hh(a,b,c,d,k[13],4,681279174);d=hh(d,a,b,c,k[0],11,-358537222);c=hh(c,d,a,b,k[3],16,-722521979);b=hh(b,c,d,a,k[6],23,76029189);a=hh(a,b,c,d,k[9],4,-640364487);d=hh(d,a,b,c,k[12],11,-421815835);c=hh(c,d,a,b,k[15],16,530742520);b=hh(b,c,d,a,k[2],23,-995338651);a=ii(a,b,c,d,k[0],6,-198630844);d=ii(d,a,b,c,k[7],10,1126891415);c=ii(c,d,a,b,k[14],15,-1416354905);b=ii(b,c,d,a,k[5],21,-57434055);a=ii(a,b,c,d,k[12],6,1700485571);d=ii(d,a,b,c,k[3],10,-1894986606);c=ii(c,d,a,b,k[10],15,-1051523);b=ii(b,c,d,a,k[1],21,-2054922799);a=ii(a,b,c,d,k[8],6,1873313359);d=ii(d,a,b,c,k[15],10,-30611744);c=ii(c,d,a,b,k[6],15,-1560198380);b=ii(b,c,d,a,k[13],21,1309151649);a=ii(a,b,c,d,k[4],6,-145523070);d=ii(d,a,b,c,k[11],10,-1120210379);c=ii(c,d,a,b,k[2],15,718787259);b=ii(b,c,d,a,k[9],21,-343485551);x[0]=add32(a,x[0]);x[1]=add32(b,x[1]);x[2]=add32(c,x[2]);x[3]=add32(d,x[3]);}
+function cmn(q,a,b,x,s,t){return add32(bitRotate(add32(add32(a,q),add32(x,t)),s),b);}function ff(a,b,c,d,x,s,t){return cmn(b&c|~b&d,a,b,x,s,t);}function gg(a,b,c,d,x,s,t){return cmn(b&d|c&~d,a,b,x,s,t);}function hh(a,b,c,d,x,s,t){return cmn(b^c^d,a,b,x,s,t);}function ii(a,b,c,d,x,s,t){return cmn(c^(b|~d),a,b,x,s,t);}
+function bitRotate(v,c){return v<<c|v>>>(32-c);}function add32(a,b){return a+b&4294967295;}
+function stringToMd5(s){var x=[];var i;var l=s.length*8;for(i=0;i<l;i+=8)x[i>>5]|=(s.charCodeAt(i/8)&255)<<i%32;for(i=0;i<64;i++)x[i]=x[i]||0;x[l>>5]|=128<<l%32;x[((l+64>>>9)<<4)+14]=l;var a=[1732584193,4023233417,2562383102,271733878];for(i=0;i<x.length;i+=16)md5cycle(a,x.slice(i,i+16));return toHex32(a[0])+toHex32(a[1])+toHex32(a[2])+toHex32(a[3]);}
+return stringToMd5(t);};
+function toUtf8(s){var r=[],c,i=0;while(i<s.length){c=s.charCodeAt(i++);if(c<128)r.push(c);else if(c<2048)r.push(192|c>>6,128|63&c);else if(c<55296||c>=57344)r.push(224|c>>12,128|c>>6&63,128|63&c);else{c=65536+((1023&c)<<10|1023&s.charCodeAt(i++));r.push(240|c>>18,128|c>>12&63,128|c>>6&63,128|63&c);}}return r;}
+function toHex32(n){return('0000000'+(n>>>0).toString(16)).slice(-8);}
+var sha1=function(s){
+	  function R(n,b){return(n<<b)|(n>>>(32-b));}
+	  var m=toUtf8(s),l=m.length*8,i,t;
+	  m.push(128);
+	  while(m.length*8%512!=448)m.push(0);
+	  for(i=0;i<8;i++)m.push(l>>>(56-i*8)&255);
+	  var H=[1732584193,4023233417,2562383102,271733878,3285377520];
+	  for(var b=0;b<m.length;b+=64){
+	    var W=[],a=H[0],B=H[1],c=H[2],d=H[3],e=H[4],f,k,T;
+	    for(t=0;t<80;t++){
+	      if(t<16)W[t]=m[b+t*4]<<24|m[b+t*4+1]<<16|m[b+t*4+2]<<8|m[b+t*4+3];
+	      else W[t]=R(W[t-3]^W[t-8]^W[t-14]^W[t-16],1);
+	      if(t<20){f=B&c|~B&d;k=1518500249;}
+	      else if(t<40){f=B^c^d;k=1859775393;}
+	      else if(t<60){f=B&c|B&d|c&d;k=2400959708;}
+	      else{f=B^c^d;k=3395469782;}
+	      T=(R(a,5)+f+e+k+W[t])|0;e=d;d=c;c=R(B,30);B=a;a=T;
+	    }
+	    H[0]=(H[0]+a)|0;H[1]=(H[1]+B)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;
+	  }
+	  return toHex32(H[0])+toHex32(H[1])+toHex32(H[2])+toHex32(H[3])+toHex32(H[4]);
+	};
+	var sha256=function(s){
+	  var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+	  function RR(n,b){return(n>>>b)|(n<<(32-b));}
+	  var m=toUtf8(s),l=m.length*8,i,t;
+	  m.push(128);
+	  while(m.length*8%512!=448)m.push(0);
+	  for(i=0;i<8;i++)m.push(l>>>(56-i*8)&255);
+	  var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+	  for(var b=0;b<m.length;b+=64){
+	    var W=[];
+	    for(t=0;t<64;t++){
+	      if(t<16)W[t]=m[b+t*4]<<24|m[b+t*4+1]<<16|m[b+t*4+2]<<8|m[b+t*4+3];
+	      else{var s0=RR(W[t-15],7)^RR(W[t-15],18)^(W[t-15]>>>3);var s1=RR(W[t-2],17)^RR(W[t-2],19)^(W[t-2]>>>10);W[t]=(W[t-16]+s0+W[t-7]+s1)|0;}
+	    }
+	    var a=H[0],B=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+	    for(t=0;t<64;t++){
+	      var S1=RR(e,6)^RR(e,11)^RR(e,25),ch=(e&f)^((~e)&g),temp1=(h+S1+ch+K[t]+W[t])|0;
+	      var S0=RR(a,2)^RR(a,13)^RR(a,22),maj=(a&B)^(a&c)^(B&c),temp2=(S0+maj)|0;
+	      h=g;g=f;f=e;e=(d+temp1)|0;d=c;c=B;B=a;a=(temp1+temp2)|0;
+	    }
+	    H[0]=(H[0]+a)|0;H[1]=(H[1]+B)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+	  }
+	  return toHex32(H[0])+toHex32(H[1])+toHex32(H[2])+toHex32(H[3])+toHex32(H[4])+toHex32(H[5])+toHex32(H[6])+toHex32(H[7]);
+	};
+	var sha512=function(s){
+	  try{var K=[0x428a2f98d728ae22n,0x7137449123ef65cdn,0xb5c0fbcfec4d3b2fn,0xe9b5dba58189dbbcn,0x3956c25bf348b538n,0x59f111f1b605d019n,0x923f82a4af194f9bn,0xab1c5ed5da6d8118n,0xd807aa98a3030242n,0x12835b0145706fben,0x243185be4ee4b28cn,0x550c7dc3d5ffb4e2n,0x72be5d74f27b896fn,0x80deb1fe3b1696b1n,0x9bdc06a725c71235n,0xc19bf174cf692694n,0xe49b69c19ef14ad2n,0xefbe4786384f25e3n,0x0fc19dc68b8cd5b5n,0x240ca1cc77ac9c65n,0x2de92c6f592b0275n,0x4a7484aa6ea6e483n,0x5cb0a9dcbd41fbd4n,0x76f988da831153b5n,0x983e5152ee66dfabn,0xa831c66d2db43210n,0xb00327c898fb213fn,0xbf597fc7beef0ee4n,0xc6e00bf33da88fc2n,0xd5a79147930aa725n,0x06ca6351e003826fn,0x142929670a0e6e70n,0x27b70a8546d22ffcn,0x2e1b21385c26c926n,0x4d2c6dfc5ac42aedn,0x53380d139d95b3dfn,0x650a73548baf63den,0x766a0abb3c77b2a8n,0x81c2c92e47edaee6n,0x92722c851482353bn,0xa2bfe8a14cf10364n,0xa81a664bbc423001n,0xc24b8b70d0f89791n,0xc76c51a30654be30n,0xd192e819d6ef5218n,0xd69906245565a910n,0xf40e35855771202an,0x106aa07032bbd1b8n,0x19a4c116b8d2d0c8n,0x1e376c085141ab53n,0x2748774cdf8eeb99n,0x34b0bcb5e19b48a8n,0x391c0cb3c5c95a63n,0x4ed8aa4ae3418acbn,0x5b9cca4f7763e373n,0x682e6ff3d6b2b8a3n,0x748f82ee5defb2fcn,0x78a5636f43172f60n,0x84c87814a1f0ab72n,0x8cc702081a6439ecn,0x90befffa23631e28n,0xa4506cebde82bde9n,0xbef9a3f7b2c67915n,0xc67178f2e372532bn,0xca273eceea26619cn,0xd186b8c721c0c207n,0xeada7dd6cde0eb1en,0xf57d4f7fee6ed178n,0x06f067aa72176fban,0x0a637dc5a2c898a6n,0x113f9804bef90daen,0x1b710b35131c471bn,0x28db77f523047d84n,0x32caab7b40c72493n,0x3c9ebe0a15c9bebcn,0x431d67c49c100d4cn,0x4cc5d4becb3e42b6n,0x597f299cfc657e2an,0x5fcb6fab3ad6faecn,0x6c44198c4a475817n];
+	  function R(n,b){return(n>>BigInt(b))|(n<<BigInt(64-b));}
+	  var m=toUtf8(s),i,len=m.length*8,lenHi=Math.floor(len/4294967296),lenLo=len>>>0;
+	  m.push(128);
+	  while((m.length*8+128)%1024!==0)m.push(0);
+	  for(i=0;i<8;i++)m.push(lenHi>>>24-i*8&255);
+	  for(i=0;i<8;i++)m.push(lenLo>>>24-i*8&255);
+	  var M64=(BigInt(1)<<BigInt(64))-BigInt(1),H=[0x6a09e667f3bcc908n,0xbb67ae8584caa73bn,0x3c6ef372fe94f82bn,0xa54ff53a5f1d36f1n,0x510e527fade682d1n,0x9b05688c2b3e6c1fn,0x1f83d9abfb41bd6bn,0x5be0cd19137e2179n];
+	  for(var b=0;b<m.length;b+=128){var W=[],j,t;
+	    for(t=0;t<80;t++){
+	      if(t<16){W[t]=BigInt(0);for(j=0;j<8;j++)W[t]=(W[t]<<BigInt(8))|BigInt(m[b+t*8+j]);}
+	      else{var s0=R(W[t-15],1)^R(W[t-15],8)^(W[t-15]>>BigInt(7));
+	      var s1=R(W[t-2],19)^R(W[t-2],61)^(W[t-2]>>BigInt(6));
+	      W[t]=(W[t-16]+s0+W[t-7]+s1)&M64;}
+	    }
+	    var a=H[0],B=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+	    for(t=0;t<80;t++){
+	      var S1=R(e,14)^R(e,18)^R(e,41),ch=(e&f)^((~e)&g),temp1=(h+S1+ch+K[t]+W[t])&M64;
+	      var S0=R(a,28)^R(a,34)^R(a,39),maj=(a&B)^(a&c)^(B&c),temp2=(S0+maj)&M64;
+	      h=g;g=f;f=e;e=(d+temp1)&M64;d=c;c=B;B=a;a=(temp1+temp2)&M64;
+	    }
+	    H[0]=(H[0]+a)&M64;H[1]=(H[1]+B)&M64;H[2]=(H[2]+c)&M64;H[3]=(H[3]+d)&M64;H[4]=(H[4]+e)&M64;H[5]=(H[5]+f)&M64;H[6]=(H[6]+g)&M64;H[7]=(H[7]+h)&M64;
+	  }
+	  return H.map(function(n){return n.toString(16).padStart(16,'0');}).join('');}catch(e){return'Error';}
+	};
+hr.innerHTML='<div class="hash-row"><span class="hash-label">MD5</span><span class="hash-value">'+md5(t)+'</span><button class="hash-copy" data-hash="'+md5(t)+'">Copy</button></div><div class="hash-row"><span class="hash-label">SHA-1</span><span class="hash-value">'+sha1(t)+'</span><button class="hash-copy" data-hash="'+sha1(t)+'">Copy</button></div><div class="hash-row"><span class="hash-label">SHA-256</span><span class="hash-value">'+sha256(t)+'</span><button class="hash-copy" data-hash="'+sha256(t)+'">Copy</button></div><div class="hash-row"><span class="hash-label">SHA-512</span><span class="hash-value">'+sha512(t)+'</span><button class="hash-copy" data-hash="'+sha512(t)+'">Copy</button></div>';}
+inp.addEventListener('input',generate);generate();
+hr.addEventListener('click',function(e){var btn=e.target;if(btn.classList.contains('hash-copy')){var h=btn.getAttribute('data-hash');if(h){navigator.clipboard.writeText(h);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);}}});
+})();
+</script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+</script>
+</body>
+</html>
