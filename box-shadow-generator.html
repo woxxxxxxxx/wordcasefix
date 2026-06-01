@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Box Shadow Generator - Create Box Shadows Online | WordCaseFix</title>
+<meta name="description" content="Generate CSS box-shadow code with live preview. Control offset, blur, spread, color, and opacity. Multiple shadows supported. Free online box shadow generator.">
+<meta name="keywords" content="CSS box shadow generator, box-shadow code, CSS shadow, drop shadow generator">
+<meta property="og:title" content="CSS Box Shadow Generator | WordCaseFix"><meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.controls-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:20px}
+.ctrl{display:flex;flex-direction:column;gap:6px}.ctrl label{font-size:13px;font-weight:600;color:#333}
+.ctrl-row{display:flex;align-items:center;gap:8px}
+input[type=range]{flex:1;accent-color:#5b5bd6;height:5px}
+.ctrl-val{min-width:40px;font-size:13px;font-family:monospace;color:#5b5bd6;font-weight:600}
+input[type=color]{width:40px;height:34px;border-radius:6px;border:1.5px solid #d0d5dd;cursor:pointer;padding:0}
+.opt-check{display:flex;align-items:center;gap:6px;font-size:14px;color:#333;cursor:pointer;margin-bottom:16px}.opt-check input{width:16px;height:16px;accent-color:#5b5bd6}
+.preview-area{background:linear-gradient(135deg,#f0f0ff,#fff);border-radius:12px;height:200px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:1.5px solid #e0e0f7}
+.preview-box{width:100px;height:100px;background:#fff;border-radius:12px;transition:box-shadow .2s}
+.code-box{background:#1e1e2e;color:#cdd6f4;padding:16px 18px;border-radius:8px;font-family:monospace;font-size:13px;line-height:1.7;word-break:break-all;white-space:pre-wrap;margin-bottom:10px}
+.btn-copy{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;font-size:12px;font-weight:600;color:#555;background:#f0f0f5;border:1px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s}.btn-copy:hover{background:#e4e4ef}.btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s;text-align:center}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/box-shadow-generator.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Box Shadow Generator</span></nav>
+  <h1>CSS Box Shadow Generator</h1><p>Generate CSS box-shadow code with live preview. Drag sliders to customize.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="controls-grid">
+    <div class="ctrl"><label>Horizontal offset</label><div class="ctrl-row"><input type="range" id="offX" min="-50" max="50" value="4"><span class="ctrl-val" id="offXv">4px</span></div></div>
+    <div class="ctrl"><label>Vertical offset</label><div class="ctrl-row"><input type="range" id="offY" min="-50" max="50" value="4"><span class="ctrl-val" id="offYv">4px</span></div></div>
+    <div class="ctrl"><label>Blur radius</label><div class="ctrl-row"><input type="range" id="blur" min="0" max="100" value="10"><span class="ctrl-val" id="blurv">10px</span></div></div>
+    <div class="ctrl"><label>Spread radius</label><div class="ctrl-row"><input type="range" id="spread" min="-50" max="50" value="0"><span class="ctrl-val" id="spreadv">0px</span></div></div>
+    <div class="ctrl"><label>Color</label><div class="ctrl-row"><input type="color" id="shadowColor" value="#000000"></div></div>
+    <div class="ctrl"><label>Opacity</label><div class="ctrl-row"><input type="range" id="opacity" min="0" max="100" value="20"><span class="ctrl-val" id="opacityv">20%</span></div></div>
+  </div>
+  <label class="opt-check"><input type="checkbox" id="inset"> Inset shadow</label>
+  <div class="preview-area"><div class="preview-box" id="previewEl"></div></div>
+  <div class="code-box" id="codeBox"></div>
+  <button class="btn-copy" id="copyBtn">Copy CSS</button>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the CSS Box Shadow Generator</h2><p>This free CSS Box Shadow Generator creates box-shadow declarations with a live preview. Adjust the horizontal and vertical offsets, blur radius, spread radius, color, and opacity using sliders. Toggle inset to create inner shadows. The resulting CSS is ready to copy and paste into any stylesheet. Perfect for giving elements depth and elevation in web design.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What is the box-shadow syntax?</h3><p>box-shadow: [inset] offset-x offset-y blur-radius spread-radius color. Example: box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.2). You can add multiple shadows by separating them with commas.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/gradient-generator.html"><div class="rc-name">Gradient Generator</div><div class="rc-desc">CSS gradients</div></a>
+  <a class="related-card" href="/border-radius-generator.html"><div class="rc-name">Border Radius</div><div class="rc-desc">CSS border-radius</div></a>
+  <a class="related-card" href="/color-mixer.html"><div class="rc-name">Color Mixer</div><div class="rc-desc">Mix two colors</div></a>
+  <a class="related-card" href="/css-flexbox-generator.html"><div class="rc-name">Flexbox Generator</div><div class="rc-desc">CSS flexbox code</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>CSS Box Shadow Generator &mdash; Free shadow tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  function hexToRgba(hex,a){hex=hex.replace('#','');var r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);return'rgba('+r+','+g+','+b+','+(a/100).toFixed(2)+')';}
+  function update(){
+    var offX=document.getElementById('offX').value,offY=document.getElementById('offY').value;
+    var blur=document.getElementById('blur').value,spread=document.getElementById('spread').value;
+    var color=document.getElementById('shadowColor').value,opacity=document.getElementById('opacity').value;
+    var inset=document.getElementById('inset').checked?'inset ':'';
+    document.getElementById('offXv').textContent=offX+'px';
+    document.getElementById('offYv').textContent=offY+'px';
+    document.getElementById('blurv').textContent=blur+'px';
+    document.getElementById('spreadv').textContent=spread+'px';
+    document.getElementById('opacityv').textContent=opacity+'%';
+    var rgba=hexToRgba(color,parseInt(opacity));
+    var shadow=inset+offX+'px '+offY+'px '+blur+'px '+spread+'px '+rgba;
+    document.getElementById('previewEl').style.boxShadow=shadow;
+    document.getElementById('codeBox').textContent='box-shadow: '+shadow+';';
+  }
+  ['offX','offY','blur','spread','shadowColor','opacity'].forEach(function(id){document.getElementById(id).addEventListener('input',update);});
+  document.getElementById('inset').addEventListener('change',update);
+  document.getElementById('copyBtn').addEventListener('click',function(){var b=this;navigator.clipboard.writeText(document.getElementById('codeBox').textContent);b.textContent='Copied!';b.classList.add('copied');setTimeout(function(){b.textContent='Copy CSS';b.classList.remove('copied');},1500);});
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  update();
+})();
+</script></body></html>

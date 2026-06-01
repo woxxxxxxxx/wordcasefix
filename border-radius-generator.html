@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Border Radius Generator - Create Border Radius | WordCaseFix</title>
+<meta name="description" content="Generate CSS border-radius code with live preview. Control each corner independently or use uniform values. Copy ready CSS. Free online border-radius generator.">
+<meta name="keywords" content="CSS border radius generator, border-radius code, rounded corners CSS, border radius tool">
+<meta property="og:title" content="CSS Border Radius Generator | WordCaseFix"><meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.opt-check{display:flex;align-items:center;gap:6px;font-size:14px;color:#333;cursor:pointer;margin-bottom:20px}.opt-check input{width:16px;height:16px;accent-color:#5b5bd6}
+.corner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.ctrl{display:flex;flex-direction:column;gap:6px}.ctrl label{font-size:13px;font-weight:600;color:#333}
+.ctrl-row{display:flex;align-items:center;gap:8px}
+input[type=range]{flex:1;accent-color:#5b5bd6;height:5px}
+.ctrl-val{min-width:40px;font-size:13px;font-family:monospace;color:#5b5bd6;font-weight:600}
+.unit-toggle{display:flex;gap:0;margin-bottom:20px;border:1.5px solid #d0d5dd;border-radius:7px;overflow:hidden;width:fit-content}
+.unit-btn{padding:7px 16px;font-size:13px;font-weight:600;border:none;background:#fff;color:#555;cursor:pointer;transition:all .15s}.unit-btn.active{background:#5b5bd6;color:#fff}
+.preview-area{background:linear-gradient(135deg,#f0f0ff,#fff);border-radius:16px;height:200px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:1.5px solid #e0e0f7}
+.preview-box{width:140px;height:100px;background:#5b5bd6;transition:border-radius .2s}
+.code-box{background:#1e1e2e;color:#cdd6f4;padding:16px 18px;border-radius:8px;font-family:monospace;font-size:13px;line-height:1.7;word-break:break-all;white-space:pre-wrap;margin-bottom:10px}
+.btn-copy{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;font-size:12px;font-weight:600;color:#555;background:#f0f0f5;border:1px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s}.btn-copy:hover{background:#e4e4ef}.btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}.corner-grid{grid-template-columns:1fr}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s;text-align:center}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/border-radius-generator.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Border Radius Generator</span></nav>
+  <h1>CSS Border Radius Generator</h1><p>Create rounded corner CSS with live preview. Control each corner individually.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="unit-toggle">
+    <button class="unit-btn active" data-unit="px">px</button>
+    <button class="unit-btn" data-unit="%">%</button>
+    <button class="unit-btn" data-unit="rem">rem</button>
+  </div>
+  <label class="opt-check"><input type="checkbox" id="linkCorners" checked> Link all corners</label>
+  <div class="corner-grid" id="cornerGrid">
+    <div class="ctrl"><label>Top Left</label><div class="ctrl-row"><input type="range" id="tl" min="0" max="100" value="8"><span class="ctrl-val" id="tlv">8px</span></div></div>
+    <div class="ctrl"><label>Top Right</label><div class="ctrl-row"><input type="range" id="tr" min="0" max="100" value="8"><span class="ctrl-val" id="trv">8px</span></div></div>
+    <div class="ctrl"><label>Bottom Right</label><div class="ctrl-row"><input type="range" id="br" min="0" max="100" value="8"><span class="ctrl-val" id="brv">8px</span></div></div>
+    <div class="ctrl"><label>Bottom Left</label><div class="ctrl-row"><input type="range" id="bl" min="0" max="100" value="8"><span class="ctrl-val" id="blv">8px</span></div></div>
+  </div>
+  <div class="preview-area"><div class="preview-box" id="previewEl"></div></div>
+  <div class="code-box" id="codeBox"></div>
+  <button class="btn-copy" id="copyBtn">Copy CSS</button>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the CSS Border Radius Generator</h2><p>This free CSS Border Radius Generator lets you visually create border-radius values with a live preview. Toggle individual corner control to create asymmetric shapes, or link all corners for uniform rounding. Switch between px, %, and rem units. The generated CSS is ready to copy directly into your stylesheet.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>How does border-radius shorthand work?</h3><p>border-radius accepts 1–4 values: one value applies to all corners, two values set top-left/bottom-right and top-right/bottom-left, three values set top-left, top-right/bottom-left, bottom-right, and four values set each corner individually (clockwise from top-left).</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/box-shadow-generator.html"><div class="rc-name">Box Shadow</div><div class="rc-desc">CSS box-shadow</div></a>
+  <a class="related-card" href="/gradient-generator.html"><div class="rc-name">Gradient Generator</div><div class="rc-desc">CSS gradients</div></a>
+  <a class="related-card" href="/css-flexbox-generator.html"><div class="rc-name">Flexbox Generator</div><div class="rc-desc">CSS flexbox code</div></a>
+  <a class="related-card" href="/color-mixer.html"><div class="rc-name">Color Mixer</div><div class="rc-desc">Mix two colors</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>CSS Border Radius Generator &mdash; Free rounded corner tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  var unit='px';var linked=true;
+  document.querySelectorAll('.unit-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.unit-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');
+      unit=btn.dataset.unit;update();
+    });
+  });
+  document.getElementById('linkCorners').addEventListener('change',function(){linked=this.checked;update();});
+  var ids=['tl','tr','br','bl'];
+  ids.forEach(function(id){
+    document.getElementById(id).addEventListener('input',function(){
+      if(linked){var v=this.value;ids.forEach(function(sid){document.getElementById(sid).value=v;});}
+      update();
+    });
+  });
+  function update(){
+    var vals=ids.map(function(id){return document.getElementById(id).value;});
+    var valsStr=vals.map(function(v){return v+unit;});
+    ids.forEach(function(id,i){document.getElementById(id+'v').textContent=vals[i]+unit;});
+    var uniform=vals.every(function(v){return v===vals[0];});
+    var css=uniform?valsStr[0]:valsStr.join(' ');
+    document.getElementById('previewEl').style.borderRadius=css;
+    document.getElementById('codeBox').textContent='border-radius: '+css+';';
+  }
+  document.getElementById('copyBtn').addEventListener('click',function(){var b=this;navigator.clipboard.writeText(document.getElementById('codeBox').textContent);b.textContent='Copied!';b.classList.add('copied');setTimeout(function(){b.textContent='Copy CSS';b.classList.remove('copied');},1500);});
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  update();
+})();
+</script></body></html>

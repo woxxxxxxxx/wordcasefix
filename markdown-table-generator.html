@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Table Generator - Create Markdown Tables | WordCaseFix</title>
+<meta name="description" content="Generate Markdown table syntax from CSV data or a visual editor. Supports column alignment. Copy ready-to-use Markdown. Free online Markdown table generator.">
+<meta name="keywords" content="markdown table generator, create markdown table, CSV to markdown, markdown table syntax, GitHub markdown table">
+<meta property="og:title" content="Markdown Table Generator | WordCaseFix"><meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}.input-group{margin-bottom:20px}.input-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
+textarea{width:100%;height:150px;padding:14px 16px;font-size:14px;font-family:monospace;line-height:1.6;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}textarea::placeholder{color:#aaa}
+.options-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.field-inline{display:flex;align-items:center;gap:8px;font-size:14px;color:#333}
+.field-inline select{padding:7px 10px;font-size:13px;border:1.5px solid #d0d5dd;border-radius:6px}
+.opt-check{display:flex;align-items:center;gap:6px;font-size:14px;color:#333;cursor:pointer}.opt-check input{width:16px;height:16px;accent-color:#5b5bd6}
+.convert-row{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:15px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}.btn-primary:hover{background:#4a4ac2}.btn-primary:active{transform:scale(.97)}
+.result-hero{background:#f0f0ff;border:1.5px solid #5b5bd6;border-radius:8px;padding:16px 18px;font-family:monospace;font-size:14px;color:#1a1a2e;word-break:break-all;min-height:52px;line-height:1.7;margin-bottom:10px;white-space:pre-wrap}
+.btn-copy{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;font-size:12px;font-weight:600;color:#555;background:#f0f0f5;border:1px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s;margin-bottom:16px}.btn-copy:hover{background:#e4e4ef}.btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+.empty-state{text-align:center;padding:30px 0 10px;color:#999}.empty-state p{font-size:14px}footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}.btn-primary{width:100%;justify-content:center}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s;text-align:center}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/markdown-table-generator.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Markdown Table Generator</span></nav>
+  <h1>Markdown Table Generator</h1><p>Convert CSV data to Markdown table syntax for GitHub, Notion, and more.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="input-group"><label for="inputText">Paste CSV or tab-separated data</label><textarea id="inputText" placeholder="Name,Role,Status&#10;Alice,Developer,Active&#10;Bob,Designer,Active&#10;Carol,Manager,Away"></textarea></div>
+  <div class="options-row">
+    <div class="field-inline"><label>Delimiter:</label>
+      <select id="delimiter"><option value=",">Comma</option><option value="\t">Tab</option><option value=";">Semicolon</option><option value="|">Pipe</option></select>
+    </div>
+    <div class="field-inline"><label>Alignment:</label>
+      <select id="alignment"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option><option value="none">None</option></select>
+    </div>
+    <label class="opt-check"><input type="checkbox" id="optPad" checked> Pad columns</label>
+  </div>
+  <div class="convert-row"><button class="btn-primary" id="convertBtn">Generate Markdown Table</button></div>
+  <div id="resultArea">
+    <div class="empty-state" id="emptyState"><p>Paste data above and click <strong>Generate Markdown Table</strong>.</p></div>
+    <div id="outputSection" style="display:none">
+      <div class="result-hero" id="mainResult"></div>
+      <button class="btn-copy" id="copyMain">Copy Markdown</button>
+    </div>
+  </div>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the Markdown Table Generator</h2><p>This free Markdown Table Generator converts CSV or delimited data into properly formatted Markdown table syntax. It supports column alignment (left, center, right) and optionally pads all columns for readability. The generated Markdown works in GitHub READMEs, GitLab, Notion, Obsidian, and any other Markdown editor that supports GFM (GitHub Flavored Markdown) tables.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What is Markdown table syntax?</h3><p>Markdown tables use pipes | to separate columns and hyphens --- in the second row to create the header separator. Colons in the separator row control alignment: :--- for left, :---: for center, ---: for right. Example: | Name | Age | and | --- | --- |</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/text-to-table.html"><div class="rc-name">Text to Table</div><div class="rc-desc">CSV to HTML table</div></a>
+  <a class="related-card" href="/diff-checker.html"><div class="rc-name">Diff Checker</div><div class="rc-desc">Compare text files</div></a>
+  <a class="related-card" href="/text-compare.html"><div class="rc-name">Text Compare</div><div class="rc-desc">Highlight differences</div></a>
+  <a class="related-card" href="/html-stripper.html"><div class="rc-name">HTML Stripper</div><div class="rc-desc">Remove HTML tags</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Markdown Table Generator &mdash; Free Markdown table tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  document.getElementById('convertBtn').addEventListener('click',function(){
+    var raw=document.getElementById('inputText').value;
+    var emp=document.getElementById('emptyState'),sec=document.getElementById('outputSection');
+    if(!raw.trim()){emp.style.display='';sec.style.display='none';return;}
+    var delim=document.getElementById('delimiter').value;if(delim==='\\t')delim='\t';
+    var align=document.getElementById('alignment').value;
+    var pad=document.getElementById('optPad').checked;
+    var lines=raw.split('\n').filter(function(l){return l.trim();});
+    var rows=lines.map(function(l){return l.split(delim).map(function(c){return c.trim();});});
+    var maxCols=rows.reduce(function(m,r){return Math.max(m,r.length);},0);
+    rows.forEach(function(r){while(r.length<maxCols)r.push('');});
+    var colWidths=[];
+    for(var c=0;c<maxCols;c++){
+      var w=3;
+      rows.forEach(function(r){if(r[c]&&r[c].length>w)w=r[c].length;});
+      colWidths.push(w);
+    }
+    function cell(val,w){if(!pad)return val;while(val.length<w)val=val+' ';return val;}
+    function sepCell(w){
+      var s='---';while(s.length<w)s=s+'-';
+      if(align==='center')return':'+s.slice(1,-1)+':';
+      if(align==='right')return s.slice(0,-1)+':';
+      if(align==='left')return':'+s.slice(1);
+      return s;
+    }
+    var out=rows[0].map(function(v,i){return cell(v,colWidths[i]);}).join(' | ');
+    out='| '+out+' |';
+    var sep='| '+colWidths.map(function(w){return sepCell(w);}).join(' | ')+' |';
+    var body=rows.slice(1).map(function(r){return'| '+r.map(function(v,i){return cell(v,colWidths[i]);}).join(' | ')+' |';}).join('\n');
+    document.getElementById('mainResult').textContent=[out,sep,body].filter(Boolean).join('\n');
+    emp.style.display='none';sec.style.display='';
+  });
+  document.getElementById('copyMain').addEventListener('click',function(){var b=this;navigator.clipboard.writeText(document.getElementById('mainResult').textContent);b.textContent='Copied!';b.classList.add('copied');setTimeout(function(){b.textContent='Copy Markdown';b.classList.remove('copied');},1500);});
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>
