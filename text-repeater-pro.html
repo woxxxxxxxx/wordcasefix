@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Repeater - Repeat Text N Times Online | WordCaseFix</title>
+<meta name="description" content="Repeat any text or word N times with a custom separator. Choose newline, comma, space, or any custom delimiter. Free online text repeater tool.">
+<meta name="keywords" content="text repeater, repeat text, repeat words, duplicate text, text generator">
+<meta property="og:title" content="Text Repeater | WordCaseFix">
+<meta property="og:description" content="Repeat any text N times with a custom separator instantly.">
+<meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}
+.main-area{flex:1;min-width:0;padding:32px 24px 48px}
+.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}
+header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}
+header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-side{width:100%;min-height:300px;margin-bottom:16px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04);padding:28px 32px 32px}
+.input-group{margin-bottom:20px}
+.input-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
+textarea{width:100%;height:140px;padding:14px 16px;font-size:15px;font-family:inherit;line-height:1.6;border:1.5px solid #d0d5dd;border-radius:8px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+textarea:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+textarea::placeholder{color:#aaa}
+.controls-row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:20px}
+.ctrl-group{display:flex;flex-direction:column;gap:5px}
+.ctrl-group label{font-weight:600;font-size:13px;color:#333}
+.num-input{width:90px;padding:9px 12px;font-size:14px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:8px;transition:border-color .2s}
+.num-input:focus{outline:none;border-color:#5b5bd6}
+.sep-input{width:180px;padding:9px 12px;font-size:14px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:8px;transition:border-color .2s}
+.sep-input:focus{outline:none;border-color:#5b5bd6}
+.preset-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.preset-btn{padding:4px 10px;font-size:12px;font-weight:600;color:#5b5bd6;background:#f0f0ff;border:1.5px solid #d0d0f0;border-radius:5px;cursor:pointer;transition:background .15s,color .15s}
+.preset-btn:hover{background:#5b5bd6;color:#fff;border-color:#5b5bd6}
+.convert-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:15px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}
+.btn-primary:hover{background:#4a4ac2}
+.btn-primary:active{transform:scale(.97)}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.stat-chip{background:#f0f0ff;border:1px solid #ddd;border-radius:6px;padding:6px 14px;font-size:13px;color:#5b5bd6;font-weight:600}
+.output-wrap{position:relative}
+.output-area{width:100%;min-height:160px;padding:14px 56px 14px 16px;font-size:15px;font-family:inherit;line-height:1.6;border:1.5px solid #e2e4e8;border-radius:8px;background:#fafbfc;color:#1a1a2e;resize:vertical}
+.btn-copy{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:4px;padding:5px 12px;font-size:12px;font-weight:600;color:#555;background:#f0f0f5;border:1px solid #d0d5dd;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
+.btn-copy:hover{background:#e4e4ef;color:#1a1a2e}
+.btn-copy.copied{background:#d4edda;border-color:#8cc99c;color:#155724}
+.empty-state{text-align:center;padding:30px 0 10px;color:#999}
+.empty-state p{font-size:14px}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
+@media(max-width:600px){header h1{font-size:22px}textarea{height:110px;font-size:14px}.btn-primary{width:100%;justify-content:center}}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;transition:border-color .2s,box-shadow .2s;text-align:center}.related-card:hover{border-color:#5b5bd6;box-shadow:0 2px 10px rgba(91,91,214,.1)}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888;line-height:1.3}@media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+.seo-content{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}
+.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
+footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://wordcasefix.com/text-repeater-pro.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+  <main class="main-area">
+    <header>
+      <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Text Repeater</span></nav>
+      <h1>Text Repeater</h1>
+      <p>Repeat any text or phrase N times with a custom separator.</p>
+    </header>
+    <div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+    <div class="card">
+      <div class="input-group">
+        <label for="inputText">Text to repeat</label>
+        <textarea id="inputText" placeholder="Type or paste the text you want to repeat..."></textarea>
+      </div>
+      <div class="controls-row">
+        <div class="ctrl-group">
+          <label for="repeatCount">Repeat times</label>
+          <input type="number" id="repeatCount" class="num-input" value="5" min="1" max="10000">
+        </div>
+        <div class="ctrl-group">
+          <label for="sepInput">Separator</label>
+          <input type="text" id="sepInput" class="sep-input" placeholder="Separator between repetitions">
+          <div class="preset-row">
+            <button class="preset-btn" data-sep="&#10;">New line</button>
+            <button class="preset-btn" data-sep=" ">Space</button>
+            <button class="preset-btn" data-sep=", ">Comma</button>
+            <button class="preset-btn" data-sep=" | ">Pipe</button>
+            <button class="preset-btn" data-sep="">None</button>
+          </div>
+        </div>
+      </div>
+      <div class="convert-row">
+        <button class="btn-primary" id="convertBtn">Repeat Text</button>
+      </div>
+      <div id="resultArea">
+        <div class="empty-state" id="emptyState"><p>Enter text above, set the count and separator, then click <strong>Repeat Text</strong>.</p></div>
+        <div id="outputSection" style="display:none">
+          <div class="stats-row" id="statsRow"></div>
+          <div class="output-wrap">
+            <textarea class="output-area" id="outputText" readonly></textarea>
+            <button class="btn-copy" id="copyBtn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="sidebar">
+    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
+    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
+  </aside>
+</div>
+<div class="seo-content"><h2>About the Text Repeater</h2><p>This free Text Repeater tool instantly duplicates any text or phrase a specified number of times. Choose from preset separators like newline, space, comma, or pipe — or enter any custom separator you need. It's useful for generating test data, creating repeated patterns, filling templates, making lists, and much more. The tool handles up to 10,000 repetitions and shows the total character count of the result.</p></div>
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>Can I use a custom separator?</h3><p>Yes. Type any text into the Separator field — including multi-character strings, punctuation, or spaces. You can also use the preset buttons for common separators like newline, space, or comma.</p></div>
+  <div class="faq-item"><h3>What is the maximum number of repetitions?</h3><p>The tool allows up to 10,000 repetitions. For very large outputs, be aware that performance may vary depending on the length of your input text.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/duplicate-line-remover.html"><div class="rc-name">Duplicate Remover</div><div class="rc-desc">Remove duplicate lines</div></a><a class="related-card" href="/line-sorter.html"><div class="rc-name">Line Sorter</div><div class="rc-desc">Sort lines of text</div></a><a class="related-card" href="/line-counter.html"><div class="rc-name">Line Counter</div><div class="rc-desc">Count lines &amp; words</div></a><a class="related-card" href="/text-cleaner.html"><div class="rc-name">Text Cleaner</div><div class="rc-desc">Clean up text</div></a></div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Text Repeater &mdash; Free online text duplication tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  var btn=document.getElementById('convertBtn'),out=document.getElementById('outputText'),
+      emp=document.getElementById('emptyState'),sec=document.getElementById('outputSection'),
+      cp=document.getElementById('copyBtn'),stats=document.getElementById('statsRow'),
+      sepInp=document.getElementById('sepInput');
+
+  document.querySelectorAll('.preset-btn').forEach(function(pb){
+    pb.addEventListener('click',function(){sepInp.value=pb.getAttribute('data-sep');});
+  });
+
+  btn.addEventListener('click',function(){
+    var text=document.getElementById('inputText').value;
+    if(!text.trim()){emp.style.display='';sec.style.display='none';return;}
+    var count=Math.min(10000,Math.max(1,parseInt(document.getElementById('repeatCount').value)||1));
+    var sep=sepInp.value;
+    var arr=[];
+    for(var i=0;i<count;i++) arr.push(text);
+    var result=arr.join(sep);
+    out.value=result;
+    stats.innerHTML='<span class="stat-chip">Repeated: '+count+'×</span><span class="stat-chip">Total chars: '+result.length+'</span><span class="stat-chip">Total lines: '+result.split('\n').length+'</span>';
+    emp.style.display='none';sec.style.display='';
+    out.style.height='auto';out.style.height=Math.min(out.scrollHeight,400)+'px';
+  });
+
+  cp.addEventListener('click',function(){
+    navigator.clipboard.writeText(out.value);
+    cp.textContent='Copied!';cp.classList.add('copied');
+    setTimeout(function(){cp.textContent='Copy';cp.classList.remove('copied');},1500);
+  });
+
+  var b=document.getElementById('back-to-top');
+  window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});
+  b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>
