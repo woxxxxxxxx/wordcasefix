@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Size Converter - Convert px em rem pt | WordCaseFix</title>
+<meta name="description" content="Convert font sizes between px, em, rem, pt, vw, and percent. Set base font size for accurate conversions. Preview text at different sizes. Free font size converter.">
+<meta name="keywords" content="font size converter, px to rem, px to em, font size px em rem, convert font units">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px}
+.settings-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:14px 16px;background:#f9f9ff;border-radius:8px;border:1.5px solid #e0e0f7}
+.settings-row .field{flex:1;min-width:140px}
+.field label{display:block;font-size:12px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.field input,.field select{width:100%;padding:9px 12px;font-size:14px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:7px;transition:border-color .2s}
+.field input:focus,.field select:focus{outline:none;border-color:#5b5bd6}
+.input-row{display:flex;gap:12px;margin-bottom:20px;align-items:flex-end;flex-wrap:wrap}
+.input-row .field{flex:2;min-width:140px}
+.input-row .unit-field{flex:1;min-width:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:15px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;transition:background .2s}.btn-primary:hover{background:#4a4ac2}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:20px}
+.result-chip{background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:8px;padding:12px 14px;cursor:pointer;transition:border-color .2s}
+.result-chip:hover{border-color:#5b5bd6}
+.result-chip .rc-unit{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.result-chip .rc-val{font-size:18px;font-weight:700;color:#5b5bd6;font-family:monospace}
+.result-chip .rc-copy{font-size:11px;color:#aaa;margin-top:3px}
+.preview-section{margin-top:20px;border-top:1px solid #f0f0f5;padding-top:20px}
+.preview-title{font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.preview-text{color:#1a1a2e;line-height:1.5;transition:font-size .2s}
+.size-scale{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:16px}
+.scale-item{padding:8px 12px;background:#f9f9ff;border-radius:7px;border:1px solid #e0e0f7}
+.scale-label{font-size:11px;color:#888;margin-bottom:4px;font-weight:600}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}.related-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/font-size-converter.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Font Size Converter</span></nav>
+  <h1>Font Size Converter</h1><p>Convert font sizes between px, em, rem, pt, vw, and percent with live preview.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="settings-row">
+    <div class="field"><label>Base Font Size (px)</label><input type="number" id="baseFontSize" value="16" min="1"></div>
+    <div class="field"><label>Viewport Width (px)</label><input type="number" id="viewportWidth" value="1440" min="1"></div>
+  </div>
+  <div class="input-row">
+    <div class="field"><label>Font Size Value</label><input type="number" id="inputValue" value="16" step="0.01" min="0"></div>
+    <div class="unit-field"><label>Unit</label>
+      <select id="fromUnit">
+        <option value="px">px</option><option value="rem">rem</option><option value="em">em</option>
+        <option value="pt">pt</option><option value="vw">vw</option><option value="%">%</option>
+      </select>
+    </div>
+    <button class="btn-primary" id="convertBtn" style="margin-bottom:2px">Convert</button>
+  </div>
+  <div class="results-grid" id="resultsGrid"></div>
+  <div class="preview-section">
+    <div class="preview-title">Live Preview</div>
+    <div class="preview-text" id="previewText">The quick brown fox jumps over the lazy dog. 0123456789</div>
+    <div class="size-scale" id="sizeScale"></div>
+  </div>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the Font Size Converter</h2><p>Convert font sizes between pixels (px), root em (rem), em, points (pt), viewport width (vw), and percent (%). Set the base font size and viewport width for precise conversions. The live preview shows the actual rendered size and a type scale at common sizes.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What's the difference between px, em, and rem?</h3><p>px is an absolute unit. em is relative to the parent element's font size. rem is relative to the root element font size (usually 16px). rem is preferred for scalable, accessible typography as it respects user browser font size preferences.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/css-unit-converter.html"><div class="rc-name">CSS Units</div><div class="rc-desc">All CSS units</div></a>
+  <a class="related-card" href="/line-height-calculator.html"><div class="rc-name">Line Height</div><div class="rc-desc">Optimal line height</div></a>
+  <a class="related-card" href="/color-contrast-checker.html"><div class="rc-name">Contrast Checker</div><div class="rc-desc">WCAG contrast</div></a>
+  <a class="related-card" href="/screen-resolution-checker.html"><div class="rc-name">Screen Resolution</div><div class="rc-desc">Your screen info</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Font Size Converter &mdash; Free typography unit tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  var UNITS=['px','rem','em','pt','vw','%'];
+  function toPx(v,u,base,vw){switch(u){case 'px':return v;case 'rem':return v*base;case 'em':return v*base;case 'pt':return v*96/72;case 'vw':return v*vw/100;case '%':return v*base/100;}return v;}
+  function fromPx(px,u,base,vw){switch(u){case 'px':return px;case 'rem':return px/base;case 'em':return px/base;case 'pt':return px*72/96;case 'vw':return px*100/vw;case '%':return px*100/base;}return px;}
+  function fmt(n){return parseFloat(n.toPrecision(5)).toString();}
+  function convert(){
+    var val=parseFloat(document.getElementById('inputValue').value);
+    var unit=document.getElementById('fromUnit').value;
+    var base=parseFloat(document.getElementById('baseFontSize').value)||16;
+    var vw=parseFloat(document.getElementById('viewportWidth').value)||1440;
+    if(isNaN(val))return;
+    var px=toPx(val,unit,base,vw);
+    var grid=document.getElementById('resultsGrid');
+    grid.innerHTML=UNITS.map(function(u){
+      var r=fromPx(px,u,base,vw);
+      return '<div class="result-chip" data-val="'+fmt(r)+u+'"><div class="rc-unit">'+u+'</div><div class="rc-val">'+fmt(r)+'</div><div class="rc-copy">Click to copy</div></div>';
+    }).join('');
+    grid.querySelectorAll('.result-chip').forEach(function(el){
+      el.addEventListener('click',function(){navigator.clipboard&&navigator.clipboard.writeText(el.dataset.val);el.querySelector('.rc-copy').textContent='Copied!';setTimeout(function(){el.querySelector('.rc-copy').textContent='Click to copy';},1500);});
+    });
+    document.getElementById('previewText').style.fontSize=px+'px';
+    var SCALE=[12,14,16,18,20,24,28,32,36,48];
+    document.getElementById('sizeScale').innerHTML=SCALE.map(function(s){
+      return '<div class="scale-item"><div class="scale-label">'+s+'px = '+fmt(fromPx(s,'rem',base,vw))+'rem</div><div style="font-size:'+s+'px;line-height:1.3">Aa</div></div>';
+    }).join('');
+  }
+  document.getElementById('convertBtn').addEventListener('click',convert);
+  document.getElementById('inputValue').addEventListener('keydown',function(e){if(e.key==='Enter')convert();});
+  convert();
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>

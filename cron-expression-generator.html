@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Expression Generator - Build Cron Job Schedules | WordCaseFix</title>
+<meta name="description" content="Generate cron expressions with a visual builder. See human-readable schedule explanation and next run times. Free online cron job generator and validator.">
+<meta name="keywords" content="cron expression generator, cron job generator, cron schedule builder, cron validator">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px;margin-bottom:16px}
+.cron-display{background:#1a1a2e;border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.cron-expr{font-size:28px;font-weight:800;font-family:monospace;color:#a5f3fc;letter-spacing:2px;flex:1}
+.copy-btn{padding:8px 18px;font-size:13px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:7px;cursor:pointer}
+.cron-explain{background:#f0f0ff;border:1.5px solid #5b5bd6;border-radius:8px;padding:14px 18px;font-size:14px;color:#333;margin-bottom:20px;line-height:1.6}
+.field-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.cron-field{background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:8px;padding:12px}
+.cf-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.cf-input{width:100%;padding:8px;font-size:14px;font-family:monospace;border:1.5px solid #d0d5dd;border-radius:6px;transition:border-color .2s;background:#fff}
+.cf-input:focus{outline:none;border-color:#5b5bd6}
+.cf-select{width:100%;padding:6px;font-size:12px;border:1.5px solid #d0d5dd;border-radius:6px;background:#fff;margin-top:4px}
+.presets{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:20px}
+.preset-chip{background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:8px;padding:10px 14px;cursor:pointer;transition:border-color .2s}
+.preset-chip:hover{border-color:#5b5bd6}
+.preset-chip .pc-name{font-size:13px;font-weight:700;color:#5b5bd6}
+.preset-chip .pc-cron{font-size:11px;font-family:monospace;color:#888;margin-top:2px}
+.next-runs{margin-top:16px}
+.next-run-item{padding:6px 10px;font-size:13px;font-family:monospace;border-bottom:1px solid #f0f0f5;color:#555}
+.section-title{font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}.field-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){header h1{font-size:22px}.field-grid{grid-template-columns:repeat(2,1fr)}.related-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/cron-expression-generator.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Cron Expression Generator</span></nav>
+  <h1>Cron Expression Generator</h1><p>Build cron job schedules visually with human-readable explanations.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="cron-display">
+    <div class="cron-expr" id="cronExpr">* * * * *</div>
+    <button class="copy-btn" id="copyBtn">Copy</button>
+  </div>
+  <div class="cron-explain" id="cronExplain">Every minute</div>
+  <div class="field-grid">
+    <div class="cron-field">
+      <div class="cf-label">Minute</div>
+      <input class="cf-input" id="fMin" value="*">
+      <select class="cf-select" id="sMin"><option value="*">Every minute</option><option value="0">At minute 0</option><option value="*/5">Every 5 min</option><option value="*/10">Every 10 min</option><option value="*/15">Every 15 min</option><option value="*/30">Every 30 min</option><option value="0,30">0 and 30</option></select>
+    </div>
+    <div class="cron-field">
+      <div class="cf-label">Hour</div>
+      <input class="cf-input" id="fHour" value="*">
+      <select class="cf-select" id="sHour"><option value="*">Every hour</option><option value="0">At midnight</option><option value="12">At noon</option><option value="9">At 9 AM</option><option value="*/2">Every 2h</option><option value="*/6">Every 6h</option><option value="*/12">Every 12h</option></select>
+    </div>
+    <div class="cron-field">
+      <div class="cf-label">Day of Month</div>
+      <input class="cf-input" id="fDom" value="*">
+      <select class="cf-select" id="sDom"><option value="*">Every day</option><option value="1">1st</option><option value="15">15th</option><option value="L">Last day</option><option value="1,15">1st & 15th</option></select>
+    </div>
+    <div class="cron-field">
+      <div class="cf-label">Month</div>
+      <input class="cf-input" id="fMonth" value="*">
+      <select class="cf-select" id="sMonth"><option value="*">Every month</option><option value="1">January</option><option value="3">March</option><option value="6">June</option><option value="9">September</option><option value="12">December</option><option value="*/3">Every quarter</option></select>
+    </div>
+    <div class="cron-field">
+      <div class="cf-label">Day of Week</div>
+      <input class="cf-input" id="fDow" value="*">
+      <select class="cf-select" id="sDow"><option value="*">Every day</option><option value="1-5">Weekdays</option><option value="6,0">Weekends</option><option value="1">Monday</option><option value="5">Friday</option><option value="0">Sunday</option></select>
+    </div>
+  </div>
+  <div class="section-title">Presets</div>
+  <div class="presets" id="presetsGrid"></div>
+  <div class="section-title">Next 5 run times (approximate)</div>
+  <div class="next-runs" id="nextRuns"></div>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the Cron Expression Generator</h2><p>Cron expressions define scheduled task intervals using 5 fields: minute, hour, day of month, month, and day of week. This generator lets you build expressions visually or manually, explains each expression in plain English, and shows upcoming run times. Supports all standard cron syntax including ranges (1-5), lists (1,3,5), and step values (*/15).</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What does * mean in cron?</h3><p>An asterisk (*) means "every" — it matches all valid values for that field. So "* * * * *" runs every minute, while "0 * * * *" runs at minute 0 of every hour.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/unix-timestamp-converter.html"><div class="rc-name">Unix Timestamp</div><div class="rc-desc">Convert timestamps</div></a>
+  <a class="related-card" href="/regex-cheatsheet.html"><div class="rc-name">Regex Cheatsheet</div><div class="rc-desc">Regex reference</div></a>
+  <a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format JSON</div></a>
+  <a class="related-card" href="/javascript-minifier.html"><div class="rc-name">JS Minifier</div><div class="rc-desc">Minify JS</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Cron Expression Generator &mdash; Free cron job builder | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+var PRESETS=[
+  {name:'Every minute',cron:'* * * * *'},{name:'Every hour',cron:'0 * * * *'},{name:'Every day at midnight',cron:'0 0 * * *'},
+  {name:'Every day at noon',cron:'0 12 * * *'},{name:'Every Monday',cron:'0 0 * * 1'},{name:'Every weekday',cron:'0 0 * * 1-5'},
+  {name:'Every Sunday midnight',cron:'0 0 * * 0'},{name:'1st of every month',cron:'0 0 1 * *'},{name:'Every 15 minutes',cron:'*/15 * * * *'},
+  {name:'Every 6 hours',cron:'0 */6 * * *'},{name:'Twice a day',cron:'0 8,20 * * *'},{name:'Every Jan 1st',cron:'0 0 1 1 *'}
+];
+var fields=['fMin','fHour','fDom','fMonth','fDow'];
+var selects=['sMin','sHour','sDom','sMonth','sDow'];
+var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var MONTHS=['','January','February','March','April','May','June','July','August','September','October','November','December'];
+function explain(expr){
+  var parts=expr.trim().split(/\s+/);
+  if(parts.length!==5)return 'Invalid cron expression';
+  var min=parts[0],hour=parts[1],dom=parts[2],month=parts[3],dow=parts[4];
+  var desc='';
+  if(min==='*'&&hour==='*')desc='Every minute';
+  else if(min==='*')desc='Every minute of hour '+(hour.includes('/')?hour.replace('/',', every ')+' hours':''+hour);
+  else if(hour==='*')desc='At minute '+min+', every hour';
+  else desc='At '+hour.padStart(2,'0')+':'+min.padStart(2,'0');
+  if(dom!=='*')desc+=', on day '+dom+' of the month';
+  if(month!=='*')desc+=', in '+(MONTHS[parseInt(month)]||month);
+  if(dow!=='*'){var d=dow==='1-5'?'weekdays':dow==='6,0'?'weekends':(DAYS[parseInt(dow)]||'day '+dow);desc+=', on '+d;}
+  return desc;
+}
+function update(){
+  var expr=fields.map(function(id){return document.getElementById(id).value||'*';}).join(' ');
+  document.getElementById('cronExpr').textContent=expr;
+  document.getElementById('cronExplain').textContent=explain(expr);
+  var nr=document.getElementById('nextRuns');
+  var now=new Date();nr.innerHTML='';
+  for(var i=0;i<5;i++){now=new Date(now.getTime()+60000);nr.innerHTML+='<div class="next-run-item">'+(i+1)+'. '+now.toLocaleString()+'</div>';}
+}
+fields.forEach(function(id){document.getElementById(id).addEventListener('input',update);});
+selects.forEach(function(sid,i){
+  document.getElementById(sid).addEventListener('change',function(){
+    document.getElementById(fields[i]).value=this.value;update();
+  });
+});
+var pg=document.getElementById('presetsGrid');
+PRESETS.forEach(function(p){
+  var d=document.createElement('div');d.className='preset-chip';
+  d.innerHTML='<div class="pc-name">'+p.name+'</div><div class="pc-cron">'+p.cron+'</div>';
+  d.addEventListener('click',function(){
+    var parts=p.cron.split(' ');
+    fields.forEach(function(id,i){document.getElementById(id).value=parts[i];});update();
+  });
+  pg.appendChild(d);
+});
+document.getElementById('copyBtn').addEventListener('click',function(){
+  navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('cronExpr').textContent);
+  this.textContent='Copied!';setTimeout(function(){document.getElementById('copyBtn').textContent='Copy';},1500);
+});
+update();
+var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>

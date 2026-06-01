@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Cheatsheet - Regular Expression Reference Guide | WordCaseFix</title>
+<meta name="description" content="Complete regular expression cheatsheet with live tester. Learn regex syntax for anchors, quantifiers, groups, character classes, and more. Free regex reference.">
+<meta name="keywords" content="regex cheatsheet, regular expression reference, regex guide, regex tester, learn regex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px;margin-bottom:16px}
+.tester-section{background:#f9f9ff;border:1.5px solid #e0e0f7;border-radius:10px;padding:20px;margin-bottom:20px}
+.tester-title{font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.field label{display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:6px;margin-top:10px}
+.field input,.field textarea{width:100%;padding:10px 12px;font-size:14px;font-family:monospace;border:1.5px solid #d0d5dd;border-radius:7px;transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:#5b5bd6}
+.flags-row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.flag-check{display:flex;align-items:center;gap:5px;font-size:13px;color:#333;cursor:pointer}
+.flag-check input{accent-color:#5b5bd6}
+.match-result{margin-top:10px;padding:10px 12px;border-radius:7px;font-size:13px;font-family:monospace}
+.match-ok{background:#f0fdf4;border:1.5px solid #86efac;color:#166534}
+.match-fail{background:#fef2f2;border:1.5px solid #fca5a5;color:#991b1b}
+.highlight{background:#fef08a;border-radius:2px}
+.section-title{font-size:13px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:20px}
+.ref-table th{text-align:left;font-size:11px;font-weight:700;color:#888;text-transform:uppercase;padding:6px 10px;border-bottom:2px solid #e8e9ed}
+.ref-table td{padding:7px 10px;font-size:13px;border-bottom:1px solid #f0f0f5;vertical-align:top}
+.ref-table td:first-child{font-family:monospace;font-weight:700;color:#5b5bd6;white-space:nowrap}
+.ref-table td:nth-child(2){color:#555}
+.ref-table td:last-child{color:#888;font-size:12px}
+.ref-table tr:last-child td{border:none}
+.ref-table tr:hover td{background:#f9f9ff}
+.copy-cell{cursor:pointer}.copy-cell:hover{color:#5b5bd6}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}.related-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/regex-cheatsheet.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Regex Cheatsheet</span></nav>
+  <h1>Regex Cheatsheet</h1><p>Complete regular expression reference with live tester.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="tester-section">
+    <div class="tester-title">Live Regex Tester</div>
+    <div class="field"><label>Regular Expression</label><input type="text" id="regexInput" placeholder="e.g. \d{3}-\d{4}"></div>
+    <div class="flags-row">
+      <label class="flag-check"><input type="checkbox" id="flagG" checked> g (global)</label>
+      <label class="flag-check"><input type="checkbox" id="flagI"> i (case-insensitive)</label>
+      <label class="flag-check"><input type="checkbox" id="flagM"> m (multiline)</label>
+    </div>
+    <div class="field"><label>Test String</label><textarea id="testInput" rows="3" placeholder="Enter text to test against..."></textarea></div>
+    <div class="match-result" id="matchResult" style="display:none"></div>
+  </div>
+  <div class="section-title">Anchors</div>
+  <table class="ref-table"><thead><tr><th>Token</th><th>Description</th><th>Example</th></tr></thead><tbody>
+    <tr><td class="copy-cell">^</td><td>Start of string/line</td><td>^Hello matches "Hello world"</td></tr>
+    <tr><td class="copy-cell">$</td><td>End of string/line</td><td>world$ matches "Hello world"</td></tr>
+    <tr><td class="copy-cell">\b</td><td>Word boundary</td><td>\bcat\b matches "cat" not "catch"</td></tr>
+    <tr><td class="copy-cell">\B</td><td>Non-word boundary</td><td>\Bcat matches "catch"</td></tr>
+  </tbody></table>
+  <div class="section-title">Character Classes</div>
+  <table class="ref-table"><thead><tr><th>Token</th><th>Description</th><th>Example</th></tr></thead><tbody>
+    <tr><td class="copy-cell">.</td><td>Any character except newline</td><td>a.c matches "abc"</td></tr>
+    <tr><td class="copy-cell">\d</td><td>Digit [0-9]</td><td>\d+ matches "123"</td></tr>
+    <tr><td class="copy-cell">\D</td><td>Non-digit</td><td>\D+ matches "abc"</td></tr>
+    <tr><td class="copy-cell">\w</td><td>Word char [a-zA-Z0-9_]</td><td>\w+ matches "hello_1"</td></tr>
+    <tr><td class="copy-cell">\W</td><td>Non-word character</td><td>\W matches spaces, punctuation</td></tr>
+    <tr><td class="copy-cell">\s</td><td>Whitespace (space, tab, newline)</td><td>\s+ matches spaces</td></tr>
+    <tr><td class="copy-cell">\S</td><td>Non-whitespace</td><td>\S+ matches words</td></tr>
+    <tr><td class="copy-cell">[abc]</td><td>Character set (a, b, or c)</td><td>[aeiou] matches vowels</td></tr>
+    <tr><td class="copy-cell">[^abc]</td><td>Negated set (not a, b, or c)</td><td>[^0-9] matches non-digits</td></tr>
+    <tr><td class="copy-cell">[a-z]</td><td>Range (a to z)</td><td>[a-zA-Z] matches any letter</td></tr>
+  </tbody></table>
+  <div class="section-title">Quantifiers</div>
+  <table class="ref-table"><thead><tr><th>Token</th><th>Description</th><th>Example</th></tr></thead><tbody>
+    <tr><td class="copy-cell">*</td><td>0 or more (greedy)</td><td>ab* matches "a", "ab", "abbb"</td></tr>
+    <tr><td class="copy-cell">+</td><td>1 or more (greedy)</td><td>ab+ matches "ab", "abbb"</td></tr>
+    <tr><td class="copy-cell">?</td><td>0 or 1 (optional)</td><td>colou?r matches "color" and "colour"</td></tr>
+    <tr><td class="copy-cell">{n}</td><td>Exactly n times</td><td>\d{4} matches "2024"</td></tr>
+    <tr><td class="copy-cell">{n,}</td><td>n or more times</td><td>\d{2,} matches "12", "123"</td></tr>
+    <tr><td class="copy-cell">{n,m}</td><td>Between n and m times</td><td>\d{2,4} matches "12" to "1234"</td></tr>
+    <tr><td class="copy-cell">*?</td><td>0 or more (lazy)</td><td>a.*?b matches shortest string</td></tr>
+    <tr><td class="copy-cell">+?</td><td>1 or more (lazy)</td><td>a.+?b matches shortest string</td></tr>
+  </tbody></table>
+  <div class="section-title">Groups & Lookarounds</div>
+  <table class="ref-table"><thead><tr><th>Token</th><th>Description</th><th>Example</th></tr></thead><tbody>
+    <tr><td class="copy-cell">(abc)</td><td>Capturing group</td><td>(foo)bar captures "foo"</td></tr>
+    <tr><td class="copy-cell">(?:abc)</td><td>Non-capturing group</td><td>(?:foo)bar groups without capture</td></tr>
+    <tr><td class="copy-cell">(?&lt;name&gt;abc)</td><td>Named capturing group</td><td>(?&lt;year&gt;\d{4})</td></tr>
+    <tr><td class="copy-cell">a|b</td><td>Alternation (a or b)</td><td>cat|dog matches "cat" or "dog"</td></tr>
+    <tr><td class="copy-cell">(?=abc)</td><td>Positive lookahead</td><td>\d(?=px) matches digit before "px"</td></tr>
+    <tr><td class="copy-cell">(?!abc)</td><td>Negative lookahead</td><td>\d(?!px) matches digit not before "px"</td></tr>
+    <tr><td class="copy-cell">(?&lt;=abc)</td><td>Positive lookbehind</td><td>(?&lt;=\$)\d+ matches digits after $</td></tr>
+    <tr><td class="copy-cell">(?&lt;!abc)</td><td>Negative lookbehind</td><td>(?&lt;!\$)\d+ matches digits not after $</td></tr>
+  </tbody></table>
+  <div class="section-title">Common Patterns</div>
+  <table class="ref-table"><thead><tr><th>Pattern</th><th>Matches</th></tr></thead><tbody>
+    <tr><td class="copy-cell">^\S+@\S+\.\S+$</td><td>Basic email address</td></tr>
+    <tr><td class="copy-cell">^https?:\/\/.+</td><td>HTTP/HTTPS URL</td></tr>
+    <tr><td class="copy-cell">^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$</td><td>IPv4 address</td></tr>
+    <tr><td class="copy-cell">^\d{4}-\d{2}-\d{2}$</td><td>ISO date (YYYY-MM-DD)</td></tr>
+    <tr><td class="copy-cell">^[a-zA-Z0-9_-]{3,16}$</td><td>Username (3-16 chars)</td></tr>
+    <tr><td class="copy-cell">^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$</td><td>Strong password</td></tr>
+    <tr><td class="copy-cell">^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$</td><td>Hex color code</td></tr>
+    <tr><td class="copy-cell">^\+?[1-9]\d{1,14}$</td><td>International phone</td></tr>
+  </tbody></table>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the Regex Cheatsheet</h2><p>This comprehensive regular expression cheatsheet covers all major regex syntax including anchors, character classes, quantifiers, groups, lookaheads, and lookbehinds. Use the live tester to validate patterns against real text. Click any token in the reference tables to copy it to your clipboard.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>What regex flavor does this use?</h3><p>The live tester uses JavaScript regex (ECMAScript). Most patterns are compatible with Python, Java, PHP, and other languages, but some features like lookbehind may differ between engines.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/tailwind-cheatsheet.html"><div class="rc-name">Tailwind CSS</div><div class="rc-desc">CSS class reference</div></a>
+  <a class="related-card" href="/keyboard-shortcut-checker.html"><div class="rc-name">Keyboard Shortcuts</div><div class="rc-desc">Test shortcuts</div></a>
+  <a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format JSON</div></a>
+  <a class="related-card" href="/javascript-minifier.html"><div class="rc-name">JS Minifier</div><div class="rc-desc">Minify JavaScript</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Regex Cheatsheet &mdash; Free regular expression reference | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  function test(){
+    var pat=document.getElementById('regexInput').value;
+    var str=document.getElementById('testInput').value;
+    var res=document.getElementById('matchResult');
+    if(!pat){res.style.display='none';return;}
+    var flags='';
+    if(document.getElementById('flagG').checked)flags+='g';
+    if(document.getElementById('flagI').checked)flags+='i';
+    if(document.getElementById('flagM').checked)flags+='m';
+    try{
+      var rx=new RegExp(pat,flags);
+      var matches=str.match(rx)||[];
+      res.className='match-result '+(matches.length?'match-ok':'match-fail');
+      res.textContent=matches.length?'✓ '+matches.length+' match'+(matches.length>1?'es':'')+(matches.length<=5?' : '+matches.map(function(m){return '"'+m+'"';}).join(', '):''): '✗ No matches';
+      res.style.display='';
+    }catch(e){
+      res.className='match-result match-fail';res.textContent='✗ Invalid regex: '+e.message;res.style.display='';
+    }
+  }
+  document.getElementById('regexInput').addEventListener('input',test);
+  document.getElementById('testInput').addEventListener('input',test);
+  ['flagG','flagI','flagM'].forEach(function(id){document.getElementById(id).addEventListener('change',test);});
+  document.querySelectorAll('.copy-cell').forEach(function(el){
+    el.title='Click to copy';
+    el.addEventListener('click',function(){navigator.clipboard&&navigator.clipboard.writeText(el.textContent);var old=el.textContent;el.textContent='Copied!';el.style.color='#22c55e';setTimeout(function(){el.textContent=old;el.style.color='';},1200);});
+  });
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>

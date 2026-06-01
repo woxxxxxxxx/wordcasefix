@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Color Picker - Pick Colors from Any Image | WordCaseFix</title>
+<meta name="description" content="Pick any color from an uploaded image. Get HEX, RGB, and HSL values instantly by clicking on the image. Free online image color picker tool.">
+<meta name="keywords" content="image color picker, pick color from image, color dropper tool, hex color from image">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.page-wrap{display:flex;flex:1;max-width:1280px;margin:0 auto;width:100%}.main-area{flex:1;min-width:0;padding:32px 24px 48px}.sidebar{width:200px;flex-shrink:0;padding:32px 16px}
+header{text-align:center;margin-bottom:16px}header h1{font-size:28px;font-weight:700;letter-spacing:-.3px}header p{color:#555;font-size:15px;margin-top:4px}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-side{width:100%;min-height:300px;margin-bottom:16px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:28px 32px 32px}
+.upload-zone{border:2px dashed #d0d5dd;border-radius:10px;padding:40px 20px;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:20px}
+.upload-zone:hover,.upload-zone.drag{border-color:#5b5bd6;background:#f9f9ff}
+.upload-zone p{font-size:14px;color:#888;margin-top:8px}
+.upload-icon{font-size:32px;color:#5b5bd6}
+.canvas-wrap{position:relative;display:inline-block;cursor:crosshair;max-width:100%;margin-bottom:20px}
+#imgCanvas{max-width:100%;border-radius:8px;display:block}
+.magnifier{position:absolute;width:80px;height:80px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 12px rgba(0,0,0,.3);overflow:hidden;pointer-events:none;display:none}
+.color-result{display:flex;gap:16px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
+.color-swatch{width:80px;height:80px;border-radius:10px;border:2px solid #e0e0f7;flex-shrink:0}
+.color-values{flex:1}
+.color-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.color-label{font-size:12px;font-weight:700;color:#888;text-transform:uppercase;width:36px}
+.color-val{font-size:15px;font-family:monospace;color:#1a1a2e;flex:1}
+.copy-btn{padding:4px 10px;font-size:12px;font-weight:600;color:#5b5bd6;background:#f0f0ff;border:1.5px solid #5b5bd6;border-radius:5px;cursor:pointer;transition:all .2s}.copy-btn:hover{background:#5b5bd6;color:#fff}
+.history-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.hist-chip{width:36px;height:36px;border-radius:6px;border:2px solid #e0e0f7;cursor:pointer;transition:transform .15s}.hist-chip:hover{transform:scale(1.15)}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.seo-content,.faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.seo-content h2,.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p,.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}.faq-section h2{margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.related-tools{margin:28px auto;padding:20px 24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:14px;text-align:center}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.related-card{padding:14px 10px;border-radius:8px;border:1.5px solid #e8e9ed;text-decoration:none;text-align:center;transition:border-color .2s}.related-card:hover{border-color:#5b5bd6}.related-card .rc-name{font-size:13px;font-weight:700;color:#5b5bd6;margin-bottom:3px}.related-card .rc-desc{font-size:11px;color:#888}
+@media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}@media(max-width:600px){header h1{font-size:22px}.related-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"><link rel="canonical" href="https://wordcasefix.com/image-color-picker.html">
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<div class="page-wrap">
+<main class="main-area">
+<header>
+  <nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Image Color Picker</span></nav>
+  <h1>Image Color Picker</h1><p>Upload an image and click anywhere to pick the exact color at that pixel.</p>
+</header>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
+<div class="card">
+  <div class="upload-zone" id="uploadZone">
+    <div class="upload-icon">🖼️</div>
+    <strong style="font-size:15px;color:#333">Click to upload or drag & drop</strong>
+    <p>PNG, JPG, GIF, WebP supported</p>
+    <input type="file" id="fileInput" accept="image/*" style="display:none">
+  </div>
+  <div id="pickerArea" style="display:none">
+    <p style="font-size:13px;color:#888;margin-bottom:10px">Click anywhere on the image to pick a color</p>
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="imgCanvas"></canvas>
+      <div class="magnifier" id="magnifier"></div>
+    </div>
+    <div class="color-result">
+      <div class="color-swatch" id="colorSwatch"></div>
+      <div class="color-values" id="colorValues">
+        <div class="color-row"><span class="color-label">HEX</span><span class="color-val" id="hexVal">—</span><button class="copy-btn" data-target="hexVal">Copy</button></div>
+        <div class="color-row"><span class="color-label">RGB</span><span class="color-val" id="rgbVal">—</span><button class="copy-btn" data-target="rgbVal">Copy</button></div>
+        <div class="color-row"><span class="color-label">HSL</span><span class="color-val" id="hslVal">—</span><button class="copy-btn" data-target="hslVal">Copy</button></div>
+      </div>
+    </div>
+    <div style="font-size:12px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Recent colors</div>
+    <div class="history-row" id="historyRow"></div>
+    <button class="btn-primary" id="changeBtn" style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;padding:10px 28px;font-size:15px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:8px;cursor:pointer;">Change Image</button>
+  </div>
+</div>
+</main>
+<aside class="sidebar"><div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div><div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div></aside>
+</div>
+<div class="seo-content"><h2>About the Image Color Picker</h2><p>This free Image Color Picker lets you upload any image and click to extract the exact color value at any pixel. Get instant HEX, RGB, and HSL color codes. Perfect for designers who want to match colors from photos, screenshots, or brand assets without installing any software.</p></div>
+<section class="faq-section"><h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><h3>Does my image get uploaded to a server?</h3><p>No. The image is processed entirely in your browser using the HTML5 Canvas API. Nothing is uploaded or stored anywhere.</p></div>
+  <div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no signup required.</p></div>
+</section>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+  <a class="related-card" href="/color-contrast-checker.html"><div class="rc-name">Contrast Checker</div><div class="rc-desc">WCAG contrast</div></a>
+  <a class="related-card" href="/color-mixer.html"><div class="rc-name">Color Mixer</div><div class="rc-desc">Mix two colors</div></a>
+  <a class="related-card" href="/gradient-generator.html"><div class="rc-name">Gradient Generator</div><div class="rc-desc">CSS gradients</div></a>
+  <a class="related-card" href="/css-unit-converter.html"><div class="rc-name">CSS Units</div><div class="rc-desc">px/em/rem/vw</div></a>
+</div></div>
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>Image Color Picker &mdash; Free color extraction tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
+<script>
+(function(){
+  var canvas=document.getElementById('imgCanvas'),ctx=canvas.getContext('2d'),img=new Image();
+  var history=[];
+  function toHex(v){return ('0'+Math.round(v).toString(16)).slice(-2);}
+  function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;var max=Math.max(r,g,b),min=Math.min(r,g,b),h,s,l=(max+min)/2;if(max===min){h=s=0;}else{var d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=((g-b)/d+(g<b?6:0))/6;break;case g:h=((b-r)/d+2)/6;break;case b:h=((r-g)/d+4)/6;break;}}return [Math.round(h*360),Math.round(s*100),Math.round(l*100)];}
+  function pickColor(e){
+    var rect=canvas.getBoundingClientRect();
+    var scaleX=canvas.width/rect.width,scaleY=canvas.height/rect.height;
+    var x=Math.floor((e.clientX-rect.left)*scaleX),y=Math.floor((e.clientY-rect.top)*scaleY);
+    var px=ctx.getImageData(x,y,1,1).data;
+    var hex='#'+toHex(px[0])+toHex(px[1])+toHex(px[2]);
+    var hsl=rgbToHsl(px[0],px[1],px[2]);
+    document.getElementById('colorSwatch').style.background=hex;
+    document.getElementById('hexVal').textContent=hex;
+    document.getElementById('rgbVal').textContent='rgb('+px[0]+', '+px[1]+', '+px[2]+')';
+    document.getElementById('hslVal').textContent='hsl('+hsl[0]+', '+hsl[1]+'%, '+hsl[2]+'%)';
+    if(history.indexOf(hex)<0){history.unshift(hex);if(history.length>12)history.pop();}
+    var hr=document.getElementById('historyRow');
+    hr.innerHTML=history.map(function(c){return '<div class="hist-chip" style="background:'+c+'" title="'+c+'"></div>';}).join('');
+    hr.querySelectorAll('.hist-chip').forEach(function(el,i){el.addEventListener('click',function(){document.getElementById('colorSwatch').style.background=history[i];document.getElementById('hexVal').textContent=history[i];});});
+  }
+  function loadImage(file){
+    var reader=new FileReader();
+    reader.onload=function(e){img.src=e.target.result;};
+    reader.readAsDataURL(file);
+  }
+  img.onload=function(){
+    canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+    ctx.drawImage(img,0,0);
+    document.getElementById('uploadZone').style.display='none';
+    document.getElementById('pickerArea').style.display='';
+  };
+  document.getElementById('uploadZone').addEventListener('click',function(){document.getElementById('fileInput').click();});
+  document.getElementById('fileInput').addEventListener('change',function(e){if(e.target.files[0])loadImage(e.target.files[0]);});
+  document.getElementById('uploadZone').addEventListener('dragover',function(e){e.preventDefault();this.classList.add('drag');});
+  document.getElementById('uploadZone').addEventListener('dragleave',function(){this.classList.remove('drag');});
+  document.getElementById('uploadZone').addEventListener('drop',function(e){e.preventDefault();this.classList.remove('drag');if(e.dataTransfer.files[0])loadImage(e.dataTransfer.files[0]);});
+  canvas.addEventListener('click',pickColor);
+  document.getElementById('changeBtn').addEventListener('click',function(){document.getElementById('uploadZone').style.display='';document.getElementById('pickerArea').style.display='none';document.getElementById('fileInput').value='';});
+  document.querySelectorAll('.copy-btn').forEach(function(btn){btn.addEventListener('click',function(){var val=document.getElementById(btn.dataset.target).textContent;navigator.clipboard&&navigator.clipboard.writeText(val);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1500);});});
+  var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script></body></html>
