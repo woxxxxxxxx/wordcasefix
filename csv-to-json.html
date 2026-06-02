@@ -92,7 +92,6 @@ tr:hover td{background:#f9f9fd}
 <h1>CSV to JSON Converter</h1>
 <p>Paste CSV data (first row as headers) and convert it to a JSON array of objects instantly.</p>
 </header>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
 <div class="input-group"><label for="csvIn">CSV Input (first row = headers)</label><textarea id="csvIn" rows="8" placeholder="name,age,city
 Alice,30,New York
@@ -110,7 +109,8 @@ function parseCSV(text){
   while(i<len){
     var row=[],j=i;
     while(j<len&&text[j]!=='
-'&&text[j]!==''){
+'&&text[j]!=='
+'){
       var field='';
       if(text[j]==='"'){
         j++;
@@ -121,12 +121,14 @@ function parseCSV(text){
         }
       } else {
         while(j<len&&text[j]!==','&&text[j]!=='
-'&&text[j]!=='')field+=text[j++];
+'&&text[j]!=='
+')field+=text[j++];
       }
       row.push(field);
       if(j<len&&text[j]===',')j++;
     }
-    if(text[j]==='')j++;
+    if(text[j]==='
+')j++;
     if(text[j]==='
 ')j++;
     i=j;
@@ -159,12 +161,7 @@ document.getElementById('csvCopy').onclick=function(){
 document.getElementById('csvClr').onclick=function(){inp.value='';out.value='';err.style.display='none';};
 })();</script>
 </div>
-</main>
-<aside class="sidebar">
-<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
-<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
-</aside>
-</div>
+</main></div>
 <div class="seo-content"><h2>About CSV to JSON Converter</h2><p>The CSV to JSON Converter parses comma-separated values (CSV) files and converts them into a JSON array of objects. The first row is treated as the key names. Quoted fields containing commas or line breaks are handled correctly. The output is pretty-printed and ready to use in any JavaScript or API context.</p></div>
 <section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>What if my CSV uses semicolons?</h3><p>The current tool parses comma-delimited CSV. For semicolon-delimited data, replace all semicolons with commas before converting.</p></div><div class="faq-item"><h3>Are quoted fields with commas supported?</h3><p>Yes. Fields wrapped in double quotes that contain commas are treated as a single field.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free with no login required.</p></div></section>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/json-to-csv.html"><div class="rc-name">JSON to CSV</div><div class="rc-desc">Convert JSON to CSV</div></a><a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format JSON data</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Encode/decode Base64</div></a><a class="related-card" href="/url-encoder.html"><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode URLs</div></a></div></div>
