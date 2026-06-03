@@ -135,7 +135,7 @@ async function getOAuthToken(clientId, clientSecret) {
 
 // ── Add access binding via Admin API ──────────────────────────────────────
 async function addViewer(token, propId, propName) {
-  const url  = `https://analyticsadmin.googleapis.com/v1beta/properties/${propId}/accessBindings`;
+  const url  = `https://analyticsadmin.googleapis.com/v1alpha/properties/${propId}/accessBindings`;
   const body = JSON.stringify({ user: SA_EMAIL, roles: ['predefinedRoles/viewer'] });
   const res  = await request(url, {
     method: 'POST',
