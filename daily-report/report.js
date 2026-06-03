@@ -310,71 +310,247 @@ async function getBufferStatus(page) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// FORMAT REPORT
+// DATA ANALYSIS (Chinese, actionable insights)
+// ═══════════════════════════════════════════════════════════════════════════
+function generateAnalysis(sales, ga, buffer) {
+  const insights = [];
+
+  // ── Traffic ──
+  if (ga) {
+    const sites = Object.keys(GA4_PROPERTIES).map(name => ({
+      name,
+      users: parseInt(ga[name]?.users) || 0,
+      views: parseInt(ga[name]?.views) || 0,
+    }));
+    const totalUsers = sites.reduce((s, x) => s + x.users, 0);
+    const totalViews = sites.reduce((s, x) => s + x.views, 0);
+    const sorted     = [...sites].sort((a, b) => b.users - a.users);
+    const top        = sorted[0];
+    const low        = sorted[sorted.length - 1];
+
+    insights.push({ icon: '📊', text: `昨日总访客 <strong>${totalUsers}</strong> 人，共 <strong>${totalViews}</strong> 次页面浏览，人均浏览 ${totalUsers ? (totalViews / totalUsers).toFixed(1) : 0} 页。` });
+
+    if (top.users > 0) {
+      insights.push({ icon: '🏆', text: `流量冠军：<strong>${top.name}</strong>（${top.users} 用户）${top.users > 20 ? '，表现优秀，可加大该站点产品推广力度。' : '，持续关注增长趋势。'}` });
+    }
+    if (low.users === 0) {
+      insights.push({ icon: '⚠️', text: `<strong>${low.name}</strong> 昨日零流量，建议检查页面收录状态与 SEO 关键词布局。`, warn: true });
+    } else if (low.users < 5) {
+      insights.push({ icon: '📉', text: `<strong>${low.name}</strong> 流量偏低（${low.users} 用户），建议优化页面标题/描述或增加外链。`, warn: true });
+    }
+
+    // Engagement check
+    sites.forEach(s => {
+      const ratio = s.users > 0 ? s.views / s.users : 0;
+      if (s.users >= 5 && ratio < 1.2) {
+        insights.push({ icon: '💡', text: `<strong>${s.name}</strong> 人均浏览仅 ${ratio.toFixed(1)} 页，跳出率可能偏高，建议优化内链与落地页内容。` });
+      }
+    });
+  }
+
+  // ── Buffer ──
+  const scheduled = parseInt(buffer.scheduled) || 0;
+  const drafts    = parseInt(buffer.drafts)    || 0;
+  if (scheduled >= 8) {
+    insights.push({ icon: '✅', text: `Pinterest 队列充足（${scheduled} 条已排队），内容分发节奏良好。` });
+  } else if (scheduled < 5) {
+    insights.push({ icon: '⚠️', text: `Pinterest 队列仅剩 <strong>${scheduled}</strong> 条，建议本周内补充新帖。`, warn: true });
+  }
+  if (drafts > 0) {
+    insights.push({ icon: '📝', text: `有 <strong>${drafts}</strong> 条草稿待发布，可前往 Buffer 排队，填满免费计划的10条上限。` });
+  }
+
+  // ── Sales ──
+  if (sales.orders === null || sales.orders === 0) {
+    insights.push({ icon: '💰', text: '过去24小时暂无销售记录，建议在 Pinterest 帖文中强化产品链接曝光，并检查 Payhip 落地页转化率。' });
+  } else if (sales.orders > 0) {
+    insights.push({ icon: '🎉', text: `今日成交 <strong>${sales.orders}</strong> 单，收入 <strong>$${sales.revenue}</strong>，继续保持！` });
+  }
+
+  return insights;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FORMAT REPORT (HTML)
 // ═══════════════════════════════════════════════════════════════════════════
 function formatReport(sales, ga, buffer) {
-  const ts   = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
-  const date = new Date().toLocaleDateString('zh-CN', {
+  const now  = new Date();
+  const ts   = now.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+  const date = now.toLocaleDateString('zh-CN', {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
   });
 
-  // Sales
-  let salesBlock;
-  if (sales.orders === null) {
-    salesBlock = sales.note || 'Check manually: https://payhip.com/dashboard/purchases';
-  } else if (sales.error && !sales.note) {
-    salesBlock = `Error: ${sales.error}\nCheck manually: https://payhip.com/dashboard/purchases`;
-  } else if (sales.orders === 0) {
-    salesBlock = `Total Revenue: $0.00\nOrders: 0${sales.note ? '\n' + sales.note : ''}`;
+  const subject = `📊 网站日报 ${date}`;
+
+  // ── Sales block ──
+  let salesHtml;
+  if (sales.orders > 0) {
+    const rows = sales.products.map(p =>
+      `<tr><td style="padding:6px 12px;border-bottom:1px solid #f1f5f9;">${p.name}</td><td style="padding:6px 12px;border-bottom:1px solid #f1f5f9;text-align:center;">${p.qty}</td></tr>`
+    ).join('');
+    salesHtml = `
+      <div style="font-size:28px;font-weight:700;color:#16a34a;">$${sales.revenue}</div>
+      <div style="color:#64748b;font-size:13px;margin-bottom:12px;">共 ${sales.orders} 笔订单</div>
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:8px;overflow:hidden;">
+        <tr style="background:#f1f5f9;"><th style="padding:8px 12px;text-align:left;font-size:12px;color:#64748b;font-weight:600;">产品</th><th style="padding:8px 12px;font-size:12px;color:#64748b;font-weight:600;">数量</th></tr>
+        ${rows}
+      </table>`;
   } else {
-    const lines = sales.products.map(p => `  • ${p.name} × ${p.qty}`).join('\n');
-    salesBlock  = `Total Revenue: $${sales.revenue}\nOrders: ${sales.orders}\n${lines}`;
+    salesHtml = `
+      <div style="color:#94a3b8;font-size:14px;margin-bottom:10px;">暂无销售数据，请手动查看</div>
+      <a href="https://payhip.com/dashboard/purchases" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:8px 16px;border-radius:6px;font-size:13px;">🔗 打开 Payhip 后台 →</a>`;
   }
 
-  // GA4
-  let gaBlock;
+  // ── GA4 traffic table ──
+  let gaRows = '';
+  let gaNote = '';
   if (!ga) {
-    gaBlock = Object.keys(GA4_PROPERTIES).map(s => `  ${s.padEnd(18)} check manually`).join('\n') +
-      '\n\n  [To enable: place ga-credentials.json service account in daily-report/]';
+    gaNote = '<div style="color:#94a3b8;font-size:13px;">GA4 数据不可用，请检查服务账号权限。</div>';
   } else {
-    gaBlock = Object.entries(GA4_PROPERTIES).map(([s]) => {
-      const d = ga[s];
-      return `  ${s.padEnd(18)} ${d?.users ?? 'n/a'} users, ${d?.views ?? 'n/a'} views`;
-    }).join('\n');
+    const sitesData = Object.keys(GA4_PROPERTIES).map(name => ({
+      name,
+      users: parseInt(ga[name]?.users) || 0,
+      views: parseInt(ga[name]?.views) || 0,
+    }));
+    const maxUsers = Math.max(...sitesData.map(s => s.users), 1);
+
+    gaRows = sitesData.map((s, i) => {
+      const barW  = Math.round((s.users / maxUsers) * 100);
+      const bg    = i % 2 === 0 ? '#ffffff' : '#f8fafc';
+      const ratio = s.users > 0 ? (s.views / s.users).toFixed(1) : '0';
+      return `
+        <tr style="background:${bg};">
+          <td style="padding:10px 14px;font-size:13px;font-weight:500;color:#1e293b;">${s.name}</td>
+          <td style="padding:10px 14px;text-align:center;">
+            <span style="font-size:16px;font-weight:700;color:#2563eb;">${s.users}</span>
+          </td>
+          <td style="padding:10px 14px;text-align:center;">
+            <span style="font-size:15px;color:#475569;">${s.views}</span>
+          </td>
+          <td style="padding:10px 14px;text-align:center;">
+            <span style="font-size:13px;color:#64748b;">${ratio}</span>
+          </td>
+          <td style="padding:10px 20px 10px 0;">
+            <div style="background:#e2e8f0;border-radius:4px;height:6px;width:100%;min-width:80px;">
+              <div style="background:#2563eb;border-radius:4px;height:6px;width:${barW}%;"></div>
+            </div>
+          </td>
+        </tr>`;
+    }).join('');
   }
 
-  // Buffer
-  let bufferBlock;
-  if (buffer.error) {
-    bufferBlock = `Error: ${buffer.error}\nCheck: https://publish.buffer.com`;
-  } else {
-    bufferBlock = `Scheduled posts: ${buffer.scheduled}\nDrafts waiting:  ${buffer.drafts}`;
-  }
+  // ── Buffer block ──
+  const scheduled = buffer.scheduled ?? '?';
+  const drafts    = buffer.drafts    ?? '?';
+  const queuePct  = typeof scheduled === 'number' ? Math.round((scheduled / 10) * 100) : 0;
+  const bufferHtml = buffer.error
+    ? `<div style="color:#ef4444;font-size:13px;">获取失败：${buffer.error}</div><a href="https://publish.buffer.com" style="color:#3b82f6;font-size:13px;">前往 Buffer →</a>`
+    : `
+      <div style="display:flex;gap:24px;margin-bottom:14px;">
+        <div style="flex:1;background:#f8fafc;border-radius:8px;padding:14px 16px;text-align:center;">
+          <div style="font-size:26px;font-weight:700;color:#7c3aed;">${scheduled}</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">已排队</div>
+        </div>
+        <div style="flex:1;background:#f8fafc;border-radius:8px;padding:14px 16px;text-align:center;">
+          <div style="font-size:26px;font-weight:700;color:#f59e0b;">${drafts}</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">草稿</div>
+        </div>
+        <div style="flex:1;background:#f8fafc;border-radius:8px;padding:14px 16px;text-align:center;">
+          <div style="font-size:26px;font-weight:700;color:#10b981;">10</div>
+          <div style="font-size:12px;color:#64748b;margin-top:2px;">队列上限</div>
+        </div>
+      </div>
+      <div style="background:#e2e8f0;border-radius:6px;height:8px;overflow:hidden;">
+        <div style="background:linear-gradient(90deg,#7c3aed,#a78bfa);height:8px;width:${queuePct}%;border-radius:6px;"></div>
+      </div>
+      <div style="font-size:12px;color:#94a3b8;margin-top:6px;">队列使用率 ${queuePct}%</div>`;
 
-  const subject = `📊 Daily Report - ${date}`;
-  const body = `=== 💰 SALES (Last 24h) ===
-${salesBlock}
+  // ── Analysis insights ──
+  const insights   = generateAnalysis(sales, ga, buffer);
+  const insightRows = insights.map(ins => `
+    <tr>
+      <td style="padding:8px 0;vertical-align:top;width:28px;font-size:16px;">${ins.icon}</td>
+      <td style="padding:8px 0 8px 8px;font-size:13px;color:${ins.warn ? '#b45309' : '#334155'};line-height:1.6;">${ins.text}</td>
+    </tr>`).join('');
 
-=== 👥 TRAFFIC (Yesterday) ===
-${gaBlock}
+  // ── Section builder ──
+  const section = (color, icon, title, content) => `
+    <tr><td style="padding:0 0 16px 0;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+        <tr><td style="background:${color};padding:14px 20px;">
+          <span style="color:#fff;font-weight:700;font-size:14px;">${icon} ${title}</span>
+        </td></tr>
+        <tr><td style="padding:20px;">${content}</td></tr>
+      </table>
+    </td></tr>`;
 
-=== 📌 PINTEREST / BUFFER ===
-${bufferBlock}
+  const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f4f8;font-family:'PingFang SC','Microsoft YaHei',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4f8;padding:24px 0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
-=== ⏳ ADSENSE STATUS ===
-All 4 sites: Check manually → https://www.google.com/adsense
+  <!-- Header -->
+  <tr><td style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);border-radius:12px 12px 0 0;padding:28px 28px 24px;">
+    <div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">📊 网站日报</div>
+    <div style="color:#94a3b8;font-size:13px;margin-top:6px;">${date} &nbsp;·&nbsp; 4个站点 &nbsp;·&nbsp; 每日 08:00 自动生成</div>
+  </td></tr>
 
-=== 📝 NOTES ===
-Report generated: ${ts}
-Sites: WordCaseFix | VestCalc | NotionTemplaFix | ContractFixPro`;
+  <!-- Body -->
+  <tr><td style="background:#f0f4f8;padding:16px 0 0;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:0 0 8px;">
 
-  return { subject, body };
+    ${section('#16a34a', '💰', '销售数据（过去24小时）', salesHtml)}
+
+    ${section('#2563eb', '📈', '流量数据（昨日）',
+      ga ? `
+        <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:8px;overflow:hidden;border:1px solid #e2e8f0;">
+          <tr style="background:#f1f5f9;">
+            <th style="padding:9px 14px;text-align:left;font-size:12px;color:#64748b;font-weight:600;">站点</th>
+            <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">用户数</th>
+            <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">浏览量</th>
+            <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">人均页数</th>
+            <th style="padding:9px 20px 9px 0;font-size:12px;color:#64748b;font-weight:600;"></th>
+          </tr>
+          ${gaRows}
+        </table>` : gaNote
+    )}
+
+    ${section('#7c3aed', '📌', 'Pinterest / Buffer 队列', bufferHtml)}
+
+    ${section('#d97706', '💡', '数据分析与建议',
+      `<table width="100%" cellpadding="0" cellspacing="0">${insightRows}</table>`
+    )}
+
+    ${section('#475569', '⚙️', 'AdSense 审核状态',
+      `<div style="font-size:13px;color:#64748b;margin-bottom:10px;">4个站点审核中，请在 Google AdSense 后台查看最新状态。</div>
+       <a href="https://www.google.com/adsense" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:8px 16px;border-radius:6px;font-size:13px;">🔗 打开 AdSense →</a>`
+    )}
+
+  </table>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#1e293b;border-radius:0 0 12px 12px;padding:16px 28px;text-align:center;">
+    <div style="color:#64748b;font-size:12px;">报告生成时间：${ts}</div>
+    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro</div>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+
+  return { subject, html };
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
 // SEND EMAIL
 // ═══════════════════════════════════════════════════════════════════════════
-async function sendEmail(subject, body) {
+async function sendEmail(subject, html) {
   log(`Sending: "${subject}"`);
   const t = nodemailer.createTransport({
     host: SMTP.host, port: SMTP.port, secure: SMTP.secure,
@@ -383,13 +559,10 @@ async function sendEmail(subject, body) {
   });
   await t.verify();
   const info = await t.sendMail({
-    from: `"Daily Report" <${SMTP.user}>`,
-    to:   SMTP.to,
+    from:    `"网站日报" <${SMTP.user}>`,
+    to:      SMTP.to,
     subject,
-    text: body,
-    html: `<pre style="font-family:monospace;font-size:14px;line-height:1.7;white-space:pre-wrap">${
-      body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    }</pre>`,
+    html,
   });
   log(`  ✓ Sent: ${info.messageId}`);
 }
@@ -434,18 +607,18 @@ async function sendEmail(subject, body) {
   log(`  Buffer: ${buffer.scheduled} scheduled, ${buffer.drafts} drafts`);
   log(`  GA4:    ${ga ? 'fetched' : 'skipped'}`);
 
-  const { subject, body } = formatReport(sales, ga, buffer);
+  const { subject, html } = formatReport(sales, ga, buffer);
 
   log('\n── Report ───────────────────────────');
-  log(body);
+  log(`Subject: ${subject}`);
   log('─────────────────────────────────────\n');
 
   try {
-    await sendEmail(subject, body);
+    await sendEmail(subject, html);
   } catch (e) {
     log(`✗ Email failed: ${e.message}`);
-    const out = path.join(__dirname, `report-${new Date().toISOString().slice(0,10)}.txt`);
-    fs.writeFileSync(out, `${subject}\n\n${body}`);
+    const out = path.join(__dirname, `report-${new Date().toISOString().slice(0,10)}.html`);
+    fs.writeFileSync(out, html);
     log(`  Saved to: ${out}`);
   }
 
