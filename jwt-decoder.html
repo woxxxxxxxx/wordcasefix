@@ -92,7 +92,6 @@ tr:hover td{background:#f9f9fd}
 <h1>JWT Decoder</h1>
 <p>Paste a JWT token to decode and inspect the header, payload, and signature. Expiry date is highlighted.</p>
 </header>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:20px;"><span class="ad-label">Advertisement</span></div>
 <div class="card">
 <div class="input-group"><label for="jwtIn">JWT Token</label><textarea id="jwtIn" rows="4" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea></div>
 <div class="btn-row">
@@ -131,12 +130,7 @@ document.getElementById('jwtDec').onclick=function(){
 document.getElementById('jwtClr').onclick=function(){document.getElementById('jwtIn').value='';document.getElementById('jwtErr').style.display='none';document.getElementById('jwtResult').style.display='none';};
 })();</script>
 </div>
-</main>
-<aside class="sidebar">
-<div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
-<div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
-</aside>
-</div>
+</main></div>
 <div class="seo-content"><h2>About JWT Decoder</h2><p>The JWT Decoder splits a JSON Web Token into its three parts (header, payload, signature) and decodes the Base64url-encoded sections. The header shows the signing algorithm and token type. The payload reveals the claims (subject, expiry, issued-at, custom data). The expiry date is highlighted as valid or expired. Note: this tool does NOT verify the signature.</p></div>
 <section class="faq-section"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>Is the JWT signature verified?</h3><p>No. The tool decodes and displays the token contents but does not verify the HMAC or RSA signature. Never trust payload data without server-side verification.</p></div><div class="faq-item"><h3>What is Base64url encoding?</h3><p>Base64url is a URL-safe variant of Base64 that uses - and _ instead of + and /. JWT tokens use Base64url for header and payload encoding.</p></div><div class="faq-item"><h3>Is this tool free?</h3><p>Yes, completely free. Everything runs in your browser -- no token data is sent to any server.</p></div></section>
 <div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">Generate HMAC hashes</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Decode Base64 strings</div></a><a class="related-card" href="/url-encoder.html"><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode URL strings</div></a><a class="related-card" href="/cron-generator.html"><div class="rc-name">Cron Generator</div><div class="rc-desc">Build cron expressions</div></a></div></div>

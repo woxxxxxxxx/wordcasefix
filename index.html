@@ -201,8 +201,6 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
       <p>Free online tools for text, math, developer, and utility tasks -- no login, no ads tracking, fast and private.</p>
     </div>
 
-    <!-- Ad: Top (in-content) -->
-    <div class="ad-slot ad-top" style="height:70px;margin-bottom:28px;"><span class="ad-label">Advertisement</span></div>
 
     <div class="filter-bar">
       <div class="search-wrap">
@@ -230,15 +228,11 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
   </main>
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="ad-slot ad-side"><span class="ad-label">Advertisement</span></div>
-    <div class="ad-slot ad-side" style="min-height:250px;"><span class="ad-label">Advertisement</span></div>
-  </aside>
 </div>
 
 <section class="seo-content"><h2>About WordCaseFix -- Free Online Tools</h2><p>WordCaseFix is a collection of <strong>free online tools</strong> designed to help with everyday <strong>text tools</strong>, <strong>calculator</strong> tasks, <strong>developer tools</strong>, and utility needs -- all 100% free with no signup required. Use the <strong>word counter</strong> to check your writing, the <strong>case converter</strong> to switch between uppercase, lowercase, title case, and more, or the <strong>password generator</strong> to create strong, secure passwords instantly. Beyond text utilities, you'll find a BMI calculator, QR code generator, mortgage calculator, unit converter, and 40+ other useful online tools. Everything runs in your browser with no data stored on servers. Fast, private, and accessible from any device.</p></section>
 
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
@@ -474,7 +468,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     for(var i=start;i<end;i++){
       var t=filtered[i];
       html+='<div class="tool-card" data-category="'+t.cat+'"><div class="tool-icon">'+t.icon+'</div><div class="tool-name">'+t.name+'</div><div class="tool-desc">'+t.desc+'</div><a class="tool-btn" href="'+t.url+'">Open Tool<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>';
-      if((i-start+1)%8===0&&i<end-1)html+='<div class="ad-slot grid-ad"><span class="ad-label">Advertisement</span></div>'
+      
     }
     if(filtered.length===0)html='<div class="no-results">No tools found matching "'+searchInput.value+'".</div>';
     grid.innerHTML=html;
@@ -499,7 +493,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 })();
 </script>
 <script>
-var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();
+var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();if(bttBtn)bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
 </script>
 </body>
 </html>
