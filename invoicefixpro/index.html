@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- GA_PLACEHOLDER -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>InvoiceFixPro - Free Invoice &amp; Billing Tools for Freelancers</title>
+<meta name="description" content="Free online invoice generator, receipt maker, quote builder and billing tools for freelancers and small businesses. 100+ professional templates, no signup required.">
+<link rel="canonical" href="https://invoicefixpro.com/">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#0891b2;--primary-dark:#0e7490;--primary-light:#ecfeff;--primary-dim:rgba(8,145,178,.08);--bg:#f8fafc;--bg2:#fff;--text:#1e293b;--text2:#475569;--text3:#94a3b8;--border:#e2e8f0;--radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+header{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:32px}
+.logo{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.4px}
+.logo span{color:var(--primary)}
+nav{display:flex;align-items:center;gap:4px;flex:1}
+nav a{padding:6px 14px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text2);transition:all .15s}
+nav a:hover{color:var(--primary);background:var(--primary-dim)}
+.nav-cta{margin-left:auto;padding:8px 18px;background:var(--primary);color:#fff!important;border-radius:var(--radius-sm);font-size:14px;font-weight:600;transition:background .15s}
+.nav-cta:hover{background:var(--primary-dark)!important}
+.ad-slot{width:100%;background:#f1f5f9;border:1px dashed #cbd5e1;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:12px;letter-spacing:.5px;text-transform:uppercase;position:relative}
+.ad-top{height:90px;margin:0}
+.adsense-placeholder{width:100%;min-height:90px}
+.hero{background:linear-gradient(135deg,#0c4a6e,#0891b2 60%,#06b6d4);color:#fff;padding:60px 20px;text-align:center}
+.hero h1{font-size:2.4rem;font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+.hero p{font-size:1.05rem;opacity:.88;max-width:560px;margin:0 auto 28px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{padding:12px 28px;background:#fff;color:var(--primary);border-radius:var(--radius-sm);font-size:15px;font-weight:700;transition:all .15s}
+.btn-white:hover{background:#ecfeff}
+.btn-outline{padding:12px 28px;border:2px solid rgba(255,255,255,.6);color:#fff;border-radius:var(--radius-sm);font-size:15px;font-weight:600;transition:all .15s}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+main{flex:1;max-width:1100px;margin:0 auto;padding:40px 20px 60px;width:100%}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:20px}
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.cat-tab{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;color:var(--text2);background:var(--bg2);border:1.5px solid var(--border);cursor:pointer;transition:all .15s}
+.cat-tab.active,.cat-tab:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:40px}
+.tool-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:8px;transition:all .2s;cursor:pointer}
+.tool-card:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(8,145,178,.1);transform:translateY(-2px)}
+.tool-icon{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.tool-icon svg{width:20px;height:20px;stroke:var(--primary);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tool-name{font-size:14px;font-weight:700;color:var(--text)}
+.tool-desc{font-size:12px;color:var(--text2);line-height:1.5}
+.tool-tag{align-self:flex-start;padding:3px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.about{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:36px;margin-bottom:40px;box-shadow:var(--shadow)}
+.about h2{font-size:1.2rem;font-weight:700;margin-bottom:12px}
+.about p{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:10px}
+.about p:last-child{margin-bottom:0}
+footer{background:var(--text);color:#94a3b8;padding:32px 20px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.footer-logo{font-size:18px;font-weight:800;color:#fff}
+.footer-logo span{color:var(--primary)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{color:#94a3b8;font-size:13px;transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:13px;width:100%}
+#btt{position:fixed;bottom:28px;right:28px;width:42px;height:42px;background:var(--primary);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;display:none;z-index:999;box-shadow:0 2px 8px rgba(8,145,178,.35);transition:background .15s}
+#btt:hover{background:var(--primary-dark)}
+@media(max-width:640px){
+  .hero h1{font-size:1.8rem}
+  .header-inner{gap:12px}
+  nav a:not(.nav-cta){display:none}
+  .tool-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638874323475457" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">Invoice<span>Fix</span>Pro</a>
+    <nav>
+      <a href="/tools/invoice-generator.html">Invoices</a>
+      <a href="/tools/quote-generator.html">Quotes</a>
+      <a href="/tools/receipt-generator.html">Receipts</a>
+      <a href="/tools/invoice-calculator.html">Calculators</a>
+      <a href="/about.html" class="nav-cta">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="ad-slot ad-top">
+  <div class="adsense-placeholder" data-pub="ca-pub-1638874323475457"></div>
+</div>
+
+<div class="hero">
+  <h1>Free Invoice &amp; Billing Tools for Freelancers</h1>
+  <p>Create professional invoices, quotes, receipts and more in seconds. 100+ free tools, no signup required.</p>
+  <div class="hero-btns">
+    <a href="/tools/invoice-generator.html" class="btn-white">Create Invoice Free</a>
+    <a href="/tools/quote-generator.html" class="btn-outline">Build a Quote</a>
+  </div>
+</div>
+
+<main>
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat('all')">All Tools</button>
+    <button class="cat-tab" onclick="filterCat('invoice')">Invoices</button>
+    <button class="cat-tab" onclick="filterCat('quote')">Quotes &amp; Estimates</button>
+    <button class="cat-tab" onclick="filterCat('receipt')">Receipts</button>
+    <button class="cat-tab" onclick="filterCat('calculator')">Calculators</button>
+    <button class="cat-tab" onclick="filterCat('payment')">Payment</button>
+    <button class="cat-tab" onclick="filterCat('industry')">By Industry</button>
+  </div>
+
+  <div class="tool-grid" id="toolGrid">
+    <!-- Invoice Generation -->
+    <a href="/tools/invoice-generator.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+      <div class="tool-name">Invoice Generator</div>
+      <div class="tool-desc">Create professional invoices instantly</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/pro-forma-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div class="tool-name">Pro Forma Invoice</div>
+      <div class="tool-desc">Preliminary invoice for goods/services</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/commercial-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+      <div class="tool-name">Commercial Invoice</div>
+      <div class="tool-desc">International trade invoice template</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/recurring-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+      <div class="tool-name">Recurring Invoice</div>
+      <div class="tool-desc">Set up repeating billing schedules</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/freelance-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <div class="tool-name">Freelance Invoice</div>
+      <div class="tool-desc">Tailored invoice for freelancers</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/tax-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="tool-name">Tax Invoice</div>
+      <div class="tool-desc">GST/VAT compliant tax invoice</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/consulting-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="tool-name">Consulting Invoice</div>
+      <div class="tool-desc">Professional consulting billing</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/contractor-invoice.html" class="tool-card" data-cat="invoice">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div class="tool-name">Contractor Invoice</div>
+      <div class="tool-desc">Invoice template for contractors</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <!-- Quotes -->
+    <a href="/tools/quote-generator.html" class="tool-card" data-cat="quote">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="tool-name">Quote Generator</div>
+      <div class="tool-desc">Build professional price quotes fast</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/estimate-generator.html" class="tool-card" data-cat="quote">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+      <div class="tool-name">Estimate Generator</div>
+      <div class="tool-desc">Create detailed project estimates</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/service-quote.html" class="tool-card" data-cat="quote">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="tool-name">Service Quote</div>
+      <div class="tool-desc">Quote template for service businesses</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/construction-estimate.html" class="tool-card" data-cat="quote">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <div class="tool-name">Construction Estimate</div>
+      <div class="tool-desc">Detailed construction cost estimate</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <!-- Receipts -->
+    <a href="/tools/receipt-generator.html" class="tool-card" data-cat="receipt">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M5 2h14a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1h1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5h1a1 1 0 0 0 1-1V3a1 1 0 0 1 1-1z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+      <div class="tool-name">Receipt Generator</div>
+      <div class="tool-desc">Generate payment receipts instantly</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/cash-receipt.html" class="tool-card" data-cat="receipt">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+      <div class="tool-name">Cash Receipt</div>
+      <div class="tool-desc">Cash payment receipt template</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/rent-receipt.html" class="tool-card" data-cat="receipt">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="tool-name">Rent Receipt</div>
+      <div class="tool-desc">Landlord rent payment receipt</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/donation-receipt.html" class="tool-card" data-cat="receipt">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="tool-name">Donation Receipt</div>
+      <div class="tool-desc">Charitable donation receipt template</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <!-- Calculators -->
+    <a href="/tools/invoice-calculator.html" class="tool-card" data-cat="calculator">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/></svg></div>
+      <div class="tool-name">Invoice Calculator</div>
+      <div class="tool-desc">Calculate invoice totals with tax</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/tax-calculator.html" class="tool-card" data-cat="calculator">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="tool-name">Tax Calculator</div>
+      <div class="tool-desc">Calculate sales tax and VAT amounts</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/late-fee-calculator.html" class="tool-card" data-cat="calculator">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="tool-name">Late Fee Calculator</div>
+      <div class="tool-desc">Calculate overdue payment penalties</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/hourly-rate-calculator.html" class="tool-card" data-cat="calculator">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="tool-name">Hourly Rate Calculator</div>
+      <div class="tool-desc">Find your ideal freelance hourly rate</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <!-- Payment -->
+    <a href="/tools/overdue-invoice-notice.html" class="tool-card" data-cat="payment">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div class="tool-name">Overdue Invoice Notice</div>
+      <div class="tool-desc">Remind clients of overdue invoices</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/payment-reminder.html" class="tool-card" data-cat="payment">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+      <div class="tool-name">Payment Reminder</div>
+      <div class="tool-desc">Professional payment reminder letter</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/purchase-order.html" class="tool-card" data-cat="payment">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+      <div class="tool-name">Purchase Order</div>
+      <div class="tool-desc">Generate purchase orders quickly</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/credit-note.html" class="tool-card" data-cat="payment">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <div class="tool-name">Credit Note</div>
+      <div class="tool-desc">Issue credit notes for refunds</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <!-- Industry -->
+    <a href="/tools/photography-invoice.html" class="tool-card" data-cat="industry">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+      <div class="tool-name">Photography Invoice</div>
+      <div class="tool-desc">Invoice template for photographers</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/web-design-invoice.html" class="tool-card" data-cat="industry">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+      <div class="tool-name">Web Design Invoice</div>
+      <div class="tool-desc">Invoice for web design projects</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/IT-services-invoice.html" class="tool-card" data-cat="industry">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="tool-name">IT Services Invoice</div>
+      <div class="tool-desc">Invoice for IT support and tech services</div>
+      <span class="tool-tag">Free</span>
+    </a>
+    <a href="/tools/small-business-invoice.html" class="tool-card" data-cat="industry">
+      <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="tool-name">Small Business Invoice</div>
+      <div class="tool-desc">Simple invoice for small businesses</div>
+      <span class="tool-tag">Free</span>
+    </a>
+  </div>
+
+  <div class="about">
+    <h2>Free Invoice Tools for Freelancers &amp; Small Businesses</h2>
+    <p>InvoiceFixPro provides 100+ free online billing tools designed for independent professionals and small business owners. Whether you need to generate a professional invoice, create a price quote, issue a receipt, or calculate taxes — we have the right tool for you.</p>
+    <p>All tools are completely free, work instantly in your browser, and require no account or signup. Generate, customize, and download professional documents in seconds. Our templates are used by photographers, web designers, consultants, contractors, and thousands of freelancers worldwide.</p>
+    <p>From simple invoices to complex multi-line billing statements, payment reminders, purchase orders, and industry-specific templates — InvoiceFixPro covers every billing scenario your business might face.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Invoice<span>Fix</span>Pro</div>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="mailto:contact@invoicefixpro.com">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 InvoiceFixPro. All rights reserved. Free online invoice and billing tools.</div>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('btt').style.display=window.scrollY>400?'flex':'none'});
+function filterCat(cat){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.tool-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';
+  });
+}
+</script>
+</body>
+</html>
