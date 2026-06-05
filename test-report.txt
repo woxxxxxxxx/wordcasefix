@@ -1,0 +1,272 @@
+========================================================================
+  WordCaseFix HTML Tool Files - Final Test Report
+  Date: 2026-05-26 00:42:43
+========================================================================
+
+  Total files: 48
+
+  RESULTS SUMMARY
+  Passed:          47
+  Warnings:        0
+  Issues:          1
+  Auto-fixes:      0
+
+────────────────────────────────────────────────────────────────────────
+
+[PASS  ] about.html
+  Title:    About - WordCaseFix
+  Inputs:   NO        Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] age-calculator.html
+  Title:    Age Calculator - Free Online Age Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] base64-encoder.html
+  Title:    Base64 Encoder Decoder - Free Online Base64 Converter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] binary-converter.html
+  Title:    Binary Converter - Free Online Binary Hex Decimal Converter | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+[PASS  ] bmi-calculator.html
+  Title:    BMI Calculator - Free Online BMI Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] calculator.html
+  Title:    Online Calculator - Free Online Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] calorie-calculator.html
+  Title:    Calorie Calculator - Free Online Daily Calorie Needs Calculator | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] case-converter.html
+  Title:    Case Converter - Free Online Text Case Converter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] color-picker.html
+  Title:    Color Picker - Free Online Color Picker Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] countdown-timer.html
+  Title:    Countdown Timer - Free Online Countdown Timer Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] css-minifier.html
+  Title:    CSS Minifier - Free Online CSS Minifier & Compressor Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] currency-converter.html
+  Title:    Currency Converter - Free Online Currency Exchange Rate Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] date-calculator.html
+  Title:    Date Duration Calculator - Free Online Date Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] emoji-picker.html
+  Title:    Emoji Copy Paste - Free Online Emoji Picker Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+[PASS  ] epoch-converter.html
+  Title:    Unix Timestamp Converter - Free Online Epoch Converter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] fancy-text.html
+  Title:    Fancy Text Generator - Free Online Fancy Text Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] gpa-calculator.html
+  Title:    GPA Calculator - Free Online GPA Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] grade-calculator.html
+  Title:    Grade Calculator - Free Online Grade Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] hash-generator.html
+  Title:    Hash Generator - Free Online MD5 SHA Hash Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] html-encoder.html
+  Title:    HTML Encoder/Decoder - Free Online HTML Entity Encoder Decoder | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] http-status-codes.html
+  Title:    HTTP Status Codes - Free Online HTTP Status Code Lookup Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] index.html
+  Title:    WordCaseFix — Free Online Text & Utility Tools
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] invoice-generator.html
+  Title:    Invoice Generator - Free Online Invoice Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+[PASS  ] json-formatter.html
+  Title:    JSON Formatter - Free Online JSON Formatter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] loan-calculator.html
+  Title:    Loan Calculator - Free Online Loan Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+[PASS  ] lorem-ipsum.html
+  Title:    Lorem Ipsum Generator - Free Online Placeholder Text Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] markdown-editor.html
+  Title:    Markdown Editor - Free Online Markdown Editor with Live Preview | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] morse-translator.html
+  Title:    Morse Code Translator - Free Online Morse Code Converter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] number-generator.html
+  Title:    Random Number Generator - Free Online Number Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] number-to-words.html
+  Title:    Number to Words Converter - Free Online Number to Words Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] password-generator.html
+  Title:    Password Generator - Free Online Secure Password Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] percentage-calculator.html
+  Title:    Percentage Calculator - Free Online Percentage Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] privacy-policy.html
+  Title:    Privacy Policy - WordCaseFix
+  Inputs:   NO        Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] qr-generator.html
+  Title:    QR Code Generator - Free Online QR Code Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] random-picker.html
+  Title:    Random Name Picker - Free Online Random Picker Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] regex-tester.html
+  Title:    Regex Tester - Free Online Regular Expression Tester Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] roman-numeral-converter.html
+  Title:    Roman Numeral Converter - Free Online Roman Numeral Converter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[ISSUES] slug-converter.html
+  Title:    Slug Converter - Free Online URL Slug Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ HTML: Tag <main> out of order, inner unclosed: <div>
+  ⚠ HTML: Mismatched </script> (no matching open tag)
+  ❌ HTML: Tag <main> out of order, inner unclosed: <div>
+  ❌ HTML: Mismatched </script> (no matching open tag)
+
+[PASS  ] stopwatch.html
+  Title:    Stopwatch - Free Online Stopwatch Timer Tool | WordCaseFix
+  Inputs:   NO        Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no input fields
+
+[PASS  ] text-diff.html
+  Title:    Text Diff Checker - Free Online Diff Checker Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] text-repeater.html
+  Title:    Text Repeater - Free Online Text Repeater Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] text-to-speech.html
+  Title:    Text to Speech - Free Online Text to Speech Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+[PASS  ] tip-calculator.html
+  Title:    Tip Calculator - Free Online Tip Calculator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] typing-test.html
+  Title:    Typing Speed Test - Free Online Typing Test Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] unit-converter.html
+  Title:    Unit Converter - Free Online Unit Converter Tool | WordCaseFix
+  Inputs:   NO        Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no input fields
+  ⚠ Tool page has no visible result area
+
+[PASS  ] uuid-generator.html
+  Title:    UUID Generator - Free Online UUID Generator Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: YES
+  Viewport: YES       WordCaseFix in title: YES
+
+[PASS  ] word-counter.html
+  Title:    Word Counter - Free Online Word Counter Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+[PASS  ] word-frequency.html
+  Title:    Word Frequency Counter - Free Online Word Frequency Analyzer Tool | WordCaseFix
+  Inputs:   YES       Buttons: YES       Events: addEventListener()    Result: NO
+  Viewport: YES       WordCaseFix in title: YES
+  ⚠ Tool page has no visible result area
+
+────────────────────────────────────────────────────────────────────────
+  END OF REPORT
+────────────────────────────────────────────────────────────────────────
