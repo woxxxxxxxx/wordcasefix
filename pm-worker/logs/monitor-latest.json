@@ -1,64 +1,68 @@
 {
-  "timestamp": "2026-06-05T08:00:00.000Z",
+  "timestamp": "2026-06-05T08:30:00.000Z",
   "projects": {
     "wordcasefix": {
       "domain": "wordcasefix.com",
-      "homepage": "error",
-      "homepage_error": "Unable to verify domain safety (network restrictions)",
-      "sitemap": "error",
-      "sitemap_error": "Unable to verify domain safety (network restrictions)",
-      "ads_txt": "error",
-      "ads_txt_error": "Unable to verify domain safety (network restrictions)",
+      "homepage": "ok",
+      "sitemap": "ok",
+      "ads_txt": "ok",
       "adsense_status": "pending",
-      "status": "failure"
+      "status": "ok",
+      "changes": ["recovered_from_network_error"]
     },
     "vestcalc": {
       "domain": "vestcalc.com",
       "homepage": "error",
-      "homepage_error": "Socket connection closed unexpectedly",
+      "homepage_error": "ERR_TLS_CERT_ALTNAME_INVALID",
       "sitemap": "error",
-      "sitemap_error": "Unable to verify domain safety (network restrictions)",
+      "sitemap_error": "ERR_TLS_CERT_ALTNAME_INVALID",
       "ads_txt": "error",
-      "ads_txt_error": "TLS certificate error (ERR_TLS_CERT_ALTNAME_INVALID)",
+      "ads_txt_error": "ERR_TLS_CERT_ALTNAME_INVALID",
       "adsense_status": "pending",
-      "status": "failure"
+      "status": "failure",
+      "changes": []
     },
     "notiontemplafix": {
       "domain": "notiontemplafix.com",
       "homepage": "ok",
-      "sitemap": "error",
-      "sitemap_error": "Socket connection closed unexpectedly",
+      "sitemap": "ok",
       "ads_txt": "skip",
       "adsense_status": "skip",
-      "status": "partial_failure"
+      "status": "ok",
+      "changes": ["sitemap_recovered"]
     },
     "contractfixpro": {
       "domain": "contractfixpro.com",
-      "homepage": "error",
-      "homepage_error": "Unable to verify domain safety (network restrictions)",
-      "sitemap": "error",
-      "sitemap_error": "Socket connection closed unexpectedly",
-      "ads_txt": "error",
-      "ads_txt_error": "Unable to verify domain safety (network restrictions)",
+      "homepage": "ok",
+      "sitemap": "ok",
+      "ads_txt": "ok",
       "adsense_status": "pending",
-      "status": "failure"
+      "status": "ok",
+      "changes": ["recovered_from_network_error"]
     },
     "billingfixpro": {
       "domain": "billingfixpro.com",
-      "homepage": "error",
-      "homepage_error": "Unable to verify domain safety (network restrictions)",
+      "homepage": "ok",
       "sitemap": "ok",
-      "ads_txt": "error",
-      "ads_txt_error": "Socket connection closed unexpectedly",
+      "ads_txt": "ok",
       "adsense_status": "pending",
-      "status": "partial_failure"
+      "status": "ok",
+      "changes": ["recovered_from_network_error"]
     }
   },
   "summary": {
     "total": 5,
-    "ok": 0,
-    "partial_failure": 2,
-    "failure": 3
+    "ok": 4,
+    "partial_failure": 0,
+    "failure": 1
   },
-  "notes": "网络限制导致大部分域名无法从 claude.ai 验证，这是已知的环境限制，不代表实际网站不可访问"
+  "alerts": [
+    {
+      "severity": "critical",
+      "project": "vestcalc",
+      "type": "site_down",
+      "message": "vestcalc.com 完全无法访问 - TLS证书错误（ERR_TLS_CERT_ALTNAME_INVALID）",
+      "timestamp": "2026-06-05T08:30:00.000Z"
+    }
+  ]
 }
