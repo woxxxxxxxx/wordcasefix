@@ -1,0 +1,40 @@
+{
+  "alerts": [
+    {
+      "timestamp": "2026-06-05T00:00:00.000Z",
+      "project": "wordcasefix",
+      "domain": "wordcasefix.com",
+      "severity": "high",
+      "type": "homepage_unreachable",
+      "message": "网站首页无法访问",
+      "details": "Socket connection closed unexpectedly"
+    },
+    {
+      "timestamp": "2026-06-05T00:00:00.000Z",
+      "project": "vestcalc",
+      "domain": "vestcalc.com",
+      "severity": "critical",
+      "type": "site_unreachable",
+      "message": "网站完全无法访问",
+      "details": "首页、sitemap均无法访问，ads.txt存在TLS证书错误"
+    },
+    {
+      "timestamp": "2026-06-05T00:00:00.000Z",
+      "project": "contractfixpro",
+      "domain": "contractfixpro.com",
+      "severity": "high",
+      "type": "partial_unreachable",
+      "message": "网站首页和sitemap无法访问",
+      "details": "Unable to verify domain safety (network restrictions)"
+    },
+    {
+      "timestamp": "2026-06-05T00:00:00.000Z",
+      "project": "billingfixpro",
+      "domain": "billingfixpro.com",
+      "severity": "medium",
+      "type": "ads_txt_missing",
+      "message": "ads.txt文件无法访问",
+      "details": "Socket connection closed unexpectedly"
+    }
+  ]
+}

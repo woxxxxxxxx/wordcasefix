@@ -1,0 +1,6 @@
+PM Worker Cron Daemon 已启动
+  每天 08:30  → daily
+  每4小时     → monitor
+  每周一09:00 → qa
+按 Ctrl+C 停止
+
