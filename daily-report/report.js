@@ -35,6 +35,7 @@ const GA4_PROPERTIES = {
   'VestCalc':        '539700100',
   'NotionTemplaFix': '539119398',
   'ContractFixPro':  '539948742',
+  'PayrollFixPro':   '491490803',  // payrollfixpro.com (G-PLWJ8VEN8D) — verify numeric ID in GA4 admin
 };
 
 const SMTP = {
@@ -495,7 +496,7 @@ function formatReport(sales, ga, buffer) {
   <!-- Header -->
   <tr><td style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);border-radius:12px 12px 0 0;padding:28px 28px 24px;">
     <div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">📊 网站日报</div>
-    <div style="color:#94a3b8;font-size:13px;margin-top:6px;">${date} &nbsp;·&nbsp; 4个站点 &nbsp;·&nbsp; 每日 08:00 自动生成</div>
+    <div style="color:#94a3b8;font-size:13px;margin-top:6px;">${date} &nbsp;·&nbsp; 5个站点 &nbsp;·&nbsp; 每日 08:00 自动生成</div>
   </td></tr>
 
   <!-- Body -->
@@ -525,7 +526,7 @@ function formatReport(sales, ga, buffer) {
     )}
 
     ${section('#475569', '⚙️', 'AdSense 审核状态',
-      `<div style="font-size:13px;color:#64748b;margin-bottom:10px;">4个站点审核中，请在 Google AdSense 后台查看最新状态。</div>
+      `<div style="font-size:13px;color:#64748b;margin-bottom:10px;">5个站点审核中，请在 Google AdSense 后台查看最新状态。</div>
        <a href="https://www.google.com/adsense" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:8px 16px;border-radius:6px;font-size:13px;">🔗 打开 AdSense →</a>`
     )}
 
@@ -535,7 +536,7 @@ function formatReport(sales, ga, buffer) {
   <!-- Footer -->
   <tr><td style="background:#1e293b;border-radius:0 0 12px 12px;padding:16px 28px;text-align:center;">
     <div style="color:#64748b;font-size:12px;">报告生成时间：${ts}</div>
-    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro</div>
+    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro · PayrollFixPro</div>
   </td></tr>
 
 </table>

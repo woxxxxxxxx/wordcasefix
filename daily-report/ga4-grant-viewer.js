@@ -23,6 +23,7 @@ const PROPERTIES = {
   VestCalc:        '539700100',
   NotionTemplaFix: '539119398',
   ContractFixPro:  '539948742',
+  PayrollFixPro:   '491490803',  // payrollfixpro.com — verify numeric ID in GA4 Admin > Property Settings
 };
 
 function log(msg) { console.log(`[${new Date().toTimeString().slice(0,8)}] ${msg}`); }
