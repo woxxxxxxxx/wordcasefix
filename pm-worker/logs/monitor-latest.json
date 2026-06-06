@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-06T09:12:10.491Z",
+  "timestamp": "2026-06-06T10:06:37.661Z",
   "projects": {
     "wordcasefix": [
       {
@@ -122,17 +122,6 @@
       "issues": [],
       "detail": "Pages 正常 (HTTP 200)"
     },
-    "notiontemplafix": {
-      "repo": "woxxxxxxxx/notiontemplafix",
-      "projectId": "notiontemplafix",
-      "expectedDomain": "notiontemplafix.com",
-      "enabled": true,
-      "domainOk": true,
-      "httpsOk": true,
-      "buildOk": true,
-      "issues": [],
-      "detail": "Pages 正常 (HTTP 200)"
-    },
     "contractfixpro": {
       "repo": "woxxxxxxxx/contractfixpro",
       "projectId": "contractfixpro",
@@ -165,6 +154,63 @@
       "buildOk": true,
       "issues": [],
       "detail": "Pages 正常 (HTTP 200)"
+    }
+  },
+  "branch_conflicts": {
+    "wordcasefix": {
+      "conflict": true,
+      "branches": [
+        "main",
+        "master"
+      ]
+    },
+    "vestcalc": {
+      "conflict": false,
+      "branch": "master"
+    },
+    "contractfixpro": {
+      "conflict": false,
+      "branch": "master"
+    },
+    "billingfixpro": {
+      "conflict": false,
+      "branch": "master"
+    },
+    "payrollfixpro": {
+      "conflict": false,
+      "branch": "master"
+    }
+  },
+  "search_console": {
+    "wordcasefix": {
+      "ok": false,
+      "submitted": false,
+      "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+    },
+    "vestcalc": {
+      "ok": false,
+      "submitted": false,
+      "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+    },
+    "notiontemplafix": {
+      "ok": false,
+      "submitted": false,
+      "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+    },
+    "contractfixpro": {
+      "ok": false,
+      "submitted": false,
+      "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+    },
+    "billingfixpro": {
+      "ok": false,
+      "submitted": false,
+      "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+    },
+    "payrollfixpro": {
+      "ok": false,
+      "submitted": false,
+      "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
     }
   }
 }

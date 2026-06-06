@@ -1,0 +1,163 @@
+{
+  "timestamp": "2026-06-06T09:40:08.008Z",
+  "output": "⬜ wordcasefix.com: 跳过 (tools/ 目录不存在)\n⬜ vestcalc.com: 跳过 (tools/ 目录不存在)\n⬜ notiontemplafix.com: 跳过 (tools/ 目录不存在)\n⬜ contractfixpro.com: 跳过 (tools/ 目录不存在)\n⚠️ billingfixpro.com: 100 个工具，20 个换皮文件（20%）\n    最大重复组: [5c930e40…] × 10 文件\n⚠️ payrollfixpro.com: 100 个工具，27 个换皮文件（27%）\n    最大重复组: [6dad5bce…] × 9 文件",
+  "quality": {
+    "wordcasefix": {
+      "id": "wordcasefix",
+      "domain": "wordcasefix.com",
+      "skipped": true,
+      "reason": "tools/ 目录不存在",
+      "status": "unknown",
+      "totalFiles": 0,
+      "affectedFiles": 0,
+      "ratio": 0,
+      "groups": []
+    },
+    "vestcalc": {
+      "id": "vestcalc",
+      "domain": "vestcalc.com",
+      "skipped": true,
+      "reason": "tools/ 目录不存在",
+      "status": "unknown",
+      "totalFiles": 0,
+      "affectedFiles": 0,
+      "ratio": 0,
+      "groups": []
+    },
+    "notiontemplafix": {
+      "id": "notiontemplafix",
+      "domain": "notiontemplafix.com",
+      "skipped": true,
+      "reason": "tools/ 目录不存在",
+      "status": "unknown",
+      "totalFiles": 0,
+      "affectedFiles": 0,
+      "ratio": 0,
+      "groups": []
+    },
+    "contractfixpro": {
+      "id": "contractfixpro",
+      "domain": "contractfixpro.com",
+      "skipped": true,
+      "reason": "tools/ 目录不存在",
+      "status": "unknown",
+      "totalFiles": 0,
+      "affectedFiles": 0,
+      "ratio": 0,
+      "groups": []
+    },
+    "billingfixpro": {
+      "id": "billingfixpro",
+      "domain": "billingfixpro.com",
+      "totalFiles": 100,
+      "affectedFiles": 20,
+      "ratio": 0.2,
+      "ratioPercent": 20,
+      "status": "yellow",
+      "groups": [
+        {
+          "hash": "5c930e40",
+          "count": 10,
+          "files": [
+            "cleaning-estimate.html",
+            "construction-estimate.html",
+            "estimate-generator.html",
+            "job-estimate.html",
+            "price-quote.html",
+            "project-quote.html",
+            "quote-generator.html",
+            "repair-estimate.html",
+            "sales-quote.html",
+            "service-quote.html"
+          ]
+        },
+        {
+          "hash": "0e8397e9",
+          "count": 6,
+          "files": [
+            "invoice-checklist.html",
+            "invoice-number-generator.html",
+            "invoice-template-excel.html",
+            "invoice-template-word.html",
+            "invoice-to-pdf.html",
+            "invoice-tracker.html"
+          ]
+        },
+        {
+          "hash": "09de709b",
+          "count": 4,
+          "files": [
+            "gst-calculator.html",
+            "sales-tax-calculator.html",
+            "tax-calculator.html",
+            "vat-calculator.html"
+          ]
+        }
+      ],
+      "detail": "100 个工具，20 个换皮文件（20%）"
+    },
+    "payrollfixpro": {
+      "id": "payrollfixpro",
+      "domain": "payrollfixpro.com",
+      "totalFiles": 100,
+      "affectedFiles": 27,
+      "ratio": 0.27,
+      "ratioPercent": 27,
+      "status": "yellow",
+      "groups": [
+        {
+          "hash": "6dad5bce",
+          "count": 9,
+          "files": [
+            "1099-tax-calculator.html",
+            "billable-hours-calculator.html",
+            "freelance-tax-calculator.html",
+            "gig-income-calculator.html",
+            "independent-contractor-calculator.html",
+            "project-rate-calculator.html",
+            "self-employed-salary-calculator.html",
+            "self-employment-tax-calculator.html",
+            "side-hustle-tax-calculator.html"
+          ]
+        },
+        {
+          "hash": "6a5178e1",
+          "count": 9,
+          "files": [
+            "annual-salary-calculator.html",
+            "biweekly-pay-calculator.html",
+            "direct-deposit-calculator.html",
+            "gross-salary-calculator.html",
+            "monthly-salary-calculator.html",
+            "net-salary-calculator.html",
+            "paycheck-estimator.html",
+            "salary-calculator.html",
+            "weekly-pay-calculator.html"
+          ]
+        },
+        {
+          "hash": "1d24d831",
+          "count": 5,
+          "files": [
+            "executive-compensation-calculator.html",
+            "manager-salary-calculator.html",
+            "nurse-salary-calculator.html",
+            "software-engineer-salary.html",
+            "teacher-salary-calculator.html"
+          ]
+        },
+        {
+          "hash": "5dc89811",
+          "count": 4,
+          "files": [
+            "effective-tax-rate-calculator.html",
+            "income-tax-calculator.html",
+            "marginal-tax-rate-calculator.html",
+            "tax-bracket-calculator.html"
+          ]
+        }
+      ],
+      "detail": "100 个工具，27 个换皮文件（27%）"
+    }
+  }
+}

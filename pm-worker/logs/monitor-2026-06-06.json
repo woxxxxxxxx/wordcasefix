@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-06-06T10:06:05.645Z",
+  "output": "✅ wordcasefix: all ok\n✅ vestcalc: all ok\n✅ notiontemplafix: all ok\n✅ contractfixpro: all ok\n✅ billingfixpro: all ok\n✅ payrollfixpro: all ok",
+  "raw": {
+    "timestamp": "2026-06-06T10:05:19.263Z",
+    "projects": {
+      "wordcasefix": [
+        {
+          "check": "homepage_reachable",
+          "ok": true,
+          "detail": "HTTP 200"
+        },
+        {
+          "check": "ads_txt",
+          "ok": true,
+          "detail": "pub-id 正确"
+        },
+        {
+          "check": "sitemap_xml",
+          "ok": true,
+          "detail": "204 条 URL"
+        }
+      ],
+      "vestcalc": [
+        {
+          "check": "homepage_reachable",
+          "ok": true,
+          "detail": "HTTP 200"
+        },
+        {
+          "check": "ads_txt",
+          "ok": true,
+          "detail": "pub-id 正确"
+        },
+        {
+          "check": "sitemap_xml",
+          "ok": true,
+          "detail": "105 条 URL"
+        }
+      ],
+      "notiontemplafix": [
+        {
+          "check": "homepage_reachable",
+          "ok": true,
+          "detail": "HTTP 200"
+        },
+        {
+          "check": "sitemap_xml",
+          "ok": true,
+          "detail": "40 条 URL"
+        }
+      ],
+      "contractfixpro": [
+        {
+          "check": "homepage_reachable",
+          "ok": true,
+          "detail": "HTTP 200"
+        },
+        {
+          "check": "ads_txt",
+          "ok": true,
+          "detail": "pub-id 正确"
+        },
+        {
+          "check": "sitemap_xml",
+          "ok": true,
+          "detail": "23 条 URL"
+        }
+      ],
+      "billingfixpro": [
+        {
+          "check": "homepage_reachable",
+          "ok": true,
+          "detail": "HTTP 200"
+        },
+        {
+          "check": "ads_txt",
+          "ok": true,
+          "detail": "pub-id 正确"
+        },
+        {
+          "check": "sitemap_xml",
+          "ok": true,
+          "detail": "103 条 URL"
+        }
+      ],
+      "payrollfixpro": [
+        {
+          "check": "homepage_reachable",
+          "ok": true,
+          "detail": "HTTP 200"
+        },
+        {
+          "check": "ads_txt",
+          "ok": true,
+          "detail": "pub-id 正确"
+        },
+        {
+          "check": "sitemap_xml",
+          "ok": true,
+          "detail": "103 条 URL"
+        }
+      ]
+    },
+    "github_pages": {
+      "wordcasefix": {
+        "repo": "woxxxxxxxx/wordcasefix",
+        "projectId": "wordcasefix",
+        "expectedDomain": "wordcasefix.com",
+        "enabled": true,
+        "domainOk": true,
+        "httpsOk": true,
+        "buildOk": true,
+        "issues": [],
+        "detail": "Pages 正常 (HTTP 200)"
+      },
+      "vestcalc": {
+        "repo": "woxxxxxxxx/vestcalc",
+        "projectId": "vestcalc",
+        "expectedDomain": "vestcalc.com",
+        "enabled": true,
+        "domainOk": true,
+        "httpsOk": true,
+        "buildOk": true,
+        "issues": [],
+        "detail": "Pages 正常 (HTTP 200)"
+      },
+      "contractfixpro": {
+        "repo": "woxxxxxxxx/contractfixpro",
+        "projectId": "contractfixpro",
+        "expectedDomain": "contractfixpro.com",
+        "enabled": true,
+        "domainOk": true,
+        "httpsOk": true,
+        "buildOk": true,
+        "issues": [],
+        "detail": "Pages 正常 (HTTP 200)"
+      },
+      "billingfixpro": {
+        "repo": "woxxxxxxxx/billingfixpro",
+        "projectId": "billingfixpro",
+        "expectedDomain": "billingfixpro.com",
+        "enabled": true,
+        "domainOk": true,
+        "httpsOk": true,
+        "buildOk": true,
+        "issues": [],
+        "detail": "Pages 正常 (HTTP 200)"
+      },
+      "payrollfixpro": {
+        "repo": "woxxxxxxxx/payrollfixpro",
+        "projectId": "payrollfixpro",
+        "expectedDomain": "payrollfixpro.com",
+        "enabled": true,
+        "domainOk": true,
+        "httpsOk": true,
+        "buildOk": true,
+        "issues": [],
+        "detail": "Pages 正常 (HTTP 200)"
+      }
+    },
+    "search_console": {
+      "wordcasefix": {
+        "ok": false,
+        "submitted": false,
+        "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+      },
+      "vestcalc": {
+        "ok": false,
+        "submitted": false,
+        "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+      },
+      "notiontemplafix": {
+        "ok": false,
+        "submitted": false,
+        "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+      },
+      "contractfixpro": {
+        "ok": false,
+        "submitted": false,
+        "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+      },
+      "billingfixpro": {
+        "ok": false,
+        "submitted": false,
+        "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+      },
+      "payrollfixpro": {
+        "ok": false,
+        "submitted": false,
+        "detail": "服务账号无访问权限（403），请在 Search Console 中添加服务账号为用户"
+      }
+    }
+  }
+}
