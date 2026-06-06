@@ -354,6 +354,50 @@ async function checkAllGitHubPages(projects, state) {
   return results;
 }
 
+// ── 分支冲突检测（main vs master）────────────────────────────────────────────
+/**
+ * 检查各仓库是否同时存在 main 和 master 分支（规范：统一只用 master）
+ * 用 git ls-remote 走本地代理，不消耗 GitHub API 配额
+ */
+async function checkBranchConflicts(projects, state) {
+  log('\n  ── 分支冲突检查 (main/master) ──');
+  const results = {};
+  for (const repoConf of GITHUB_PAGES_REPOS) {
+    const proj = projects.find(p => p.id === repoConf.projectId);
+    if (!proj?.local) { results[repoConf.projectId] = { skipped: true }; continue; }
+
+    const r = await shell(
+      'git -c http.proxy=http://127.0.0.1:7897 ls-remote --heads origin',
+      proj.local
+    );
+    const lines     = (r.stdout || '').split('\n').filter(l => l.includes('refs/heads/'));
+    const hasMaster = lines.some(l => l.endsWith('refs/heads/master'));
+    const hasMain   = lines.some(l => l.endsWith('refs/heads/main'));
+    const key       = `${repoConf.projectId}:branch_conflict`;
+
+    if (hasMain && hasMaster) {
+      log(`    ⚠️ ${repoConf.projectId}: 同时存在 main + master（需手动删除 main）`);
+      results[repoConf.projectId] = { conflict: true, branches: ['main', 'master'] };
+      const fails = recordCheck(state, key, false);
+      if (fails >= 1 && canSendEmail(state, key)) {
+        appendAlertFile({
+          project: repoConf.projectId, domain: repoConf.expectedDomain,
+          message: '仓库同时存在 main 和 master 分支，Pages 部署可能不一致。需在 GitHub Settings→General 将默认分支改为 master 后执行: git push origin --delete main',
+          level: 'high',
+        });
+        markEmailSent(state, key);
+      }
+    } else {
+      const branch = hasMaster ? 'master' : (hasMain ? 'main' : '未知');
+      log(`    ✅ ${repoConf.projectId}: 分支正常 (${branch})`);
+      results[repoConf.projectId] = { conflict: false, branch };
+      if ((state.failures[key] || 0) >= 1) resetEmailCount(state, key);
+      recordCheck(state, key, true);
+    }
+  }
+  return results;
+}
+
 // ── 单个项目检查 ──────────────────────────────────────────────────────────────
 async function checkProject(project, state) {
   const { id, domain, local, adsense, monetization, search_console_pages } = project;
@@ -603,6 +647,16 @@ async function runMonitor() {
   } catch (e) {
     log(`  ❌ GitHub Pages 检查整体异常: ${e.message}`);
     report.github_pages = { error: e.message };
+  }
+
+  // 分支冲突检查
+  try {
+    report.branch_conflicts = await checkBranchConflicts(projects, state);
+    const branchFails = Object.values(report.branch_conflicts).filter(r => r.conflict).length;
+    if (branchFails) totalFail += branchFails;
+  } catch (e) {
+    log(`  ❌ 分支冲突检查异常: ${e.message}`);
+    report.branch_conflicts = { error: e.message };
   }
 
   // 保存状态和报告
