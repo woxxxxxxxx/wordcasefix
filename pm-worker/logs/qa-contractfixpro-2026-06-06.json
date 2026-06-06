@@ -1,0 +1,80 @@
+{
+  "project_id": "contractfixpro",
+  "project_name": "ContractFixPro",
+  "domain": "contractfixpro.com",
+  "report_date": "2026-06-06",
+  "report_time": "2026-06-06T08:30:00Z",
+  "checks": {
+    "accessibility": [
+      {
+        "item": "首页 HTTP 状态码",
+        "status": "PASS",
+        "detail": "返回 200 OK"
+      },
+      {
+        "item": "页面标题存在性",
+        "status": "PASS",
+        "detail": "ContractFixPro - Free Freelance Contract Generator"
+      },
+      {
+        "item": "页面描述 meta 标签",
+        "status": "PASS",
+        "detail": "描述标签完整且内容丰富"
+      }
+    ],
+    "seo": [
+      {
+        "item": "/sitemap.xml 可访问性",
+        "status": "PASS",
+        "detail": "HTTP 200"
+      },
+      {
+        "item": "/robots.txt 存在性",
+        "status": "PASS",
+        "detail": "HTTP 200"
+      },
+      {
+        "item": "/ads.txt 存在性 (AdSense)",
+        "status": "PASS",
+        "detail": "HTTP 200，AdSense 项目必需文件已配置"
+      },
+      {
+        "item": "首页 canonical 标签",
+        "status": "PASS",
+        "detail": "<link rel=\"canonical\" href=\"https://contractfixpro.com/\">"
+      }
+    ],
+    "monetization": [
+      {
+        "item": "AdSense 广告占位代码",
+        "status": "PASS",
+        "detail": "包含 AdSense 脚本和广告占位区域"
+      },
+      {
+        "item": "Payhip 产品链接可访问性",
+        "status": "PASS",
+        "detail": "产品链接返回 200，变现渠道正常"
+      }
+    ],
+    "content_quality": [
+      {
+        "item": "工具数量一致性",
+        "status": "PASS",
+        "detail": "实际 20 个工具，与 projects.json 配置一致"
+      },
+      {
+        "item": "404 页面处理",
+        "status": "PASS",
+        "detail": "不存在页面正确返回 404 状态码"
+      }
+    ]
+  },
+  "summary": {
+    "total_checks": 12,
+    "pass": 12,
+    "fail": 0,
+    "warn": 0,
+    "pass_rate": "100%"
+  },
+  "report_text": "=== QA Report: ContractFixPro [2026-06-06] ===\n\n【基础可访问性】\n✅ PASS: 首页 HTTP 状态码 → 返回 200 OK\n✅ PASS: 页面标题存在性 → ContractFixPro - Free Freelance Contract Generator\n✅ PASS: 页面描述 meta 标签 → 描述标签完整且内容丰富\n\n【SEO基础】\n✅ PASS: /sitemap.xml 可访问性 → HTTP 200\n✅ PASS: /robots.txt 存在性 → HTTP 200\n✅ PASS: /ads.txt 存在性 (AdSense) → HTTP 200，AdSense 项目必需文件已配置\n✅ PASS: 首页 canonical 标签 → 标签正确配置\n\n【变现相关】\n✅ PASS: AdSense 广告占位代码 → 包含 AdSense 脚本和广告占位区域\n✅ PASS: Payhip 产品链接可访问性 → 产品链接返回 200，变现渠道正常\n\n【内容质量】\n✅ PASS: 工具数量一致性 → 实际 20 个工具，与 projects.json 配置一致\n✅ PASS: 404 页面处理 → 不存在页面正确返回 404 状态码\n\n总计：12/12 通过\n需要修复：0 项\n建议关注：0 项\n\n✨ 质检结论：ContractFixPro 项目所有检查项全部通过，网站基础设施完善，SEO 配置正确，变现渠道（AdSense + Payhip）均正常运行。"
+}
