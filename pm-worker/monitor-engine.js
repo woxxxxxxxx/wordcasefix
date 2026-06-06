@@ -46,10 +46,10 @@ const SMTP = {
 const ADSENSE_PUB = 'pub-1638874323475457';
 
 // GitHub Pages 需要检查的仓库（repo → expected domain）
+// 注意：notiontemplafix 是 FTP 自托管，不在此列表
 const GITHUB_PAGES_REPOS = [
   { repo: 'woxxxxxxxx/wordcasefix',     expectedDomain: 'wordcasefix.com',     projectId: 'wordcasefix'     },
   { repo: 'woxxxxxxxx/vestcalc',        expectedDomain: 'vestcalc.com',        projectId: 'vestcalc'        },
-  { repo: 'woxxxxxxxx/notiontemplafix', expectedDomain: 'notiontemplafix.com', projectId: 'notiontemplafix' },
   { repo: 'woxxxxxxxx/contractfixpro',  expectedDomain: 'contractfixpro.com',  projectId: 'contractfixpro'  },
   { repo: 'woxxxxxxxx/billingfixpro',   expectedDomain: 'billingfixpro.com',   projectId: 'billingfixpro'   },
   { repo: 'woxxxxxxxx/payrollfixpro',   expectedDomain: 'payrollfixpro.com',   projectId: 'payrollfixpro'   },

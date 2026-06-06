@@ -514,10 +514,11 @@ let _logs       = [];
 let _alerts     = [];
 let _dismissed  = new Set(JSON.parse(localStorage.getItem('dismissed-alerts') || '[]'));
 let _logFilter  = 'all';
-let _gaCache      = null;  // 从最新日志中解析的 GA 数据
-let _pagesCache   = {};   // github_pages 字段，从 monitor-latest.json 解析
-let _scCache      = {};   // search_console 字段，从 monitor-latest.json 解析
-let _qualityCache = {};   // 工具质量检查结果，从 quality-latest.json 解析
+let _gaCache        = null;  // 从最新日志中解析的 GA 数据
+let _pagesCache     = {};   // github_pages 字段，从 monitor-latest.json 解析
+let _scCache        = {};   // search_console 字段，从 monitor-latest.json 解析
+let _qualityCache   = {};   // 工具质量检查结果，从 quality-latest.json 解析
+let _sitemapCache   = {};   // sitemap HTTP 直检结果，从 monitor-latest.json 的 projects 字段解析
 
 const WORKER_ICONS  = { monitor:'🔍', pm:'📋', qa:'🔬', content:'✍️', publish:'🚀' };
 const WORKER_LABELS = { monitor:'Monitor', pm:'PM 计划', qa:'QA 质检', content:'Content', publish:'Publish' };
@@ -575,6 +576,10 @@ function severityLabel(s) {
 
 /* ── GitHub Pages 状态徽章 ── */
 function renderPagesBadge(projectId) {
+  // FTP/自托管项目直接显示托管类型，不检查 GitHub Pages
+  const proj = _projects.find(p => p.id === projectId);
+  if (proj?.hosting === 'ftp') return '<span class="badge badge-blue" title="FTP 自托管，非 GitHub Pages">🌐 FTP托管</span>';
+
   const pg = _pagesCache[projectId];
   if (!pg) return '<span class="badge badge-gray" title="Pages 状态未知（等待监控运行）">⬜ Pages ?</span>';
 
@@ -597,23 +602,15 @@ function renderPagesBadge(projectId) {
   return `<span class="badge badge-green" title="${escHtml(tip)}">✅ Pages</span>`;
 }
 
-/* ── Search Console Sitemap 状态徽章 ── */
+/* ── Sitemap HTTP 直检状态徽章（基于 monitor HTTP 直检，不依赖 SC API） ── */
 function renderSitemapBadge(projectId) {
-  const sc = _scCache[projectId];
-  if (!sc) return '<span class="badge badge-gray" title="Sitemap 状态未知（等待监控运行）">⬜ Sitemap ?</span>';
-  if (sc.error) return `<span class="badge badge-gray" title="${escHtml(sc.error)}">⬜ SC错误</span>`;
-
-  if (!sc.submitted) {
-    return `<span class="badge" style="color:#f87171;background:#2d0f0f;border:1px solid #7f1d1d" title="${escHtml(sc.detail)}">❌ Sitemap未提交</span>`;
+  const sm = _sitemapCache[projectId];
+  if (!sm) return '<span class="badge badge-gray" title="Sitemap 状态未知（等待监控运行）">⬜ Sitemap ?</span>';
+  if (sm.ok) {
+    const detail = sm.detail || '';
+    return `<span class="badge badge-green" title="sitemap.xml HTTP 200 可访问 · ${escHtml(detail)}">✅ Sitemap ${escHtml(detail)}</span>`;
   }
-  if (sc.errors > 0) {
-    return `<span class="badge" style="color:#f87171;background:#2d0f0f;border:1px solid #7f1d1d" title="${escHtml(sc.detail)}">⚠️ Sitemap错误×${sc.errors}</span>`;
-  }
-  if (sc.isPending) {
-    return `<span class="badge badge-yellow" title="${escHtml(sc.detail)}">⏳ Sitemap处理中</span>`;
-  }
-  const indexed = sc.indexed || 0;
-  return `<span class="badge badge-green" title="${escHtml(sc.detail)}">✅ Sitemap(${indexed}页)</span>`;
+  return `<span class="badge" style="color:#f87171;background:#2d0f0f;border:1px solid #7f1d1d" title="${escHtml(sm.detail||'sitemap.xml 不可访问')}">❌ Sitemap异常</span>`;
 }
 
 /* ── 工具逻辑健康度徽章 ── */
@@ -738,13 +735,22 @@ async function loadLogs() {
     const res = await fetch('/api/logs');
     _logs = await res.json();
 
-    // 从 monitor-latest.json 提取 github_pages / search_console 数据
+    // 从 monitor-latest.json 提取 github_pages / search_console / sitemap HTTP 直检数据
     const monitorLatest = _logs.find(l => l.file === 'monitor-latest.json');
     if (monitorLatest?.github_pages && typeof monitorLatest.github_pages === 'object') {
       _pagesCache = monitorLatest.github_pages;
     }
     if (monitorLatest?.search_console && typeof monitorLatest.search_console === 'object') {
       _scCache = monitorLatest.search_console;
+    }
+    // 从 monitor projects 检查结果中提取 sitemap_xml HTTP 直检结果
+    if (monitorLatest?.projects && typeof monitorLatest.projects === 'object') {
+      _sitemapCache = {};
+      for (const [pid, checks] of Object.entries(monitorLatest.projects)) {
+        if (!Array.isArray(checks)) continue;
+        const sm = checks.find(c => c.check === 'sitemap_xml');
+        if (sm) _sitemapCache[pid] = sm;
+      }
     }
 
     // 从 quality-latest.json 提取工具质量数据
