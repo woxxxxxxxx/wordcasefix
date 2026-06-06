@@ -33,24 +33,12 @@
     "notiontemplafix:gh_pages_enabled": 0,
     "contractfixpro:gh_pages_enabled": 0,
     "billingfixpro:gh_pages_enabled": 0,
-    "payrollfixpro:gh_pages_enabled": 0,
-    "wordcasefix:sitemap_sc": 2,
-    "vestcalc:sitemap_sc": 2,
-    "notiontemplafix:sitemap_sc": 2,
-    "contractfixpro:sitemap_sc": 2,
-    "billingfixpro:sitemap_sc": 2,
-    "payrollfixpro:sitemap_sc": 2,
-    "wordcasefix:branch_conflict": 1,
-    "vestcalc:branch_conflict": 0,
-    "contractfixpro:branch_conflict": 0,
-    "billingfixpro:branch_conflict": 0,
-    "payrollfixpro:branch_conflict": 0
+    "payrollfixpro:gh_pages_enabled": 0
   },
   "emailCount": {
     "contractfixpro:gh_pages_enabled": 0,
     "billingfixpro:gh_pages_enabled": 0,
-    "payrollfixpro:gh_pages_enabled": 0,
-    "wordcasefix:branch_conflict": 1
+    "payrollfixpro:gh_pages_enabled": 0
   },
   "lastFixed": {},
   "lastStatus": {
@@ -87,18 +75,7 @@
     "notiontemplafix:gh_pages_enabled": "ok",
     "contractfixpro:gh_pages_enabled": "ok",
     "billingfixpro:gh_pages_enabled": "ok",
-    "payrollfixpro:gh_pages_enabled": "ok",
-    "wordcasefix:sitemap_sc": "fail",
-    "vestcalc:sitemap_sc": "fail",
-    "notiontemplafix:sitemap_sc": "fail",
-    "contractfixpro:sitemap_sc": "fail",
-    "billingfixpro:sitemap_sc": "fail",
-    "payrollfixpro:sitemap_sc": "fail",
-    "wordcasefix:branch_conflict": "fail",
-    "vestcalc:branch_conflict": "ok",
-    "contractfixpro:branch_conflict": "ok",
-    "billingfixpro:branch_conflict": "ok",
-    "payrollfixpro:branch_conflict": "ok"
+    "payrollfixpro:gh_pages_enabled": "ok"
   },
   "wordcasefix_last_pages": 204,
   "vestcalc_last_pages": 105,

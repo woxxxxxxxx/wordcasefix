@@ -21,8 +21,6 @@ const path        = require('path');
 const { exec }    = require('child_process');
 const nodemailer  = require('nodemailer');
 const { HttpsProxyAgent } = require('https-proxy-agent');
-const { getSitesForMonitor, getGithubPagesRepos, SITES: SITES_ALL } = require('../sites-config');
-const { checkAllSitemaps } = require('./search-console');
 
 // ── 常量 ─────────────────────────────────────────────────────────────────────
 const BASE_DIR      = 'C:\\Users\\Administrator\\pm-worker';
@@ -47,8 +45,15 @@ const SMTP = {
 
 const ADSENSE_PUB = 'pub-1638874323475457';
 
-// GitHub Pages 仓库列表 — 自动从 sites-config 派生，新增站点无需手动修改此处
-const GITHUB_PAGES_REPOS = getGithubPagesRepos();
+// GitHub Pages 需要检查的仓库（repo → expected domain）
+const GITHUB_PAGES_REPOS = [
+  { repo: 'woxxxxxxxx/wordcasefix',     expectedDomain: 'wordcasefix.com',     projectId: 'wordcasefix'     },
+  { repo: 'woxxxxxxxx/vestcalc',        expectedDomain: 'vestcalc.com',        projectId: 'vestcalc'        },
+  { repo: 'woxxxxxxxx/notiontemplafix', expectedDomain: 'notiontemplafix.com', projectId: 'notiontemplafix' },
+  { repo: 'woxxxxxxxx/contractfixpro',  expectedDomain: 'contractfixpro.com',  projectId: 'contractfixpro'  },
+  { repo: 'woxxxxxxxx/billingfixpro',   expectedDomain: 'billingfixpro.com',   projectId: 'billingfixpro'   },
+  { repo: 'woxxxxxxxx/payrollfixpro',   expectedDomain: 'payrollfixpro.com',   projectId: 'payrollfixpro'   },
+];
 
 // GitHub API User-Agent（必须，否则 403）
 const GH_HEADERS = {
@@ -70,11 +75,7 @@ function writeJson(file, data) {
 }
 
 function loadProjects() {
-  // 以 sites-config 为主配置源；从 projects.json 补充动态运营字段（search_console_pages 等）
-  const projectsArr = readJson(PROJECTS_FILE).projects || [];
-  const projectsMap = {};
-  for (const p of projectsArr) projectsMap[p.id] = p;
-  return getSitesForMonitor(projectsMap);
+  return readJson(PROJECTS_FILE).projects || [];
 }
 
 // ── HTTP 检查（带重试，单次调用层面的重试，用于 flap 抑制在上层做）─────────────
@@ -353,51 +354,6 @@ async function checkAllGitHubPages(projects, state) {
   return results;
 }
 
-// ── 分支冲突检测（main vs master）────────────────────────────────────────────
-/**
- * 检查各仓库是否同时存在 main 和 master 分支（应统一只用 master）
- * 使用 git ls-remote 走本地代理，不消耗 GitHub API 配额
- */
-async function checkBranchConflicts(projects, state) {
-  log('\n  ── 分支冲突检查 (main/master) ──');
-  const results = {};
-  for (const repoConf of GITHUB_PAGES_REPOS) {
-    const proj = projects.find(p => p.id === repoConf.projectId);
-    if (!proj?.local) { results[repoConf.projectId] = { skipped: true }; continue; }
-
-    const r = await shell(
-      'git -c http.proxy=http://127.0.0.1:7897 ls-remote --heads origin',
-      proj.local
-    );
-    const lines   = (r.stdout || '').split('\n').filter(l => l.includes('refs/heads/'));
-    const hasMaster = lines.some(l => l.endsWith('refs/heads/master'));
-    const hasMain   = lines.some(l => l.endsWith('refs/heads/main'));
-
-    if (hasMain && hasMaster) {
-      log(`    ⚠️ ${repoConf.projectId}: 同时存在 main + master（需手动删除 main）`);
-      results[repoConf.projectId] = { conflict: true, branches: ['main', 'master'] };
-      const key = `${repoConf.projectId}:branch_conflict`;
-      const fails = recordCheck(state, key, false);
-      if (fails >= 1 && canSendEmail(state, key)) {
-        appendAlertFile({
-          project: repoConf.projectId, domain: repoConf.expectedDomain,
-          message: '仓库同时存在 main 和 master 分支，Pages 部署可能不一致。需在 GitHub Settings→General 将默认分支改为 master 后执行: git push origin --delete main',
-          level: 'high',
-        });
-        markEmailSent(state, key);
-      }
-    } else {
-      const branch = hasMaster ? 'master' : (hasMain ? 'main' : '未知');
-      log(`    ✅ ${repoConf.projectId}: 分支正常 (${branch})`);
-      results[repoConf.projectId] = { conflict: false, branch };
-      if ((state.failures[`${repoConf.projectId}:branch_conflict`] || 0) >= 1)
-        resetEmailCount(state, `${repoConf.projectId}:branch_conflict`);
-      recordCheck(state, `${repoConf.projectId}:branch_conflict`, true);
-    }
-  }
-  return results;
-}
-
 // ── 单个项目检查 ──────────────────────────────────────────────────────────────
 async function checkProject(project, state) {
   const { id, domain, local, adsense, monetization, search_console_pages } = project;
@@ -647,66 +603,6 @@ async function runMonitor() {
   } catch (e) {
     log(`  ❌ GitHub Pages 检查整体异常: ${e.message}`);
     report.github_pages = { error: e.message };
-  }
-
-  // 分支冲突检查
-  try {
-    report.branch_conflicts = await checkBranchConflicts(projects, state);
-    const branchFails = Object.values(report.branch_conflicts).filter(r => r.conflict).length;
-    if (branchFails) totalFail += branchFails;
-  } catch (e) {
-    log(`  ❌ 分支冲突检查异常: ${e.message}`);
-    report.branch_conflicts = { error: e.message };
-  }
-
-  // Search Console Sitemap 检查
-  try {
-    log('\n  ── Search Console Sitemap 检查 ──');
-    const scResults = await checkAllSitemaps();
-    if (scResults) {
-      report.search_console = scResults;
-      // 告警逻辑（复用现有邮件节流机制）
-      for (const site of SITES_ALL) {
-        const r   = scResults[site.id];
-        if (!r) continue;
-        const key = `${site.id}:sitemap_sc`;
-        // ok=true 或 isPending 均视为通过（pending 是正常处理中状态）
-        const passed = r.ok || r.isPending;
-        const fails  = recordCheck(state, key, passed);
-
-        if (!passed && fails >= FAIL_THRESHOLD) {
-          const scFail = Object.values(scResults).filter(x => !x.ok && !x.isPending).length;
-          if (scFail) totalFail += scFail;
-          if (canSendEmail(state, key)) {
-            await sendAlert({
-              project: site.id, domain: site.domain,
-              errorType: 'Search Console Sitemap 异常',
-              errorDetail: r.detail,
-              triedFixes: ['无自动修复（需要在 Search Console 手动重新提交）'],
-              manualSteps: [
-                '访问 https://search.google.com/search-console/sitemaps',
-                `选择站点 https://${site.domain}/`,
-                `删除旧 sitemap 并重新提交 https://${site.domain}/sitemap.xml`,
-                '等待 Google 读取（通常1-3天）',
-              ],
-            }).catch(e => log(`    ⚠️ 邮件失败: ${e.message}`));
-            markEmailSent(state, key);
-            appendAlertFile({
-              project: site.id, domain: site.domain,
-              message: `Sitemap 异常: ${r.detail}`, level: 'medium',
-            });
-          }
-        } else if (passed && (state.failures[key] || 0) >= FAIL_THRESHOLD) {
-          log(`    🔔 ${site.domain} sitemap 状态已恢复`);
-          resetEmailCount(state, key);
-        }
-      }
-    } else {
-      report.search_console = null; // ga-credentials.json 不存在时为 null
-    }
-  } catch (e) {
-    log(`  ❌ Search Console 检查整体异常: ${e.message}`);
-    report.search_console = { error: e.message };
   }
 
   // 保存状态和报告

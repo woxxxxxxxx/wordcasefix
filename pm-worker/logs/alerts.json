@@ -13,13 +13,5 @@
       "ads_txt": "error",
       "error": "ERR_TLS_CERT_ALTNAME_INVALID"
     }
-  },
-  {
-    "id": "alert-1780740429073",
-    "project": "wordcasefix",
-    "domain": "wordcasefix.com",
-    "message": "仓库同时存在 main 和 master 分支，Pages 部署可能不一致。需在 GitHub Settings→General 将默认分支改为 master 后执行: git push origin --delete main",
-    "level": "high",
-    "time": "2026-06-06T10:07:09.073Z"
   }
 ]

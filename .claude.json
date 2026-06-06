@@ -587,5 +587,6 @@
       "usageCount": 1,
       "lastUsedAt": 1779802090344
     }
-  }
+  },
+  "cachedExtraUsageDisabledReason": "org_level_disabled"
 }
