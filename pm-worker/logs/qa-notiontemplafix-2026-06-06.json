@@ -1,0 +1,87 @@
+{
+  "project": "notiontemplafix",
+  "domain": "notiontemplafix.com",
+  "date": "2026-06-06",
+  "timestamp": "2026-06-06T12:00:00Z",
+  "checks": [
+    {
+      "category": "基础可访问性",
+      "items": [
+        {
+          "name": "首页HTTP状态码",
+          "status": "PASS",
+          "detail": "状态码: 200"
+        },
+        {
+          "name": "页面标题",
+          "status": "PASS",
+          "detail": "标题: NotionTemplaFix - Free & Premium Notion Templates"
+        },
+        {
+          "name": "页面描述meta",
+          "status": "PASS",
+          "detail": "描述存在"
+        }
+      ]
+    },
+    {
+      "category": "SEO基础",
+      "items": [
+        {
+          "name": "sitemap.xml",
+          "status": "PASS",
+          "detail": "可访问"
+        },
+        {
+          "name": "robots.txt",
+          "status": "PASS",
+          "detail": "存在"
+        },
+        {
+          "name": "ads.txt",
+          "status": "SKIP",
+          "detail": "项目不使用AdSense，跳过检查"
+        },
+        {
+          "name": "首页canonical标签",
+          "status": "PASS",
+          "detail": "存在"
+        }
+      ]
+    },
+    {
+      "category": "变现相关",
+      "items": [
+        {
+          "name": "Payhip产品链接",
+          "status": "PASS",
+          "detail": "页面包含Payhip链接"
+        }
+      ]
+    },
+    {
+      "category": "内容质量",
+      "items": [
+        {
+          "name": "工具/产品数量",
+          "status": "WARN",
+          "detail": "无法自动检测，请手动验证（预期: 16个模板）",
+          "suggestion": "建议手动访问网站确认模板数量是否为16个"
+        },
+        {
+          "name": "404页面处理",
+          "status": "PASS",
+          "detail": "正确返回404"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_checks": 9,
+    "passed": 8,
+    "failed": 0,
+    "warnings": 1,
+    "pass_rate": "88.9%"
+  },
+  "report": "=== QA Report: notiontemplafix [2026-06-06] ===\n\n【基础可访问性】\n✅ PASS: 首页HTTP状态码 → 状态码: 200\n✅ PASS: 页面标题 → NotionTemplaFix - Free & Premium Notion Templates\n✅ PASS: 页面描述meta → 描述存在\n\n【SEO基础】\n✅ PASS: sitemap.xml → 可访问\n✅ PASS: robots.txt → 存在\n⏭️ SKIP: ads.txt → 项目不使用AdSense\n✅ PASS: 首页canonical标签 → 存在\n\n【变现相关】\n✅ PASS: Payhip产品链接 → 页面包含Payhip链接\n\n【内容质量】\n⚠️ WARN: 工具/产品数量 → 说明：无法自动检测，请手动验证（预期: 16个模板）\n✅ PASS: 404页面处理 → 正确返回404\n\n总计：8/9 通过 (88.9%)\n需要修复：0 项\n建议关注：1 项"
+}
