@@ -114,10 +114,12 @@ async function runSchedule(mode = 'daily') {
     if (mode === 'daily' || mode === 'monitor') {
       console.log('🔍 运行 Monitor Engine...');
       const monitorReport = await runMonitor();
-      // 生成可读摘要写日志
-      const monitorSummary = Object.entries(monitorReport.projects)
+      // 生成可读摘要写日志（防御性：projects 可能不存在或某项不是数组）
+      const monitorProjects = monitorReport?.projects || {};
+      const monitorSummary = Object.entries(monitorProjects)
         .map(([id, checks]) => {
-          const fails = checks.filter(c => !c.ok);
+          const safeChecks = Array.isArray(checks) ? checks : [];
+          const fails = safeChecks.filter(c => !c.ok);
           return fails.length
             ? `❌ ${id}: ${fails.map(f => f.check).join(', ')}`
             : `✅ ${id}: all ok`;
@@ -137,12 +139,19 @@ async function runSchedule(mode = 'daily') {
 
     if (mode === 'recovery') {
       console.log('🔧 运行 Site Recovery...');
-      const recoveryReports = await runSiteRecovery({});
-      const failed = recoveryReports.filter(r => r.fixes && r.fixes.some(f => !f.success));
-      const summary = recoveryReports.map(r => {
-        const checks = Object.entries(r.checks || {}).map(([k, v]) => `  ${v ? '✅' : '❌'} ${k}`).join('\n');
-        const fixes = (r.fixes || []).map(f => `  ${f.success ? '✅' : '❌'} fix:${f.action}`).join('\n');
-        return `【${r.id}】${r.domain}\n${checks}${fixes ? '\n修复:\n' + fixes : ''}`;
+      const recoveryResult = await runSiteRecovery({});
+
+      // runSiteRecovery 返回 { reports: [...], summary: '...' }，做防御性提取
+      let recoveryReports = recoveryResult?.reports ?? recoveryResult;
+      if (!Array.isArray(recoveryReports)) recoveryReports = [];
+      const recoverySummary = recoveryResult?.summary || '';
+
+      // 以 site-recovery.js 实际字段名为准：steps（不是checks），ok（不是success）
+      const failed = recoveryReports.filter(r => r.fixes && r.fixes.some(f => !f.ok));
+      const summary = recoverySummary || recoveryReports.map(r => {
+        const steps = Object.entries(r.steps || {}).map(([k, v]) => `  ${v?.ok ? '✅' : '❌'} ${k}: ${v?.detail || ''}`).join('\n');
+        const fixes = (r.fixes || []).map(f => `  ${f.ok ? '✅' : '❌'} fix:${f.action} ${f.msg || ''}`).join('\n');
+        return `【${r.id}】${r.domain}\n${steps}${fixes ? '\n修复:\n' + fixes : ''}`;
       }).join('\n\n');
       console.log(summary);
       writeLog('recovery', { output: summary, raw: recoveryReports });
