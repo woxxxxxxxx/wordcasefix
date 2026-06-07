@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survivorship Life Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate survivorship (second-to-die) life insurance premiums and check if coverage is sufficient to cover estate taxes for married couples.">
+<link rel="canonical" href="https://www.coveragefixpro.com/tools/life/survivorship-life-insurance-calculator.html">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+
+<main>
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/life/">Life Insurance</a> &rsaquo; Survivorship Life Insurance Calculator
+</nav>
+
+<h1>Survivorship Life Insurance Calculator</h1>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<div class="calculator-box">
+  <h2>Calculate Second-to-Die Policy Costs</h2>
+  <div class="form-group">
+    <label for="person1_age">Person 1 Age</label>
+    <input type="number" id="person1_age" placeholder="e.g. 60" min="18" max="85" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="person2_age">Person 2 Age</label>
+    <input type="number" id="person2_age" placeholder="e.g. 58" min="18" max="85" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="coverage_amount">Coverage Amount ($)</label>
+    <input type="number" id="coverage_amount" placeholder="e.g. 2000000" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="estate_tax_estimate">Estimated Estate Tax ($)</label>
+    <input type="number" id="estate_tax_estimate" value="0" placeholder="0 if unknown" oninput="calc()">
+  </div>
+</div>
+
+<div class="result-box" id="result" style="display:none;">
+  <h2>Survivorship Policy Results</h2>
+  <div class="result-item">
+    <span class="result-label">Monthly Premium:</span>
+    <span class="result-value" id="res_monthly"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Annual Premium:</span>
+    <span class="result-value" id="res_annual"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Estate Tax Estimate:</span>
+    <span class="result-value" id="res_estate_tax"></span>
+  </div>
+  <div class="result-item highlight">
+    <span class="result-label">Estate Tax Coverage Status:</span>
+    <span class="result-value" id="res_covers"></span>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>What Is Survivorship Life Insurance?</h2>
+  <p>Survivorship life insurance (also called second-to-die insurance) covers two people under one policy and pays out only after both insured parties have passed away. Because the insurer faces reduced risk — the benefit isn't paid until the second death — premiums are significantly lower than two separate policies. This makes survivorship coverage an efficient tool for estate planning, particularly for funding estate taxes that come due at the second spouse's death, leaving assets intact for heirs. It is commonly held inside an Irrevocable Life Insurance Trust (ILIT) to keep proceeds outside the taxable estate.</p>
+</div>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>When does a survivorship policy pay out?</h3>
+      <p>The death benefit is paid after the second insured person passes away. It does not pay on the first death, which means it is not suitable for income replacement — only for estate or legacy planning needs.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why is it cheaper than two individual policies?</h3>
+      <p>Actuarially, two people are unlikely to die at the same time. Insuring the joint life expectancy (second to die) reduces the insurer's risk, resulting in lower blended premiums.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is an ILIT and should I use one?</h3>
+      <p>An Irrevocable Life Insurance Trust holds the policy outside your taxable estate. This ensures the death benefit is not included in the estate for tax purposes. Consult an estate attorney to determine if an ILIT is appropriate.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can survivorship policies build cash value?</h3>
+      <p>Yes, permanent survivorship policies (whole life or universal life) accumulate cash value over time, which can be borrowed against or used to pay future premiums.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens if we divorce?</h3>
+      <p>Divorce complicates survivorship policies significantly. Most insurers allow the policy to be split into two individual policies upon divorce, though underwriting may be required. Review your policy's divorce provisions carefully.</p>
+    </div>
+  </div>
+</section>
+
+<section class="related-tools">
+  <h2>Related Life Insurance Tools</h2>
+  <ul>
+    <li><a href="/tools/life/estate-planning-life-insurance-calculator.html">Estate Planning Life Insurance Calculator</a></li>
+    <li><a href="/tools/life/premium-financing-calculator.html">Premium Financing Calculator</a></li>
+    <li><a href="/tools/life/life-insurance-tax-calculator.html">Life Insurance Tax Benefits Calculator</a></li>
+    <li><a href="/tools/life/term-vs-whole-life-calculator.html">Term vs Whole Life Calculator</a></li>
+    <li><a href="/tools/life/cash-value-growth-calculator.html">Cash Value Growth Calculator</a></li>
+  </ul>
+</section>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> Estimates are for educational purposes only and do not represent actual insurance quotes. Rates vary by insurer, state, and individual underwriting. Consult a licensed insurance professional.</p>
+</div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var a1=parseFloat(document.getElementById('person1_age').value)||0;
+  var a2=parseFloat(document.getElementById('person2_age').value)||0;
+  var cov=parseFloat(document.getElementById('coverage_amount').value)||0;
+  var tax=parseFloat(document.getElementById('estate_tax_estimate').value)||0;
+  if(!a1||!a2||!cov){document.getElementById('result').style.display='none';return;}
+  var avgAge=(a1+a2)/2;
+  var baseRate=avgAge<45?0.25:avgAge<55?0.55:1.20;
+  var monthly=(cov/1000)*baseRate*0.7;
+  var covers=cov>=tax?'✓ Coverage is sufficient':'⚠ Coverage may be insufficient';
+  document.getElementById('res_monthly').textContent=fmt(monthly);
+  document.getElementById('res_annual').textContent=fmt(monthly*12);
+  document.getElementById('res_estate_tax').textContent=fmt(tax);
+  document.getElementById('res_covers').textContent=covers;
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

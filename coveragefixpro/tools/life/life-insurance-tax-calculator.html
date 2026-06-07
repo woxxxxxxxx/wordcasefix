@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Insurance Tax Benefits Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate the tax advantages of life insurance including income-tax-free death benefits, cash value tax deferral, and tax-free policy loans based on your tax bracket.">
+<link rel="canonical" href="https://www.coveragefixpro.com/tools/life/life-insurance-tax-calculator.html">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+
+<main>
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/life/">Life Insurance</a> &rsaquo; Life Insurance Tax Benefits Calculator
+</nav>
+
+<h1>Life Insurance Tax Benefits Calculator</h1>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<div class="calculator-box">
+  <h2>Calculate Your Tax Advantages</h2>
+  <div class="form-group">
+    <label for="death_benefit">Death Benefit Amount ($)</label>
+    <input type="number" id="death_benefit" placeholder="e.g. 1000000" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="cash_value_gain">Cash Value Gain ($)</label>
+    <input type="number" id="cash_value_gain" placeholder="Growth above premiums paid" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="policy_loan_amount">Policy Loan Amount ($)</label>
+    <input type="number" id="policy_loan_amount" value="0" placeholder="0 if no loan" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="tax_bracket">Your Tax Bracket</label>
+    <select id="tax_bracket" onchange="calc()">
+      <option value="12">12%</option>
+      <option value="22" selected>22%</option>
+      <option value="24">24%</option>
+      <option value="32">32%</option>
+      <option value="37">37%</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="result" style="display:none;">
+  <h2>Tax Benefit Results</h2>
+  <div class="result-item">
+    <span class="result-label">Death Benefit (Tax-Free):</span>
+    <span class="result-value" id="res_db"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Equivalent Tax Savings:</span>
+    <span class="result-value" id="res_db_saving"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Cash Value Tax-Deferral Savings:</span>
+    <span class="result-value" id="res_cv"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Policy Loan Tax Savings:</span>
+    <span class="result-value" id="res_loan"></span>
+  </div>
+  <div class="result-item highlight">
+    <span class="result-label">Total Tax Advantage:</span>
+    <span class="result-value" id="res_total"></span>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>Understanding Life Insurance Tax Benefits</h2>
+  <p>Life insurance offers several powerful tax advantages that other financial products don't. Death benefits paid to beneficiaries are generally free from federal income tax under IRC Section 101(a). Cash value in permanent policies grows on a tax-deferred basis — you don't owe taxes on gains as long as they remain inside the policy. Policy loans against cash value are also tax-free as long as the policy remains in force, effectively allowing tax-free access to accumulated wealth. These benefits make life insurance a versatile tool in tax planning, especially for high-income earners in the 32–37% bracket where the tax savings are most significant.</p>
+</div>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>Are life insurance death benefits always tax-free?</h3>
+      <p>Death benefits paid to individual beneficiaries are generally income-tax-free under federal law. However, if the policy is owned by an estate or the three-party ownership rule applies, estate taxes may apply. Interest earned on death benefits held by the insurer is taxable.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How is cash value growth taxed?</h3>
+      <p>Cash value grows tax-deferred inside the policy. You only owe taxes on gains if you surrender the policy for more than your cost basis (premiums paid). Withdrawals up to your basis are tax-free; gains above basis are taxable as ordinary income.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are policy loans taxable?</h3>
+      <p>Policy loans are not considered income and are not taxable as long as the policy remains in force. If the policy lapses or is surrendered with an outstanding loan, the loan amount may be treated as taxable income to the extent of any gain.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the modified endowment contract (MEC) rule?</h3>
+      <p>If you overfund a life insurance policy in its early years, it may be classified as a Modified Endowment Contract. MEC loans and withdrawals are taxed on a last-in, first-out basis and may be subject to a 10% penalty before age 59½.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use life insurance as a tax-free retirement supplement?</h3>
+      <p>Yes. Some individuals use permanent life insurance as a supplemental retirement vehicle, accessing cash value through tax-free loans during retirement. This strategy works best for those who have already maximized 401(k) and IRA contributions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="related-tools">
+  <h2>Related Life Insurance Tools</h2>
+  <ul>
+    <li><a href="/tools/life/cash-value-growth-calculator.html">Cash Value Growth Calculator</a></li>
+    <li><a href="/tools/life/estate-planning-life-insurance-calculator.html">Estate Planning Life Insurance Calculator</a></li>
+    <li><a href="/tools/life/survivorship-life-insurance-calculator.html">Survivorship Life Insurance Calculator</a></li>
+    <li><a href="/tools/life/life-insurance-settlement-calculator.html">Life Insurance Settlement Calculator</a></li>
+    <li><a href="/tools/life/premium-financing-calculator.html">Premium Financing Calculator</a></li>
+  </ul>
+</section>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> This tool is for educational purposes only and does not constitute tax or legal advice. Tax laws are complex and subject to change. Consult a qualified tax advisor and licensed insurance professional for personalized guidance.</p>
+</div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var db=parseFloat(document.getElementById('death_benefit').value)||0;
+  var cvGain=parseFloat(document.getElementById('cash_value_gain').value)||0;
+  var loan=parseFloat(document.getElementById('policy_loan_amount').value)||0;
+  var bracket=(parseFloat(document.getElementById('tax_bracket').value)||22)/100;
+  if(!db){document.getElementById('result').style.display='none';return;}
+  var dbTaxSaving=db*bracket;
+  var cvTaxDeferred=cvGain*bracket;
+  var loanTaxSaving=loan*bracket;
+  var totalAdvantage=cvTaxDeferred+loanTaxSaving;
+  document.getElementById('res_db').textContent=fmt(db)+' (income-tax free)';
+  document.getElementById('res_db_saving').textContent=fmt(dbTaxSaving)+' saved vs. taxable inheritance';
+  document.getElementById('res_cv').textContent=fmt(cvTaxDeferred);
+  document.getElementById('res_loan').textContent=fmt(loanTaxSaving);
+  document.getElementById('res_total').textContent=fmt(totalAdvantage);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

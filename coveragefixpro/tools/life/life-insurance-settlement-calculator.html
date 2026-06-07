@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Insurance Settlement vs Cash Surrender Calculator - CoverageFixPro</title>
+<meta name="description" content="Compare life settlement value versus cash surrender value for your life insurance policy. Estimate which option gives you more money when you no longer need coverage.">
+<link rel="canonical" href="https://www.coveragefixpro.com/tools/life/life-insurance-settlement-calculator.html">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+
+<main>
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/life/">Life Insurance</a> &rsaquo; Life Insurance Settlement Calculator
+</nav>
+
+<h1>Life Insurance Settlement vs Cash Surrender Calculator</h1>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<div class="calculator-box">
+  <h2>Compare Your Policy Exit Options</h2>
+  <div class="form-group">
+    <label for="death_benefit">Death Benefit ($)</label>
+    <input type="number" id="death_benefit" placeholder="e.g. 500000" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="cash_surrender_value">Cash Surrender Value ($)</label>
+    <input type="number" id="cash_surrender_value" placeholder="e.g. 80000" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="age">Your Age</label>
+    <input type="number" id="age" placeholder="e.g. 72" min="50" max="95" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="health">Current Health</label>
+    <select id="health" onchange="calc()">
+      <option value="good">Good</option>
+      <option value="fair">Fair</option>
+      <option value="poor">Poor - Serious Illness</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="result" style="display:none;">
+  <h2>Settlement vs Surrender Results</h2>
+  <div class="result-item">
+    <span class="result-label">Cash Surrender Value:</span>
+    <span class="result-value" id="res_csv"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Estimated Life Settlement:</span>
+    <span class="result-value" id="res_settlement"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Settlement %:</span>
+    <span class="result-value" id="res_pct"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Difference:</span>
+    <span class="result-value" id="res_diff"></span>
+  </div>
+  <div class="result-item highlight">
+    <span class="result-label">Recommendation:</span>
+    <span class="result-value" id="res_better"></span>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>Life Settlement vs Cash Surrender: Know Your Options</h2>
+  <p>When a life insurance policy is no longer needed, many policyholders simply surrender it for its cash value — often the lowest option. A life settlement involves selling your policy to a third-party investor for a lump sum greater than the cash surrender value but less than the death benefit. The investor continues paying premiums and collects the death benefit. Life settlements typically pay 20–40% of the face value depending on your age and health status. Policyholders with serious health conditions may qualify for viatical settlements with even higher payouts. Always consult a licensed settlement broker and tax advisor before proceeding.</p>
+</div>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>What is a life settlement?</h3>
+      <p>A life settlement is the sale of an existing life insurance policy to a third-party buyer for a lump sum cash payment. The buyer becomes the new owner, pays future premiums, and receives the death benefit.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How is a life settlement different from surrendering the policy?</h3>
+      <p>Surrendering returns only the accumulated cash value, which is often less than a life settlement. A settlement pays more because an investor is buying the right to the future death benefit, which can be much larger.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are life settlement proceeds taxable?</h3>
+      <p>Generally yes. Proceeds above your cost basis (premiums paid) may be subject to ordinary income tax or capital gains tax. A viatical settlement for a terminally ill insured may be tax-free — consult a tax advisor.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Who qualifies for a life settlement?</h3>
+      <p>Typically, policyholders aged 65 or older with a policy face value of $100,000 or more and a life expectancy of 10–15 years or less. Serious health conditions increase settlement value.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What types of policies can be settled?</h3>
+      <p>Most permanent life insurance policies (whole life, universal life, variable life) can be settled. Some term policies with conversion rights can also be converted and then settled.</p>
+    </div>
+  </div>
+</section>
+
+<section class="related-tools">
+  <h2>Related Life Insurance Tools</h2>
+  <ul>
+    <li><a href="/tools/life/cash-value-growth-calculator.html">Cash Value Growth Calculator</a></li>
+    <li><a href="/tools/life/life-insurance-roi-calculator.html">Life Insurance ROI Calculator</a></li>
+    <li><a href="/tools/life/life-insurance-conversion-calculator.html">Term to Permanent Conversion Calculator</a></li>
+    <li><a href="/tools/life/life-insurance-tax-calculator.html">Life Insurance Tax Benefits Calculator</a></li>
+    <li><a href="/tools/life/term-vs-whole-life-calculator.html">Term vs Whole Life Calculator</a></li>
+  </ul>
+</section>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> Estimates are for educational purposes only and do not represent actual insurance quotes. Rates vary by insurer, state, and individual underwriting. Consult a licensed insurance professional.</p>
+</div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var db=parseFloat(document.getElementById('death_benefit').value)||0;
+  var csv=parseFloat(document.getElementById('cash_surrender_value').value)||0;
+  var health=document.getElementById('health').value;
+  if(!db){document.getElementById('result').style.display='none';return;}
+  var pct=health==='good'?0.65:health==='fair'?0.72:0.80;
+  var settlementValue=db*pct;
+  var better=settlementValue>csv?'Life Settlement is higher':'Cash Surrender is higher';
+  var diff=Math.abs(settlementValue-csv);
+  document.getElementById('res_csv').textContent=fmt(csv);
+  document.getElementById('res_settlement').textContent=fmt(settlementValue);
+  document.getElementById('res_pct').textContent=(pct*100).toFixed(0)+'% of death benefit';
+  document.getElementById('res_diff').textContent=fmt(diff);
+  document.getElementById('res_better').textContent=better;
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

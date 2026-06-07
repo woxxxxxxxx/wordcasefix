@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Insurance Coverage by Age Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate how much life insurance you need based on your age. Get an age-appropriate income multiplier recommendation plus adjustments for mortgage and children.">
+<link rel="canonical" href="https://www.coveragefixpro.com/tools/life/life-insurance-needs-by-age.html">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+
+<main>
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/life/">Life Insurance</a> &rsaquo; Life Insurance Coverage by Age
+</nav>
+
+<h1>Life Insurance Coverage by Age Calculator</h1>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<div class="calculator-box">
+  <h2>Calculate Your Age-Appropriate Coverage</h2>
+  <div class="form-group">
+    <label for="age">Your Age</label>
+    <input type="number" id="age" placeholder="e.g. 35" min="18" max="80" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="annual_income">Annual Income ($)</label>
+    <input type="number" id="annual_income" placeholder="e.g. 80000" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="mortgage_balance">Outstanding Mortgage ($)</label>
+    <input type="number" id="mortgage_balance" value="0" placeholder="0 if none" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="children_count">Number of Children</label>
+    <input type="number" id="children_count" value="0" min="0" oninput="calc()">
+  </div>
+</div>
+
+<div class="result-box" id="result" style="display:none;">
+  <h2>Coverage by Age Results</h2>
+  <div class="result-item">
+    <span class="result-label">Age-Based Multiplier:</span>
+    <span class="result-value" id="res_mult"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Base Recommendation:</span>
+    <span class="result-value" id="res_base"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Children Addition:</span>
+    <span class="result-value" id="res_child"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Mortgage Addition:</span>
+    <span class="result-value" id="res_mortgage"></span>
+  </div>
+  <div class="result-item highlight">
+    <span class="result-label">Total Recommended Coverage:</span>
+    <span class="result-value" id="res_total"></span>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>How Life Insurance Needs Change with Age</h2>
+  <p>Your life insurance needs evolve significantly throughout your lifetime. In your 20s and early 30s, income replacement demands are highest since you have many working years ahead — a 20× multiplier is appropriate. As you enter your 40s and 50s, debts may be reduced and savings are growing, so a 10–12× multiplier is more typical. By your 60s, children are grown, mortgages may be paid off, and retirement assets can replace some coverage needs, dropping the multiplier to 5–8×. Adding your mortgage balance and a fund for each child ensures complete protection at any age.</p>
+</div>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>Why does the multiplier decrease with age?</h3>
+      <p>Older individuals typically have fewer remaining working years, more accumulated savings, paid-down debts, and adult children who are financially independent. These factors reduce the income replacement need over time.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I include my mortgage in life insurance coverage?</h3>
+      <p>Yes. Adding your outstanding mortgage ensures your survivors can stay in the home without worrying about payments. Alternatively, a separate mortgage life insurance policy can cover this specific need.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why is $100,000 added per child?</h3>
+      <p>This approximates a combined childcare, education, and early-life support fund per child. Adjust upward if you plan to fund college education, which can cost $50,000–$200,000 depending on the institution.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should I review my coverage?</h3>
+      <p>Review your life insurance needs annually and after any major life event — marriage, divorce, birth of a child, home purchase, significant income change, or retirement — as these events substantially affect coverage requirements.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does my spouse need separate coverage?</h3>
+      <p>Yes, if your spouse provides income, childcare, or other economic value. Even a non-working spouse who provides childcare represents a significant financial replacement cost — typically $30,000–$50,000 annually.</p>
+    </div>
+  </div>
+</section>
+
+<section class="related-tools">
+  <h2>Related Life Insurance Tools</h2>
+  <ul>
+    <li><a href="/tools/life/life-insurance-needs-calculator.html">Life Insurance Needs Calculator</a></li>
+    <li><a href="/tools/life/beneficiary-needs-assessment.html">Beneficiary Needs Assessment</a></li>
+    <li><a href="/tools/life/income-replacement-calculator.html">Income Replacement Calculator</a></li>
+    <li><a href="/tools/life/group-vs-individual-life-insurance.html">Group vs Individual Life Insurance</a></li>
+    <li><a href="/tools/life/disability-vs-life-insurance-calculator.html">Disability vs Life Insurance</a></li>
+  </ul>
+</section>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> Estimates are for educational purposes only and do not represent actual insurance quotes. Rates vary by insurer, state, and individual underwriting. Consult a licensed insurance professional.</p>
+</div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var age=parseFloat(document.getElementById('age').value)||0;
+  var inc=parseFloat(document.getElementById('annual_income').value)||0;
+  var mort=parseFloat(document.getElementById('mortgage_balance').value)||0;
+  var kids=parseFloat(document.getElementById('children_count').value)||0;
+  if(!age||!inc){document.getElementById('result').style.display='none';return;}
+  var mult=age<30?20:age<40?15:age<50?12:age<60?8:5;
+  var baseRec=inc*mult;
+  var childAdd=kids*100000;
+  var total=baseRec+childAdd+mort;
+  document.getElementById('res_mult').textContent=mult+'× income';
+  document.getElementById('res_base').textContent=fmt(baseRec);
+  document.getElementById('res_child').textContent=fmt(childAdd);
+  document.getElementById('res_mortgage').textContent=fmt(mort);
+  document.getElementById('res_total').textContent=fmt(total);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

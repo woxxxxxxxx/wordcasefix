@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Insurance Premium Financing Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate the true cost of financing life insurance premiums vs paying directly. Compare total interest paid and extra financing costs over the policy term.">
+<link rel="canonical" href="https://www.coveragefixpro.com/tools/life/premium-financing-calculator.html">
+<link rel="stylesheet" href="/css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+
+<main>
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/life/">Life Insurance</a> &rsaquo; Premium Financing Calculator
+</nav>
+
+<h1>Life Insurance Premium Financing Calculator</h1>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<div class="calculator-box">
+  <h2>Calculate Premium Financing Costs</h2>
+  <div class="form-group">
+    <label for="annual_premium">Annual Premium ($)</label>
+    <input type="number" id="annual_premium" placeholder="e.g. 10000" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="loan_rate">Loan Interest Rate (%)</label>
+    <input type="number" id="loan_rate" value="7" step="0.1" oninput="calc()">
+  </div>
+  <div class="form-group">
+    <label for="policy_years">Policy Term (Years)</label>
+    <input type="number" id="policy_years" placeholder="e.g. 20" min="1" oninput="calc()">
+  </div>
+</div>
+
+<div class="result-box" id="result" style="display:none;">
+  <h2>Premium Financing Results</h2>
+  <div class="result-item">
+    <span class="result-label">Total Direct Payment:</span>
+    <span class="result-value" id="res_direct"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Total Financed Cost:</span>
+    <span class="result-value" id="res_financed"></span>
+  </div>
+  <div class="result-item">
+    <span class="result-label">Total Interest Paid:</span>
+    <span class="result-value" id="res_interest"></span>
+  </div>
+  <div class="result-item highlight">
+    <span class="result-label">Extra Financing Cost:</span>
+    <span class="result-value" id="res_extra"></span>
+  </div>
+</div>
+
+<div class="info-box">
+  <h2>Is Premium Financing Right for You?</h2>
+  <p>Life insurance premium financing allows high-net-worth individuals to borrow funds from a lender to pay insurance premiums, keeping their capital deployed in higher-return investments. The strategy works best when the policy's internal rate of return or investment yield exceeds the loan interest rate. However, it carries significant risks including rising interest rates, collateral calls, and policy lapse risk if the loan isn't managed carefully. This calculator helps you see the raw cost of financing versus direct payment, so you can make a more informed decision with your financial advisor.</p>
+</div>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>Who typically uses premium financing?</h3>
+      <p>Premium financing is most common among high-net-worth individuals with estates over $10 million who want large life insurance policies without liquidating assets or tying up capital in premiums.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What are the risks of premium financing?</h3>
+      <p>Key risks include interest rate increases, collateral shortfalls, loan calls if the policy underperforms, and policy lapse if the loan isn't serviced. It's a complex strategy requiring careful ongoing management.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can the policy's cash value cover the loan?</h3>
+      <p>Ideally yes — the goal is for the policy's cash value growth to offset loan interest or repay the balance. But cash value projections are not guaranteed and may fall short.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What loan rates are typical for premium financing?</h3>
+      <p>Rates typically range from SOFR + 1% to SOFR + 3%, which in recent years has meant 6–9% annually. Rates fluctuate with market conditions and the borrower's creditworthiness.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is premium financing worth it?</h3>
+      <p>It can be, but only with expert guidance. The strategy requires proper collateral, careful monitoring, and a clear exit strategy. Many poorly structured arrangements have ended in significant losses.</p>
+    </div>
+  </div>
+</section>
+
+<section class="related-tools">
+  <h2>Related Life Insurance Tools</h2>
+  <ul>
+    <li><a href="/tools/life/term-vs-whole-life-calculator.html">Term vs Whole Life Calculator</a></li>
+    <li><a href="/tools/life/cash-value-growth-calculator.html">Cash Value Growth Calculator</a></li>
+    <li><a href="/tools/life/estate-planning-life-insurance-calculator.html">Estate Planning Life Insurance Calculator</a></li>
+    <li><a href="/tools/life/survivorship-life-insurance-calculator.html">Survivorship Life Insurance Calculator</a></li>
+    <li><a href="/tools/life/life-insurance-tax-calculator.html">Life Insurance Tax Benefits Calculator</a></li>
+  </ul>
+</section>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> Estimates are for educational purposes only and do not represent actual insurance quotes. Rates vary by insurer, state, and individual underwriting. Consult a licensed insurance professional.</p>
+</div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var prem=parseFloat(document.getElementById('annual_premium').value)||0;
+  var rate=(parseFloat(document.getElementById('loan_rate').value)||7)/100;
+  var yrs=parseFloat(document.getElementById('policy_years').value)||0;
+  if(!prem||!yrs){document.getElementById('result').style.display='none';return;}
+  var totalDirect=prem*yrs;
+  var avgBalance=prem*yrs/2;
+  var totalInterest=avgBalance*rate*yrs;
+  var totalFinanced=totalDirect+totalInterest;
+  var extraCost=totalFinanced-totalDirect;
+  document.getElementById('res_direct').textContent=fmt(totalDirect);
+  document.getElementById('res_financed').textContent=fmt(totalFinanced);
+  document.getElementById('res_interest').textContent=fmt(totalInterest);
+  document.getElementById('res_extra').textContent=fmt(extraCost);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>
