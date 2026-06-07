@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employment Practices Liability (EPLI) Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate EPLI insurance costs to protect your business from wrongful termination, discrimination, and harassment claims.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › EPLI Calculator</nav>
+  <h1>Employment Practices Liability (EPLI) Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="num_employees">Number of Employees</label>
+      <input type="number" id="num_employees" placeholder="e.g. 10" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="CA">California (CA)</option>
+        <option value="TX">Texas (TX)</option>
+        <option value="NY">New York (NY)</option>
+        <option value="FL">Florida (FL)</option>
+        <option value="OH">Ohio (OH)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="has_hr_policy">Formal HR Policies in Place?</label>
+      <select id="has_hr_policy" oninput="calc()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">HR Policy Impact</span><span class="result-value" id="res_hr"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Employment Practices Liability Insurance</h2>
+    <p>Employment practices liability insurance (EPLI) protects businesses from employee lawsuits alleging wrongful termination, discrimination, sexual harassment, retaliation, and failure to promote. Employment lawsuits are among the most common and expensive claims businesses face — the average EPLI claim costs over $160,000 when it goes to trial. California and New York have particularly employee-friendly laws and command higher EPLI premiums. Having documented HR policies, an employee handbook, and anti-harassment training can reduce your premium by 20–30% and, more importantly, reduce the likelihood of a claim occurring in the first place.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does EPLI cover?</div>
+      <div class="faq-a">EPLI covers legal defense costs and settlements for claims of wrongful termination, discrimination (race, sex, age, disability), sexual harassment, retaliation, failure to promote, and other employment-related allegations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do small businesses need EPLI?</div>
+      <div class="faq-a">Yes. Businesses with as few as one employee can face employment lawsuits. Small businesses are often targeted because they lack the HR infrastructure to handle employment issues properly. EPLI is especially important for growing businesses.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why does California cost more for EPLI?</div>
+      <div class="faq-a">California has some of the strongest employee protection laws in the country, including broad anti-discrimination statutes, mandatory leave requirements, and class action risk. This results in higher claim frequency and severity.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does EPLI cover independent contractors?</div>
+      <div class="faq-a">Most EPLI policies cover claims from employees only. If you use independent contractors who later claim misclassification as employees, your policy may not cover those claims. Review your policy terms carefully.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How can I reduce my EPLI premium?</div>
+      <div class="faq-a">Implement a documented employee handbook, conduct annual anti-harassment training, establish a formal grievance process, and document all employment decisions. These steps reduce claim likelihood and can lower premiums.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/directors-officers-insurance-calculator.html">D&O Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/workers-comp-calculator.html">Workers Comp Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/key-person-insurance-calculator.html">Key Person Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/startup-insurance-calculator.html">Startup Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var emp=parseFloat(document.getElementById('num_employees').value)||1;
+  var state=document.getElementById('state').value;
+  var hr=document.getElementById('has_hr_policy').value;
+  var base=800+emp*200;
+  var sm={CA:1.5,NY:1.3,TX:1.0,FL:1.0,OH:0.9,Other:1.0}[state]||1.0;
+  var hrMult=hr==='no'?1.3:1.0;
+  var annual=base*sm*hrMult;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_hr').textContent=hr==='no'?'⚠ No HR policy surcharge applied (+30%)':'✓ HR policy discount applied';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Umbrella Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate commercial umbrella insurance needs and costs. Extra liability protection above your general liability and other policies.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Commercial Umbrella Calculator</nav>
+  <h1>Commercial Umbrella Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="business_type">Business Type</label>
+      <select id="business_type" oninput="calc()">
+        <option value="consultant">Consultant</option>
+        <option value="tech">Tech / Software</option>
+        <option value="retail">Retail</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="contractor">Contractor</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="business_risk_level">Risk Level</label>
+      <select id="business_risk_level" oninput="calc()">
+        <option value="low">Low — Office / Consulting</option>
+        <option value="medium" selected>Medium — Retail / Restaurant</option>
+        <option value="high">High — Construction / Heavy Industry</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="net_assets">Business Net Assets ($)</label>
+      <input type="number" id="net_assets" placeholder="e.g. 1000000" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Recommended Coverage</span><span class="result-value" id="res_coverage"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Commercial Umbrella Insurance</h2>
+    <p>Commercial umbrella insurance provides an extra layer of liability protection above and beyond the limits of your existing general liability, commercial auto, and employer's liability policies. When a covered claim exhausts your underlying policy limits, umbrella coverage kicks in. For example, if you have $1 million in GL coverage and face a $2.5 million judgment, your umbrella policy covers the remaining $1.5 million. Commercial umbrella is one of the most cost-effective ways to increase your overall liability protection — a $1 million umbrella policy typically costs just $750–$1,000 per year. High-risk businesses, those with significant assets, or those with large commercial contracts should consider $5–10 million in umbrella coverage.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between commercial umbrella and excess liability?</div>
+      <div class="faq-a">Commercial umbrella insurance can broaden coverage beyond your underlying policies while also increasing limits. Excess liability strictly increases limits without broadening coverage. Umbrella policies typically offer more comprehensive protection.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much umbrella coverage does a business need?</div>
+      <div class="faq-a">A common guideline is to carry umbrella coverage equal to at least your business net assets. High-risk industries, businesses with large contracts, and those with commercial fleets often need $5–10 million in umbrella limits.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What underlying policies does a commercial umbrella require?</div>
+      <div class="faq-a">Most umbrella policies require you to maintain minimum limits on your underlying policies — typically $1 million GL, $1 million commercial auto, and $500,000 employer's liability. The umbrella sits on top of these.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does a commercial umbrella cover professional liability?</div>
+      <div class="faq-a">Standard commercial umbrella policies do not extend over professional liability (E&O) or D&O policies. You need separate excess professional liability coverage to increase those limits.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is commercial umbrella insurance expensive?</div>
+      <div class="faq-a">No — it is one of the best values in business insurance. A $1 million umbrella typically costs $750–$1,500 per year for most businesses. Each additional million in coverage costs less than the first million.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-auto-insurance-calculator.html">Commercial Auto Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/product-liability-calculator.html">Product Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/contractor-insurance-calculator.html">Contractor Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/directors-officers-insurance-calculator.html">D&O Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var bt=document.getElementById('business_type').value;
+  var risk=document.getElementById('business_risk_level').value;
+  var assets=parseFloat(document.getElementById('net_assets').value)||0;
+  var base=Math.max(assets,1000000);
+  var rm={low:1.0,medium:2.0,high:3.0}[risk];
+  var coverage=Math.ceil(base*rm/1000000)*1000000;
+  var millions=coverage/1000000;
+  var annual=750+(millions-1)*300;
+  document.getElementById('res_coverage').textContent=fmt(coverage);
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surety Bond Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate surety bond costs for license bonds, contract bonds, and court bonds. Estimate annual premiums based on credit score.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Surety Bond Calculator</nav>
+  <h1>Surety Bond Cost Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="bond_amount">Bond Amount Required ($)</label>
+      <input type="number" id="bond_amount" placeholder="e.g. 25000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="bond_type">Bond Type</label>
+      <select id="bond_type" oninput="calc()">
+        <option value="license">License &amp; Permit Bond</option>
+        <option value="contract">Contract / Performance Bond</option>
+        <option value="court">Court Bond</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="credit_score">Credit Score</label>
+      <select id="credit_score" oninput="calc()">
+        <option value="good">Good (700+)</option>
+        <option value="fair">Fair (600–699)</option>
+        <option value="poor">Poor (Below 600)</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Rate Range</span><span class="result-value" id="res_rate"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Cost</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Cost</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Surety Bonds</h2>
+    <p>A surety bond is a three-party agreement where the surety company guarantees to a third party (the obligee) that you (the principal) will fulfill your contractual or legal obligations. Unlike insurance, a surety bond is not designed to absorb losses — if a claim is paid, you must reimburse the surety. License bonds are required by government agencies to obtain business licenses. Performance and payment bonds guarantee that construction contracts will be completed. Credit score is the most important factor in surety bond pricing: applicants with good credit (700+) can expect rates of 1–3%, while those with poor credit may pay 5–15% or more of the bond amount.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between a surety bond and insurance?</div>
+      <div class="faq-a">Insurance protects you from unexpected losses you didn't cause. A surety bond protects the obligee (the party you're bonding to) from your failure to perform. If a surety bond claim is paid, you are obligated to repay the surety company.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who requires surety bonds?</div>
+      <div class="faq-a">Government agencies often require license bonds for contractors, auto dealers, mortgage brokers, and other licensed businesses. General contractors may require performance and payment bonds from subcontractors on large projects.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does credit score affect surety bond rates?</div>
+      <div class="faq-a">Credit score is the primary underwriting factor. Applicants with excellent credit pay the lowest rates (1–2%). Poor credit applicants pay significantly more (5–15%) because they represent a higher risk of claim and non-repayment to the surety.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get a surety bond with bad credit?</div>
+      <div class="faq-a">Yes, but at a higher cost. Bad credit surety programs exist for applicants with scores below 600. Rates are higher and some bond types may require collateral. Building your credit over time will significantly reduce bond costs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does a surety bond last?</div>
+      <div class="faq-a">License bonds typically renew annually. Contract bonds (performance/payment) last for the duration of the specific project or contract. Court bonds last until the court proceedings are concluded.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/contractor-insurance-calculator.html">Contractor Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/workers-comp-calculator.html">Workers Comp Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-auto-insurance-calculator.html">Commercial Auto Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/inland-marine-insurance-calculator.html">Inland Marine (Equipment) Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual bond rates depend on your specific credit profile, bond type, and underwriting review. Consult a licensed surety bond professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var amount=parseFloat(document.getElementById('bond_amount').value)||0;
+  var type=document.getElementById('bond_type').value;
+  var credit=document.getElementById('credit_score').value;
+  if(!amount){document.getElementById('result').style.display='none';return;}
+  var rates={good:0.02,fair:0.04,poor:0.10};
+  var rate=rates[credit]||0.02;
+  var annual=amount*rate;
+  var rateRange={good:'1%–3%',fair:'3%–5%',poor:'5%–15%'}[credit];
+  document.getElementById('res_rate').textContent=rateRange+' (estimated '+(rate*100)+'% used)';
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

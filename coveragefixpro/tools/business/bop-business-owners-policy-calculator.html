@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Owner's Policy (BOP) Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate BOP insurance costs and compare to buying general liability and commercial property separately. See how much a BOP saves.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › BOP Calculator</nav>
+  <h1>Business Owner's Policy (BOP) Cost Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="business_type">Business Type</label>
+      <select id="business_type" oninput="calc()">
+        <option value="consultant">Consultant</option>
+        <option value="tech">Tech / Software</option>
+        <option value="retail">Retail</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="contractor">Contractor</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="building_value">Building / Property Value ($)</label>
+      <input type="number" id="building_value" placeholder="0 if renting" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 500000" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">GL Insurance Estimate</span><span class="result-value" id="res_gl"></span></div>
+    <div class="result-item"><span class="result-label">Property Insurance Estimate</span><span class="result-value" id="res_prop"></span></div>
+    <div class="result-item"><span class="result-label">Total If Purchased Separately</span><span class="result-value" id="res_separate"></span></div>
+    <div class="result-item"><span class="result-label">BOP Estimate (20% savings)</span><span class="result-value" id="res_bop"></span></div>
+    <div class="result-item"><span class="result-label">Annual Savings with BOP</span><span class="result-value" id="res_savings"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>What Is a Business Owner's Policy (BOP)?</h2>
+    <p>A Business Owner's Policy (BOP) bundles general liability insurance and commercial property insurance into a single, discounted policy. It is designed specifically for small and medium-sized businesses and typically costs 15–25% less than buying both policies separately. BOPs can also include business interruption coverage, adding even more value. To qualify for a BOP, businesses generally must have fewer than 100 employees and revenue under $5 million. Businesses that do not qualify — such as large manufacturers or high-hazard contractors — must purchase policies individually. A BOP is often the smartest and most cost-effective starting point for insuring a small business.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Who qualifies for a BOP?</div>
+      <div class="faq-a">BOPs are designed for small to medium businesses with under 100 employees and annual revenues typically under $5 million. High-risk industries like construction may not qualify and must buy coverage separately.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is included in a BOP?</div>
+      <div class="faq-a">A standard BOP includes general liability insurance, commercial property insurance (for owned or rented space), and often business interruption coverage. You can add endorsements for additional coverage like cyber liability or equipment breakdown.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does a BOP replace workers comp or professional liability?</div>
+      <div class="faq-a">No. A BOP does not include workers compensation or professional liability (E&O). Those must be purchased separately as standalone policies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much does a BOP cost for a small business?</div>
+      <div class="faq-a">Most small businesses pay $500–$3,500 per year for a BOP, depending on industry, revenue, property value, and location. Service-based businesses with no physical inventory pay less than retailers or restaurants.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I add cyber insurance to my BOP?</div>
+      <div class="faq-a">Many insurers offer cyber liability as an endorsement to a BOP for an additional premium. However, businesses with significant data exposure may need a standalone cyber policy with higher limits.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-property-insurance-calculator.html">Commercial Property Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/business-interruption-calculator.html">Business Interruption Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/cyber-insurance-calculator.html">Cyber Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/startup-insurance-calculator.html">Startup Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var bt=document.getElementById('business_type').value;
+  var bv=parseFloat(document.getElementById('building_value').value)||0;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var glBases={consultant:500,tech:800,retail:1200,restaurant:1800,contractor:2000};
+  var gl=glBases[bt]+Math.floor(rev/100000)*200;
+  var propRates={consultant:0.5,tech:0.5,retail:0.7,restaurant:1.2,contractor:0.8};
+  var prop=bv>0?(bv/1000)*(propRates[bt]||0.7):500;
+  var separate=gl+prop;
+  var bop=separate*0.80;
+  var savings=separate-bop;
+  document.getElementById('res_gl').textContent=fmt(gl);
+  document.getElementById('res_prop').textContent=fmt(prop);
+  document.getElementById('res_separate').textContent=fmt(separate);
+  document.getElementById('res_bop').textContent=fmt(bop);
+  document.getElementById('res_savings').textContent=fmt(savings);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

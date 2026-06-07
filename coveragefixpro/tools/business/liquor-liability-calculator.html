@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquor Liability Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate liquor liability insurance costs for bars, restaurants, event venues, and breweries. Protect against alcohol-related claims.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Liquor Liability Calculator</nav>
+  <h1>Liquor Liability Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="business_type">Business Type</label>
+      <select id="business_type" oninput="calc()">
+        <option value="bar">Bar / Nightclub</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="event_venue">Event Venue</option>
+        <option value="brewery">Brewery / Winery</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_liquor_sales">Annual Liquor Sales ($)</label>
+      <input type="number" id="annual_liquor_sales" placeholder="e.g. 200000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="TX">Texas (TX)</option>
+        <option value="FL">Florida (FL)</option>
+        <option value="CA">California (CA)</option>
+        <option value="NY">New York (NY)</option>
+        <option value="OH">Ohio (OH)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Rate</span><span class="result-value" id="res_rate"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Liquor Liability Insurance</h2>
+    <p>Liquor liability insurance protects businesses that sell, serve, or furnish alcoholic beverages from claims arising from intoxicated patrons. If a customer becomes intoxicated at your establishment and causes an accident — injuring themselves or others — your business can be held liable under dram shop laws. Dram shop laws vary by state, with Texas and Florida having particularly broad liability exposure. Event venues hosting open bars face high risk even without a liquor license if they permit alcohol on premises. Most states require liquor liability as a condition of obtaining a liquor license. Bars and nightclubs pay the highest rates due to higher alcohol consumption volumes and late-night risk factors.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What are dram shop laws?</div>
+      <div class="faq-a">Dram shop laws hold alcohol-serving establishments liable for damages caused by intoxicated patrons. If your bartender serves an obviously drunk customer who then causes a car accident, your business can be sued under dram shop statutes in most states.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is liquor liability required by law?</div>
+      <div class="faq-a">Most states require liquor liability insurance as a condition of obtaining or renewing a liquor license. Even where not legally required, it is essential protection for any business serving alcohol.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does general liability cover alcohol-related claims?</div>
+      <div class="faq-a">Standard general liability policies typically include a liquor liability exclusion. Businesses that sell or serve alcohol need a standalone liquor liability policy or a GL policy with the exclusion removed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do event venues need liquor liability if they don't have a liquor license?</div>
+      <div class="faq-a">Yes. If your venue permits outside caterers or event hosts to bring alcohol onto the premises, your business can still face liability. Host liquor liability coverage is available for venues that don't sell alcohol but allow it on-site.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How can I lower liquor liability premiums?</div>
+      <div class="faq-a">Train staff in responsible alcohol service (TIPS or ServSafe certification), implement ID-checking policies, stop serving visibly intoxicated patrons, and document your practices. These steps reduce risk and can lower premiums.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/restaurant-insurance-calculator.html">Restaurant Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-property-insurance-calculator.html">Commercial Property Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/workers-comp-calculator.html">Workers Comp Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var bt=document.getElementById('business_type').value;
+  var sales=parseFloat(document.getElementById('annual_liquor_sales').value)||0;
+  var state=document.getElementById('state').value;
+  if(!sales){document.getElementById('result').style.display='none';return;}
+  var rates={bar:0.02,restaurant:0.015,event_venue:0.025,brewery:0.01};
+  var rate=rates[bt]||0.015;
+  var sm={TX:1.3,FL:1.3,CA:1.2,NY:1.2,OH:1.0,Other:1.0}[state]||1.0;
+  var annual=Math.max(sales*rate*sm,1000);
+  document.getElementById('res_rate').textContent=(rate*100)+'% of liquor sales';
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

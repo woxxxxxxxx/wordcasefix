@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Estimate cyber liability insurance costs for your business. Based on revenue, data records, industry, and security practices.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Cyber Insurance Calculator</nav>
+  <h1>Cyber Insurance Cost Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 1000000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="num_records">Customer Records Stored</label>
+      <input type="number" id="num_records" placeholder="Number of customer records" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="industry">Industry</label>
+      <select id="industry" oninput="calc()">
+        <option value="healthcare">Healthcare</option>
+        <option value="finance">Finance</option>
+        <option value="retail">Retail</option>
+        <option value="tech">Tech / Software</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="has_mfa">Multi-Factor Authentication (MFA) Enabled?</label>
+      <select id="has_mfa" oninput="calc()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Average Data Breach Cost</span><span class="result-value" id="res_breach_cost"></span></div>
+    <div class="result-item"><span class="result-label">MFA Discount Status</span><span class="result-value" id="res_mfa"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Cyber Liability Insurance</h2>
+    <p>Cyber liability insurance protects businesses from the financial fallout of data breaches, ransomware attacks, and other cyber incidents. Coverage includes notification costs, credit monitoring for affected customers, legal fees, regulatory fines, and lost income during system downtime. Healthcare and financial services companies face the strictest data protection regulations and the highest premiums. Implementing strong security controls — like multi-factor authentication, employee training, and regular backups — can significantly reduce your premium. The average data breach in the U.S. costs over $4 million, making cyber insurance a critical protection for any business handling customer data.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does cyber liability insurance cover?</div>
+      <div class="faq-a">Cyber insurance covers first-party costs like data breach response, notification, and business interruption, plus third-party costs including customer lawsuits and regulatory fines from data privacy violations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do small businesses need cyber insurance?</div>
+      <div class="faq-a">Yes. Small businesses are targeted in over 40% of cyberattacks because they typically have weaker security. A single breach can cost hundreds of thousands of dollars — far more than annual premiums.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does MFA really lower cyber insurance premiums?</div>
+      <div class="faq-a">Yes, significantly. Most insurers now require MFA on all remote access and privileged accounts. Having MFA in place can reduce premiums by 10–20% and may be required to qualify for coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is ransomware coverage?</div>
+      <div class="faq-a">Ransomware coverage pays the ransom (if your insurer approves) and covers costs to restore systems and data. Ransomware is now the most common cyber claim, so verify your policy includes it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much cyber insurance coverage do I need?</div>
+      <div class="faq-a">A common starting point is $1 million for small businesses. If you store large volumes of sensitive customer data, process payments, or operate in a regulated industry, you may need $2–5 million or more.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/professional-liability-eo-calculator.html">Professional Liability (E&O) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/directors-officers-insurance-calculator.html">D&O Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/startup-insurance-calculator.html">Startup Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var records=parseFloat(document.getElementById('num_records').value)||0;
+  var ind=document.getElementById('industry').value;
+  var mfa=document.getElementById('has_mfa').value;
+  var base=1500;
+  var recAdd=Math.floor(records/10000)*200;
+  var im={healthcare:2.0,finance:1.8,tech:1.5,retail:1.3,other:1.0}[ind]||1.0;
+  var annual=(base+recAdd)*im;
+  if(mfa==='yes') annual*=0.85;
+  var avgBreach=records>50000?4200000:records>10000?1800000:500000;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_breach_cost').textContent=fmt(avgBreach)+' avg. data breach cost';
+  document.getElementById('res_mfa').textContent=mfa==='yes'?'15% MFA discount applied':'No MFA discount — consider enabling MFA';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

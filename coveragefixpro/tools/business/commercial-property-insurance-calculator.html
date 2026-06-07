@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Property Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate commercial property insurance costs for offices, warehouses, retail stores, and restaurants. Instant premium estimate.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Commercial Property Calculator</nav>
+  <h1>Commercial Property Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="property_value">Property Value ($)</label>
+      <input type="number" id="property_value" placeholder="e.g. 500000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="building_type">Building Type</label>
+      <select id="building_type" oninput="calc()">
+        <option value="office">Office</option>
+        <option value="warehouse">Warehouse</option>
+        <option value="retail">Retail Store</option>
+        <option value="restaurant">Restaurant</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="FL">Florida (FL)</option>
+        <option value="TX">Texas (TX)</option>
+        <option value="CA">California (CA)</option>
+        <option value="NY">New York (NY)</option>
+        <option value="OH">Ohio (OH)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="sprinkler">Fire Sprinkler System?</label>
+      <select id="sprinkler" oninput="calc()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Sprinkler Discount</span><span class="result-value" id="res_sprinkler"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Commercial Property Insurance</h2>
+    <p>Commercial property insurance protects the physical assets of your business — the building, equipment, inventory, furniture, and fixtures — from damage caused by fire, theft, vandalism, wind, and other covered perils. If you own your building, coverage should reflect full replacement cost. If you lease, your policy should still cover your improvements, equipment, and contents. Location matters enormously: Florida and Texas businesses pay significantly more due to hurricane and storm risk. Installing a fire sprinkler system can earn a 10% discount. Most commercial property policies do not cover flood or earthquake — those require separate policies.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does commercial property insurance cover?</div>
+      <div class="faq-a">It covers the building and business personal property (equipment, inventory, furniture) from covered perils like fire, theft, vandalism, and certain weather events. It does not typically cover flood or earthquake.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I insure at replacement cost or actual cash value?</div>
+      <div class="faq-a">Replacement cost coverage pays to rebuild or replace damaged property with new materials at current prices. Actual cash value deducts depreciation. Replacement cost is almost always the better choice for businesses.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I lease my space?</div>
+      <div class="faq-a">Tenants still need commercial property insurance to cover their equipment, inventory, and any tenant improvements. Your landlord's policy only covers the building structure itself, not your business contents.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does location affect commercial property premiums?</div>
+      <div class="faq-a">Yes significantly. Properties in hurricane-prone states like Florida pay 50–80% more than the national average. Proximity to a fire station, construction type, and local crime rates also affect pricing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is flood covered under commercial property insurance?</div>
+      <div class="faq-a">No, flood damage is excluded from standard commercial property policies. If your business is in a flood zone, you need a separate commercial flood insurance policy through the NFIP or a private insurer.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/business-interruption-calculator.html">Business Interruption Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/inland-marine-insurance-calculator.html">Inland Marine (Equipment) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/restaurant-insurance-calculator.html">Restaurant Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var pv=parseFloat(document.getElementById('property_value').value)||0;
+  var bt=document.getElementById('building_type').value;
+  var state=document.getElementById('state').value;
+  var spr=document.getElementById('sprinkler').value;
+  if(!pv){document.getElementById('result').style.display='none';return;}
+  var rates={office:0.5,warehouse:0.8,retail:0.7,restaurant:1.2};
+  var rate=(rates[bt]||0.7)/1000;
+  var sm={FL:1.8,TX:1.4,CA:1.3,NY:1.2,OH:0.9,Other:1.0}[state]||1.0;
+  var sprMult=spr==='yes'?0.90:1.0;
+  var annual=pv*rate*sm*sprMult;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_sprinkler').textContent=spr==='yes'?'Sprinkler discount applied (-10%)':'No sprinkler discount';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

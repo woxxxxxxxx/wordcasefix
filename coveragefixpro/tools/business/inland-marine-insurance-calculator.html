@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inland Marine (Equipment) Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate inland marine insurance costs for business equipment and tools. Covers equipment in transit and at job sites.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Inland Marine (Equipment) Calculator</nav>
+  <h1>Inland Marine (Equipment) Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="equipment_value">Total Equipment Value ($)</label>
+      <input type="number" id="equipment_value" placeholder="e.g. 50000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="equipment_type">Equipment Type</label>
+      <select id="equipment_type" oninput="calc()">
+        <option value="tools">Tools &amp; Hand Equipment</option>
+        <option value="electronics">Electronics &amp; AV Equipment</option>
+        <option value="medical">Medical Equipment</option>
+        <option value="construction">Construction Equipment</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Rate</span><span class="result-value" id="res_rate"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Inland Marine (Equipment) Insurance</h2>
+    <p>Inland marine insurance covers business equipment, tools, and property while it is in transit or away from your primary location — at job sites, in vehicles, or at client premises. Despite its name, inland marine has nothing to do with water — the term traces back to marine cargo insurance traditions. It is essential for contractors, photographers, medical equipment companies, AV production firms, and any business whose valuable equipment regularly leaves the office or shop. Standard commercial property insurance only covers items at a fixed location. Construction equipment, power tools, electronics, and medical devices all benefit from inland marine protection against theft, damage, and mysterious disappearance.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does inland marine insurance cover?</div>
+      <div class="faq-a">Inland marine covers business personal property while in transit, at temporary locations, or at job sites. Covered perils typically include theft, fire, accidental damage, and in some cases mysterious disappearance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who needs inland marine insurance?</div>
+      <div class="faq-a">Any business that regularly moves equipment or tools away from its primary location. Contractors, photographers, medical device companies, IT firms, AV companies, and caterers all commonly need inland marine coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is inland marine the same as equipment insurance?</div>
+      <div class="faq-a">They are closely related. Equipment floater policies (a type of inland marine) are designed specifically to cover portable business equipment. The terms are often used interchangeably in practice.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does my commercial property policy cover equipment off-premises?</div>
+      <div class="faq-a">No, or only with very limited off-premises coverage (often just 10% of your property limit). If your equipment regularly leaves your location, you need a separate inland marine policy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is inland marine insurance valued?</div>
+      <div class="faq-a">Policies can be written on actual cash value (ACV, which deducts depreciation) or replacement cost value (RCV, which pays to replace with new equipment). Replacement cost is usually the better choice for expensive equipment.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/contractor-insurance-calculator.html">Contractor Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-property-insurance-calculator.html">Commercial Property Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-auto-insurance-calculator.html">Commercial Auto Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var ev=parseFloat(document.getElementById('equipment_value').value)||0;
+  var et=document.getElementById('equipment_type').value;
+  if(!ev){document.getElementById('result').style.display='none';return;}
+  var rates={tools:0.015,electronics:0.020,medical:0.010,construction:0.025};
+  var rate=rates[et]||0.015;
+  var annual=ev*rate;
+  document.getElementById('res_rate').textContent=(rate*100)+'% of equipment value';
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

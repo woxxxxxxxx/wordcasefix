@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Auto Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate commercial vehicle insurance costs for business fleets. Estimate premiums based on vehicle type, mileage, and driver age.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Commercial Auto Calculator</nav>
+  <h1>Commercial Auto Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="num_vehicles">Number of Vehicles</label>
+      <input type="number" id="num_vehicles" value="1" min="1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="vehicle_type">Vehicle Type</label>
+      <select id="vehicle_type" oninput="calc()">
+        <option value="car">Car / Sedan</option>
+        <option value="van">Van / Minivan</option>
+        <option value="truck">Light Truck / Pickup</option>
+        <option value="heavy">Heavy Truck / Semi</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_miles">Annual Miles Per Vehicle</label>
+      <input type="number" id="annual_miles" placeholder="e.g. 15000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="drivers_avg_age">Average Driver Age</label>
+      <input type="number" id="drivers_avg_age" placeholder="e.g. 35" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Per Vehicle Annual Premium</span><span class="result-value" id="res_per_vehicle"></span></div>
+    <div class="result-item"><span class="result-label">Total Fleet Annual Premium</span><span class="result-value" id="res_total"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Commercial Auto Insurance</h2>
+    <p>Commercial auto insurance covers vehicles used for business purposes — delivery trucks, service vans, company cars, and heavy equipment. Personal auto policies explicitly exclude business use, so any vehicle used to transport goods, equipment, or clients for work purposes needs a commercial policy. Coverage includes liability (for injuries or damage you cause), collision, comprehensive, and uninsured motorist protection. Premiums are influenced by vehicle type, annual mileage, driver age and record, and the nature of the work. Fleets of 5 or more vehicles often qualify for fleet discounts. Young drivers (under 25) significantly increase premiums due to higher accident rates.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Do I need commercial auto if I use my personal car for work?</div>
+      <div class="faq-a">If you regularly use your personal vehicle for business purposes — beyond commuting — you likely need commercial auto or at minimum a business use endorsement on your personal policy. Delivering goods or transporting clients requires commercial coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is hired and non-owned auto insurance?</div>
+      <div class="faq-a">Hired and non-owned auto (HNOA) insurance covers liability when employees use personal vehicles or rented vehicles for business. It fills the gap when no company-owned vehicle is involved but business use still occurs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does mileage affect commercial auto premiums?</div>
+      <div class="faq-a">Higher mileage means more time on the road and greater exposure to accidents. Vehicles driven under 10,000 miles per year often qualify for low-mileage discounts, while high-mileage fleets pay more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What commercial auto coverage limits do I need?</div>
+      <div class="faq-a">State minimums are typically $100,000–$300,000 in liability, but most businesses should carry at least $1 million combined single limit. Trucking and freight businesses often need $750,000–$1 million federally required minimums.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get fleet discounts for multiple vehicles?</div>
+      <div class="faq-a">Yes, most insurers offer fleet pricing for 5 or more vehicles. Fleet programs also allow you to add or remove vehicles mid-term and often include telematics-based discounts for safe driving.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/contractor-insurance-calculator.html">Contractor Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/inland-marine-insurance-calculator.html">Inland Marine (Equipment) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-umbrella-calculator.html">Commercial Umbrella Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var num=parseFloat(document.getElementById('num_vehicles').value)||1;
+  var vt=document.getElementById('vehicle_type').value;
+  var miles=parseFloat(document.getElementById('annual_miles').value)||15000;
+  var age=parseFloat(document.getElementById('drivers_avg_age').value)||35;
+  var bases={car:1800,van:2500,truck:3500,heavy:6000};
+  var base=bases[vt]||1800;
+  var mm=miles<10000?0.9:miles<=25000?1.0:1.2;
+  var am=age<25?1.4:age<=65?1.0:1.2;
+  var perVehicle=base*mm*am;
+  var total=perVehicle*num;
+  document.getElementById('res_per_vehicle').textContent=fmt(perVehicle);
+  document.getElementById('res_total').textContent=fmt(total);
+  document.getElementById('res_monthly').textContent=fmt(total/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

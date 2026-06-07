@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Liability (E&O) Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate errors and omissions (E&O) insurance costs for professionals. Covers consultants, lawyers, accountants, engineers, and more.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Professional Liability (E&O) Calculator</nav>
+  <h1>Professional Liability (E&O) Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="profession">Your Profession</label>
+      <select id="profession" oninput="calc()">
+        <option value="consultant">Consultant</option>
+        <option value="lawyer">Lawyer / Attorney</option>
+        <option value="accountant">Accountant / CPA</option>
+        <option value="engineer">Engineer</option>
+        <option value="real_estate">Real Estate Agent</option>
+        <option value="tech">Tech / IT Professional</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 300000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="years_in_business">Years in Business</label>
+      <input type="number" id="years_in_business" value="1" min="1" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Experience Discount Status</span><span class="result-value" id="res_exp"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Professional Liability (E&O) Insurance</h2>
+    <p>Professional liability insurance, also known as errors and omissions (E&O) insurance, protects professionals who provide advice or services from claims of negligence, mistakes, or failure to deliver promised results. If a client claims your work caused them financial harm, E&O insurance covers your legal defense and any settlements or judgments. Lawyers, accountants, engineers, real estate agents, and consultants are among the professionals who most commonly need this coverage. Many client contracts now require proof of E&O coverage. Premiums vary widely by profession — attorneys and engineers carry significant risk exposure and therefore pay higher premiums than general consultants.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between professional liability and general liability?</div>
+      <div class="faq-a">General liability covers physical injuries and property damage to third parties. Professional liability (E&O) covers financial losses your clients suffer due to your professional mistakes, negligence, or failure to perform services as promised.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is E&O insurance required by law?</div>
+      <div class="faq-a">Some licensed professions such as real estate agents, attorneys, and financial advisors are required to carry E&O by their state licensing board. Others may be required by clients under contract.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a claims-made policy?</div>
+      <div class="faq-a">Most professional liability policies are claims-made, meaning coverage applies only if both the incident and the claim occur while the policy is active. You need tail coverage if you cancel or change insurers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much E&O coverage do I need?</div>
+      <div class="faq-a">A $1 million per-claim limit is common for small professional service firms. High-revenue firms or those with large client contracts may need $2–5 million in coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does experience lower E&O premiums?</div>
+      <div class="faq-a">Yes, professionals with 5+ years of clean claims history often receive experience discounts of 5–15%. Insurers reward demonstrated track records of professional care and quality work.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/cyber-insurance-calculator.html">Cyber Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/directors-officers-insurance-calculator.html">D&O Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/startup-insurance-calculator.html">Startup Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var prof=document.getElementById('profession').value;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var yrs=parseFloat(document.getElementById('years_in_business').value)||1;
+  var bases={consultant:800,lawyer:3000,accountant:1500,engineer:2000,real_estate:1200,tech:1000};
+  var base=bases[prof]||1000;
+  var revAdd=Math.floor(rev/100000)*300;
+  var yrDisc=yrs>5?0.9:1.0;
+  var annual=(base+revAdd)*yrDisc;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_exp').textContent=yrs>5?'Experience discount applied (5+ years)':'No experience discount yet';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

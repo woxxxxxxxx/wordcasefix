@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directors & Officers (D&O) Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate D&O insurance costs for private companies, nonprofits, and public companies. Protect your board of directors and officers.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › D&O Insurance Calculator</nav>
+  <h1>Directors &amp; Officers (D&amp;O) Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="company_type">Company Type</label>
+      <select id="company_type" oninput="calc()">
+        <option value="private">Private Company</option>
+        <option value="nonprofit">Nonprofit</option>
+        <option value="public">Public Company</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 2000000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="num_employees">Number of Employees</label>
+      <input type="number" id="num_employees" placeholder="e.g. 25" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Base Rate for Company Type</span><span class="result-value" id="res_type"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Directors &amp; Officers Insurance</h2>
+    <p>Directors and officers (D&O) insurance protects the personal assets of corporate directors and officers if they are sued for alleged wrongful acts in managing the company. Claims can come from shareholders, employees, creditors, regulators, or competitors. D&O is essential for any company with a board of directors, investors, or outside stakeholders. Nonprofits often face volunteer director lawsuits and benefit from lower-cost D&O policies designed specifically for them. Public companies face the highest risk from securities litigation and pay the most. Private companies increasingly need D&O as they grow, take on investors, and face employment-related disputes from executives.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Who is covered by D&O insurance?</div>
+      <div class="faq-a">D&O insurance covers the personal liability of directors, officers, and sometimes the company itself (entity coverage). It protects individuals from having their personal assets seized in a lawsuit related to their management decisions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do private companies need D&O insurance?</div>
+      <div class="faq-a">Yes. Private companies face D&O claims from employees, vendors, creditors, and investors. Many venture capital investors require D&O coverage as a condition of investment. The risk grows with company size and complexity.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does D&O insurance cover?</div>
+      <div class="faq-a">D&O covers legal defense costs, settlements, and judgments arising from alleged wrongful acts including mismanagement, breach of fiduciary duty, misrepresentation, and employment-related claims against executives.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much D&O coverage does a startup need?</div>
+      <div class="faq-a">Early-stage startups typically start with $1–3 million in D&O coverage. As the company grows and takes on institutional investors, coverage often increases to $5–10 million or more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is D&O insurance tax deductible?</div>
+      <div class="faq-a">Yes, D&O insurance premiums are generally tax deductible as a business expense. However, tax treatment may vary depending on your business structure and jurisdiction — consult a tax professional.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/professional-liability-eo-calculator.html">Professional Liability (E&O) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/employment-practices-liability-calculator.html">EPLI Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/cyber-insurance-calculator.html">Cyber Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/startup-insurance-calculator.html">Startup Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var ct=document.getElementById('company_type').value;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var emp=parseFloat(document.getElementById('num_employees').value)||1;
+  var bases={private:7500,nonprofit:3000,public:25000};
+  var base=bases[ct]||7500;
+  var revAdd=Math.floor(rev/1000000)*500;
+  var empAdd=Math.floor(emp/50)*200;
+  var annual=base+revAdd+empAdd;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_type').textContent=ct.charAt(0).toUpperCase()+ct.slice(1)+' company baseline: '+fmt(bases[ct]);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

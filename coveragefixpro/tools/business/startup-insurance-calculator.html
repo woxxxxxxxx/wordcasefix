@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup Business Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Find out what insurance your startup needs. Answer 5 questions to get a personalized insurance checklist with priority and cost estimates.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Startup Insurance Calculator</nav>
+  <h1>Startup Business Insurance Calculator</h1>
+  <p style="color:var(--text-muted);margin-bottom:24px;">Answer 5 questions to get a personalized insurance checklist with priority ratings and cost estimates for your startup.</p>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="industry">Industry</label>
+      <select id="industry">
+        <option value="tech">Tech / Software / SaaS</option>
+        <option value="retail">Retail / E-commerce</option>
+        <option value="consulting">Consulting / Professional Services</option>
+        <option value="food">Food &amp; Beverage</option>
+        <option value="manufacturing">Manufacturing / Hardware</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="num_employees">Number of Employees</label>
+      <select id="num_employees">
+        <option value="0">Just me (solo founder)</option>
+        <option value="1-5">1–5 employees</option>
+        <option value="6-20">6–20 employees</option>
+        <option value="21+">21+ employees</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="has_location">Physical Location (office, store, warehouse)?</label>
+      <select id="has_location">
+        <option value="yes">Yes</option>
+        <option value="no">No — remote / home-based</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="handles_data">Handle Customer Personal Data?</label>
+      <select id="handles_data">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="has_contracts">Client Contracts / Service Agreements?</label>
+      <select id="has_contracts">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <button onclick="calc()" style="margin-top:16px;padding:12px 32px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">Get My Insurance Checklist</button>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <h2 style="margin-bottom:16px;">Your Startup Insurance Checklist</h2>
+    <div id="res_list"></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Startup Business Insurance</h2>
+    <p>Every startup needs insurance from day one — but knowing which policies matter most for your specific business model can be overwhelming. The right combination depends on your industry, team size, whether you have a physical location, the data you handle, and your client relationships. Almost every business needs general liability as a foundation. Tech startups and consultants typically need professional liability (E&O) as well. Businesses with employees need workers compensation. Customer data exposure triggers cyber liability requirements. This checklist tool helps you cut through the complexity and focus on the coverages that are truly essential for your startup's situation.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">When should a startup get business insurance?</div>
+      <div class="faq-a">Ideally before you sign your first client contract, hire your first employee, or sign a commercial lease. Many contracts require you to show proof of insurance before work begins, so having coverage in place from the start is essential.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much does startup insurance cost?</div>
+      <div class="faq-a">A solo consultant might pay $500–$1,500 per year for general liability and E&O. A tech startup with 5–10 employees handling customer data could easily pay $5,000–$15,000 per year across all necessary coverages.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do investors require startups to carry insurance?</div>
+      <div class="faq-a">Many angel investors and virtually all institutional VCs require certain coverages — most commonly D&O insurance and key person life insurance — as conditions of investment. Review your term sheet carefully for insurance requirements.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I'm a sole proprietor working from home?</div>
+      <div class="faq-a">You still need general liability insurance. Home-based business exclusions in homeowner's policies mean your personal insurance won't cover business claims. If you provide professional services, E&O insurance is also critical.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I bundle startup insurance policies to save money?</div>
+      <div class="faq-a">Yes. A Business Owner's Policy (BOP) bundles general liability and commercial property at a discount. Many insurers also offer startup-focused packages that include GL, E&O, and cyber coverage at reduced rates compared to individual policies.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/professional-liability-eo-calculator.html">Professional Liability (E&O) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/cyber-insurance-calculator.html">Cyber Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/directors-officers-insurance-calculator.html">D&O Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual insurance needs and premiums vary by business. Consult a licensed insurance professional for personalized recommendations and accurate quotes.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var ind=document.getElementById('industry').value;
+  var emp=document.getElementById('num_employees').value;
+  var loc=document.getElementById('has_location').value;
+  var data=document.getElementById('handles_data').value;
+  var contracts=document.getElementById('has_contracts').value;
+  var recs=[];var totalMin=0;var totalMax=0;
+  recs.push({priority:'🔴 Priority 1',name:'General Liability Insurance',reason:'Protects against third-party bodily injury and property damage claims.',cost:'$500–$2,000/year'});
+  totalMin+=500;totalMax+=2000;
+  if(contracts==='yes'||ind==='tech'||ind==='consulting'){
+    recs.push({priority:'🔴 Priority 2',name:'Professional Liability (E&O)',reason:'Required for service-based businesses and contractors.',cost:'$800–$3,000/year'});
+    totalMin+=800;totalMax+=3000;
+  }
+  if(emp==='6-20'||emp==='21+'){
+    recs.push({priority:'🔴 Priority 2',name:'Workers Compensation',reason:'Required by law in most states once you have employees.',cost:'$1,000–$8,000/year'});
+    totalMin+=1000;totalMax+=8000;
+  }
+  if(data==='yes'){
+    recs.push({priority:'🟡 Priority 3',name:'Cyber Liability Insurance',reason:'Protects against data breaches and cyber attacks.',cost:'$1,500–$5,000/year'});
+    totalMin+=1500;totalMax+=5000;
+  }
+  if(loc==='yes'){
+    recs.push({priority:'🟡 Priority 3',name:'Commercial Property Insurance',reason:'Covers your physical location, equipment, and inventory.',cost:'$500–$2,000/year'});
+    totalMin+=500;totalMax+=2000;
+  }
+  if(ind==='food'){
+    recs.push({priority:'🟡 Priority 3',name:'Product Liability Insurance',reason:'Protects food businesses against product contamination claims.',cost:'$1,000–$3,000/year'});
+    totalMin+=1000;totalMax+=3000;
+  }
+  var html=recs.map(function(r){return '<div class="tool-card" style="margin-bottom:12px;"><h3 style="margin-bottom:4px;">'+r.priority+' — '+r.name+'</h3><p>'+r.reason+'</p><p style="color:var(--primary);font-weight:600;margin-top:4px;">Est. Cost: '+r.cost+'</p></div>';}).join('');
+  html+='<div class="result-item" style="margin-top:16px;"><span class="result-label">Estimated Annual Total</span><span class="result-value">'+fmt(totalMin)+' – '+fmt(totalMax)+'</span></div>';
+  document.getElementById('res_list').innerHTML=html;
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

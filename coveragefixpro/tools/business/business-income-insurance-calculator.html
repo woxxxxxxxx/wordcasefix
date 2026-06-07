@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Income Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate business income insurance coverage based on annual net income and fixed costs. Ensure your business survives an interruption.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Business Income Insurance Calculator</nav>
+  <h1>Business Income Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="annual_net_income">Annual Net Income ($)</label>
+      <input type="number" id="annual_net_income" placeholder="e.g. 200000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="fixed_annual_costs">Annual Fixed Costs ($)</label>
+      <input type="number" id="fixed_annual_costs" placeholder="e.g. 120000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="recovery_period_months">Recovery Period</label>
+      <select id="recovery_period_months" oninput="calc()">
+        <option value="3">3 Months</option>
+        <option value="6" selected>6 Months</option>
+        <option value="12">12 Months</option>
+        <option value="18">18 Months</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Monthly Business Income</span><span class="result-value" id="res_monthly_need"></span></div>
+    <div class="result-item"><span class="result-label">Recommended Coverage</span><span class="result-value" id="res_coverage"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_premium"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly_prem"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Business Income Insurance</h2>
+    <p>Business income insurance (also called business interruption insurance) replaces the income your business loses when a covered physical loss — fire, windstorm, or other property damage — forces a temporary closure. Coverage is based on your net income plus continuing fixed expenses like rent, loan payments, and salaried payroll. Selecting an adequate coverage period is critical. Most businesses choose 6–12 months, but some industries like manufacturing or restaurants may need 12–18 months to fully recover after a significant loss. This coverage is typically added to a commercial property policy or BOP rather than purchased standalone. Premiums are generally 1–1.5% of the total coverage amount annually.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How is business income calculated for insurance purposes?</div>
+      <div class="faq-a">Business income is typically defined as net profit plus continuing normal operating expenses (like rent and payroll) that continue even when the business is closed. Your insurer will review financial records to determine the proper coverage amount.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is extra expense coverage?</div>
+      <div class="faq-a">Extra expense coverage pays for costs above your normal expenses that help you continue operating after a covered loss — like renting temporary space or expediting equipment replacement. It works alongside business income coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is an indemnity period?</div>
+      <div class="faq-a">The indemnity period is the maximum time your business income policy will pay benefits. It runs from the date of the covered loss until your business is restored, up to the policy's maximum indemnity period (e.g., 12 months).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does business income insurance cover supply chain disruptions?</div>
+      <div class="faq-a">Standard policies do not. Contingent business interruption coverage can be added to cover losses resulting from disruptions at a key supplier or customer's location, though this coverage is becoming more restrictive and expensive.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I determine the right coverage period?</div>
+      <div class="faq-a">Consider how long it would realistically take to rebuild your location, replace equipment, obtain permits, and return to pre-loss revenue levels. Conservative estimates are better — under-insuring this risk leaves your business exposed when it is most vulnerable.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/business-interruption-calculator.html">Business Interruption Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-property-insurance-calculator.html">Commercial Property Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/restaurant-insurance-calculator.html">Restaurant Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var net=parseFloat(document.getElementById('annual_net_income').value)||0;
+  var fixed=parseFloat(document.getElementById('fixed_annual_costs').value)||0;
+  var months=parseFloat(document.getElementById('recovery_period_months').value)||6;
+  if(!net){document.getElementById('result').style.display='none';return;}
+  var monthly=(net+fixed)/12;
+  var coverage=monthly*months;
+  var premium=coverage*0.015;
+  document.getElementById('res_monthly_need').textContent=fmt(monthly);
+  document.getElementById('res_coverage').textContent=fmt(coverage);
+  document.getElementById('res_premium').textContent=fmt(premium);
+  document.getElementById('res_monthly_prem').textContent=fmt(premium/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

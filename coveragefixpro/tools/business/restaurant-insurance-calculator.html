@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate restaurant insurance costs including general liability, commercial property, workers comp, and liquor liability. Complete restaurant coverage estimate.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Restaurant Insurance Calculator</nav>
+  <h1>Restaurant Insurance Cost Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="seating_capacity">Seating Capacity</label>
+      <input type="number" id="seating_capacity" placeholder="e.g. 80" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 800000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="serves_alcohol">Serves Alcohol?</label>
+      <select id="serves_alcohol" oninput="calc()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="CA">California (CA)</option>
+        <option value="TX">Texas (TX)</option>
+        <option value="NY">New York (NY)</option>
+        <option value="FL">Florida (FL)</option>
+        <option value="OH">Ohio (OH)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Base Restaurant Insurance</span><span class="result-value" id="res_base"></span></div>
+    <div class="result-item"><span class="result-label">Liquor Liability Add-on</span><span class="result-value" id="res_liquor"></span></div>
+    <div class="result-item"><span class="result-label">Total Annual Premium</span><span class="result-value" id="res_total"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Restaurant Insurance</h2>
+    <p>Restaurants face a unique combination of insurance needs: general liability for slip-and-fall accidents, commercial property for kitchen equipment and fixtures, workers compensation for a typically high-turnover staff, and food contamination coverage. Restaurants that serve alcohol add liquor liability to the mix. Kitchen fires and grease-related property damage make restaurants one of the highest-risk property classes for insurers, driving premiums higher than most other small businesses. California and New York restaurants pay among the highest premiums nationally due to higher labor costs and strict regulations. A Business Owner's Policy (BOP) designed for restaurants bundles the core coverages at a discounted rate compared to buying each separately.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What insurance does a restaurant need?</div>
+      <div class="faq-a">At minimum: general liability, commercial property, and workers compensation. Restaurants serving alcohol need liquor liability. Additional coverages include business interruption, food spoilage, food contamination, and employment practices liability.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why do restaurants pay more for insurance?</div>
+      <div class="faq-a">Restaurants have high foot traffic (slip-and-fall risk), fire hazards from commercial kitchens, high employee turnover, alcohol service risk, and food safety exposure. These combined factors make restaurants one of the higher-risk small business categories.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does restaurant insurance cover food spoilage?</div>
+      <div class="faq-a">Food spoilage coverage can be added to most commercial property or BOP policies for restaurants. It covers the cost of food inventory lost due to equipment breakdown or power outage. It is often available as an endorsement for $100–$300 per year.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is food contamination coverage the same as product liability?</div>
+      <div class="faq-a">No. Product liability (included in general liability) covers customer claims from food-related illness. Food contamination coverage reimburses the cost of recalling and disposing of contaminated food and covers temporary closure costs due to a health department order.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much does restaurant insurance typically cost?</div>
+      <div class="faq-a">A small restaurant without alcohol service might pay $8,000–$15,000 per year total across all coverages. Larger restaurants or those in high-cost states with alcohol service can pay $20,000–$40,000 per year or more.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/liquor-liability-calculator.html">Liquor Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/workers-comp-calculator.html">Workers Comp Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/business-interruption-calculator.html">Business Interruption Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var seats=parseFloat(document.getElementById('seating_capacity').value)||0;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var alcohol=document.getElementById('serves_alcohol').value;
+  var state=document.getElementById('state').value;
+  if(!rev){document.getElementById('result').style.display='none';return;}
+  var base=8000;
+  var revAdd=Math.floor(rev/100000)*300;
+  var sm={CA:1.3,TX:1.1,NY:1.3,FL:1.1,OH:0.9,Other:1.0}[state]||1.0;
+  var total=(base+revAdd)*sm;
+  var liquorAdd=alcohol==='yes'?2000*sm:0;
+  var grandTotal=total+liquorAdd;
+  document.getElementById('res_base').textContent=fmt(total);
+  document.getElementById('res_liquor').textContent=alcohol==='yes'?fmt(liquorAdd):'N/A (no alcohol)';
+  document.getElementById('res_total').textContent=fmt(grandTotal);
+  document.getElementById('res_monthly').textContent=fmt(grandTotal/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

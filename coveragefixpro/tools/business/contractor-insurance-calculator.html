@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contractor Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate contractor insurance costs including general liability and workers comp. Estimates for general, electrical, plumbing, roofing, and landscaping contractors.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Contractor Insurance Calculator</nav>
+  <h1>Contractor Insurance Cost Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="contractor_type">Contractor Type</label>
+      <select id="contractor_type" oninput="calc()">
+        <option value="general">General Contractor</option>
+        <option value="electrical">Electrical</option>
+        <option value="plumbing">Plumbing</option>
+        <option value="roofing">Roofing</option>
+        <option value="landscaping">Landscaping</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 500000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="num_employees">Number of Employees</label>
+      <input type="number" id="num_employees" value="1" min="1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="CA">California (CA)</option>
+        <option value="TX">Texas (TX)</option>
+        <option value="NY">New York (NY)</option>
+        <option value="FL">Florida (FL)</option>
+        <option value="OH">Ohio (OH)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">General Liability</span><span class="result-value" id="res_gl"></span></div>
+    <div class="result-item"><span class="result-label">Workers Comp</span><span class="result-value" id="res_wc"></span></div>
+    <div class="result-item"><span class="result-label">Total Annual Premium</span><span class="result-value" id="res_total"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Total</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Contractor Insurance</h2>
+    <p>Contractors face some of the highest insurance costs of any business category, reflecting the physical risks of construction work. General liability insurance is required to be licensed in most states and to qualify for commercial projects. Workers compensation is legally required for any contractor with employees and is priced per $100 of payroll — roofing workers carry among the highest workers comp rates in the country at over $18 per $100 payroll. Many clients and general contractors require certificates of insurance (COI) before work begins. Bundling GL and workers comp with the same carrier often results in better pricing and simplified claims management for your contracting business.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What insurance do contractors need?</div>
+      <div class="faq-a">At minimum, contractors need general liability insurance and workers compensation (if they have employees). Larger projects may also require commercial auto, builder's risk, inland marine (tools and equipment), and professional liability.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why is roofing insurance so expensive?</div>
+      <div class="faq-a">Roofing is one of the most dangerous trades — workers perform tasks at heights with significant fall risk. This results in very high workers comp rates (often $15–25 per $100 payroll) and elevated GL premiums compared to other contractor types.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a certificate of insurance (COI)?</div>
+      <div class="faq-a">A COI is a document that proves you carry the required insurance coverage. Clients, GCs, and property owners commonly require contractors to provide a COI — and often ask to be named as additional insureds — before work begins.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does contractor insurance cover subcontractors?</div>
+      <div class="faq-a">Generally, no. Your GL policy may cover uninsured subcontractors but will charge additional premium. Always require subcontractors to carry their own GL and workers comp and provide you with COIs to limit your liability.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is builder's risk insurance?</div>
+      <div class="faq-a">Builder's risk insurance covers structures under construction against damage from fire, theft, vandalism, and weather. It is typically required for new construction projects and paid for by either the contractor or the property owner depending on the contract.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/workers-comp-calculator.html">Workers Comp Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-auto-insurance-calculator.html">Commercial Auto Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/inland-marine-insurance-calculator.html">Inland Marine (Equipment) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/surety-bond-calculator.html">Surety Bond Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var ct=document.getElementById('contractor_type').value;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var emp=parseFloat(document.getElementById('num_employees').value)||1;
+  var state=document.getElementById('state').value;
+  var glBases={general:2000,electrical:2500,plumbing:2200,roofing:4000,landscaping:1500};
+  var gl=glBases[ct]+Math.floor(rev/100000)*200;
+  var avgSalary=65000;
+  var payroll=emp*avgSalary;
+  var wcRates={general:8.50,electrical:5.50,plumbing:5.00,roofing:18.00,landscaping:4.00};
+  var wcRate=wcRates[ct]||8.50;
+  var sm={CA:1.4,TX:1.1,NY:1.5,FL:1.0,OH:0.9,Other:1.0}[state]||1.0;
+  var wc=(payroll/100)*wcRate*sm;
+  var total=gl+wc;
+  document.getElementById('res_gl').textContent=fmt(gl);
+  document.getElementById('res_wc').textContent=fmt(wc);
+  document.getElementById('res_total').textContent=fmt(total);
+  document.getElementById('res_monthly').textContent=fmt(total/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

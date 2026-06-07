@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General Liability Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Estimate general liability insurance costs for your business. Calculate premiums based on business type, revenue, and number of employees.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › General Liability Calculator</nav>
+  <h1>General Liability Insurance Cost Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="business_type">Business Type</label>
+      <select id="business_type" oninput="calc()">
+        <option value="consultant">Consultant</option>
+        <option value="tech">Tech / Software</option>
+        <option value="retail">Retail</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="contractor">Contractor</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 500000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="num_employees">Number of Employees</label>
+      <input type="number" id="num_employees" value="1" min="1" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Recommended Coverage Limit</span><span class="result-value" id="res_coverage"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>What Is General Liability Insurance?</h2>
+    <p>General liability insurance (GL) is the most fundamental business insurance policy. It protects your business from third-party claims of bodily injury, property damage, and personal or advertising injury. Whether a customer slips in your store or your employee accidentally damages a client's property, general liability steps in to cover legal fees, settlements, and medical costs. Most commercial leases require tenants to carry at least $1 million in GL coverage. Costs vary widely based on industry risk, revenue size, and employee count. Contractors and restaurants typically pay more due to higher physical risk, while consultants and tech firms often pay lower base premiums.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does general liability insurance cover?</div>
+      <div class="faq-a">General liability covers third-party bodily injury, property damage, and personal/advertising injury claims. It does not cover your own employees' injuries (that's workers comp) or your own property damage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much general liability coverage do I need?</div>
+      <div class="faq-a">Most small businesses need at least $1 million per occurrence and $2 million aggregate. Higher-risk industries like construction or businesses with large contracts often need $2 million per occurrence.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is general liability required by law?</div>
+      <div class="faq-a">It is not legally required in most states, but many clients, landlords, and licensing boards require proof of GL coverage before doing business with you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What factors affect my general liability premium?</div>
+      <div class="faq-a">Key factors include your industry type, annual revenue, number of employees, location, years in business, and prior claims history. High-foot-traffic or high-risk industries pay more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I bundle general liability with other policies?</div>
+      <div class="faq-a">Yes. A Business Owner's Policy (BOP) bundles general liability with commercial property insurance at a discount — typically 15–25% savings compared to buying them separately.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/workers-comp-calculator.html">Workers Comp Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/professional-liability-eo-calculator.html">Professional Liability (E&O) Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-umbrella-calculator.html">Commercial Umbrella Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/contractor-insurance-calculator.html">Contractor Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var bt=document.getElementById('business_type').value;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var emp=parseFloat(document.getElementById('num_employees').value)||1;
+  var bases={consultant:500,tech:800,retail:1200,restaurant:1800,contractor:2000};
+  var base=bases[bt]||800;
+  var revAdd=Math.floor(rev/100000)*200;
+  var empAdd=Math.floor(emp/5)*150;
+  var annual=base+revAdd+empAdd;
+  var recCoverage=annual>2000?'$2,000,000':'$1,000,000';
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_coverage').textContent=recCoverage+' recommended';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

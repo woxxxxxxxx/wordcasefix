@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workers Compensation Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate workers compensation insurance premiums based on payroll, industry, and state. Free workers comp cost estimator.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Workers Comp Calculator</nav>
+  <h1>Workers Compensation Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="industry_class">Industry Class</label>
+      <select id="industry_class" oninput="calc()">
+        <option value="office">Office / Clerical</option>
+        <option value="retail">Retail</option>
+        <option value="construction">Construction</option>
+        <option value="manufacturing">Manufacturing</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="annual_payroll">Annual Payroll ($)</label>
+      <input type="number" id="annual_payroll" placeholder="e.g. 250000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="CA">California (CA)</option>
+        <option value="TX">Texas (TX)</option>
+        <option value="NY">New York (NY)</option>
+        <option value="FL">Florida (FL)</option>
+        <option value="OH">Ohio (OH)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Rate Per $100 Payroll</span><span class="result-value" id="res_rate"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Workers Compensation Insurance</h2>
+    <p>Workers compensation insurance covers medical expenses and lost wages for employees injured on the job. It is legally required in almost every state for businesses with employees. Premiums are calculated per $100 of payroll and vary dramatically by industry — office workers have very low rates (around $0.35 per $100), while roofing contractors can pay over $18 per $100 payroll due to the elevated injury risk. State-level regulators set minimum rates, and experience modifiers (EMR) can raise or lower your premium based on your claims history. Maintaining a safe workplace and low claim history is the best way to keep your workers comp costs down over time.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Is workers comp required for all businesses?</div>
+      <div class="faq-a">Most states require workers comp for any business with one or more employees. Some states exempt very small businesses or sole proprietors, but requirements vary. Texas is the only state where private employers can opt out.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How are workers comp rates calculated?</div>
+      <div class="faq-a">Rates are set per $100 of payroll and vary by job class code and state. Your experience modification rate (EMR) adjusts the base rate up or down depending on your claims history relative to your industry average.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does workers comp cover?</div>
+      <div class="faq-a">Workers comp covers medical treatment, rehabilitation costs, and a portion of lost wages for employees injured at work. It also includes employer's liability protection if an employee sues over a workplace injury.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is an experience modification rate (EMR)?</div>
+      <div class="faq-a">The EMR (or mod) compares your claims history to the industry average. A mod of 1.0 is average; below 1.0 means fewer claims than average (discount); above 1.0 means more claims (surcharge).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How can I lower my workers comp premiums?</div>
+      <div class="faq-a">Implement safety training programs, maintain a return-to-work program, classify employees correctly, and audit your payroll regularly. Fewer claims over time will lower your EMR and reduce premiums.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/contractor-insurance-calculator.html">Contractor Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/employment-practices-liability-calculator.html">EPLI Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/restaurant-insurance-calculator.html">Restaurant Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var ind=document.getElementById('industry_class').value;
+  var payroll=parseFloat(document.getElementById('annual_payroll').value)||0;
+  var state=document.getElementById('state').value;
+  if(!payroll){document.getElementById('result').style.display='none';return;}
+  var rates={office:0.35,retail:1.20,construction:8.50,manufacturing:3.00};
+  var rate=rates[ind]||0.35;
+  var sm={CA:1.4,TX:1.1,NY:1.5,FL:1.0,OH:0.9,Other:1.0}[state]||1.0;
+  var annual=(payroll/100)*rate*sm;
+  document.getElementById('res_rate').textContent='$'+rate.toFixed(2)+' per $100 payroll';
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

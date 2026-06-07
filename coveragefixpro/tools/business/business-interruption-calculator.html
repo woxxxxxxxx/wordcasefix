@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Interruption Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate business interruption insurance coverage needs. Estimate how much you need to survive a temporary closure.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Business Interruption Calculator</nav>
+  <h1>Business Interruption Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="monthly_revenue">Average Monthly Revenue ($)</label>
+      <input type="number" id="monthly_revenue" placeholder="e.g. 50000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="monthly_fixed_costs">Monthly Fixed Costs ($)</label>
+      <input type="number" id="monthly_fixed_costs" placeholder="e.g. 15000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="recovery_months">Recovery Period</label>
+      <select id="recovery_months" oninput="calc()">
+        <option value="3">3 Months</option>
+        <option value="6" selected>6 Months</option>
+        <option value="12">12 Months</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">Monthly Coverage Needed</span><span class="result-value" id="res_monthly_need"></span></div>
+    <div class="result-item"><span class="result-label">Recommended Coverage Amount</span><span class="result-value" id="res_coverage"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_premium"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Premium</span><span class="result-value" id="res_monthly_prem"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Business Interruption Insurance</h2>
+    <p>Business interruption insurance (also called business income insurance) replaces lost revenue when a covered event forces your business to temporarily close. Covered events typically include fire, storm damage, or other property losses. It pays for ongoing fixed costs like rent, utilities, and salaries while your business recovers. The key is selecting an adequate coverage period — most small businesses choose 6 to 12 months. Under-insuring your business interruption risk is one of the most common and costly mistakes business owners make. This calculator estimates the coverage you need based on 80% of your monthly revenue for the chosen recovery period.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What triggers business interruption coverage?</div>
+      <div class="faq-a">Business interruption coverage is triggered by a covered property loss — such as fire, windstorm, or vandalism — that forces your business to close or reduces operations. It is not triggered by pandemics or government-ordered closures unless your policy specifically includes those.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does business interruption coverage last?</div>
+      <div class="faq-a">Policies typically cover 6 to 24 months, known as the indemnity period. You should choose a period long enough to rebuild, restock, and return to pre-loss revenue levels.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does business interruption cover payroll?</div>
+      <div class="faq-a">Yes, most business interruption policies cover payroll for key employees during the interruption period, helping you retain staff so the business can resume operations quickly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a waiting period before coverage kicks in?</div>
+      <div class="faq-a">Most policies have a 72-hour waiting period (similar to a deductible) before coverage begins. Some policies have longer waiting periods, so review your policy carefully.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is business interruption insurance priced?</div>
+      <div class="faq-a">Premiums are typically 1–1.5% of the total coverage amount per year. Higher-risk businesses or those in disaster-prone areas pay more. It is often included as part of a commercial property or BOP policy.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/business-income-insurance-calculator.html">Business Income Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/commercial-property-insurance-calculator.html">Commercial Property Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/restaurant-insurance-calculator.html">Restaurant Insurance Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var rev=parseFloat(document.getElementById('monthly_revenue').value)||0;
+  var fixed=parseFloat(document.getElementById('monthly_fixed_costs').value)||0;
+  var months=parseFloat(document.getElementById('recovery_months').value)||6;
+  if(!rev){document.getElementById('result').style.display='none';return;}
+  var monthly_needed=rev*0.80;
+  var coverage=monthly_needed*months;
+  var annual_premium=coverage*0.015;
+  document.getElementById('res_monthly_need').textContent=fmt(monthly_needed);
+  document.getElementById('res_coverage').textContent=fmt(coverage);
+  document.getElementById('res_premium').textContent=fmt(annual_premium);
+  document.getElementById('res_monthly_prem').textContent=fmt(annual_premium/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

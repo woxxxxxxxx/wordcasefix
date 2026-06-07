@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Person Life Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate key person life insurance needs for critical employees. Protect your business from the financial impact of losing a key person.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+<main>
+  <nav class="breadcrumb"><a href="/">Home</a> › <a href="/tools/business/">Business Insurance</a> › Key Person Insurance Calculator</nav>
+  <h1>Key Person Life Insurance Calculator</h1>
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="key_person_salary">Key Person Annual Salary ($)</label>
+      <input type="number" id="key_person_salary" placeholder="e.g. 150000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="revenue_contribution_pct">Revenue Contribution (%)</label>
+      <input type="number" id="revenue_contribution_pct" placeholder="% of revenue this person generates" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="annual_revenue">Annual Revenue ($)</label>
+      <input type="number" id="annual_revenue" placeholder="e.g. 2000000" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="replacement_cost">Estimated Replacement Cost ($)</label>
+      <input type="number" id="replacement_cost" placeholder="Recruiting + training cost" oninput="calc()">
+    </div>
+  </div>
+  <div class="result-box" id="result" style="display:none;">
+    <div class="result-item"><span class="result-label">5× Salary Method</span><span class="result-value" id="res_method1"></span></div>
+    <div class="result-item"><span class="result-label">Revenue Contribution Method</span><span class="result-value" id="res_method2"></span></div>
+    <div class="result-item"><span class="result-label">Replacement Cost Method</span><span class="result-value" id="res_method3"></span></div>
+    <div class="result-item"><span class="result-label">Recommended Coverage (highest)</span><span class="result-value" id="res_recommended"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="info-box">
+    <h2>About Key Person Life Insurance</h2>
+    <p>Key person insurance is a life or disability insurance policy that a business purchases on a critical employee — the founder, top salesperson, or specialist whose absence would severely impact the company. The business pays the premiums and is the beneficiary of the policy. If the key person dies or becomes disabled, the insurance payout gives the company time to recruit, train a replacement, and stabilize operations. Lenders and investors often require key person coverage as a condition of financing. Three methods are commonly used to determine the right coverage amount: a multiple of salary, the revenue the person generates, or the total cost to replace them.</p>
+  </div>
+  <div class="ad-placeholder">Advertisement</div>
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Who qualifies as a key person?</div>
+      <div class="faq-a">A key person is any employee whose death or disability would cause significant financial harm to the business — founders, CEOs, top salespeople, chief scientists, or any individual with unique expertise or client relationships critical to revenue.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is key person insurance tax deductible?</div>
+      <div class="faq-a">Generally, key person insurance premiums are not tax deductible. However, the death benefit is typically received tax-free by the business. Consult a tax advisor for your specific situation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What type of life insurance is used for key person policies?</div>
+      <div class="faq-a">Most key person policies use term life insurance for cost efficiency. Some businesses use permanent life insurance (whole or universal life) to build cash value that can be accessed during the person's working years.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does key person coverage require the employee's consent?</div>
+      <div class="faq-a">Yes. The key person must consent in writing to the policy. In some states, additional disclosure requirements apply. The insured employee may also need to undergo a medical exam.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can key person insurance cover disability as well as death?</div>
+      <div class="faq-a">Yes, key person disability insurance covers the business if the key person becomes disabled and unable to work. This is often considered more likely than death during working years and may be equally important to carry.</div>
+    </div>
+  </div>
+  <div class="related-tools">
+    <h2>Related Business Insurance Tools</h2>
+    <div class="tool-card"><a href="/tools/business/directors-officers-insurance-calculator.html">D&O Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/employment-practices-liability-calculator.html">EPLI Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/general-liability-calculator.html">General Liability Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/startup-insurance-calculator.html">Startup Insurance Calculator</a></div>
+    <div class="tool-card"><a href="/tools/business/bop-business-owners-policy-calculator.html">BOP Calculator</a></div>
+  </div>
+  <div class="disclaimer">Results are estimates only. Actual premiums depend on underwriting factors specific to your business. Consult a licensed insurance professional for an accurate quote.</div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var sal=parseFloat(document.getElementById('key_person_salary').value)||0;
+  var pct=(parseFloat(document.getElementById('revenue_contribution_pct').value)||0)/100;
+  var rev=parseFloat(document.getElementById('annual_revenue').value)||0;
+  var repl=parseFloat(document.getElementById('replacement_cost').value)||0;
+  if(!sal){document.getElementById('result').style.display='none';return;}
+  var method1=sal*5;
+  var method2=rev*pct*3;
+  var method3=repl;
+  var recommended=Math.max(method1,method2,method3);
+  var monthly=(recommended/1000)*0.25;
+  document.getElementById('res_method1').textContent=fmt(method1);
+  document.getElementById('res_method2').textContent=fmt(method2);
+  document.getElementById('res_method3').textContent=fmt(method3);
+  document.getElementById('res_recommended').textContent=fmt(recommended);
+  document.getElementById('res_monthly').textContent=fmt(monthly);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>
