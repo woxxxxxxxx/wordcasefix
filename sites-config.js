@@ -94,6 +94,18 @@ const SITES = [
     ga_numeric: '491490803',
     adsense:    'pending',
   },
+  {
+    id:         'coveragefixpro',
+    name:       'CoverageFixPro',
+    domain:     'coveragefixpro.com',
+    color:      '#1d4ed8',
+    dir:        'C:\\Users\\Administrator\\coveragefixpro',
+    repo:       'woxxxxxxxx/coveragefixpro',
+    branch:     'master',
+    ftp_hosted: true,
+    ga_numeric: '540484051',
+    adsense:    'pending',
+  },
 ];
 
 /**
