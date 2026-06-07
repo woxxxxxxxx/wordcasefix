@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electric Vehicle Insurance Cost Calculator - CoverageFixPro</title>
+  <meta name="description" content="Compare EV vs gas car insurance costs. Calculate your electric vehicle insurance premium by brand and age with instant results.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; Electric Vehicle Insurance Cost Calculator
+  </nav>
+
+  <h1>Electric Vehicle Insurance Cost Calculator</h1>
+  <p class="tool-intro">Electric vehicles typically cost more to insure than comparable gas-powered cars due to higher repair costs and specialized parts. See your estimated EV premium and how it compares to a gas vehicle.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculateEV()" autocomplete="off">
+      <div class="form-group">
+        <label for="ev_brand">EV Brand</label>
+        <select id="ev_brand">
+          <option value="">-- Select Brand --</option>
+          <option value="Tesla">Tesla</option>
+          <option value="Rivian">Rivian</option>
+          <option value="Bolt">Chevy Bolt</option>
+          <option value="F150L">Ford F-150 Lightning</option>
+          <option value="Other">Other EV</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="car_year">Vehicle Year</label>
+        <input type="number" id="car_year" min="2010" max="2026" placeholder="e.g. 2024" value="">
+      </div>
+      <div class="form-group">
+        <label for="age">Driver Age</label>
+        <input type="number" id="age" min="16" max="99" placeholder="e.g. 35" value="">
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>EV vs Gas Insurance Comparison</h2>
+      <div class="result-grid">
+        <div class="result-item highlight">
+          <span class="result-label">Estimated EV Annual Premium</span>
+          <span class="result-value" id="res-ev">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Comparable Gas Car Premium</span>
+          <span class="result-value" id="res-gas">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">EV Premium Difference</span>
+          <span class="result-value" id="res-diff">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">EV Monthly Premium</span>
+          <span class="result-value" id="res-monthly">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">5-Year Extra EV Insurance Cost</span>
+          <span class="result-value" id="res-5yr">--</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>Why EVs Cost More to Insure</h2>
+    <p>Electric vehicles generally cost 10–25% more to insure than equivalent gasoline-powered vehicles. The main reasons are:</p>
+    <ul>
+      <li><strong>Higher vehicle value:</strong> EVs have higher purchase prices, increasing the cost to replace them.</li>
+      <li><strong>Expensive battery packs:</strong> EV batteries can cost $10,000–$20,000+ to replace.</li>
+      <li><strong>Specialized repair shops:</strong> Fewer certified EV repair facilities mean longer repair times and higher labor costs.</li>
+      <li><strong>Advanced technology:</strong> Sensors, cameras, and software systems add to repair complexity and cost.</li>
+    </ul>
+    <p>As EV adoption grows and repair infrastructure catches up, insurance costs are expected to gradually normalize.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Are all EVs equally expensive to insure?</summary>
+      <p>No. Insurance costs vary significantly by brand and model. Tesla vehicles tend to be the most expensive to insure due to high repair costs and parts prices. More affordable EVs like the Chevy Bolt cost less to insure, closer to a comparable gas vehicle.</p>
+    </details>
+    <details>
+      <summary>Does home charging equipment affect my insurance?</summary>
+      <p>Your homeowners or renters insurance may cover your home EV charger. Some auto insurers also offer coverage for charging equipment. Ask your insurer about add-on coverage for charging infrastructure.</p>
+    </details>
+    <details>
+      <summary>Do EV-specific insurers offer better rates?</summary>
+      <p>Some insurers specialize in EV coverage and may offer more competitive rates, particularly for Tesla owners. Tesla Insurance (available in select states) is one example. Shop around with both traditional and EV-focused insurers.</p>
+    </details>
+    <details>
+      <summary>Does battery coverage affect EV insurance cost?</summary>
+      <p>Standard comprehensive coverage typically covers battery damage from accidents or covered perils. However, battery degradation from normal use is not covered. Some manufacturers offer separate battery warranties. Review your policy carefully.</p>
+    </details>
+    <details>
+      <summary>Can I get a discount for driving an EV?</summary>
+      <p>Some insurers offer green vehicle discounts of 5–10% for hybrid and electric vehicles. Additionally, EVs often score well on safety ratings, which can reduce premiums. Ask your insurer specifically about EV-related discounts.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/car-insurance-premium-estimator.html">Car Insurance Premium Estimator</a></li>
+      <li><a href="/tools/auto/mileage-based-insurance-calculator.html">Pay-Per-Mile Insurance Calculator</a></li>
+      <li><a href="/tools/auto/comprehensive-vs-liability-calculator.html">Full Coverage vs Liability Only Calculator</a></li>
+      <li><a href="/tools/auto/deductible-optimizer.html">Auto Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/auto/bundling-discount-calculator.html">Home and Auto Bundle Discount Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. EV insurance costs vary widely by model, insurer, and state. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculateEV() {
+  var brand = document.getElementById('ev_brand').value;
+  var carYear = parseInt(document.getElementById('car_year').value);
+  var age = parseInt(document.getElementById('age').value);
+
+  if (!brand || !carYear || !age) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var brandFactors = { 'Tesla': 1.25, 'Rivian': 1.20, 'Bolt': 1.05, 'F150L': 1.15, 'Other': 1.10 };
+  var brandFactor = brandFactors[brand] || 1.10;
+
+  var ageFactor = 1.0;
+  if (age < 25) ageFactor = 1.8;
+  else if (age > 65) ageFactor = 1.2;
+
+  var evPremium = 1200 * brandFactor * ageFactor;
+  var gasPremium = 1200 * ageFactor;
+  var diff = evPremium - gasPremium;
+
+  document.getElementById('res-ev').textContent = fmt(evPremium);
+  document.getElementById('res-gas').textContent = fmt(gasPremium);
+  document.getElementById('res-diff').textContent = '+' + fmt(diff) + ' (' + (((brandFactor - 1) * 100).toFixed(0)) + '% more)';
+  document.getElementById('res-monthly').textContent = fmt(evPremium / 12);
+  document.getElementById('res-5yr').textContent = fmt(diff * 5);
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Car Insurance Cost Estimator - CoverageFixPro</title>
+  <meta name="description" content="Estimate your new car insurance cost based on car price, safety rating, car type, and driver age. Get instant annual and monthly premium estimates.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; New Car Insurance Cost Estimator
+  </nav>
+
+  <h1>New Car Insurance Cost Estimator</h1>
+  <p class="tool-intro">Estimate how much you'll pay to insure your new car. Enter your vehicle details and driver age to get an instant annual and monthly premium estimate.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="car_price">Car Price ($)</label>
+      <input type="number" id="car_price" placeholder="e.g. 35000" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="safety_rating">Safety Rating</label>
+      <select id="safety_rating" onchange="calculate()">
+        <option value="5">5-Star (Excellent)</option>
+        <option value="4" selected>4-Star (Good)</option>
+        <option value="3">3-Star (Average)</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="car_type">Car Type</label>
+      <select id="car_type" onchange="calculate()">
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+        <option value="truck">Truck</option>
+        <option value="sports">Sports Car</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="age">Driver Age</label>
+      <input type="number" id="age" placeholder="e.g. 30" min="16" max="100" oninput="calculate()">
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Estimated Insurance Cost</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Estimated Annual Premium</span>
+          <span class="result-value" id="annual_premium">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Estimated Monthly Premium</span>
+          <span class="result-value" id="monthly_premium">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Rate Applied</span>
+          <span class="result-value" id="rate_applied">-</span>
+        </div>
+      </div>
+      <p class="result-note">This is an estimate based on national averages. Actual premiums vary by state, insurer, driving history, and coverage levels.</p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>How This Calculator Works</h2>
+    <p>This estimator uses a base rate of <strong>2.5% of the car's purchase price</strong> per year, then applies adjustment factors:</p>
+    <ul>
+      <li><strong>Safety Rating:</strong> 5-star vehicles get a 10% discount; 3-star vehicles pay 10% more.</li>
+      <li><strong>Car Type:</strong> Sports cars carry a 30% surcharge due to higher theft and accident rates; SUVs add 5%.</li>
+      <li><strong>Driver Age:</strong> Drivers under 25 pay 80% more; drivers over 65 pay 20% more due to increased risk profiles.</li>
+    </ul>
+    <p>The national average for full-coverage auto insurance is approximately $1,800–$2,200 per year. Your final quote depends on your specific insurer, state regulations, credit score, and driving record.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Why does a sports car cost more to insure?</h3>
+      <p>Sports cars typically have higher repair costs, more powerful engines that increase accident severity, and higher theft rates. Insurers price these risks into the premium, often adding 25–40% above a comparable sedan.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does car safety rating affect insurance rates?</h3>
+      <p>Vehicles with higher safety ratings cause less severe injuries in crashes, reducing medical claim costs. A 5-star NHTSA rating can reduce your premium by 5–15% depending on the insurer.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why do drivers under 25 pay so much more?</h3>
+      <p>Statistically, drivers aged 16–24 have the highest accident rates. Inexperience combined with risk-taking behavior leads insurers to charge 50–100% more for young drivers compared to adults aged 25–65.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does the car price directly affect my insurance premium?</h3>
+      <p>Yes — more expensive cars cost more to repair or replace, directly increasing comprehensive and collision premiums. A $60,000 car will generally cost twice as much to insure as a $30,000 car, all else being equal.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How can I lower my new car insurance cost?</h3>
+      <p>Choose a vehicle with good safety ratings, bundle your auto and home policies, maintain a clean driving record, increase your deductible, and shop multiple insurers. Telematics programs can also reduce premiums by 10–30% for safe drivers.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/collision-coverage-breakeven-calculator.html">Collision Coverage Break-Even Calculator</a></li>
+      <li><a href="/tools/auto/insurance-after-accident-calculator.html">Car Insurance Rate After Accident Calculator</a></li>
+      <li><a href="/tools/auto/policy-renewal-savings-calculator.html">Car Insurance Renewal Savings Calculator</a></li>
+      <li><a href="/tools/auto/liability-coverage-limits-calculator.html">Auto Liability Coverage Limits Calculator</a></li>
+      <li><a href="/tools/auto/total-cost-of-ownership-calculator.html">Car Total Cost of Ownership Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only and are based on simplified actuarial assumptions. Actual insurance premiums depend on many factors including your state, driving history, credit score, and chosen coverage levels. Consult a licensed insurance professional for actual quotes.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function calculate() {
+  const car_price = parseFloat(document.getElementById('car_price').value);
+  const safety_rating = parseInt(document.getElementById('safety_rating').value);
+  const car_type = document.getElementById('car_type').value;
+  const age = parseFloat(document.getElementById('age').value);
+
+  if (!car_price || !age || car_price <= 0 || age <= 0) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  let base = car_price * 0.025;
+
+  let safety_mult = safety_rating === 5 ? 0.9 : safety_rating === 3 ? 1.1 : 1.0;
+  let type_mult = car_type === 'sports' ? 1.3 : car_type === 'suv' ? 1.05 : 1.0;
+  let age_mult = age < 25 ? 1.8 : age > 65 ? 1.2 : 1.0;
+
+  let total_mult = safety_mult * type_mult * age_mult;
+  let annual = base * total_mult;
+  let monthly = annual / 12;
+
+  document.getElementById('annual_premium').textContent = fmt(annual);
+  document.getElementById('monthly_premium').textContent = fmt(monthly);
+  document.getElementById('rate_applied').textContent = (total_mult * 2.5).toFixed(2) + '% of car price';
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

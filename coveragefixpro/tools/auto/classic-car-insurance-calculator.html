@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classic Car Insurance Cost Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate classic car insurance costs based on agreed value and annual mileage. See how much you save vs standard auto insurance for qualifying vintage vehicles.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Classic Car Insurance Cost Calculator
+  </nav>
+
+  <h1>Classic Car Insurance Cost Calculator</h1>
+  <p class="tool-intro">Estimate your classic car insurance premium and see how much you save compared to a standard auto policy. Vehicles model year 2001 or earlier may qualify.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="car_year">Car Model Year</label>
+      <input type="number" id="car_year" placeholder="e.g. 1969" min="1900" max="2025" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="agreed_value">Agreed Value ($) <span class="label-hint">appraised market value</span></label>
+      <input type="number" id="agreed_value" placeholder="e.g. 45000" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="annual_miles">Annual Mileage</label>
+      <select id="annual_miles" onchange="calculate()">
+        <option value="low">Under 1,000 miles/year</option>
+        <option value="mid" selected>1,000 – 5,000 miles/year</option>
+        <option value="high">Over 5,000 miles/year</option>
+      </select>
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Classic Car Insurance Estimate</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Classic Car Annual Premium</span>
+          <span class="result-value" id="classic_premium">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Standard Insurance Estimate</span>
+          <span class="result-value" id="standard_premium">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Annual Savings</span>
+          <span class="result-value" id="savings">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Classic Premium</span>
+          <span class="result-value" id="monthly_classic">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+
+    <div class="ineligible-box" id="ineligible-box" style="display:none; background:#fff3cd; border:1px solid #ffc107; border-radius:8px; padding:16px; margin-top:16px;">
+      <strong>Not Eligible for Classic Car Insurance:</strong> Vehicles must be model year 2001 or earlier to qualify for classic/collector car insurance rates.
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>How Classic Car Insurance Works</h2>
+    <p>Classic car insurance uses an <strong>agreed value</strong> model — you and the insurer agree on the car's value upfront, and that full amount is paid in the event of a total loss (no depreciation deducted). The base rate is approximately <strong>1.2% of agreed value</strong> annually, much lower than standard insurance:</p>
+    <ul>
+      <li><strong>Under 1,000 miles/year:</strong> 20% discount (show cars, garage queens)</li>
+      <li><strong>1,000–5,000 miles/year:</strong> Standard classic rate</li>
+      <li><strong>Over 5,000 miles/year:</strong> 40% surcharge (frequent use)</li>
+    </ul>
+    <p>Most classic car policies also require secure storage, a primary daily driver vehicle, and may limit pleasure-use only.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What qualifies as a classic car for insurance purposes?</h3>
+      <p>Most insurers define classic cars as vehicles at least 20–25 years old that are maintained in good to excellent condition and used primarily for shows, exhibitions, or occasional pleasure driving — not daily transportation. Some companies also cover antiques (45+ years old) and exotic/collectible vehicles.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is agreed value vs actual cash value?</h3>
+      <p>Standard auto insurance pays actual cash value (market value at time of loss, minus depreciation). Classic car insurance pays the agreed value — the full amount you and the insurer agreed upon when the policy was written, with no depreciation deduction. This is critical for collectibles that appreciate over time.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do insurers verify the agreed value?</h3>
+      <p>Most classic car insurers require a professional appraisal or detailed photographs before insuring for high agreed values. The appraisal should document the vehicle's condition, restoration work, provenance, and current market comparables.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I drive my classic car daily?</h3>
+      <p>Most classic car policies prohibit daily commuting use and require you to own a separate primary vehicle. If you want to use your classic more frequently, consider a modified car policy or a standard policy that insures collector cars.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does classic car insurance cover spare parts?</h3>
+      <p>Many specialty insurers offer spare parts coverage as an add-on, typically covering $500–$2,000 in spare parts stored separately from the vehicle. This is valuable for rare vehicles where parts are difficult to source.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/collision-coverage-breakeven-calculator.html">Collision Coverage Break-Even Calculator</a></li>
+      <li><a href="/tools/auto/total-cost-of-ownership-calculator.html">Car Total Cost of Ownership Calculator</a></li>
+      <li><a href="/tools/auto/policy-renewal-savings-calculator.html">Car Insurance Renewal Savings Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Classic car eligibility and rates vary significantly by insurer. Consult a licensed insurance professional specializing in collector vehicles for actual quotes.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculate() {
+  const car_year = parseInt(document.getElementById('car_year').value);
+  const agreed_value = parseFloat(document.getElementById('agreed_value').value);
+  const miles = document.getElementById('annual_miles').value;
+
+  document.getElementById('result-box').style.display = 'none';
+  document.getElementById('ineligible-box').style.display = 'none';
+
+  if (!car_year || !agreed_value || agreed_value <= 0) return;
+
+  if (car_year > 2001) {
+    document.getElementById('ineligible-box').style.display = 'block';
+    return;
+  }
+
+  const miles_mult = miles === 'low' ? 0.8 : miles === 'high' ? 1.4 : 1.0;
+  const classic_annual = agreed_value * 0.012 * miles_mult;
+  const standard_annual = agreed_value * 0.025;
+  const savings = standard_annual - classic_annual;
+
+  document.getElementById('classic_premium').textContent = fmt(classic_annual);
+  document.getElementById('standard_premium').textContent = fmt(standard_annual);
+  document.getElementById('savings').textContent = fmt(savings);
+  document.getElementById('monthly_classic').textContent = fmt(classic_annual / 12) + '/mo';
+  document.getElementById('advice_text').textContent = `Your ${car_year} vehicle qualifies for classic car insurance, saving you approximately ${fmt(savings)} per year (${((savings/standard_annual)*100).toFixed(0)}%) compared to a standard policy.`;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

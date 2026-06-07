@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rideshare Insurance Cost Calculator (Uber/Lyft) - CoverageFixPro</title>
+  <meta name="description" content="Calculate your total rideshare insurance cost for Uber or Lyft driving. Find the monthly add-on fee based on weekly driving hours and your annual total cost.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Rideshare Insurance Cost Calculator
+  </nav>
+
+  <h1>Rideshare Insurance Cost Calculator (Uber/Lyft)</h1>
+  <p class="tool-intro">Driving for Uber or Lyft? Your personal auto policy likely has a coverage gap during rideshare periods. Calculate your rideshare insurance add-on cost and total annual insurance expense.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="personal_premium">Current Personal Auto Premium (Annual $)</label>
+      <input type="number" id="personal_premium" placeholder="e.g. 1600" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="hours_per_week">Hours Per Week Driving for Rideshare</label>
+      <input type="number" id="hours_per_week" placeholder="e.g. 15" min="0" max="168" oninput="calculate()">
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Rideshare Insurance Cost Breakdown</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Rideshare Add-On (Monthly)</span>
+          <span class="result-value" id="addon_monthly">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Rideshare Add-On (Annual)</span>
+          <span class="result-value" id="addon_annual">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Personal Premium (Annual)</span>
+          <span class="result-value" id="personal_annual">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Total Annual Insurance Cost</span>
+          <span class="result-value" id="total_annual">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>Understanding Rideshare Insurance Coverage Gaps</h2>
+    <p>Rideshare driving creates three distinct coverage periods, and your personal policy likely only covers Period 0:</p>
+    <ul>
+      <li><strong>Period 0:</strong> App off — personal policy applies fully.</li>
+      <li><strong>Period 1:</strong> App on, waiting for a ride request — personal policy may deny claims; Uber/Lyft provide limited liability only.</li>
+      <li><strong>Period 2 &amp; 3:</strong> En route to pickup / passenger in car — Uber/Lyft's commercial policy applies ($1M liability).</li>
+    </ul>
+    <p>A rideshare endorsement fills the Period 1 gap for approximately $15–$60/month depending on driving frequency.</p>
+    <table class="data-table">
+      <tr><th>Weekly Hours</th><th>Monthly Add-On</th></tr>
+      <tr><td>10 hours or less</td><td>$15/mo</td></tr>
+      <tr><td>10–20 hours</td><td>$25/mo</td></tr>
+      <tr><td>20–40 hours</td><td>$40/mo</td></tr>
+      <tr><td>Over 40 hours</td><td>$60/mo</td></tr>
+    </table>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Does Uber or Lyft cover me between rides?</h3>
+      <p>Only partially. During Period 1 (app on, no passenger), Uber and Lyft provide contingent liability coverage ($50K–$100K) but no collision or comprehensive. If you cause an accident during this period, your personal insurer may deny the claim and the rideshare company's coverage is minimal.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will my insurer cancel my policy if I drive for Uber?</h3>
+      <p>Some insurers will non-renew or cancel policies if they discover undisclosed rideshare activity. Always disclose your rideshare driving to your insurer and add the rideshare endorsement. Failure to disclose can void your coverage when you need it most.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do all insurers offer rideshare endorsements?</h3>
+      <p>Most major insurers (State Farm, Allstate, GEICO, Progressive, Farmers) offer rideshare endorsements in most states. Some regional insurers do not. If yours doesn't, consider switching to one that does rather than going without coverage.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is a rideshare endorsement the same as a commercial auto policy?</h3>
+      <p>No — a rideshare endorsement simply bridges the gap during Period 1. If you drive full-time for rideshare (40+ hours/week), some agents recommend a hybrid personal/commercial policy or a dedicated TNP (transportation network provider) commercial policy for comprehensive protection.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does rideshare driving affect my personal insurance rates?</h3>
+      <p>Adding a rideshare endorsement typically increases your premium by $15–$60/month. More importantly, any accidents that occur during rideshare periods and are covered by your personal policy (with the endorsement) will count toward your personal driving record and may raise rates at renewal.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/total-cost-of-ownership-calculator.html">Car Total Cost of Ownership Calculator</a></li>
+      <li><a href="/tools/auto/insurance-after-accident-calculator.html">Car Insurance Rate After Accident Calculator</a></li>
+      <li><a href="/tools/auto/policy-renewal-savings-calculator.html">Car Insurance Renewal Savings Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Rideshare endorsement costs vary by insurer and state. Consult a licensed insurance professional to ensure you have adequate coverage for rideshare activity.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculate() {
+  const personal = parseFloat(document.getElementById('personal_premium').value);
+  const hours = parseFloat(document.getElementById('hours_per_week').value);
+
+  if (!personal || !hours || personal <= 0 || hours < 0) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  let addon_monthly = hours <= 10 ? 15 : hours <= 20 ? 25 : hours <= 40 ? 40 : 60;
+  const addon_annual = addon_monthly * 12;
+  const total_annual = personal + addon_annual;
+
+  document.getElementById('addon_monthly').textContent = fmt(addon_monthly) + '/mo';
+  document.getElementById('addon_annual').textContent = fmt(addon_annual);
+  document.getElementById('personal_annual').textContent = fmt(personal);
+  document.getElementById('total_annual').textContent = fmt(total_annual);
+
+  const pct = ((addon_annual / personal) * 100).toFixed(0);
+  document.getElementById('advice_text').textContent =
+    `The rideshare endorsement adds ${pct}% to your current premium. At ${hours} hours/week, this works out to approximately ${fmt(addon_monthly / (hours * 4.33))} per rideshare hour — a worthwhile cost to eliminate the coverage gap during Period 1.`;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

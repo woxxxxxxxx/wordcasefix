@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Car Insurance Discount Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how much you save with a multi-car insurance discount. Enter up to 4 vehicles and see your discounted total instantly.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; Multi-Car Insurance Discount Calculator
+  </nav>
+
+  <h1>Multi-Car Insurance Discount Calculator</h1>
+  <p class="tool-intro">Insuring multiple vehicles on one policy can save you 10–20%. Enter the individual premiums for up to 4 vehicles to see your discounted total and annual savings.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculateMultiCar()" autocomplete="off">
+      <div class="form-group">
+        <label for="car1">Vehicle 1 Annual Premium (required)</label>
+        <input type="number" id="car1" min="0" step="10" placeholder="e.g. 1400" value="">
+      </div>
+      <div class="form-group">
+        <label for="car2">Vehicle 2 Annual Premium (required)</label>
+        <input type="number" id="car2" min="0" step="10" placeholder="e.g. 1200" value="">
+      </div>
+      <div class="form-group">
+        <label for="car3">Vehicle 3 Annual Premium (optional — leave blank if not applicable)</label>
+        <input type="number" id="car3" min="0" step="10" placeholder="e.g. 900" value="">
+      </div>
+      <div class="form-group">
+        <label for="car4">Vehicle 4 Annual Premium (optional — leave blank if not applicable)</label>
+        <input type="number" id="car4" min="0" step="10" placeholder="e.g. 800" value="">
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Multi-Car Discount Results</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Total Without Discount</span>
+          <span class="result-value" id="res-total">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Number of Vehicles</span>
+          <span class="result-value" id="res-count">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Multi-Car Discount</span>
+          <span class="result-value" id="res-discount-pct">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Annual Savings</span>
+          <span class="result-value" id="res-savings">--</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">Discounted Annual Total</span>
+          <span class="result-value" id="res-discounted">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Discounted Monthly Total</span>
+          <span class="result-value" id="res-monthly">--</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>How Multi-Car Discounts Work</h2>
+    <p>Most major insurers offer a multi-car discount when you insure two or more vehicles on the same policy. The discount is applied to all vehicles on the policy, rewarding you for consolidating your coverage.</p>
+    <p>Typical discount tiers are: 10% for 2 vehicles, 15% for 3 vehicles, and 20% for 4 or more vehicles — though exact amounts vary by insurer. This calculator uses these industry-average rates.</p>
+    <p>To qualify, all vehicles generally must be garaged at the same address. Some insurers allow extended household members to be included.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Do all insurers offer multi-car discounts?</summary>
+      <p>Most major insurers offer multi-car discounts, but the percentage and eligibility rules vary. Some smaller or specialty insurers may not offer them. Always compare quotes with and without the discount to confirm your savings.</p>
+    </details>
+    <details>
+      <summary>Can vehicles with different owners be on the same policy?</summary>
+      <p>Generally, all vehicles on a multi-car policy must be owned or co-owned by members of the same household. Vehicles owned by someone living at a different address typically cannot be included.</p>
+    </details>
+    <details>
+      <summary>Is a multi-car discount better than insuring vehicles separately?</summary>
+      <p>In most cases, yes. The multi-car discount usually outweighs any benefits of separate policies. However, if one driver has a very poor driving record, keeping that vehicle separate might prevent it from affecting the rates on your other vehicles.</p>
+    </details>
+    <details>
+      <summary>Can I combine a multi-car discount with other discounts?</summary>
+      <p>Yes. Multi-car discounts typically stack with other discounts such as good driver, good student, bundling (home + auto), and loyalty discounts. Ask your insurer about all available discounts to maximize savings.</p>
+    </details>
+    <details>
+      <summary>What happens to my discount if I remove a vehicle from the policy?</summary>
+      <p>If dropping a vehicle reduces your count below the threshold for your current tier (e.g., from 3 cars to 2), your discount will be adjusted to the lower tier rate at your next renewal or immediately, depending on your insurer.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/bundling-discount-calculator.html">Home and Auto Bundle Discount Calculator</a></li>
+      <li><a href="/tools/auto/good-driver-discount-calculator.html">Good Driver Discount Calculator</a></li>
+      <li><a href="/tools/auto/car-insurance-premium-estimator.html">Car Insurance Premium Estimator</a></li>
+      <li><a href="/tools/auto/annual-vs-monthly-payment-calculator.html">Annual vs Monthly Payment Calculator</a></li>
+      <li><a href="/tools/auto/teen-driver-cost-calculator.html">Teen Driver Insurance Cost Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. Multi-car discount percentages vary by insurer. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculateMultiCar() {
+  var c1 = parseFloat(document.getElementById('car1').value) || 0;
+  var c2 = parseFloat(document.getElementById('car2').value) || 0;
+  var c3 = parseFloat(document.getElementById('car3').value) || 0;
+  var c4 = parseFloat(document.getElementById('car4').value) || 0;
+
+  if (!c1 || !c2) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var count = 2;
+  if (c3 > 0) count = 3;
+  if (c4 > 0) count = 4;
+
+  var total = c1 + c2 + (c3 > 0 ? c3 : 0) + (c4 > 0 ? c4 : 0);
+
+  var discountPct = 0.10;
+  if (count === 3) discountPct = 0.15;
+  if (count >= 4) discountPct = 0.20;
+
+  var savings = total * discountPct;
+  var discounted = total - savings;
+
+  document.getElementById('res-total').textContent = fmt(total);
+  document.getElementById('res-count').textContent = count + ' vehicles';
+  document.getElementById('res-discount-pct').textContent = (discountPct * 100).toFixed(0) + '%';
+  document.getElementById('res-savings').textContent = fmt(savings);
+  document.getElementById('res-discounted').textContent = fmt(discounted);
+  document.getElementById('res-monthly').textContent = fmt(discounted / 12);
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

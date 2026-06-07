@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Insurance Renewal Savings Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how much you can save by switching car insurance at renewal. Compare your current premium vs new quote and see 3-year savings after switching costs.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Car Insurance Renewal Savings Calculator
+  </nav>
+
+  <h1>Car Insurance Renewal Savings Calculator</h1>
+  <p class="tool-intro">Compare your renewal quote against your current premium and find out exactly how much you'll save — or lose — by switching insurers.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="current_premium">Current Annual Premium ($)</label>
+      <input type="number" id="current_premium" placeholder="e.g. 1800" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="new_quote">New Quote Annual Premium ($)</label>
+      <input type="number" id="new_quote" placeholder="e.g. 1400" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="switching_cost">One-Time Switching Cost ($) <span class="label-hint">cancellation fees, new policy fees, etc.</span></label>
+      <input type="number" id="switching_cost" placeholder="0" min="0" value="0" oninput="calculate()">
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Renewal Savings Summary</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Annual Savings</span>
+          <span class="result-value" id="annual_savings">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Savings</span>
+          <span class="result-value" id="monthly_savings">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">3-Year Net Savings</span>
+          <span class="result-value" id="three_year_savings">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Recommendation</span>
+          <span class="result-value" id="recommendation">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>How This Calculator Works</h2>
+    <p>This tool compares your current annual premium against a new quote, accounts for one-time switching costs, and projects your 3-year net savings:</p>
+    <ul>
+      <li><strong>Annual Savings</strong> = Current Premium − New Quote</li>
+      <li><strong>3-Year Net Savings</strong> = (Annual Savings × 3) − Switching Cost</li>
+      <li>If 3-year net savings &gt; $0, switching is financially beneficial.</li>
+    </ul>
+    <p>Switching costs may include cancellation fees (usually $25–$50), new policy fees, or losing a loyalty discount. Always confirm your current policy's cancellation terms before switching.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>When is the best time to switch car insurance?</h3>
+      <p>The best time is at your policy renewal date to avoid cancellation fees. However, you can switch mid-policy — most insurers refund unused premium on a pro-rated basis. Start shopping 3–4 weeks before renewal for the best results.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will switching insurers affect my coverage?</h3>
+      <p>Not if you choose equivalent or better coverage. Always compare deductibles, limits, and included features side-by-side. A lower premium with significantly less coverage may cost more in the long run after a claim.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I lose loyalty discounts when I switch?</h3>
+      <p>Yes — most long-term policyholder discounts are lost when switching. Factor this into your comparison. However, new customer discounts at the new insurer can offset this, and rates typically reset to market rates after several years anyway.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should I shop for car insurance?</h3>
+      <p>Insurance experts recommend shopping every 1–2 years. Life changes like marriage, moving, buying a new car, or turning 25 often unlock lower rates. Even without changes, competitive pricing shifts constantly.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if my new quote is higher?</h3>
+      <p>Use the higher quote as leverage to negotiate with your current insurer. Call their retention department and mention competitor pricing — many will match or beat the offer to keep your business.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/insurance-after-accident-calculator.html">Car Insurance Rate After Accident Calculator</a></li>
+      <li><a href="/tools/auto/insurance-score-estimator.html">Insurance Score Estimator</a></li>
+      <li><a href="/tools/auto/accident-forgiveness-value-calculator.html">Accident Forgiveness Value Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual savings depend on your specific policies, state regulations, and insurer terms. Consult a licensed insurance professional for actual quotes.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  const abs = Math.abs(n);
+  const str = '$' + abs.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return n < 0 ? '-' + str : str;
+}
+function calculate() {
+  const current = parseFloat(document.getElementById('current_premium').value);
+  const new_quote = parseFloat(document.getElementById('new_quote').value);
+  const switching_cost = parseFloat(document.getElementById('switching_cost').value) || 0;
+
+  if (!current || !new_quote || current <= 0 || new_quote <= 0) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  const annual_savings = current - new_quote;
+  const monthly_savings = annual_savings / 12;
+  const three_year = annual_savings * 3 - switching_cost;
+  const recommend = three_year > 0 ? 'Switch Insurers' : 'Stay With Current Insurer';
+  const advice = three_year > 0
+    ? `Switching saves you ${fmt(three_year)} over 3 years after accounting for switching costs. The payback period is ${(switching_cost / annual_savings).toFixed(1)} months.`
+    : `After switching costs, you would not save money over 3 years. Staying with your current insurer or negotiating a rate match is the better option.`;
+
+  document.getElementById('annual_savings').textContent = fmt(annual_savings);
+  document.getElementById('monthly_savings').textContent = fmt(monthly_savings) + '/mo';
+  document.getElementById('three_year_savings').textContent = fmt(three_year);
+  document.getElementById('recommendation').textContent = recommend;
+  document.getElementById('advice_text').textContent = advice;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

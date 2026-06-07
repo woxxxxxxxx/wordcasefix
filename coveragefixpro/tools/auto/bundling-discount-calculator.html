@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home and Auto Insurance Bundle Discount Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how much you save by bundling your home and auto insurance with the same carrier. Adjust your bundle discount percentage and see instant savings.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; Home and Auto Insurance Bundle Discount Calculator
+  </nav>
+
+  <h1>Home and Auto Insurance Bundle Discount Calculator</h1>
+  <p class="tool-intro">Bundling your home and auto insurance with the same insurer is one of the easiest ways to save. Enter your premiums and discount rate to see your total savings instantly.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculateBundle()" autocomplete="off">
+      <div class="form-group">
+        <label for="auto_premium">Annual Auto Insurance Premium</label>
+        <input type="number" id="auto_premium" min="0" step="10" placeholder="e.g. 1400" value="">
+      </div>
+      <div class="form-group">
+        <label for="home_premium">Annual Home Insurance Premium</label>
+        <input type="number" id="home_premium" min="0" step="10" placeholder="e.g. 1800" value="">
+      </div>
+      <div class="form-group">
+        <label for="bundle_discount">Bundle Discount Percentage (5%–25%)</label>
+        <input type="range" id="bundle_discount" min="5" max="25" step="1" value="15" oninput="document.getElementById('discount-display').textContent = this.value + '%'; calculateBundle();">
+        <span id="discount-display" style="font-weight:600; margin-left:8px;">15%</span>
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Bundle Discount Results</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Total Without Bundle</span>
+          <span class="result-value" id="res-total">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Bundle Discount Applied</span>
+          <span class="result-value" id="res-discount">--</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">Bundled Annual Total</span>
+          <span class="result-value" id="res-bundled">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Annual Savings</span>
+          <span class="result-value" id="res-savings">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Bundled Payment</span>
+          <span class="result-value" id="res-monthly">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">5-Year Total Savings</span>
+          <span class="result-value" id="res-5yr">--</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>How Home and Auto Bundling Works</h2>
+    <p>When you purchase both your homeowners (or renters) and auto insurance from the same company, insurers typically reward you with a multi-policy discount — commonly called a bundle discount. This discount is applied to both policies and averages 10–25% depending on the insurer.</p>
+    <p>Beyond the savings, bundling simplifies your insurance management: one insurer, one renewal date (in many cases), and one customer service relationship. However, always compare bundled quotes against separate-carrier quotes — occasionally two different specialized insurers can beat a bundled price.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Which insurance companies offer the best bundle discounts?</summary>
+      <p>Major carriers like State Farm, Allstate, Nationwide, and USAA are known for competitive bundle discounts, often 15–25%. The best deal depends on your location, home value, and driving profile. Always get multiple bundled quotes.</p>
+    </details>
+    <details>
+      <summary>Does bundling always save money?</summary>
+      <p>Usually, but not always. In some cases, a specialist insurer for home coverage combined with a separate auto insurer may be cheaper than any bundled option. Run the numbers both ways before committing.</p>
+    </details>
+    <details>
+      <summary>Can renters insurance be bundled with auto?</summary>
+      <p>Yes. Most insurers that offer bundle discounts include renters insurance as well as homeowners. Renters insurance is typically inexpensive ($15–$30/month), so the bundle discount on your auto policy alone often pays for it.</p>
+    </details>
+    <details>
+      <summary>What happens to my discount if I cancel one policy?</summary>
+      <p>If you cancel either policy, you lose the bundle discount on both. Your remaining policy will revert to its standard (non-bundled) rate at your next renewal or sooner, depending on your insurer's terms.</p>
+    </details>
+    <details>
+      <summary>Can I bundle more than two policies?</summary>
+      <p>Yes. Many insurers allow you to bundle auto, home, life, umbrella, and other policies. Each additional policy may increase your total discount. Ask your insurer about their multi-policy discount tiers.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/multi-car-discount-calculator.html">Multi-Car Discount Calculator</a></li>
+      <li><a href="/tools/auto/good-driver-discount-calculator.html">Good Driver Discount Calculator</a></li>
+      <li><a href="/tools/auto/car-insurance-premium-estimator.html">Car Insurance Premium Estimator</a></li>
+      <li><a href="/tools/auto/annual-vs-monthly-payment-calculator.html">Annual vs Monthly Payment Calculator</a></li>
+      <li><a href="/tools/auto/comprehensive-vs-liability-calculator.html">Full Coverage vs Liability Only Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. Bundle discount percentages vary significantly by insurer and state. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculateBundle() {
+  var auto = parseFloat(document.getElementById('auto_premium').value);
+  var home = parseFloat(document.getElementById('home_premium').value);
+  var discountPct = parseFloat(document.getElementById('bundle_discount').value);
+
+  if (!auto || !home) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var total = auto + home;
+  var savings = total * (discountPct / 100);
+  var bundled = total - savings;
+
+  document.getElementById('res-total').textContent = fmt(total);
+  document.getElementById('res-discount').textContent = discountPct.toFixed(0) + '% = ' + fmt(savings);
+  document.getElementById('res-bundled').textContent = fmt(bundled);
+  document.getElementById('res-savings').textContent = fmt(savings);
+  document.getElementById('res-monthly').textContent = fmt(bundled / 12);
+  document.getElementById('res-5yr').textContent = fmt(savings * 5);
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

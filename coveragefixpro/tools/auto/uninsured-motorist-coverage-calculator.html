@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uninsured Motorist Coverage Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate recommended uninsured motorist coverage limits based on your state's uninsured driver rate and your assets. Protect yourself from uninsured drivers.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Uninsured Motorist Coverage Calculator
+  </nav>
+
+  <h1>Uninsured Motorist Coverage Calculator</h1>
+  <p class="tool-intro">Find out how much uninsured motorist (UM) coverage you need based on your state's uninsured driver rate and your total assets.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="state">Your State</label>
+      <select id="state" onchange="calculate()">
+        <option value="">-- Select State --</option>
+        <option value="FL:26">Florida (FL) — 26% uninsured</option>
+        <option value="CA:17">California (CA) — 17% uninsured</option>
+        <option value="TX:20">Texas (TX) — 20% uninsured</option>
+        <option value="NY:5">New York (NY) — 5% uninsured</option>
+        <option value="OH:13">Ohio (OH) — 13% uninsured</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="assets">Total Assets to Protect ($)</label>
+      <input type="number" id="assets" placeholder="e.g. 150000" min="0" oninput="calculate()">
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>UM Coverage Recommendation</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">State Uninsured Driver Rate</span>
+          <span class="result-value" id="uninsured_rate">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Recommended UM Amount</span>
+          <span class="result-value" id="recommended_um">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Recommended UM Limits</span>
+          <span class="result-value" id="recommended_limits">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Risk Level</span>
+          <span class="result-value" id="risk_level">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>Why Uninsured Motorist Coverage Matters</h2>
+    <p>About <strong>1 in 8 U.S. drivers</strong> is uninsured. If one hits you, their liability policy won't pay your bills — yours will. UM coverage steps in to pay your medical bills, lost wages, and pain and suffering when the at-fault driver has no insurance.</p>
+    <ul>
+      <li><strong>Under $100,000 assets</strong> → 25/50 UM limits</li>
+      <li><strong>$100,000–$300,000 assets</strong> → 100/300 UM limits</li>
+      <li><strong>Over $300,000 assets</strong> → 250/500 UM limits</li>
+    </ul>
+    <p>In high-uninsured states like Florida (26%) and Texas (20%), the risk of encountering an uninsured driver is significantly higher, making robust UM coverage even more critical.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is uninsured motorist coverage?</h3>
+      <p>UM coverage pays for your injuries and damages when you're hit by a driver who has no auto insurance. Underinsured motorist (UIM) coverage works similarly when the at-fault driver's limits are too low to cover your losses.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is UM coverage required in my state?</h3>
+      <p>UM coverage is mandatory in about 20 states and optional (but highly recommended) in the rest. Even in states where it's optional, the cost is typically only $50–$150/year — exceptional value given the risk.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does UM coverage protect my passengers?</h3>
+      <p>Yes — UM bodily injury coverage typically extends to all passengers in your vehicle at the time of the accident, not just the policyholder.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I stack UM coverage across multiple vehicles?</h3>
+      <p>In states that allow stacking, you can combine UM limits from multiple vehicles on the same policy, effectively multiplying your protection. For example, two vehicles with 100/300 limits become 200/600 when stacked.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why does Florida have such a high uninsured rate?</h3>
+      <p>Florida historically has had one of the highest uninsured rates due to its no-fault insurance system, high minimum coverage requirements that some drivers can't afford, and a large transient population. This makes UM coverage especially important for Florida drivers.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/liability-coverage-limits-calculator.html">Auto Liability Coverage Limits Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/insurance-after-accident-calculator.html">Car Insurance Rate After Accident Calculator</a></li>
+      <li><a href="/tools/auto/total-cost-of-ownership-calculator.html">Car Total Cost of Ownership Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. UM requirements and rates vary by state. Consult a licensed insurance professional for coverage recommendations specific to your situation.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculate() {
+  const stateVal = document.getElementById('state').value;
+  const assets = parseFloat(document.getElementById('assets').value);
+
+  if (!stateVal || !assets || assets < 0) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  const parts = stateVal.split(':');
+  const stateName = parts[0];
+  const rate = parseInt(parts[1]);
+
+  const recommended_um = Math.max(assets, 100000);
+  let limits, risk;
+  if (recommended_um < 100000) {
+    limits = '25/50'; risk = rate >= 20 ? 'High' : 'Moderate';
+  } else if (recommended_um <= 300000) {
+    limits = '100/300'; risk = rate >= 20 ? 'High' : 'Moderate';
+  } else {
+    limits = '250/500'; risk = 'High';
+  }
+
+  const riskLabel = rate >= 20 ? 'High Risk State' : rate >= 13 ? 'Moderate Risk State' : 'Lower Risk State';
+  const advice = `With ${rate}% of drivers in ${stateName} uninsured, there is approximately a 1-in-${Math.round(100/rate)} chance any given driver you encounter is uninsured. Carrying ${limits} UM limits is strongly recommended.`;
+
+  document.getElementById('uninsured_rate').textContent = rate + '% of drivers';
+  document.getElementById('recommended_um').textContent = fmt(recommended_um);
+  document.getElementById('recommended_limits').textContent = limits;
+  document.getElementById('risk_level').textContent = riskLabel;
+  document.getElementById('advice_text').textContent = advice;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

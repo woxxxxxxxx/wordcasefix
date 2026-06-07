@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annual vs Monthly Car Insurance Payment Calculator - CoverageFixPro</title>
+  <meta name="description" content="See how much extra you pay by choosing monthly installments over an annual lump sum for your car insurance premium.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; Annual vs Monthly Car Insurance Payment Calculator
+  </nav>
+
+  <h1>Annual vs Monthly Car Insurance Payment Calculator</h1>
+  <p class="tool-intro">Paying your car insurance monthly is convenient, but installment fees add up. See exactly how much more you pay over the year compared to paying in full upfront.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculatePayment()" autocomplete="off">
+      <div class="form-group">
+        <label for="annual_premium">Annual Premium (Pay-in-Full Amount)</label>
+        <input type="number" id="annual_premium" min="0" step="10" placeholder="e.g. 1600" value="">
+      </div>
+      <div class="form-group">
+        <label for="installment_fee">Installment Fee / Finance Charge (%)</label>
+        <input type="number" id="installment_fee" min="0" max="30" step="0.5" placeholder="3" value="3">
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Payment Comparison</h2>
+      <div class="result-grid">
+        <div class="result-item highlight">
+          <span class="result-label">Annual Pay-in-Full Cost</span>
+          <span class="result-value" id="res-annual">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Total Monthly Payment Cost</span>
+          <span class="result-value" id="res-monthly-total">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Payment Amount</span>
+          <span class="result-value" id="res-monthly-amt">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Extra Cost for Paying Monthly</span>
+          <span class="result-value" id="res-extra">--</span>
+        </div>
+      </div>
+      <div class="recommendation" id="recommendation"></div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>Why Paying Annually Saves Money</h2>
+    <p>Most insurance companies charge an installment fee — typically 2–5% — when you choose to pay monthly instead of in full. This fee compensates the insurer for the administrative cost and credit risk of spreading payments across 12 months.</p>
+    <p>While the monthly option improves cash flow, it costs more in total. If you have the funds available, paying annually is almost always the better financial choice. Some insurers also offer a small pay-in-full discount on top of avoiding the installment surcharge.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>How much do installment fees typically cost?</summary>
+      <p>Installment fees vary by insurer but typically range from 2% to 5% of the annual premium, or sometimes a flat fee of $5–$10 per month. On a $1,600 annual premium at 3%, that's $48 extra per year just for the convenience of monthly payments.</p>
+    </details>
+    <details>
+      <summary>Can I switch from monthly to annual payments mid-policy?</summary>
+      <p>Yes, most insurers allow you to pay the remaining balance in full at any time. Doing so will stop future installment fees. Contact your insurer or log into your account to make a lump-sum payment.</p>
+    </details>
+    <details>
+      <summary>Do all insurers charge installment fees?</summary>
+      <p>Not all. Some insurers offer fee-free monthly payments, especially if you set up automatic bank drafts (EFT). Ask your insurer specifically whether they charge for monthly payments and whether auto-pay reduces or eliminates the fee.</p>
+    </details>
+    <details>
+      <summary>What happens if I miss a monthly payment?</summary>
+      <p>Missing a payment can result in a late fee, policy cancellation, or a lapse in coverage. A lapse can lead to higher rates when you reinstate coverage and may be required to be reported to your lender if you have a financed vehicle.</p>
+    </details>
+    <details>
+      <summary>Is there a pay-in-full discount separate from avoiding installment fees?</summary>
+      <p>Yes, some insurers offer an additional pay-in-full discount of 5–10% for paying annually upfront. This is separate from simply avoiding the installment fee. Ask your insurer whether both apply — the combined savings can be significant.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/car-insurance-premium-estimator.html">Car Insurance Premium Estimator</a></li>
+      <li><a href="/tools/auto/bundling-discount-calculator.html">Home and Auto Bundle Discount Calculator</a></li>
+      <li><a href="/tools/auto/multi-car-discount-calculator.html">Multi-Car Discount Calculator</a></li>
+      <li><a href="/tools/auto/good-driver-discount-calculator.html">Good Driver Discount Calculator</a></li>
+      <li><a href="/tools/auto/deductible-optimizer.html">Auto Insurance Deductible Optimizer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. Installment fees vary by insurer and state. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculatePayment() {
+  var annual = parseFloat(document.getElementById('annual_premium').value);
+  var feePct = parseFloat(document.getElementById('installment_fee').value);
+
+  if (!annual || isNaN(feePct)) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var monthlyTotal = annual * (1 + feePct / 100);
+  var monthlyAmt = monthlyTotal / 12;
+  var extra = monthlyTotal - annual;
+
+  document.getElementById('res-annual').textContent = fmt(annual);
+  document.getElementById('res-monthly-total').textContent = fmt(monthlyTotal);
+  document.getElementById('res-monthly-amt').textContent = fmt(monthlyAmt);
+  document.getElementById('res-extra').textContent = fmt(extra);
+
+  var rec = document.getElementById('recommendation');
+  rec.innerHTML = '<p><strong>By paying annually, you save ' + fmt(extra) + ' per year</strong> (' + feePct.toFixed(1) + '% installment fee avoided). If you have the cash available, paying in full is the smarter financial choice.</p>';
+
+  document.getElementById('result-box').style.display = 'block';
+}
+// Initialize with default value
+calculatePayment();
+</script>
+</body>
+</html>

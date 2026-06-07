@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Liability Coverage Limits Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate the right auto liability coverage limits based on your net worth and income. Get personalized 50/100/50, 100/300/100, or 250/500/250 recommendations.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Auto Liability Coverage Limits Calculator
+  </nav>
+
+  <h1>Auto Liability Coverage Limits Calculator</h1>
+  <p class="tool-intro">Determine the right liability limits to protect your assets. Enter your net worth and annual income to get a personalized recommendation.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="net_worth">Total Net Worth ($)</label>
+      <input type="number" id="net_worth" placeholder="e.g. 250000" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="annual_income">Annual Income ($)</label>
+      <input type="number" id="annual_income" placeholder="e.g. 75000" min="0" oninput="calculate()">
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Recommended Coverage Limits</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Recommended Minimum Exposure</span>
+          <span class="result-value" id="recommended_exposure">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Recommended Limits</span>
+          <span class="result-value" id="recommended_limits">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">What This Covers</span>
+          <span class="result-value" id="limits_meaning">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>How Coverage Limits Are Determined</h2>
+    <p>Your liability coverage should be high enough to protect everything you own. A lawsuit after a serious accident can target your savings, home equity, and future income. The general rule:</p>
+    <ul>
+      <li><strong>Under $100,000 exposure</strong> → 50/100/50 limits (minimum viable protection)</li>
+      <li><strong>$100,000–$300,000 exposure</strong> → 100/300/100 limits (standard recommendation)</li>
+      <li><strong>Over $300,000 exposure</strong> → 250/500/250 limits or add an umbrella policy</li>
+    </ul>
+    <p>Limits are expressed as <em>Bodily Injury per person / Bodily Injury per accident / Property Damage</em> in thousands of dollars.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What do liability limits like 100/300/100 mean?</h3>
+      <p>These numbers represent: $100,000 per injured person, $300,000 total per accident for bodily injury, and $100,000 for property damage. If you injure two people in an accident, each can receive up to $100,000 but the total can't exceed $300,000.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why should my limits reflect my net worth?</h3>
+      <p>If you're sued after an accident, plaintiffs' attorneys look for assets to recover damages above your policy limits. A judgment can garnish wages, seize bank accounts, and place liens on your home. Your coverage should shield your entire financial picture.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is state minimum liability enough?</h3>
+      <p>Almost never. State minimums (often 25/50/25 or lower) are dangerously low. A single serious injury easily exceeds $100,000 in medical bills. If your policy limit is exhausted, you pay the rest personally.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I add an umbrella policy?</h3>
+      <p>If your net worth exceeds $300,000, an umbrella policy ($1M–$5M) typically costs only $150–$300/year and provides crucial extra protection above your auto and home liability limits.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does income factor into coverage needs?</h3>
+      <p>Courts can award damages based on future earning potential. If you earn $80,000/year, a judgment could claim 5+ years of wages ($400,000+). Your liability coverage should at minimum cover 5× your annual income.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/uninsured-motorist-coverage-calculator.html">Uninsured Motorist Coverage Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/collision-coverage-breakeven-calculator.html">Collision Coverage Break-Even Calculator</a></li>
+      <li><a href="/tools/auto/total-cost-of-ownership-calculator.html">Car Total Cost of Ownership Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Coverage needs vary by state and individual circumstances. Consult a licensed insurance professional for actual recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculate() {
+  const net_worth = parseFloat(document.getElementById('net_worth').value);
+  const annual_income = parseFloat(document.getElementById('annual_income').value);
+  if ((!net_worth && !annual_income) || (net_worth < 0) || (annual_income < 0)) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+  const nw = net_worth || 0;
+  const ai = annual_income || 0;
+  const recommended = Math.max(nw, ai * 5);
+  let limits, meaning, advice;
+  if (recommended < 100000) {
+    limits = '50/100/50';
+    meaning = '$50K per person / $100K per accident / $50K property';
+    advice = 'This is minimum viable protection. Consider upgrading if your financial situation changes.';
+  } else if (recommended <= 300000) {
+    limits = '100/300/100';
+    meaning = '$100K per person / $300K per accident / $100K property';
+    advice = 'Standard recommendation for middle-income households. Consider an umbrella policy for additional protection.';
+  } else {
+    limits = '250/500/250';
+    meaning = '$250K per person / $500K per accident / $250K property';
+    advice = 'High-asset protection level. Also consider a $1M–$2M umbrella policy to fully safeguard your net worth.';
+  }
+  document.getElementById('recommended_exposure').textContent = fmt(recommended);
+  document.getElementById('recommended_limits').textContent = limits;
+  document.getElementById('limits_meaning').textContent = meaning;
+  document.getElementById('advice_text').textContent = advice;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

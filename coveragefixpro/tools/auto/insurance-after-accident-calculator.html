@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Insurance Rate After Accident Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how much your car insurance rate will increase after an accident. See your new premium and 3-year extra cost for at-fault and not-at-fault accidents.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Car Insurance Rate After Accident
+  </nav>
+
+  <h1>Car Insurance Rate After Accident Calculator</h1>
+  <p class="tool-intro">Find out how much your premium will rise after an accident and what the total 3-year cost increase will be.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="current_premium">Current Annual Premium ($)</label>
+      <input type="number" id="current_premium" placeholder="e.g. 1800" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="fault">Accident Fault</label>
+      <select id="fault" onchange="calculate()">
+        <option value="at-fault-first">At-Fault – First Accident</option>
+        <option value="at-fault-second">At-Fault – Second Accident</option>
+        <option value="not-at-fault">Not At-Fault</option>
+      </select>
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Rate Impact Estimate</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Rate Increase</span>
+          <span class="result-value" id="rate_increase">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">New Annual Premium</span>
+          <span class="result-value" id="new_premium">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Increase</span>
+          <span class="result-value" id="monthly_increase">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">3-Year Extra Cost</span>
+          <span class="result-value" id="three_year_extra">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>How Accidents Affect Your Insurance Rate</h2>
+    <p>After an accident, insurers typically surcharge your premium for <strong>3–5 years</strong>. The increase depends on fault determination and your accident history:</p>
+    <ul>
+      <li><strong>At-Fault (First):</strong> +40% — the most common surcharge for a single at-fault incident.</li>
+      <li><strong>At-Fault (Second):</strong> +80% — multiple at-fault accidents signal high-risk behavior.</li>
+      <li><strong>Not At-Fault:</strong> +10% — some insurers raise rates even when you're not at fault, though many states restrict this.</li>
+    </ul>
+    <p>Shopping for a new insurer after 1–2 years can often reset your rate, as some companies are more lenient on older incidents.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How long does an accident affect my insurance rate?</h3>
+      <p>Most insurers surcharge your premium for 3 years after an at-fault accident. The incident typically stays on your record for 3–5 years depending on your state. After it drops off, your rate should return to normal if you've had no further incidents.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can my insurer cancel my policy after an accident?</h3>
+      <p>Insurers generally cannot cancel mid-term for a single accident. However, at renewal they may non-renew your policy if you are considered high-risk, especially after multiple at-fault accidents. They must provide advance notice (usually 30–60 days) before non-renewal.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is accident forgiveness and is it worth it?</h3>
+      <p>Accident forgiveness is an add-on that waives the surcharge for your first at-fault accident. It typically costs $30–$80 per year. If your premium is $1,800/year and the surcharge would add $720/year for 3 years ($2,160 total), paying $50/year makes it worthwhile for most drivers.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I file a claim for minor accidents?</h3>
+      <p>For small repairs under $1,500–$2,000, paying out-of-pocket may save more than the claim payout once you factor in premium increases over 3 years. Use this calculator to estimate the 3-year extra cost before deciding whether to file.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does a not-at-fault accident always raise my rate?</h3>
+      <p>Not always — many states prohibit insurers from raising rates solely for not-at-fault accidents. However, in states that allow it, one not-at-fault claim can still trigger a 5–15% surcharge. Check your state's insurance regulations for specifics.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/accident-forgiveness-value-calculator.html">Accident Forgiveness Value Calculator</a></li>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/policy-renewal-savings-calculator.html">Car Insurance Renewal Savings Calculator</a></li>
+      <li><a href="/tools/auto/insurance-score-estimator.html">Insurance Score Estimator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual rate changes depend on your insurer, state regulations, full driving history, and policy type. Consult a licensed insurance professional for actual quotes.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function calculate() {
+  const current = parseFloat(document.getElementById('current_premium').value);
+  const fault = document.getElementById('fault').value;
+
+  if (!current || current <= 0) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  let increase_pct = fault === 'at-fault-first' ? 0.40 : fault === 'at-fault-second' ? 0.80 : 0.10;
+  let new_premium = current * (1 + increase_pct);
+  let diff = new_premium - current;
+  let three_year = diff * 3;
+
+  document.getElementById('rate_increase').textContent = (increase_pct * 100).toFixed(0) + '%';
+  document.getElementById('new_premium').textContent = fmt(new_premium);
+  document.getElementById('monthly_increase').textContent = fmt(diff / 12) + '/mo';
+  document.getElementById('three_year_extra').textContent = fmt(three_year);
+
+  let advice = fault === 'not-at-fault'
+    ? 'Since you were not at fault, consider disputing the surcharge with your insurer or shopping for a carrier that does not penalize not-at-fault claims.'
+    : 'Consider shopping for accident forgiveness riders or switching insurers after 2 years when the surcharge may decrease.';
+  document.getElementById('advice_text').textContent = advice;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

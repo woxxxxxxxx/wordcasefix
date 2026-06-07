@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collision Coverage Break-Even Calculator - CoverageFixPro</title>
+  <meta name="description" content="Find out how many years it takes for collision coverage to pay off. Calculate the break-even point and decide if keeping collision coverage makes financial sense.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Collision Coverage Break-Even Calculator
+  </nav>
+
+  <h1>Collision Coverage Break-Even Calculator</h1>
+  <p class="tool-intro">Determine how many years of collision premiums equal your car's net payout — and whether keeping collision coverage still makes financial sense.</p>
+
+  <div class="calculator-card">
+    <div class="input-group">
+      <label for="car_value">Current Car Value ($)</label>
+      <input type="number" id="car_value" placeholder="e.g. 12000" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="collision_premium">Annual Collision Premium ($)</label>
+      <input type="number" id="collision_premium" placeholder="e.g. 600" min="0" oninput="calculate()">
+    </div>
+    <div class="input-group">
+      <label for="deductible">Deductible ($)</label>
+      <input type="number" id="deductible" placeholder="e.g. 500" min="0" oninput="calculate()">
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Break-Even Analysis</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Net Insurance Payout</span>
+          <span class="result-value" id="net_payout">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Break-Even Point</span>
+          <span class="result-value" id="breakeven_years">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Recommendation</span>
+          <span class="result-value" id="recommendation">-</span>
+        </div>
+      </div>
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>How the Break-Even Calculation Works</h2>
+    <p>Collision coverage pays out your car's actual cash value minus your deductible if the car is totaled. The break-even point is how many years of premiums you'd pay before they equal that payout:</p>
+    <ul>
+      <li><strong>Net Payout</strong> = Car Value − Deductible</li>
+      <li><strong>Break-Even Years</strong> = Net Payout ÷ Annual Collision Premium</li>
+      <li>If break-even is <strong>more than 7 years</strong>, the math suggests dropping collision and self-insuring.</li>
+    </ul>
+    <p>Remember: cars depreciate annually at roughly 15–20%, so even if break-even is 6 years today, your car will be worth far less in year 6.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>When should I drop collision coverage?</h3>
+      <p>A common rule of thumb: if your annual collision premium exceeds 10% of your car's value, collision may not be worth keeping. If your car is worth $8,000 and collision costs $900/year, you're paying 11.25% annually — dropping it likely makes sense.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does my lender require collision coverage?</h3>
+      <p>Yes — if you have an auto loan or lease, your lender will require comprehensive and collision coverage until the loan is paid off. You cannot legally drop it while financing the vehicle.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the actual cash value (ACV) of my car?</h3>
+      <p>ACV is the market value of your vehicle at the time of a claim, accounting for depreciation. It is not the original purchase price. Use Kelley Blue Book or NADA Guides to find your car's current ACV.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I raise my deductible to lower the premium?</h3>
+      <p>Raising your deductible from $250 to $1,000 can reduce your collision premium by 15–40%. This makes sense if you have emergency savings to cover the higher deductible and your car's value is moderate.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens if I drop collision and have an accident?</h3>
+      <p>You'll pay the full repair cost out of pocket. If your car is totaled, you receive nothing from your insurer. Only drop collision if you can afford to replace the vehicle without an insurance payout.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/policy-renewal-savings-calculator.html">Car Insurance Renewal Savings Calculator</a></li>
+      <li><a href="/tools/auto/liability-coverage-limits-calculator.html">Auto Liability Coverage Limits Calculator</a></li>
+      <li><a href="/tools/auto/classic-car-insurance-calculator.html">Classic Car Insurance Cost Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual coverage decisions should account for your full financial situation, loan requirements, and local rates. Consult a licensed insurance professional.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculate() {
+  const car_value = parseFloat(document.getElementById('car_value').value);
+  const collision_premium = parseFloat(document.getElementById('collision_premium').value);
+  const deductible = parseFloat(document.getElementById('deductible').value) || 0;
+
+  if (!car_value || !collision_premium || car_value <= 0 || collision_premium <= 0) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  const net_payout = car_value - deductible;
+  const breakeven_years = net_payout / collision_premium;
+  const recommend = breakeven_years > 7 ? 'Consider Dropping Collision' : 'Keep Collision Coverage';
+  const advice = breakeven_years > 7
+    ? `At ${breakeven_years.toFixed(1)} years to break even, the math favors dropping collision and putting the premium savings into a self-insurance fund.`
+    : `At ${breakeven_years.toFixed(1)} years to break even, collision coverage is still providing good value for your vehicle.`;
+
+  document.getElementById('net_payout').textContent = fmt(net_payout);
+  document.getElementById('breakeven_years').textContent = breakeven_years.toFixed(1) + ' years';
+  document.getElementById('recommendation').textContent = recommend;
+  document.getElementById('advice_text').textContent = advice;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

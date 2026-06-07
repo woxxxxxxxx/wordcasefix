@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Insurance Coverage Gap Analyzer - CoverageFixPro</title>
+  <meta name="description" content="Identify gaps in your auto insurance coverage with our 5-question analyzer. Get personalized recommendations for gap insurance, UM coverage, umbrella policies, and more.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Auto Insurance Coverage Gap Analyzer
+  </nav>
+
+  <h1>Auto Insurance Coverage Gap Analyzer</h1>
+  <p class="tool-intro">Answer 5 quick questions to identify potential gaps in your auto insurance coverage. Get targeted recommendations for coverage you may be missing.</p>
+
+  <div class="calculator-card">
+    <form id="gap-form">
+      <div class="question-group">
+        <p class="question-text"><strong>Q1:</strong> Do you have a car loan or lease?</p>
+        <label class="radio-label"><input type="radio" name="q1" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q1" value="no"> No</label>
+      </div>
+      <div class="question-group">
+        <p class="question-text"><strong>Q2:</strong> Is your car less than 3 years old?</p>
+        <label class="radio-label"><input type="radio" name="q2" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q2" value="no"> No</label>
+      </div>
+      <div class="question-group">
+        <p class="question-text"><strong>Q3:</strong> Do you drive more than 15,000 miles per year?</p>
+        <label class="radio-label"><input type="radio" name="q3" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q3" value="no"> No</label>
+      </div>
+      <div class="question-group">
+        <p class="question-text"><strong>Q4:</strong> Do you frequently drive in high-traffic or urban areas?</p>
+        <label class="radio-label"><input type="radio" name="q4" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q4" value="no"> No</label>
+      </div>
+      <div class="question-group">
+        <p class="question-text"><strong>Q5:</strong> Do you have significant assets to protect (net worth over $100,000)?</p>
+        <label class="radio-label"><input type="radio" name="q5" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q5" value="no"> No</label>
+      </div>
+
+      <button type="button" class="calc-btn" onclick="analyzeGaps()">Analyze My Coverage Gaps</button>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Your Coverage Gap Report</h2>
+      <div id="gap-count-box"></div>
+      <ul class="gap-list" id="gap-list"></ul>
+      <p class="result-note" id="summary_text"></p>
+    </div>
+
+    <div class="no-gaps-box" id="no-gaps-box" style="display:none; background:#d4edda; border:1px solid #28a745; border-radius:8px; padding:16px; margin-top:16px;">
+      <strong>No Coverage Gaps Detected.</strong> Based on your answers, your current coverage profile appears appropriate for your situation. Review annually as your circumstances change.
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>Common Auto Insurance Coverage Gaps</h2>
+    <ul>
+      <li><strong>GAP Insurance:</strong> If your car is totaled and you owe more than its depreciated value, GAP insurance covers the difference. Critical for new loans and leases.</li>
+      <li><strong>Comprehensive Coverage:</strong> Covers theft, weather, fire, and non-collision damage. Essential for newer vehicles.</li>
+      <li><strong>Higher Liability Limits:</strong> High-mileage drivers have more exposure. State minimum limits may be insufficient.</li>
+      <li><strong>Uninsured Motorist (UM) Coverage:</strong> Urban/highway drivers encounter more uninsured drivers. UM coverage protects you when they can't pay.</li>
+      <li><strong>Umbrella Policy:</strong> A $1M umbrella policy costs ~$200/year and protects assets above your auto liability limits.</li>
+    </ul>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is GAP insurance and do I need it?</h3>
+      <p>GAP (Guaranteed Asset Protection) insurance covers the difference between what you owe on your loan and the car's actual cash value if it's totaled. New cars depreciate 15–25% in the first year. If you financed more than 80% of a new car's value, GAP is highly recommended.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I know if I have comprehensive coverage?</h3>
+      <p>Check your declarations page — comprehensive coverage is listed separately from collision. If you only have liability coverage, you have no protection for theft, hail, flooding, or fire damage to your own vehicle.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What does an umbrella policy cover?</h3>
+      <p>A personal umbrella policy provides $1M–$5M of additional liability coverage above your auto and home policy limits. It covers bodily injury, property damage, and personal liability claims that exceed your underlying policy limits — for just $150–$300/year.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should I review my coverage?</h3>
+      <p>Review your auto insurance at every renewal (typically every 6–12 months), and also after major life changes: buying a new car, moving, getting married, having a teenager start driving, or significant changes in income or assets.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I add coverage mid-policy?</h3>
+      <p>Yes — most insurers allow you to add coverage types mid-term. The additional premium is pro-rated for the remaining policy period. There is typically no fee to add coverage, though some endorsements may require underwriting review.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/liability-coverage-limits-calculator.html">Auto Liability Coverage Limits Calculator</a></li>
+      <li><a href="/tools/auto/uninsured-motorist-coverage-calculator.html">Uninsured Motorist Coverage Calculator</a></li>
+      <li><a href="/tools/auto/collision-coverage-breakeven-calculator.html">Collision Coverage Break-Even Calculator</a></li>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/total-cost-of-ownership-calculator.html">Car Total Cost of Ownership Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are general guidance only and may not reflect your specific policy or state requirements. Consult a licensed insurance professional for a complete coverage review.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<style>
+.question-group { margin-bottom: 20px; padding: 16px; background: #f8f9fa; border-radius: 8px; }
+.question-text { margin: 0 0 10px; font-size: 1rem; }
+.radio-label { display: inline-flex; align-items: center; gap: 6px; margin-right: 24px; cursor: pointer; font-size: 0.95rem; }
+.calc-btn { display: block; width: 100%; padding: 14px; background: #0056b3; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 8px; }
+.calc-btn:hover { background: #004494; }
+.gap-list { list-style: none; padding: 0; margin: 12px 0; }
+.gap-list li { padding: 12px 16px; margin-bottom: 10px; border-radius: 8px; background: #fff3cd; border-left: 4px solid #ffc107; }
+.gap-list li strong { display: block; margin-bottom: 4px; }
+</style>
+<script>
+const gapData = [
+  {
+    key: 'q1',
+    title: 'GAP Insurance Recommended',
+    detail: 'You have a car loan or lease. If your vehicle is totaled, the insurance payout may be less than your outstanding balance. GAP insurance covers the difference and typically costs only $20–$40/year when added to your auto policy.'
+  },
+  {
+    key: 'q2',
+    title: 'Comprehensive Coverage Essential',
+    detail: 'Your car is less than 3 years old and likely still has significant value. Comprehensive coverage protects against theft, weather damage, fire, and vandalism. Without it, a single incident could leave you with a large out-of-pocket loss.'
+  },
+  {
+    key: 'q3',
+    title: 'Consider Higher Liability Limits',
+    detail: 'Driving over 15,000 miles/year significantly increases your accident exposure. Higher mileage means more time on the road and greater liability risk. Consider upgrading to at least 100/300/100 liability limits if you haven\'t already.'
+  },
+  {
+    key: 'q4',
+    title: 'Uninsured Motorist (UM) Coverage Advised',
+    detail: 'High-traffic urban driving increases your chances of encountering an uninsured driver. Uninsured motorist coverage protects you when the at-fault driver has no insurance. It typically adds only $50–$100/year to your premium.'
+  },
+  {
+    key: 'q5',
+    title: 'Umbrella Policy Strongly Recommended',
+    detail: 'With significant assets, a lawsuit after a serious accident could target your savings, home equity, and future income above your policy limits. A $1M personal umbrella policy costs approximately $150–$300/year and provides crucial extra protection.'
+  }
+];
+
+function analyzeGaps() {
+  const answers = {};
+  for (let i = 1; i <= 5; i++) {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    answers[`q${i}`] = sel ? sel.value : null;
+  }
+
+  const unanswered = Object.values(answers).some(v => v === null);
+  if (unanswered) {
+    alert('Please answer all 5 questions before analyzing.');
+    return;
+  }
+
+  const gaps = gapData.filter(g => answers[g.key] === 'yes');
+
+  document.getElementById('result-box').style.display = 'none';
+  document.getElementById('no-gaps-box').style.display = 'none';
+
+  if (gaps.length === 0) {
+    document.getElementById('no-gaps-box').style.display = 'block';
+    return;
+  }
+
+  const list = document.getElementById('gap-list');
+  list.innerHTML = '';
+  gaps.forEach(g => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${g.title}</strong>${g.detail}`;
+    list.appendChild(li);
+  });
+
+  document.getElementById('gap-count-box').innerHTML =
+    `<p style="font-size:1.1rem; margin-bottom:8px;">Found <strong>${gaps.length} potential coverage gap${gaps.length > 1 ? 's' : ''}</strong> based on your answers:</p>`;
+  document.getElementById('summary_text').textContent =
+    'Review each recommendation with your insurance agent to determine the most cost-effective way to close these gaps. Even one uncovered incident can result in thousands of dollars of out-of-pocket costs.';
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

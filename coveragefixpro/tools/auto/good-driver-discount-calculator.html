@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Driver Discount Calculator - CoverageFixPro</title>
+  <meta name="description" content="Find out if you qualify for a good driver discount and how much you could save on your car insurance premium.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; Good Driver Discount Calculator
+  </nav>
+
+  <h1>Good Driver Discount Calculator</h1>
+  <p class="tool-intro">A clean driving record can earn you significant savings on your car insurance. Check your eligibility and estimate your discount in seconds.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculateGoodDriver()" autocomplete="off">
+      <div class="form-group">
+        <label for="current_premium">Current Annual Premium</label>
+        <input type="number" id="current_premium" min="0" step="10" placeholder="e.g. 1500" value="">
+      </div>
+      <div class="form-group">
+        <label for="years_clean">Years of Clean Driving (No Violations or Accidents)</label>
+        <input type="number" id="years_clean" min="0" max="50" placeholder="e.g. 5" value="">
+      </div>
+      <div class="form-group">
+        <label for="violations">Traffic Violations in Last 3 Years</label>
+        <select id="violations">
+          <option value="">-- Select --</option>
+          <option value="0">0 violations</option>
+          <option value="1">1 violation</option>
+          <option value="2">2 or more violations</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="accidents">At-Fault Accidents in Last 3 Years</label>
+        <select id="accidents">
+          <option value="">-- Select --</option>
+          <option value="0">0 accidents</option>
+          <option value="1">1 accident</option>
+          <option value="2">2 or more accidents</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Good Driver Discount Results</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Eligibility Status</span>
+          <span class="result-value" id="res-eligible">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Discount Percentage</span>
+          <span class="result-value" id="res-pct">--</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">Annual Savings</span>
+          <span class="result-value" id="res-savings">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">New Annual Premium</span>
+          <span class="result-value" id="res-new">--</span>
+        </div>
+      </div>
+      <div class="recommendation" id="recommendation"></div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>How Good Driver Discounts Work</h2>
+    <p>Insurers reward drivers who maintain a clean record with reduced premiums, typically referred to as a good driver, safe driver, or accident-free discount. To qualify, you generally need zero at-fault accidents and zero moving violations within the past 3 years.</p>
+    <p>The discount amount grows with your clean driving streak. Drivers with 3+ years clean typically receive 10%, those with 5+ years receive 15%, and those with 7+ years of clean driving often qualify for a 20% discount.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>What qualifies as a violation for this discount?</summary>
+      <p>Moving violations such as speeding tickets, running red lights, and reckless driving typically disqualify you. Non-moving violations (like parking tickets) generally do not affect your eligibility. Not-at-fault accidents usually don't count against you either.</p>
+    </details>
+    <details>
+      <summary>How do I prove I qualify for a good driver discount?</summary>
+      <p>Your insurer will pull your Motor Vehicle Record (MVR) directly. You don't need to provide anything — they check your driving history automatically when you apply or renew your policy.</p>
+    </details>
+    <details>
+      <summary>Does a good driver discount apply automatically?</summary>
+      <p>With most insurers it's applied automatically at renewal if you qualify. However, if you recently switched insurers or believe you qualify but aren't seeing the discount, call your agent and ask specifically about good driver discounts.</p>
+    </details>
+    <details>
+      <summary>Will one ticket remove my good driver discount?</summary>
+      <p>Yes, most insurers will remove the discount if you receive a moving violation or at-fault accident. The impact can last 3–5 years, making the true cost of a single ticket far higher than the fine itself.</p>
+    </details>
+    <details>
+      <summary>Can I stack a good driver discount with other discounts?</summary>
+      <p>Yes. Good driver discounts typically stack with multi-car, bundling, good student, and loyalty discounts. Ask your insurer which discounts can be combined to maximize your savings.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/car-insurance-premium-estimator.html">Car Insurance Premium Estimator</a></li>
+      <li><a href="/tools/auto/dui-insurance-rate-calculator.html">DUI Insurance Rate Calculator</a></li>
+      <li><a href="/tools/auto/multi-car-discount-calculator.html">Multi-Car Discount Calculator</a></li>
+      <li><a href="/tools/auto/bundling-discount-calculator.html">Home and Auto Bundle Discount Calculator</a></li>
+      <li><a href="/tools/auto/annual-vs-monthly-payment-calculator.html">Annual vs Monthly Payment Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. Good driver discount eligibility and percentages vary by insurer and state. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculateGoodDriver() {
+  var current = parseFloat(document.getElementById('current_premium').value);
+  var yearsClean = parseInt(document.getElementById('years_clean').value);
+  var violations = document.getElementById('violations').value;
+  var accidents = document.getElementById('accidents').value;
+
+  if (!current || isNaN(yearsClean) || violations === '' || accidents === '') {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var eligible = (violations === '0' && accidents === '0');
+  var discountPct = 0;
+
+  if (eligible) {
+    if (yearsClean >= 7) discountPct = 0.20;
+    else if (yearsClean >= 5) discountPct = 0.15;
+    else if (yearsClean >= 3) discountPct = 0.10;
+  }
+
+  var savings = current * discountPct;
+  var newPremium = current - savings;
+
+  document.getElementById('res-eligible').textContent = eligible ? 'Eligible' : 'Not Eligible';
+  document.getElementById('res-pct').textContent = (discountPct * 100).toFixed(0) + '%';
+  document.getElementById('res-savings').textContent = fmt(savings);
+  document.getElementById('res-new').textContent = fmt(newPremium);
+
+  var rec = document.getElementById('recommendation');
+  if (!eligible) {
+    rec.innerHTML = '<p class="rec-no"><strong>You do not currently qualify</strong> for a good driver discount due to recent violations or accidents. Most insurers look back 3 years — keeping a clean record from today will restore your eligibility.</p>';
+  } else if (discountPct === 0) {
+    rec.innerHTML = '<p><strong>You qualify</strong> based on your clean record, but maximum discounts typically start after 3 clean years. Keep driving safely — your discount will increase with time.</p>';
+  } else {
+    rec.innerHTML = '<p class="rec-yes"><strong>You qualify for a ' + (discountPct * 100).toFixed(0) + '% good driver discount</strong>, saving you ' + fmt(savings) + ' per year. Make sure your insurer has applied this discount to your policy.</p>';
+  }
+
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

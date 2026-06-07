@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SR-22 Insurance Cost Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate the full cost of SR-22 insurance including premium increases and filing fees. See your 3-year total extra cost by state and violation type.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; SR-22 Insurance Cost Calculator
+  </nav>
+
+  <h1>SR-22 Insurance Cost Calculator</h1>
+  <p class="tool-intro">An SR-22 requirement means your insurer must file a certificate of financial responsibility with your state. This calculator shows your new premium, annual SR-22 filing fee, and the full 3-year extra cost.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculateSR22()" autocomplete="off">
+      <div class="form-group">
+        <label for="state">State</label>
+        <select id="state">
+          <option value="">-- Select State --</option>
+          <option value="CA">California (CA)</option>
+          <option value="TX">Texas (TX)</option>
+          <option value="FL">Florida (FL)</option>
+          <option value="NY">New York (NY)</option>
+          <option value="OH">Ohio (OH)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="violation_type">Violation Type</label>
+        <select id="violation_type">
+          <option value="">-- Select Violation --</option>
+          <option value="DUI">DUI / DWI</option>
+          <option value="Reckless">Reckless Driving</option>
+          <option value="Uninsured">Driving Uninsured</option>
+          <option value="Other">Other Serious Violation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="current_premium">Current Annual Premium (Before SR-22)</label>
+        <input type="number" id="current_premium" min="0" step="10" placeholder="e.g. 1400" value="">
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>SR-22 Cost Breakdown</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Current Annual Premium</span>
+          <span class="result-value" id="res-current">--</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">New Annual Premium (with SR-22 surcharge)</span>
+          <span class="result-value" id="res-new">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Annual Premium Increase</span>
+          <span class="result-value" id="res-increase">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Annual SR-22 Filing Fee</span>
+          <span class="result-value" id="res-fee">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Annual Total Extra Cost</span>
+          <span class="result-value" id="res-annual-extra">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">3-Year Total Extra Cost</span>
+          <span class="result-value" id="res-3yr">--</span>
+        </div>
+      </div>
+      <div class="recommendation" id="recommendation"></div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>What Is an SR-22?</h2>
+    <p>An SR-22 is not an insurance policy — it is a certificate that your insurance company files with your state's DMV to prove you carry the minimum required auto insurance coverage. It is required after certain serious driving violations, most commonly DUI/DWI, reckless driving, driving without insurance, or accumulating too many points on your license.</p>
+    <p>Most states require you to maintain an SR-22 for 3 years. During this period, if your insurance lapses for any reason, your insurer is required to notify the state, which can result in license suspension. Keeping continuous coverage is essential.</p>
+    <p>The SR-22 filing fee itself is typically $15–$35 per year. The major cost is the premium surcharge that comes with being classified as a high-risk driver.</p>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>How long do I need to maintain an SR-22?</summary>
+      <p>Most states require SR-22 filing for 3 years, though some require it for 1–5 years depending on the violation. Your state DMV will specify the exact requirement. The clock typically starts from the date your license is reinstated, not the date of the violation.</p>
+    </details>
+    <details>
+      <summary>What happens if my insurance lapses while I have an SR-22?</summary>
+      <p>If your coverage lapses, your insurer must notify the state immediately. This will typically result in automatic license suspension. You'll need to reinstate coverage, file a new SR-22, and potentially pay reinstatement fees — restarting your SR-22 period in some states.</p>
+    </details>
+    <details>
+      <summary>Can I get SR-22 without a car (non-owner SR-22)?</summary>
+      <p>Yes. If you don't own a vehicle but still need to drive (or need to reinstate your license), you can purchase a non-owner SR-22 policy. This provides liability coverage when you drive borrowed or rented vehicles and is typically less expensive than a standard SR-22 policy.</p>
+    </details>
+    <details>
+      <summary>Will all insurance companies file an SR-22 for me?</summary>
+      <p>Not all insurers handle SR-22 filings. Some standard market insurers will not write policies for SR-22 drivers and may cancel your existing policy. You may need to seek coverage from a non-standard (high-risk) insurer. Shop around — rates vary significantly.</p>
+    </details>
+    <details>
+      <summary>How do I know when I can remove my SR-22?</summary>
+      <p>Your insurer and state DMV will track your SR-22 requirement. Do not cancel the SR-22 before your required period ends — doing so will trigger a license suspension notification. Once the period is up, contact your insurer to remove the filing, which may reduce your premium.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/dui-insurance-rate-calculator.html">DUI Insurance Rate Calculator</a></li>
+      <li><a href="/tools/auto/car-insurance-premium-estimator.html">Car Insurance Premium Estimator</a></li>
+      <li><a href="/tools/auto/good-driver-discount-calculator.html">Good Driver Discount Calculator</a></li>
+      <li><a href="/tools/auto/annual-vs-monthly-payment-calculator.html">Annual vs Monthly Payment Calculator</a></li>
+      <li><a href="/tools/auto/comprehensive-vs-liability-calculator.html">Full Coverage vs Liability Only Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. SR-22 requirements, surcharges, and filing fees vary by state and insurer. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculateSR22() {
+  var state = document.getElementById('state').value;
+  var violation = document.getElementById('violation_type').value;
+  var current = parseFloat(document.getElementById('current_premium').value);
+
+  if (!state || !violation || !current) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var increaseRates = { 'DUI': 0.85, 'Reckless': 0.65, 'Uninsured': 0.45, 'Other': 0.35 };
+  var rate = increaseRates[violation] || 0.35;
+  var newPremium = current * (1 + rate);
+  var annualIncrease = newPremium - current;
+  var sr22Fee = 25;
+  var annualExtra = annualIncrease + sr22Fee;
+  var threeYrExtra = annualIncrease * 3 + sr22Fee * 3;
+
+  document.getElementById('res-current').textContent = fmt(current);
+  document.getElementById('res-new').textContent = fmt(newPremium);
+  document.getElementById('res-increase').textContent = '+' + fmt(annualIncrease) + ' (+' + (rate * 100).toFixed(0) + '%)';
+  document.getElementById('res-fee').textContent = fmt(sr22Fee) + '/year';
+  document.getElementById('res-annual-extra').textContent = fmt(annualExtra);
+  document.getElementById('res-3yr').textContent = fmt(threeYrExtra);
+
+  var violationNames = { 'DUI': 'DUI/DWI', 'Reckless': 'Reckless Driving', 'Uninsured': 'Driving Uninsured', 'Other': 'Serious Violation' };
+  var rec = document.getElementById('recommendation');
+  rec.innerHTML = '<p>A <strong>' + violationNames[violation] + '</strong> in <strong>' + state + '</strong> is estimated to increase your annual premium by ' + fmt(annualIncrease) + ' (' + (rate * 100).toFixed(0) + '%). Combined with the $25/year SR-22 filing fee, your total extra cost over the required 3-year SR-22 period is <strong>' + fmt(threeYrExtra) + '</strong>. Maintaining continuous coverage throughout this period is critical to avoid license suspension.</p>';
+
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>

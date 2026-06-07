@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Insurance Premium Estimator - CoverageFixPro</title>
+  <meta name="description" content="Estimate your car insurance premium based on age, vehicle year, driving history, and state. Get instant low and high estimates.">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5XX4CE3YBR');
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Insurance Tools</a> &rsaquo; Car Insurance Premium Estimator
+  </nav>
+
+  <h1>Car Insurance Premium Estimator</h1>
+  <p class="tool-intro">Enter your details below to get an instant estimate of your annual car insurance premium. Results update in real time.</p>
+
+  <section class="calculator-section">
+    <form class="calc-form" oninput="calculatePremium()" autocomplete="off">
+      <div class="form-group">
+        <label for="age">Driver Age</label>
+        <input type="number" id="age" min="16" max="99" placeholder="e.g. 35" value="">
+      </div>
+      <div class="form-group">
+        <label for="car_year">Vehicle Year</label>
+        <input type="number" id="car_year" min="1990" max="2026" placeholder="e.g. 2022" value="">
+      </div>
+      <div class="form-group">
+        <label for="driving_years">Years of Driving Experience</label>
+        <input type="number" id="driving_years" min="0" max="80" placeholder="e.g. 10" value="">
+      </div>
+      <div class="form-group">
+        <label for="accidents">At-Fault Accidents (Last 3 Years)</label>
+        <select id="accidents">
+          <option value="">-- Select --</option>
+          <option value="0">0 accidents</option>
+          <option value="1">1 accident</option>
+          <option value="2">2 accidents</option>
+          <option value="3">3 or more</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select id="state">
+          <option value="">-- Select State --</option>
+          <option value="CA">California (CA)</option>
+          <option value="TX">Texas (TX)</option>
+          <option value="FL">Florida (FL)</option>
+          <option value="NY">New York (NY)</option>
+          <option value="OH">Ohio (OH)</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>Your Estimated Annual Premium</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Low Estimate</span>
+          <span class="result-value" id="res-low">--</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">Mid Estimate</span>
+          <span class="result-value" id="res-mid">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">High Estimate</span>
+          <span class="result-value" id="res-high">--</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Average</span>
+          <span class="result-value" id="res-monthly">--</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2>How This Calculator Works</h2>
+    <p>This tool estimates your car insurance premium using key rating factors that most insurers use. We start with a national base rate and apply multipliers for your age, vehicle year, accident history, and state of residence.</p>
+    <ul>
+      <li><strong>Age:</strong> Younger drivers (under 25) and seniors (over 65) typically pay more due to higher statistical risk.</li>
+      <li><strong>Vehicle Year:</strong> Newer vehicles cost more to insure because parts and repairs are more expensive.</li>
+      <li><strong>Accident History:</strong> Each at-fault accident can significantly raise your premiums for 3-5 years.</li>
+      <li><strong>State:</strong> Insurance is regulated at the state level, and costs vary widely based on local laws and claim rates.</li>
+    </ul>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>What is the average cost of car insurance in the US?</summary>
+      <p>The national average for full coverage car insurance is approximately $1,700 per year, though this varies significantly by state, driver profile, and vehicle type. Liability-only coverage averages around $600 per year.</p>
+    </details>
+    <details>
+      <summary>How can I lower my car insurance premium?</summary>
+      <p>You can lower your premium by maintaining a clean driving record, bundling home and auto insurance, raising your deductible, taking a defensive driving course, and asking about good driver discounts.</p>
+    </details>
+    <details>
+      <summary>Why does my state affect my car insurance rate?</summary>
+      <p>Each state has different minimum coverage requirements, litigation environments, weather risks, and uninsured driver rates. States like Florida and New York tend to have higher rates due to dense traffic and legal environments.</p>
+    </details>
+    <details>
+      <summary>How long do accidents stay on my insurance record?</summary>
+      <p>Most at-fault accidents affect your insurance rates for 3 to 5 years, depending on your insurer and state. Serious accidents may stay on your record longer.</p>
+    </details>
+    <details>
+      <summary>How accurate is this estimate?</summary>
+      <p>This calculator provides an educational estimate based on common industry rating factors. Actual quotes from insurers will vary based on your credit score, vehicle make/model, coverage limits, and many other factors. Always get quotes from multiple insurers for the most accurate pricing.</p>
+    </details>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/gap-insurance-calculator.html">GAP Insurance Calculator</a></li>
+      <li><a href="/tools/auto/dui-insurance-rate-calculator.html">DUI Insurance Rate Calculator</a></li>
+      <li><a href="/tools/auto/teen-driver-cost-calculator.html">Teen Driver Insurance Cost Calculator</a></li>
+      <li><a href="/tools/auto/deductible-optimizer.html">Auto Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/auto/multi-car-discount-calculator.html">Multi-Car Discount Calculator</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results provided by this calculator are estimates only and do not constitute insurance advice or an actual insurance quote. Actual premiums depend on many factors not captured here. Consult a licensed insurance professional for accurate quotes and coverage recommendations.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function calculatePremium() {
+  var age = parseInt(document.getElementById('age').value);
+  var carYear = parseInt(document.getElementById('car_year').value);
+  var accidents = document.getElementById('accidents').value;
+  var state = document.getElementById('state').value;
+
+  if (!age || !carYear || accidents === '' || state === '') {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  var base = 1200;
+
+  // Age factor
+  var ageFactor = 1.0;
+  if (age < 25) ageFactor = 1.8;
+  else if (age > 65) ageFactor = 1.2;
+
+  // Car year factor
+  var carFactor = 0.9;
+  if (carYear > 2020) carFactor = 1.3;
+  else if (carYear >= 2015) carFactor = 1.1;
+
+  // Accident factor
+  var accFactor = 1.0;
+  if (accidents === '1') accFactor = 1.4;
+  else if (accidents === '2') accFactor = 1.9;
+  else if (accidents === '3') accFactor = 2.5;
+
+  // State factor
+  var stateFactor = 1.0;
+  if (state === 'CA') stateFactor = 1.3;
+  else if (state === 'TX') stateFactor = 1.1;
+  else if (state === 'FL') stateFactor = 1.4;
+  else if (state === 'NY') stateFactor = 1.5;
+  else if (state === 'OH') stateFactor = 0.9;
+
+  var premium = base * ageFactor * carFactor * accFactor * stateFactor;
+  var low = premium * 0.85;
+  var high = premium * 1.15;
+  var monthly = premium / 12;
+
+  document.getElementById('res-low').textContent = fmt(low);
+  document.getElementById('res-mid').textContent = fmt(premium);
+  document.getElementById('res-high').textContent = fmt(high);
+  document.getElementById('res-monthly').textContent = fmt(monthly);
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>
