@@ -4,6 +4,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const { runMonitor } = require('./monitor-engine');
 const { runSiteRecovery, sendRecoveryEmail } = require('./site-recovery');
+const { refillBuffer } = require('./buffer-refill');
 
 const BASE_DIR = 'C:\\Users\\Administrator\\pm-worker';
 const PROJECTS_FILE = path.join(BASE_DIR, 'projects.json');
@@ -287,6 +288,25 @@ async function runSchedule(mode = 'daily') {
 
       const pmHtml = buildDailyPlanHtml(pmResult, today(), config.projects);
       await sendEmail(`今日执行计划 ${today()}`, pmResult, pmHtml);
+    }
+
+    if (mode === 'daily' || mode === 'buffer') {
+      // Buffer 补充队列：仅在 09:00 前后 30 分钟内执行，或强制 buffer 模式
+      const hour = new Date().getHours();
+      if (mode === 'buffer' || (hour >= 8 && hour < 10)) {
+        console.log('\n📌 运行 Buffer Refill...');
+        try {
+          const bufferResults = await refillBuffer();
+          const bufferSummary = bufferResults.map(r =>
+            `${r.site}: ${r.status}` + (r.added != null ? ` (+${r.added})` : '')
+          ).join(', ');
+          results.push({ worker: 'buffer', result: bufferSummary });
+          writeLog('buffer', { output: bufferSummary, raw: bufferResults });
+          console.log(`📌 Buffer 完成: ${bufferSummary}`);
+        } catch (e) {
+          console.error('⚠️ Buffer Refill 失败（不影响其他任务）:', e.message);
+        }
+      }
     }
 
     if (mode === 'recovery') {

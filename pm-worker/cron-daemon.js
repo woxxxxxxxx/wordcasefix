@@ -36,8 +36,12 @@ cron.schedule('0 9 * * 1', () => runScheduler('qa'), { timezone: 'Asia/Shanghai'
 // 每30分钟 - Site Recovery 站点恢复检查
 cron.schedule('*/30 * * * *', () => runScheduler('recovery'), { timezone: 'Asia/Shanghai' });
 
+// 每天 09:00 - Buffer 队列补充
+cron.schedule('0 9 * * *', () => runScheduler('buffer'), { timezone: 'Asia/Shanghai' });
+
 console.log('PM Worker Cron Daemon 已启动');
 console.log('  每天 08:30  → daily');
+console.log('  每天 09:00  → buffer refill');
 console.log('  每4小时     → monitor');
 console.log('  每周一09:00 → qa');
 console.log('  每30分钟    → recovery');
