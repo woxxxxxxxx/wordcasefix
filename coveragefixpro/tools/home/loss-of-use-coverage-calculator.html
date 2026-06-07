@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loss of Use Insurance Coverage Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate how much loss of use (additional living expenses) coverage you need based on your monthly housing costs and estimated rebuild time.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Loss of Use Insurance Coverage Calculator
+  </nav>
+
+  <h1>Loss of Use Insurance Coverage Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="monthly_rent_equivalent">Monthly Housing Cost ($)</label>
+      <input type="number" id="monthly_rent_equivalent" placeholder="Your monthly housing cost" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="estimated_rebuild_months">Estimated Rebuild Time (Months)</label>
+      <input type="number" id="estimated_rebuild_months" placeholder="e.g. 6" min="1" max="36" value="6" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Loss of Use Coverage Analysis</h2>
+    <div class="result-row"><span>Coverage Needed</span><strong id="res_needed"></strong></div>
+    <div class="result-row"><span>Standard Policy Provides (20% of annual housing cost)</span><strong id="res_standard"></strong></div>
+    <div class="result-row"><span>Adequacy Status</span><strong id="res_status"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Loss of Use Coverage</h2>
+    <p>Loss of use coverage (also called Coverage D or Additional Living Expenses) pays for temporary housing, meals, and other extra costs if your home becomes uninhabitable after a covered loss. Most standard homeowners policies include loss of use coverage equal to 20% of your dwelling coverage. For a home with $400,000 in dwelling coverage, that's $80,000 — which sounds substantial, but a major reconstruction can take 12–24 months. If your policy's loss of use limit seems low relative to local housing costs, ask your insurer about increasing it.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What expenses does loss of use coverage pay for?</h3>
+      <p>It covers temporary housing (hotel, rental), increased food costs if cooking facilities aren't available, laundry, storage, and other reasonable extra living expenses above your normal costs.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How long does loss of use coverage last?</h3>
+      <p>Most policies pay for the shortest time needed to repair or replace your home, or until the coverage limit is exhausted. Some policies have a time limit (e.g., 12–24 months) in addition to a dollar limit.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does loss of use coverage pay the actual cost or just the difference?</h3>
+      <p>It covers only the additional costs above your normal living expenses. If your mortgage is $2,000/month and temporary rent is $3,000/month, coverage pays the $1,000 difference, not the full $3,000.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How long does it take to rebuild after a major disaster?</h3>
+      <p>Reconstruction timelines vary widely. Minor damage may take weeks; a complete rebuild after a fire can take 12–24 months or longer after major disasters when contractors are in high demand across the region.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is loss of use coverage included in renters insurance?</h3>
+      <p>Yes. Renters insurance includes loss of use coverage for additional living expenses if your rental unit becomes uninhabitable due to a covered event. Coverage amounts are typically lower than homeowners policies.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/condo-insurance-calculator.html">Condo Insurance (HO-6) Calculator</a></li>
+      <li><a href="/tools/home/renters-insurance-calculator.html">Renters Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/insurance-to-value-ratio-calculator.html">Insurance-to-Value Ratio Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual loss of use coverage limits, eligible expenses, and time limits vary by policy. Consult a licensed insurance professional for guidance on appropriate coverage levels.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var rent=parseFloat(document.getElementById('monthly_rent_equivalent').value)||0;
+  var months=parseFloat(document.getElementById('estimated_rebuild_months').value)||6;
+  if(!rent){document.getElementById('result').style.display='none';return;}
+  var needed=rent*months;
+  var standard=rent*12*0.20;
+  var adequate=standard>=needed;
+  document.getElementById('res_needed').textContent=fmt(needed);
+  document.getElementById('res_standard').textContent=fmt(standard);
+  document.getElementById('res_status').textContent=adequate?'✓ Standard 20% coverage is likely sufficient':'⚠ Consider increasing loss-of-use coverage limit';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

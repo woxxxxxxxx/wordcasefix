@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flood Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate estimated flood insurance premiums based on your flood zone, home value, and basement presence.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Flood Insurance Cost Calculator
+  </nav>
+
+  <h1>Flood Insurance Cost Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="flood_zone">Flood Zone</label>
+      <select id="flood_zone" oninput="calc()">
+        <option value="A">Zone A (High Risk)</option>
+        <option value="AE">Zone AE (High Risk — Base Flood Elevation)</option>
+        <option value="X" selected>Zone X (Minimal Risk)</option>
+        <option value="V">Zone V (Coastal High Hazard)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="home_value">Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 300000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="has_basement">Has Basement?</label>
+      <select id="has_basement" oninput="calc()">
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Flood Insurance Estimate</h2>
+    <div class="result-row"><span>Building Coverage Premium</span><strong id="res_building"></strong></div>
+    <div class="result-row"><span>Contents Coverage</span><strong id="res_content"></strong></div>
+    <div class="result-row"><span>Total Annual Premium</span><strong id="res_total"></strong></div>
+    <div class="result-row"><span>Flood Zone Risk Level</span><strong id="res_zone"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Flood Insurance</h2>
+    <p>Standard homeowners insurance does not cover flood damage. Flood insurance is available through the National Flood Insurance Program (NFIP) or private insurers. Your flood zone — determined by FEMA flood maps — is the single biggest driver of your premium. Zone V coastal properties carry the highest rates, while Zone X properties in low-risk areas pay the least. Having a basement significantly increases risk and premiums. Even if you're not in a high-risk zone, flooding is the most common natural disaster in the U.S.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Does homeowners insurance cover floods?</h3>
+      <p>No. Standard homeowners policies explicitly exclude flooding from surface water, storm surge, and overflowing bodies of water. A separate flood insurance policy is required.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the NFIP?</h3>
+      <p>The National Flood Insurance Program is a federal program managed by FEMA that provides flood insurance to homeowners, renters, and businesses in participating communities.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I find my flood zone?</h3>
+      <p>Visit FEMA's Flood Map Service Center at msc.fema.gov and enter your address. Your lender or insurance agent can also look up your flood zone designation.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is flood insurance required?</h3>
+      <p>If you have a federally backed mortgage and live in a high-risk flood zone (Zone A or V), federal law requires you to carry flood insurance.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I get flood insurance if I'm not in a high-risk zone?</h3>
+      <p>Yes, and it's often very affordable. About 25% of flood claims come from moderate- to low-risk areas, making coverage worthwhile for many homeowners outside high-risk zones.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/hurricane-insurance-calculator.html">Hurricane Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/water-damage-coverage-calculator.html">Water Damage Coverage Calculator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-claims-impact-calculator.html">How Claims Affect Your Premium</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual NFIP or private flood insurance premiums depend on specific property elevation, flood zone, coverage limits, and insurer underwriting. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var zone=document.getElementById('flood_zone').value;
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var bsmt=document.getElementById('has_basement').value;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  var baseAnnual={A:900,AE:1200,X:500,V:2500}[zone];
+  if(bsmt==='yes') baseAnnual*=1.3;
+  var contentCov=hv*0.25*0.003;
+  var total=baseAnnual+contentCov;
+  document.getElementById('res_building').textContent=fmt(baseAnnual);
+  document.getElementById('res_content').textContent=fmt(contentCov);
+  document.getElementById('res_total').textContent=fmt(total);
+  document.getElementById('res_zone').textContent='Zone '+zone+' — '+(zone==='X'?'Minimal Risk':zone==='V'?'Coastal High Hazard':'High Risk');
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

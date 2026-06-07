@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homeowners Insurance Cost Estimator - CoverageFixPro</title>
+<meta name="description" content="Estimate your homeowners insurance annual and monthly premium based on home value, year built, state, and construction type.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Homeowners Insurance Cost Estimator
+  </nav>
+
+  <h1>Homeowners Insurance Cost Estimator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="home_value">Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 350000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="year_built">Year Built</label>
+      <input type="number" id="year_built" placeholder="e.g. 1995" min="1800" max="2026" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="FL">FL</option>
+        <option value="TX">TX</option>
+        <option value="CA">CA</option>
+        <option value="NY">NY</option>
+        <option value="OH">OH</option>
+        <option value="Other" selected>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="construction_type">Construction Type</label>
+      <select id="construction_type" oninput="calc()">
+        <option value="frame">Frame</option>
+        <option value="masonry">Masonry</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Estimated Premium</h2>
+    <div class="result-row"><span>Estimated Annual Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Estimated Monthly Premium</span><strong id="res_monthly"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About This Estimator</h2>
+    <p>Homeowners insurance premiums vary widely based on your home's value, age, location, and construction materials. States like Florida and Texas typically carry higher premiums due to hurricane and storm risk, while masonry construction often earns a discount. Newer homes built after 2010 may also qualify for lower rates thanks to modern building codes. Use this estimator as a starting point, then compare quotes from multiple licensed insurers to find the best rate for your specific property.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What does homeowners insurance cover?</h3>
+      <p>Standard homeowners insurance (HO-3) covers dwelling damage, personal property, liability, and additional living expenses if your home becomes uninhabitable due to a covered peril.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How is the homeowners insurance premium calculated?</h3>
+      <p>Insurers consider home value, location, construction type, age, claims history, credit score, and selected coverage limits and deductibles when calculating your premium.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why are Florida premiums so much higher?</h3>
+      <p>Florida faces significant hurricane, wind, and flood risks, leading insurers to charge substantially higher premiums. Many major carriers have also exited the Florida market, reducing competition.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does masonry construction lower my premium?</h3>
+      <p>Yes. Brick, stone, and concrete homes are more fire-resistant than wood-frame homes, which typically results in a 5–15% discount on your homeowners insurance premium.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should I review my homeowners insurance?</h3>
+      <p>Review your policy annually, after major renovations, or whenever you acquire high-value items. Inflation and rising construction costs can leave you underinsured if coverage isn't updated regularly.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+      <li><a href="/tools/home/new-home-insurance-calculator.html">New Home Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/insurance-to-value-ratio-calculator.html">Insurance-to-Value Ratio Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only and do not constitute an insurance quote. Actual premiums depend on your insurer, underwriting criteria, credit score, claims history, and policy details. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var yr=parseFloat(document.getElementById('year_built').value)||2000;
+  var state=document.getElementById('state').value;
+  var ct=document.getElementById('construction_type').value;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  var base=hv*0.005;
+  var sm={FL:2.0,TX:1.5,CA:1.3,NY:1.2,OH:0.8,Other:1.0}[state]||1.0;
+  var ym=yr<2000?1.2:yr<=2010?1.0:0.9;
+  var cm=ct==='masonry'?0.9:1.0;
+  var annual=base*sm*ym*cm;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

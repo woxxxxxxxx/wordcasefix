@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hurricane Insurance Cost Estimator - CoverageFixPro</title>
+<meta name="description" content="Estimate hurricane insurance premiums based on your coastal state, home value, and distance from the coast.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Hurricane Insurance Cost Estimator
+  </nav>
+
+  <h1>Hurricane Insurance Cost Estimator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="state">Coastal State</label>
+      <select id="state" oninput="calc()">
+        <option value="FL">FL — Florida</option>
+        <option value="TX">TX — Texas</option>
+        <option value="LA">LA — Louisiana</option>
+        <option value="SC">SC — South Carolina</option>
+        <option value="NC">NC — North Carolina</option>
+        <option value="Other">Other / Inland State</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="home_value">Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 400000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="distance_from_coast">Distance from Coast (Miles)</label>
+      <input type="number" id="distance_from_coast" placeholder="Miles from coast" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Hurricane Insurance Estimate</h2>
+    <div class="result-row"><span>Estimated Annual Hurricane Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+    <div class="result-row"><span>Typical Hurricane Deductible</span><strong id="res_deductible"></strong></div>
+    <div class="result-row"><span>Note</span><em id="res_note"></em></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Hurricane Insurance</h2>
+    <p>Hurricane coverage is typically included in homeowners insurance as "windstorm" coverage, but in many high-risk coastal states, it must be purchased separately or through state-run insurers of last resort. A key feature is the hurricane deductible — typically 1–5% of your home's insured value — which is separate from your standard deductible. Properties closest to the coast pay the highest premiums. Impact-resistant windows and doors, storm shutters, and hurricane-strapped roofs can earn significant premium discounts in many coastal states.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Is hurricane damage covered by standard homeowners insurance?</h3>
+      <p>Wind damage from hurricanes is typically covered by standard homeowners policies. However, storm surge and flooding are not — those require separate flood insurance. In some coastal states, windstorm coverage must be purchased separately.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a hurricane deductible?</h3>
+      <p>A hurricane deductible is a separate, higher deductible that applies specifically to hurricane-caused wind damage. It's typically 1–5% of your dwelling coverage — meaning $5,000–$25,000 on a $500,000 home.</p>
+    </div>
+    <div class="faq-item">
+      <h3>When does a hurricane deductible apply?</h3>
+      <p>It applies when a storm is officially named and designated a hurricane by the National Hurricane Center. The specific trigger conditions vary by policy and state.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I get discounts for hurricane-resistant features?</h3>
+      <p>Yes. Impact-resistant roofing, hurricane straps, storm shutters, and reinforced garage doors can qualify for significant discounts — especially in Florida, where the My Safe Florida Home program offers mitigation inspections.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is Citizens Insurance in Florida?</h3>
+      <p>Citizens Property Insurance Corporation is Florida's state-run insurer of last resort for homeowners who can't find coverage in the private market — common in high-risk coastal areas where private insurers have withdrawn.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/flood-insurance-calculator.html">Flood Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/home/earthquake-insurance-calculator.html">Earthquake Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual hurricane insurance premiums depend on precise location, construction type, mitigation features, and insurer underwriting. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var state=document.getElementById('state').value;
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var dist=parseFloat(document.getElementById('distance_from_coast').value)||25;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  if(state==='Other'){
+    document.getElementById('res_note').textContent='Hurricane insurance is primarily needed in coastal states (FL, TX, LA, SC, NC).';
+    document.getElementById('res_annual').textContent='N/A';
+    document.getElementById('res_monthly').textContent='N/A';
+    document.getElementById('res_deductible').textContent='N/A';
+    document.getElementById('result').style.display='block';return;
+  }
+  var dm=dist<5?1.5:dist<25?1.2:dist<50?1.0:0.7;
+  var sm={FL:1.4,TX:1.2,LA:1.3,SC:1.1,NC:1.1}[state]||1.0;
+  var annual=hv*0.015*dm*sm;
+  var deductible=hv*0.03;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_deductible').textContent=fmt(deductible)+' (typical 3% of home value)';
+  document.getElementById('res_note').textContent='';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

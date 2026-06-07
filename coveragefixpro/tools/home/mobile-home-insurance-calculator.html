@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Home Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Estimate mobile home insurance premiums based on home value, age, state, and whether you own the land.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Mobile Home Insurance Calculator
+  </nav>
+
+  <h1>Mobile Home Insurance Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="home_value">Mobile Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 80000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="age_of_home">Age of Home (Years)</label>
+      <input type="number" id="age_of_home" placeholder="e.g. 10" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="FL">FL — Florida</option>
+        <option value="TX">TX — Texas</option>
+        <option value="CA">CA — California</option>
+        <option value="NY">NY — New York</option>
+        <option value="OH">OH — Ohio</option>
+        <option value="Other" selected>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="owned_land">Do You Own the Land?</label>
+      <select id="owned_land" oninput="calc()">
+        <option value="no" selected>No — Renting Lot</option>
+        <option value="yes">Yes — Own the Land</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Mobile Home Insurance Estimate</h2>
+    <div class="result-row"><span>Estimated Annual Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Mobile Home Insurance</h2>
+    <p>Mobile and manufactured homes require specialized insurance (HO-7) because they differ structurally from site-built homes — they're more susceptible to wind damage and can be harder to insure in certain states. Mobile homes in Florida, Texas, and other storm-prone states face the highest premiums. Older mobile homes (15+ years) are significantly more expensive to insure due to dated construction standards. Whether you own or rent your lot also affects coverage needs — lot owners may need additional land liability coverage. Not all insurers write mobile home policies, so shopping multiple carriers is especially important.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What type of insurance do I need for a mobile home?</h3>
+      <p>Mobile and manufactured homes require an HO-7 (mobile home) policy. Standard HO-3 policies designed for site-built homes do not adequately cover mobile homes.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is mobile home insurance required?</h3>
+      <p>If you have a loan on your mobile home, your lender will require insurance. Many mobile home parks also require proof of insurance as a condition of lot rental.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does a mobile home's age affect insurance?</h3>
+      <p>Older mobile homes are more expensive to insure because they were built to older standards with materials that degrade over time. Homes over 15 years old may be difficult to insure with some carriers.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does mobile home insurance cover the land?</h3>
+      <p>No. Mobile home insurance covers the structure and personal property, not the land. If you own the lot, consider a separate liability endorsement to cover injuries that occur on your property.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is tie-down coverage for mobile homes?</h3>
+      <p>Tie-down coverage specifically covers damage to anchoring systems that secure mobile homes to the ground. This is particularly important in areas with high wind risk, as a properly anchored home sustains significantly less storm damage.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/renters-insurance-calculator.html">Renters Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/hurricane-insurance-calculator.html">Hurricane Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Mobile home insurance availability and pricing vary significantly by insurer, home age, and state. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var age=parseFloat(document.getElementById('age_of_home').value)||0;
+  var state=document.getElementById('state').value;
+  var land=document.getElementById('owned_land').value;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  var base=1000;
+  var am=age>15?1.3:1.0;
+  var sm={FL:1.8,TX:1.4,CA:1.2,NY:1.1,OH:0.9,Other:1.0}[state]||1.0;
+  var lm=land==='yes'?1.1:1.0;
+  var annual=base*am*sm*lm;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

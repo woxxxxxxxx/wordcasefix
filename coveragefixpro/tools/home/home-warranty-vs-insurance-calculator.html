@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Warranty vs Homeowners Insurance Comparison - CoverageFixPro</title>
+<meta name="description" content="Compare the costs and benefits of home warranties versus homeowners insurance to determine which coverage is right for your situation.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Home Warranty vs Homeowners Insurance Comparison
+  </nav>
+
+  <h1>Home Warranty vs Homeowners Insurance Comparison</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="insurance_annual">Annual Homeowners Insurance Premium ($)</label>
+      <input type="number" id="insurance_annual" placeholder="e.g. 1500" min="0" value="1500" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="warranty_annual">Annual Home Warranty Cost ($)</label>
+      <input type="number" id="warranty_annual" placeholder="e.g. 600" min="0" value="600" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="expected_repairs">Expected Annual Repair Costs ($)</label>
+      <input type="number" id="expected_repairs" placeholder="Expected annual repair costs" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="home_age">Age of Home (Years)</label>
+      <input type="number" id="home_age" placeholder="e.g. 15" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Coverage Comparison</h2>
+    <div class="result-row"><span>Annual Insurance Cost</span><strong id="res_insurance"></strong></div>
+    <div class="result-row"><span>Annual Warranty Cost</span><strong id="res_warranty"></strong></div>
+    <div class="result-row"><span>Total If Both</span><strong id="res_both"></strong></div>
+    <div class="result-row"><span>Is Warranty Worth It?</span><strong id="res_warranty_value"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>Warranty vs Insurance: Key Differences</h2>
+    <p>Homeowners insurance covers sudden and accidental damage from covered perils — fire, storms, theft, and liability. A home warranty covers normal wear and tear on systems and appliances — HVAC, plumbing, electrical, refrigerator, dishwasher, etc. These products are complementary, not interchangeable. Insurance is typically required by lenders; warranties are optional. Warranties are most valuable for older homes where major system or appliance failures are more likely. Always read the fine print — warranty companies frequently deny claims citing pre-existing conditions or improper maintenance.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What does a home warranty cover that insurance doesn't?</h3>
+      <p>Home warranties cover mechanical breakdown of appliances and systems due to age and normal use — things homeowners insurance explicitly excludes. This includes HVAC failures, plumbing breaks from wear, and appliance breakdowns.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I have both homeowners insurance and a home warranty?</h3>
+      <p>Yes, and many homeowners do. They serve different purposes and together provide more comprehensive financial protection than either product alone.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are home warranties worth the money?</h3>
+      <p>It depends on your home's age and appliance condition. For older homes with aging systems, warranties can pay off quickly. For newer homes, the cost may exceed the likely repair bills. Always compare coverage limits and exclusions carefully.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What are common home warranty exclusions?</h3>
+      <p>Most home warranties exclude pre-existing conditions, cosmetic issues, code violations, improper installation, and items not specifically listed in the contract. Read the contract in full before purchasing.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does a home warranty transfer to new owners?</h3>
+      <p>Most home warranties are transferable, which can be a selling point when listing your home. Confirm transferability and any associated fees with your warranty provider before closing.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+      <li><a href="/tools/home/home-insurance-claims-impact-calculator.html">How Claims Affect Your Premium</a></li>
+      <li><a href="/tools/home/pmi-removal-date-calculator.html">PMI Removal Date Calculator</a></li>
+      <li><a href="/tools/home/new-home-insurance-calculator.html">New Home Insurance Cost Estimator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Home warranty coverage varies widely by provider and contract. Consult a licensed insurance professional and review warranty contracts carefully before purchasing.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var ins=parseFloat(document.getElementById('insurance_annual').value)||1500;
+  var warr=parseFloat(document.getElementById('warranty_annual').value)||600;
+  var repairs=parseFloat(document.getElementById('expected_repairs').value)||0;
+  var age=parseFloat(document.getElementById('home_age').value)||0;
+  var both=ins+warr;
+  var warrantyValue=age>10&&repairs>warr?'Yes — older home with expected repairs':'Consider — may not cover all appliances; read the fine print';
+  document.getElementById('res_insurance').textContent=fmt(ins);
+  document.getElementById('res_warranty').textContent=fmt(warr);
+  document.getElementById('res_both').textContent=fmt(both);
+  document.getElementById('res_warranty_value').textContent=warrantyValue;
+  document.getElementById('result').style.display='block';
+}
+// Auto-calculate on load with defaults
+window.addEventListener('load', calc);
+</script>
+</body>
+</html>

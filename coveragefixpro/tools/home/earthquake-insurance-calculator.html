@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earthquake Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Estimate earthquake insurance premiums based on your state, home value, and year built to assess whether coverage is right for you.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Earthquake Insurance Cost Calculator
+  </nav>
+
+  <h1>Earthquake Insurance Cost Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="CA">CA — California</option>
+        <option value="WA">WA — Washington</option>
+        <option value="OR">OR — Oregon</option>
+        <option value="TX">TX — Texas</option>
+        <option value="FL">FL — Florida</option>
+        <option value="OH">OH — Ohio</option>
+        <option value="Other" selected>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="home_value">Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 500000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="year_built">Year Built</label>
+      <input type="number" id="year_built" placeholder="e.g. 1985" min="1800" max="2026" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Earthquake Insurance Estimate</h2>
+    <div class="result-row"><span>Estimated Annual Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+    <div class="result-row"><span>Risk Level</span><strong id="res_risk"></strong></div>
+    <div class="result-row"><span>Recommendation</span><strong id="res_recommended"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Earthquake Insurance</h2>
+    <p>Standard homeowners insurance does not cover earthquake damage. Earthquake insurance is a separate policy — or endorsement — and is most critical in high-seismic-risk states like California, Washington, and Oregon. California has the CEA (California Earthquake Authority) which offers standardized policies. Older homes built before modern seismic codes face significantly higher risk and premiums. Earthquake deductibles are typically expressed as a percentage of your home's insured value (10–25%), making it important to have adequate savings for partial losses.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Does homeowners insurance cover earthquakes?</h3>
+      <p>No. Standard homeowners policies specifically exclude earthquake damage. You need a separate earthquake insurance policy or endorsement to be covered.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the CEA?</h3>
+      <p>The California Earthquake Authority is a publicly managed, privately funded insurer that provides earthquake coverage to California homeowners. It's one of the largest earthquake insurers in the world.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a typical earthquake insurance deductible?</h3>
+      <p>Earthquake deductibles are usually 10–25% of the dwelling coverage amount — far higher than standard homeowners deductibles. On a $500,000 home with 15% deductible, you'd pay $75,000 before insurance kicks in.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does building age affect earthquake risk?</h3>
+      <p>Older homes — especially those built before 1980 — may use construction methods that perform poorly in earthquakes (e.g., unreinforced masonry, soft-story framing). Retrofitting can improve safety and lower premiums.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is earthquake insurance worth it outside California?</h3>
+      <p>In moderate-risk areas like the Pacific Northwest and the New Madrid Seismic Zone in the Midwest, earthquake insurance can be cost-effective. In very low-risk areas, it's usually not worth the added expense.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/wildfire-risk-insurance-calculator.html">Wildfire Risk Home Insurance Calculator</a></li>
+      <li><a href="/tools/home/hurricane-insurance-calculator.html">Hurricane Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/flood-insurance-calculator.html">Flood Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual earthquake insurance premiums depend on precise location, soil type, construction details, and insurer underwriting. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var state=document.getElementById('state').value;
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var yr=parseFloat(document.getElementById('year_built').value)||2000;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  var highRisk=['CA','WA','OR'].includes(state);
+  var rate=highRisk?0.0015:0.0005;
+  if(state==='CA') rate=0.002;
+  var ym=yr<1980?1.4:yr<2000?1.1:0.9;
+  var annual=hv*rate*ym;
+  var risk=state==='CA'?'Very High':highRisk?'High':'Low to Moderate';
+  var recommended=highRisk?'Yes — strongly recommended':'Generally not cost-effective unless near fault lines';
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_risk').textContent=risk;
+  document.getElementById('res_recommended').textContent=recommended;
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

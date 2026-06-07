@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMI Removal Date Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate when you can remove PMI (Private Mortgage Insurance) based on your loan balance, home value, and monthly payment.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › PMI Removal Date Calculator
+  </nav>
+
+  <h1>PMI Removal Date Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="home_purchase_price">Home Purchase Price ($)</label>
+      <input type="number" id="home_purchase_price" placeholder="e.g. 400000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="current_balance">Current Loan Balance ($)</label>
+      <input type="number" id="current_balance" placeholder="e.g. 350000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="monthly_payment">Monthly Payment ($)</label>
+      <input type="number" id="monthly_payment" placeholder="e.g. 2200" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="interest_rate">Interest Rate (%)</label>
+      <input type="number" id="interest_rate" placeholder="e.g. 6.5" min="0" max="20" step="0.1" value="6.5" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="monthly_pmi">Monthly PMI Cost ($)</label>
+      <input type="number" id="monthly_pmi" placeholder="e.g. 150" min="0" value="150" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>PMI Removal Estimate</h2>
+    <div class="result-row"><span>Current LTV</span><strong id="res_ltv_now"></strong></div>
+    <div class="result-row"><span>Months Until PMI Can Be Removed</span><strong id="res_months"></strong></div>
+    <div class="result-row"><span>Monthly PMI Cost</span><strong id="res_monthly_pmi"></strong></div>
+    <div class="result-row"><span>Total PMI You'll Pay</span><strong id="res_total_pmi"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About PMI Removal</h2>
+    <p>Private Mortgage Insurance (PMI) is required when your down payment is less than 20% of the home purchase price. Under the Homeowners Protection Act, you can request PMI cancellation when your loan balance reaches 80% of the original purchase price. Your lender must automatically terminate PMI when the balance reaches 78%. To cancel early, you may need a new appraisal showing sufficient equity. Making extra principal payments can significantly accelerate your PMI removal date.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is PMI and why do I need it?</h3>
+      <p>PMI protects your lender (not you) if you default on your loan. It's required on conventional loans with less than 20% down payment and typically costs 0.5%–1.5% of the loan amount annually.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I request PMI removal before reaching 80% LTV?</h3>
+      <p>No — the 80% threshold based on original purchase price is the minimum requirement under federal law. However, if home values have risen, a new appraisal showing 80% LTV based on current value may help.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does PMI ever get removed automatically?</h3>
+      <p>Yes. The Homeowners Protection Act requires lenders to automatically cancel PMI when the loan balance reaches 78% of the original purchase price, assuming you're current on payments.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How can I remove PMI faster?</h3>
+      <p>Making extra principal payments, refinancing, or getting a new appraisal if home values have risen significantly can all accelerate PMI removal and save you thousands in premiums.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is PMI the same as mortgage insurance for FHA loans?</h3>
+      <p>No. FHA loans have mortgage insurance premiums (MIP) which work differently — they often cannot be removed regardless of LTV unless you refinance into a conventional loan.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/insurance-to-value-ratio-calculator.html">Insurance-to-Value Ratio Calculator</a></li>
+      <li><a href="/tools/home/home-warranty-vs-insurance-calculator.html">Home Warranty vs Insurance Comparison</a></li>
+      <li><a href="/tools/home/new-home-insurance-calculator.html">New Home Insurance Cost Estimator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. PMI removal timelines depend on your actual loan amortization schedule, lender policies, and current LTV. Consult your lender or a licensed financial professional for precise dates.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var price=parseFloat(document.getElementById('home_purchase_price').value)||0;
+  var bal=parseFloat(document.getElementById('current_balance').value)||0;
+  var pmt=parseFloat(document.getElementById('monthly_payment').value)||0;
+  var rate=(parseFloat(document.getElementById('interest_rate').value)||6.5)/100/12;
+  var pmi=parseFloat(document.getElementById('monthly_pmi').value)||150;
+  if(!price||!bal||!pmt){document.getElementById('result').style.display='none';return;}
+  var target=price*0.80;
+  var ltvNow=(bal/price*100).toFixed(1);
+  var months=0; var b=bal;
+  while(b>target&&months<360){var interest=b*rate;var principal=pmt-interest;if(principal<=0)break;b-=principal;months++;}
+  var totalPmi=pmi*months;
+  document.getElementById('res_ltv_now').textContent=ltvNow+'%';
+  document.getElementById('res_months').textContent=months+' months (~'+(months/12).toFixed(1)+' years)';
+  document.getElementById('res_total_pmi').textContent=fmt(totalPmi);
+  document.getElementById('res_monthly_pmi').textContent=fmt(pmi);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

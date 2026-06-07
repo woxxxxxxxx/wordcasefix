@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildfire Risk Home Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate homeowners insurance premiums for wildfire-prone areas based on state, home value, and fire zone classification.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Wildfire Risk Home Insurance Calculator
+  </nav>
+
+  <h1>Wildfire Risk Home Insurance Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="CA">CA — California</option>
+        <option value="OR">OR — Oregon</option>
+        <option value="WA">WA — Washington</option>
+        <option value="CO">CO — Colorado</option>
+        <option value="AZ">AZ — Arizona</option>
+        <option value="Other" selected>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="home_value">Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 600000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="fire_zone">Fire Hazard Severity Zone</label>
+      <select id="fire_zone" oninput="calc()">
+        <option value="high">High — Wildland Urban Interface (WUI)</option>
+        <option value="moderate" selected>Moderate — Near Wildland Areas</option>
+        <option value="low">Low — Urban / Suburban</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Wildfire Insurance Estimate</h2>
+    <div class="result-row"><span>Estimated Annual Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+    <div class="result-row"><span>Wildfire Risk Level</span><strong id="res_risk"></strong></div>
+    <div style="margin-top:1rem;">
+      <strong>Fire Prevention Tips:</strong>
+      <ul id="res_tips" style="margin-top:0.5rem;padding-left:1.5rem;line-height:1.8;"></ul>
+    </div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Wildfire Insurance</h2>
+    <p>Wildfires have become an increasingly significant threat to homeowners in the Western United States. Many major insurers have stopped writing new policies or have non-renewed existing policies in high fire-risk areas of California, Oregon, and Colorado. Homeowners in these areas may need to turn to the California FAIR Plan or other state-run insurers of last resort. Proactive measures like maintaining defensible space, using fire-resistant materials, and installing ember-resistant vents can help maintain insurability and may qualify for premium discounts.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Does standard homeowners insurance cover wildfire?</h3>
+      <p>Yes — standard homeowners policies cover wildfire damage as a covered peril. However, in high-risk areas, many insurers are declining to write or renew policies, leaving homeowners to seek specialty coverage.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the California FAIR Plan?</h3>
+      <p>The California FAIR Plan is the state's insurer of last resort for homeowners who cannot obtain coverage in the private market. It provides basic fire coverage but requires a companion policy for full homeowners coverage.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is defensible space and does it affect insurance?</h3>
+      <p>Defensible space is the buffer zone of cleared vegetation around your home that prevents fire from reaching the structure and gives firefighters room to work. Maintaining it is required by law in many California zones and can affect insurability and premiums.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What building features reduce wildfire insurance premiums?</h3>
+      <p>Class A fire-resistant roofing (tile, metal, composition), fiber cement or stucco siding, multi-pane windows, enclosed eaves, and ember-resistant vents are all features that can reduce wildfire risk and insurance costs.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I find out my fire hazard severity zone?</h3>
+      <p>California's Office of the State Fire Marshal maintains Fire Hazard Severity Zone maps online. Your county fire department or city planning department can also provide this information for your specific parcel.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/earthquake-insurance-calculator.html">Earthquake Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/insurance-to-value-ratio-calculator.html">Insurance-to-Value Ratio Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Wildfire insurance availability and premiums vary significantly by precise location, insurer, and current market conditions. In high-risk areas, coverage may be limited or unavailable from standard carriers. Consult a licensed insurance professional for accurate quotes and coverage options.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var state=document.getElementById('state').value;
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var zone=document.getElementById('fire_zone').value;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  var sm={CA:1.5,OR:1.2,WA:1.2,CO:1.1,AZ:1.1,Other:1.0}[state]||1.0;
+  var zm={high:2.5,moderate:1.5,low:1.0}[zone];
+  var base=hv*0.005;
+  var annual=base*sm*zm;
+  var risk=zone==='high'&&state==='CA'?'Very High — Some insurers may decline coverage':zone==='high'?'High':zone==='moderate'?'Moderate':'Low';
+  var tips=['Clear 100-foot defensible space around home','Use fire-resistant roofing and siding','Install ember-resistant vents','Create a home inventory for claims purposes'];
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_risk').textContent=risk;
+  document.getElementById('res_tips').innerHTML=tips.map(function(t){return '<li>'+t+'</li>';}).join('');
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

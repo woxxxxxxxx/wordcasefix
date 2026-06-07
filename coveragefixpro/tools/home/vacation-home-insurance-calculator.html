@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vacation Home Insurance Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate vacation home insurance premiums based on property value, location type, and number of rental days per year.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Vacation Home Insurance Calculator
+  </nav>
+
+  <h1>Vacation Home Insurance Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="home_value">Home Value ($)</label>
+      <input type="number" id="home_value" placeholder="e.g. 500000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="location">Property Location</label>
+      <select id="location" oninput="calc()">
+        <option value="beach" selected>Beach / Coastal</option>
+        <option value="mountain">Mountain / Ski Area</option>
+        <option value="rural">Rural / Lake</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="rental_days_per_year">Rental Days Per Year</label>
+      <input type="number" id="rental_days_per_year" placeholder="e.g. 60" min="0" max="365" value="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Vacation Home Insurance Estimate</h2>
+    <div class="result-row"><span>Base Vacation Home Premium</span><strong id="res_base"></strong></div>
+    <div class="result-row"><span>Rental Endorsement</span><strong id="res_rental_add"></strong></div>
+    <div class="result-row"><span>Total Annual Premium</span><strong id="res_total"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Vacation Home Insurance</h2>
+    <p>Vacation and second homes require specialized insurance because they're occupied less frequently than primary residences — a key risk factor for insurers. Vacant or infrequently occupied homes face higher risk of undetected damage, theft, and vandalism. Coastal beach properties carry additional hurricane and flood risk. If you rent your vacation home — even occasionally through Airbnb or VRBO — standard homeowners policies typically exclude commercial rental activity. Renting more than 14 days per year usually requires a commercial endorsement or separate short-term rental policy.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Is vacation home insurance the same as homeowners insurance?</h3>
+      <p>No. Vacation home policies are typically more expensive because the property is unoccupied more frequently. They may also have different coverage terms for seasonal closures and rental activities.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does my primary homeowners policy cover my vacation home?</h3>
+      <p>No. Your primary homeowners policy covers only your primary residence. A separate policy is required for any additional properties you own.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens if I rent my vacation home on Airbnb?</h3>
+      <p>Standard homeowners and vacation home policies typically exclude coverage during rental periods. You need either a short-term rental endorsement or a separate rental dwelling policy that covers commercial rental activity.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the 14-day IRS rule and how does it affect insurance?</h3>
+      <p>Renting your vacation home 14 or fewer days per year keeps it classified as personal use for tax purposes. However, even one rental day may trigger insurance complications — verify with your insurer before renting.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need flood insurance for a beach vacation home?</h3>
+      <p>Very likely yes. Coastal properties face significant storm surge and flood risk — perils excluded from standard homeowners policies. Flood insurance is strongly recommended and may be required if you have a mortgage.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/landlord-insurance-calculator.html">Landlord Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/hurricane-insurance-calculator.html">Hurricane Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/flood-insurance-calculator.html">Flood Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/umbrella-insurance-calculator.html">Umbrella Insurance Coverage Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Vacation home insurance premiums depend on precise location, occupancy frequency, rental activity, and insurer underwriting. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var hv=parseFloat(document.getElementById('home_value').value)||0;
+  var loc=document.getElementById('location').value;
+  var rental=parseFloat(document.getElementById('rental_days_per_year').value)||0;
+  if(!hv){document.getElementById('result').style.display='none';return;}
+  var base=hv*0.005*1.35;
+  var lm={beach:1.3,mountain:1.1,rural:0.9}[loc];
+  var annual=base*lm;
+  var rentalAdd=rental>14?500:0;
+  var total=annual+rentalAdd;
+  document.getElementById('res_base').textContent=fmt(annual);
+  document.getElementById('res_rental_add').textContent=rental>14?fmt(500)+' (commercial rental endorsement)':'$0.00 (under 14 rental days)';
+  document.getElementById('res_total').textContent=fmt(total);
+  document.getElementById('res_monthly').textContent=fmt(total/12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

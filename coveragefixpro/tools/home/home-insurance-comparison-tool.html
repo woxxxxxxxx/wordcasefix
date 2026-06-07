@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Insurance Quote Comparison Tool - CoverageFixPro</title>
+<meta name="description" content="Compare up to three homeowners insurance quotes side by side to find the best value based on premium, deductible, and coverage amount.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Home Insurance Quote Comparison Tool
+  </nav>
+
+  <h1>Home Insurance Quote Comparison Tool</h1>
+
+  <div class="calculator-box">
+    <p style="margin-bottom:1rem;color:#555;">Enter at least 2 insurance quotes to compare. Company name is optional.</p>
+
+    <fieldset style="border:1px solid #ddd;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+      <legend><strong>Quote 1</strong></legend>
+      <div class="form-group">
+        <label for="name1">Company Name</label>
+        <input type="text" id="name1" placeholder="e.g. State Farm">
+      </div>
+      <div class="form-group">
+        <label for="premium1">Annual Premium ($)</label>
+        <input type="number" id="premium1" placeholder="e.g. 1650" min="0">
+      </div>
+      <div class="form-group">
+        <label for="deductible1">Deductible ($)</label>
+        <input type="number" id="deductible1" placeholder="e.g. 1000" min="0">
+      </div>
+      <div class="form-group">
+        <label for="coverage1">Coverage Amount ($)</label>
+        <input type="number" id="coverage1" placeholder="e.g. 400000" min="0">
+      </div>
+    </fieldset>
+
+    <fieldset style="border:1px solid #ddd;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+      <legend><strong>Quote 2</strong></legend>
+      <div class="form-group">
+        <label for="name2">Company Name</label>
+        <input type="text" id="name2" placeholder="e.g. Allstate">
+      </div>
+      <div class="form-group">
+        <label for="premium2">Annual Premium ($)</label>
+        <input type="number" id="premium2" placeholder="e.g. 1850" min="0">
+      </div>
+      <div class="form-group">
+        <label for="deductible2">Deductible ($)</label>
+        <input type="number" id="deductible2" placeholder="e.g. 500" min="0">
+      </div>
+      <div class="form-group">
+        <label for="coverage2">Coverage Amount ($)</label>
+        <input type="number" id="coverage2" placeholder="e.g. 420000" min="0">
+      </div>
+    </fieldset>
+
+    <fieldset style="border:1px solid #ddd;border-radius:8px;padding:1rem;margin-bottom:1rem;">
+      <legend><strong>Quote 3 (Optional)</strong></legend>
+      <div class="form-group">
+        <label for="name3">Company Name</label>
+        <input type="text" id="name3" placeholder="e.g. USAA">
+      </div>
+      <div class="form-group">
+        <label for="premium3">Annual Premium ($)</label>
+        <input type="number" id="premium3" placeholder="e.g. 1400" min="0">
+      </div>
+      <div class="form-group">
+        <label for="deductible3">Deductible ($)</label>
+        <input type="number" id="deductible3" placeholder="e.g. 1500" min="0">
+      </div>
+      <div class="form-group">
+        <label for="coverage3">Coverage Amount ($)</label>
+        <input type="number" id="coverage3" placeholder="e.g. 400000" min="0">
+      </div>
+    </fieldset>
+
+    <button onclick="calc()" style="padding:0.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Compare Quotes</button>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Quote Comparison</h2>
+    <div id="res_table"></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>How to Compare Home Insurance Quotes</h2>
+    <p>Comparing home insurance quotes goes beyond just looking at the annual premium. A lower-priced quote with a much higher deductible may cost more in the event of a claim. Compare coverage amounts to ensure both quotes cover the same dwelling, personal property, and liability limits. Review policy exclusions, customer service ratings (J.D. Power), and financial strength ratings (AM Best A or better). The cheapest policy isn't always the best — consider the insurer's claims handling reputation and your specific coverage needs.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How many home insurance quotes should I get?</h3>
+      <p>Get at least 3 quotes when shopping for homeowners insurance. Premiums for the same coverage can vary by 50% or more between insurers, so comparison shopping is essential to finding the best value.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What should I look for beyond the premium?</h3>
+      <p>Compare deductibles, coverage limits, policy exclusions, available endorsements, claims process and reputation, financial stability rating (AM Best), and customer satisfaction scores (J.D. Power).</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I use an independent agent or buy direct?</h3>
+      <p>Independent agents can shop multiple carriers simultaneously, potentially finding better rates. Direct insurers may offer lower prices by cutting out the agent commission. Try both approaches for comparison.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should I shop for homeowners insurance?</h3>
+      <p>Shop at renewal time each year, or whenever your circumstances change significantly — after renovations, major purchases, or if your premium increases more than 10%. Loyalty doesn't always pay.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does switching insurers affect my coverage history?</h3>
+      <p>No. Your claims history follows you through the CLUE database regardless of which insurer you use. Switching doesn't reset your claims record and won't affect your coverage history.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/home/home-security-discount-calculator.html">Home Security Discount Calculator</a></li>
+      <li><a href="/tools/home/insurance-to-value-ratio-calculator.html">Insurance-to-Value Ratio Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>This tool is for comparison purposes only. Coverage quality and insurer reliability are equally important factors that numbers alone cannot capture. Consult a licensed insurance professional before making coverage decisions.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var companies=[];
+  for(var i=1;i<=3;i++){
+    var name=document.getElementById('name'+i).value||('Company '+i);
+    var prem=parseFloat(document.getElementById('premium'+i).value)||0;
+    var ded=parseFloat(document.getElementById('deductible'+i).value)||0;
+    var cov=parseFloat(document.getElementById('coverage'+i).value)||0;
+    if(prem>0) companies.push({name:name,prem:prem,ded:ded,cov:cov});
+  }
+  if(companies.length<2){alert('Please enter at least 2 quotes.');return;}
+  companies.sort(function(a,b){return a.prem-b.prem;});
+  var rows=companies.map(function(c,i){
+    return '<tr><td style="padding:8px;">'+(i===0?'⭐ ':'')+c.name+'</td><td style="padding:8px;text-align:right;">'+fmt(c.prem)+'</td><td style="padding:8px;text-align:right;">'+fmt(c.ded)+'</td><td style="padding:8px;text-align:right;">'+(c.cov?fmt(c.cov):'N/A')+'</td></tr>';
+  }).join('');
+  document.getElementById('res_table').innerHTML='<table style="width:100%;border-collapse:collapse;font-size:0.9rem;"><thead><tr style="background:var(--primary);color:#fff;"><th style="padding:8px;">Company</th><th style="padding:8px;">Annual Premium</th><th style="padding:8px;">Deductible</th><th style="padding:8px;">Coverage Amount</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

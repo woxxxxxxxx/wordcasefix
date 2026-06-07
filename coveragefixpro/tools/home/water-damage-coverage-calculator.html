@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Damage Insurance Coverage Calculator - CoverageFixPro</title>
+<meta name="description" content="Assess your water damage risk level and get personalized insurance coverage recommendations based on your home's characteristics.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Water Damage Insurance Coverage Calculator
+  </nav>
+
+  <h1>Water Damage Insurance Coverage Calculator</h1>
+
+  <div class="calculator-box">
+    <p style="margin-bottom:1rem;color:#555;">Answer 5 questions to assess your water damage risk and coverage needs.</p>
+
+    <div class="form-group">
+      <p><strong>Q1: Is your home more than 20 years old?</strong></p>
+      <label><input type="radio" name="q1" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q1" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q2: Does your home have a basement?</strong></p>
+      <label><input type="radio" name="q2" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q2" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q3: Are you within 1 mile of a river, lake, or ocean?</strong></p>
+      <label><input type="radio" name="q3" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q3" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q4: Have you had water damage in the past 5 years?</strong></p>
+      <label><input type="radio" name="q4" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q4" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q5: Do you have a sump pump?</strong></p>
+      <label><input type="radio" name="q5" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q5" value="no"> No</label>
+    </div>
+
+    <button onclick="calc()" style="margin-top:1rem;padding:0.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Assess My Risk</button>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Water Damage Risk Assessment</h2>
+    <div class="result-row"><span>Risk Level</span><strong id="res_risk"></strong></div>
+    <div style="margin-top:1rem;">
+      <strong>Coverage Recommendations:</strong>
+      <ul id="res_recs" style="margin-top:0.5rem;padding-left:1.5rem;line-height:1.8;"></ul>
+    </div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Water Damage Coverage</h2>
+    <p>Water damage is the second most common homeowners insurance claim after wind damage. Standard policies cover sudden and accidental water damage — like a burst pipe or appliance overflow — but specifically exclude flooding from external water sources and gradual leaks. Key optional add-ons include water backup/sewer backup coverage (for overflowing drains or sump pumps) and separate flood insurance through the NFIP or private carriers. Homeowners in older homes or near bodies of water face significantly higher risk and should review their coverage carefully.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What water damage is covered by homeowners insurance?</h3>
+      <p>Sudden and accidental water damage from burst pipes, appliance malfunctions, and roof leaks from storms is typically covered. Flooding, sewage backup, and gradual leaks are generally excluded.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a water backup rider?</h3>
+      <p>A water backup or sewer backup endorsement adds coverage for damage caused by water or sewage backing up through drains, toilets, or a failed sump pump. It typically costs $50–$150/year.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does a sump pump help lower my insurance?</h3>
+      <p>Yes. Some insurers offer discounts for homes with properly maintained sump pumps with battery backups. A sump pump also reduces your actual risk of basement flooding significantly.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is mold damage covered after a water incident?</h3>
+      <p>Mold that results from a covered water damage claim may be covered, but coverage is limited. Many policies cap mold remediation at $5,000–$10,000. Mold from neglect or gradual leaks is typically excluded.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How can I reduce water damage risk?</h3>
+      <p>Install water leak detectors near appliances and under sinks, maintain your roof and gutters, know where your main water shutoff is, and insulate pipes in cold climates to prevent freezing and bursting.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/flood-insurance-calculator.html">Flood Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-claims-impact-calculator.html">How Claims Affect Your Premium</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates based on general risk factors. Actual coverage and exclusions depend on your specific policy language. Consult a licensed insurance professional for personalized guidance.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function calc(){
+  function getVal(n){var els=document.getElementsByName(n);for(var i=0;i<els.length;i++){if(els[i].checked)return els[i].value;}return null;}
+  var q1=getVal('q1'),q2=getVal('q2'),q3=getVal('q3'),q4=getVal('q4'),q5=getVal('q5');
+  if(!q1||!q2||!q3||!q4||!q5){alert('Please answer all questions.');return;}
+  var score=0;
+  if(q1==='yes')score+=2;if(q2==='yes')score+=2;if(q3==='yes')score+=3;if(q4==='yes')score+=3;if(q5==='no')score+=1;
+  var risk=score<=2?'Low':score<=5?'Moderate':score<=8?'High':'Very High';
+  var recs=[];
+  recs.push('Standard homeowners insurance covers sudden water damage (burst pipes, appliance leaks).');
+  if(q3==='yes'||q4==='yes') recs.push('Consider purchasing NFIP or private flood insurance.');
+  if(q2==='yes') recs.push('Add water backup / sewer backup rider to your policy.');
+  if(q1==='yes') recs.push('Update plumbing inspection — aging pipes increase water damage risk.');
+  if(q5==='no'&&q2==='yes') recs.push('Install a sump pump with battery backup to reduce basement flooding risk.');
+  document.getElementById('res_risk').textContent=risk;
+  document.getElementById('res_recs').innerHTML=recs.map(function(r){return '<li>'+r+'</li>';}).join('');
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

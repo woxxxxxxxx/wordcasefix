@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Insurance to Value Ratio Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate your home's insurance-to-value ratio to ensure you're not underinsured and avoid coinsurance penalties at claim time.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Home Insurance to Value Ratio Calculator
+  </nav>
+
+  <h1>Home Insurance to Value Ratio Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="current_coverage">Current Dwelling Coverage Amount ($)</label>
+      <input type="number" id="current_coverage" placeholder="e.g. 320000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="estimated_replacement_cost">Estimated Replacement Cost ($)</label>
+      <input type="number" id="estimated_replacement_cost" placeholder="e.g. 400000" min="0" oninput="calc()">
+    </div>
+    <p style="font-size:0.85rem;color:#666;margin-top:-0.5rem;">Don't know your replacement cost? Use our <a href="/tools/home/replacement-cost-estimator.html">Replacement Cost Estimator</a>.</p>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Insurance-to-Value Analysis</h2>
+    <div class="result-row"><span>Insurance-to-Value Ratio</span><strong id="res_ratio"></strong></div>
+    <div class="result-row"><span>Coverage Adequacy Status</span><strong id="res_status"></strong></div>
+    <div class="result-row"><span>Coverage Gap</span><strong id="res_gap"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>What Is the Insurance-to-Value Ratio?</h2>
+    <p>The insurance-to-value (ITV) ratio compares your current dwelling coverage to the estimated cost to fully rebuild your home. Most insurers require homeowners to maintain at least 80% of replacement cost coverage — or face a coinsurance penalty at claim time. If your coverage is below 80%, your insurer may only pay a proportional share of partial loss claims. Rising construction costs since 2020 have left millions of homes significantly underinsured. Review your coverage limits annually and consider an inflation guard endorsement to keep pace automatically.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What happens if I'm underinsured?</h3>
+      <p>If you carry less than 80% of your home's replacement cost, the coinsurance clause can reduce your partial loss claim payment proportionally — even if the loss is far below your policy limit.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do construction cost increases affect my coverage?</h3>
+      <p>Construction costs have risen 30–50% in many markets since 2020. If you haven't updated your coverage limits, you may now be significantly underinsured even if you were adequately covered before.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is an inflation guard endorsement?</h3>
+      <p>An inflation guard automatically increases your coverage limits by a set percentage each year (typically 4–8%) to keep pace with rising construction costs, helping prevent unintentional underinsurance.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I insure based on market value or replacement cost?</h3>
+      <p>Always base dwelling coverage on replacement cost, not market value. Market value includes land and location factors that don't affect rebuild costs. Replacement cost is typically lower in expensive markets and higher in rural areas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How can I get an accurate replacement cost estimate?</h3>
+      <p>Your insurer may use replacement cost estimator software. You can also hire a licensed appraiser for a professional replacement cost appraisal, which is particularly valuable for high-value or unique homes.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/new-home-insurance-calculator.html">New Home Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+      <li><a href="/tools/home/personal-property-calculator.html">Personal Property Coverage Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. The coinsurance clause and its application vary by policy. Consult a licensed insurance professional for a proper coverage review and accurate replacement cost valuation.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var cov=parseFloat(document.getElementById('current_coverage').value)||0;
+  var rc=parseFloat(document.getElementById('estimated_replacement_cost').value)||0;
+  if(!cov||!rc){document.getElementById('result').style.display='none';return;}
+  var ratio=(cov/rc*100).toFixed(1);
+  var adequate=cov>=rc*0.8;
+  var gap=adequate?0:rc*0.8-cov;
+  document.getElementById('res_ratio').textContent=ratio+'%';
+  document.getElementById('res_status').textContent=adequate?'✓ Adequate (80%+ threshold met)':'⚠ Underinsured — coinsurance clause may reduce claim payouts';
+  document.getElementById('res_gap').textContent=adequate?fmt(0)+' (no gap)':'Increase coverage by at least '+fmt(gap);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

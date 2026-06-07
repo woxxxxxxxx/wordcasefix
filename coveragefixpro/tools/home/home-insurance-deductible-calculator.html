@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Insurance Deductible Optimizer - CoverageFixPro</title>
+<meta name="description" content="Find the optimal home insurance deductible by comparing expected annual costs across $500, $1,000, $2,500, and $5,000 deductible options.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Home Insurance Deductible Optimizer
+  </nav>
+
+  <h1>Home Insurance Deductible Optimizer</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="annual_premium_base">Annual Premium at $500 Deductible ($)</label>
+      <input type="number" id="annual_premium_base" placeholder="Annual premium at $500 deductible" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="claim_frequency">Expected Claim Frequency</label>
+      <select id="claim_frequency" oninput="calc()">
+        <option value="low">Low — 1 Claim per 20 Years</option>
+        <option value="medium" selected>Medium — 1 Claim per 10 Years</option>
+        <option value="high">High — 1 Claim per 5 Years</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Deductible Comparison</h2>
+    <div id="res_table"></div>
+    <div class="result-row" style="margin-top:1rem;"><span>Recommended Deductible</span><strong id="res_best"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>How to Choose Your Deductible</h2>
+    <p>Your deductible is the amount you pay out of pocket before insurance kicks in. Higher deductibles lower your annual premium but increase your out-of-pocket cost at claim time. The optimal deductible depends on your claim history, risk tolerance, and emergency savings. Generally, if you rarely file claims, a higher deductible saves money long-term. If you live in a high-risk area for weather events, a lower deductible may be worth the added premium cost. Always choose a deductible you can comfortably afford to pay.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How much does raising my deductible save?</h3>
+      <p>Increasing your deductible from $500 to $1,000 typically saves 5–10%. Going to $2,500 can save 15–20%, and $5,000 may save up to 25–30% depending on your insurer and location.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a percentage deductible?</h3>
+      <p>Some policies — especially in hurricane or earthquake zones — have percentage deductibles (e.g., 2% of home value) rather than flat dollar amounts. On a $400,000 home, a 2% deductible means $8,000 out of pocket.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I file a claim for small losses?</h3>
+      <p>Filing small claims can raise your premium for years, often costing more in surcharges than the claim paid. A useful rule: only file if the loss significantly exceeds your deductible.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I change my deductible mid-policy?</h3>
+      <p>Yes. Most insurers allow mid-term deductible changes, though a new policy period premium calculation will apply. Contact your insurer or agent to request the change.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I keep my deductible savings in a separate fund?</h3>
+      <p>Yes — this is a best practice. If you choose a high deductible for premium savings, set aside the difference in an emergency fund specifically to cover that deductible if a claim arises.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-claims-impact-calculator.html">How Claims Affect Your Premium</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+      <li><a href="/tools/home/home-security-discount-calculator.html">Home Security Discount Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates based on typical industry discount ranges. Actual premium reductions depend on your insurer, state, and policy terms. Consult a licensed insurance professional for personalized recommendations.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var base=parseFloat(document.getElementById('annual_premium_base').value)||0;
+  var freq=document.getElementById('claim_frequency').value;
+  if(!base){document.getElementById('result').style.display='none';return;}
+  var prob={low:0.05,medium:0.10,high:0.20}[freq];
+  var deductibles=[500,1000,2500,5000];
+  var mults={500:1.0,1000:0.90,2500:0.80,5000:0.70};
+  var minCost=Infinity; var bestDed=500;
+  deductibles.forEach(function(d){
+    var prem=base*mults[d];
+    var expected=prem+d*prob;
+    if(expected<minCost){minCost=expected;bestDed=d;}
+  });
+  var rows='';
+  deductibles.forEach(function(d){
+    var prem=base*mults[d];
+    var expected=prem+d*prob;
+    rows+='<tr style="background:'+(d===bestDed?'#dbeafe':'')+'"><td style="padding:8px;">$'+d.toLocaleString()+'</td><td style="padding:8px;text-align:right;">'+fmt(prem)+'</td><td style="padding:8px;text-align:right;">'+fmt(expected)+'</td><td style="padding:8px;text-align:center;">'+(d===bestDed?'⭐ Best':'—')+'</td></tr>';
+  });
+  document.getElementById('res_table').innerHTML='<table style="width:100%;border-collapse:collapse;font-size:0.9rem;"><thead><tr style="background:var(--primary);color:#fff;"><th style="padding:8px;">Deductible</th><th style="padding:8px;">Annual Premium</th><th style="padding:8px;">Expected Annual Cost</th><th style="padding:8px;">Recommendation</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  document.getElementById('res_best').textContent='$'+bestDed.toLocaleString()+' deductible';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

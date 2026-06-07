@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Home Insurance Cost Estimator - CoverageFixPro</title>
+<meta name="description" content="Estimate first-year homeowners insurance costs for your new home purchase based on price, square footage, state, and construction age.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › New Home Insurance Cost Estimator
+  </nav>
+
+  <h1>New Home Insurance Cost Estimator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="home_price">Home Purchase Price ($)</label>
+      <input type="number" id="home_price" placeholder="e.g. 450000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="square_footage">Square Footage</label>
+      <input type="number" id="square_footage" placeholder="e.g. 2200" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="FL">FL</option>
+        <option value="TX">TX</option>
+        <option value="CA">CA</option>
+        <option value="NY">NY</option>
+        <option value="OH">OH</option>
+        <option value="Other" selected>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="new_construction">New Construction?</label>
+      <select id="new_construction" oninput="calc()">
+        <option value="no" selected>No — Existing Home</option>
+        <option value="yes">Yes — New Construction</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>New Home Insurance Estimate</h2>
+    <div class="result-row"><span>Estimated First-Year Annual Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+    <div class="result-row"><span>Discount Applied</span><strong id="res_discount"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>Tips for New Homebuyers</h2>
+    <p>Shopping for homeowners insurance before closing is essential — most lenders require proof of insurance before funding your mortgage. New construction homes often qualify for discounts of 5–15% due to modern building codes, new electrical systems, and updated plumbing. When comparing quotes, ensure the dwelling coverage matches the replacement cost — not the purchase price. Also budget for any required flood or earthquake insurance based on your location, which can add significantly to your total insurance costs.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>When should I get homeowners insurance when buying a house?</h3>
+      <p>Start shopping 2–3 weeks before closing. Your lender will require a declaration page showing coverage beginning on your closing date. Waiting too long can delay closing.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does new construction get lower insurance rates?</h3>
+      <p>Generally yes. New homes built to modern codes typically have updated electrical, plumbing, and structural systems that reduce risk. Many insurers offer new construction discounts of 5–15%.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much home insurance do I need?</h3>
+      <p>You need enough dwelling coverage to fully rebuild your home at current construction costs — not the purchase price. Also ensure personal property and liability limits meet your needs.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I change insurers after closing?</h3>
+      <p>Yes. You can switch insurers at any time. If you switch mid-policy, you'll receive a prorated refund. However, your lender will need updated insurance information to update your escrow account.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is homeowners insurance included in my mortgage payment?</h3>
+      <p>Often yes — if you have an escrow account, your lender collects monthly insurance payments and pays your annual premium on your behalf. Confirm with your lender how insurance is handled.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/pmi-removal-date-calculator.html">PMI Removal Date Calculator</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual homeowners insurance premiums for new homes depend on insurer underwriting, specific property features, and state regulations. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var price=parseFloat(document.getElementById('home_price').value)||0;
+  var sqft=parseFloat(document.getElementById('square_footage').value)||0;
+  var state=document.getElementById('state').value;
+  var newConst=document.getElementById('new_construction').value;
+  if(!price){document.getElementById('result').style.display='none';return;}
+  var base=price*0.005;
+  var sm={FL:2.0,TX:1.5,CA:1.3,NY:1.2,OH:0.8,Other:1.0}[state]||1.0;
+  var nm=newConst==='yes'?0.9:1.0;
+  var annual=base*sm*nm;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_discount').textContent=newConst==='yes'?'New construction discount applied (-10%)':'No new construction discount';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

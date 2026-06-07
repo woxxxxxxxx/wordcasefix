@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home and Auto Insurance Bundle Savings Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate how much you can save by bundling your home and auto insurance policies with the same insurer.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Home and Auto Insurance Bundle Savings Calculator
+  </nav>
+
+  <h1>Home and Auto Insurance Bundle Savings Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="home_premium">Annual Home Insurance Premium ($)</label>
+      <input type="number" id="home_premium" placeholder="e.g. 1500" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="auto_premium">Annual Auto Insurance Premium ($)</label>
+      <input type="number" id="auto_premium" placeholder="e.g. 1200" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="bundle_discount">Bundle Discount: <span id="disc_display">15%</span></label>
+      <input type="range" id="bundle_discount" min="5" max="25" step="1" value="15" oninput="calc()">
+      <div class="range-labels"><span>5%</span><span>25%</span></div>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Bundle Savings</h2>
+    <div class="result-row"><span>Separate Total (No Bundle)</span><strong id="res_separate"></strong></div>
+    <div class="result-row"><span>Bundled Total</span><strong id="res_bundled"></strong></div>
+    <div class="result-row"><span>Annual Savings</span><strong id="res_savings"></strong></div>
+    <div class="result-row"><span>Monthly Savings</span><strong id="res_monthly_savings"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Bundling Discounts</h2>
+    <p>Bundling your home and auto insurance with one carrier is one of the easiest ways to reduce insurance costs. Most major insurers offer multi-policy discounts ranging from 5% to 25%. Beyond savings, bundling simplifies your insurance management — one company, one renewal date, one point of contact for claims. However, the bundled rate isn't always the cheapest option. Compare bundled quotes against the best individual rates before making your decision.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How much can I save by bundling?</h3>
+      <p>Most insurers offer 5–25% discounts when you bundle home and auto policies. The average savings is around 15%, which can translate to hundreds of dollars annually.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is bundling always the cheapest option?</h3>
+      <p>Not always. Sometimes purchasing policies from different specialized carriers is cheaper even without a bundle discount. Always compare bundled vs. separate quotes from multiple insurers.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I bundle other types of insurance?</h3>
+      <p>Yes. Many insurers offer multi-policy discounts for life, umbrella, boat, RV, and motorcycle policies bundled with home and auto insurance.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does bundling affect my claims experience?</h3>
+      <p>Having all policies with one insurer can simplify the claims process, especially in events that affect both your home and car simultaneously (e.g., a hailstorm).</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens to my discount if I cancel one policy?</h3>
+      <p>Canceling one policy in a bundle typically removes the multi-policy discount from your remaining policy, increasing your premium. Check with your insurer before making changes.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-security-discount-calculator.html">Home Security Discount Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+      <li><a href="/tools/home/umbrella-insurance-calculator.html">Umbrella Insurance Coverage Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual bundle discounts vary by insurer, state, and individual policy details. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var hp=parseFloat(document.getElementById('home_premium').value)||0;
+  var ap=parseFloat(document.getElementById('auto_premium').value)||0;
+  var disc=parseFloat(document.getElementById('bundle_discount').value)||15;
+  document.getElementById('disc_display').textContent=disc+'%';
+  if(!hp||!ap){document.getElementById('result').style.display='none';return;}
+  var combined=hp+ap;
+  var savings=combined*disc/100;
+  var bundled=combined-savings;
+  document.getElementById('res_separate').textContent=fmt(combined);
+  document.getElementById('res_bundled').textContent=fmt(bundled);
+  document.getElementById('res_savings').textContent=fmt(savings);
+  document.getElementById('res_monthly_savings').textContent=fmt(savings/12);
+  document.getElementById('result').style.display='block';
+}
+document.getElementById('bundle_discount').addEventListener('input',calc);
+</script>
+</body>
+</html>

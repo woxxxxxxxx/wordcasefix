@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Property Coverage Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate the total value of your personal property and determine if you need a scheduled personal property rider for high-value items.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Personal Property Coverage Calculator
+  </nav>
+
+  <h1>Personal Property Coverage Calculator</h1>
+
+  <div class="calculator-box">
+    <p style="margin-bottom:1rem;color:#555;">Enter the estimated value of your belongings by category. Leave fields blank or at $0 if not applicable.</p>
+    <div class="form-group">
+      <label for="electronics">Electronics ($)</label>
+      <input type="number" id="electronics" placeholder="TVs, computers, phones, etc." min="0" value="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="jewelry">Jewelry ($)</label>
+      <input type="number" id="jewelry" placeholder="Rings, watches, necklaces, etc." min="0" value="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="furniture">Furniture ($)</label>
+      <input type="number" id="furniture" placeholder="Sofas, beds, tables, etc." min="0" value="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="clothing">Clothing &amp; Apparel ($)</label>
+      <input type="number" id="clothing" placeholder="Clothes, shoes, accessories" min="0" value="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="sports_equipment">Sports Equipment ($)</label>
+      <input type="number" id="sports_equipment" placeholder="Bikes, golf clubs, skis, etc." min="0" value="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="other">Other Items ($)</label>
+      <input type="number" id="other" placeholder="Art, collectibles, tools, etc." min="0" value="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Personal Property Summary</h2>
+    <div class="result-row"><span>Total Personal Property Value</span><strong id="res_total"></strong></div>
+    <div class="result-row"><span>Scheduled Rider Needed?</span><strong id="res_rider"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Personal Property Coverage</h2>
+    <p>Standard homeowners and renters insurance policies include personal property coverage, but it comes with sub-limits on certain high-value categories. Jewelry is typically capped at $1,500–$2,500, and electronics may have specific limits. If your jewelry exceeds $2,000 or your electronics exceed $5,000, a scheduled personal property rider (also called a floater) provides broader, higher-limit coverage — often without a deductible. Creating a detailed home inventory helps ensure you have adequate coverage and speeds up the claims process.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is a scheduled personal property rider?</h3>
+      <p>A rider (or floater) is an add-on to your policy that provides specific, itemized coverage for high-value items — often with no deductible and broader coverage for mysterious disappearance or accidental damage.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I prove the value of my belongings after a loss?</h3>
+      <p>Maintain a home inventory with photos, receipts, serial numbers, and appraisals for high-value items. Store a copy in the cloud or a safe deposit box — not just at home.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does homeowners insurance cover theft of personal property outside my home?</h3>
+      <p>Most policies cover off-premises theft (e.g., items stolen from your car or a hotel room) but at reduced limits — often 10% of your total personal property limit.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is replacement cost vs. actual cash value for personal property?</h3>
+      <p>Replacement cost coverage pays to replace items at today's prices. Actual cash value deducts depreciation, so a 5-year-old laptop may pay out much less than it costs to replace.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are collectibles and art covered?</h3>
+      <p>Standard policies have low sub-limits for fine art and collectibles. Get a professional appraisal and consider a scheduled rider or separate inland marine policy for valuable collections.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/renters-insurance-calculator.html">Renters Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/replacement-cost-estimator.html">Home Replacement Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-claims-impact-calculator.html">How Claims Affect Your Premium</a></li>
+      <li><a href="/tools/home/insurance-to-value-ratio-calculator.html">Insurance-to-Value Ratio Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual coverage limits and sub-limits vary by policy. Consult a licensed insurance professional for guidance on appropriate coverage levels for your belongings.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var elec=parseFloat(document.getElementById('electronics').value)||0;
+  var jwlr=parseFloat(document.getElementById('jewelry').value)||0;
+  var furn=parseFloat(document.getElementById('furniture').value)||0;
+  var clth=parseFloat(document.getElementById('clothing').value)||0;
+  var sprt=parseFloat(document.getElementById('sports_equipment').value)||0;
+  var othr=parseFloat(document.getElementById('other').value)||0;
+  var total=elec+jwlr+furn+clth+sprt+othr;
+  var needsRider=(jwlr>2000||elec>5000);
+  document.getElementById('res_total').textContent=fmt(total);
+  document.getElementById('res_rider').textContent=needsRider?'⚠ Yes — consider a scheduled personal property rider':'✓ Standard coverage should be sufficient';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

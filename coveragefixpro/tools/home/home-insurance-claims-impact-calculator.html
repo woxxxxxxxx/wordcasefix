@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Home Insurance Claims Affect Your Premium - CoverageFixPro</title>
+<meta name="description" content="Calculate how filing a home insurance claim will impact your annual premium and whether it's worth filing or paying out of pocket.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › How Home Insurance Claims Affect Your Premium
+  </nav>
+
+  <h1>How Home Insurance Claims Affect Your Premium</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="current_premium">Current Annual Premium ($)</label>
+      <input type="number" id="current_premium" placeholder="e.g. 1500" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="claim_amount">Claim Amount ($)</label>
+      <input type="number" id="claim_amount" placeholder="e.g. 8000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="claim_type">Claim Type</label>
+      <select id="claim_type" oninput="calc()">
+        <option value="weather">Weather / Wind / Hail</option>
+        <option value="liability">Liability</option>
+        <option value="theft">Theft</option>
+        <option value="water">Water Damage</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Claims Impact Analysis</h2>
+    <div class="result-row"><span>New Annual Premium (Estimated)</span><strong id="res_new_prem"></strong></div>
+    <div class="result-row"><span>Annual Premium Increase</span><strong id="res_increase"></strong></div>
+    <div class="result-row"><span>3-Year Total Surcharge</span><strong id="res_3yr"></strong></div>
+    <div class="result-row"><span>Recommendation</span><strong id="res_advice"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>Should You File a Claim?</h2>
+    <p>Filing a home insurance claim can raise your premium for 3–5 years, sometimes costing more in surcharges than the claim paid out. Insurers track claims through the CLUE (Comprehensive Loss Underwriting Exchange) database — even denied claims or inquiries can appear. As a general rule, only file claims where the loss significantly exceeds your deductible. Self-paying smaller losses preserves your claims-free discount, protects your insurability, and avoids premium surcharges. Weather-related claims typically have less impact than liability or water damage claims.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How long does a home insurance claim affect my premium?</h3>
+      <p>Most claims affect your premium for 3–5 years. After that period, the claim typically "falls off" your record and your rates may return to pre-claim levels, assuming no additional claims.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the CLUE report?</h3>
+      <p>The Comprehensive Loss Underwriting Exchange (CLUE) is a database that records insurance claims for the past 7 years. Insurers check this when writing new policies or renewing existing ones.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I lose my homeowners insurance after filing a claim?</h3>
+      <p>Yes. After multiple claims, insurers may non-renew your policy. Multiple water damage or liability claims in a short period are particularly likely to trigger non-renewal.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does calling my insurer to ask about a claim count against me?</h3>
+      <p>Sometimes. Some insurers log inquiries in CLUE even if no claim is filed. It's safest to ask specifically whether an inquiry will be reported before describing your situation in detail.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a claims-free discount?</h3>
+      <p>Many insurers reward policyholders with no claims history with a discount of 5–20%. Filing a claim loses this discount in addition to any surcharge, compounding the financial impact.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+      <li><a href="/tools/home/home-security-discount-calculator.html">Home Security Discount Calculator</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates based on typical industry surcharge ranges. Actual premium increases vary significantly by insurer, state, policy type, and claims history. Consult a licensed insurance professional for personalized advice.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var curr=parseFloat(document.getElementById('current_premium').value)||0;
+  var amt=parseFloat(document.getElementById('claim_amount').value)||0;
+  var type=document.getElementById('claim_type').value;
+  if(!curr||!amt){document.getElementById('result').style.display='none';return;}
+  var pct=amt<5000?0.15:amt<15000?0.25:0.40;
+  var newPrem=curr*(1+pct);
+  var annualIncrease=newPrem-curr;
+  var threeYearExtra=annualIncrease*3;
+  var selfPay=amt<curr*3*pct;
+  document.getElementById('res_new_prem').textContent=fmt(newPrem);
+  document.getElementById('res_increase').textContent=fmt(annualIncrease)+' per year';
+  document.getElementById('res_3yr').textContent=fmt(threeYearExtra);
+  document.getElementById('res_advice').textContent=selfPay?'Consider paying out-of-pocket — 3-year surcharge ('+fmt(threeYearExtra)+') may exceed claim amount':'Filing the claim is likely worthwhile given the claim size';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

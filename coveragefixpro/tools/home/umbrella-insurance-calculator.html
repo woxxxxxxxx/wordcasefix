@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbrella Insurance Coverage Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate recommended umbrella insurance coverage based on your net worth, number of cars, pool, and dog ownership.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Umbrella Insurance Coverage Calculator
+  </nav>
+
+  <h1>Umbrella Insurance Coverage Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="net_worth">Total Net Worth ($)</label>
+      <input type="number" id="net_worth" placeholder="e.g. 750000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="num_cars">Number of Vehicles</label>
+      <input type="number" id="num_cars" placeholder="e.g. 2" min="0" value="1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="has_pool">Do You Have a Pool?</label>
+      <select id="has_pool" oninput="calc()">
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="has_dog">Do You Have a Dog?</label>
+      <select id="has_dog" oninput="calc()">
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Umbrella Insurance Recommendation</h2>
+    <div class="result-row"><span>Recommended Coverage</span><strong id="res_coverage"></strong></div>
+    <div class="result-row"><span>Estimated Monthly Premium</span><strong id="res_monthly"></strong></div>
+    <div class="result-row"><span>Estimated Annual Premium</span><strong id="res_annual"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Umbrella Insurance</h2>
+    <p>A personal umbrella policy provides an extra layer of liability coverage above and beyond your home and auto insurance limits. It kicks in when those underlying limits are exhausted. Umbrella policies are particularly valuable for homeowners with significant assets, pools, trampolines, dogs, or teenage drivers. Most $1 million umbrella policies cost just $150–$300 per year — making it one of the best values in insurance. Your umbrella coverage should be at least equal to your total net worth.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What does umbrella insurance cover?</h3>
+      <p>Umbrella insurance covers excess liability from auto accidents, injuries on your property, libel, slander, and other personal liability claims that exceed your home or auto policy limits.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much umbrella coverage do I need?</h3>
+      <p>A general rule is to purchase enough to cover your net worth. The more assets and income you have to protect, the higher your coverage limit should be. Most policies are sold in $1 million increments.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does a pool significantly increase liability risk?</h3>
+      <p>Yes. Pools are considered "attractive nuisances" — they attract children who may be harmed. Pool ownership can dramatically increase your liability exposure and umbrella insurance need.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does umbrella insurance cover my business activities?</h3>
+      <p>Personal umbrella policies typically exclude business activities. If you run a business from home or have other commercial exposures, you need a separate commercial umbrella policy.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need underlying home and auto policies first?</h3>
+      <p>Yes. Umbrella insurers require you to maintain minimum liability limits on your underlying home and auto policies — typically $300,000 homeowners and $250,000/$500,000 auto liability.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/liability-coverage-calculator.html">Home Liability Insurance Coverage Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+      <li><a href="/tools/home/landlord-insurance-calculator.html">Landlord Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual umbrella insurance premiums depend on your underlying policy limits, claims history, and insurer underwriting. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var nw=parseFloat(document.getElementById('net_worth').value)||0;
+  var cars=parseFloat(document.getElementById('num_cars').value)||1;
+  var pool=document.getElementById('has_pool').value;
+  var dog=document.getElementById('has_dog').value;
+  if(!nw){document.getElementById('result').style.display='none';return;}
+  var base=Math.max(nw,1000000);
+  if(pool==='yes') base+=1000000;
+  if(dog==='yes') base+=500000;
+  var millions=Math.ceil(base/1000000);
+  var coverage=millions*1000000;
+  var monthly=25+(millions-1)*15;
+  document.getElementById('res_coverage').textContent=fmt(coverage);
+  document.getElementById('res_monthly').textContent=fmt(monthly);
+  document.getElementById('res_annual').textContent=fmt(monthly*12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

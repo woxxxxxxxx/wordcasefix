@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landlord Insurance Cost Calculator - CoverageFixPro</title>
+<meta name="description" content="Estimate landlord insurance premiums for rental properties based on property value, monthly rent, number of units, and state.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Landlord Insurance Cost Calculator
+  </nav>
+
+  <h1>Landlord Insurance Cost Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="property_value">Property Value ($)</label>
+      <input type="number" id="property_value" placeholder="e.g. 400000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="monthly_rent">Monthly Rent Collected ($)</label>
+      <input type="number" id="monthly_rent" placeholder="e.g. 2000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="number_of_units">Number of Units</label>
+      <input type="number" id="number_of_units" placeholder="e.g. 1" min="1" value="1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" oninput="calc()">
+        <option value="FL">FL</option>
+        <option value="TX">TX</option>
+        <option value="CA">CA</option>
+        <option value="NY">NY</option>
+        <option value="OH">OH</option>
+        <option value="Other" selected>Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Landlord Insurance Estimate</h2>
+    <div class="result-row"><span>Estimated Annual Premium</span><strong id="res_annual"></strong></div>
+    <div class="result-row"><span>Monthly Premium</span><strong id="res_monthly"></strong></div>
+    <div class="result-row"><span>Premium as % of Annual Rent</span><strong id="res_rent_ratio"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>About Landlord Insurance</h2>
+    <p>Landlord insurance (also called dwelling fire or rental property insurance) protects rental properties against damage, liability claims from tenants, and loss of rental income. It costs roughly 15–25% more than standard homeowners insurance due to the added risks of tenants and rental activity. Key coverages include dwelling protection, liability, and fair rental value (lost rent if the property becomes uninhabitable). Your tenants should carry their own renters insurance — landlord policies do not cover tenants' personal belongings.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What does landlord insurance cover?</h3>
+      <p>Landlord insurance typically covers the building structure, detached structures, liability for tenant injuries, and loss of rental income if the property is damaged by a covered peril and becomes uninhabitable.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need landlord insurance or homeowners insurance?</h3>
+      <p>If you rent out a property you don't live in, you need landlord insurance. Standard homeowners policies exclude commercial rental activity and may deny claims if the home is rented out.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I require tenants to have renters insurance?</h3>
+      <p>Yes. Requiring renters insurance in lease agreements protects both you and your tenants. It covers tenants' belongings and provides them liability coverage, reducing the risk of costly disputes.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does landlord insurance cover tenant damage?</h3>
+      <p>Intentional damage by tenants is generally excluded. Accidental damage may be covered but often subject to a deductible. Some policies offer specific tenant damage endorsements.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does having multiple units affect premiums?</h3>
+      <p>Multi-unit properties (duplexes, triplexes, small apartment buildings) generally have higher premiums due to increased occupancy risk, though per-unit costs may benefit from economies of scale.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/renters-insurance-calculator.html">Renters Insurance Cost Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/liability-coverage-calculator.html">Home Liability Insurance Coverage Calculator</a></li>
+      <li><a href="/tools/home/umbrella-insurance-calculator.html">Umbrella Insurance Coverage Calculator</a></li>
+      <li><a href="/tools/home/vacation-home-insurance-calculator.html">Vacation Home Insurance Calculator</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates only. Actual landlord insurance premiums vary based on property type, tenant history, claims history, and insurer underwriting. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var pv=parseFloat(document.getElementById('property_value').value)||0;
+  var rent=parseFloat(document.getElementById('monthly_rent').value)||0;
+  var units=parseFloat(document.getElementById('number_of_units').value)||1;
+  var state=document.getElementById('state').value;
+  if(!pv){document.getElementById('result').style.display='none';return;}
+  var base=pv*0.005*1.25;
+  var sm={FL:2.0,TX:1.5,CA:1.3,NY:1.2,OH:0.8,Other:1.0}[state]||1.0;
+  var annual=(base*sm)+200;
+  document.getElementById('res_annual').textContent=fmt(annual);
+  document.getElementById('res_monthly').textContent=fmt(annual/12);
+  document.getElementById('res_rent_ratio').textContent=((annual/(rent*12))*100).toFixed(1)+'% of annual rent';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

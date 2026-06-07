@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Security System Insurance Discount Calculator - CoverageFixPro</title>
+<meta name="description" content="Calculate your homeowners insurance discount for having a home security system and determine the payback period for your investment.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner"><a href="/" class="logo">CoverageFixPro</a><div class="hamburger"><span></span><span></span><span></span></div><nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Home Security System Insurance Discount Calculator
+  </nav>
+
+  <h1>Home Security System Insurance Discount Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="current_premium">Current Annual Premium ($)</label>
+      <input type="number" id="current_premium" placeholder="e.g. 1800" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="security_type">Security System Type</label>
+      <select id="security_type" oninput="calc()">
+        <option value="none" selected>No System</option>
+        <option value="basic">Basic Alarm</option>
+        <option value="monitored">Professionally Monitored</option>
+        <option value="smart">Smart Home System</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Security Discount Analysis</h2>
+    <div class="result-row"><span>Discount Rate</span><strong id="res_discount"></strong></div>
+    <div class="result-row"><span>Annual Savings</span><strong id="res_savings"></strong></div>
+    <div class="result-row"><span>New Annual Premium</span><strong id="res_new_prem"></strong></div>
+    <div class="result-row"><span>Security System Payback Period</span><strong id="res_payback"></strong></div>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <div class="info-box">
+    <h2>How Security Systems Reduce Insurance Costs</h2>
+    <p>Home security systems reduce the risk of theft, burglary, and some types of property damage — and insurers reward that reduced risk with premium discounts. Basic local alarms earn the smallest discounts (around 5%), while professionally monitored systems that alert police and fire services earn 10% or more. Smart home systems with water leak detection, smoke alarms, and 24/7 monitoring can earn up to 15% in discounts. The combined insurance savings and security benefits often make professionally monitored systems cost-neutral or better over a few years.</p>
+  </div>
+
+  <div class="ad-placeholder" aria-label="Advertisement"></div>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What types of security systems qualify for insurance discounts?</h3>
+      <p>Most insurers offer discounts for burglar alarms, fire alarms, smoke detectors, carbon monoxide detectors, and professionally monitored security systems. Smart home integrations may qualify for higher discounts.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need to notify my insurer when I install a security system?</h3>
+      <p>Yes. Contact your insurer or agent to report the installation and request the applicable discount. You may need to provide documentation such as a monitoring certificate or installation receipt.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the difference between monitored and unmonitored alarm systems?</h3>
+      <p>Monitored systems alert a central station that contacts emergency services on your behalf — providing a faster response even when you're unreachable. Unmonitored systems only make noise locally and earn smaller discounts.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can smart home devices like water sensors earn discounts?</h3>
+      <p>Yes. Water leak sensors, smart smoke detectors, and connected security cameras are increasingly recognized by insurers as risk-reducing devices eligible for premium discounts.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does a dog count as a security system?</h3>
+      <p>No — and interestingly, dogs can actually increase your liability risk and premium. A dog bite claim can cost tens of thousands of dollars and may cause non-renewal of your policy.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+      <li><a href="/tools/home/home-insurance-estimator.html">Homeowners Insurance Cost Estimator</a></li>
+      <li><a href="/tools/home/bundling-home-auto-calculator.html">Home and Auto Bundle Savings Calculator</a></li>
+      <li><a href="/tools/home/home-insurance-deductible-calculator.html">Home Insurance Deductible Optimizer</a></li>
+      <li><a href="/tools/home/home-insurance-comparison-tool.html">Home Insurance Quote Comparison Tool</a></li>
+      <li><a href="/tools/home/home-insurance-claims-impact-calculator.html">How Claims Affect Your Premium</a></li>
+    </ul>
+  </section>
+
+  <div class="disclaimer">
+    <p>Results are estimates based on typical industry discount ranges. Actual discounts vary by insurer, state, and security system specifications. Consult a licensed insurance professional for accurate quotes.</p>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var curr=parseFloat(document.getElementById('current_premium').value)||0;
+  var type=document.getElementById('security_type').value;
+  if(!curr){document.getElementById('result').style.display='none';return;}
+  var discPct={none:0,basic:0.05,monitored:0.10,smart:0.15}[type];
+  var savings=curr*discPct;
+  var newPrem=curr-savings;
+  var systemCost={none:0,basic:200,monitored:600,smart:1200}[type];
+  var payback=savings>0?(systemCost/savings).toFixed(1)+' years':'N/A';
+  document.getElementById('res_discount').textContent=(discPct*100)+'% discount';
+  document.getElementById('res_savings').textContent=fmt(savings)+' per year';
+  document.getElementById('res_new_prem').textContent=fmt(newPrem);
+  document.getElementById('res_payback').textContent=payback;
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>
