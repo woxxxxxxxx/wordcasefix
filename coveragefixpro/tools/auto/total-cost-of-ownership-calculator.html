@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Total Cost of Ownership Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate the true 5-year total cost of owning a car including loan payments, insurance, fuel, and maintenance. Get a complete monthly and annual cost breakdown.">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a><a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a><a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/tools/auto/">Auto Tools</a> &rsaquo; Car Total Cost of Ownership Calculator
+  </nav>
+
+  <h1>Car Total Cost of Ownership Calculator</h1>
+  <p class="tool-intro">Beyond the sticker price — calculate your true 5-year cost of owning a car, including loan payments, insurance, fuel, and maintenance.</p>
+
+  <div class="calculator-card">
+    <div class="input-row">
+      <div class="input-group">
+        <label for="car_price">Car Price ($)</label>
+        <input type="number" id="car_price" placeholder="e.g. 35000" min="0" oninput="calculate()">
+      </div>
+      <div class="input-group">
+        <label for="annual_insurance">Annual Insurance ($)</label>
+        <input type="number" id="annual_insurance" placeholder="e.g. 1800" min="0" oninput="calculate()">
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label for="annual_miles">Annual Miles Driven</label>
+        <input type="number" id="annual_miles" placeholder="e.g. 12000" min="0" oninput="calculate()">
+      </div>
+      <div class="input-group">
+        <label for="mpg">Fuel Economy (MPG)</label>
+        <input type="number" id="mpg" placeholder="e.g. 30" min="1" oninput="calculate()">
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label for="fuel_price">Fuel Price ($/gallon)</label>
+        <input type="number" id="fuel_price" placeholder="e.g. 3.50" min="0" step="0.01" oninput="calculate()">
+      </div>
+      <div class="input-group">
+        <label for="annual_maintenance">Annual Maintenance ($)</label>
+        <input type="number" id="annual_maintenance" placeholder="1200" min="0" value="1200" oninput="calculate()">
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label for="loan_years">Loan Term (years)</label>
+        <input type="number" id="loan_years" placeholder="e.g. 5" min="1" max="10" oninput="calculate()">
+      </div>
+      <div class="input-group">
+        <label for="interest_rate">Annual Interest Rate (%)</label>
+        <input type="number" id="interest_rate" placeholder="e.g. 6.5" min="0" max="30" step="0.1" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="result-box" id="result-box" style="display:none;">
+      <h2>5-Year Total Cost of Ownership</h2>
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Monthly Loan Payment</span>
+          <span class="result-value" id="monthly_payment">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Fuel Cost</span>
+          <span class="result-value" id="monthly_fuel">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Insurance</span>
+          <span class="result-value" id="monthly_insurance">-</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Monthly Maintenance</span>
+          <span class="result-value" id="monthly_maintenance">-</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">Total Monthly Cost</span>
+          <span class="result-value" id="total_monthly">-</span>
+        </div>
+        <div class="result-item highlight">
+          <span class="result-label">5-Year Total Cost of Ownership</span>
+          <span class="result-value" id="five_year_tco">-</span>
+        </div>
+      </div>
+
+      <h3 style="margin:20px 0 10px;">5-Year Cost Breakdown</h3>
+      <div class="breakdown-bars" id="breakdown-bars"></div>
+
+      <p class="result-note" id="advice_text"></p>
+    </div>
+  </div>
+
+  <section class="explanation">
+    <h2>What's Included in Total Cost of Ownership</h2>
+    <p>The sticker price is just the beginning. True TCO includes every dollar you'll spend owning the vehicle over 5 years:</p>
+    <ul>
+      <li><strong>Loan Payments:</strong> Calculated using the standard PMT formula: <em>P × [r(1+r)^n] / [(1+r)^n − 1]</em></li>
+      <li><strong>Insurance:</strong> Full-coverage auto insurance, which is typically required while financing.</li>
+      <li><strong>Fuel:</strong> Based on annual mileage, MPG, and local gas price.</li>
+      <li><strong>Maintenance:</strong> Oil changes, tires, brakes, and routine service. The national average is ~$1,200/year for a new vehicle.</li>
+    </ul>
+    <p>Not included in this estimate: depreciation, registration fees, parking, tolls, and unexpected repairs. Add 15–20% as a buffer for these costs.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is a reasonable 5-year total cost of ownership?</h3>
+      <p>For a mid-range vehicle ($30,000–$40,000), total 5-year TCO typically runs $45,000–$65,000 when including all costs. Luxury vehicles can exceed $100,000 over 5 years. As a rule of thumb, your total monthly car cost (payment + insurance + fuel + maintenance) should stay under 15–20% of your take-home pay.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does interest rate affect my total cost?</h3>
+      <p>Significantly. On a $35,000 loan over 5 years, the difference between a 4% and 8% rate is approximately $3,800 in total interest paid. Getting pre-approved by a bank or credit union before visiting a dealership often secures better rates than dealer financing.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I buy or lease based on TCO?</h3>
+      <p>Leasing typically has lower monthly payments but no equity at the end. Buying costs more monthly but builds ownership. If you drive under 15,000 miles/year and prefer a new car every 3 years, leasing may have a lower 3-year TCO. For longer-term ownership (5+ years), buying generally wins on total cost.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the true cost of a cheap car?</h3>
+      <p>Older, cheaper vehicles often have lower purchase prices and insurance costs but higher maintenance and repair expenses. A $10,000 used car with $3,000/year in repairs may cost more over 5 years than a $25,000 reliable new vehicle. Always factor maintenance history and reliability ratings into your TCO estimate.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How can I reduce my total cost of ownership?</h3>
+      <p>Key strategies: make a larger down payment to reduce loan principal and interest; choose a fuel-efficient vehicle; shop insurance annually; bundle home and auto policies; maintain the vehicle per schedule to avoid costly repairs; and pay off the loan early to eliminate interest.</p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <h2>Related Auto Insurance Tools</h2>
+    <ul>
+      <li><a href="/tools/auto/new-car-insurance-cost-calculator.html">New Car Insurance Cost Estimator</a></li>
+      <li><a href="/tools/auto/collision-coverage-breakeven-calculator.html">Collision Coverage Break-Even Calculator</a></li>
+      <li><a href="/tools/auto/policy-renewal-savings-calculator.html">Car Insurance Renewal Savings Calculator</a></li>
+      <li><a href="/tools/auto/liability-coverage-limits-calculator.html">Auto Liability Coverage Limits Calculator</a></li>
+      <li><a href="/tools/auto/coverage-gap-analyzer.html">Auto Insurance Coverage Gap Analyzer</a></li>
+    </ul>
+  </section>
+
+  <section class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual costs depend on your specific loan terms, driving habits, local fuel prices, and vehicle condition. This calculator does not include depreciation, registration, taxes, or unexpected repairs. Consult a financial advisor for comprehensive vehicle cost planning.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a>
+    </div>
+    <p>&copy; 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<style>
+.input-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.input-row .input-group { flex: 1; min-width: 180px; }
+.result-item.highlight .result-value { color: #0056b3; font-size: 1.4rem; }
+.breakdown-bars { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+.breakdown-row { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+.breakdown-label { width: 130px; flex-shrink: 0; }
+.breakdown-bar-track { flex: 1; background: #e9ecef; border-radius: 4px; height: 14px; overflow: hidden; }
+.breakdown-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s; }
+.breakdown-amount { width: 90px; text-align: right; flex-shrink: 0; font-weight: 600; }
+</style>
+<script>
+function fmt(n) {
+  return '$' + Math.abs(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function fmtInt(n) {
+  return '$' + Math.round(Math.abs(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function calculate() {
+  const car_price = parseFloat(document.getElementById('car_price').value);
+  const annual_insurance = parseFloat(document.getElementById('annual_insurance').value);
+  const annual_miles = parseFloat(document.getElementById('annual_miles').value);
+  const mpg = parseFloat(document.getElementById('mpg').value);
+  const fuel_price = parseFloat(document.getElementById('fuel_price').value);
+  const annual_maintenance = parseFloat(document.getElementById('annual_maintenance').value) || 1200;
+  const loan_years = parseFloat(document.getElementById('loan_years').value);
+  const interest_rate_pct = parseFloat(document.getElementById('interest_rate').value);
+
+  if (!car_price || !annual_insurance || !annual_miles || !mpg || !fuel_price || !loan_years || interest_rate_pct === undefined || isNaN(interest_rate_pct)) {
+    document.getElementById('result-box').style.display = 'none';
+    return;
+  }
+
+  // PMT calculation
+  const r = interest_rate_pct / 100 / 12;
+  const n = loan_years * 12;
+  let monthly_payment;
+  if (r === 0) {
+    monthly_payment = car_price / n;
+  } else {
+    monthly_payment = car_price * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+
+  const monthly_fuel = (annual_miles / mpg * fuel_price) / 12;
+  const monthly_ins = annual_insurance / 12;
+  const monthly_maint = annual_maintenance / 12;
+  const total_monthly = monthly_payment + monthly_fuel + monthly_ins + monthly_maint;
+
+  // 5-year TCO: loan covers full term, others × 5 years
+  const tco_loan = monthly_payment * 60;
+  const tco_insurance = annual_insurance * 5;
+  const tco_fuel = monthly_fuel * 12 * 5;
+  const tco_maintenance = annual_maintenance * 5;
+  const five_year_tco = tco_loan + tco_insurance + tco_fuel + tco_maintenance;
+
+  document.getElementById('monthly_payment').textContent = fmt(monthly_payment) + '/mo';
+  document.getElementById('monthly_fuel').textContent = fmt(monthly_fuel) + '/mo';
+  document.getElementById('monthly_insurance').textContent = fmt(monthly_ins) + '/mo';
+  document.getElementById('monthly_maintenance').textContent = fmt(monthly_maint) + '/mo';
+  document.getElementById('total_monthly').textContent = fmt(total_monthly) + '/mo';
+  document.getElementById('five_year_tco').textContent = fmtInt(five_year_tco);
+
+  // Breakdown bars
+  const items = [
+    { label: 'Loan Payments', value: tco_loan, color: '#0056b3' },
+    { label: 'Insurance', value: tco_insurance, color: '#28a745' },
+    { label: 'Fuel', value: tco_fuel, color: '#fd7e14' },
+    { label: 'Maintenance', value: tco_maintenance, color: '#6f42c1' }
+  ];
+  const maxVal = Math.max(...items.map(i => i.value));
+  const barsEl = document.getElementById('breakdown-bars');
+  barsEl.innerHTML = '';
+  items.forEach(item => {
+    const pct = (item.value / maxVal * 100).toFixed(1);
+    const totalPct = (item.value / five_year_tco * 100).toFixed(0);
+    barsEl.innerHTML += `
+      <div class="breakdown-row">
+        <span class="breakdown-label">${item.label}</span>
+        <div class="breakdown-bar-track">
+          <div class="breakdown-bar-fill" style="width:${pct}%;background:${item.color};"></div>
+        </div>
+        <span class="breakdown-amount">${fmtInt(item.value)} (${totalPct}%)</span>
+      </div>`;
+  });
+
+  const loanPct = (tco_loan / five_year_tco * 100).toFixed(0);
+  document.getElementById('advice_text').textContent =
+    `Your loan payments represent ${loanPct}% of your 5-year TCO. Total interest paid over ${loan_years} years: ${fmtInt(tco_loan - car_price)}. Consider a larger down payment or shorter loan term to reduce overall cost.`;
+  document.getElementById('result-box').style.display = 'block';
+}
+</script>
+</body>
+</html>
