@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Much Life Insurance Can I Afford - CoverageFixPro</title>
+  <meta name="description" content="Find out how much life insurance coverage you can afford based on your monthly budget, age, and health. Instant estimate.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Life Insurance Affordability Calculator</div>
+
+  <h1>How Much Life Insurance Can I Afford?</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="monthly_budget">Monthly Budget for Insurance ($)</label>
+      <input type="number" id="monthly_budget" placeholder="e.g. 50" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="age">Your Age</label>
+      <input type="number" id="age" placeholder="e.g. 35" min="18" max="75" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="health">Health Status</label>
+      <select id="health" onchange="calc()">
+        <option value="excellent">Excellent</option>
+        <option value="good" selected>Good</option>
+        <option value="fair">Fair</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Maximum Affordable Coverage</span><span class="result-value" id="res_affordable"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Cost</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Rate Per $1,000 Coverage</span><span class="result-value" id="res_rate"></span></div>
+    <div class="result-item"><span class="result-label">Expert Recommendation</span><span class="result-value">10-12× your annual income</span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>Finding Coverage Within Your Budget</h2>
+    <p>Life insurance affordability depends on three key factors: your age (older applicants pay more), health status (better health earns lower rates), and the coverage amount. This calculator works backwards from your budget to show maximum affordable coverage. If the result falls short of the recommended 10–12× annual income, consider strategies to bridge the gap: improve health before applying, compare multiple insurers, choose a shorter term length, or split coverage between employer-provided group insurance and an individual policy. Even partial coverage is better than none — start with what you can afford now and increase later.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What percentage of income should I spend on life insurance?</div>
+      <div class="faq-a">Financial advisors typically recommend spending 1–3% of your annual income on life insurance premiums. For a family earning $75,000/year, that's $750–$2,250 annually ($63–$188/month). However, the priority is adequate coverage — don't sacrifice necessary coverage to stay within an arbitrary budget percentage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How can I get more coverage for the same budget?</div>
+      <div class="faq-a">Several strategies can increase affordability: buy term life (much cheaper than whole life), apply while younger and healthier, improve health metrics (blood pressure, cholesterol, BMI) before applying, compare quotes from multiple insurers, and consider a shorter term length (10 vs 30 years reduces premiums significantly).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is $500,000 of life insurance enough?</div>
+      <div class="faq-a">It depends on your income, debts, and family situation. For someone earning $75,000/year, $500,000 represents about 6.7 years of income — less than the recommended 10×. However, $500,000 may be adequate if you have significant savings, low debt, or a dual-income household. Use our needs calculator for a personalized assessment.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does health affect how much coverage I can afford?</div>
+      <div class="faq-a">Yes, significantly. Excellent health can mean 15–30% lower premiums than standard health, allowing you to afford more coverage on the same budget. Poor health can double or triple premiums. If you have health issues, some insurers specialize in higher-risk applicants and may offer more competitive rates for your situation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I buy life insurance through my employer instead?</div>
+      <div class="faq-a">Employer group life insurance is typically the cheapest option and requires no medical exam. However, coverage is usually limited (1–2× salary) and you lose it if you change jobs. Individual term life provides more coverage and portability. Ideally, use both: max out affordable employer coverage and supplement with an individual policy.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/smoker-life-insurance-calculator.html" class="tool-card">Smoker Life Insurance Calculator</a>
+    <a href="/tools/life/income-replacement-calculator.html" class="tool-card">Income Replacement Calculator</a>
+    <a href="/tools/life/final-expense-insurance-calculator.html" class="tool-card">Final Expense Insurance Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual coverage and premiums depend on insurer underwriting, health history, and other factors. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var budget = parseFloat(document.getElementById('monthly_budget').value)||0;
+  var age = parseFloat(document.getElementById('age').value)||0;
+  var health = document.getElementById('health').value;
+  if(!budget||!age){document.getElementById('result').style.display='none';return;}
+  var baseRate = age<35?0.15:age<45?0.25:age<55?0.55:1.20;
+  var hm = health==='excellent'?0.85:health==='good'?1.0:1.35;
+  var ratePerThousand = baseRate*hm;
+  var affordable = (budget/ratePerThousand)*1000;
+  document.getElementById('res_affordable').textContent=fmt(affordable);
+  document.getElementById('res_monthly').textContent=fmt(budget);
+  document.getElementById('res_rate').textContent='$'+ratePerThousand.toFixed(3)+' per $1,000 coverage';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

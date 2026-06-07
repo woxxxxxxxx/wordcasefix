@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Term vs Whole Life Insurance Cost Comparison - CoverageFixPro</title>
+  <meta name="description" content="Compare term life vs whole life insurance costs. See monthly premiums, 20-year total costs, and get a personalized recommendation.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Term vs Whole Life Calculator</div>
+
+  <h1>Term vs Whole Life Insurance Cost Comparison</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="age">Your Age</label>
+      <input type="number" id="age" placeholder="e.g. 35" min="18" max="75" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="coverage_amount">Coverage Amount ($)</label>
+      <input type="number" id="coverage_amount" placeholder="e.g. 500000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="health">Health Status</label>
+      <select id="health" onchange="calc()">
+        <option value="excellent">Excellent</option>
+        <option value="good" selected>Good</option>
+        <option value="fair">Fair</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="term_years">Term Length</label>
+      <select id="term_years" onchange="calc()">
+        <option value="10">10 Years</option>
+        <option value="20" selected>20 Years</option>
+        <option value="30">30 Years</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Cost Comparison</h2>
+    <div class="result-item"><span class="result-label">Term Monthly Premium</span><span class="result-value" id="res_term_mo"></span></div>
+    <div class="result-item"><span class="result-label">Term Annual Premium</span><span class="result-value" id="res_term_yr"></span></div>
+    <div class="result-item"><span class="result-label">Whole Life Monthly Premium</span><span class="result-value" id="res_whole_mo"></span></div>
+    <div class="result-item"><span class="result-label">Whole Life Annual Premium</span><span class="result-value" id="res_whole_yr"></span></div>
+    <div class="result-item"><span class="result-label">20-Year Term Total</span><span class="result-value" id="res_term20"></span></div>
+    <div class="result-item"><span class="result-label">20-Year Whole Life Total</span><span class="result-value" id="res_whole20"></span></div>
+    <div class="result-item"><span class="result-label">20-Year Difference</span><span class="result-value" id="res_diff"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>Term vs Whole Life: Which is Right for You?</h2>
+    <p>Term life insurance provides pure death benefit protection for a set period (10, 20, or 30 years) at a lower cost. Whole life insurance offers lifelong coverage with a cash value component that grows over time. Term is ideal for income replacement and mortgage protection during your working years. Whole life suits those wanting permanent coverage, estate planning, or a tax-advantaged savings vehicle. The "buy term and invest the difference" strategy works well for disciplined investors, while whole life appeals to those who want forced savings and guaranteed growth. Always compare total costs and benefits before deciding.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Why is whole life insurance so much more expensive than term?</div>
+      <div class="faq-a">Whole life insurance premiums are higher because they cover you for your entire life (rather than a set term) and include a cash value savings component. A portion of each premium goes toward building tax-deferred cash value that you can borrow against or surrender later.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I convert my term policy to whole life?</div>
+      <div class="faq-a">Many term policies include a conversion rider that allows you to convert to a permanent policy without a new medical exam, typically before a certain age or before the term ends. This flexibility is valuable if your health changes and you want permanent coverage later.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does health status really affect premiums that much?</div>
+      <div class="faq-a">Yes, significantly. Insurers classify applicants into rate classes (preferred plus, preferred, standard, and substandard). Excellent health can save 15–30% compared to standard rates, while poor health can double or triple premiums. Improving health before applying can result in substantial savings.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to whole life cash value if I cancel the policy?</div>
+      <div class="faq-a">If you surrender a whole life policy, you receive the accumulated cash value minus any surrender charges and outstanding loans. Early surrender often yields less than total premiums paid, so whole life is best viewed as a long-term commitment of at least 15–20 years.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is term life insurance still valuable after the term expires?</div>
+      <div class="faq-a">Once term life expires, coverage ends with no cash value or payout. However, by that point many financial obligations (mortgage, income replacement for dependents) may be reduced or eliminated. If you still need coverage, you can renew at higher rates or buy a new policy, if still insurable.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/life-insurance-roi-calculator.html" class="tool-card">Life Insurance ROI Calculator</a>
+    <a href="/tools/life/cash-value-growth-calculator.html" class="tool-card">Cash Value Growth Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/smoker-life-insurance-calculator.html" class="tool-card">Smoker Life Insurance Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual premiums vary by insurer, underwriting, and individual health factors. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var age = parseFloat(document.getElementById('age').value)||0;
+  var cov = parseFloat(document.getElementById('coverage_amount').value)||0;
+  var health = document.getElementById('health').value;
+  if(!age||!cov){document.getElementById('result').style.display='none';return;}
+  var baseRate = age<35?0.15:age<45?0.25:age<55?0.55:1.20;
+  var hm = health==='excellent'?0.85:health==='good'?1.0:1.35;
+  var termMonthly = (cov/1000)*baseRate*hm;
+  var wholeMonthly = termMonthly*8;
+  var term20 = termMonthly*12*20;
+  var whole20 = wholeMonthly*12*20;
+  document.getElementById('res_term_mo').textContent=fmt(termMonthly);
+  document.getElementById('res_term_yr').textContent=fmt(termMonthly*12);
+  document.getElementById('res_whole_mo').textContent=fmt(wholeMonthly);
+  document.getElementById('res_whole_yr').textContent=fmt(wholeMonthly*12);
+  document.getElementById('res_term20').textContent=fmt(term20);
+  document.getElementById('res_whole20').textContent=fmt(whole20);
+  document.getElementById('res_diff').textContent=fmt(whole20-term20);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

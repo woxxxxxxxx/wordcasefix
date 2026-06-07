@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Replacement Life Insurance Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how much life insurance you need to replace your income. Based on present value of future earnings until retirement.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Income Replacement Calculator</div>
+
+  <h1>Income Replacement Life Insurance Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="annual_income">Annual Income ($)</label>
+      <input type="number" id="annual_income" placeholder="e.g. 80000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="years_until_retirement">Years Until Retirement</label>
+      <input type="number" id="years_until_retirement" placeholder="e.g. 25" min="1" max="50" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="discount_rate">Discount Rate (%)</label>
+      <input type="number" id="discount_rate" value="5" min="0" max="20" step="0.1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="existing_savings">Existing Savings &amp; Investments ($)</label>
+      <input type="number" id="existing_savings" placeholder="e.g. 50000" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Present Value of Future Income</span><span class="result-value" id="res_pv_income"></span></div>
+    <div class="result-item"><span class="result-label">Existing Savings</span><span class="result-value" id="res_savings"></span></div>
+    <div class="result-item"><span class="result-label">Net Coverage Need</span><span class="result-value" id="res_net_need"></span></div>
+    <div class="result-item"><span class="result-label">Simple 10× Rule Estimate</span><span class="result-value" id="res_rule10"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>The Income Replacement Approach</h2>
+    <p>Income replacement is one of the most financially rigorous methods for calculating life insurance needs. Rather than using a simple multiplier, it calculates the present value of all future earnings you would have provided until retirement. The discount rate represents what your beneficiaries could earn by investing the death benefit. A higher discount rate assumes better investment returns and lowers the required coverage. Subtracting existing savings accounts for assets your family already has. Compare the result with the simple 10× rule to see which approach suggests more conservative coverage for your situation.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is income replacement in life insurance?</div>
+      <div class="faq-a">Income replacement refers to covering the loss of your earnings so your family can maintain their lifestyle if you pass away. Life insurance death benefit, invested prudently, can generate annual distributions that replicate your income stream for the years your family would have depended on your earnings.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What discount rate should I use in this calculator?</div>
+      <div class="faq-a">The discount rate should reflect the expected investment return on the death benefit. A conservative rate of 3–4% is appropriate if your beneficiaries would invest conservatively (bonds, savings). Use 5–7% if they'd invest in a balanced portfolio. A higher discount rate results in lower required coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does the 10× rule compare to the present value method?</div>
+      <div class="faq-a">The 10× rule (10 times annual income) is a quick rule of thumb that doesn't account for years to retirement, investment returns, or existing savings. For a 35-year-old with 30 years to retirement, the present value method typically yields a higher (more accurate) figure. For a 55-year-old with 10 years left, it may yield less.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I include Social Security survivor benefits in my calculation?</div>
+      <div class="faq-a">Social Security survivor benefits can be meaningful, especially for families with children under 18. If your spouse and/or children would qualify for survivor benefits, these reduce the income gap your life insurance needs to fill. However, benefits vary and have income limits, so factor them in conservatively.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does stay-at-home parent need income replacement coverage?</div>
+      <div class="faq-a">Yes. A stay-at-home parent provides valuable economic services (childcare, household management) that would cost $30,000–$80,000 per year to replace. Calculate the cost to replace these services for the years needed and include it in your household coverage planning, even without traditional employment income.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs (DIME)</a>
+    <a href="/tools/life/death-benefit-calculator.html" class="tool-card">Death Benefit Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/life-insurance-for-mortgage.html" class="tool-card">Mortgage Life Insurance Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Present value calculations depend on assumed discount rates and may vary from actual outcomes. Consult a licensed insurance professional for personalized advice.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var inc = parseFloat(document.getElementById('annual_income').value)||0;
+  var yrs = parseFloat(document.getElementById('years_until_retirement').value)||0;
+  var r = (parseFloat(document.getElementById('discount_rate').value)||5)/100;
+  var sav = parseFloat(document.getElementById('existing_savings').value)||0;
+  if(!inc||!yrs){document.getElementById('result').style.display='none';return;}
+  var pvIncome = inc*(1-Math.pow(1+r,-yrs))/r;
+  var netNeed = Math.max(0, pvIncome - sav);
+  document.getElementById('res_pv_income').textContent=fmt(pvIncome);
+  document.getElementById('res_savings').textContent=fmt(sav);
+  document.getElementById('res_net_need').textContent=fmt(netNeed);
+  document.getElementById('res_rule10').textContent=fmt(inc*10);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

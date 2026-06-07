@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whole Life Insurance Cash Value Growth Calculator - CoverageFixPro</title>
+  <meta name="description" content="Project your whole life insurance cash value growth over time. See year-by-year values and available policy loan amounts.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Cash Value Growth Calculator</div>
+
+  <h1>Whole Life Insurance Cash Value Growth Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="monthly_premium">Monthly Premium ($)</label>
+      <input type="number" id="monthly_premium" placeholder="e.g. 200" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="dividend_rate">Annual Dividend Rate (%)</label>
+      <input type="number" id="dividend_rate" value="5" min="0" max="20" step="0.1" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>10-Year Cash Value Projection</h2>
+    <div id="res_table"></div>
+    <div class="result-item" style="margin-top:1rem;"><span class="result-label">Year 10 Cash Value</span><span class="result-value" id="res_final_cv"></span></div>
+    <div class="result-item"><span class="result-label">Available Loan Amount (90%)</span><span class="result-value" id="res_loan"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>How Whole Life Cash Value Grows</h2>
+    <p>Whole life insurance cash value accumulates tax-deferred over time. In the early years, a significant portion of premiums goes to insurance costs and agent commissions, meaning cash value grows slowly. As the policy matures, more of each premium builds cash value. Dividends from participating whole life policies can substantially accelerate growth — these are not guaranteed but have been paid consistently by top-rated mutual insurers for decades. Most policies allow you to borrow up to 90% of cash value as a policy loan, typically at low interest rates without credit checks or tax consequences.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">When does whole life cash value start to grow significantly?</div>
+      <div class="faq-a">Cash value growth is slow in the first few years due to policy costs and front-loaded expenses. Most policyholders see meaningful acceleration after years 5–10. By year 15–20, cash value often equals total premiums paid, and growth continues to compound. Whole life is a long-term commitment best measured over decades.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are whole life dividends guaranteed?</div>
+      <div class="faq-a">No, dividends are not legally guaranteed, but many reputable mutual life insurers have paid dividends continuously for over 100 years. Dividends can be taken as cash, used to reduce premiums, purchase paid-up additions (increasing cash value and death benefit), or left to accumulate at interest.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much can I borrow against my whole life cash value?</div>
+      <div class="faq-a">Most policies allow loans up to 90–95% of the accumulated cash value. Policy loans don't require credit approval, are not taxable, and don't have a required repayment schedule. However, unpaid loans with accruing interest reduce the death benefit and can eventually cause the policy to lapse if not managed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to cash value if I surrender the policy?</div>
+      <div class="faq-a">Upon surrender, you receive the cash surrender value — typically cash value minus any surrender charges and outstanding loan balances. Early surrender (within 10–15 years) often returns less than total premiums paid. Tax implications apply if the surrender value exceeds your cost basis (total premiums paid).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use cash value to pay premiums?</div>
+      <div class="faq-a">Yes. Once sufficient cash value has accumulated, many policyholders use it to pay premiums, reducing or eliminating out-of-pocket costs. This is called a "reduced paid-up" option or premium offset. Your agent can help you understand when this becomes available in your specific policy.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/policy-loan-calculator.html" class="tool-card">Policy Loan Calculator</a>
+    <a href="/tools/life/life-insurance-roi-calculator.html" class="tool-card">Life Insurance ROI Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are projections only. Actual cash value depends on insurer, policy terms, and dividend declarations. Dividends are not guaranteed. Consult a licensed insurance professional for personalized advice.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var prem = parseFloat(document.getElementById('monthly_premium').value)||0;
+  var rate = (parseFloat(document.getElementById('dividend_rate').value)||5)/100;
+  if(!prem){document.getElementById('result').style.display='none';return;}
+  var annual = prem*12;
+  var cv = 0;
+  var tableHTML = '<table style="width:100%;border-collapse:collapse;font-size:0.9rem;"><thead><tr style="background:var(--primary);color:#fff;"><th style="padding:8px;">Year</th><th style="padding:8px;">Cash Value</th><th style="padding:8px;">Available Loan (90%)</th></tr></thead><tbody>';
+  for(var y=1;y<=10;y++){
+    if(y===1) cv=annual*0.6;
+    else cv=cv*(1+rate)+annual*0.8;
+    var loan=cv*0.9;
+    tableHTML+='<tr style="border-bottom:1px solid var(--border);background:'+(y%2===0?'#f8fafc':'#fff')+'"><td style="padding:8px;text-align:center;">'+y+'</td><td style="padding:8px;text-align:right;">'+fmt(cv)+'</td><td style="padding:8px;text-align:right;">'+fmt(loan)+'</td></tr>';
+  }
+  tableHTML+='</tbody></table>';
+  document.getElementById('res_table').innerHTML=tableHTML;
+  document.getElementById('res_final_cv').textContent=fmt(cv);
+  document.getElementById('res_loan').textContent=fmt(cv*0.9);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

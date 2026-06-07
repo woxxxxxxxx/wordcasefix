@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Life Insurance Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate child life insurance costs and the long-term value of locking in low rates early. Compare current vs adult premiums.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Child Life Insurance Calculator</div>
+
+  <h1>Child Life Insurance Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="child_age">Child's Current Age (0-17)</label>
+      <input type="number" id="child_age" placeholder="e.g. 5" min="0" max="17" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="coverage_amount">Coverage Amount ($)</label>
+      <input type="number" id="coverage_amount" placeholder="e.g. 50000" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Child Monthly Premium</span><span class="result-value" id="res_child"></span></div>
+    <div class="result-item"><span class="result-label">Adult Rate (Same Coverage)</span><span class="result-value" id="res_adult"></span></div>
+    <div class="result-item"><span class="result-label">Monthly Savings by Locking In Now</span><span class="result-value" id="res_monthly_savings"></span></div>
+    <div class="result-item"><span class="result-label">Estimated 40-Year Savings</span><span class="result-value" id="res_lifetime"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>Why Consider Child Life Insurance?</h2>
+    <p>Child life insurance serves multiple purposes beyond the traditional income replacement role. First, it locks in the lowest possible premium rates while the child is young and healthy. Second, whole life policies for children build cash value over decades that the child can access as an adult for education, first home purchase, or other needs. Third, coverage typically includes guaranteed insurability riders, allowing the child to purchase additional coverage as an adult regardless of future health conditions — a significant benefit if they develop a chronic illness. Coverage should be considered as a long-term financial planning tool, not just protection.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Why would I need life insurance for my child?</div>
+      <div class="faq-a">Child life insurance primarily serves to lock in low premiums permanently, build cash value over decades, and guarantee future insurability. It can also cover funeral expenses and provide parents time off work to grieve. While the death benefit is rarely the primary motivation, the long-term financial planning benefits are meaningful for many families.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">At what age should I buy life insurance for my child?</div>
+      <div class="faq-a">The younger you purchase, the lower the locked-in premium. Policies can typically be purchased from 14 days old up to 17 or 18 years. Buying before age 10 locks in the lowest rates. However, even buying at 14–15 years provides significantly lower premiums than waiting until adulthood.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a guaranteed insurability rider for child life insurance?</div>
+      <div class="faq-a">A guaranteed insurability rider allows the child, once an adult, to purchase additional life insurance coverage at set intervals without needing a new medical exam or proving insurability. This is particularly valuable if the child develops diabetes, heart conditions, or other chronic illnesses that might make them uninsurable as adults.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I get term or whole life insurance for my child?</div>
+      <div class="faq-a">Whole life is typically recommended for child life insurance because: (1) the permanent cash value accumulates for decades, (2) premiums are fixed at the low child rate forever, and (3) the policy remains in force through adulthood. Term life for children makes less sense since they rarely have income to replace or dependents to protect.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much life insurance should I get for my child?</div>
+      <div class="faq-a">Common coverage amounts range from $10,000 to $100,000. Consider $25,000–$50,000 as a starting point — enough to cover final expenses, provide meaningful cash value, and include a solid guaranteed insurability base. You can always add more coverage through future policy purchases using the guaranteed insurability rider.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/cash-value-growth-calculator.html" class="tool-card">Cash Value Growth Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/final-expense-insurance-calculator.html" class="tool-card">Final Expense Insurance Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual child life insurance premiums and terms vary by insurer and product. Consult a licensed insurance professional for actual quotes and policy recommendations.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var age=parseFloat(document.getElementById('child_age').value);
+  var cov=parseFloat(document.getElementById('coverage_amount').value)||0;
+  if(isNaN(age)||!cov||age>17){document.getElementById('result').style.display='none';return;}
+  var childMonthly=(cov/1000)*0.04;
+  var adultMonthly=(cov/1000)*0.15;
+  var savingsPerMonth=adultMonthly-childMonthly;
+  var lifetimeSavings=savingsPerMonth*12*40;
+  document.getElementById('res_child').textContent=fmt(childMonthly);
+  document.getElementById('res_adult').textContent=fmt(adultMonthly);
+  document.getElementById('res_monthly_savings').textContent=fmt(savingsPerMonth);
+  document.getElementById('res_lifetime').textContent=fmt(lifetimeSavings);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joint Life Insurance vs Separate Policies Calculator - CoverageFixPro</title>
+  <meta name="description" content="Compare joint life insurance vs two separate policies. Calculate premiums and find out which option saves more money for couples.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Joint Life Insurance Calculator</div>
+
+  <h1>Joint Life Insurance vs Separate Policies Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="person1_age">Person 1 Age</label>
+      <input type="number" id="person1_age" placeholder="e.g. 35" min="18" max="75" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="coverage1">Person 1 Coverage Amount ($)</label>
+      <input type="number" id="coverage1" placeholder="e.g. 500000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="person2_age">Person 2 Age</label>
+      <input type="number" id="person2_age" placeholder="e.g. 33" min="18" max="75" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="coverage2">Person 2 Coverage Amount ($)</label>
+      <input type="number" id="coverage2" placeholder="e.g. 400000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="health">Health Status (Both)</label>
+      <select id="health" onchange="calc()">
+        <option value="excellent">Excellent</option>
+        <option value="good" selected>Good</option>
+        <option value="fair">Fair</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Separate Policies Annual Total</span><span class="result-value" id="res_sep"></span></div>
+    <div class="result-item"><span class="result-label">Joint Policy Annual Estimate</span><span class="result-value" id="res_joint"></span></div>
+    <div class="result-item"><span class="result-label">Annual Savings</span><span class="result-value" id="res_savings"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>Joint vs Separate Life Insurance for Couples</h2>
+    <p>Couples have two main options: joint life insurance (one policy covering both) or two separate individual policies. Joint policies come in two types: first-to-die (pays when the first spouse passes, leaving the survivor uninsured) and second-to-die (pays when both have passed, often used for estate planning). Joint policies typically cost 10–15% less than two separate policies combined. However, separate policies offer independent coverage, flexibility for different coverage amounts, and protection if the couple separates. For most families, separate policies provide superior flexibility despite the slightly higher combined cost.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is a first-to-die joint life insurance policy?</div>
+      <div class="faq-a">A first-to-die policy pays the death benefit when the first of the two insured spouses passes away. The surviving spouse then uses the payout for living expenses or income replacement. After the death benefit is paid, the policy ends, leaving the surviving spouse without coverage. They would need to obtain a new individual policy at that point.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a second-to-die (survivorship) life insurance policy?</div>
+      <div class="faq-a">A second-to-die policy pays the death benefit only after both insureds have passed away. It's primarily used for estate planning and wealth transfer — providing funds for estate taxes or leaving an inheritance to heirs. Because it pays later, premiums are typically lower than first-to-die or individual policies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are separate life insurance policies better than joint for most couples?</div>
+      <div class="faq-a">For most couples, separate policies offer more flexibility and comprehensive protection. Each person maintains independent coverage regardless of the relationship status. Coverage amounts can be tailored to each person's income and obligations, and divorce doesn't complicate policy ownership the way it might with a joint policy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does age difference between spouses significantly affect costs?</div>
+      <div class="faq-a">Yes. For a joint first-to-die policy, insurers typically base pricing on the older or higher-risk spouse. A significant age difference can increase joint policy costs. With separate policies, each person is priced individually — a younger spouse may get much better rates, making separate policies more cost-effective in age-gap situations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to a joint policy in case of divorce?</div>
+      <div class="faq-a">Divorce complicates joint life insurance significantly. The policy may need to be divided, one spouse may need to buy out the other, or the policy may be surrendered with proceeds split. This complexity is a major reason why financial advisors often recommend separate individual policies for couples, preserving clean ownership of each person's coverage.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/income-replacement-calculator.html" class="tool-card">Income Replacement Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/death-benefit-calculator.html" class="tool-card">Death Benefit Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual joint vs separate policy costs vary by insurer and individual underwriting. Consult a licensed insurance professional for actual quotes and recommendations.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var a1=parseFloat(document.getElementById('person1_age').value)||0;
+  var c1=parseFloat(document.getElementById('coverage1').value)||0;
+  var a2=parseFloat(document.getElementById('person2_age').value)||0;
+  var c2=parseFloat(document.getElementById('coverage2').value)||0;
+  var health=document.getElementById('health').value;
+  if(!a1||!c1||!a2||!c2){document.getElementById('result').style.display='none';return;}
+  function getRate(a){return a<35?0.15:a<45?0.25:a<55?0.55:1.20;}
+  var hm=health==='excellent'?0.85:health==='good'?1.0:1.35;
+  var p1=(c1/1000)*getRate(a1)*hm;
+  var p2=(c2/1000)*getRate(a2)*hm;
+  var separateMonthly=p1+p2;
+  var avgAge=(a1+a2)/2;
+  var avgCov=(c1+c2)/2;
+  var jointMonthly=(avgCov/1000)*getRate(avgAge)*hm*0.88;
+  var savings=(separateMonthly-jointMonthly)*12;
+  document.getElementById('res_sep').textContent=fmt(separateMonthly*12);
+  document.getElementById('res_joint').textContent=fmt(jointMonthly*12);
+  document.getElementById('res_savings').textContent=fmt(Math.max(0,savings));
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

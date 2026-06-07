@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Expense Insurance Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate final expense insurance costs to cover funeral expenses and outstanding debts. Get a personalized coverage recommendation.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Final Expense Insurance Calculator</div>
+
+  <h1>Final Expense Insurance Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="age">Your Age (50-85)</label>
+      <input type="number" id="age" placeholder="e.g. 65" min="50" max="85" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" onchange="calc()">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="funeral_cost">Estimated Funeral Cost ($)</label>
+      <input type="number" id="funeral_cost" value="12000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="outstanding_debts">Outstanding Debts ($)</label>
+      <input type="number" id="outstanding_debts" value="0" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Recommended Coverage</span><span class="result-value" id="res_recommended"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Monthly Premium</span><span class="result-value" id="res_monthly"></span></div>
+    <div class="result-item"><span class="result-label">Estimated Annual Premium</span><span class="result-value" id="res_annual"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>About Final Expense Insurance</h2>
+    <p>Final expense insurance (also called burial insurance or funeral insurance) is a small whole life policy designed specifically for seniors aged 50–85. Coverage amounts typically range from $5,000 to $25,000 — enough to cover funeral costs, burial expenses, and small outstanding debts. Unlike traditional life insurance, final expense policies usually require no medical exam, only a few health questions. Approval is typically fast and the coverage is permanent. Premiums are fixed for life and will never increase. It's an affordable way to ensure your family isn't burdened with end-of-life expenses, with the average funeral now costing $10,000–$15,000.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does final expense insurance cover?</div>
+      <div class="faq-a">Final expense insurance pays a death benefit to your beneficiaries who can use it for any purpose — funeral costs, burial or cremation, outstanding medical bills, credit card debt, or any other expense. Unlike pre-paid funeral plans, the death benefit is cash paid to your family, giving them full flexibility on how to use it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is final expense insurance the same as burial insurance?</div>
+      <div class="faq-a">Yes, final expense insurance, burial insurance, and funeral insurance are all common names for the same type of product — a small whole life policy marketed to seniors. The names are interchangeable in the insurance industry. The policy works like any whole life insurance but with smaller coverage amounts and simplified underwriting.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get final expense insurance with health problems?</div>
+      <div class="faq-a">Yes. Most final expense policies have simplified or guaranteed issue underwriting with no medical exam. Even with serious health conditions like diabetes, heart disease, or cancer history, you can typically qualify. Guaranteed issue policies accept anyone in the eligible age range but often have a 2-year waiting period before the full death benefit is paid.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a graded death benefit in final expense insurance?</div>
+      <div class="faq-a">Some final expense policies have a graded benefit period (typically 2 years) for applicants with serious health issues. If you pass away in the first 2 years, the policy pays only a return of premiums plus interest, not the full death benefit. After the waiting period, the full death benefit applies. Healthier applicants usually qualify for immediate full-benefit policies.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much final expense coverage do I really need?</div>
+      <div class="faq-a">The average funeral costs $10,000–$15,000 in 2026. Add any outstanding debts, medical bills, and a buffer for unexpected costs, then subtract any savings designated for these expenses. A $15,000–$25,000 policy typically covers most final expenses comfortably. Our calculator adds a $5,000 buffer to funeral costs and debts as a starting recommendation.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/smoker-life-insurance-calculator.html" class="tool-card">Smoker Life Insurance Calculator</a>
+    <a href="/tools/life/child-life-insurance-calculator.html" class="tool-card">Child Life Insurance Calculator</a>
+    <a href="/tools/life/death-benefit-calculator.html" class="tool-card">Death Benefit Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual final expense insurance premiums vary by insurer, health classification, and state. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var age=parseFloat(document.getElementById('age').value)||0;
+  var gender=document.getElementById('gender').value;
+  var funeral=parseFloat(document.getElementById('funeral_cost').value)||12000;
+  var debts=parseFloat(document.getElementById('outstanding_debts').value)||0;
+  if(!age||age<50||age>85){document.getElementById('result').style.display='none';return;}
+  var baseMonthly=age<55?35:age<65?55:age<75?95:185;
+  if(gender==='male') baseMonthly*=1.2;
+  var recommended=funeral+debts+5000;
+  document.getElementById('res_recommended').textContent=fmt(recommended);
+  document.getElementById('res_monthly').textContent=fmt(baseMonthly);
+  document.getElementById('res_annual').textContent=fmt(baseMonthly*12);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

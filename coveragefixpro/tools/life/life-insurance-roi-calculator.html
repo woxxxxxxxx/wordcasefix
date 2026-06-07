@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Insurance ROI Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate the return on investment of your life insurance policy. Compare term vs whole life insurance ROI and investment alternatives.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Life Insurance ROI Calculator</div>
+
+  <h1>Life Insurance ROI Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="monthly_premium">Monthly Premium ($)</label>
+      <input type="number" id="monthly_premium" placeholder="e.g. 150" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="coverage_amount">Death Benefit / Coverage ($)</label>
+      <input type="number" id="coverage_amount" placeholder="e.g. 500000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="policy_years">Policy Length (years)</label>
+      <input type="number" id="policy_years" placeholder="e.g. 20" min="1" max="50" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="cash_value_at_end">Cash Value at End of Policy ($)</label>
+      <input type="number" id="cash_value_at_end" placeholder="0 for term life" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Total Premiums Paid</span><span class="result-value" id="res_total_premiums"></span></div>
+    <div class="result-item"><span class="result-label">Cash Value at End</span><span class="result-value" id="res_cash_value"></span></div>
+    <div class="result-item"><span class="result-label">Policy ROI (Annualized)</span><span class="result-value" id="res_roi"></span></div>
+    <div class="result-item"><span class="result-label">S&amp;P 500 Comparison</span><span class="result-value" id="res_sp500"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>Understanding Life Insurance ROI</h2>
+    <p>Calculating life insurance ROI depends heavily on policy type. Term life insurance provides pure death benefit protection — if you don't die during the term, there is no cash return, making traditional ROI not applicable. Its "return" is the financial protection provided. Whole life and universal life policies build cash value over time, enabling an ROI calculation. However, these returns are typically modest (1–4% annualized) compared to market investments. The true value of life insurance lies in its guaranteed protection, not investment returns. Use this calculator to understand the numbers before choosing a policy type.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the ROI on a term life insurance policy?</div>
+      <div class="faq-a">Term life insurance does not generate a financial ROI in the traditional sense — if you outlive the term, you receive nothing back. Its value is the peace of mind and financial protection during your coverage years. Think of it like car insurance: you don't expect a return if you don't file a claim.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is whole life insurance a good investment compared to the stock market?</div>
+      <div class="faq-a">Generally, whole life insurance offers lower returns than stock market investments (1–4% vs ~10% historical S&P 500 average). However, it offers guaranteed returns, tax-deferred growth, no market risk, and a death benefit. For some people, this trade-off makes sense, especially as part of an estate planning strategy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the "buy term and invest the difference" strategy?</div>
+      <div class="faq-a">This popular strategy involves buying affordable term life insurance and investing the premium savings (compared to whole life) in index funds. Over 20–30 years, the investment returns typically outpace whole life cash value growth significantly. This approach works best for disciplined savers who will consistently invest the difference.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does cash value growth work in whole life insurance?</div>
+      <div class="faq-a">A portion of each whole life premium goes into a cash value account that grows at a guaranteed rate, plus potential dividends from mutual insurers. Growth is tax-deferred, meaning you don't pay taxes on gains unless you withdraw them. Policy loans against cash value are not taxable events.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to cash value when I die?</div>
+      <div class="faq-a">In a standard whole life policy, the insurer pays your beneficiaries the death benefit but keeps the accumulated cash value. Some policies offer a "return of cash value" rider that pays both, but at a significantly higher premium. Understanding this feature is important when comparing whole life policy values.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/cash-value-growth-calculator.html" class="tool-card">Cash Value Growth Calculator</a>
+    <a href="/tools/life/policy-loan-calculator.html" class="tool-card">Policy Loan Calculator</a>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual policy values depend on insurer, policy terms, and market conditions. Past S&P 500 returns do not guarantee future performance. Consult a licensed insurance professional for personalized advice.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var prem = parseFloat(document.getElementById('monthly_premium').value)||0;
+  var cov = parseFloat(document.getElementById('coverage_amount').value)||0;
+  var yrs = parseFloat(document.getElementById('policy_years').value)||0;
+  var cv = parseFloat(document.getElementById('cash_value_at_end').value)||0;
+  if(!prem||!yrs){document.getElementById('result').style.display='none';return;}
+  var totalPremiums = prem*12*yrs;
+  var annualizedRoi = cv>0 ? (Math.pow(cv/totalPremiums,1/yrs)-1)*100 : null;
+  document.getElementById('res_total_premiums').textContent=fmt(totalPremiums);
+  document.getElementById('res_cash_value').textContent=cv>0?fmt(cv):'$0 (Term Life)';
+  document.getElementById('res_roi').textContent=cv>0?annualizedRoi.toFixed(1)+'% annualized':'N/A (Term - Pure Protection)';
+  document.getElementById('res_sp500').textContent='~10% annualized (S&P 500 historical avg)';
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

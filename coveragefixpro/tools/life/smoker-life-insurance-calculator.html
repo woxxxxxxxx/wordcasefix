@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smoker Life Insurance Cost Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how smoking affects your life insurance premiums and how much you can save by quitting. Compare smoker vs non-smoker rates.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Smoker Life Insurance Calculator</div>
+
+  <h1>Smoker Life Insurance Cost Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="age">Your Age</label>
+      <input type="number" id="age" placeholder="e.g. 40" min="18" max="75" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="coverage_amount">Coverage Amount ($)</label>
+      <input type="number" id="coverage_amount" placeholder="e.g. 500000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="smoker">Smoking Status</label>
+      <select id="smoker" onchange="toggleQuit();calc()">
+        <option value="no">Non-Smoker</option>
+        <option value="yes">Current Smoker</option>
+        <option value="quit">Former Smoker</option>
+      </select>
+    </div>
+    <div class="form-group" id="quit_group" style="display:none;">
+      <label for="years_quit">Years Since Quitting</label>
+      <select id="years_quit" onchange="calc()">
+        <option value="1-2">1-2 Years</option>
+        <option value="3-4">3-4 Years</option>
+        <option value="5plus">5+ Years</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Your Monthly Premium</span><span class="result-value" id="res_actual"></span></div>
+    <div class="result-item"><span class="result-label">Non-Smoker Monthly Premium</span><span class="result-value" id="res_nonsmoker"></span></div>
+    <div class="result-item"><span class="result-label">Extra Monthly Cost (Smoking Surcharge)</span><span class="result-value" id="res_extra"></span></div>
+    <div class="result-item"><span class="result-label">5-Year Savings by Quitting Now</span><span class="result-value" id="res_quit_savings"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>How Smoking Affects Life Insurance Rates</h2>
+    <p>Smoking is one of the largest factors affecting life insurance premiums. Insurers typically charge current smokers 2–3 times more than non-smokers for the same coverage. Even former smokers may pay higher rates for several years after quitting. Most insurers require 1–5 years of tobacco-free status before reclassifying you as a non-smoker. The good news: quitting smoking is one of the most impactful financial decisions you can make for your insurance costs. This calculator shows the direct premium impact and quantifies your long-term savings potential from quitting.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How much more do smokers pay for life insurance?</div>
+      <div class="faq-a">Smokers typically pay 2 to 3 times more than non-smokers for the same coverage amount and term length. For example, if a non-smoker pays $30/month, a smoker might pay $60–$90/month for identical coverage. The surcharge increases with age and coverage amount.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long after quitting smoking can I get non-smoker rates?</div>
+      <div class="faq-a">Most life insurers require 1–5 years of being tobacco-free before reclassifying you as a non-smoker. Some companies offer preferred non-smoker rates after just 12 months, while others require 5 years. The longer you've been smoke-free, the better your rate class typically will be.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do insurers test for nicotine during underwriting?</div>
+      <div class="faq-a">Yes. Most life insurance medical exams include a urine or blood test that detects cotinine, a nicotine byproduct. Cotinine remains detectable for 3–4 days after smoking, though some tests can detect it for up to 90 days. Misrepresenting tobacco use can void your policy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does vaping count as smoking for life insurance?</div>
+      <div class="faq-a">Yes, most insurers classify vaping/e-cigarettes the same as smoking since they still deliver nicotine. Nicotine patches and gum used for cessation may or may not be rated as tobacco use depending on the insurer. Always disclose your full tobacco use history honestly on applications.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I renegotiate my premium after quitting smoking?</div>
+      <div class="faq-a">Yes! Once you've been smoke-free for the required period (typically 1–5 years), you can request a policy review and rate reclassification from your insurer. You may need to pass a new medical exam. The savings can be substantial — potentially thousands of dollars over the policy term.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/income-replacement-calculator.html" class="tool-card">Income Replacement Calculator</a>
+    <a href="/tools/life/final-expense-insurance-calculator.html" class="tool-card">Final Expense Insurance Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual premiums vary by insurer, underwriting class, and individual health factors. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function toggleQuit(){
+  document.getElementById('quit_group').style.display=document.getElementById('smoker').value==='quit'?'block':'none';
+}
+function calc() {
+  var age = parseFloat(document.getElementById('age').value)||0;
+  var cov = parseFloat(document.getElementById('coverage_amount').value)||0;
+  var smoker = document.getElementById('smoker').value;
+  var years_quit = document.getElementById('years_quit').value;
+  if(!age||!cov){document.getElementById('result').style.display='none';return;}
+  var baseRate = age<35?0.15:age<45?0.25:age<55?0.55:1.20;
+  var nonSmokerMonthly = (cov/1000)*baseRate;
+  var mult = smoker==='yes'?2.5:smoker==='quit'?(years_quit==='1-2'?2.0:years_quit==='3-4'?1.5:1.0):1.0;
+  var actualMonthly = nonSmokerMonthly*mult;
+  var extraMonthly = actualMonthly - nonSmokerMonthly;
+  var quit5yrSavings = nonSmokerMonthly*(2.5-1.0)*12*5;
+  document.getElementById('res_actual').textContent=fmt(actualMonthly);
+  document.getElementById('res_nonsmoker').textContent=fmt(nonSmokerMonthly);
+  document.getElementById('res_extra').textContent=fmt(Math.max(0,extraMonthly));
+  document.getElementById('res_quit_savings').textContent=fmt(quit5yrSavings);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

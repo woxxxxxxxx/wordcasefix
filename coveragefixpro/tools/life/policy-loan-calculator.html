@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Insurance Policy Loan Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate life insurance policy loan payments and interest. See how unpaid loans affect your cash value and death benefit.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Policy Loan Calculator</div>
+
+  <h1>Life Insurance Policy Loan Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="cash_value">Current Cash Value ($)</label>
+      <input type="number" id="cash_value" placeholder="e.g. 50000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="loan_amount">Loan Amount ($)</label>
+      <input type="number" id="loan_amount" placeholder="e.g. 20000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="loan_interest_rate">Loan Interest Rate (%)</label>
+      <input type="number" id="loan_interest_rate" value="5" min="0" max="20" step="0.1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="years">Loan Term (years)</label>
+      <input type="number" id="years" placeholder="e.g. 5" min="1" max="30" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Monthly Payment (if repaid)</span><span class="result-value" id="res_pmt"></span></div>
+    <div class="result-item"><span class="result-label">Total Paid (with interest)</span><span class="result-value" id="res_total"></span></div>
+    <div class="result-item"><span class="result-label">Total Interest</span><span class="result-value" id="res_interest"></span></div>
+    <div class="result-item"><span class="result-label">Balance if Not Repaid</span><span class="result-value" id="res_no_repay"></span></div>
+    <div class="result-item"><span class="result-label">Remaining Cash Value (No Repayment)</span><span class="result-value" id="res_cv_impact"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>Understanding Life Insurance Policy Loans</h2>
+    <p>A policy loan allows you to borrow against your whole life or universal life insurance cash value without a credit check or repayment schedule. Interest accrues annually on the outstanding balance. While there's no forced repayment, unpaid loans compound over time and reduce your death benefit dollar-for-dollar. If the loan balance exceeds your cash value, the policy lapses, potentially triggering a large taxable event. Managing policy loans wisely means either repaying regularly or at least paying annual interest to prevent compounding erosion of your policy's value.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Do I have to repay a life insurance policy loan?</div>
+      <div class="faq-a">No, there is no mandatory repayment schedule for policy loans. However, interest accrues on the outstanding balance. If you choose not to repay, the loan balance grows over time and is deducted from the death benefit paid to your beneficiaries. If the balance exceeds cash value, the policy may lapse.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are life insurance policy loans taxable?</div>
+      <div class="faq-a">Policy loans are generally not taxable when taken because they are not considered income — you're borrowing against your own policy. However, if the policy lapses or is surrendered with an outstanding loan, the loan amount may become taxable to the extent it exceeds your cost basis (total premiums paid).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does a policy loan affect my death benefit?</div>
+      <div class="faq-a">Any outstanding loan balance plus accrued interest is deducted from the death benefit at the time of your passing. If you borrowed $20,000 and it grew to $25,000 with unpaid interest, your beneficiaries receive the stated death benefit minus $25,000. This makes it critical to track loan balances over time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What interest rate do insurers charge on policy loans?</div>
+      <div class="faq-a">Policy loan interest rates typically range from 4–8%, depending on the insurer and policy contract. Some policies have fixed loan rates; others have variable rates tied to benchmarks. Participating policies may offset some interest cost through dividends earned on the policy's cash value during the loan period.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I take multiple loans against my policy?</div>
+      <div class="faq-a">Yes, as long as the total outstanding loan balance does not exceed the available loan value (typically 90% of cash value). Each loan accrues interest separately, and all balances must be managed carefully. Some policyholders use policy loans strategically for major expenses, but careful management is essential.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/cash-value-growth-calculator.html" class="tool-card">Cash Value Growth Calculator</a>
+    <a href="/tools/life/life-insurance-roi-calculator.html" class="tool-card">Life Insurance ROI Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Actual loan terms, interest rates, and policy impacts vary by insurer and policy contract. Consult a licensed insurance professional before taking a policy loan.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var cv = parseFloat(document.getElementById('cash_value').value)||0;
+  var loan = parseFloat(document.getElementById('loan_amount').value)||0;
+  var rate = (parseFloat(document.getElementById('loan_interest_rate').value)||5)/100;
+  var yrs = parseFloat(document.getElementById('years').value)||0;
+  if(!loan||!yrs){document.getElementById('result').style.display='none';return;}
+  var r = rate/12; var n = yrs*12;
+  var pmt = loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  var totalPaid = pmt*n;
+  var totalInterest = totalPaid - loan;
+  var noRepayBalance = loan*Math.pow(1+rate,yrs);
+  var cvAfter = Math.max(0, cv - noRepayBalance);
+  document.getElementById('res_pmt').textContent=fmt(pmt);
+  document.getElementById('res_total').textContent=fmt(totalPaid);
+  document.getElementById('res_interest').textContent=fmt(totalInterest);
+  document.getElementById('res_no_repay').textContent=fmt(noRepayBalance);
+  document.getElementById('res_cv_impact').textContent=fmt(cvAfter);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

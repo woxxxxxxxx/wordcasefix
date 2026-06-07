@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Insurance Needs Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate how much life insurance you need using the DIME method. Free calculator for debt, income, mortgage, and education funding needs.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Life Insurance Needs Calculator</div>
+
+  <h1>Life Insurance Needs Calculator (DIME Method)</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="debt">Total Debts ($)</label>
+      <input type="number" id="debt" placeholder="e.g. 20000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="annual_income">Annual Income ($)</label>
+      <input type="number" id="annual_income" placeholder="e.g. 75000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="years_to_replace">Years to Replace Income</label>
+      <input type="number" id="years_to_replace" value="10" min="1" max="40" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="mortgage_balance">Mortgage Balance ($)</label>
+      <input type="number" id="mortgage_balance" placeholder="e.g. 250000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="education_fund">Education Fund Needed ($)</label>
+      <input type="number" id="education_fund" placeholder="e.g. 50000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="existing_coverage">Existing Life Insurance Coverage ($)</label>
+      <input type="number" id="existing_coverage" placeholder="e.g. 100000" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">DIME Total Need</span><span class="result-value" id="res_dime"></span></div>
+    <div class="result-item"><span class="result-label">Existing Coverage</span><span class="result-value" id="res_existing"></span></div>
+    <div class="result-item"><span class="result-label">Net Coverage Gap</span><span class="result-value" id="res_net"></span></div>
+    <div class="result-item"><span class="result-label">Recommended Policy Size</span><span class="result-value" id="res_tier"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>About the DIME Method</h2>
+    <p>The DIME method is a straightforward framework for estimating life insurance needs. It accounts for four key financial obligations: Debts (credit cards, loans), Income replacement (annual income × years needed), Mortgage (remaining home loan balance), and Education (future tuition for children). By summing these and subtracting existing coverage, you get a clear picture of your actual gap. Financial advisors widely recommend DIME as a starting point, though individual circumstances may require adjustments. Always consult a licensed insurance professional for a personalized recommendation tailored to your unique situation and goals.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the DIME method for life insurance?</div>
+      <div class="faq-a">DIME stands for Debt, Income, Mortgage, and Education. It's a simple formula to calculate the total life insurance coverage your family would need if you passed away unexpectedly. Add up all four components and subtract any existing coverage to find your gap.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many years of income should I replace?</div>
+      <div class="faq-a">A common rule of thumb is 10 years of income replacement. However, if you have young children or a non-working spouse, you may want to choose 15–20 years. Consider how long your family would need financial support to become self-sufficient.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I include my spouse's income in the calculation?</div>
+      <div class="faq-a">If both spouses work, each should have their own life insurance policy. Calculate separately for each earner based on their individual income, debts, and the shared obligations like mortgage and education costs, splitting those proportionally.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does existing life insurance through my employer count?</div>
+      <div class="faq-a">Yes, employer-provided group life insurance counts as existing coverage. However, note that this coverage typically ends when you leave the job, so relying solely on it can be risky. Many advisors recommend having at least some portable individual coverage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is the DIME method enough or should I use other approaches?</div>
+      <div class="faq-a">DIME is a great starting point but not the only method. Other approaches include the income multiplier method (10–12× annual income) and the human life value approach. Compare results from multiple methods and consult an insurance professional for the most accurate assessment.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Cost Comparison</a>
+    <a href="/tools/life/death-benefit-calculator.html" class="tool-card">Death Benefit Calculator</a>
+    <a href="/tools/life/income-replacement-calculator.html" class="tool-card">Income Replacement Calculator</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+    <a href="/tools/life/smoker-life-insurance-calculator.html" class="tool-card">Smoker Life Insurance Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only based on the DIME method. Actual insurance needs vary by individual circumstances. Consult a licensed insurance professional for personalized advice.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var debt = parseFloat(document.getElementById('debt').value)||0;
+  var income = parseFloat(document.getElementById('annual_income').value)||0;
+  var years = parseFloat(document.getElementById('years_to_replace').value)||0;
+  var mortgage = parseFloat(document.getElementById('mortgage_balance').value)||0;
+  var edu = parseFloat(document.getElementById('education_fund').value)||0;
+  var existing = parseFloat(document.getElementById('existing_coverage').value)||0;
+  var dime = debt + income*years + mortgage + edu;
+  var net = Math.max(0, dime - existing);
+  var tier = net < 250000 ? '$250,000' : net < 500000 ? '$500,000' : net < 1000000 ? '$1,000,000' : 'Over $1,000,000';
+  document.getElementById('res_dime').textContent = fmt(dime);
+  document.getElementById('res_existing').textContent = fmt(existing);
+  document.getElementById('res_net').textContent = fmt(net);
+  document.getElementById('res_tier').textContent = tier;
+  document.getElementById('result').style.display = 'block';
+}
+</script>
+</body>
+</html>

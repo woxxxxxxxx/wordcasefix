@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Insurance Death Benefit Calculator - CoverageFixPro</title>
+  <meta name="description" content="Calculate the right life insurance death benefit for your family using present value of future expenses, debts, and existing assets.">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">CoverageFixPro</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+    <nav>
+      <a href="/tools/auto/">Auto</a>
+      <a href="/tools/health/">Health</a>
+      <a href="/tools/life/">Life</a>
+      <a href="/tools/home/">Home</a>
+      <a href="/tools/business/">Business</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/tools/life/">Life Insurance</a> › Death Benefit Calculator</div>
+
+  <h1>Life Insurance Death Benefit Calculator</h1>
+
+  <div class="calculator-box">
+    <div class="form-group">
+      <label for="annual_expenses">Annual Living Expenses ($)</label>
+      <input type="number" id="annual_expenses" placeholder="e.g. 60000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="years_to_support">Years to Support Family</label>
+      <input type="number" id="years_to_support" placeholder="e.g. 20" min="1" max="50" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="inflation_rate">Inflation Rate (%)</label>
+      <input type="number" id="inflation_rate" value="3" min="0" max="20" step="0.1" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="existing_assets">Existing Assets &amp; Savings ($)</label>
+      <input type="number" id="existing_assets" placeholder="e.g. 50000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="mortgage">Mortgage Balance ($)</label>
+      <input type="number" id="mortgage" placeholder="e.g. 250000" min="0" oninput="calc()">
+    </div>
+    <div class="form-group">
+      <label for="other_debts">Other Debts ($)</label>
+      <input type="number" id="other_debts" placeholder="e.g. 15000" min="0" oninput="calc()">
+    </div>
+  </div>
+
+  <div class="result-box" id="result" style="display:none;">
+    <h2>Your Results</h2>
+    <div class="result-item"><span class="result-label">Present Value of Expenses</span><span class="result-value" id="res_pv"></span></div>
+    <div class="result-item"><span class="result-label">Total Debts</span><span class="result-value" id="res_debts"></span></div>
+    <div class="result-item"><span class="result-label">Minus Existing Assets</span><span class="result-value" id="res_assets"></span></div>
+    <div class="result-item"><span class="result-label">Recommended Death Benefit</span><span class="result-value" id="res_recommended"></span></div>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="info-box">
+    <h2>How Death Benefit is Calculated</h2>
+    <p>The death benefit is the lump sum your beneficiaries receive when you pass away. The right amount depends on your family's future living expenses, adjusted for inflation over the support period. This calculator uses the present value formula to determine how much money invested today would generate the necessary income stream. We then add your outstanding debts and subtract existing assets. The result is a comprehensive estimate of the death benefit needed to maintain your family's financial security. Inflation adjustment is critical — without it, you may significantly underestimate future needs.</p>
+  </div>
+
+  <div class="ad-placeholder">Advertisement</div>
+
+  <div class="faq-list">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is a death benefit in life insurance?</div>
+      <div class="faq-a">A death benefit is the tax-free lump sum paid to your beneficiaries when you die. It can be used to replace lost income, pay off debts, cover funeral costs, fund education, or any other financial need. Beneficiaries can typically choose to receive it as a lump sum or structured payments.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why does inflation matter for death benefit calculation?</div>
+      <div class="faq-a">Inflation erodes purchasing power over time. A family needing $60,000 per year today will need roughly $80,000 in 10 years at 3% annual inflation. Accounting for inflation in your death benefit calculation ensures your family's coverage remains adequate through the entire support period.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I include all debts in the death benefit calculation?</div>
+      <div class="faq-a">Yes, include all significant debts: mortgage, car loans, credit cards, student loans, and medical bills. These obligations don't disappear when you die — they become your estate's responsibility. Ensuring your death benefit covers these prevents your family from having to liquidate assets to pay them off.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I reduce the death benefit needed with other assets?</div>
+      <div class="faq-a">Absolutely. Existing savings, investment accounts, real estate equity, and other life insurance policies all reduce the death benefit gap. However, be conservative — don't count assets your family may need to maintain their lifestyle, like the family home or retirement accounts not yet accessible.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How often should I recalculate my death benefit needs?</div>
+      <div class="faq-a">Review your life insurance needs at every major life change: marriage, divorce, new child, home purchase, salary increase, or significant debt changes. At minimum, reassess every 3–5 years. Your needs will evolve significantly as your financial situation changes over time.</div>
+    </div>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card">Life Insurance Needs (DIME)</a>
+    <a href="/tools/life/income-replacement-calculator.html" class="tool-card">Income Replacement Calculator</a>
+    <a href="/tools/life/life-insurance-for-mortgage.html" class="tool-card">Mortgage Life Insurance Calculator</a>
+    <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card">Term vs Whole Life Comparison</a>
+    <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card">Affordability Calculator</a>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Results are estimates only. Present value calculations depend on assumed inflation rates and may not reflect actual economic conditions. Consult a licensed insurance professional for personalized advice.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/about.html#privacy">Privacy Policy</a>
+      <a href="/about.html#terms">Terms</a>
+    </div>
+    <p>© 2026 CoverageFixPro. All rights reserved.</p>
+    <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc() {
+  var exp = parseFloat(document.getElementById('annual_expenses').value)||0;
+  var yrs = parseFloat(document.getElementById('years_to_support').value)||0;
+  var r = (parseFloat(document.getElementById('inflation_rate').value)||3)/100;
+  var assets = parseFloat(document.getElementById('existing_assets').value)||0;
+  var mort = parseFloat(document.getElementById('mortgage').value)||0;
+  var debts = parseFloat(document.getElementById('other_debts').value)||0;
+  if(!exp||!yrs){document.getElementById('result').style.display='none';return;}
+  var pv = r>0 ? exp*(1-Math.pow(1+r,-yrs))/r : exp*yrs;
+  var total = pv + mort + debts - assets;
+  var recommended = Math.max(0, total);
+  document.getElementById('res_pv').textContent=fmt(pv);
+  document.getElementById('res_debts').textContent=fmt(mort+debts);
+  document.getElementById('res_assets').textContent=fmt(assets);
+  document.getElementById('res_recommended').textContent=fmt(recommended);
+  document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>
