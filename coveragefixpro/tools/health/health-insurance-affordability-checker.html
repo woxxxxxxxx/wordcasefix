@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Insurance Affordability Checker</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Health Insurance Affordability Checker</nav>
+<h1>Health Insurance Affordability Checker</h1>
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="household_size">Household Size</label>
+    <select id="household_size" oninput="calculate()">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+      <option value="7">7</option><option value="8">8</option>
+    </select>
+  </div>
+  <div class="form-group"><label for="annual_income">Annual Household Income ($)</label><input type="number" id="annual_income" placeholder="40000" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="state_medicaid">State Expanded Medicaid?</label>
+    <select id="state_medicaid" oninput="calculate()"><option value="yes">Yes</option><option value="no">No</option></select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your Affordability Assessment</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Federal Poverty Level (FPL)</span><span class="value" id="fpl_val"></span></div>
+    <div class="result-item"><span class="label">Your Income as % of FPL</span><span class="value" id="fpl_pct"></span></div>
+    <div class="result-item"><span class="label">Income Tier</span><span class="value" id="income_tier"></span></div>
+    <div class="result-item"><span class="label">Eligibility Status</span><span class="value" id="eligibility"></span></div>
+    <div class="result-item"><span class="label">Max Affordable Premium (8.39% of income)</span><span class="value" id="max_premium"></span></div>
+    <div class="result-item"><span class="label">Recommended Action</span><span class="value" id="action"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Affordability Checker</h2>
+  <p>Health insurance affordability is determined by your household income relative to the Federal Poverty Level (FPL). The ACA uses FPL percentages to determine eligibility for various programs: Medicaid covers those below 138% FPL in expansion states, premium tax credits are available from 100% to 400% FPL, and the affordability exemption applies when the lowest-cost plan available exceeds 8.39% of your household income. This tool helps you quickly identify which income tier you fall into and what options are most relevant to your situation, from Medicaid to marketplace subsidies to hardship exemptions. Knowing your FPL percentage is the first step in navigating the complex landscape of health insurance assistance programs.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What does the affordability exemption mean?</summary><p>If the lowest-cost bronze plan available to you costs more than 8.39% of your household income in 2026, you qualify for an affordability exemption from the requirement to have health coverage and may be eligible for a catastrophic plan.</p></details>
+  <details><summary>What is the income limit for Medicaid in 2026?</summary><p>In states that expanded Medicaid, households earning up to 138% FPL qualify. For a single person, that is approximately $21,597 in 2026. Non-expansion states have stricter eligibility rules.</p></details>
+  <details><summary>What if my income is below 100% FPL and my state didn't expand Medicaid?</summary><p>You may fall into the "coverage gap" — too high for Medicaid but not qualifying for marketplace subsidies. Some states have additional assistance programs. Contact your state Medicaid office for options.</p></details>
+  <details><summary>How do I calculate my household income for ACA purposes?</summary><p>ACA uses Modified Adjusted Gross Income (MAGI), which includes wages, salaries, tips, net self-employment income, unemployment compensation, Social Security benefits, and most other taxable income.</p></details>
+  <details><summary>Can I get help if my income changes during the year?</summary><p>Yes. Report income changes to the Marketplace promptly. If your income drops significantly, you may qualify for Medicaid or larger subsidies mid-year. If it rises, adjust your APTC to avoid owing money at tax time.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+    <li><a href="premium-tax-credit-2026.html">2026 Premium Tax Credit Calculator</a></li>
+    <li><a href="catastrophic-plan-eligibility.html">Catastrophic Plan Eligibility Checker</a></li>
+    <li><a href="health-insurance-penalty-calculator.html">Health Insurance Penalty Calculator</a></li>
+    <li><a href="cobra-vs-marketplace-calculator.html">COBRA vs Marketplace Comparison</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult Healthcare.gov or a licensed insurance navigator for official determinations.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const size=parseInt(document.getElementById('household_size').value)||1;
+  const income=parseFloat(document.getElementById('annual_income').value)||0;
+  const expanded=document.getElementById('state_medicaid').value;
+  if(!income){document.getElementById('results').style.display='none';return;}
+  const fpl=15650+(size-1)*5590;
+  const pct=(income/fpl)*100;
+  const max_premium=(income*0.0839)/12;
+  let tier='',elig='',action='';
+  if(pct<100&&expanded==='yes'){tier='Below 100% FPL';elig='Likely Medicaid Eligible';action='Apply for Medicaid through your state agency';}
+  else if(pct<100){tier='Below 100% FPL';elig='Possible Coverage Gap';action='Contact your state Medicaid office — you may fall in the coverage gap';}
+  else if(pct<138&&expanded==='yes'){tier='100–138% FPL';elig='Medicaid Eligible (Expansion State)';action='Apply for Medicaid — likely free or very low cost';}
+  else if(pct<200){tier='138–200% FPL';elig='Eligible for Substantial Subsidies';action='Shop Marketplace plans — significant premium tax credits available';}
+  else if(pct<300){tier='200–300% FPL';elig='Eligible for Subsidies';action='Compare Marketplace silver plans with cost-sharing reductions';}
+  else if(pct<400){tier='300–400% FPL';elig='Eligible for Subsidies';action='Consider Marketplace plans — 8.5% income cap applies';}
+  else{tier='Above 400% FPL';elig='Limited Subsidy Eligibility';action='Check if benchmark plan exceeds 8.5% of income for possible credit';}
+  document.getElementById('fpl_val').textContent=fmt(fpl);
+  document.getElementById('fpl_pct').textContent=pct.toFixed(1)+'%';
+  document.getElementById('income_tier').textContent=tier;
+  document.getElementById('eligibility').textContent=elig;
+  document.getElementById('max_premium').textContent=fmt(max_premium)+'/month';
+  document.getElementById('action').textContent=action;
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

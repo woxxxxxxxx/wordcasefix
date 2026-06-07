@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Dental Insurance Worth It Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Dental Insurance Worth It Calculator</nav>
+<h1>Is Dental Insurance Worth It Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="monthly_premium">Monthly Dental Premium ($)</label><input type="number" id="monthly_premium" placeholder="35" oninput="calculate()"></div>
+  <div class="form-group"><label for="annual_max">Annual Maximum Benefit ($)</label><input type="number" id="annual_max" placeholder="1500" value="1500" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="cleanings">Cleaning Visits per Year</label>
+    <select id="cleanings" oninput="calculate()"><option value="1">1</option><option value="2" selected>2</option></select>
+  </div>
+  <div class="form-group">
+    <label for="procedure">Expected Major Procedure</label>
+    <select id="procedure" oninput="calculate()">
+      <option value="none">None</option>
+      <option value="filling">Filling</option>
+      <option value="crown">Crown</option>
+      <option value="root_canal">Root Canal</option>
+    </select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Dental Insurance Value Analysis</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Estimated Annual Dental Costs</span><span class="value" id="annual_costs"></span></div>
+    <div class="result-item"><span class="label">Annual Premium Cost</span><span class="value" id="annual_premium"></span></div>
+    <div class="result-item"><span class="label">Insurance Covers (up to max)</span><span class="value" id="ins_covers"></span></div>
+    <div class="result-item"><span class="label">Net Savings with Insurance</span><span class="value" id="net_savings"></span></div>
+    <div class="result-item"><span class="label">Verdict</span><span class="value" id="verdict"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Dental Insurance Worth It Calculator</h2>
+  <p>Dental insurance works differently from medical insurance — it typically has annual maximum benefits (often $1,000–$2,000) rather than unlimited coverage. This means dental insurance is most valuable when you anticipate significant dental work within those limits. Most plans cover preventive care (cleanings and exams) at 100%, basic care (fillings) at 70–80%, and major work (crowns, root canals) at 50%. This calculator compares your expected annual dental costs against your premium to determine whether dental insurance will save you money this year. Keep in mind that dental insurance also provides valuable access to negotiated rates — even when you exceed your annual maximum, you pay the insurer's discounted rate rather than full retail prices.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What does dental insurance typically cover?</summary><p>Most dental plans use a 100/80/50 structure: 100% for preventive care (cleanings, X-rays), 80% for basic care (fillings, extractions), and 50% for major care (crowns, root canals, bridges), all subject to the annual maximum benefit.</p></details>
+  <details><summary>What is a typical dental insurance annual maximum?</summary><p>Most employer and individual dental plans have annual maximums of $1,000 to $2,000. Some enhanced plans offer $3,000 or higher. Once you hit the maximum, you pay 100% of remaining costs for the year.</p></details>
+  <details><summary>Is there a waiting period for dental insurance?</summary><p>Yes, many individual dental plans have waiting periods of 6–12 months for basic and major services. Employer group plans often waive waiting periods. Enrolling before you need major work is advisable.</p></details>
+  <details><summary>Can I use dental insurance for cosmetic procedures?</summary><p>Generally no. Cosmetic procedures like teeth whitening, veneers, and purely aesthetic bonding are not covered by dental insurance. Coverage is limited to restorative and preventive care.</p></details>
+  <details><summary>Is dental insurance worth it if I only need cleanings?</summary><p>It depends on the premium. If your premium costs more than two cleanings per year (typically $150 each = $300 total), you may save money paying out-of-pocket — unless the plan provides access to discounted rates.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="vision-insurance-calculator.html">Vision Insurance Worth It Calculator</a></li>
+    <li><a href="fsa-calculator.html">FSA Contribution Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Actual dental costs and coverage vary by plan and provider.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const mp=parseFloat(document.getElementById('monthly_premium').value)||0;
+  const max_ben=parseFloat(document.getElementById('annual_max').value)||1500;
+  const cleanings=parseInt(document.getElementById('cleanings').value);
+  const proc=document.getElementById('procedure').value;
+  const proc_cost={none:0,filling:250,crown:1200,root_canal:1000};
+  const annual_costs=cleanings*150+proc_cost[proc];
+  const annual_premium=mp*12;
+  const ins_covers=Math.min(annual_costs,max_ben);
+  const net_savings=ins_covers-annual_premium;
+  document.getElementById('annual_costs').textContent=fmt(annual_costs);
+  document.getElementById('annual_premium').textContent=fmt(annual_premium);
+  document.getElementById('ins_covers').textContent=fmt(ins_covers);
+  document.getElementById('net_savings').textContent=fmt(Math.abs(net_savings))+(net_savings>=0?' savings':' loss');
+  document.getElementById('verdict').textContent=net_savings>=0?'Worth it — insurance saves you money this year':'May not be worth it — consider paying out-of-pocket';
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Insurance Penalty Calculator by State</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Health Insurance Penalty Calculator</nav>
+<h1>Health Insurance Penalty Calculator by State</h1>
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="state">State</label>
+    <select id="state" oninput="calculate()">
+      <option value="CA">California</option>
+      <option value="NJ">New Jersey</option>
+      <option value="MA">Massachusetts</option>
+      <option value="DC">Washington D.C.</option>
+      <option value="RI">Rhode Island</option>
+      <option value="Other">Other State</option>
+    </select>
+  </div>
+  <div class="form-group"><label for="months_uninsured">Months Uninsured in 2026</label>
+    <select id="months_uninsured" oninput="calculate()">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+      <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+    </select>
+  </div>
+  <div class="form-group"><label for="annual_income">Annual Household Income ($)</label><input type="number" id="annual_income" placeholder="55000" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Estimated State Penalty</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">State</span><span class="value" id="state_name"></span></div>
+    <div class="result-item"><span class="label">Months Uninsured</span><span class="value" id="months_val"></span></div>
+    <div class="result-item"><span class="label">Estimated Penalty</span><span class="value" id="penalty_val"></span></div>
+    <div class="result-item"><span class="label">Penalty Basis</span><span class="value" id="penalty_basis"></span></div>
+  </div>
+  <div id="state_note" class="info-box" style="margin-top:16px;"></div>
+</div>
+<div class="description">
+  <h2>About the Health Insurance Penalty Calculator</h2>
+  <p>The federal individual mandate penalty was eliminated starting in 2019. However, several states have enacted their own individual mandates requiring residents to maintain qualifying health coverage or pay a state-level penalty. As of 2026, states with active individual mandates include California, New Jersey, Massachusetts, Washington D.C., and Rhode Island. California's penalty is the greater of $900 per adult (prorated by months uninsured) or 2.5% of household income above the filing threshold. Massachusetts, New Jersey, D.C., and Rhode Island each have their own formulas. Residents of all other states face no penalty for being uninsured. However, having coverage remains strongly advisable to protect against catastrophic medical costs.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Is there still a federal penalty for not having health insurance?</summary><p>No. The federal individual mandate penalty was reduced to $0 starting January 1, 2019 as part of the Tax Cuts and Jobs Act of 2017. There is no federal tax penalty for being uninsured in 2026.</p></details>
+  <details><summary>Which states have their own health insurance mandates?</summary><p>As of 2026: California, New Jersey, Massachusetts, Washington D.C., and Rhode Island all have active individual mandate penalties. Vermont has a mandate but no penalty enforcement. Other states may enact mandates in future years.</p></details>
+  <details><summary>Are there exemptions from state penalties?</summary><p>Yes. Each state offers exemptions similar to the ACA federal exemptions, including hardship, religious beliefs, incarceration, income below the filing threshold, and short coverage gaps. Apply for exemptions through your state tax authority.</p></details>
+  <details><summary>How is California's penalty calculated?</summary><p>California's penalty is the greater of: $900 per adult (and $450 per dependent child) prorated by months uninsured, OR 2.5% of household income above the filing threshold, also prorated by months uninsured. The per-adult amount increases annually with inflation.</p></details>
+  <details><summary>Where do I report my coverage status for state penalties?</summary><p>State penalties are assessed through your state income tax return. You will need to report months of coverage and may need to provide proof of coverage (Form 1095-A, 1095-B, or 1095-C) when filing.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+    <li><a href="catastrophic-plan-eligibility.html">Catastrophic Plan Eligibility Checker</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+    <li><a href="short-term-health-insurance-calculator.html">Short-Term Health Insurance Calculator</a></li>
+    <li><a href="cobra-vs-marketplace-calculator.html">COBRA vs Marketplace Comparison</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. State penalty rules change annually. Consult a tax professional or your state tax authority for official penalty calculations.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const state=document.getElementById('state').value;
+  const months=parseInt(document.getElementById('months_uninsured').value)||12;
+  const income=parseFloat(document.getElementById('annual_income').value)||0;
+  const stateNames={CA:'California',NJ:'New Jersey',MA:'Massachusetts',DC:'Washington D.C.',RI:'Rhode Island',Other:'Other State'};
+  let penalty=0,basis='',note='';
+  if(state==='CA'){
+    const flat=900*(months/12);
+    const pct=Math.max(0,income-16100)*0.025*(months/12);
+    penalty=Math.max(flat,pct);
+    basis='Greater of $900/adult prorated OR 2.5% of income above filing threshold';
+    note='California Franchise Tax Board assesses this penalty on your state tax return. Exemptions available for hardship and affordability.';
+  } else if(state==='Other'){
+    penalty=0;
+    basis='No state penalty';
+    note='Your state does not have an individual mandate penalty. However, having health coverage is strongly recommended to protect against unexpected medical costs.';
+  } else {
+    penalty=0;
+    basis='Contact state for exact calculation';
+    note=stateNames[state]+' has an individual mandate. The penalty formula varies — contact your state tax authority or visit your state health exchange for the official 2026 penalty calculation. Estimated penalties are typically similar to California\'s structure.';
+  }
+  document.getElementById('state_name').textContent=stateNames[state];
+  document.getElementById('months_val').textContent=months+' month'+(months>1?'s':'');
+  document.getElementById('penalty_val').textContent=penalty>0?fmt(penalty):(state==='Other'?'$0.00':'Contact state for details');
+  document.getElementById('penalty_basis').textContent=basis;
+  document.getElementById('state_note').innerHTML='<strong>Note:</strong> '+note;
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COBRA Insurance Cost Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; COBRA Cost Estimator</nav>
+<h1>COBRA Insurance Cost Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="employer_premium">Total Employer Monthly Premium (employer + employee share) ($)</label>
+    <input type="number" id="employer_premium" placeholder="1200" oninput="calculate()">
+  </div>
+  <div class="form-group">
+    <label for="coverage_type">Coverage Type</label>
+    <select id="coverage_type" oninput="calculate()">
+      <option value="self">Self Only</option>
+      <option value="self_spouse">Self + Spouse</option>
+      <option value="family">Family</option>
+    </select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>COBRA Cost Estimate</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">COBRA Monthly Premium (102%)</span><span class="value" id="cobra_monthly"></span></div>
+    <div class="result-item"><span class="label">COBRA Annual Cost</span><span class="value" id="cobra_annual"></span></div>
+    <div class="result-item"><span class="label">ACA Marketplace Est. Monthly</span><span class="value" id="aca_monthly"></span></div>
+    <div class="result-item"><span class="label">ACA Marketplace Est. Annual</span><span class="value" id="aca_annual"></span></div>
+    <div class="result-item"><span class="label">Potential Annual Savings (ACA)</span><span class="value" id="savings"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the COBRA Cost Calculator</h2>
+  <p>COBRA (Consolidated Omnibus Budget Reconciliation Act) allows employees who lose job-based health coverage to continue their existing plan for up to 18 months. However, the cost is significant: you pay the full premium — both your previous employee share and the employer's contribution — plus a 2% administrative fee, totaling 102% of the original premium. This calculator helps you estimate your COBRA costs and compare them against typical ACA Marketplace plans. Understanding this cost difference is crucial when deciding between COBRA and marketplace alternatives after a job loss or qualifying life event. Many people find ACA marketplace plans significantly cheaper, especially if they qualify for premium tax credits based on their income.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>How long can I stay on COBRA?</summary><p>Generally up to 18 months after job loss or reduction in hours. Certain qualifying events like divorce or a dependent aging off the plan may extend coverage to 36 months for those individuals.</p></details>
+  <details><summary>When must I elect COBRA?</summary><p>You have 60 days from losing coverage or receiving the COBRA election notice (whichever is later) to elect COBRA. Coverage is retroactive to the date you lost your employer coverage.</p></details>
+  <details><summary>Is COBRA always more expensive than marketplace plans?</summary><p>Often yes, especially if you qualify for ACA subsidies. COBRA maintains your existing network and coverage without a gap, which may be valuable if you have ongoing treatments or prefer not to switch providers.</p></details>
+  <details><summary>Can I switch from COBRA to a marketplace plan mid-year?</summary><p>Losing COBRA coverage (not voluntarily dropping it) qualifies as a Special Enrollment Period, allowing you to enroll in a marketplace plan within 60 days.</p></details>
+  <details><summary>Does my employer contribution stop immediately when I lose my job?</summary><p>Yes. When you elect COBRA, you pay the full combined premium. Your employer is no longer required to contribute to your health insurance after employment ends.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="cobra-vs-marketplace-calculator.html">COBRA vs Marketplace Insurance Comparison</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Health Insurance Subsidy Calculator</a></li>
+    <li><a href="hmo-vs-ppo-cost-calculator.html">HMO vs PPO Cost Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Health Plan Comparison Tool</a></li>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const ep=parseFloat(document.getElementById('employer_premium').value)||0;
+  const ct=document.getElementById('coverage_type').value;
+  if(!ep){document.getElementById('results').style.display='none';return;}
+  const cobra_monthly=ep*1.02;
+  const cobra_annual=cobra_monthly*12;
+  const aca_map={self:500,self_spouse:900,family:1200};
+  const aca_monthly=aca_map[ct];
+  const aca_annual=aca_monthly*12;
+  const savings=cobra_annual-aca_annual;
+  document.getElementById('cobra_monthly').textContent=fmt(cobra_monthly);
+  document.getElementById('cobra_annual').textContent=fmt(cobra_annual);
+  document.getElementById('aca_monthly').textContent=fmt(aca_monthly);
+  document.getElementById('aca_annual').textContent=fmt(aca_annual);
+  document.getElementById('savings').textContent=savings>0?fmt(savings)+' (ACA cheaper)':'ACA may cost more';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

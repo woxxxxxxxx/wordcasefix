@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Insurance Worth It Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Vision Insurance Calculator</nav>
+<h1>Vision Insurance Worth It Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="monthly_premium">Monthly Vision Premium ($)</label><input type="number" id="monthly_premium" placeholder="15" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="needs_glasses">Do you wear glasses?</label>
+    <select id="needs_glasses" oninput="calculate()"><option value="yes">Yes</option><option value="no">No</option></select>
+  </div>
+  <div class="form-group">
+    <label for="contacts">Do you wear contact lenses?</label>
+    <select id="contacts" oninput="calculate()"><option value="no">No</option><option value="yes">Yes</option></select>
+  </div>
+  <div class="form-group">
+    <label for="exam_freq">Eye Exam Frequency</label>
+    <select id="exam_freq" oninput="calculate()"><option value="annual">Every Year</option><option value="every2years">Every 2 Years</option></select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Vision Insurance Value Analysis</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Annual Out-of-Pocket (no insurance)</span><span class="value" id="no_ins_cost"></span></div>
+    <div class="result-item"><span class="label">Annual Out-of-Pocket (with insurance)</span><span class="value" id="with_ins_cost"></span></div>
+    <div class="result-item"><span class="label">Annual Premium Cost</span><span class="value" id="annual_premium"></span></div>
+    <div class="result-item"><span class="label">Net Annual Savings</span><span class="value" id="net_savings"></span></div>
+    <div class="result-item"><span class="label">Verdict</span><span class="value" id="verdict"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Vision Insurance Calculator</h2>
+  <p>Vision insurance helps cover the cost of routine eye care, including annual exams, eyeglasses, and contact lenses. Most vision plans cost between $5 and $30 per month and provide an allowance for frames or contacts each year. This calculator determines whether vision insurance saves you money based on your specific eye care needs. If you require both glasses and contacts, or need annual exams plus new frames, vision insurance often provides clear value. For those who only need an occasional eye exam, paying out-of-pocket may be more economical. Discount vision plans (like VSP or EyeMed) also provide access to negotiated rates even beyond your benefit allowances, which can further reduce your costs at participating providers.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What does vision insurance typically cover?</summary><p>Most vision plans cover annual eye exams, a frames and lenses allowance (typically $100–$200), and a contact lens allowance (typically $100–$150). Some plans also include discounts on LASIK surgery.</p></details>
+  <details><summary>Can I use vision insurance for LASIK?</summary><p>Many vision plans offer a discount (typically 15%) on LASIK from participating providers, but they do not typically cover the full cost. Some plans offer a fixed benefit amount toward laser vision correction.</p></details>
+  <details><summary>Is vision insurance available without employer coverage?</summary><p>Yes. Individual vision plans are available through insurers like VSP, EyeMed, and Davis Vision, as well as through the ACA marketplace in some states. Costs range from about $5 to $30 per month.</p></details>
+  <details><summary>Do vision benefits roll over if unused?</summary><p>Generally no. Most vision plan benefits reset annually. Unused frame or contact lens allowances typically do not carry over to the next year, making it important to use your benefits before year-end.</p></details>
+  <details><summary>Can I use my HSA or FSA for vision expenses?</summary><p>Yes. HSA and FSA funds can be used for qualifying vision expenses including eye exams, prescription glasses, contact lenses and supplies, and prescription sunglasses, regardless of whether you have vision insurance.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="dental-insurance-worth-it-calculator.html">Dental Insurance Worth It Calculator</a></li>
+    <li><a href="fsa-calculator.html">FSA Contribution Calculator</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Actual vision costs and coverage vary by plan and provider.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const mp=parseFloat(document.getElementById('monthly_premium').value)||0;
+  const glasses=document.getElementById('needs_glasses').value==='yes';
+  const contacts=document.getElementById('contacts').value==='yes';
+  const freq=document.getElementById('exam_freq').value;
+  const exam_cost=freq==='annual'?150:75;
+  const glasses_cost=glasses?300:0;
+  const contacts_cost=contacts?250:0;
+  const total_no_ins=exam_cost+glasses_cost+contacts_cost;
+  const exam_cover=freq==='annual'?100:50;
+  const glasses_cover=glasses?150:0;
+  const contacts_cover=contacts?150:0;
+  const total_cover=exam_cover+glasses_cover+contacts_cover;
+  const annual_premium=mp*12;
+  const with_ins=total_no_ins-total_cover+annual_premium;
+  const net_savings=total_no_ins-with_ins;
+  document.getElementById('no_ins_cost').textContent=fmt(total_no_ins);
+  document.getElementById('with_ins_cost').textContent=fmt(with_ins);
+  document.getElementById('annual_premium').textContent=fmt(annual_premium);
+  document.getElementById('net_savings').textContent=fmt(Math.abs(net_savings))+(net_savings>=0?' savings':' loss');
+  document.getElementById('verdict').textContent=net_savings>=0?'Worth it — insurance saves you money':'May not be worth it for your usage level';
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

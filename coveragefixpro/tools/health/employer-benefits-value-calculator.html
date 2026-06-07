@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employer Health Insurance Benefits Value Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Employer Benefits Value Calculator</nav>
+<h1>Employer Health Insurance Benefits Value Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="employer_monthly">Employer's Monthly Contribution ($)</label><input type="number" id="employer_monthly" placeholder="600" oninput="calculate()"></div>
+  <div class="form-group"><label for="employee_monthly">Your Monthly Premium Contribution ($)</label><input type="number" id="employee_monthly" placeholder="200" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Employer Benefits Value Breakdown</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Employer Annual Contribution</span><span class="value" id="emp_annual"></span></div>
+    <div class="result-item"><span class="label">Your Annual Premium Cost</span><span class="value" id="ee_annual"></span></div>
+    <div class="result-item"><span class="label">Total Plan Annual Premium</span><span class="value" id="total_premium"></span></div>
+    <div class="result-item"><span class="label">Employer Covers</span><span class="value" id="emp_pct"></span></div>
+    <div class="result-item"><span class="label">Pre-Tax Equivalent Value (22% bracket)</span><span class="value" id="pretax_equiv"></span></div>
+    <div class="result-item"><span class="label">Effective Total Compensation Value</span><span class="value" id="total_comp"></span></div>
+    <div class="result-item"><span class="label">Your Monthly Take-Home Savings</span><span class="value" id="monthly_savings"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Employer Benefits Value Calculator</h2>
+  <p>Employer-sponsored health insurance is one of the most valuable components of your total compensation package — yet it is often overlooked when comparing job offers or evaluating your current position. The true value of employer health benefits goes beyond the dollar amount they contribute to your premium. Since employer contributions are excluded from your taxable income, the tax-equivalent value is even higher. For example, a $600 monthly employer contribution is worth approximately $769 in pre-tax equivalent income at the 22% tax bracket. This calculator helps you understand the full financial value of your employer's health insurance contribution as part of your total compensation, which is essential context when considering salary negotiations or job changes.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Are employer health insurance contributions taxable to me?</summary><p>No. Employer contributions to your health insurance premiums are excluded from your gross income and are not subject to federal income tax, Social Security tax, or Medicare tax, making them highly tax-efficient compensation.</p></details>
+  <details><summary>How do I find out how much my employer contributes?</summary><p>Check your benefits enrollment materials, pay stub, or ask your HR department. Your W-2 Box 12 Code DD shows the total cost of employer-sponsored health coverage (both employer and employee shares).</p></details>
+  <details><summary>Should I factor health benefits into salary negotiations?</summary><p>Absolutely. If a new employer offers less health coverage, you need a higher salary to offset the cost. Use the pre-tax equivalent value to make a true apples-to-apples comparison between job offers.</p></details>
+  <details><summary>What percentage do employers typically contribute?</summary><p>On average, employers cover about 73% of single employee premiums and 58% of family premiums. However, this varies widely by employer, industry, and plan type.</p></details>
+  <details><summary>Can my employer reduce or eliminate health benefits?</summary><p>Employers with 50+ full-time employees must offer coverage under the ACA employer mandate, but they can change plan designs, shift more cost to employees, or modify benefits during open enrollment.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="cobra-cost-estimator.html">COBRA Cost Estimator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+    <li><a href="dependent-coverage-calculator.html">Dependent Coverage Cost Calculator</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Tax savings calculations assume a 22% federal bracket. Consult a tax professional for personalized advice.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const emp=parseFloat(document.getElementById('employer_monthly').value)||0;
+  const ee=parseFloat(document.getElementById('employee_monthly').value)||0;
+  if(!emp){document.getElementById('results').style.display='none';return;}
+  const emp_annual=emp*12;
+  const ee_annual=ee*12;
+  const total=emp_annual+ee_annual;
+  const pct=total>0?(emp_annual/total*100).toFixed(1)+'%':'N/A';
+  const pretax=emp_annual/(1-0.22);
+  const total_comp=ee_annual+pretax;
+  document.getElementById('emp_annual').textContent=fmt(emp_annual);
+  document.getElementById('ee_annual').textContent=fmt(ee_annual);
+  document.getElementById('total_premium').textContent=fmt(total);
+  document.getElementById('emp_pct').textContent=pct+' of total premium';
+  document.getElementById('pretax_equiv').textContent=fmt(pretax)+'/year';
+  document.getElementById('total_comp').textContent=fmt(total_comp)+'/year';
+  document.getElementById('monthly_savings').textContent=fmt(emp*1.282)+'/month equivalent';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

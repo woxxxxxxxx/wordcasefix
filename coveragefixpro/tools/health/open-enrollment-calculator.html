@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Enrollment Health Plan Comparison Tool</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Open Enrollment Plan Comparison Tool</nav>
+<h1>Open Enrollment Health Plan Comparison Tool</h1>
+<div class="calculator-box">
+  <h3>Plan A</h3>
+  <div class="form-group"><label for="a_premium">Plan A Monthly Premium ($)</label><input type="number" id="a_premium" placeholder="300" oninput="calculate()"></div>
+  <div class="form-group"><label for="a_deductible">Plan A Deductible ($)</label><input type="number" id="a_deductible" placeholder="1500" oninput="calculate()"></div>
+  <div class="form-group"><label for="a_oop">Plan A Out-of-Pocket Max ($)</label><input type="number" id="a_oop" placeholder="6000" oninput="calculate()"></div>
+  <h3>Plan B</h3>
+  <div class="form-group"><label for="b_premium">Plan B Monthly Premium ($)</label><input type="number" id="b_premium" placeholder="450" oninput="calculate()"></div>
+  <div class="form-group"><label for="b_deductible">Plan B Deductible ($)</label><input type="number" id="b_deductible" placeholder="500" oninput="calculate()"></div>
+  <div class="form-group"><label for="b_oop">Plan B Out-of-Pocket Max ($)</label><input type="number" id="b_oop" placeholder="4000" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>3-Scenario Cost Comparison</h2>
+  <table class="comparison-table">
+    <thead><tr><th>Scenario</th><th>Medical Use</th><th>Plan A Total</th><th>Plan B Total</th><th>Better Plan</th></tr></thead>
+    <tbody>
+      <tr><td>Low Use</td><td>$2,000</td><td id="a_low"></td><td id="b_low"></td><td id="rec_low"></td></tr>
+      <tr><td>Medium Use</td><td>$8,000</td><td id="a_med"></td><td id="b_med"></td><td id="rec_med"></td></tr>
+      <tr><td>High Use</td><td>$20,000</td><td id="a_high"></td><td id="b_high"></td><td id="rec_high"></td></tr>
+    </tbody>
+  </table>
+  <div id="summary_msg" class="info-box" style="margin-top:16px;"></div>
+</div>
+<div class="description">
+  <h2>About the Open Enrollment Comparison Tool</h2>
+  <p>Open Enrollment is the annual window when you can change your health insurance plan. Choosing the right plan requires modeling your expected healthcare usage — not just comparing monthly premiums. A low-premium, high-deductible plan saves money when you are healthy, but can cost much more if you face significant medical needs. This tool compares two plans across three usage scenarios: low use ($2,000 in medical expenses, typical for a healthy year), medium use ($8,000, representing a moderate medical event), and high use ($20,000, representing a serious illness or injury). By seeing costs across all three scenarios, you can make an informed decision based on your risk tolerance and anticipated healthcare needs for the coming year.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>When is Open Enrollment for 2026 health plans?</summary><p>For ACA Marketplace plans, Open Enrollment typically runs November 1 through January 15. Employer plan enrollment windows vary by company. Medicare Open Enrollment runs October 15 through December 7.</p></details>
+  <details><summary>What if I miss Open Enrollment?</summary><p>You must wait until the next Open Enrollment period unless you qualify for a Special Enrollment Period triggered by a qualifying life event such as job loss, marriage, birth of a child, or moving to a new coverage area.</p></details>
+  <details><summary>Should I always choose the lowest premium plan?</summary><p>Not necessarily. Lower premium plans typically have higher deductibles and out-of-pocket maximums. If you anticipate medical expenses, a higher-premium plan with lower cost-sharing may result in lower total annual costs.</p></details>
+  <details><summary>What is the metal tier system on the Marketplace?</summary><p>Marketplace plans are categorized as Bronze (lowest premiums, highest cost-sharing), Silver, Gold, and Platinum (highest premiums, lowest cost-sharing). Cost-sharing reductions are only available on Silver plans.</p></details>
+  <details><summary>Can I change plans outside of Open Enrollment?</summary><p>Only if you have a qualifying Special Enrollment Period event. Examples include losing other coverage, getting married or divorced, having a baby, or moving to a new area where your current plan is not available.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="hmo-vs-ppo-cost-calculator.html">HMO vs PPO Cost Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="deductible-met-tracker.html">Deductible Tracker</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates using simplified 20% coinsurance. Actual plan costs vary. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<style>
+.comparison-table{width:100%;border-collapse:collapse;margin-top:12px;}
+.comparison-table th,.comparison-table td{padding:10px 12px;border:1px solid #ddd;text-align:center;}
+.comparison-table thead{background:#f0f4ff;}
+.comparison-table tr:nth-child(even){background:#fafafa;}
+</style>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function planCost(premium,ded,oop,medical){
+  const annual_prem=premium*12;
+  let oop_cost;
+  if(medical<=ded)oop_cost=medical;
+  else oop_cost=Math.min(ded+(medical-ded)*0.2,oop);
+  return annual_prem+oop_cost;
+}
+function calculate(){
+  const ap=parseFloat(document.getElementById('a_premium').value)||0;
+  const ad=parseFloat(document.getElementById('a_deductible').value)||0;
+  const ao=parseFloat(document.getElementById('a_oop').value)||0;
+  const bp=parseFloat(document.getElementById('b_premium').value)||0;
+  const bd=parseFloat(document.getElementById('b_deductible').value)||0;
+  const bo=parseFloat(document.getElementById('b_oop').value)||0;
+  if(!ap||!bp){document.getElementById('results').style.display='none';return;}
+  const scenarios=[2000,8000,20000];
+  const ids=[['a_low','b_low','rec_low'],['a_med','b_med','rec_med'],['a_high','b_high','rec_high']];
+  let a_wins=0,b_wins=0;
+  scenarios.forEach((med,i)=>{
+    const a=planCost(ap,ad,ao,med);
+    const b=planCost(bp,bd,bo,med);
+    document.getElementById(ids[i][0]).textContent=fmt(a);
+    document.getElementById(ids[i][1]).textContent=fmt(b);
+    if(a<=b){document.getElementById(ids[i][2]).textContent='Plan A';a_wins++;}
+    else{document.getElementById(ids[i][2]).textContent='Plan B';b_wins++;}
+  });
+  document.getElementById('summary_msg').innerHTML='<strong>Overall:</strong> Plan A wins in '+a_wins+' of 3 scenarios. Plan B wins in '+b_wins+' of 3 scenarios. Choose based on your expected healthcare usage.';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSA Investment Growth Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; HSA Investment Growth Calculator</nav>
+<h1>HSA Investment Growth Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="current_balance">Current HSA Balance ($)</label><input type="number" id="current_balance" placeholder="5000" oninput="calculate()"></div>
+  <div class="form-group"><label for="annual_contribution">Annual Contribution ($)</label><input type="number" id="annual_contribution" placeholder="4300" oninput="calculate()"></div>
+  <div class="form-group"><label for="years">Years to Retirement</label><input type="number" id="years" placeholder="20" oninput="calculate()"></div>
+  <div class="form-group"><label for="growth_rate">Expected Annual Growth Rate (%)</label><input type="number" id="growth_rate" placeholder="7" value="7" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>HSA Growth Projection</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Projected Balance at Retirement</span><span class="value" id="fv"></span></div>
+    <div class="result-item"><span class="label">Total Contributions</span><span class="value" id="total_contrib"></span></div>
+    <div class="result-item"><span class="label">Starting Balance Growth</span><span class="value" id="balance_growth"></span></div>
+    <div class="result-item"><span class="label">Investment Gains</span><span class="value" id="inv_gains"></span></div>
+    <div class="result-item"><span class="label">Effective Annual Tax Savings</span><span class="value" id="tax_benefit"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the HSA Growth Calculator</h2>
+  <p>An HSA is not just a spending account — it is a powerful long-term investment vehicle. Once your HSA balance exceeds your provider's investment threshold (typically $1,000–$2,000), you can invest the excess in mutual funds, ETFs, or other options, similar to a 401(k). Earnings grow completely tax-free. This calculator projects your HSA balance at retirement using compound growth, showing you the potential value of consistently contributing and investing your HSA funds. With a 7% average annual return — consistent with long-term stock market averages — even modest annual contributions can grow into a substantial healthcare nest egg. Medical costs in retirement are estimated at $315,000 per couple, making HSA growth planning a crucial component of retirement readiness.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>When can I start investing my HSA funds?</summary><p>Most HSA providers allow you to invest once your cash balance exceeds a threshold, typically $1,000 to $2,000. Check with your HSA administrator for their specific investment options and thresholds.</p></details>
+  <details><summary>Are HSA investment gains taxable?</summary><p>No. HSA investment earnings grow completely tax-free, and withdrawals for qualified medical expenses are also tax-free. This triple tax advantage makes HSAs more tax-efficient than either traditional or Roth IRAs for healthcare expenses.</p></details>
+  <details><summary>What happens to my HSA at age 65?</summary><p>After age 65, you can withdraw funds for any purpose without penalty (just ordinary income tax on non-medical withdrawals). For medical expenses, withdrawals remain completely tax-free.</p></details>
+  <details><summary>What is a realistic growth rate for HSA investments?</summary><p>A 6–8% average annual return is commonly used for long-term stock market projections. Conservative investors might use 4–5%, while aggressive investors might project 8–10%. The default 7% reflects long-term historical stock market averages.</p></details>
+  <details><summary>Can I contribute to an HSA after age 65?</summary><p>No. Once you enroll in Medicare (typically at 65), you can no longer make new HSA contributions. However, you can continue to use existing HSA funds for qualified medical expenses tax-free.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Limit Calculator</a></li>
+    <li><a href="fsa-calculator.html">FSA Contribution Calculator</a></li>
+    <li><a href="medical-expense-tax-deduction-calculator.html">Medical Expense Tax Deduction Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Projections are estimates based on assumed growth rates. Actual investment returns vary and are not guaranteed.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const b=parseFloat(document.getElementById('current_balance').value)||0;
+  const c=parseFloat(document.getElementById('annual_contribution').value)||0;
+  const n=parseInt(document.getElementById('years').value)||0;
+  const r=parseFloat(document.getElementById('growth_rate').value)/100||0.07;
+  if(!n){document.getElementById('results').style.display='none';return;}
+  const fv_balance=b*Math.pow(1+r,n);
+  const fv_contrib=c*(Math.pow(1+r,n)-1)/r;
+  const fv=fv_balance+fv_contrib;
+  const total_contrib=c*n;
+  const inv_gains=fv-b-total_contrib;
+  const tax_benefit=c*0.22;
+  document.getElementById('fv').textContent=fmt(fv);
+  document.getElementById('total_contrib').textContent=fmt(total_contrib);
+  document.getElementById('balance_growth').textContent=fmt(fv_balance-b);
+  document.getElementById('inv_gains').textContent=fmt(inv_gains);
+  document.getElementById('tax_benefit').textContent=fmt(tax_benefit)+'/yr';
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependent Health Insurance Coverage Cost Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Dependent Coverage Cost Calculator</nav>
+<h1>Dependent Health Insurance Coverage Cost Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="ee_only">Employee Only Monthly Premium ($)</label><input type="number" id="ee_only" placeholder="200" oninput="calculate()"></div>
+  <div class="form-group"><label for="ee_spouse">Employee + Spouse Monthly Premium ($)</label><input type="number" id="ee_spouse" placeholder="500" oninput="calculate()"></div>
+  <div class="form-group"><label for="ee_child">Employee + Child(ren) Monthly Premium ($)</label><input type="number" id="ee_child" placeholder="380" oninput="calculate()"></div>
+  <div class="form-group"><label for="family">Family Monthly Premium ($)</label><input type="number" id="family" placeholder="650" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Dependent Coverage Cost Breakdown</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr><th>Coverage Tier</th><th>Monthly Premium</th><th>Annual Premium</th><th>Marginal Cost vs Employee Only</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Employee Only</td><td id="m_ee"></td><td id="a_ee"></td><td>—</td></tr>
+      <tr><td>Employee + Spouse</td><td id="m_sp"></td><td id="a_sp"></td><td id="marg_sp"></td></tr>
+      <tr><td>Employee + Child(ren)</td><td id="m_ch"></td><td id="a_ch"></td><td id="marg_ch"></td></tr>
+      <tr><td>Family</td><td id="m_fam"></td><td id="a_fam"></td><td id="marg_fam"></td></tr>
+    </tbody>
+  </table>
+  <div class="result-grid" style="margin-top:20px;">
+    <div class="result-item"><span class="label">Spouse Coverage Monthly Cost</span><span class="value" id="spouse_cost"></span></div>
+    <div class="result-item"><span class="label">Child(ren) Coverage Monthly Cost</span><span class="value" id="child_cost"></span></div>
+    <div class="result-item"><span class="label">Adding Both vs Family Plan</span><span class="value" id="vs_family"></span></div>
+    <div class="result-item"><span class="label">Per-Person Cost (Family of 4)</span><span class="value" id="per_person"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Dependent Coverage Calculator</h2>
+  <p>Adding dependents to your employer health insurance is often more cost-effective than having each family member on separate plans, but the incremental cost can be significant. This calculator breaks down the marginal cost of adding a spouse, children, or your entire family to your health plan. Understanding the true cost of dependent coverage helps you make informed decisions during Open Enrollment, especially when a spouse has access to their own employer coverage. In some cases, it may be cheaper for a spouse to enroll in their own employer's plan while children are covered under one parent's family plan. Compare all options to find the most economical coverage combination for your family.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Can my dependents be covered under my employer plan?</summary><p>Most employer plans allow you to cover a legal spouse and dependent children up to age 26. Some plans also allow coverage for domestic partners, though this may have different tax treatment than spousal coverage.</p></details>
+  <details><summary>Is it better for spouses to have separate plans?</summary><p>It depends. If both spouses have employer coverage available, compare the total cost of family coverage on one plan versus each having individual coverage on their own employer's plan. The cheaper option varies by employer contribution levels.</p></details>
+  <details><summary>Do children stay covered until age 26 regardless of student status?</summary><p>Yes. The ACA requires health plans that cover dependents to allow adult children to stay on a parent's plan until age 26, regardless of student status, marital status, or whether they live with the parent.</p></details>
+  <details><summary>What is a spousal surcharge?</summary><p>Some employers charge an additional premium (surcharge) if you add a spouse who has access to their own employer's health coverage. This surcharge can range from $50 to $200+ per month and should be factored into your comparison.</p></details>
+  <details><summary>Can I add a dependent outside of Open Enrollment?</summary><p>Yes. Birth, adoption, marriage, and loss of other coverage are qualifying life events that trigger a Special Enrollment Period, allowing you to add dependents within 30–60 days of the event.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="employer-benefits-value-calculator.html">Employer Benefits Value Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="maternity-insurance-calculator.html">Maternity Insurance Cost Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Actual employer plan costs vary. Consult your HR department or a licensed insurance professional for actual plan details.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<style>
+.comparison-table{width:100%;border-collapse:collapse;margin-top:12px;}
+.comparison-table th,.comparison-table td{padding:10px 12px;border:1px solid #ddd;text-align:center;}
+.comparison-table thead{background:#f0f4ff;}
+.comparison-table tr:nth-child(even){background:#fafafa;}
+</style>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const ee=parseFloat(document.getElementById('ee_only').value)||0;
+  const sp=parseFloat(document.getElementById('ee_spouse').value)||0;
+  const ch=parseFloat(document.getElementById('ee_child').value)||0;
+  const fam=parseFloat(document.getElementById('family').value)||0;
+  if(!ee){document.getElementById('results').style.display='none';return;}
+  document.getElementById('m_ee').textContent=fmt(ee);
+  document.getElementById('a_ee').textContent=fmt(ee*12);
+  document.getElementById('m_sp').textContent=sp?fmt(sp):'—';
+  document.getElementById('a_sp').textContent=sp?fmt(sp*12):'—';
+  document.getElementById('marg_sp').textContent=sp?fmt(sp-ee)+'/mo':'—';
+  document.getElementById('m_ch').textContent=ch?fmt(ch):'—';
+  document.getElementById('a_ch').textContent=ch?fmt(ch*12):'—';
+  document.getElementById('marg_ch').textContent=ch?fmt(ch-ee)+'/mo':'—';
+  document.getElementById('m_fam').textContent=fam?fmt(fam):'—';
+  document.getElementById('a_fam').textContent=fam?fmt(fam*12):'—';
+  document.getElementById('marg_fam').textContent=fam?fmt(fam-ee)+'/mo':'—';
+  document.getElementById('spouse_cost').textContent=sp?fmt(sp-ee)+'/month':'Enter spouse premium';
+  document.getElementById('child_cost').textContent=ch?fmt(ch-ee)+'/month':'Enter child premium';
+  const both_separate=sp&&ch?(sp-ee)+(ch-ee):null;
+  const fam_marg=fam?fam-ee:null;
+  if(both_separate!==null&&fam_marg!==null){
+    const diff=both_separate-fam_marg;
+    document.getElementById('vs_family').textContent=diff>0?'Family plan saves '+fmt(diff)+'/mo':'Separate tiers save '+fmt(-diff)+'/mo';
+  } else {document.getElementById('vs_family').textContent='Enter all premiums to compare';}
+  document.getElementById('per_person').textContent=fam?fmt(fam/4)+'/month per person':'Enter family premium';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

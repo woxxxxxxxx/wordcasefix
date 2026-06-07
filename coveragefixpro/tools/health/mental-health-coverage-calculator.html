@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health Insurance Coverage Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Mental Health Coverage Calculator</nav>
+<h1>Mental Health Insurance Coverage Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="sessions_year">Therapy Sessions per Year</label><input type="number" id="sessions_year" placeholder="24" oninput="calculate()"></div>
+  <div class="form-group"><label for="therapist_rate">Therapist Full Rate per Session ($)</label><input type="number" id="therapist_rate" placeholder="150" value="150" oninput="calculate()"></div>
+  <div class="form-group"><label for="insurance_copay">Your Insurance Copay per Session ($)</label><input type="number" id="insurance_copay" placeholder="30" oninput="calculate()"></div>
+  <div class="form-group"><label for="deductible">Plan Deductible ($)</label><input type="number" id="deductible" placeholder="1500" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Mental Health Coverage Analysis</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Sessions per Year</span><span class="value" id="sessions_val"></span></div>
+    <div class="result-item"><span class="label">Cost Without Insurance</span><span class="value" id="no_ins_cost"></span></div>
+    <div class="result-item"><span class="label">Estimated Cost With Insurance</span><span class="value" id="with_ins_cost"></span></div>
+    <div class="result-item"><span class="label">Annual Insurance Savings</span><span class="value" id="annual_savings"></span></div>
+    <div class="result-item"><span class="label">Insurance Coverage Ratio</span><span class="value" id="coverage_ratio"></span></div>
+    <div class="result-item"><span class="label">Monthly Cost with Insurance</span><span class="value" id="monthly_cost"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Mental Health Coverage Calculator</h2>
+  <p>Mental health care is an essential health benefit under the ACA, and the Mental Health Parity and Addiction Equity Act requires insurance plans to cover mental health services comparably to medical and surgical benefits. Despite this, out-of-pocket costs for therapy can still be significant, especially before meeting your deductible. This calculator helps you understand your true annual cost for therapy sessions under your insurance plan versus paying out-of-pocket. Many therapists offer sliding scale fees for uninsured patients, which may sometimes be competitive with insured copays. Understanding your coverage helps you budget for mental health care and make informed decisions about whether your current plan adequately supports your mental health needs.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Are all types of mental health treatment covered by insurance?</summary><p>ACA-compliant plans must cover mental health and substance use disorder services as essential health benefits. This includes therapy, psychiatry, inpatient mental health treatment, and substance use treatment, subject to your plan's cost-sharing requirements.</p></details>
+  <details><summary>What is mental health parity?</summary><p>The Mental Health Parity and Addiction Equity Act requires health insurers to apply the same cost-sharing (deductibles, copays, out-of-pocket limits) and treatment limitations to mental health benefits as they do to comparable medical/surgical benefits.</p></details>
+  <details><summary>How do I find an in-network therapist?</summary><p>Use your insurer's online provider directory or call member services. You can also ask a potential therapist directly if they accept your insurance before scheduling. Psychology Today and Zocdoc allow filtering by insurance.</p></details>
+  <details><summary>Can I use my HSA or FSA for therapy?</summary><p>Yes. Therapy sessions, psychiatry visits, and other mental health services are qualified medical expenses eligible for HSA and FSA reimbursement, providing additional tax savings on your mental health costs.</p></details>
+  <details><summary>What if my therapist is out-of-network?</summary><p>PPO plans typically provide some out-of-network coverage, though at higher cost-sharing. HMO plans generally do not cover out-of-network mental health care except in emergencies. Some plans offer out-of-network reimbursement at a percentage of the "usual and customary" rate.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="telehealth-savings-calculator.html">Telehealth Savings Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="deductible-met-tracker.html">Deductible Tracker</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Actual coverage depends on your specific plan. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const sessions=parseInt(document.getElementById('sessions_year').value)||0;
+  const rate=parseFloat(document.getElementById('therapist_rate').value)||150;
+  const copay=parseFloat(document.getElementById('insurance_copay').value)||0;
+  const ded=parseFloat(document.getElementById('deductible').value)||0;
+  if(!sessions){document.getElementById('results').style.display='none';return;}
+  const no_ins=sessions*rate;
+  // simplified: deductible first, then copay, capped at simplified OOP of 5000
+  const with_ins=Math.min(ded+sessions*copay,5000);
+  const savings=no_ins-with_ins;
+  const ratio=no_ins>0?(savings/no_ins*100):0;
+  document.getElementById('sessions_val').textContent=sessions+' sessions';
+  document.getElementById('no_ins_cost').textContent=fmt(no_ins);
+  document.getElementById('with_ins_cost').textContent=fmt(with_ins);
+  document.getElementById('annual_savings').textContent=fmt(Math.max(0,savings));
+  document.getElementById('coverage_ratio').textContent=Math.max(0,ratio).toFixed(1)+'% covered by insurance';
+  document.getElementById('monthly_cost').textContent=fmt(with_ins/12)+'/month';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short-Term Health Insurance Cost Estimator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Short-Term Health Insurance Calculator</nav>
+<h1>Short-Term Health Insurance Cost Estimator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="age">Age</label><input type="number" id="age" placeholder="35" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <select id="gender" oninput="calculate()"><option value="female">Female</option><option value="male">Male</option></select>
+  </div>
+  <div class="form-group">
+    <label for="months">Coverage Duration (months)</label>
+    <select id="months" oninput="calculate()">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+      <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <select id="state" oninput="calculate()">
+      <option value="OH">Ohio</option>
+      <option value="NY">New York</option>
+      <option value="CA">California</option>
+      <option value="NJ">New Jersey</option>
+      <option value="MA">Massachusetts</option>
+    </select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Short-Term Insurance Cost Estimate</h2>
+  <div id="unavailable_msg" style="display:none" class="alert-box"></div>
+  <div id="cost_results">
+    <div class="result-grid">
+      <div class="result-item"><span class="label">Estimated Monthly Premium</span><span class="value" id="monthly_cost"></span></div>
+      <div class="result-item"><span class="label">Coverage Duration</span><span class="value" id="duration"></span></div>
+      <div class="result-item"><span class="label">Total Estimated Cost</span><span class="value" id="total_cost"></span></div>
+      <div class="result-item"><span class="label">Plan Type</span><span class="value">Short-Term Limited Duration</span></div>
+    </div>
+  </div>
+</div>
+<div class="description">
+  <h2>About Short-Term Health Insurance</h2>
+  <p>Short-term health insurance provides temporary coverage for people between jobs, waiting for employer coverage to begin, or in other coverage gaps. These plans are generally much cheaper than ACA-compliant plans but offer significantly fewer protections. They can exclude pre-existing conditions, have lifetime and annual benefit limits, and do not cover essential health benefits like maternity care or mental health. Federal rules allow short-term plans to last up to 12 months with renewals possible for up to 36 months. However, several states — including New York, California, New Jersey, and Massachusetts — have banned or severely restricted short-term plans to protect their ACA markets. Always review plan details carefully before enrolling in a short-term plan.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Does short-term insurance cover pre-existing conditions?</summary><p>Generally no. Short-term plans are not required to follow ACA rules and can deny coverage or exclude treatment for pre-existing conditions. This is a major limitation compared to ACA marketplace plans.</p></details>
+  <details><summary>Why is short-term insurance unavailable in some states?</summary><p>States like New York, California, New Jersey, and Massachusetts have restricted or banned short-term plans because they can draw healthy people away from the ACA marketplace, destabilizing the risk pool and raising premiums for those who remain.</p></details>
+  <details><summary>Can I use short-term insurance as a bridge to Medicare?</summary><p>Yes, short-term plans are commonly used by people who retire before age 65 and need coverage until Medicare begins. However, carefully evaluate coverage limits relative to your healthcare needs.</p></details>
+  <details><summary>Is short-term insurance tax-deductible?</summary><p>Short-term health insurance premiums may be deductible as medical expenses if you itemize deductions and your total medical expenses exceed 7.5% of AGI. They do not qualify for the self-employed health insurance deduction.</p></details>
+  <details><summary>What happens if I get sick on a short-term plan?</summary><p>You may face high out-of-pocket costs, coverage denials for pre-existing conditions, or plan cancellation. Short-term plans can rescind coverage if they determine a condition was pre-existing, leaving you with substantial unpaid bills.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+    <li><a href="cobra-vs-marketplace-calculator.html">COBRA vs Marketplace Comparison</a></li>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+    <li><a href="catastrophic-plan-eligibility.html">Catastrophic Plan Eligibility Checker</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Short-term plan availability and rules vary by state. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const age=parseInt(document.getElementById('age').value)||0;
+  const gender=document.getElementById('gender').value;
+  const months=parseInt(document.getElementById('months').value);
+  const state=document.getElementById('state').value;
+  const unavail=['NY','CA','NJ','MA'];
+  document.getElementById('results').style.display='block';
+  if(unavail.includes(state)){
+    document.getElementById('unavailable_msg').style.display='block';
+    document.getElementById('unavailable_msg').innerHTML='<strong>Not Available:</strong> Short-term health insurance plans are not available in '+state+'. Consider ACA Marketplace plans or Medicaid instead.';
+    document.getElementById('cost_results').style.display='none';
+    return;
+  }
+  document.getElementById('unavailable_msg').style.display='none';
+  document.getElementById('cost_results').style.display='block';
+  if(!age){return;}
+  let base=80;
+  if(age>=30&&age<40)base=120;
+  else if(age>=40&&age<50)base=180;
+  else if(age>=50)base=260;
+  const monthly=gender==='male'?base*1.05:base;
+  const total=monthly*months;
+  document.getElementById('monthly_cost').textContent=fmt(monthly);
+  document.getElementById('duration').textContent=months+' month'+(months>1?'s':'');
+  document.getElementById('total_cost').textContent=fmt(total);
+}
+calculate();
+</script>
+</body>
+</html>

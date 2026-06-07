@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telehealth vs In-Person Visit Savings Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Telehealth Savings Calculator</nav>
+<h1>Telehealth vs In-Person Visit Savings Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="in_person_copay">In-Person Visit Copay ($)</label><input type="number" id="in_person_copay" placeholder="40" oninput="calculate()"></div>
+  <div class="form-group"><label for="telehealth_copay">Telehealth Visit Copay ($)</label><input type="number" id="telehealth_copay" placeholder="0" value="0" oninput="calculate()"></div>
+  <div class="form-group"><label for="visits_year">Visits per Year (replacing with telehealth)</label><input type="number" id="visits_year" placeholder="6" oninput="calculate()"></div>
+  <div class="form-group"><label for="travel_time">Round-Trip Travel Time per Visit (hours)</label><input type="number" id="travel_time" placeholder="1.5" step="0.5" oninput="calculate()"></div>
+  <div class="form-group"><label for="hourly_wage">Your Hourly Wage ($)</label><input type="number" id="hourly_wage" placeholder="25" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your Telehealth Savings Estimate</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Annual Copay Savings</span><span class="value" id="copay_savings"></span></div>
+    <div class="result-item"><span class="label">Annual Travel Time Value Saved</span><span class="value" id="time_savings"></span></div>
+    <div class="result-item"><span class="label">Total Annual Savings (money + time value)</span><span class="value" id="total_savings"></span></div>
+    <div class="result-item"><span class="label">Total Hours Saved Per Year</span><span class="value" id="hours_saved"></span></div>
+    <div class="result-item"><span class="label">Average Savings Per Visit</span><span class="value" id="per_visit"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Telehealth Savings Calculator</h2>
+  <p>Telehealth has transformed healthcare access, allowing patients to consult with doctors, therapists, and specialists from home via video or phone. Many insurance plans now offer telehealth visits at lower or zero copays compared to in-person visits. Beyond the direct copay savings, telehealth eliminates travel time, parking costs, and time away from work — all of which have real financial value. This calculator quantifies both your direct copay savings and the monetary value of your recovered time, giving you a comprehensive picture of how much telehealth can save you annually. For routine follow-ups, prescription renewals, and minor illness consultations, telehealth is often medically equivalent to in-person care while being significantly more convenient and cost-effective.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Does my insurance cover telehealth visits?</summary><p>Most major health insurance plans now cover telehealth visits, particularly after pandemic-era expansions. Coverage and copay levels vary by plan. Check your plan's Summary of Benefits or call member services to confirm telehealth copay amounts.</p></details>
+  <details><summary>Is telehealth care as effective as in-person visits?</summary><p>For many conditions — routine follow-ups, prescription management, mental health therapy, dermatology consultations, and minor illnesses — telehealth is clinically equivalent to in-person care. Physical examinations requiring hands-on assessment still require in-person visits.</p></details>
+  <details><summary>Can I use telehealth for mental health services?</summary><p>Yes. Teletherapy and telepsychiatry are widely available and often covered by insurance at the same rates as other telehealth visits. Mental health parity laws require insurers to cover mental health treatment comparably to medical treatment.</p></details>
+  <details><summary>Are there any downsides to telehealth?</summary><p>Telehealth may not be appropriate for acute emergencies, conditions requiring physical examination, or situations where diagnostic equipment is needed. Some patients also experience lower satisfaction with virtual care for complex or sensitive medical issues.</p></details>
+  <details><summary>Will my HSA or FSA cover telehealth copays?</summary><p>Yes. Telehealth copays and any out-of-pocket costs for telehealth services are qualified medical expenses that can be paid with HSA or FSA funds.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="mental-health-coverage-calculator.html">Mental Health Coverage Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="hmo-vs-ppo-cost-calculator.html">HMO vs PPO Cost Calculator</a></li>
+    <li><a href="prescription-drug-cost-calculator.html">Prescription Drug Cost Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Time value calculations are for informational purposes. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const ip=parseFloat(document.getElementById('in_person_copay').value)||0;
+  const th=parseFloat(document.getElementById('telehealth_copay').value)||0;
+  const visits=parseInt(document.getElementById('visits_year').value)||0;
+  const travel=parseFloat(document.getElementById('travel_time').value)||0;
+  const wage=parseFloat(document.getElementById('hourly_wage').value)||0;
+  const copay_savings=(ip-th)*visits;
+  const time_val=travel*wage*visits;
+  const total=copay_savings+time_val;
+  const hours=travel*visits;
+  const per_visit=visits>0?total/visits:0;
+  document.getElementById('copay_savings').textContent=fmt(copay_savings);
+  document.getElementById('time_savings').textContent=fmt(time_val);
+  document.getElementById('total_savings').textContent=fmt(total);
+  document.getElementById('hours_saved').textContent=hours.toFixed(1)+' hours';
+  document.getElementById('per_visit').textContent=fmt(per_visit);
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

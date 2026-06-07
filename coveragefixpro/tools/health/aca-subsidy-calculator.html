@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACA Health Insurance Subsidy Calculator 2026</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; ACA Subsidy Calculator</nav>
+<h1>ACA Health Insurance Subsidy Calculator 2026</h1>
+
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="household_size">Household Size</label>
+    <select id="household_size" oninput="calculate()">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+      <option value="7">7</option><option value="8">8</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="annual_income">Annual Household Income ($)</label>
+    <input type="number" id="annual_income" placeholder="50000" oninput="calculate()">
+  </div>
+  <div class="form-group">
+    <label for="age">Age (Primary Applicant)</label>
+    <input type="number" id="age" placeholder="35" oninput="calculate()">
+  </div>
+  <div class="form-group">
+    <label for="state_expanded">State Expanded Medicaid?</label>
+    <select id="state_expanded" oninput="calculate()">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+</div>
+
+<div class="result-box" id="results" style="display:none">
+  <h2>Your Estimated ACA Subsidy</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Federal Poverty Level</span><span class="value" id="fpl_val"></span></div>
+    <div class="result-item"><span class="label">Income as % of FPL</span><span class="value" id="fpl_pct"></span></div>
+    <div class="result-item"><span class="label">Estimated Monthly Premium (before subsidy)</span><span class="value" id="monthly_premium"></span></div>
+    <div class="result-item"><span class="label">Monthly Subsidy (APTC)</span><span class="value" id="monthly_subsidy"></span></div>
+    <div class="result-item"><span class="label">Your Net Monthly Premium</span><span class="value" id="net_monthly"></span></div>
+    <div class="result-item"><span class="label">Annual Subsidy Amount</span><span class="value" id="annual_subsidy"></span></div>
+    <div class="result-item"><span class="label">Eligibility Status</span><span class="value" id="eligibility"></span></div>
+  </div>
+</div>
+
+<div class="description">
+  <h2>About the ACA Subsidy Calculator</h2>
+  <p>The Affordable Care Act (ACA) provides premium tax credits to help eligible Americans afford health insurance through the Health Insurance Marketplace. Your subsidy amount is based on your household income as a percentage of the Federal Poverty Level (FPL). For 2026, the FPL baseline is $15,650 for a single person, increasing by $5,590 for each additional household member. Households earning between 100% and 400% FPL may qualify for premium tax credits, also known as Advanced Premium Tax Credits (APTC). The credit caps your contribution toward the benchmark silver plan at a percentage of your income, ranging from 0% at 150% FPL to 8.5% at 300-400% FPL. If you live in a state that expanded Medicaid, households earning under 138% FPL may qualify for Medicaid instead of marketplace subsidies. Use this calculator to estimate your potential savings before shopping on Healthcare.gov during Open Enrollment.</p>
+</div>
+
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Who qualifies for ACA subsidies in 2026?</summary><p>Individuals and families with household income between 100% and 400% of the Federal Poverty Level who purchase coverage through the Marketplace and are not eligible for affordable employer coverage, Medicare, or Medicaid may qualify for premium tax credits.</p></details>
+  <details><summary>What is the income limit for ACA subsidies?</summary><p>For 2026, the general upper limit is 400% FPL, which is approximately $62,600 for a single person. However, the American Rescue Plan Act provisions have extended subsidies above 400% FPL in some cases — those paying more than 8.5% of income for the benchmark plan may still receive credits.</p></details>
+  <details><summary>How are ACA subsidies calculated?</summary><p>The subsidy equals the cost of the benchmark silver plan minus a capped percentage of your income. The cap ranges from 0% at lower income levels to 8.5% at higher income levels, ensuring you never pay more than that percentage of your income for the benchmark plan.</p></details>
+  <details><summary>Can I receive ACA subsidies if my employer offers insurance?</summary><p>Generally no, unless your employer's plan is deemed unaffordable (costs more than 9.02% of household income for employee-only coverage in 2026) or fails to meet minimum value standards.</p></details>
+  <details><summary>What is the difference between APTC and PTC?</summary><p>Advanced Premium Tax Credit (APTC) is paid directly to your insurer each month to reduce your premium. The Premium Tax Credit (PTC) is reconciled on your tax return via Form 8962. If your actual income differs from your estimate, you may owe money back or receive a refund.</p></details>
+</div>
+
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Limit & Tax Savings Calculator</a></li>
+    <li><a href="premium-tax-credit-2026.html">2026 Premium Tax Credit Calculator</a></li>
+    <li><a href="cobra-vs-marketplace-calculator.html">COBRA vs Marketplace Insurance Comparison</a></li>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+  </ul>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Disclaimer:</strong> This calculator provides estimates only and is not a guarantee of actual subsidy amounts. ACA subsidy eligibility depends on many factors including final household income, plan selection, and state rules. Consult a licensed insurance professional or visit Healthcare.gov for official determinations.</p>
+</div>
+</main>
+
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const size=parseInt(document.getElementById('household_size').value)||1;
+  const income=parseFloat(document.getElementById('annual_income').value)||0;
+  const age=parseInt(document.getElementById('age').value)||35;
+  const expanded=document.getElementById('state_expanded').value;
+  if(!income||!age){document.getElementById('results').style.display='none';return;}
+  const fpl=15650+(size-1)*5590;
+  const fpl_pct=(income/fpl)*100;
+  let monthly_premium=350;
+  if(age>=30&&age<40)monthly_premium=450;
+  else if(age>=40&&age<50)monthly_premium=600;
+  else if(age>=50&&age<60)monthly_premium=800;
+  else if(age>=60)monthly_premium=1100;
+  let cap_pct=0;
+  let elig='Not Eligible (income too high)';
+  if(fpl_pct<138&&expanded==='yes'){elig='Likely Medicaid Eligible';document.getElementById('results').style.display='block';
+    document.getElementById('fpl_val').textContent=fmt(fpl);document.getElementById('fpl_pct').textContent=fpl_pct.toFixed(1)+'%';
+    document.getElementById('monthly_premium').textContent=fmt(monthly_premium);document.getElementById('monthly_subsidy').textContent='N/A (Medicaid)';
+    document.getElementById('net_monthly').textContent='$0 (Medicaid)';document.getElementById('annual_subsidy').textContent='N/A';
+    document.getElementById('eligibility').textContent=elig;return;}
+  if(fpl_pct>=100&&fpl_pct<150)cap_pct=0;
+  else if(fpl_pct>=150&&fpl_pct<200)cap_pct=2;
+  else if(fpl_pct>=200&&fpl_pct<250)cap_pct=6;
+  else if(fpl_pct>=250&&fpl_pct<400)cap_pct=8.5;
+  else if(fpl_pct>=400){elig='Not Eligible (>400% FPL)';}
+  if(fpl_pct>=100&&fpl_pct<400)elig='Eligible for Subsidy';
+  const monthly_subsidy=Math.max(0,monthly_premium-(income/12)*(cap_pct/100));
+  const net_monthly=monthly_premium-monthly_subsidy;
+  const annual_subsidy=monthly_subsidy*12;
+  document.getElementById('fpl_val').textContent=fmt(fpl);
+  document.getElementById('fpl_pct').textContent=fpl_pct.toFixed(1)+'%';
+  document.getElementById('monthly_premium').textContent=fmt(monthly_premium);
+  document.getElementById('monthly_subsidy').textContent=fmt(monthly_subsidy);
+  document.getElementById('net_monthly').textContent=fmt(net_monthly);
+  document.getElementById('annual_subsidy').textContent=fmt(annual_subsidy);
+  document.getElementById('eligibility').textContent=elig;
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

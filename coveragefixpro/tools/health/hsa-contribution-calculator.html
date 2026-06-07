@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSA Contribution Limit & Tax Savings Calculator 2026</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; HSA Contribution Calculator</nav>
+<h1>HSA Contribution Limit & Tax Savings Calculator 2026</h1>
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="coverage_type">Coverage Type</label>
+    <select id="coverage_type" oninput="calculate()">
+      <option value="self">Self-Only</option>
+      <option value="family">Family</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="age">Your Age</label>
+    <input type="number" id="age" placeholder="45" oninput="calculate()">
+  </div>
+  <div class="form-group">
+    <label for="employer_contribution">Employer HSA Contribution ($/year)</label>
+    <input type="number" id="employer_contribution" placeholder="500" oninput="calculate()">
+  </div>
+  <div class="form-group">
+    <label for="tax_bracket">Federal Tax Bracket (%)</label>
+    <select id="tax_bracket" oninput="calculate()">
+      <option value="12">12%</option>
+      <option value="22" selected>22%</option>
+      <option value="24">24%</option>
+      <option value="32">32%</option>
+      <option value="37">37%</option>
+    </select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your HSA Savings Estimate</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">2026 IRS Contribution Limit</span><span class="value" id="irs_limit"></span></div>
+    <div class="result-item"><span class="label">Catch-Up Contribution (age 55+)</span><span class="value" id="catchup"></span></div>
+    <div class="result-item"><span class="label">Employer Contribution</span><span class="value" id="emp_contrib"></span></div>
+    <div class="result-item"><span class="label">Your Maximum Contribution</span><span class="value" id="max_contrib"></span></div>
+    <div class="result-item"><span class="label">Estimated Federal Tax Savings</span><span class="value" id="tax_savings"></span></div>
+    <div class="result-item"><span class="label">Effective Monthly Contribution</span><span class="value" id="monthly_contrib"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the HSA Contribution Calculator</h2>
+  <p>A Health Savings Account (HSA) is a powerful tax-advantaged tool for those enrolled in a High-Deductible Health Plan (HDHP). For 2026, the IRS contribution limits are $4,300 for self-only coverage and $8,550 for family coverage. If you are 55 or older, you can contribute an additional $1,000 catch-up contribution. HSA contributions are triple tax-advantaged: contributions reduce your taxable income, growth is tax-free, and withdrawals for qualified medical expenses are tax-free. This calculator helps you determine how much you can contribute after accounting for your employer's contribution, and estimates the federal income tax you will save. Contributing the maximum each year and investing your HSA balance can result in significant retirement healthcare savings, making the HSA one of the most efficient accounts available to eligible Americans.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What qualifies as a High-Deductible Health Plan for HSA eligibility?</summary><p>For 2026, an HDHP must have a minimum deductible of $1,650 for self-only or $3,300 for family coverage, and maximum out-of-pocket limits of $8,300 for self-only or $16,600 for family coverage.</p></details>
+  <details><summary>Can I use HSA funds for non-medical expenses?</summary><p>Yes, but withdrawals for non-medical expenses before age 65 are subject to income tax plus a 20% penalty. After age 65, non-medical withdrawals are taxed as ordinary income (like a traditional IRA) with no penalty.</p></details>
+  <details><summary>Do HSA funds roll over year to year?</summary><p>Yes. Unlike Flexible Spending Accounts (FSAs), HSA funds never expire. Your balance rolls over indefinitely, and you can invest it once your balance exceeds a threshold set by your HSA provider.</p></details>
+  <details><summary>What happens to my HSA if I change to a non-HDHP?</summary><p>You keep your existing HSA balance and can continue to use it for qualified medical expenses tax-free. However, you cannot make new contributions until you are again enrolled in an HDHP.</p></details>
+  <details><summary>Are HSA contributions deductible even if I don't itemize?</summary><p>Yes. HSA contributions made directly (not through payroll) are an above-the-line deduction, meaning you can deduct them even if you take the standard deduction. Payroll contributions are excluded from income entirely.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="hsa-growth-calculator.html">HSA Investment Growth Calculator</a></li>
+    <li><a href="fsa-calculator.html">FSA Contribution Calculator & Tax Savings</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Health Insurance Subsidy Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Health Plan Comparison Tool</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> This calculator provides estimates only. Consult a tax professional or licensed insurance advisor for personalized advice.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const type=document.getElementById('coverage_type').value;
+  const age=parseInt(document.getElementById('age').value)||0;
+  const emp=parseFloat(document.getElementById('employer_contribution').value)||0;
+  const bracket=parseInt(document.getElementById('tax_bracket').value);
+  const base_limit=type==='self'?4300:8550;
+  const catchup=age>=55?1000:0;
+  const total_limit=base_limit+catchup;
+  const your_max=Math.max(0,total_limit-emp);
+  const tax_savings=your_max*(bracket/100);
+  document.getElementById('irs_limit').textContent=fmt(base_limit);
+  document.getElementById('catchup').textContent=catchup>0?fmt(catchup):'Not applicable';
+  document.getElementById('emp_contrib').textContent=fmt(emp);
+  document.getElementById('max_contrib').textContent=fmt(your_max);
+  document.getElementById('tax_savings').textContent=fmt(tax_savings);
+  document.getElementById('monthly_contrib').textContent=fmt(your_max/12);
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

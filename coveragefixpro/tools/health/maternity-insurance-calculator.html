@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maternity & Pregnancy Insurance Cost Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Maternity Insurance Cost Calculator</nav>
+<h1>Maternity & Pregnancy Insurance Cost Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="deductible">Plan Annual Deductible ($)</label><input type="number" id="deductible" placeholder="3000" oninput="calculate()"></div>
+  <div class="form-group"><label for="oop_max">Plan Out-of-Pocket Maximum ($)</label><input type="number" id="oop_max" placeholder="8000" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="coinsurance">Coinsurance Rate (%)</label>
+    <select id="coinsurance" oninput="calculate()"><option value="20">20%</option><option value="30">30%</option></select>
+  </div>
+  <div class="form-group"><label for="monthly_premium">Monthly Plan Premium ($)</label><input type="number" id="monthly_premium" placeholder="450" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Estimated Maternity Cost Breakdown</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Average Childbirth Cost</span><span class="value">$17,500.00</span></div>
+    <div class="result-item"><span class="label">Your Deductible</span><span class="value" id="ded_val"></span></div>
+    <div class="result-item"><span class="label">Coinsurance After Deductible</span><span class="value" id="coins_val"></span></div>
+    <div class="result-item"><span class="label">Estimated Out-of-Pocket (birth)</span><span class="value" id="oop_birth"></span></div>
+    <div class="result-item"><span class="label">9-Month Premium Cost</span><span class="value" id="premium_9mo"></span></div>
+    <div class="result-item"><span class="label">Total Estimated Maternity Cost</span><span class="value" id="total_maternity"></span></div>
+    <div class="result-item"><span class="label">Without Insurance Estimate</span><span class="value">$17,500.00</span></div>
+    <div class="result-item"><span class="label">Estimated Insurance Savings</span><span class="value" id="ins_savings"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Maternity Insurance Calculator</h2>
+  <p>The average cost of childbirth in the United States is approximately $17,500, making maternity insurance coverage one of the most financially significant health insurance decisions. All ACA-compliant plans are required to cover maternity and newborn care as essential health benefits. Your actual out-of-pocket cost depends on your plan's deductible, coinsurance rate, and out-of-pocket maximum. This calculator estimates your total pregnancy-related expenses by combining your estimated birth delivery costs with nine months of premiums. Comparing plans based on their total maternity cost — not just the premium — can save thousands of dollars. A plan with a higher premium but lower deductible may be significantly more cost-effective for planned pregnancies.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Does all health insurance cover maternity care?</summary><p>All ACA-compliant marketplace and employer plans must cover maternity and newborn care. Short-term health plans and some grandfathered plans are exempt from this requirement and may not include maternity coverage.</p></details>
+  <details><summary>How do I choose the best plan for pregnancy?</summary><p>Compare plans based on total expected cost: premiums + deductible + coinsurance up to the OOP max. For a planned pregnancy, a plan with a lower OOP maximum — even with higher premiums — often saves money overall.</p></details>
+  <details><summary>Does a C-section cost more than a vaginal delivery?</summary><p>Yes. The average C-section costs $25,000–$30,000 compared to $15,000–$20,000 for vaginal delivery. However, your out-of-pocket cost is capped at your plan's OOP maximum regardless of delivery method.</p></details>
+  <details><summary>When should I add my newborn to my health insurance?</summary><p>You must add your newborn within 30–60 days of birth (varies by plan). Most plans cover the newborn's delivery costs under the mother's policy, but separate coverage begins after birth.</p></details>
+  <details><summary>Can I change health plans when I become pregnant?</summary><p>Pregnancy itself is not a Special Enrollment Period trigger. You generally must wait for Open Enrollment unless you have another qualifying event. Plan ahead before becoming pregnant to ensure you have the best coverage.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="deductible-met-tracker.html">Deductible Tracker</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="dependent-coverage-calculator.html">Dependent Coverage Cost Calculator</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Actual maternity costs vary widely. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const ded=parseFloat(document.getElementById('deductible').value)||0;
+  const oop=parseFloat(document.getElementById('oop_max').value)||0;
+  const coins=parseInt(document.getElementById('coinsurance').value);
+  const mp=parseFloat(document.getElementById('monthly_premium').value)||0;
+  if(!ded||!oop||!mp){document.getElementById('results').style.display='none';return;}
+  const birth_cost=17500;
+  const oop_birth=Math.min(ded+(birth_cost-ded)*(coins/100),oop);
+  const premium_9mo=mp*9;
+  const total=oop_birth+premium_9mo;
+  const savings=birth_cost-oop_birth;
+  document.getElementById('ded_val').textContent=fmt(ded);
+  document.getElementById('coins_val').textContent=coins+'%';
+  document.getElementById('oop_birth').textContent=fmt(oop_birth);
+  document.getElementById('premium_9mo').textContent=fmt(premium_9mo);
+  document.getElementById('total_maternity').textContent=fmt(total);
+  document.getElementById('ins_savings').textContent=fmt(savings);
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

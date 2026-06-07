@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catastrophic Health Plan Eligibility Checker</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Catastrophic Plan Eligibility Checker</nav>
+<h1>Catastrophic Health Plan Eligibility Checker</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="age">Your Age</label><input type="number" id="age" placeholder="27" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="hardship">Hardship or Affordability Exemption?</label>
+    <select id="hardship" oninput="calculate()">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Catastrophic Plan Eligibility Result</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Eligibility Status</span><span class="value" id="eligibility"></span></div>
+    <div class="result-item"><span class="label">2026 Catastrophic Plan Deductible</span><span class="value">$9,200.00</span></div>
+    <div class="result-item"><span class="label">Estimated Monthly Premium Range</span><span class="value">$150.00 – $200.00</span></div>
+    <div class="result-item"><span class="label">Estimated Annual Premium Range</span><span class="value">$1,800.00 – $2,400.00</span></div>
+    <div class="result-item"><span class="label">Free Preventive Care</span><span class="value">Yes — 3 primary care visits/year</span></div>
+  </div>
+  <div id="detail_msg" class="info-box" style="margin-top:16px;"></div>
+</div>
+<div class="description">
+  <h2>About Catastrophic Health Plans</h2>
+  <p>Catastrophic health plans are a special category of ACA-compliant coverage designed for people who are either under 30 or who qualify for a hardship or affordability exemption. These plans have the lowest monthly premiums available on the Marketplace but come with a very high deductible — $9,200 in 2026 — meaning you pay for most medical expenses out-of-pocket until that threshold is met. Despite the high deductible, catastrophic plans do cover three primary care visits per year at no cost and all ACA-required preventive services for free. They are best suited for healthy young adults who want protection against worst-case medical scenarios while keeping monthly costs minimal. Premium tax credits cannot be applied to catastrophic plans.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Can I use premium tax credits with a catastrophic plan?</summary><p>No. Premium tax credits (ACA subsidies) cannot be applied to catastrophic health plans. If you qualify for significant subsidies, a bronze or silver plan may actually cost less than a catastrophic plan after the subsidy is applied.</p></details>
+  <details><summary>What qualifies as a hardship exemption?</summary><p>Hardship exemptions include homelessness, domestic violence, natural disaster, bankruptcy, medical debt causing financial hardship, and others. An affordability exemption applies when the lowest-cost bronze plan exceeds 8.39% of your household income.</p></details>
+  <details><summary>How do I apply for a hardship exemption?</summary><p>Apply through your state Marketplace or Healthcare.gov. You will need to provide documentation supporting your hardship. Once approved, you can enroll in a catastrophic plan outside of Open Enrollment.</p></details>
+  <details><summary>Does the catastrophic plan cover prescriptions?</summary><p>Catastrophic plans must cover essential health benefits including prescription drugs, but coverage typically does not begin until after the deductible is met. Generic preventive medications may be covered at no cost.</p></details>
+  <details><summary>Is a catastrophic plan better than no insurance?</summary><p>Yes. Even with a high deductible, a catastrophic plan limits your maximum exposure to the deductible amount, protects against catastrophic medical bills, and provides access to preventive care. Going uninsured leaves you exposed to unlimited liability.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+    <li><a href="short-term-health-insurance-calculator.html">Short-Term Health Insurance Calculator</a></li>
+    <li><a href="health-insurance-penalty-calculator.html">Health Insurance Penalty Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Eligibility determinations are made by the Marketplace. Consult Healthcare.gov or a licensed navigator for official guidance.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function calculate(){
+  const age=parseInt(document.getElementById('age').value)||0;
+  const hardship=document.getElementById('hardship').value;
+  if(!age){document.getElementById('results').style.display='none';return;}
+  const eligible=age<30||hardship==='yes';
+  const el=document.getElementById('eligibility');
+  const msg=document.getElementById('detail_msg');
+  el.textContent=eligible?'Eligible for Catastrophic Plan':'Not Eligible';
+  el.style.color=eligible?'#155724':'#721c24';
+  if(eligible){
+    let reasons=[];
+    if(age<30)reasons.push('under age 30');
+    if(hardship==='yes')reasons.push('hardship/affordability exemption');
+    msg.innerHTML='<strong>Why you qualify:</strong> You are eligible because you are '+reasons.join(' and ')+'. Catastrophic plans offer the lowest premiums with a $9,200.00 deductible. Note: premium tax credits cannot be used with catastrophic plans — compare with subsidized bronze plans if you qualify for subsidies.';}
+  else{msg.innerHTML='<strong>Alternatives:</strong> Since you are 30 or older and do not have a hardship exemption, consider Bronze plans (lowest premiums among standard plans), Silver plans with cost-sharing reductions (if income qualifies), or check your ACA subsidy eligibility.';}
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

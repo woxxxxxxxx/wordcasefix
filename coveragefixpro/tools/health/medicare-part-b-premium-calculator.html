@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicare Part B Premium Calculator 2026</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Medicare Part B Premium Calculator</nav>
+<h1>Medicare Part B Premium Calculator 2026</h1>
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="filing_status">Tax Filing Status</label>
+    <select id="filing_status" oninput="calculate()">
+      <option value="single">Single / Married Filing Separately</option>
+      <option value="married">Married Filing Jointly</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="magi">Modified Adjusted Gross Income (MAGI) ($)</label>
+    <input type="number" id="magi" placeholder="85000" oninput="calculate()">
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your Medicare Part B Premium Estimate</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Base Part B Premium</span><span class="value">$185.00/month</span></div>
+    <div class="result-item"><span class="label">IRMAA Surcharge</span><span class="value" id="irmaa"></span></div>
+    <div class="result-item"><span class="label">Total Monthly Premium</span><span class="value" id="monthly_total"></span></div>
+    <div class="result-item"><span class="label">Total Annual Premium</span><span class="value" id="annual_total"></span></div>
+    <div class="result-item"><span class="label">Income Bracket</span><span class="value" id="bracket_label"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the Medicare Part B Premium Calculator</h2>
+  <p>Medicare Part B covers outpatient medical services, doctor visits, and preventive care. The standard 2026 premium is $185.00 per month. However, higher-income beneficiaries pay more through the Income-Related Monthly Adjustment Amount (IRMAA), which is determined by your MAGI from two years prior (2024 income affects 2026 premiums). IRMAA brackets for single filers start at $106,000 and go up to over $500,000, adding surcharges ranging from $74.20 to $450.20 per month. Married couples filing jointly have thresholds at double the single rates. Understanding your IRMAA tier is critical for retirement planning, as higher Medicare costs can significantly impact your retirement budget. Some life events may allow you to appeal your IRMAA determination.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What income year is used to determine my 2026 Part B premium?</summary><p>Medicare uses your 2024 tax return (MAGI) to determine your 2026 IRMAA. If your income has dropped significantly since 2024, you can file an appeal using Form SSA-44.</p></details>
+  <details><summary>What is IRMAA and how does it affect my premium?</summary><p>IRMAA (Income-Related Monthly Adjustment Amount) is a surcharge added to your standard Medicare Part B premium if your income exceeds certain thresholds. Higher earners pay more to help fund the Medicare program.</p></details>
+  <details><summary>Does IRMAA apply to Medicare Part D as well?</summary><p>Yes. IRMAA surcharges apply to both Part B and Part D (prescription drug coverage). The Part D surcharges are separate amounts based on the same income brackets.</p></details>
+  <details><summary>Can I appeal my IRMAA if my income decreased?</summary><p>Yes. If you experienced a life-changing event (retirement, divorce, death of spouse, etc.) that significantly reduced your income, you can appeal using SSA Form SSA-44 to have your premium recalculated based on more recent income.</p></details>
+  <details><summary>Is the Medicare Part B premium deducted from Social Security?</summary><p>Yes, for most beneficiaries. If you receive Social Security benefits, your Part B premium is automatically deducted from your monthly benefit payment.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="aca-subsidy-calculator.html">ACA Health Insurance Subsidy Calculator</a></li>
+    <li><a href="medical-expense-tax-deduction-calculator.html">Medical Expense Tax Deduction Calculator</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+    <li><a href="prescription-drug-cost-calculator.html">Prescription Drug Cost Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const status=document.getElementById('filing_status').value;
+  const magi=parseFloat(document.getElementById('magi').value)||0;
+  if(!magi){document.getElementById('results').style.display='none';return;}
+  const m=status==='married'?2:1;
+  let irmaa=0,label='';
+  if(magi<=106000*m){irmaa=0;label='Standard Rate';}
+  else if(magi<=133000*m){irmaa=74.20;label='IRMAA Tier 1';}
+  else if(magi<=167000*m){irmaa=185.90;label='IRMAA Tier 2';}
+  else if(magi<=200000*m){irmaa=297.60;label='IRMAA Tier 3';}
+  else if(magi<=500000*m){irmaa=373.90;label='IRMAA Tier 4';}
+  else{irmaa=450.20;label='IRMAA Tier 5 (Highest)';}
+  const monthly=185+irmaa;
+  document.getElementById('irmaa').textContent=fmt(irmaa)+'/month';
+  document.getElementById('monthly_total').textContent=fmt(monthly)+'/month';
+  document.getElementById('annual_total').textContent=fmt(monthly*12)+'/year';
+  document.getElementById('bracket_label').textContent=label;
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

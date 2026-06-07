@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSA Contribution Calculator & Tax Savings</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; FSA Contribution Calculator</nav>
+<h1>FSA Contribution Calculator & Tax Savings</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="est_medical">Estimated Annual Medical Expenses ($)</label><input type="number" id="est_medical" placeholder="1200" oninput="calculate()"></div>
+  <div class="form-group"><label for="est_dental">Estimated Annual Dental Expenses ($)</label><input type="number" id="est_dental" placeholder="600" oninput="calculate()"></div>
+  <div class="form-group"><label for="est_vision">Estimated Annual Vision Expenses ($)</label><input type="number" id="est_vision" placeholder="300" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="tax_bracket">Federal Tax Bracket (%)</label>
+    <select id="tax_bracket" oninput="calculate()">
+      <option value="12">12%</option><option value="22" selected>22%</option>
+      <option value="24">24%</option><option value="32">32%</option><option value="37">37%</option>
+    </select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your FSA Savings Estimate</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Total Estimated Healthcare Expenses</span><span class="value" id="total_expenses"></span></div>
+    <div class="result-item"><span class="label">2026 FSA Contribution Limit</span><span class="value">$3,300.00</span></div>
+    <div class="result-item"><span class="label">Recommended FSA Contribution</span><span class="value" id="recommended"></span></div>
+    <div class="result-item"><span class="label">Estimated Federal Tax Savings</span><span class="value" id="tax_savings"></span></div>
+    <div class="result-item"><span class="label">Effective Monthly FSA Contribution</span><span class="value" id="monthly_contrib"></span></div>
+    <div class="result-item"><span class="label">Unused Balance Warning</span><span class="value" id="unused_warning"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the FSA Contribution Calculator</h2>
+  <p>A Flexible Spending Account (FSA) allows you to set aside pre-tax dollars for qualified medical, dental, and vision expenses. For 2026, the IRS contribution limit is $3,300. Unlike HSAs, FSA funds are generally subject to a "use-it-or-lose-it" rule — unspent funds at year-end may be forfeited (though many employers offer a grace period or allow a limited rollover of up to $660). This calculator helps you determine the right FSA contribution amount based on your anticipated healthcare spending, and estimates how much you'll save in federal income taxes. Contributing through payroll also avoids FICA taxes, adding additional savings. The key is contributing only what you expect to use, since forfeited funds are lost permanently.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What is the FSA contribution limit for 2026?</summary><p>The IRS has set the 2026 FSA contribution limit at $3,300 per employee. If both spouses have access to FSAs through their employers, each can contribute up to $3,300 for a combined household maximum of $6,600.</p></details>
+  <details><summary>What expenses qualify for FSA reimbursement?</summary><p>Qualified expenses include co-pays, deductibles, prescription medications, dental care, vision care (glasses, contacts, exams), and many over-the-counter items including menstrual products and COVID-19 tests.</p></details>
+  <details><summary>What happens to unused FSA funds at year-end?</summary><p>Most FSA plans have a "use-it-or-lose-it" rule. However, employers may offer a grace period of up to 2.5 months or allow rollover of up to $660 to the next plan year. Check your plan documents for your employer's specific rules.</p></details>
+  <details><summary>Can I have both an FSA and an HSA?</summary><p>Generally no — you cannot contribute to a health FSA and an HSA simultaneously. However, you may be able to have a Limited-Purpose FSA (for dental and vision only) alongside an HSA.</p></details>
+  <details><summary>Are FSA funds available immediately at the start of the year?</summary><p>Yes. Unlike HSAs, the full annual FSA election amount is available on day one of the plan year, even before all payroll contributions have been made. This is a front-loading advantage unique to FSAs.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+    <li><a href="hsa-growth-calculator.html">HSA Investment Growth Calculator</a></li>
+    <li><a href="medical-expense-tax-deduction-calculator.html">Medical Expense Tax Deduction Calculator</a></li>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="dental-insurance-worth-it-calculator.html">Dental Insurance Worth It Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult a tax professional or benefits administrator for personalized advice.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const m=parseFloat(document.getElementById('est_medical').value)||0;
+  const d=parseFloat(document.getElementById('est_dental').value)||0;
+  const v=parseFloat(document.getElementById('est_vision').value)||0;
+  const bracket=parseInt(document.getElementById('tax_bracket').value);
+  const total=m+d+v;
+  const limit=3300;
+  const recommended=Math.min(total,limit);
+  const savings=recommended*(bracket/100);
+  const unused=limit-recommended;
+  document.getElementById('total_expenses').textContent=fmt(total);
+  document.getElementById('recommended').textContent=fmt(recommended);
+  document.getElementById('tax_savings').textContent=fmt(savings);
+  document.getElementById('monthly_contrib').textContent=fmt(recommended/12);
+  document.getElementById('unused_warning').textContent=total>=limit?'None — you will use the full limit':'You may forfeit '+fmt(unused)+' if you over-contribute';
+  document.getElementById('results').style.display='block';
+}
+calculate();
+</script>
+</body>
+</html>

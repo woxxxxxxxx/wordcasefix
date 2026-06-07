@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COBRA vs Marketplace Insurance Comparison</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; COBRA vs Marketplace Comparison</nav>
+<h1>COBRA vs Marketplace Insurance Comparison</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="employer_premium">Total Employer Monthly Premium ($)</label><input type="number" id="employer_premium" placeholder="1400" oninput="calculate()"></div>
+  <div class="form-group"><label for="annual_income">Annual Household Income ($)</label><input type="number" id="annual_income" placeholder="45000" oninput="calculate()"></div>
+  <div class="form-group">
+    <label for="household_size">Household Size</label>
+    <select id="household_size" oninput="calculate()">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option>
+    </select>
+  </div>
+  <div class="form-group"><label for="age">Age (Primary)</label><input type="number" id="age" placeholder="40" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>6-Month Cost Comparison</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">COBRA Monthly Premium</span><span class="value" id="cobra_monthly"></span></div>
+    <div class="result-item"><span class="label">COBRA 6-Month Total</span><span class="value" id="cobra_6mo"></span></div>
+    <div class="result-item"><span class="label">ACA Monthly Premium (before subsidy)</span><span class="value" id="aca_before"></span></div>
+    <div class="result-item"><span class="label">Estimated Monthly Subsidy</span><span class="value" id="aca_subsidy"></span></div>
+    <div class="result-item"><span class="label">ACA Net Monthly Premium</span><span class="value" id="aca_net"></span></div>
+    <div class="result-item"><span class="label">ACA 6-Month Total</span><span class="value" id="aca_6mo"></span></div>
+    <div class="result-item"><span class="label">6-Month Savings with ACA</span><span class="value" id="savings_6mo"></span></div>
+    <div class="result-item"><span class="label">Recommendation</span><span class="value" id="recommendation"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About COBRA vs Marketplace Comparison</h2>
+  <p>When you lose job-based health coverage, you typically have two main options: elect COBRA continuation coverage or enroll in an ACA Marketplace plan. Job loss is a Special Enrollment Period trigger, giving you 60 days to enroll in a Marketplace plan. COBRA preserves your existing coverage and provider network, but you pay the full premium plus 2% — often $500 to $2,000+ per month. Marketplace plans may be substantially cheaper, especially if you qualify for premium subsidies based on your new (likely lower) income. This calculator compares your 6-month costs under each scenario, helping you make an informed decision quickly after job loss. The right choice depends on your healthcare needs, provider relationships, and income level.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>How long do I have to choose between COBRA and the Marketplace?</summary><p>You have 60 days from the qualifying event (job loss) or from receiving the COBRA election notice to elect COBRA. For the Marketplace, you also have 60 days from losing coverage to enroll using a Special Enrollment Period.</p></details>
+  <details><summary>Can I switch from COBRA to the Marketplace mid-year?</summary><p>Yes, but only when COBRA coverage is exhausted or you lose COBRA coverage involuntarily. Voluntarily dropping COBRA does not trigger a Special Enrollment Period for the Marketplace.</p></details>
+  <details><summary>Will my doctors be in-network on a Marketplace plan?</summary><p>Not necessarily. Marketplace plans have their own provider networks, which may differ from your employer's plan. Verify your doctors are in-network before selecting a Marketplace plan.</p></details>
+  <details><summary>Does COBRA coverage count as qualifying coverage?</summary><p>Yes. COBRA is considered qualifying health coverage, so you won't face any coverage gap penalties and can transition to Marketplace coverage at the end of COBRA without a waiting period.</p></details>
+  <details><summary>Are there any subsidies available while on COBRA?</summary><p>No. Premium tax credits and subsidies apply only to Marketplace plans, not to COBRA continuation coverage. This is one of the primary financial advantages of choosing Marketplace over COBRA.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="cobra-cost-estimator.html">COBRA Cost Estimator</a></li>
+    <li><a href="aca-subsidy-calculator.html">ACA Subsidy Calculator</a></li>
+    <li><a href="premium-tax-credit-2026.html">2026 Premium Tax Credit Calculator</a></li>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const ep=parseFloat(document.getElementById('employer_premium').value)||0;
+  const income=parseFloat(document.getElementById('annual_income').value)||0;
+  const size=parseInt(document.getElementById('household_size').value)||1;
+  const age=parseInt(document.getElementById('age').value)||35;
+  if(!ep||!income){document.getElementById('results').style.display='none';return;}
+  const cobra=ep*1.02;
+  let mp=350;
+  if(age>=30&&age<40)mp=450;
+  else if(age>=40&&age<50)mp=600;
+  else if(age>=50&&age<60)mp=800;
+  else if(age>=60)mp=1100;
+  const fpl=15650+(size-1)*5590;
+  const fpl_pct=(income/fpl)*100;
+  let cap=0;
+  if(fpl_pct>=100&&fpl_pct<150)cap=0;
+  else if(fpl_pct<200)cap=2;
+  else if(fpl_pct<250)cap=6;
+  else if(fpl_pct<400)cap=8.5;
+  else cap=999;
+  const subsidy=cap===999?0:Math.max(0,mp-(income/12)*(cap/100));
+  const aca_net=mp-subsidy;
+  document.getElementById('cobra_monthly').textContent=fmt(cobra);
+  document.getElementById('cobra_6mo').textContent=fmt(cobra*6);
+  document.getElementById('aca_before').textContent=fmt(mp);
+  document.getElementById('aca_subsidy').textContent=fmt(subsidy);
+  document.getElementById('aca_net').textContent=fmt(aca_net);
+  document.getElementById('aca_6mo').textContent=fmt(aca_net*6);
+  const savings=cobra*6-aca_net*6;
+  document.getElementById('savings_6mo').textContent=savings>0?fmt(savings):'COBRA may be comparable';
+  document.getElementById('recommendation').textContent=aca_net<cobra?'ACA Marketplace (saves '+fmt(cobra-aca_net)+'/mo)':'COBRA (similar costs, keeps your network)';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

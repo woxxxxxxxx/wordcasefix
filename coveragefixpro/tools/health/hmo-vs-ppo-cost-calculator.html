@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMO vs PPO Health Insurance Cost Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; HMO vs PPO Cost Calculator</nav>
+<h1>HMO vs PPO Health Insurance Cost Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="hmo_premium">HMO Monthly Premium ($)</label><input type="number" id="hmo_premium" placeholder="350" oninput="calculate()"></div>
+  <div class="form-group"><label for="ppo_premium">PPO Monthly Premium ($)</label><input type="number" id="ppo_premium" placeholder="500" oninput="calculate()"></div>
+  <div class="form-group"><label for="specialist_visits">Specialist Visits per Year</label><input type="number" id="specialist_visits" placeholder="4" oninput="calculate()"></div>
+  <div class="form-group"><label for="copay_hmo">HMO Specialist Copay ($)</label><input type="number" id="copay_hmo" placeholder="40" oninput="calculate()"></div>
+  <div class="form-group"><label for="copay_ppo">PPO Specialist Copay ($)</label><input type="number" id="copay_ppo" placeholder="60" oninput="calculate()"></div>
+  <div class="form-group"><label for="out_of_network">Need Out-of-Network Care?</label>
+    <select id="out_of_network" oninput="calculate()"><option value="no">No</option><option value="yes">Yes</option></select>
+  </div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Annual Cost Comparison</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">HMO Annual Premiums</span><span class="value" id="hmo_prem_yr"></span></div>
+    <div class="result-item"><span class="label">HMO Specialist Copays</span><span class="value" id="hmo_copay_yr"></span></div>
+    <div class="result-item"><span class="label">HMO Out-of-Network Penalty</span><span class="value" id="hmo_oon"></span></div>
+    <div class="result-item"><span class="label">HMO Total Annual Cost</span><span class="value" id="hmo_total"></span></div>
+    <div class="result-item"><span class="label">PPO Annual Premiums</span><span class="value" id="ppo_prem_yr"></span></div>
+    <div class="result-item"><span class="label">PPO Specialist Copays</span><span class="value" id="ppo_copay_yr"></span></div>
+    <div class="result-item"><span class="label">PPO Total Annual Cost</span><span class="value" id="ppo_total"></span></div>
+    <div class="result-item"><span class="label">Recommended Plan</span><span class="value" id="recommendation"></span></div>
+  </div>
+</div>
+<div class="description">
+  <h2>About the HMO vs PPO Calculator</h2>
+  <p>Choosing between an HMO and PPO is one of the most important health insurance decisions you will make. HMOs (Health Maintenance Organizations) generally offer lower premiums and copays but require you to use a network of doctors and get referrals to see specialists. PPOs (Preferred Provider Organizations) cost more but give you greater flexibility to see any doctor, including specialists, without a referral, and provide some coverage for out-of-network care. This calculator helps you compare the true annual cost of each plan type based on your expected healthcare usage. If you rarely see specialists and don't need out-of-network care, an HMO may save you hundreds or thousands per year. If you have ongoing specialist care or value provider flexibility, a PPO's extra cost may be worthwhile.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Do HMOs cover any out-of-network care?</summary><p>Generally only for emergencies. HMOs typically do not cover non-emergency out-of-network care, which can result in very high costs if you need to see a provider outside the network.</p></details>
+  <details><summary>Do I need a referral to see a specialist with a PPO?</summary><p>No. PPOs allow you to self-refer to specialists without going through a primary care physician first. This is one of the main advantages of PPO plans for people with complex health needs.</p></details>
+  <details><summary>Are HMO premiums always lower than PPO?</summary><p>In most cases yes, HMO premiums are lower because HMOs control costs through network restrictions and care coordination. However, the gap varies by plan and region.</p></details>
+  <details><summary>What is an EPO and how does it compare?</summary><p>An Exclusive Provider Organization (EPO) is a hybrid — it has a network like an HMO but doesn't require referrals like a PPO. It typically doesn't cover out-of-network care except in emergencies.</p></details>
+  <details><summary>Which plan type is better for a healthy young person?</summary><p>An HMO is often the better choice for healthy individuals who rarely need specialist care, as the lower premiums provide savings without significant downsides given minimal healthcare usage.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="cobra-cost-estimator.html">COBRA Cost Estimator</a></li>
+    <li><a href="deductible-met-tracker.html">Deductible Tracker</a></li>
+    <li><a href="prescription-drug-cost-calculator.html">Prescription Drug Cost Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const hp=parseFloat(document.getElementById('hmo_premium').value)||0;
+  const pp=parseFloat(document.getElementById('ppo_premium').value)||0;
+  const sv=parseInt(document.getElementById('specialist_visits').value)||0;
+  const hc=parseFloat(document.getElementById('copay_hmo').value)||0;
+  const pc=parseFloat(document.getElementById('copay_ppo').value)||0;
+  const oon=document.getElementById('out_of_network').value;
+  const hmo_prem=hp*12, ppo_prem=pp*12;
+  const hmo_copays=sv*hc, ppo_copays=sv*pc;
+  const hmo_oon_pen=oon==='yes'?5000:0;
+  const hmo_total=hmo_prem+hmo_copays+hmo_oon_pen;
+  const ppo_total=ppo_prem+ppo_copays;
+  document.getElementById('hmo_prem_yr').textContent=fmt(hmo_prem);
+  document.getElementById('hmo_copay_yr').textContent=fmt(hmo_copays);
+  document.getElementById('hmo_oon').textContent=fmt(hmo_oon_pen);
+  document.getElementById('hmo_total').textContent=fmt(hmo_total);
+  document.getElementById('ppo_prem_yr').textContent=fmt(ppo_prem);
+  document.getElementById('ppo_copay_yr').textContent=fmt(ppo_copays);
+  document.getElementById('ppo_total').textContent=fmt(ppo_total);
+  document.getElementById('recommendation').textContent=hmo_total<=ppo_total?'HMO (saves '+fmt(ppo_total-hmo_total)+'/yr)':'PPO (saves '+fmt(hmo_total-ppo_total)+'/yr)';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

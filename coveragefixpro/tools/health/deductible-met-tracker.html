@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Insurance Deductible Tracker</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; Deductible Tracker</nav>
+<h1>Health Insurance Deductible Tracker</h1>
+<div class="calculator-box">
+  <div class="form-group"><label for="annual_deductible">Annual Deductible ($)</label><input type="number" id="annual_deductible" placeholder="3000" oninput="calculate()"></div>
+  <div class="form-group"><label for="amount_paid">Amount Paid Toward Deductible So Far ($)</label><input type="number" id="amount_paid" placeholder="1200" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your Deductible Progress</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Annual Deductible</span><span class="value" id="ded_val"></span></div>
+    <div class="result-item"><span class="label">Amount Applied</span><span class="value" id="paid_val"></span></div>
+    <div class="result-item"><span class="label">Remaining Deductible</span><span class="value" id="remaining"></span></div>
+    <div class="result-item"><span class="label">Progress</span><span class="value" id="pct_val"></span></div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress_fill"></div>
+    </div>
+    <div class="progress-labels"><span>$0</span><span id="ded_label"></span></div>
+  </div>
+  <div id="status_msg" class="status-msg"></div>
+</div>
+<div class="description">
+  <h2>About the Deductible Tracker</h2>
+  <p>Your health insurance deductible is the amount you must pay out-of-pocket for covered medical services before your insurance begins sharing costs. Tracking your deductible progress throughout the year helps you plan healthcare spending and understand when your coinsurance kicks in. For example, on a $3,000 deductible plan, once you have paid $3,000 in covered medical expenses, your insurer starts covering its share (typically 70–80%) for the rest of the year. Knowing how close you are to meeting your deductible can also inform timing decisions — if you are nearly at your deductible, it may make sense to schedule elective procedures before year-end to maximize your insurance coverage. Deductibles reset on January 1st for most plans.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Does every medical expense count toward my deductible?</summary><p>No. Only covered in-network services count toward your deductible. Premiums, out-of-network costs (on many plans), and non-covered services do not count. Preventive care is often free and does not apply to the deductible.</p></details>
+  <details><summary>When does my deductible reset?</summary><p>For most employer plans and ACA marketplace plans, the deductible resets on January 1st. Some plans have non-calendar plan years, so your reset date may differ. Check your plan documents for your specific reset date.</p></details>
+  <details><summary>Is the deductible the same as the out-of-pocket maximum?</summary><p>No. The deductible is the amount before insurance starts sharing costs. The out-of-pocket maximum includes the deductible plus your coinsurance and copays — it is the total cap on what you pay in a year.</p></details>
+  <details><summary>If I have a family plan, do we share one deductible?</summary><p>Family plans typically have both individual and family deductibles. Each member has an individual deductible, and there is also a combined family deductible. Once any individual meets their deductible, insurance begins paying for them.</p></details>
+  <details><summary>Should I try to meet my deductible before year-end?</summary><p>If you are close to meeting your deductible late in the year, scheduling non-urgent medical care before December 31st can be beneficial — your insurance will cover more costs before your deductible resets in January.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="out-of-pocket-max-calculator.html">Out-of-Pocket Maximum Calculator</a></li>
+    <li><a href="hmo-vs-ppo-cost-calculator.html">HMO vs PPO Cost Calculator</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="maternity-insurance-calculator.html">Maternity Insurance Cost Calculator</a></li>
+    <li><a href="hsa-contribution-calculator.html">HSA Contribution Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult your insurance plan documents for exact deductible details.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<style>
+.progress-bar-wrap{margin:20px 0;}
+.progress-bar-track{background:#e0e0e0;border-radius:8px;height:28px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,#2ecc71,#27ae60);border-radius:8px;transition:width 0.4s;}
+.progress-labels{display:flex;justify-content:space-between;font-size:0.85rem;margin-top:4px;}
+.status-msg{margin-top:12px;padding:10px 14px;border-radius:6px;font-weight:600;}
+</style>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const ded=parseFloat(document.getElementById('annual_deductible').value)||0;
+  const paid=parseFloat(document.getElementById('amount_paid').value)||0;
+  if(!ded){document.getElementById('results').style.display='none';return;}
+  const capped=Math.min(paid,ded);
+  const remaining=Math.max(0,ded-capped);
+  const pct=Math.min(100,(capped/ded)*100);
+  document.getElementById('ded_val').textContent=fmt(ded);
+  document.getElementById('paid_val').textContent=fmt(capped);
+  document.getElementById('remaining').textContent=fmt(remaining);
+  document.getElementById('pct_val').textContent=pct.toFixed(1)+'%';
+  document.getElementById('progress_fill').style.width=pct+'%';
+  document.getElementById('ded_label').textContent=fmt(ded);
+  const msg=document.getElementById('status_msg');
+  if(pct>=100){msg.style.background='#d4edda';msg.style.color='#155724';msg.textContent='Deductible met! Your insurance is now sharing costs.';}
+  else if(pct>=75){msg.style.background='#fff3cd';msg.style.color='#856404';msg.textContent='Almost there! Only '+fmt(remaining)+' remaining.';}
+  else{msg.style.background='#f8f9fa';msg.style.color='#495057';msg.textContent='You have '+fmt(remaining)+' remaining before your deductible is met.';}
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Premium Tax Credit Calculator</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5XX4CE3YBR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5XX4CE3YBR');</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<a href="/" class="logo">CoverageFixPro</a>
+<div class="hamburger"><span></span><span></span><span></span></div>
+<nav><a href="/tools/auto/">Auto</a><a href="/tools/health/">Health</a><a href="/tools/life/">Life</a><a href="/tools/home/">Home</a><a href="/tools/business/">Business</a><a href="/about.html">About</a></nav>
+</div></header>
+<main>
+<nav class="breadcrumb"><a href="/">Home</a> &gt; <a href="/tools/health/">Health Insurance</a> &gt; 2026 Premium Tax Credit Calculator</nav>
+<h1>2026 Premium Tax Credit Calculator</h1>
+<div class="calculator-box">
+  <div class="form-group">
+    <label for="household_size">Household Size</label>
+    <select id="household_size" oninput="calculate()">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+      <option value="7">7</option><option value="8">8</option>
+    </select>
+  </div>
+  <div class="form-group"><label for="annual_income">Projected Annual Income ($)</label><input type="number" id="annual_income" placeholder="50000" oninput="calculate()"></div>
+  <div class="form-group"><label for="age">Age (Primary Applicant)</label><input type="number" id="age" placeholder="40" oninput="calculate()"></div>
+</div>
+<div class="result-box" id="results" style="display:none">
+  <h2>Your 2026 Premium Tax Credit Estimate</h2>
+  <div class="result-grid">
+    <div class="result-item"><span class="label">Federal Poverty Level (FPL)</span><span class="value" id="fpl_val"></span></div>
+    <div class="result-item"><span class="label">Income as % of FPL</span><span class="value" id="fpl_pct"></span></div>
+    <div class="result-item"><span class="label">Annual Premium Tax Credit (PTC)</span><span class="value" id="annual_ptc"></span></div>
+    <div class="result-item"><span class="label">Suggested Monthly APTC (Advance Payment)</span><span class="value" id="monthly_aptc"></span></div>
+    <div class="result-item"><span class="label">Estimated Net Monthly Premium</span><span class="value" id="net_monthly"></span></div>
+    <div class="result-item"><span class="label">Form 8962 Line 3 (FPL%)</span><span class="value" id="form8962_line3"></span></div>
+  </div>
+  <div class="info-box" id="form_tips"></div>
+</div>
+<div class="description">
+  <h2>About the 2026 Premium Tax Credit Calculator</h2>
+  <p>The Premium Tax Credit (PTC) is a refundable tax credit that helps eligible individuals and families afford health insurance purchased through the Marketplace. Calculated on IRS Form 8962, the PTC is based on your household income relative to the Federal Poverty Level. You can choose to receive it as an Advance Premium Tax Credit (APTC) paid directly to your insurer monthly, or claim the full credit when you file your taxes. Receiving APTC requires you to reconcile your advance payments against your actual income on Form 8962. If your actual income was higher than estimated, you may owe back some credit. If lower, you may receive an additional refund. Accurate income projection is critical to avoid a large tax bill at year-end.</p>
+</div>
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>What is the difference between PTC and APTC?</summary><p>The Premium Tax Credit (PTC) is the total credit you are eligible for, calculated on Form 8962 at tax time. The Advanced Premium Tax Credit (APTC) is the portion paid in advance directly to your insurer each month to lower your monthly premium.</p></details>
+  <details><summary>What happens if my income changes during the year?</summary><p>You should report income changes to the Marketplace immediately. If your income increases significantly, reducing your APTC avoids owing a large repayment at tax time. If income decreases, increasing APTC lowers your monthly premiums.</p></details>
+  <details><summary>Is there a repayment cap for excess APTC?</summary><p>Yes. The IRS caps repayment of excess APTC based on income. Lower-income households have smaller caps, protecting them from large tax bills if their income estimates were off.</p></details>
+  <details><summary>Can I claim the PTC if I missed Open Enrollment?</summary><p>You must enroll in a Marketplace plan to claim the PTC. If you missed Open Enrollment, you need a Special Enrollment Period qualifying event to enroll and receive the credit.</p></details>
+  <details><summary>Does the PTC apply to any health plan?</summary><p>No. The PTC only applies to plans purchased through the Health Insurance Marketplace (Healthcare.gov or a state exchange). Employer plans, Medicare, Medicaid, and off-exchange plans do not qualify.</p></details>
+</div>
+<div class="related-tools">
+  <h2>Related Health Insurance Tools</h2>
+  <ul>
+    <li><a href="aca-subsidy-calculator.html">ACA Health Insurance Subsidy Calculator</a></li>
+    <li><a href="health-insurance-affordability-checker.html">Health Insurance Affordability Checker</a></li>
+    <li><a href="cobra-vs-marketplace-calculator.html">COBRA vs Marketplace Comparison</a></li>
+    <li><a href="open-enrollment-calculator.html">Open Enrollment Plan Comparison Tool</a></li>
+    <li><a href="medical-expense-tax-deduction-calculator.html">Medical Expense Tax Deduction Calculator</a></li>
+  </ul>
+</div>
+<div class="disclaimer"><p><strong>Disclaimer:</strong> Results are estimates only. Consult a tax professional or visit Healthcare.gov for official determinations.</p></div>
+</main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="/about.html">About</a><a href="/about.html#privacy">Privacy Policy</a><a href="/about.html#terms">Terms</a></div><p>© 2026 CoverageFixPro. All rights reserved.</p><p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p></div></footer>
+<script src="/js/main.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function calculate(){
+  const size=parseInt(document.getElementById('household_size').value)||1;
+  const income=parseFloat(document.getElementById('annual_income').value)||0;
+  const age=parseInt(document.getElementById('age').value)||35;
+  if(!income||!age){document.getElementById('results').style.display='none';return;}
+  const fpl=15650+(size-1)*5590;
+  const fpl_pct=(income/fpl)*100;
+  let monthly_premium=350;
+  if(age>=30&&age<40)monthly_premium=450;
+  else if(age>=40&&age<50)monthly_premium=600;
+  else if(age>=50&&age<60)monthly_premium=800;
+  else if(age>=60)monthly_premium=1100;
+  let cap_pct=0,eligible=true;
+  if(fpl_pct<100||fpl_pct>=400){eligible=false;}
+  else if(fpl_pct<150)cap_pct=0;
+  else if(fpl_pct<200)cap_pct=2;
+  else if(fpl_pct<250)cap_pct=6;
+  else cap_pct=8.5;
+  const monthly_ptc=eligible?Math.max(0,monthly_premium-(income/12)*(cap_pct/100)):0;
+  const annual_ptc=monthly_ptc*12;
+  const net_monthly=monthly_premium-monthly_ptc;
+  document.getElementById('fpl_val').textContent=fmt(fpl);
+  document.getElementById('fpl_pct').textContent=fpl_pct.toFixed(1)+'%';
+  document.getElementById('annual_ptc').textContent=eligible?fmt(annual_ptc):'Not Eligible';
+  document.getElementById('monthly_aptc').textContent=eligible?fmt(monthly_ptc)+'/month':'Not Eligible';
+  document.getElementById('net_monthly').textContent=fmt(net_monthly)+'/month';
+  document.getElementById('form8962_line3').textContent=fpl_pct.toFixed(2)+'%';
+  document.getElementById('form_tips').innerHTML=eligible
+    ?'<strong>Form 8962 Tips:</strong> Report your APTC on Line 26. Reconcile with actual income on Lines 24-25. Keep all 1095-A forms from the Marketplace.'
+    :'<strong>Note:</strong> Based on your income, you may not qualify for the PTC. Consider Medicaid (if below 138% FPL in expanded states) or check for other assistance programs.';
+  document.getElementById('results').style.display='block';
+}
+</script>
+</body>
+</html>
