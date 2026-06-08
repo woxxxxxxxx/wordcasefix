@@ -136,21 +136,45 @@ async function addOnePost(page, pin) {
       await linkInput.fill(link);
     }
 
-    // 6. 加入队列 → "Next Available"（直接排队，无需二次确认）
+    // 6. 加入队列 → "Next Available"
     await page.locator('button:has-text("Next Available")').first().click({ timeout: 10000 });
-    // 等 composer 关闭（最多 10s），关闭即成功
-    await page.waitForFunction(
-      () => !document.querySelector('button[aria-label="Close Composer"], button') ||
-            !Array.from(document.querySelectorAll('button')).some(b => b.innerText.trim() === 'Close Composer'),
-      { timeout: 10000 }
-    ).catch(() => {});
     await page.waitForTimeout(1500);
 
-    log(`    ✅ 已加入队列`);
-    // 成功后导航回 queue 页，确保下次"New Post"可找到
+    // 处理 Pinterest board 选择下拉（如出现）
+    const boardSelect = page.locator('[data-testid*="board-select"], [aria-label*="board" i], [placeholder*="board" i]');
+    if (await boardSelect.count() > 0) {
+      log(`    🗂️ 检测到 board 选择`);
+      await boardSelect.first().click({ timeout: 5000 }).catch(() => {});
+      await page.waitForTimeout(800);
+      const firstOption = page.locator('[role="option"], [data-testid*="board-option"]').first();
+      if (await firstOption.count() > 0) {
+        await firstOption.click({ timeout: 3000 }).catch(() => {});
+        await page.waitForTimeout(500);
+      }
+    }
+
+    // 处理可能出现的确认弹窗
+    for (const label of ['Share Now', 'Add to Queue', 'Confirm', 'OK']) {
+      const btn = page.locator(`button:has-text("${label}")`).first();
+      if (await btn.count() > 0) {
+        log(`    🖱️ 检测到确认按钮: ${label}`);
+        await btn.click({ timeout: 3000 }).catch(() => {});
+        await page.waitForTimeout(800);
+        break;
+      }
+    }
+
+    // 等待 composer 关闭：等 "Next Available" 按钮消失
+    await page.locator('button:has-text("Next Available")')
+      .waitFor({ state: 'hidden', timeout: 30000 })
+      .catch(() => {});
+
+    // 成功判据：导航回 queue 页，New Post 按钮可见即确认成功
     await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
     await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
     await page.waitForTimeout(1000);
+
+    log(`    ✅ 已加入队列`);
     return true;
 
   } catch (e) {
