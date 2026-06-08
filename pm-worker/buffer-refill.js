@@ -1,9 +1,22 @@
 'use strict';
 /**
- * buffer-refill.js
- * 1. 调用 generate-pins.js 生成最新截图
- * 2. 登录 Buffer，检测每个 Pinterest 账户队列
- * 3. 队列 < MAX_QUEUE 则补充到满
+ * buffer-refill.js  v3
+ *
+ * 流程:
+ *   1. 生成最新截图 (generate-pins.js)
+ *   2. 登录 Buffer → xiaohuixie3 Pinterest 账户
+ *   3. 读取队列数量
+ *   4. 从两个站点的 pin-content.json 交替取图，补到 MAX_QUEUE
+ *
+ * 通过调试确认的选择器:
+ *   - 登录页: 单页表单, email + password 同时存在
+ *   - Channel 页 New Post 按钮: button:has-text("New Post")
+ *   - 文本区: div[contenteditable="true"] (第一个)
+ *   - 图片上传: input[type="file"]
+ *   - Title: input[placeholder="Your pin title"]
+ *   - Destination Link: input[placeholder="Enter destination link..."]
+ *   - 加入队列: button:has-text("Next Available")
+ *   - 队列数: tab 文字 "Queue\n{N}\nposts" 或 "Queue{N}"
  */
 
 const { chromium } = require('playwright');
@@ -12,22 +25,18 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 // ── 配置 ──────────────────────────────────────────────────────────────────────
-const MAX_QUEUE       = 10;   // Buffer 免费版上限，升级后改此数字
-const BUFFER_EMAIL    = 'xiaohuixie3@gmail.com';
-const BUFFER_PASSWORDS = ['Xxh113324', 'Xxh113324~', 'xxh113324', 'Xxh@113324'];
-const LOG_FILE = 'C:\\Users\\Administrator\\pm-worker\\logs\\buffer-refill.log';
+const MAX_QUEUE        = 10;
+const BUFFER_EMAIL     = 'xiaohuixie3@gmail.com';
+const BUFFER_PASSWORD  = 'Xxh113324';
+const CHANNEL_ID       = '6a218b35c687a22dd45dac93';   // xiaohuixie3 Pinterest
+const CHANNEL_URL      = `https://publish.buffer.com/channels/${CHANNEL_ID}/queue`;
+const LOG_FILE         = 'C:\\Users\\Administrator\\pm-worker\\logs\\buffer-refill.log';
+const PM_DIR           = 'C:\\Users\\Administrator\\pm-worker';
 
-const SITES = [
-  {
-    name:           'CoverageFixPro',
-    pinterestDir:   'C:\\Users\\Administrator\\coveragefixpro\\pinterest',
-    channelKeyword: 'coverage',
-  },
-  {
-    name:           'ContractFixPro',
-    pinterestDir:   'C:\\Users\\Administrator\\contractfixpro\\pinterest',
-    channelKeyword: 'contract',
-  },
+// 两个站点的 Pin 目录（轮流取图，内容更丰富）
+const PIN_SOURCES = [
+  { name: 'CoverageFixPro', dir: 'C:\\Users\\Administrator\\coveragefixpro\\pinterest' },
+  { name: 'ContractFixPro', dir: 'C:\\Users\\Administrator\\contractfixpro\\pinterest' },
 ];
 
 // ── 日志 ──────────────────────────────────────────────────────────────────────
@@ -35,138 +44,122 @@ function log(msg) {
   const line = `[${new Date().toISOString()}] ${msg}`;
   console.log(line);
   try {
-    const dir = path.dirname(LOG_FILE);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.mkdirSync(path.dirname(LOG_FILE), { recursive: true });
     fs.appendFileSync(LOG_FILE, line + '\n', 'utf8');
   } catch (_) {}
 }
 
-// ── Pin 读取 ──────────────────────────────────────────────────────────────────
-function loadPins(site) {
-  const jsonPath = path.join(site.pinterestDir, 'pin-content.json');
-  if (!fs.existsSync(jsonPath)) return [];
-  try {
-    const pins = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-    // 过滤图片文件存在的记录
-    return pins.filter(p => {
-      const imgFile = p.file || p.image;
-      return imgFile && fs.existsSync(path.join(site.pinterestDir, imgFile));
-    });
-  } catch (e) {
-    log(`  ⚠️ pin-content.json 解析失败: ${e.message}`);
-    return [];
-  }
-}
-
-// ── 队列数检测 ────────────────────────────────────────────────────────────────
-async function getQueueCount(page, channelKeyword) {
-  try {
-    await page.waitForTimeout(2000);
-    // Buffer Publish 页：队列条目
-    const items = await page.$$('[data-testid="queue-post"], .queue-post, [class*="QueuePost"]');
-    if (items.length > 0) {
-      log(`  队列检测: ${items.length} 条`);
-      return items.length;
-    }
-    // 尝试从页面文本提取数字
-    const text = await page.locator('[class*="queue"], [class*="Queue"]').first().textContent().catch(() => '');
-    const m = text.match(/(\d+)/);
-    if (m) return parseInt(m[1]);
-    // 保守估计，触发至少补充 3 条
-    log(`  队列检测失败，保守估计 7 条`);
-    return 7;
-  } catch (e) {
-    log(`  队列检测异常: ${e.message}，保守估计 7 条`);
-    return 7;
-  }
-}
-
-// ── Buffer 登录 ───────────────────────────────────────────────────────────────
-async function loginBuffer(page) {
-  log('  🔑 登录 Buffer...');
-
-  for (const pwd of BUFFER_PASSWORDS) {
+// ── 加载所有可用 Pin（合并两个站点，随机打乱）────────────────────────────────
+function loadAllPins() {
+  const all = [];
+  for (const src of PIN_SOURCES) {
+    const jsonPath = path.join(src.dir, 'pin-content.json');
+    if (!fs.existsSync(jsonPath)) { log(`  ⚠️  ${src.name} 无 pin-content.json`); continue; }
     try {
-      // 每次从登录页重新开始
-      await page.goto('https://login.buffer.com/login', { waitUntil: 'domcontentloaded', timeout: 30000 });
-      await page.waitForSelector('input[name="email"]', { timeout: 15000 });
-
-      // Buffer 是单页表单：email + password 同时存在，一起填完再提交
-      await page.fill('input[name="email"]', BUFFER_EMAIL);
-      await page.fill('input[name="password"]', pwd);
-
-      // 点击 Log In
-      await page.locator('#login-form-submit, button[type="submit"]').first().click();
-
-      // 等待跳转到 Buffer 主应用
-      await page.waitForURL(/publish\.buffer\.com|app\.buffer\.com/, { timeout: 15000 });
-      log(`  ✅ 登录成功`);
-      return true;
-    } catch (_) {
-      log(`  密码 "${pwd}" 失败，尝试下一个...`);
-    }
+      const pins = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+      let valid = 0;
+      for (const p of pins) {
+        const imgFile = p.file || p.image;
+        if (!imgFile) continue;
+        const imgPath = path.join(src.dir, imgFile);
+        if (!fs.existsSync(imgPath)) continue;
+        all.push({ ...p, imgPath, source: src.name });
+        valid++;
+      }
+      log(`  📌 ${src.name}: ${valid} 张可用`);
+    } catch (e) { log(`  ⚠️  ${src.name} JSON 解析失败: ${e.message}`); }
   }
-  log('  ❌ 所有密码均失败');
-  return false;
+  // Fisher-Yates 随机打乱
+  for (let i = all.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+  return all;
 }
 
-// ── 添加单条 Post ─────────────────────────────────────────────────────────────
-async function addPost(page, site, pin) {
-  const imgFile = pin.file || pin.image;
-  const imgPath = path.join(site.pinterestDir, imgFile);
-  const title   = pin.title || pin.name || imgFile;
-  const desc    = pin.desc  || pin.text || title;
-  const link    = pin.link  || '';
-  const caption = `${title}\n\n${desc}\n\n🔗 ${link}`.trim();
+// ── 读取队列数量（从 tab 文字解析）────────────────────────────────────────────
+async function getQueueCount(page) {
+  try {
+    // Tab 文字形如 "Queue\n0\nposts" 或 "Queue0"
+    const tabText = await page.locator('[role="tab"], button[aria-label*="Queue" i]')
+      .filter({ hasText: /Queue/i }).first().textContent({ timeout: 5000 }).catch(() => '');
+    const m = tabText.match(/Queue\D*(\d+)/i);
+    if (m) { log(`  队列: ${m[1]} 条`); return parseInt(m[1]); }
+    // 备用：数页面上的 queue-post 元素
+    const cards = await page.$$('[data-testid*="queue"], [class*="QueuePost"], [class*="queue-post"]');
+    log(`  队列(元素计数): ${cards.length} 条`);
+    return cards.length;
+  } catch (e) {
+    log(`  队列检测失败: ${e.message}，默认 0`);
+    return 0;
+  }
+}
+
+// ── 添加一条 Post ─────────────────────────────────────────────────────────────
+async function addOnePost(page, pin) {
+  const title = pin.title || pin.name || path.basename(pin.imgPath, '.png');
+  const desc  = pin.desc  || pin.text || title;
+  const link  = pin.link  || '';
+
+  log(`  ➕ [${pin.source}] ${title.slice(0, 50)}`);
 
   try {
-    // 点击 New Post
-    await page.locator(
-      'button:has-text("New Post"), button:has-text("Create Post"), ' +
-      'button:has-text("Compose"), [data-testid*="new-post"], [data-testid*="create"]'
-    ).first().click({ timeout: 10000 });
+    // 1. 点 "+ New Post"（channel header 右上角）
+    await page.locator('button:has-text("New Post")').first().click({ timeout: 10000 });
     await page.waitForTimeout(2000);
 
-    // 上传图片
-    const fileInput = page.locator('input[type="file"]').first();
-    if (await fileInput.count() > 0) {
-      await fileInput.setInputFiles(imgPath);
-    } else {
-      // 触发文件选择器
-      const [chooser] = await Promise.all([
-        page.waitForFileChooser({ timeout: 5000 }),
-        page.locator('[class*="upload"], [class*="media"], button:has-text("Add Media"), button:has-text("Upload")')
-          .first().click(),
-      ]);
-      await chooser.setFiles(imgPath);
-    }
-    await page.waitForTimeout(3000); // 等待上传
+    // 2. 上传图片（file input 是 hidden 元素，直接 setInputFiles 无需等可见）
+    await page.locator('input[type="file"]').first().setInputFiles(pin.imgPath);
+    // 等待上传真正完成：等 "Uploading" 按钮消失（不超过 30s）
+    await page.waitForFunction(
+      () => !Array.from(document.querySelectorAll('button')).some(b => b.innerText.includes('Uploading')),
+      { timeout: 30000 }
+    ).catch(() => {});  // 超时就继续
+    await page.waitForTimeout(1000);
+    log(`    📎 图片已上传`);
 
-    // 填写文案
-    const textArea = page.locator(
-      'textarea, div[contenteditable="true"], [data-testid="composer-text"], [class*="composer"] textarea'
-    ).first();
-    if (await textArea.count() > 0) {
-      await textArea.click();
-      await textArea.fill(caption);
-      await page.waitForTimeout(500);
+    // 3. 填写 Post 文本（contenteditable div）
+    const textBox = page.locator('div[contenteditable="true"]').first();
+    await textBox.click();
+    await textBox.fill(desc.slice(0, 500));   // Buffer Pinterest 上限 500
+    await page.waitForTimeout(500);
+
+    // 4. 填写 Pin Title
+    const titleInput = page.locator('input[placeholder="Your pin title"]');
+    if (await titleInput.count() > 0) {
+      await titleInput.fill(title.slice(0, 100));
     }
 
-    // 点击加入队列
-    await page.locator(
-      'button:has-text("Add to Queue"), button:has-text("Queue"), ' +
-      'button:has-text("Schedule"), [data-testid*="queue"], [data-testid*="schedule"]'
-    ).first().click({ timeout: 10000 });
-    await page.waitForTimeout(2000);
+    // 5. 填写 Destination Link
+    const linkInput = page.locator('input[placeholder="Enter destination link..."]');
+    if (await linkInput.count() > 0 && link) {
+      await linkInput.fill(link);
+    }
 
-    log(`    ✅ 已加入: ${title.slice(0, 50)}`);
+    // 6. 加入队列 → "Next Available"（直接排队，无需二次确认）
+    await page.locator('button:has-text("Next Available")').first().click({ timeout: 10000 });
+    // 等 composer 关闭（最多 10s），关闭即成功
+    await page.waitForFunction(
+      () => !document.querySelector('button[aria-label="Close Composer"], button') ||
+            !Array.from(document.querySelectorAll('button')).some(b => b.innerText.trim() === 'Close Composer'),
+      { timeout: 10000 }
+    ).catch(() => {});
+    await page.waitForTimeout(1500);
+
+    log(`    ✅ 已加入队列`);
+    // 成功后导航回 queue 页，确保下次"New Post"可找到
+    await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
+    await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
+    await page.waitForTimeout(1000);
     return true;
+
   } catch (e) {
-    log(`    ❌ 添加失败: ${e.message.slice(0, 100)}`);
-    // 关闭弹窗
+    log(`    ❌ 失败: ${e.message.slice(0, 120)}`);
+    // 导航回 channel 页重置状态（比关闭 composer 更可靠）
     try {
-      await page.locator('button:has-text("Close"), button:has-text("Cancel"), [aria-label="Close"]')
-        .first().click({ timeout: 3000 });
+      await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
+      await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
+      await page.waitForTimeout(1500);
     } catch (_) {}
     return false;
   }
@@ -175,108 +168,92 @@ async function addPost(page, site, pin) {
 // ── 主流程 ────────────────────────────────────────────────────────────────────
 async function refillBuffer() {
   log('════════════════════════════════════════');
-  log('Buffer Refill 启动');
+  log('Buffer Refill v3 启动');
   log('════════════════════════════════════════');
 
-  // Step 1: 生成最新 Pin 截图
-  log('\n📸 生成 Pin 截图...');
+  // Step 1: 生成截图
+  log('\n📸 Step 1: 生成 Pin 截图...');
   try {
-    execSync(`node "${path.join('C:\\Users\\Administrator\\pm-worker', 'generate-pins.js')}"`, {
-      cwd:     'C:\\Users\\Administrator\\pm-worker',
-      timeout: 120000,
-      stdio:   'inherit',
+    execSync(`node "${path.join(PM_DIR, 'generate-pins.js')}"`, {
+      cwd: PM_DIR, timeout: 180000, stdio: 'inherit',
     });
   } catch (e) {
-    log(`⚠️ 截图生成失败: ${e.message}，继续使用已有图片`);
+    log(`⚠️  截图生成超时/失败: ${e.message.slice(0,80)}，继续使用已有图片`);
   }
 
-  // Step 2: 登录 Buffer 并补充队列
+  // Step 2: 加载所有 Pin
+  log('\n📌 Step 2: 加载 Pin 图片...');
+  const pins = loadAllPins();
+  if (pins.length === 0) {
+    log('❌ 无可用 Pin 图片，退出');
+    return;
+  }
+  log(`  合计 ${pins.length} 张可用`);
+
+  // Step 3: 启动浏览器 + 登录
+  log('\n🌐 Step 3: 启动浏览器...');
   const browser = await chromium.launch({
     headless: false,
-    slowMo: 500,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    slowMo: 300,
+    proxy: { server: 'http://127.0.0.1:7897' },
+    args: ['--no-sandbox'],
   });
-  const context = await browser.newContext({
-    viewport:  { width: 1280, height: 900 },
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36',
-  });
-  const page = await context.newPage();
-
-  const results = [];
+  const page = await browser.newPage();
+  page.setDefaultTimeout(20000);
 
   try {
-    const loggedIn = await loginBuffer(page);
-    if (!loggedIn) {
-      results.push({ site: 'all', status: 'login_failed' });
+    // 登录
+    log('  🔑 登录 Buffer...');
+    await page.goto('https://login.buffer.com/login', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForSelector('input[name="email"]', { timeout: 15000 });
+    await page.fill('input[name="email"]', BUFFER_EMAIL);
+    await page.fill('input[name="password"]', BUFFER_PASSWORD);
+    await page.locator('#login-form-submit').click();
+    await page.waitForURL(/publish\.buffer\.com/, { timeout: 20000, waitUntil: 'commit' });
+    log('  ✅ 登录成功');
+
+    // 导航到 Pinterest channel queue 页
+    log(`\n📋 Step 4: 导航到 channel queue...`);
+    await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 30000 });
+    // 等待页面 React 渲染（等 New Post 按钮出现）
+    await page.waitForSelector('button:has-text("New Post")', { timeout: 30000 });
+    await page.waitForTimeout(2000);
+    log(`  ✅ Channel 页已就绪`);
+
+    // 读取当前队列数
+    const currentCount = await getQueueCount(page);
+    const toAdd = Math.max(0, MAX_QUEUE - currentCount);
+
+    if (toAdd === 0) {
+      log(`\n✅ 队列已满 (${currentCount}/${MAX_QUEUE})，无需补充`);
       await browser.close();
-      return results;
+      return;
+    }
+    log(`\n📥 Step 5: 队列 ${currentCount}/${MAX_QUEUE}，需补充 ${toAdd} 条`);
+
+    // 逐条添加
+    let added = 0;
+    for (let i = 0; i < toAdd; i++) {
+      const pin = pins[i % pins.length];
+      const ok  = await addOnePost(page, pin);
+      if (ok) added++;
+      await page.waitForTimeout(1000);
     }
 
-    await page.waitForTimeout(3000); // 等待页面稳定
+    log(`\n════ 完成: 新增 ${added}/${toAdd} 条，队列约 ${currentCount + added}/${MAX_QUEUE} ════`);
 
-    for (const site of SITES) {
-      log(`\n── 处理: ${site.name} ──`);
-
-      const pins = loadPins(site);
-      if (pins.length === 0) {
-        log(`  ⚠️ 无可用 Pin 图片，跳过`);
-        results.push({ site: site.name, status: 'no_images', added: 0 });
-        continue;
-      }
-      log(`  📌 找到 ${pins.length} 张 Pin 图片`);
-
-      // 导航到对应频道
-      try {
-        const channelLink = page.locator(`[title*="${site.channelKeyword}" i], a:has-text("${site.name}")`).first();
-        if (await channelLink.count() > 0) await channelLink.click();
-        await page.waitForTimeout(2000);
-      } catch (_) {}
-
-      const currentCount = await getQueueCount(page, site.channelKeyword);
-      const toAdd = Math.max(0, MAX_QUEUE - currentCount);
-
-      if (toAdd === 0) {
-        log(`  ✅ 队列已满 (${currentCount}/${MAX_QUEUE})，跳过`);
-        results.push({ site: site.name, status: 'queue_full', current: currentCount, added: 0 });
-        continue;
-      }
-
-      log(`  📥 队列 ${currentCount}/${MAX_QUEUE}，需补充 ${toAdd} 条`);
-
-      // 随机打乱，循环取 pin
-      const shuffled = [...pins].sort(() => Math.random() - 0.5);
-      let added = 0;
-
-      for (let i = 0; i < toAdd; i++) {
-        const pin = shuffled[i % shuffled.length];
-        const ok  = await addPost(page, site, pin);
-        if (ok) added++;
-        await page.waitForTimeout(1500);
-      }
-
-      log(`  📊 完成：新增 ${added} 条，队列约 ${currentCount + added}/${MAX_QUEUE}`);
-      results.push({ site: site.name, status: 'refilled', current: currentCount, added, target: MAX_QUEUE });
-    }
   } catch (e) {
-    log(`❌ 整体异常: ${e.message}`);
-    results.push({ site: 'all', status: 'error', error: e.message });
+    log(`❌ 致命错误: ${e.message}`);
+    try {
+      await page.screenshot({ path: path.join(PM_DIR, 'logs', 'buffer-error.png') });
+    } catch (_) {}
   } finally {
     await browser.close();
   }
-
-  const summary = results.map(r =>
-    `${r.site}: ${r.status}` + (r.added != null ? ` (+${r.added})` : '')
-  ).join(' | ');
-  log(`\n════ 完成 ════ ${summary}`);
-  return results;
 }
 
-// ── 入口 ──────────────────────────────────────────────────────────────────────
 if (require.main === module) {
-  refillBuffer().catch(e => {
-    log(`致命错误: ${e.message}`);
-    process.exit(1);
-  });
+  refillBuffer().catch(e => { log(`FATAL: ${e.message}`); process.exit(1); });
 }
 
 module.exports = { refillBuffer };
