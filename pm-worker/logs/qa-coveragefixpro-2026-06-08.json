@@ -1,0 +1,80 @@
+﻿{
+    "summary":  {
+                    "pass":  10,
+                    "fail":  0,
+                    "total":  11,
+                    "warn":  1
+                },
+    "timestamp":  "2026-06-08 09:16:58",
+    "domain":  "coveragefixpro.com",
+    "project":  "coveragefixpro",
+    "checks":  [
+                   {
+                       "detail":  "返回200",
+                       "status":  "PASS",
+                       "category":  "基础可访问性",
+                       "name":  "首页HTTP状态码"
+                   },
+                   {
+                       "detail":  "存在且不为空: Insurance Calculators \u0026 Tools - Free Online | CoverageFixPro",
+                       "status":  "PASS",
+                       "category":  "基础可访问性",
+                       "name":  "页面标题"
+                   },
+                   {
+                       "detail":  "存在完整的description meta标签",
+                       "status":  "PASS",
+                       "category":  "基础可访问性",
+                       "name":  "页面描述meta"
+                   },
+                   {
+                       "detail":  "可访问，返回200",
+                       "status":  "PASS",
+                       "category":  "SEO基础",
+                       "name":  "sitemap.xml"
+                   },
+                   {
+                       "detail":  "存在，返回200",
+                       "status":  "PASS",
+                       "category":  "SEO基础",
+                       "name":  "robots.txt"
+                   },
+                   {
+                       "detail":  "存在且包含正确的pub ID: pub-1638874323475457",
+                       "status":  "PASS",
+                       "category":  "SEO基础",
+                       "name":  "ads.txt"
+                   },
+                   {
+                       "detail":  "首页包含canonical标签指向 https://coveragefixpro.com/",
+                       "status":  "PASS",
+                       "category":  "SEO基础",
+                       "name":  "canonical标签"
+                   },
+                   {
+                       "detail":  "包含AdSense脚本和3处广告占位符",
+                       "status":  "PASS",
+                       "category":  "变现相关",
+                       "name":  "AdSense广告代码"
+                   },
+                   {
+                       "detail":  "实际120个工具（auto:25, health:25, life:25, home:25, business:20），与首页显示一致",
+                       "status":  "WARN",
+                       "category":  "内容质量",
+                       "name":  "工具数量",
+                       "suggestion":  "建议在projects.json中添加tool_count:120字段"
+                   },
+                   {
+                       "detail":  "不存在的页面正确返回404状态码",
+                       "status":  "PASS",
+                       "category":  "内容质量",
+                       "name":  "404页面处理"
+                   },
+                   {
+                       "detail":  "本地文件统计120个工具HTML，与网站声称数量一致",
+                       "status":  "PASS",
+                       "category":  "内容质量",
+                       "name":  "工具页面总数验证"
+                   }
+               ]
+}
