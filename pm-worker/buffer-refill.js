@@ -84,37 +84,26 @@ async function getQueueCount(page, channelKeyword) {
 // ── Buffer 登录 ───────────────────────────────────────────────────────────────
 async function loginBuffer(page) {
   log('  🔑 登录 Buffer...');
-  await page.goto('https://login.buffer.com/login', { waitUntil: 'domcontentloaded', timeout: 30000 });
 
-  // 填写邮箱
-  await page.waitForSelector('input[name="email"], input[type="email"]', { timeout: 15000 });
-  await page.fill('input[name="email"], input[type="email"]', BUFFER_EMAIL);
-
-  // 提交邮箱（可能是两步表单）
-  const submitEmail = page.locator('button[type="submit"]').first();
-  await submitEmail.click();
-  await page.waitForTimeout(2000);
-
-  // 尝试各密码
   for (const pwd of BUFFER_PASSWORDS) {
     try {
-      const pwdInput = page.locator('input[name="password"], input[type="password"]').first();
-      await pwdInput.waitFor({ timeout: 8000 });
-      await pwdInput.fill(pwd);
-      await page.locator('button[type="submit"]').first().click();
-      // 等待跳转
-      await page.waitForURL(/publish|dashboard|app\.buffer/, { timeout: 10000 });
+      // 每次从登录页重新开始
+      await page.goto('https://login.buffer.com/login', { waitUntil: 'domcontentloaded', timeout: 30000 });
+      await page.waitForSelector('input[name="email"]', { timeout: 15000 });
+
+      // Buffer 是单页表单：email + password 同时存在，一起填完再提交
+      await page.fill('input[name="email"]', BUFFER_EMAIL);
+      await page.fill('input[name="password"]', pwd);
+
+      // 点击 Log In
+      await page.locator('#login-form-submit, button[type="submit"]').first().click();
+
+      // 等待跳转到 Buffer 主应用
+      await page.waitForURL(/publish\.buffer\.com|app\.buffer\.com/, { timeout: 15000 });
       log(`  ✅ 登录成功`);
       return true;
     } catch (_) {
-      log(`  密码失败，尝试下一个...`);
-      // 重新进入登录页
-      try {
-        await page.goto('https://login.buffer.com/login', { waitUntil: 'domcontentloaded', timeout: 10000 });
-        await page.fill('input[name="email"], input[type="email"]', BUFFER_EMAIL);
-        await page.locator('button[type="submit"]').first().click();
-        await page.waitForTimeout(1500);
-      } catch (_2) {}
+      log(`  密码 "${pwd}" 失败，尝试下一个...`);
     }
   }
   log('  ❌ 所有密码均失败');
@@ -203,7 +192,8 @@ async function refillBuffer() {
 
   // Step 2: 登录 Buffer 并补充队列
   const browser = await chromium.launch({
-    headless: true,
+    headless: false,
+    slowMo: 500,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   const context = await browser.newContext({
