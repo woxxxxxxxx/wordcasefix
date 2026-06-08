@@ -61,11 +61,11 @@ const SC_SITES = {
 };
 
 const ADSENSE_SUBMIT_DATES = {
-  'WordCaseFix':     '2026-01-01',
-  'VestCalc':        '2026-01-01',
-  'ContractFixPro':  '2026-01-01',
-  'BillingFixPro':   '2026-01-01',
-  'PayrollFixPro':   '2026-01-01',
+  'WordCaseFix':     '2026-06-07',
+  'VestCalc':        '2026-06-07',
+  'ContractFixPro':  '2026-06-07',
+  'BillingFixPro':   '2026-06-07',
+  'PayrollFixPro':   '2026-06-07',
   'CoverageFixPro':  '2026-06-07',
   'NotionTemplaFix': null,
 };
@@ -342,44 +342,11 @@ async function getOAuthAccessToken() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// SEARCH CONSOLE
+// SEARCH CONSOLE (disabled — service account not yet added to SC)
 // ═══════════════════════════════════════════════════════════════════════════
-async function getSearchConsoleData(oauthToken) {
-  if (!oauthToken) return null;
-  log('Fetching Search Console data...');
-  const yesterday = (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
-  const results = {};
-  for (const [site, siteUrl] of Object.entries(SC_SITES)) {
-    try {
-      const encoded = encodeURIComponent(siteUrl);
-      const res = await request(
-        `https://searchconsole.googleapis.com/webmasters/v3/sites/${encoded}/searchAnalytics/query`,
-        {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${oauthToken}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ startDate: yesterday, endDate: yesterday, dimensions: ['page'], rowLimit: 3 }),
-          timeout: 10000,
-        }
-      );
-      if (res.status === 200) {
-        const d    = JSON.parse(res.body);
-        const rows = d.rows || [];
-        const impressions = rows.reduce((s, r) => s + (r.impressions || 0), 0);
-        const clicks      = rows.reduce((s, r) => s + (r.clicks     || 0), 0);
-        const avgPos      = rows.length ? (rows.reduce((s,r) => s+(r.position||0), 0)/rows.length).toFixed(1) : '--';
-        const top3        = rows.slice(0,3).map(r => ({ page: r.keys?.[0]||'', clicks: r.clicks||0, impressions: r.impressions||0 }));
-        results[site] = { impressions, clicks, avgPos, top3 };
-        log(`  SC ${site}: ${impressions} impr, ${clicks} clicks`);
-      } else {
-        log(`  SC ${site}: HTTP ${res.status} (skipped)`);
-        results[site] = null;
-      }
-    } catch (e) {
-      log(`  SC ${site}: error (${e.message.slice(0,40)})`);
-      results[site] = null;
-    }
-  }
-  return results;
+async function getSearchConsoleData() {
+  log('Search Console: 授权待配置，跳过');
+  return null;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -692,7 +659,7 @@ function formatReport(sales, ga, buffer, sc, bufferToday) {
     ${section('#0369a1', '🔍', 'SEO 曝光数据（昨日 Search Console）', (() => {
       const scSites = Object.keys(SC_SITES);
       const hasAny  = sc && scSites.some(s => sc[s]);
-      if (!hasAny) return '<div style="color:#94a3b8;font-size:13px;">Search Console 数据不可用（API未授权或无数据）</div>';
+      if (!hasAny) return '<div style="color:#94a3b8;font-size:13px;">SC授权待配置（需将服务账号添加到 Search Console 用户）</div>';
       const rows = scSites.map((s, i) => {
         const d  = sc?.[s];
         const bg = i % 2 === 0 ? '#ffffff' : '#f8fafc';
@@ -992,10 +959,9 @@ async function runDailyReport() {
   log('Daily Report — ' + new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }));
   log('════════════════════════════════════');
 
-  // GA4 + OAuth + Buffer log (pure async, no browser needed)
-  const gaPromise         = getGA4Data();
-  const oauthTokenPromise = getOAuthAccessToken();
-  const bufferToday       = getBufferPublishedToday();
+  // GA4 + Buffer log (pure async, no browser needed)
+  const gaPromise   = getGA4Data();
+  const bufferToday = getBufferPublishedToday();
   log(`Buffer published today (from log): ${bufferToday}`);
 
   // PayHip + Buffer share one Playwright browser
@@ -1013,13 +979,12 @@ async function runDailyReport() {
   const payhipPage = await ctx.newPage();
   const bufferPage = await ctx.newPage();
 
-  const [sales, buffer, ga, oauthToken] = await Promise.all([
+  const [sales, buffer, ga] = await Promise.all([
     getPayHipSales(payhipPage),
     getBufferStatus(bufferPage),
     gaPromise,
-    oauthTokenPromise,
   ]);
-  const sc = await getSearchConsoleData(oauthToken);
+  const sc = await getSearchConsoleData();
 
   await browser.close();
 
@@ -1027,7 +992,7 @@ async function runDailyReport() {
   log(`  Sales:  $${sales.revenue || '0'}, ${sales.orders || 0} orders`);
   log(`  Buffer: ${buffer.scheduled} scheduled, ${buffer.drafts} drafts`);
   log(`  GA4:    ${ga ? 'fetched' : 'skipped'}`);
-  log(`  SC:     ${sc ? Object.values(sc).filter(Boolean).length + '/' + Object.keys(sc).length + ' sites' : 'skipped'}`);
+  log(`  SC:     待配置`);
   log(`  PinLog: ${bufferToday} published today`);
 
   const { subject, html } = formatReport(sales, ga, buffer, sc, bufferToday);
