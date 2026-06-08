@@ -1,0 +1,77 @@
+{
+  "project_id": "notiontemplafix",
+  "domain": "notiontemplafix.com",
+  "qa_date": "2026-06-08",
+  "timestamp": "2026-06-08T00:00:00Z",
+  "checks": [
+    {
+      "category": "基础可访问性",
+      "item": "首页 HTTP 状态码 200",
+      "status": "PASS",
+      "details": "页面成功加载"
+    },
+    {
+      "category": "基础可访问性",
+      "item": "页面标题存在且不为空",
+      "status": "PASS",
+      "details": "NotionTemplaFix - Free & Premium Notion Templates"
+    },
+    {
+      "category": "基础可访问性",
+      "item": "页面描述 meta 标签",
+      "status": "FAIL",
+      "details": "页面有描述文本但缺少 meta description 标签",
+      "suggestion": "在 <head> 中添加 <meta name=\"description\" content=\"Beautiful, ready-to-use Notion templates to boost your productivity, organize your life, and streamline your workflow.\">"
+    },
+    {
+      "category": "SEO基础",
+      "item": "/sitemap.xml 可访问",
+      "status": "PASS",
+      "details": "有效的 sitemap.xml 文件，包含所有产品页面"
+    },
+    {
+      "category": "SEO基础",
+      "item": "/robots.txt 存在",
+      "status": "PASS",
+      "details": "有效的 robots.txt，允许所有爬虫访问"
+    },
+    {
+      "category": "SEO基础",
+      "item": "首页 canonical 标签",
+      "status": "FAIL",
+      "details": "首页未检测到 canonical 标签",
+      "suggestion": "在首页 <head> 中添加 <link rel=\"canonical\" href=\"https://notiontemplafix.com/\">"
+    },
+    {
+      "category": "变现相关",
+      "item": "Payhip 产品链接可访问",
+      "status": "PASS",
+      "details": "15个付费产品均有 Payhip 购买按钮（https://payhip.com/b/[产品ID]）"
+    },
+    {
+      "category": "内容质量",
+      "item": "产品数量与记录一致",
+      "status": "WARN",
+      "details": "实际18个产品（3个免费+15个付费），projects.json 记录16个",
+      "note": "建议更新 projects.json 中的 tool_count 为 18"
+    },
+    {
+      "category": "内容质量",
+      "item": "404页面处理",
+      "status": "PASS",
+      "details": "不存在的页面正确返回 404 状态码"
+    }
+  ],
+  "summary": {
+    "total_checks": 9,
+    "pass": 6,
+    "fail": 2,
+    "warn": 1,
+    "pass_rate": "66.7%"
+  },
+  "action_items": [
+    "添加首页 meta description 标签",
+    "添加首页 canonical 标签",
+    "更新 projects.json 中的 tool_count 为 18"
+  ]
+}
