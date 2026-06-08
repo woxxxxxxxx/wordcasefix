@@ -193,7 +193,7 @@ async function refillBuffer() {
   // Step 3: 启动浏览器 + 登录
   log('\n🌐 Step 3: 启动浏览器...');
   const browser = await chromium.launch({
-    headless: false,
+    headless: true,
     slowMo: 300,
     proxy: { server: 'http://127.0.0.1:7897' },
     args: ['--no-sandbox'],
