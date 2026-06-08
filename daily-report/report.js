@@ -35,7 +35,39 @@ const GA4_PROPERTIES = {
   'VestCalc':        '539700100',
   'NotionTemplaFix': '539119398',
   'ContractFixPro':  '539948742',
-  'PayrollFixPro':   '491490803',  // payrollfixpro.com (G-PLWJ8VEN8D) — verify numeric ID in GA4 admin
+  'BillingFixPro':   '540289117',
+  'PayrollFixPro':   '540359696',
+  'CoverageFixPro':  '540484051',
+};
+
+const SITES = [
+  { id: 'WordCaseFix',     domain: 'wordcasefix.com'     },
+  { id: 'VestCalc',        domain: 'vestcalc.com'        },
+  { id: 'NotionTemplaFix', domain: 'notiontemplafix.com' },
+  { id: 'ContractFixPro',  domain: 'contractfixpro.com'  },
+  { id: 'BillingFixPro',   domain: 'billingfixpro.com'   },
+  { id: 'PayrollFixPro',   domain: 'payrollfixpro.com'   },
+  { id: 'CoverageFixPro',  domain: 'coveragefixpro.com'  },
+];
+
+const SC_SITES = {
+  'WordCaseFix':     'sc-domain:wordcasefix.com',
+  'VestCalc':        'sc-domain:vestcalc.com',
+  'NotionTemplaFix': 'sc-domain:notiontemplafix.com',
+  'ContractFixPro':  'sc-domain:contractfixpro.com',
+  'BillingFixPro':   'sc-domain:billingfixpro.com',
+  'PayrollFixPro':   'sc-domain:payrollfixpro.com',
+  'CoverageFixPro':  'sc-domain:coveragefixpro.com',
+};
+
+const ADSENSE_SUBMIT_DATES = {
+  'WordCaseFix':     '2026-01-01',
+  'VestCalc':        '2026-01-01',
+  'ContractFixPro':  '2026-01-01',
+  'BillingFixPro':   '2026-01-01',
+  'PayrollFixPro':   '2026-01-01',
+  'CoverageFixPro':  '2026-06-07',
+  'NotionTemplaFix': null,
 };
 
 const SMTP = {
@@ -205,27 +237,49 @@ async function getGA4Data() {
   const results = {};
   for (const [site, numId] of Object.entries(GA4_PROPERTIES)) {
     try {
-      const res = await request(
-        `https://analyticsdata.googleapis.com/v1beta/properties/${numId}:runReport`,
-        {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            dateRanges: [{ startDate: yesterday, endDate: yesterday }],
-            metrics: [{ name: 'activeUsers' }, { name: 'screenPageViews' }],
-          }),
-        }
-      );
-      if (res.status === 200) {
-        const d = JSON.parse(res.body);
+      const [usersRes, pagesRes] = await Promise.all([
+        request(
+          `https://analyticsdata.googleapis.com/v1beta/properties/${numId}:runReport`,
+          {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              dateRanges: [{ startDate: yesterday, endDate: yesterday }],
+              metrics: [{ name: 'activeUsers' }, { name: 'screenPageViews' }],
+            }),
+          }
+        ),
+        request(
+          `https://analyticsdata.googleapis.com/v1beta/properties/${numId}:runReport`,
+          {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              dateRanges: [{ startDate: yesterday, endDate: yesterday }],
+              dimensions: [{ name: 'pagePath' }],
+              metrics:    [{ name: 'screenPageViews' }],
+              orderBys:   [{ metric: { metricName: 'screenPageViews' }, desc: true }],
+              limit: 3,
+            }),
+          }
+        ),
+      ]);
+      if (usersRes.status === 200) {
+        const d   = JSON.parse(usersRes.body);
         const row = d?.rows?.[0]?.metricValues;
-        results[site] = { users: row?.[0]?.value || '0', views: row?.[1]?.value || '0' };
+        const topPages = pagesRes.status === 200
+          ? (JSON.parse(pagesRes.body).rows || []).map(r => ({
+              path:  r.dimensionValues?.[0]?.value || '/',
+              views: parseInt(r.metricValues?.[0]?.value) || 0,
+            }))
+          : [];
+        results[site] = { users: row?.[0]?.value || '0', views: row?.[1]?.value || '0', topPages };
         log(`  ${site}: ${results[site].users} users, ${results[site].views} views`);
       } else {
-        log(`  ${site}: HTTP ${res.status} — ${res.body.slice(0, 200)}`);
-        results[site] = { users: 'n/a', views: 'n/a' };
+        log(`  ${site}: HTTP ${usersRes.status} — ${usersRes.body.slice(0, 200)}`);
+        results[site] = { users: 'n/a', views: 'n/a', topPages: [] };
       }
-    } catch { results[site] = { users: 'err', views: 'err' }; }
+    } catch { results[site] = { users: 'err', views: 'err', topPages: [] }; }
   }
   return results;
 }
@@ -252,6 +306,110 @@ async function getServiceAccountToken(creds) {
   const j = JSON.parse(res.body);
   if (!j.access_token) throw new Error(j.error_description || JSON.stringify(j).slice(0, 100));
   return j.access_token;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// OAUTH TOKEN REFRESH (for Search Console)
+// ═══════════════════════════════════════════════════════════════════════════
+async function getOAuthAccessToken() {
+  const clientFile = path.join(__dirname, 'oauth-client.json');
+  const tokenFile  = path.join(__dirname, 'oauth-token.json');
+  if (!fs.existsSync(clientFile) || !fs.existsSync(tokenFile)) return null;
+  let client, token;
+  try {
+    client = JSON.parse(fs.readFileSync(clientFile, 'utf8')).installed;
+    token  = JSON.parse(fs.readFileSync(tokenFile,  'utf8'));
+  } catch { return null; }
+  const body = [
+    `client_id=${encodeURIComponent(client.client_id)}`,
+    `client_secret=${encodeURIComponent(client.client_secret)}`,
+    `refresh_token=${encodeURIComponent(token.refresh_token)}`,
+    'grant_type=refresh_token',
+  ].join('&');
+  try {
+    const res = await request('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    });
+    const j = JSON.parse(res.body);
+    if (!j.access_token) { log('  OAuth refresh failed: ' + JSON.stringify(j).slice(0, 80)); return null; }
+    token.access_token = j.access_token;
+    token.expiry = Date.now() + (j.expires_in || 3599) * 1000;
+    fs.writeFileSync(tokenFile, JSON.stringify(token, null, 2));
+    return j.access_token;
+  } catch (e) { log('  OAuth error: ' + e.message); return null; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SEARCH CONSOLE
+// ═══════════════════════════════════════════════════════════════════════════
+async function getSearchConsoleData(oauthToken) {
+  if (!oauthToken) return null;
+  log('Fetching Search Console data...');
+  const yesterday = (() => { const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); })();
+  const results = {};
+  for (const [site, siteUrl] of Object.entries(SC_SITES)) {
+    try {
+      const encoded = encodeURIComponent(siteUrl);
+      const res = await request(
+        `https://searchconsole.googleapis.com/webmasters/v3/sites/${encoded}/searchAnalytics/query`,
+        {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${oauthToken}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ startDate: yesterday, endDate: yesterday, dimensions: ['page'], rowLimit: 3 }),
+          timeout: 10000,
+        }
+      );
+      if (res.status === 200) {
+        const d    = JSON.parse(res.body);
+        const rows = d.rows || [];
+        const impressions = rows.reduce((s, r) => s + (r.impressions || 0), 0);
+        const clicks      = rows.reduce((s, r) => s + (r.clicks     || 0), 0);
+        const avgPos      = rows.length ? (rows.reduce((s,r) => s+(r.position||0), 0)/rows.length).toFixed(1) : '--';
+        const top3        = rows.slice(0,3).map(r => ({ page: r.keys?.[0]||'', clicks: r.clicks||0, impressions: r.impressions||0 }));
+        results[site] = { impressions, clicks, avgPos, top3 };
+        log(`  SC ${site}: ${impressions} impr, ${clicks} clicks`);
+      } else {
+        log(`  SC ${site}: HTTP ${res.status} (skipped)`);
+        results[site] = null;
+      }
+    } catch (e) {
+      log(`  SC ${site}: error (${e.message.slice(0,40)})`);
+      results[site] = null;
+    }
+  }
+  return results;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// BUFFER PUBLISHED TODAY (from log file)
+// ═══════════════════════════════════════════════════════════════════════════
+function getBufferPublishedToday() {
+  const logFile = 'C:\\Users\\Administrator\\pm-worker\\logs\\buffer-refill.log';
+  try {
+    const today   = new Date().toISOString().slice(0, 10);
+    const content = fs.readFileSync(logFile, 'utf8');
+    let count = 0;
+    for (const line of content.split('\n')) {
+      if (line.includes(today) && (line.includes('Added') || (line.includes('✅') && line.toLowerCase().includes('pin')))) count++;
+    }
+    return count;
+  } catch (_) { return 0; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ADSENSE STATUS
+// ═══════════════════════════════════════════════════════════════════════════
+function getAdSenseStatus() {
+  const today = new Date();
+  return Object.entries(ADSENSE_SUBMIT_DATES).map(([site, submitDate]) => {
+    if (!submitDate) return { site, days: null, status: 'na', label: '不适用', color: '#64748b' };
+    const days = Math.floor((today - new Date(submitDate)) / 86400000);
+    if (days < 7)  return { site, days, status: 'normal',   label: `审核中（${days}天）`,      color: '#22c55e' };
+    if (days < 14) return { site, days, status: 'slow',     label: `审核中（${days}天，稍慢）`, color: '#f59e0b' };
+    return               { site, days, status: 'overtime',  label: `⚠️超时（${days}天）`,       color: '#ef4444' };
+  });
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -374,7 +532,7 @@ function generateAnalysis(sales, ga, buffer) {
 // ═══════════════════════════════════════════════════════════════════════════
 // FORMAT REPORT (HTML)
 // ═══════════════════════════════════════════════════════════════════════════
-function formatReport(sales, ga, buffer) {
+function formatReport(sales, ga, buffer, sc, bufferToday) {
   const now  = new Date();
   const ts   = now.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
   const date = now.toLocaleDateString('zh-CN', {
@@ -416,9 +574,13 @@ function formatReport(sales, ga, buffer) {
     const maxUsers = Math.max(...sitesData.map(s => s.users), 1);
 
     gaRows = sitesData.map((s, i) => {
-      const barW  = Math.round((s.users / maxUsers) * 100);
-      const bg    = i % 2 === 0 ? '#ffffff' : '#f8fafc';
-      const ratio = s.users > 0 ? (s.views / s.users).toFixed(1) : '0';
+      const barW    = Math.round((s.users / maxUsers) * 100);
+      const bg      = i % 2 === 0 ? '#ffffff' : '#f8fafc';
+      const ratio   = s.users > 0 ? (s.views / s.users).toFixed(1) : '0';
+      const topPage = ga[s.name]?.topPages?.[0];
+      const pageStr = topPage
+        ? `<span style="font-size:10px;color:#2563eb;font-family:monospace;">${topPage.path.length > 28 ? topPage.path.slice(0,28)+'…' : topPage.path}</span><span style="color:#94a3b8;font-size:10px;margin-left:4px;">(${topPage.views})</span>`
+        : '<span style="color:#cbd5e1;font-size:11px;">--</span>';
       return `
         <tr style="background:${bg};">
           <td style="padding:10px 14px;font-size:13px;font-weight:500;color:#1e293b;">${s.name}</td>
@@ -431,8 +593,9 @@ function formatReport(sales, ga, buffer) {
           <td style="padding:10px 14px;text-align:center;">
             <span style="font-size:13px;color:#64748b;">${ratio}</span>
           </td>
+          <td style="padding:10px 14px;">${pageStr}</td>
           <td style="padding:10px 20px 10px 0;">
-            <div style="background:#e2e8f0;border-radius:4px;height:6px;width:100%;min-width:80px;">
+            <div style="background:#e2e8f0;border-radius:4px;height:6px;width:100%;min-width:60px;">
               <div style="background:#2563eb;border-radius:4px;height:6px;width:${barW}%;"></div>
             </div>
           </td>
@@ -496,7 +659,7 @@ function formatReport(sales, ga, buffer) {
   <!-- Header -->
   <tr><td style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);border-radius:12px 12px 0 0;padding:28px 28px 24px;">
     <div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">📊 网站日报</div>
-    <div style="color:#94a3b8;font-size:13px;margin-top:6px;">${date} &nbsp;·&nbsp; 5个站点 &nbsp;·&nbsp; 每日 08:00 自动生成</div>
+    <div style="color:#94a3b8;font-size:13px;margin-top:6px;">${date} &nbsp;·&nbsp; 7个站点 &nbsp;·&nbsp; 每日 08:00 自动生成</div>
   </td></tr>
 
   <!-- Body -->
@@ -513,6 +676,7 @@ function formatReport(sales, ga, buffer) {
             <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">用户数</th>
             <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">浏览量</th>
             <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">人均页数</th>
+            <th style="padding:9px 14px;font-size:12px;color:#64748b;font-weight:600;">热门页面</th>
             <th style="padding:9px 20px 9px 0;font-size:12px;color:#64748b;font-weight:600;"></th>
           </tr>
           ${gaRows}
@@ -525,10 +689,57 @@ function formatReport(sales, ga, buffer) {
       `<table width="100%" cellpadding="0" cellspacing="0">${insightRows}</table>`
     )}
 
-    ${section('#475569', '⚙️', 'AdSense 审核状态',
-      `<div style="font-size:13px;color:#64748b;margin-bottom:10px;">5个站点审核中，请在 Google AdSense 后台查看最新状态。</div>
-       <a href="https://www.google.com/adsense" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:8px 16px;border-radius:6px;font-size:13px;">🔗 打开 AdSense →</a>`
-    )}
+    ${section('#0369a1', '🔍', 'SEO 曝光数据（昨日 Search Console）', (() => {
+      const scSites = Object.keys(SC_SITES);
+      const hasAny  = sc && scSites.some(s => sc[s]);
+      if (!hasAny) return '<div style="color:#94a3b8;font-size:13px;">Search Console 数据不可用（API未授权或无数据）</div>';
+      const rows = scSites.map((s, i) => {
+        const d  = sc?.[s];
+        const bg = i % 2 === 0 ? '#ffffff' : '#f8fafc';
+        const topPage = d?.top3?.[0]?.page || '--';
+        const topShort = topPage.length > 30 ? topPage.slice(0,30)+'…' : topPage;
+        return `<tr style="background:${bg};">
+          <td style="padding:9px 14px;font-size:13px;font-weight:500;color:#1e293b;">${s}</td>
+          <td style="padding:9px 14px;text-align:center;font-size:14px;font-weight:700;color:#0369a1;">${d ? d.impressions.toLocaleString() : '--'}</td>
+          <td style="padding:9px 14px;text-align:center;font-size:14px;font-weight:700;color:#16a34a;">${d ? d.clicks : '--'}</td>
+          <td style="padding:9px 14px;text-align:center;font-size:13px;color:#64748b;">${d ? d.avgPos : '--'}</td>
+          <td style="padding:9px 14px;font-size:11px;color:#475569;font-family:monospace;">${topShort}</td>
+        </tr>`;
+      }).join('');
+      return `<table width="100%" cellpadding="0" cellspacing="0" style="border-radius:8px;overflow:hidden;border:1px solid #e2e8f0;">
+        <tr style="background:#f1f5f9;">
+          <th style="padding:9px 14px;text-align:left;font-size:12px;color:#64748b;font-weight:600;">站点</th>
+          <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">昨日曝光</th>
+          <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">昨日点击</th>
+          <th style="padding:9px 14px;text-align:center;font-size:12px;color:#64748b;font-weight:600;">平均排名</th>
+          <th style="padding:9px 14px;font-size:12px;color:#64748b;font-weight:600;">Top流量页</th>
+        </tr>${rows}</table>`;
+    })())}
+
+    ${section('#6d28d9', '⚙️', '运营状态', (() => {
+      const adsenseStatus = getAdSenseStatus();
+      const adsRows = adsenseStatus.map(a => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+          <span style="font-size:13px;color:#334155;">${a.site}</span>
+          <span style="font-size:12px;color:${a.color};font-weight:600;">${a.label}</span>
+        </div>`).join('');
+      const pinCount = typeof bufferToday === 'number' ? bufferToday : 0;
+      const pinColor = pinCount >= 3 ? '#16a34a' : pinCount > 0 ? '#d97706' : '#94a3b8';
+      return `
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <div style="flex:2;min-width:220px;">
+            <div style="font-size:12px;font-weight:700;color:#64748b;margin-bottom:8px;">AdSense 审核状态</div>
+            ${adsRows}
+            <a href="https://www.google.com/adsense" style="display:inline-block;margin-top:10px;background:#f1f5f9;color:#334155;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:12px;">🔗 打开 AdSense →</a>
+          </div>
+          <div style="flex:1;min-width:130px;background:#f8fafc;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:11px;color:#64748b;margin-bottom:8px;font-weight:600;">今日 Buffer 发布</div>
+            <div style="font-size:38px;font-weight:800;color:${pinColor};line-height:1;">${pinCount}</div>
+            <div style="font-size:11px;color:#94a3b8;margin-top:4px;">条 Pin</div>
+            <a href="https://publish.buffer.com" style="display:inline-block;margin-top:10px;background:#ede9fe;color:#6d28d9;text-decoration:none;padding:5px 12px;border-radius:5px;font-size:11px;">前往 Buffer →</a>
+          </div>
+        </div>`;
+    })())}
 
   </table>
   </td></tr>
@@ -536,7 +747,7 @@ function formatReport(sales, ga, buffer) {
   <!-- Footer -->
   <tr><td style="background:#1e293b;border-radius:0 0 12px 12px;padding:16px 28px;text-align:center;">
     <div style="color:#64748b;font-size:12px;">报告生成时间：${ts}</div>
-    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro · PayrollFixPro</div>
+    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro · BillingFixPro · PayrollFixPro · CoverageFixPro</div>
   </td></tr>
 
 </table>
@@ -569,16 +780,223 @@ async function sendEmail(subject, html) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// QA CHECK
+// ═══════════════════════════════════════════════════════════════════════════
+async function checkSiteQA(site) {
+  const base = `https://${site.domain}`;
+  const checks = [];
+
+  // 1. Homepage
+  try {
+    const r = await request(base);
+    const ok = r.status >= 200 && r.status < 400;
+    checks.push({ name: '首页可访问', level: ok ? 'pass' : 'fix', detail: `HTTP ${r.status}` });
+  } catch (e) {
+    checks.push({ name: '首页可访问', level: 'fix', detail: e.message.slice(0, 60) });
+  }
+
+  // 2. ads.txt
+  try {
+    const r = await request(`${base}/ads.txt`);
+    const hasId = r.body.includes(ADSENSE_PUB);
+    const level = r.status !== 200 ? 'fix' : !hasId ? 'warn' : 'pass';
+    const detail = r.status !== 200 ? `HTTP ${r.status}` : !hasId ? 'pub-id 不匹配' : 'pub-id 正确';
+    checks.push({ name: 'ads.txt', level, detail });
+  } catch (e) {
+    checks.push({ name: 'ads.txt', level: 'fix', detail: e.message.slice(0, 60) });
+  }
+
+  // 3. sitemap.xml
+  try {
+    const r = await request(`${base}/sitemap.xml`);
+    const hasUrls = r.body.includes('<url>');
+    const ok = r.status === 200 && hasUrls;
+    const detail = ok
+      ? `HTTP ${r.status} · ${(r.body.match(/<url>/g) || []).length} URLs`
+      : r.status !== 200 ? `HTTP ${r.status}` : '内容格式异常';
+    checks.push({ name: 'sitemap.xml', level: ok ? 'pass' : 'fix', detail });
+  } catch (e) {
+    checks.push({ name: 'sitemap.xml', level: 'fix', detail: e.message.slice(0, 60) });
+  }
+
+  // 4. robots.txt
+  try {
+    const r = await request(`${base}/robots.txt`);
+    const ok = r.status === 200;
+    checks.push({ name: 'robots.txt', level: ok ? 'pass' : 'warn', detail: `HTTP ${r.status}` });
+  } catch (e) {
+    checks.push({ name: 'robots.txt', level: 'warn', detail: e.message.slice(0, 60) });
+  }
+
+  // 5. canonical / meta description (parse homepage body)
+  try {
+    const r = await request(base);
+    const hasCanonical = r.body.includes('rel="canonical"') || r.body.includes("rel='canonical'");
+    const hasMeta      = r.body.includes('name="description"') || r.body.includes("name='description'");
+    checks.push({ name: 'canonical 标签', level: hasCanonical ? 'pass' : 'warn', detail: hasCanonical ? '存在' : '缺失' });
+    checks.push({ name: 'meta description', level: hasMeta ? 'pass' : 'warn', detail: hasMeta ? '存在' : '缺失' });
+  } catch (_) {}
+
+  const fixCount  = checks.filter(c => c.level === 'fix').length;
+  const warnCount = checks.filter(c => c.level === 'warn').length;
+  const status    = fixCount > 0 ? 'fix' : warnCount > 0 ? 'warn' : 'pass';
+  return { ...site, checks, status, fixCount, warnCount, passCount: checks.filter(c => c.level === 'pass').length };
+}
+
+function formatQAReport(results) {
+  const now  = new Date();
+  const ts   = now.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+  const date = now.toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
+  const esc  = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const subject    = `🔍 QA检查报告 ${date}`;
+  const totalFix   = results.filter(r => r.status === 'fix').length;
+  const totalWarn  = results.filter(r => r.status === 'warn').length;
+  const totalPass  = results.filter(r => r.status === 'pass').length;
+
+  const statusMeta = {
+    pass: { icon: '✅', color: '#22c55e', border: '#166534', bg: '#052e1a', label: '全部通过' },
+    warn: { icon: '⚠️', color: '#f59e0b', border: '#92400e', bg: '#1c1304', label: '需关注'  },
+    fix:  { icon: '❌', color: '#ef4444', border: '#7f1d1d', bg: '#2d0f0f', label: '需修复'  },
+  };
+
+  const checkGroup = (checks, color, rowBg) => checks.map(c => `
+    <tr>
+      <td style="padding:5px 10px;font-size:12px;color:#cbd5e1;background:${rowBg};border-radius:4px 0 0 4px;">${esc(c.name)}</td>
+      <td style="padding:5px 12px;font-size:11px;color:${color};font-family:monospace;background:${rowBg};border-radius:0 4px 4px 0;text-align:right;">${esc(c.detail)}</td>
+    </tr>
+    <tr><td colspan="2" style="height:2px;"></td></tr>`).join('');
+
+  const siteCards = results.map(site => {
+    const meta       = statusMeta[site.status];
+    const fixChecks  = site.checks.filter(c => c.level === 'fix');
+    const warnChecks = site.checks.filter(c => c.level === 'warn');
+    const passChecks = site.checks.filter(c => c.level === 'pass');
+
+    const section = (label, checks, color, rowBg) => !checks.length ? '' : `
+      <div style="margin-bottom:10px;">
+        <div style="font-size:10px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:0.8px;margin-bottom:5px;">${label}</div>
+        <table width="100%" cellpadding="0" cellspacing="0">${checkGroup(checks, color, rowBg)}</table>
+      </div>`;
+
+    const hasIssues = fixChecks.length + warnChecks.length + passChecks.length > 0;
+    return `
+    <div style="background:#0a0a14;border:1px solid #1e293b;border-left:4px solid ${meta.color};border-radius:8px;padding:16px 18px;margin-bottom:10px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;${hasIssues ? 'margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #1e293b;' : ''}">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:20px;line-height:1;">${meta.icon}</span>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:#e2e8f0;">${esc(site.id)}</div>
+            <div style="font-size:11px;color:#475569;margin-top:2px;">${esc(site.domain)}</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <span style="display:inline-block;background:${meta.bg};border:1px solid ${meta.border};color:${meta.color};font-size:11px;font-weight:700;padding:3px 12px;border-radius:12px;">${meta.label}</span>
+          ${(site.fixCount || site.warnCount) ? `<div style="font-size:10px;color:#64748b;margin-top:4px;">${site.fixCount ? site.fixCount + ' 需修复 ' : ''}${site.warnCount ? site.warnCount + ' 需关注' : ''}</div>` : ''}
+        </div>
+      </div>
+      ${section('❌ 需修复', fixChecks,  '#ef4444', '#1a0505')}
+      ${section('⚠️ 需关注', warnChecks, '#f59e0b', '#1a1005')}
+      ${section('✅ 已通过', passChecks, '#22c55e', '#051a0f')}
+    </div>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#0f0f1a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#e2e8f0;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0f0f1a;padding:24px 0;">
+<tr><td align="center">
+<table width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;">
+
+  <!-- Header -->
+  <tr><td style="background:linear-gradient(135deg,#0d1117 0%,#161b22 100%);border:1px solid #21262d;border-radius:12px 12px 0 0;padding:26px 28px 22px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+      <span style="font-size:30px;line-height:1;">🔍</span>
+      <div>
+        <div style="color:#e6edf3;font-size:20px;font-weight:800;letter-spacing:-0.5px;">QA 检查报告</div>
+        <div style="color:#8b949e;font-size:12px;margin-top:4px;">${date} &nbsp;·&nbsp; ${results.length} 个站点全量检查</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <div style="flex:1;background:#2d0f0f;border:1px solid #7f1d1d;border-radius:8px;padding:12px 14px;text-align:center;">
+        <div style="font-size:26px;font-weight:800;color:#ef4444;line-height:1;">${totalFix}</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:4px;">站点需修复</div>
+      </div>
+      <div style="flex:1;background:#1c1304;border:1px solid #92400e;border-radius:8px;padding:12px 14px;text-align:center;">
+        <div style="font-size:26px;font-weight:800;color:#f59e0b;line-height:1;">${totalWarn}</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:4px;">站点需关注</div>
+      </div>
+      <div style="flex:1;background:#052e1a;border:1px solid #166534;border-radius:8px;padding:12px 14px;text-align:center;">
+        <div style="font-size:26px;font-weight:800;color:#22c55e;line-height:1;">${totalPass}</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:4px;">站点全部通过</div>
+      </div>
+    </div>
+  </td></tr>
+
+  <!-- Site Cards -->
+  <tr><td style="background:#0f0f1a;padding:14px 0;">
+    ${siteCards}
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#0d1117;border:1px solid #21262d;border-radius:0 0 12px 12px;padding:14px 28px;text-align:center;">
+    <div style="color:#484f58;font-size:11px;">PM Worker QA · ${results.length} 个站点 · ${ts}</div>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+
+  return { subject, html };
+}
+
+async function runQAReport() {
+  const t0 = Date.now();
+  log('════════════════════════════════════');
+  log('QA Report — ' + new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }));
+  log('════════════════════════════════════');
+
+  const results = [];
+  for (const site of SITES) {
+    log(`\n  Checking: ${site.domain} ...`);
+    const r = await checkSiteQA(site);
+    const icon = r.status === 'pass' ? '✅' : r.status === 'warn' ? '⚠️' : '❌';
+    log(`  ${icon} ${site.id}: fix=${r.fixCount} warn=${r.warnCount} pass=${r.passCount}`);
+    results.push(r);
+  }
+
+  const { subject, html } = formatQAReport(results);
+  log(`\nSubject: ${subject}`);
+
+  try {
+    await sendEmail(subject, html);
+  } catch (e) {
+    log(`✗ Email failed: ${e.message}`);
+    const out = path.join(__dirname, `qa-report-${new Date().toISOString().slice(0, 10)}.html`);
+    fs.writeFileSync(out, html);
+    log(`  Saved locally: ${out}`);
+  }
+
+  log(`\nFinished in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // MAIN
 // ═══════════════════════════════════════════════════════════════════════════
-(async () => {
+async function runDailyReport() {
   const t0 = Date.now();
   log('════════════════════════════════════');
   log('Daily Report — ' + new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }));
   log('════════════════════════════════════');
 
-  // GA4 (pure HTTPS, can run in parallel later)
-  const gaPromise = getGA4Data();
+  // GA4 + OAuth + Buffer log (pure async, no browser needed)
+  const gaPromise         = getGA4Data();
+  const oauthTokenPromise = getOAuthAccessToken();
+  const bufferToday       = getBufferPublishedToday();
+  log(`Buffer published today (from log): ${bufferToday}`);
 
   // PayHip + Buffer share one Playwright browser
   const browser = await chromium.launch({
@@ -595,11 +1013,13 @@ async function sendEmail(subject, html) {
   const payhipPage = await ctx.newPage();
   const bufferPage = await ctx.newPage();
 
-  const [sales, buffer, ga] = await Promise.all([
+  const [sales, buffer, ga, oauthToken] = await Promise.all([
     getPayHipSales(payhipPage),
     getBufferStatus(bufferPage),
     gaPromise,
+    oauthTokenPromise,
   ]);
+  const sc = await getSearchConsoleData(oauthToken);
 
   await browser.close();
 
@@ -607,8 +1027,10 @@ async function sendEmail(subject, html) {
   log(`  Sales:  $${sales.revenue || '0'}, ${sales.orders || 0} orders`);
   log(`  Buffer: ${buffer.scheduled} scheduled, ${buffer.drafts} drafts`);
   log(`  GA4:    ${ga ? 'fetched' : 'skipped'}`);
+  log(`  SC:     ${sc ? Object.values(sc).filter(Boolean).length + '/' + Object.keys(sc).length + ' sites' : 'skipped'}`);
+  log(`  PinLog: ${bufferToday} published today`);
 
-  const { subject, html } = formatReport(sales, ga, buffer);
+  const { subject, html } = formatReport(sales, ga, buffer, sc, bufferToday);
 
   log('\n── Report ───────────────────────────');
   log(`Subject: ${subject}`);
@@ -624,4 +1046,11 @@ async function sendEmail(subject, html) {
   }
 
   log(`\nFinished in ${((Date.now()-t0)/1000).toFixed(1)}s`);
-})();
+}
+
+const mode = process.argv[2];
+if (mode === 'qa') {
+  runQAReport().catch(e => { log(`Fatal: ${e.message}`); process.exit(1); });
+} else {
+  runDailyReport().catch(console.error);
+}
