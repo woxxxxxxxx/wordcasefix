@@ -104,82 +104,56 @@ async function addOnePost(page, pin) {
   log(`  ➕ [${pin.source}] ${title.slice(0, 50)}`);
 
   try {
-    // 1. 点 "+ New Post"（channel header 右上角）
+    // 1. 点击 "New Post"
     await page.locator('button:has-text("New Post")').first().click({ timeout: 10000 });
     await page.waitForTimeout(2000);
 
-    // 2. 上传图片（file input 是 hidden 元素，直接 setInputFiles 无需等可见）
+    // 2. 上传图片
     await page.locator('input[type="file"]').first().setInputFiles(pin.imgPath);
-    // 等待上传真正完成：等 "Uploading" 按钮消失（不超过 30s）
+
+    // 3. 等待上传完成：没有任何按钮包含 "Uploading" 文字（最多 30s）
     await page.waitForFunction(
       () => !Array.from(document.querySelectorAll('button')).some(b => b.innerText.includes('Uploading')),
       { timeout: 30000 }
-    ).catch(() => {});  // 超时就继续
-    await page.waitForTimeout(1000);
+    ).catch(() => {});
     log(`    📎 图片已上传`);
 
-    // 3. 填写 Post 文本（contenteditable div）
+    // 4. 填写 Post 文本
     const textBox = page.locator('div[contenteditable="true"]').first();
     await textBox.click();
-    await textBox.fill(desc.slice(0, 500));   // Buffer Pinterest 上限 500
-    await page.waitForTimeout(500);
+    await textBox.fill(desc.slice(0, 500));
 
-    // 4. 填写 Pin Title
+    // 5. 填写 Pin Title
     const titleInput = page.locator('input[placeholder="Your pin title"]');
     if (await titleInput.count() > 0) {
       await titleInput.fill(title.slice(0, 100));
     }
 
-    // 5. 填写 Destination Link
+    // 6. 填写 Destination Link
     const linkInput = page.locator('input[placeholder="Enter destination link..."]');
     if (await linkInput.count() > 0 && link) {
       await linkInput.fill(link);
     }
 
-    // 6. 加入队列 → "Next Available"
+    // 7. 点击 "Next Available" 加入队列
+    await page.waitForTimeout(500);
     await page.locator('button:has-text("Next Available")').first().click({ timeout: 10000 });
-    await page.waitForTimeout(1500);
 
-    // 处理 Pinterest board 选择下拉（如出现）
-    const boardSelect = page.locator('[data-testid*="board-select"], [aria-label*="board" i], [placeholder*="board" i]');
-    if (await boardSelect.count() > 0) {
-      log(`    🗂️ 检测到 board 选择`);
-      await boardSelect.first().click({ timeout: 5000 }).catch(() => {});
-      await page.waitForTimeout(800);
-      const firstOption = page.locator('[role="option"], [data-testid*="board-option"]').first();
-      if (await firstOption.count() > 0) {
-        await firstOption.click({ timeout: 3000 }).catch(() => {});
-        await page.waitForTimeout(500);
-      }
-    }
-
-    // 处理可能出现的确认弹窗
-    for (const label of ['Share Now', 'Add to Queue', 'Confirm', 'OK']) {
-      const btn = page.locator(`button:has-text("${label}")`).first();
-      if (await btn.count() > 0) {
-        log(`    🖱️ 检测到确认按钮: ${label}`);
-        await btn.click({ timeout: 3000 }).catch(() => {});
-        await page.waitForTimeout(800);
-        break;
-      }
-    }
-
-    // 等待 composer 关闭：等 "Next Available" 按钮消失
+    // 8. 等待 composer 关闭：等 "Next Available" 按钮消失（最多 30s）
     await page.locator('button:has-text("Next Available")')
       .waitFor({ state: 'hidden', timeout: 30000 })
       .catch(() => {});
 
-    // 成功判据：导航回 queue 页，New Post 按钮可见即确认成功
+    log(`    ✅ 已加入队列`);
+
+    // 9. 导航回 queue 页，等 "New Post" 可见
     await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
     await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
     await page.waitForTimeout(1000);
-
-    log(`    ✅ 已加入队列`);
     return true;
 
   } catch (e) {
     log(`    ❌ 失败: ${e.message.slice(0, 120)}`);
-    // 导航回 channel 页重置状态（比关闭 composer 更可靠）
     try {
       await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
       await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
