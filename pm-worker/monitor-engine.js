@@ -519,7 +519,7 @@ async function checkProject(project, state) {
             triedFixes: tried,
             manualSteps: [
               `在项目根目录创建 ads.txt，内容：google.com, ${ADSENSE_PUB}, DIRECT, f08c47fec0942fa0`,
-              'git add ads.txt && git commit -m "fix: ads.txt" && git push',
+              'git add ads.txt && git commit -m "fix: ads.txt" && git -c http.proxy=http://127.0.0.1:7897 -c http.sslVerify=false push origin master',
             ],
           }).catch(e => log(`    ⚠️ 邮件发送失败: ${e.message}`));
           markEmailSent(state, adsKey);
