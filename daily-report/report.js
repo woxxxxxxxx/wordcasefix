@@ -37,7 +37,8 @@ const GA4_PROPERTIES = {
   'ContractFixPro':  '539948742',
   'BillingFixPro':   '540289117',
   'PayrollFixPro':   '540359696',
-  'CoverageFixPro':  '540484051',
+  'CoverageFixPro':    '540484051',
+  // 'InsuranceTipsPro': 'GA_NUMERIC_ID', // TODO: add GA4 property ID after creating GA property
 };
 
 const SITES = [
@@ -47,7 +48,8 @@ const SITES = [
   { id: 'ContractFixPro',  domain: 'contractfixpro.com'  },
   { id: 'BillingFixPro',   domain: 'billingfixpro.com'   },
   { id: 'PayrollFixPro',   domain: 'payrollfixpro.com'   },
-  { id: 'CoverageFixPro',  domain: 'coveragefixpro.com'  },
+  { id: 'CoverageFixPro',    domain: 'coveragefixpro.com'    },
+  { id: 'InsuranceTipsPro', domain: 'insurancetipspro.com' },
 ];
 
 const SC_SITES = {
@@ -57,17 +59,19 @@ const SC_SITES = {
   'ContractFixPro':  'https://contractfixpro.com/',
   'BillingFixPro':   'https://billingfixpro.com/',
   'PayrollFixPro':   'https://payrollfixpro.com/',
-  'CoverageFixPro':  'https://coveragefixpro.com/',
+  'CoverageFixPro':    'https://coveragefixpro.com/',
+  'InsuranceTipsPro': 'https://insurancetipspro.com/',
 };
 
 const ADSENSE_SUBMIT_DATES = {
-  'WordCaseFix':     '2026-06-07',
-  'VestCalc':        '2026-06-07',
-  'ContractFixPro':  '2026-06-07',
-  'BillingFixPro':   '2026-06-07',
-  'PayrollFixPro':   '2026-06-07',
-  'CoverageFixPro':  '2026-06-07',
-  'NotionTemplaFix': null,
+  'WordCaseFix':      '2026-06-07',
+  'VestCalc':         '2026-06-07',
+  'ContractFixPro':   '2026-06-07',
+  'BillingFixPro':    '2026-06-07',
+  'PayrollFixPro':    '2026-06-07',
+  'CoverageFixPro':   '2026-06-07',
+  'NotionTemplaFix':  null,
+  'InsuranceTipsPro': '2026-06-10',
 };
 
 const SMTP = {
@@ -754,7 +758,7 @@ function formatReport(sales, ga, buffer, sc, bufferToday) {
   <!-- Footer -->
   <tr><td style="background:#1e293b;border-radius:0 0 12px 12px;padding:16px 28px;text-align:center;">
     <div style="color:#64748b;font-size:12px;">报告生成时间：${ts}</div>
-    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro · BillingFixPro · PayrollFixPro · CoverageFixPro</div>
+    <div style="color:#475569;font-size:11px;margin-top:4px;">WordCaseFix · VestCalc · NotionTemplaFix · ContractFixPro · BillingFixPro · PayrollFixPro · CoverageFixPro · InsuranceTipsPro</div>
   </td></tr>
 
 </table>
