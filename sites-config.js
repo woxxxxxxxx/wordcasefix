@@ -91,7 +91,7 @@ const SITES = [
     repo:       'woxxxxxxxx/payrollfixpro',
     branch:     'master',
     ftp_hosted: false,
-    ga_numeric: '491490803',
+    ga_numeric: '540359696',
     adsense:    'pending',
   },
   {
@@ -104,6 +104,18 @@ const SITES = [
     branch:     'master',
     ftp_hosted: true,
     ga_numeric: '540484051',
+    adsense:    'pending',
+  },
+  {
+    id:         'insurancetipspro',
+    name:       'InsuranceTipsPro',
+    domain:     'insurancetipspro.com',
+    color:      '#1e40af',
+    dir:        'C:\\Users\\Administrator\\insurancetipspro',
+    repo:       'woxxxxxxxx/insurancetipspro',
+    branch:     'master',
+    ftp_hosted: true,
+    ga_numeric: '540994505',
     adsense:    'pending',
   },
 ];

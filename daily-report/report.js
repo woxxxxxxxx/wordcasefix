@@ -38,7 +38,7 @@ const GA4_PROPERTIES = {
   'BillingFixPro':   '540289117',
   'PayrollFixPro':   '540359696',
   'CoverageFixPro':    '540484051',
-  // 'InsuranceTipsPro': 'GA_NUMERIC_ID', // TODO: add GA4 property ID after creating GA property
+  'InsuranceTipsPro': '540994505',
 };
 
 const SITES = [
