@@ -110,6 +110,21 @@ console.log('  每天 06:00        → content-pipeline/generate-daily.js');
 console.log('  每周日 20:00      → content-pipeline/weekly-report.js');
 // ===== content-pipeline END =====
 
+// ─── Dashboard server auto-start ─────────────────────────────────────────────
+(function startDashboard() {
+  const net = require('net');
+  const tester = net.createConnection({ port: 3000, host: '127.0.0.1' });
+  tester.once('connect', () => { tester.destroy(); /* already running */ });
+  tester.once('error', () => {
+    tester.destroy();
+    const dash = spawn('node', ['C:\\Users\\Administrator\\dashboard\\server.js'], {
+      detached: true, stdio: 'ignore'
+    });
+    dash.unref();
+    console.log('  Dashboard started → http://localhost:3000');
+  });
+})();
+
 console.log('PM Worker Cron Daemon 已启动');
 console.log('  每天 08:30  → daily');
 console.log('  每天 09:00  → buffer refill');
