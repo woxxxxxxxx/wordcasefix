@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const net = require('net');
 
-const EXCLUDE = ['node_modules', 'deploy-ftp.js', '.git', '.gitignore'];
+const EXCLUDE = ['node_modules', 'deploy-ftp.js', '.git', '.gitignore', 'package.json', 'package-lock.json', 'ftp-test.js'];
 
 async function uploadDir(client, localDir, remoteDir) {
   const items = fs.readdirSync(localDir);
@@ -24,7 +24,7 @@ async function uploadDir(client, localDir, remoteDir) {
 }
 
 async function deploy() {
-  const client = new ftp.Client(30000);
+  const client = new ftp.Client();
   client.ftp.verbose = true;
   try {
     const socket = await new Promise((resolve, reject) => {
@@ -50,8 +50,7 @@ async function deploy() {
       user: 'u868313694.freelancerguidehub.com',
       password: 'Xxh113324~',
       port: 21,
-      secure: true,
-      secureOptions: { rejectUnauthorized: false },
+      secure: false,
       socket: socket
     });
     console.log('Connected via proxy');

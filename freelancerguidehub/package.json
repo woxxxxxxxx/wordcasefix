@@ -1,0 +1,16 @@
+{
+  "name": "freelancerguidehub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deploy-ftp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "basic-ftp": "^4.6.6"
+  }
+}
