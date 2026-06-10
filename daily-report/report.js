@@ -31,47 +31,51 @@ const BUFFER_ORG    = '6a2026ccd819e8c99b17eb9e';
 const BUFFER_CHAN    = '6a204be9c687a22dd457f4d0';
 
 const GA4_PROPERTIES = {
-  'WordCaseFix':     '539531639',
-  'VestCalc':        '539700100',
-  'NotionTemplaFix': '539119398',
-  'ContractFixPro':  '539948742',
-  'BillingFixPro':   '540289117',
-  'PayrollFixPro':   '540359696',
-  'CoverageFixPro':    '540484051',
-  'InsuranceTipsPro': '540994505',
+  'WordCaseFix':        '539531639',
+  'VestCalc':           '539700100',
+  'NotionTemplaFix':    '539119398',
+  'ContractFixPro':     '539948742',
+  'BillingFixPro':      '540289117',
+  'PayrollFixPro':      '540359696',
+  'CoverageFixPro':     '540484051',
+  'InsuranceTipsPro':   '540994505',
+  'FreelancerGuideHub': '541276823',
 };
 
 const SITES = [
-  { id: 'WordCaseFix',     domain: 'wordcasefix.com'     },
-  { id: 'VestCalc',        domain: 'vestcalc.com'        },
-  { id: 'NotionTemplaFix', domain: 'notiontemplafix.com' },
-  { id: 'ContractFixPro',  domain: 'contractfixpro.com'  },
-  { id: 'BillingFixPro',   domain: 'billingfixpro.com'   },
-  { id: 'PayrollFixPro',   domain: 'payrollfixpro.com'   },
-  { id: 'CoverageFixPro',    domain: 'coveragefixpro.com'    },
-  { id: 'InsuranceTipsPro', domain: 'insurancetipspro.com' },
+  { id: 'WordCaseFix',        domain: 'wordcasefix.com'        },
+  { id: 'VestCalc',           domain: 'vestcalc.com'           },
+  { id: 'NotionTemplaFix',    domain: 'notiontemplafix.com'    },
+  { id: 'ContractFixPro',     domain: 'contractfixpro.com'     },
+  { id: 'BillingFixPro',      domain: 'billingfixpro.com'      },
+  { id: 'PayrollFixPro',      domain: 'payrollfixpro.com'      },
+  { id: 'CoverageFixPro',     domain: 'coveragefixpro.com'     },
+  { id: 'InsuranceTipsPro',   domain: 'insurancetipspro.com'   },
+  { id: 'FreelancerGuideHub', domain: 'freelancerguidehub.com' },
 ];
 
 const SC_SITES = {
-  'WordCaseFix':     'https://wordcasefix.com/',
-  'VestCalc':        'https://vestcalc.com/',
-  'NotionTemplaFix': 'https://notiontemplafix.com/',
-  'ContractFixPro':  'https://contractfixpro.com/',
-  'BillingFixPro':   'https://billingfixpro.com/',
-  'PayrollFixPro':   'https://payrollfixpro.com/',
-  'CoverageFixPro':    'https://coveragefixpro.com/',
-  'InsuranceTipsPro': 'https://insurancetipspro.com/',
+  'WordCaseFix':        'https://wordcasefix.com/',
+  'VestCalc':           'https://vestcalc.com/',
+  'NotionTemplaFix':    'https://notiontemplafix.com/',
+  'ContractFixPro':     'https://contractfixpro.com/',
+  'BillingFixPro':      'https://billingfixpro.com/',
+  'PayrollFixPro':      'https://payrollfixpro.com/',
+  'CoverageFixPro':     'https://coveragefixpro.com/',
+  'InsuranceTipsPro':   'https://insurancetipspro.com/',
+  'FreelancerGuideHub': 'https://freelancerguidehub.com/',
 };
 
 const ADSENSE_SUBMIT_DATES = {
-  'WordCaseFix':      '2026-06-07',
-  'VestCalc':         '2026-06-07',
-  'ContractFixPro':   '2026-06-07',
-  'BillingFixPro':    '2026-06-07',
-  'PayrollFixPro':    '2026-06-07',
-  'CoverageFixPro':   '2026-06-07',
-  'NotionTemplaFix':  null,
-  'InsuranceTipsPro': '2026-06-10',
+  'WordCaseFix':        '2026-06-07',
+  'VestCalc':           '2026-06-07',
+  'ContractFixPro':     '2026-06-07',
+  'BillingFixPro':      '2026-06-07',
+  'PayrollFixPro':      '2026-06-07',
+  'CoverageFixPro':     '2026-06-07',
+  'NotionTemplaFix':    null,
+  'InsuranceTipsPro':   '2026-06-10',
+  'FreelancerGuideHub': '2026-06-11',
 };
 
 const SMTP = {

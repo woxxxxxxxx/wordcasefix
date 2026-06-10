@@ -118,6 +118,18 @@ const SITES = [
     ga_numeric: '540994505',
     adsense:    'pending',
   },
+  {
+    id:         'freelancerguidehub',
+    name:       'FreelancerGuideHub',
+    domain:     'freelancerguidehub.com',
+    color:      '#065f46',
+    dir:        'C:\\Users\\Administrator\\freelancerguidehub',
+    repo:       null,
+    branch:     'master',
+    ftp_hosted: true,
+    ga_numeric: '541276823',
+    adsense:    'pending',
+  },
 ];
 
 /**
