@@ -139,10 +139,10 @@
         <p><strong>Form 1120-S:</strong> The S-Corp annual return, due March 15. This reports all business income, deductions, and the owner's distributive share, which flows through to Schedule E on your personal 1040.</p>
         <p>This is substantially more paperwork than sole proprietor filing. The administrative burden (or cost of a payroll service) is part of the cost-benefit analysis of the S-Corp election. See our <a href="freelance-expense-tracking-guide.html">expense tracking guide</a> for how to properly categorize payroll-related costs.</p>
 
-        <div class="cta-block">
-          <h3>Simplify Freelance Payroll with PayrollFixPro</h3>
-          <p>PayrollFixPro handles S-Corp payroll calculations, quarterly 941 filings, W-2 generation, and compliance reminders — so you can focus on your work, not paperwork.</p>
-          <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro Free</a>
+                <div class="cta-block">
+          <h3>Simplify Your Freelance Taxes and Payroll</h3>
+          <p>PayrollFixPro helps independent contractors calculate quarterly taxes, track deductions, and stay compliant. Free to start.</p>
+          <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro Free &rarr;</a>
         </div>
 
         <h2 id="payroll-software">Payroll Software for Freelancers</h2>
@@ -219,10 +219,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>S-Corp Payroll Made Easy</h3>
-        <p>PayrollFixPro handles your entire S-Corp payroll compliance, from calculations to quarterly filings.</p>
-        <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Start Free Trial</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Tax Calculator</h3>
+        <p>Calculate quarterly payments and track deductions automatically.</p>
+        <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro &rarr;</a>
       </div>
     </aside>
   </div>
@@ -255,5 +255,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

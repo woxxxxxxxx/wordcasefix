@@ -152,10 +152,10 @@
         <p>Popular options for freelancers include Wave (free for invoicing and accounting), FreshBooks (excellent for time-tracking integration), QuickBooks Self-Employed (good if you also need tax tracking), and PayPal Invoicing (best if your clients are used to paying via PayPal). HoneyBook and Dubsado are popular with creative freelancers for their contract + invoicing combo workflows.</p>
         <p>For international clients, look for tools that support multi-currency invoicing and can calculate VAT or GST automatically based on client location. <a href="freelance-expense-tracking-guide.html">Connecting your invoicing tool to your expense tracking</a> gives you a complete financial picture for tax time.</p>
 
-        <div class="cta-block">
-          <h3>Automate Your Freelance Billing</h3>
-          <p>Stop chasing payments manually. BillingFixPro helps freelancers create professional invoices, automate reminders, and track every dollar owed.</p>
-          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free</a>
+                <div class="cta-block">
+          <h3>Send Professional Invoices and Get Paid Faster</h3>
+          <p>BillingFixPro automates your invoicing workflow — from first draft to payment confirmation. Free to start.</p>
+          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free &rarr;</a>
         </div>
 
         <h2 id="chasing-payment">Following Up on Late Payments</h2>
@@ -227,10 +227,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Billing Made Easy</h3>
-        <p>Create, send, and track invoices in minutes with BillingFixPro.</p>
-        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Get Started Free</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Invoice Generator</h3>
+        <p>Create and send professional invoices in minutes — no accounting experience needed.</p>
+        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro &rarr;</a>
       </div>
       <div class="sidebar-widget">
         <h3>Quick Invoice Checklist</h3>
@@ -277,5 +277,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

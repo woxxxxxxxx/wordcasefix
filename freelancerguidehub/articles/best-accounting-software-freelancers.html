@@ -144,10 +144,10 @@
         <p>Xero's plans start at $15/month (Starter, limited invoices) and $42/month (Standard, unlimited). It has a larger app marketplace than most alternatives, with integrations for e-commerce, payroll, inventory, and industry-specific tools. The learning curve is steeper than Wave or FreshBooks, and the cost is higher, but the feature depth justifies it for more complex freelance businesses.</p>
         <p><strong>Best for:</strong> Freelancers with international clients, those in Australia/UK/NZ, and those who need robust accounting features including VAT/GST management.</p>
 
-        <div class="cta-block">
-          <h3>Streamline Your Freelance Billing</h3>
-          <p>BillingFixPro integrates invoicing, expense tracking, and payment collection in one place — designed specifically for independent contractors.</p>
-          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free</a>
+                <div class="cta-block">
+          <h3>Send Professional Invoices and Get Paid Faster</h3>
+          <p>BillingFixPro automates your invoicing workflow — from first draft to payment confirmation. Free to start.</p>
+          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free &rarr;</a>
         </div>
 
         <h2 id="comparison">Side-by-Side Comparison</h2>
@@ -221,10 +221,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Smarter Freelance Billing</h3>
-        <p>BillingFixPro makes invoicing and expense tracking simple for independent contractors.</p>
-        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Get Started Free</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Invoice Generator</h3>
+        <p>Create and send professional invoices in minutes — no accounting experience needed.</p>
+        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro &rarr;</a>
       </div>
     </aside>
   </div>
@@ -258,5 +258,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

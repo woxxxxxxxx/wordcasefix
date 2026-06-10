@@ -139,10 +139,10 @@
         <p><strong>Deadlines:</strong> January 31 to both the contractor and the IRS. File electronically through FIRE (Filing Information Returns Electronically) if you're submitting 10 or more returns. For fewer, you can paper-file or use a 1099 filing service.</p>
         <p>Failure to file 1099s carries penalties of $60–$310 per form, depending on how late the filing is, with a maximum annual penalty. For intentional disregard, the penalty is $630 per form with no annual maximum. The cost of compliance is far lower than the cost of non-compliance.</p>
 
-        <div class="cta-block">
-          <h3>Simplify Contractor Payments and 1099s</h3>
-          <p>PayrollFixPro automates contractor payments, W-9 collection, and 1099-NEC filing — keeping your business compliant without the paperwork headache.</p>
-          <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro Free</a>
+                <div class="cta-block">
+          <h3>Send Professional Invoices and Get Paid Faster</h3>
+          <p>BillingFixPro automates your invoicing workflow — from first draft to payment confirmation. Free to start.</p>
+          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free &rarr;</a>
         </div>
 
         <h2 id="international">Paying International Contractors</h2>
@@ -216,10 +216,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Automate Contractor Payments</h3>
-        <p>PayrollFixPro handles contractor payments, 1099 filing, and compliance in one place.</p>
-        <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try Free</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Invoice Generator</h3>
+        <p>Create and send professional invoices in minutes — no accounting experience needed.</p>
+        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro &rarr;</a>
       </div>
     </aside>
   </div>
@@ -252,5 +252,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

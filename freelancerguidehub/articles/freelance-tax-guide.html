@@ -147,10 +147,10 @@
         <p>A <strong>Solo 401(k)</strong> allows contributions in two roles: as employee (up to $23,000 in 2026, plus $7,500 catch-up if age 50+) and as employer (up to 25% of net SE income), with a combined limit of $66,000. The Solo 401(k) allows higher contributions at lower income levels than a SEP-IRA.</p>
         <p>A <strong>SIMPLE IRA</strong> works well for freelancers with employees or those who want to contribute a set amount each paycheck, though its $16,000 contribution limit is lower than the other options.</p>
 
-        <div class="cta-block">
-          <h3>Simplify Your Freelance Payroll & Taxes</h3>
-          <p>PayrollFixPro helps independent contractors calculate quarterly taxes, track deductions, and stay compliant with self-employment tax rules.</p>
-          <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Explore PayrollFixPro</a>
+                <div class="cta-block">
+          <h3>Simplify Your Freelance Taxes and Payroll</h3>
+          <p>PayrollFixPro helps independent contractors calculate quarterly taxes, track deductions, and stay compliant. Free to start.</p>
+          <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro Free &rarr;</a>
         </div>
 
         <h2 id="record-keeping">Record-Keeping Best Practices</h2>
@@ -221,10 +221,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Tax Tools for Freelancers</h3>
-        <p>Calculate quarterly payments and track deductions with PayrollFixPro.</p>
-        <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Tax Calculator</h3>
+        <p>Calculate quarterly payments and track deductions automatically.</p>
+        <a href="https://payrollfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try PayrollFixPro &rarr;</a>
       </div>
       <div class="sidebar-widget">
         <h3>2026 Tax Deadlines</h3>
@@ -268,5 +268,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

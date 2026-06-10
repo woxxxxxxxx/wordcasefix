@@ -148,10 +148,10 @@
         <p>Your portfolio site is your 24/7 sales representative. A well-structured portfolio converts visitors to leads passively, while you sleep. It should clearly communicate what you do, who you do it for, results you've achieved, and how to contact you — in that order, above the fold.</p>
         <p>Case studies outperform galleries of work. Instead of showing 20 images, show three to five case studies that describe the problem, your approach, and the measurable result. "Redesigned checkout flow, reduced cart abandonment by 23%" says more than a screenshot ever could.</p>
 
-        <div class="cta-block">
-          <h3>Once You Land a Client, Protect Yourself with a Contract</h3>
-          <p>ContractFixPro helps you create professional freelance contracts that protect your rates, scope, and payment terms — so new client relationships start on solid ground.</p>
-          <a href="https://contractfixpro.com" class="cta-btn" target="_blank" rel="noopener">Build Your Contract</a>
+                <div class="cta-block">
+          <h3>Generate a Professional Freelance Contract</h3>
+          <p>ContractFixPro creates customized, legally sound contracts tailored to your project — no lawyer required. Free to start.</p>
+          <a href="https://contractfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try ContractFixPro Free &rarr;</a>
         </div>
 
         <h2 id="partnerships">9. Agency Partnerships</h2>
@@ -225,10 +225,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Ready for New Clients?</h3>
-        <p>Protect your client relationships from day one with a professional freelance contract from ContractFixPro.</p>
-        <a href="https://contractfixpro.com" class="cta-btn" target="_blank" rel="noopener">Get Your Contract</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Contract Generator</h3>
+        <p>Create professional freelance contracts in minutes — no lawyer required.</p>
+        <a href="https://contractfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try ContractFixPro &rarr;</a>
       </div>
     </aside>
   </div>
@@ -261,5 +261,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

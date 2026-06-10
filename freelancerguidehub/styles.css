@@ -377,3 +377,8 @@ img{max-width:100%;height:auto}
   .container{padding:0 16px}
   .why-trust{grid-template-columns:1fr}
 }
+
+/* SCROLL TO TOP */
+#back-to-top{position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;border:none;cursor:pointer;font-size:1.3rem;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(234,88,12,.4);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:200;font-family:inherit}
+#back-to-top.visible{opacity:1;pointer-events:auto}
+#back-to-top:hover{background:var(--orange-dark);transform:translateY(-3px)}

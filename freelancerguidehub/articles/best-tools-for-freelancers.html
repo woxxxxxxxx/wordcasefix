@@ -141,10 +141,10 @@
         <p><strong>Dropbox:</strong> Preferred by creative freelancers who deal with large files (video, high-resolution photography, audio). Dropbox's selective sync, Paper (collaborative docs), and reliable desktop sync make it excellent for large-file workflows. The Plus plan (2TB) at $10/month covers most creative freelancers.</p>
         <p><strong>Notion:</strong> Also functions as a lightweight knowledge base and client portal. Many freelancers create client-facing Notion pages where they share project updates, deliverables, and documentation — a professional touch that impresses clients and reduces email clutter.</p>
 
-        <div class="cta-block">
-          <h3>Add Professional Invoicing to Your Toolkit</h3>
-          <p>BillingFixPro integrates with the tools freelancers already use to make invoicing fast, automatic, and professional.</p>
-          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free</a>
+                <div class="cta-block">
+          <h3>Generate a Professional Freelance Contract</h3>
+          <p>ContractFixPro creates customized, legally sound contracts tailored to your project — no lawyer required. Free to start.</p>
+          <a href="https://contractfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try ContractFixPro Free &rarr;</a>
         </div>
 
         <h2 id="contracts">Contracts and e-Signatures</h2>
@@ -219,10 +219,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Invoicing for Your Toolkit</h3>
-        <p>BillingFixPro is the invoicing layer that ties your freelance business together.</p>
-        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Start Free</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Contract Generator</h3>
+        <p>Create professional freelance contracts in minutes — no lawyer required.</p>
+        <a href="https://contractfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try ContractFixPro &rarr;</a>
       </div>
     </aside>
   </div>
@@ -255,5 +255,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>

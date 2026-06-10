@@ -141,10 +141,10 @@
         <p>For digital purchases (software subscriptions, online tools), forward confirmation emails to a dedicated receipts folder or use a tool that automatically captures these. Many banks and credit cards let you attach receipts directly to transactions in their apps.</p>
         <p>Organize receipts by tax year and keep them for at least 7 years. The IRS can audit up to 3 years back under normal circumstances, 6 years if it suspects substantial underreporting, and indefinitely for fraud. The extra years are cheap insurance.</p>
 
-        <div class="cta-block">
-          <h3>Track Every Dollar with BillingFixPro</h3>
-          <p>BillingFixPro connects your invoicing and expense tracking in one dashboard — see your real profit margin at a glance, not just your revenue.</p>
-          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Start Tracking Free</a>
+                <div class="cta-block">
+          <h3>Send Professional Invoices and Get Paid Faster</h3>
+          <p>BillingFixPro automates your invoicing workflow — from first draft to payment confirmation. Free to start.</p>
+          <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro Free &rarr;</a>
         </div>
 
         <h2 id="tools">Expense Tracking Tools</h2>
@@ -219,10 +219,10 @@
         </ul>
       </div>
       <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
-      <div class="sidebar-widget cta-widget">
-        <h3>Track Income + Expenses</h3>
-        <p>BillingFixPro combines invoicing and expense tracking so you always know your true profit.</p>
-        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Start Free</a>
+            <div class="sidebar-widget cta-widget">
+        <h3>Free Invoice Generator</h3>
+        <p>Create and send professional invoices in minutes — no accounting experience needed.</p>
+        <a href="https://billingfixpro.com" class="cta-btn" target="_blank" rel="noopener">Try BillingFixPro &rarr;</a>
       </div>
     </aside>
   </div>
@@ -255,5 +255,7 @@ window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
 </script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+<script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
 </body>
 </html>
