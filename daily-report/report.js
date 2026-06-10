@@ -39,7 +39,7 @@ const GA4_PROPERTIES = {
   'PayrollFixPro':      '540359696',
   'CoverageFixPro':     '540484051',
   'InsuranceTipsPro':   '540994505',
-  'FreelancerGuideHub': '541276823',
+  'FreelancerGuideHub': '540994505',
 };
 
 const SITES = [

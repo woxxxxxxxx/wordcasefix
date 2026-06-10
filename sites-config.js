@@ -127,7 +127,7 @@ const SITES = [
     repo:       null,
     branch:     'master',
     ftp_hosted: true,
-    ga_numeric: '541276823',
+    ga_numeric: '540994505',
     adsense:    'pending',
   },
 ];
