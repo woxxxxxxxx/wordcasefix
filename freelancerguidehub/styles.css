@@ -151,7 +151,7 @@ img{max-width:100%;height:auto}
 .newsletter-form button:hover{background:var(--orange-dark)}
 
 /* ARTICLE PAGE */
-.content-grid{display:grid;grid-template-columns:1fr 288px;gap:48px}
+.content-grid{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start}
 .breadcrumb{font-size:.82rem;color:var(--text3);padding:12px 0;margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .breadcrumb a{color:var(--blue);text-decoration:none}
 .breadcrumb a:hover{text-decoration:underline}
