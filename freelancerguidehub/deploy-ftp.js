@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const net = require('net');
 
-const EXCLUDE = ['node_modules', 'deploy-ftp.js', '.git', '.gitignore', 'package.json', 'package-lock.json', 'ftp-test.js'];
+const EXCLUDE = ['node_modules', 'deploy-ftp.js', 'auto-publish.js', 'topics-used.json', '.git', '.gitignore', 'package.json', 'package-lock.json', 'ftp-test.js'];
 
 async function uploadDir(client, localDir, remoteDir) {
   const items = fs.readdirSync(localDir);
