@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="180" height="40">
+  <!-- Briefcase icon -->
+  <rect x="2" y="13" width="26" height="22" rx="3" fill="#065f46"/>
+  <rect x="9" y="7" width="12" height="8" rx="2" fill="none" stroke="#065f46" stroke-width="2.5"/>
+  <line x1="2" y1="24" x2="28" y2="24" stroke="#fff" stroke-width="2"/>
+  <rect x="11" y="21" width="8" height="6" rx="1" fill="#fff"/>
+  <!-- Text -->
+  <text x="36" y="27" font-family="Georgia, serif" font-size="19" font-weight="700" fill="#064e3b">Freelancer<tspan fill="#ea580c">Guide</tspan>Hub</text>
+</svg>
