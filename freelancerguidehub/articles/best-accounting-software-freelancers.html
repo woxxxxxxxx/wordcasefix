@@ -40,6 +40,7 @@
   ]
 }
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638874323475457" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="read-progress"></div>
@@ -74,7 +75,7 @@
       </div>
 
       <img src="/images/img-tools.jpg" alt="Freelancer using accounting software on a laptop" class="article-hero-img" loading="lazy">
-      <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
+      <div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1638874323475457" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
       <div class="author-box">
         <div class="author-avatar-sm">FG</div>
         <div class="author-info">
@@ -159,7 +160,7 @@
         <p>For most new freelancers, start with Wave (free) to build the habit of tracking income and expenses. Once you're earning consistently and need more features, evaluate FreshBooks or QuickBooks Self-Employed based on whether time tracking or tax integration matters more to you. Always keep your <a href="how-to-invoice-clients-as-freelancer.html">invoicing workflow</a> consistent regardless of the tool you choose.</p>
       </div>
 
-      <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
+      <div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1638874323475457" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
 
       <div class="faq-section">
         <h2>Frequently Asked Questions</h2>
@@ -227,7 +228,7 @@
         <div class="related-post"><div class="related-num">4</div><a href="/articles/how-to-set-freelance-rates.html">How to Set Your Freelance Rates</a></div>
         <div class="related-post"><div class="related-num">5</div><a href="/articles/best-tools-for-freelancers.html">Best Tools for Freelancers</a></div>
       </div>
-      <div class="ad-unit"><!-- AD_PLACEHOLDER --></div>
+      <div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1638874323475457" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
             <div class="sidebar-cta">
         <h3>Free Invoice Generator</h3>
         <p>BillingFixPro automates your invoicing workflow — from first draft to payment confirmation. Free to start.</p>
@@ -254,7 +255,7 @@
 const bar=document.getElementById('read-progress');
 window.addEventListener('scroll',()=>{const d=document.documentElement;const p=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;bar.style.width=p+'%';});
 document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open');});
-document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const a=btn.nextElementSibling;const open=a.style.display==='block';document.querySelectorAll('.faq-answer').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-question').forEach(x=>x.classList.remove('active'));if(!open){a.style.display='block';btn.classList.add('active');}});});
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');});});
 </script>
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
 <script>window.addEventListener('scroll',function(){document.getElementById('back-to-top').classList.toggle('visible',window.scrollY>300);},{passive:true});</script>
