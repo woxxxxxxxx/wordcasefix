@@ -198,6 +198,15 @@
           <p>This guide was compiled from the experiences of freelancers billing clients in 20+ countries and reviewed for tax accuracy by professionals familiar with international self-employment taxation.</p>
         </div>
       </div>
+      <div class="helpful-widget">
+        <p>Was this article helpful?</p>
+        <div class="helpful-buttons">
+          <button class="helpful-btn" onclick="helpfulVote(this)">&#128077; Yes, helpful</button>
+          <button class="helpful-btn" onclick="helpfulVote(this)">&#128078; Not really</button>
+        </div>
+        <p class="helpful-msg" style="display:none;">Thanks for your feedback!</p>
+      </div>
+      <script>if(!window.helpfulVote)window.helpfulVote=function(b){document.querySelectorAll('.helpful-btn').forEach(function(x){x.classList.remove('voted');});b.classList.add('voted');b.closest('.helpful-widget').querySelector('.helpful-msg').style.display='block';};</script>
     </article>
 
         <aside class="sidebar"><div class="sidebar-sticky">

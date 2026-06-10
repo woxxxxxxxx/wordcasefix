@@ -207,6 +207,15 @@
           <p>Our team includes freelance tax specialists and financial writers with years of experience navigating self-employment taxation. All articles are reviewed for accuracy against current IRS guidance.</p>
         </div>
       </div>
+      <div class="helpful-widget">
+        <p>Was this article helpful?</p>
+        <div class="helpful-buttons">
+          <button class="helpful-btn" onclick="helpfulVote(this)">&#128077; Yes, helpful</button>
+          <button class="helpful-btn" onclick="helpfulVote(this)">&#128078; Not really</button>
+        </div>
+        <p class="helpful-msg" style="display:none;">Thanks for your feedback!</p>
+      </div>
+      <script>if(!window.helpfulVote)window.helpfulVote=function(b){document.querySelectorAll('.helpful-btn').forEach(function(x){x.classList.remove('voted');});b.classList.add('voted');b.closest('.helpful-widget').querySelector('.helpful-msg').style.display='block';};</script>
     </article>
 
         <aside class="sidebar"><div class="sidebar-sticky">
