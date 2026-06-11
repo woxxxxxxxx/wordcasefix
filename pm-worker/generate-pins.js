@@ -2,7 +2,7 @@
 /**
  * generate-pins.js
  * 从站点 sitemap 自动发现工具页，截图生成 Pin 图，写入 pin-content.json
- * 新增站点只需在 SITES 数组加一行，无需修改其他代码
+ * Blog 站点（InsuranceTipsPro / FreelancerGuideHub）用 HTML 模板渲染 Pin 图
  */
 
 const { chromium } = require('playwright');
@@ -11,6 +11,7 @@ const path  = require('path');
 const https = require('https');
 const http  = require('http');
 
+// ── Sitemap 工具站 ─────────────────────────────────────────────────────────────
 const SITES = [
   {
     name:         'CoverageFixPro',
@@ -19,7 +20,6 @@ const SITES = [
     color:        '#1d4ed8',
     autoDiscover: true,
     sitemapUrl:   'https://coveragefixpro.com/sitemap.xml',
-    // 匹配规则：包含 /tools/ 的路径
     urlFilter:    u => u.includes('/tools/'),
   },
   {
@@ -29,8 +29,49 @@ const SITES = [
     color:        '#2563eb',
     autoDiscover: true,
     sitemapUrl:   'https://contractfixpro.com/sitemap.xml',
-    // contractfixpro 工具页直接在根路径，排除 index/about/privacy 等
     urlFilter:    u => u.endsWith('.html') && !u.match(/\/(index|about|privacy|terms|contact|404)\./),
+  },
+  {
+    name:         'BillingFixPro',
+    baseUrl:      'https://billingfixpro.com',
+    pinterestDir: 'C:\\Users\\Administrator\\billingfixpro\\pinterest',
+    color:        '#0891b2',
+    autoDiscover: true,
+    sitemapUrl:   'https://billingfixpro.com/sitemap.xml',
+    urlFilter:    u => u.includes('/tools/'),
+  },
+  {
+    name:         'PayrollFixPro',
+    baseUrl:      'https://payrollfixpro.com',
+    pinterestDir: 'C:\\Users\\Administrator\\payrollfixpro\\pinterest',
+    color:        '#0f766e',
+    autoDiscover: true,
+    sitemapUrl:   'https://payrollfixpro.com/sitemap.xml',
+    urlFilter:    u => u.includes('/tools/'),
+  },
+];
+
+// ── Blog 文章站（HTML 模板渲染 Pin 图）────────────────────────────────────────
+const BLOG_SITES = [
+  {
+    name:         'InsuranceTipsPro',
+    pinterestDir: 'C:\\Users\\Administrator\\insurancetipspro\\pinterest',
+    bgColor:      '#1e40af',
+    darkColor:    '#1e3a8a',
+    topicsFile:   'C:\\Users\\Administrator\\insurancetipspro\\topics-used.json',
+    articleBase:  'https://insurancetipspro.com/articles',
+    domain:       'InsuranceTipsPro.com',
+    emoji:        '🛡️',
+  },
+  {
+    name:         'FreelancerGuideHub',
+    pinterestDir: 'C:\\Users\\Administrator\\freelancerguidehub\\pinterest',
+    bgColor:      '#065f46',
+    darkColor:    '#064e3b',
+    topicsFile:   'C:\\Users\\Administrator\\freelancerguidehub\\topics-used.json',
+    articleBase:  'https://freelancerguidehub.com/articles',
+    domain:       'FreelancerGuideHub.com',
+    emoji:        '💼',
   },
 ];
 
@@ -42,9 +83,12 @@ function log(msg) {
   try { fs.appendFileSync(LOG_FILE, line + '\n', 'utf8'); } catch (_) {}
 }
 
+function slugToTitle(s) {
+  return s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
 // ── Sitemap 抓取 ──────────────────────────────────────────────────────────────
 function fetchSitemap(url, urlFilter) {
-  const filter = urlFilter || (u => u.includes('/tools/'));
   return new Promise(resolve => {
     const client = url.startsWith('https') ? https : http;
     const req = client.get(url, { timeout: 15000 }, res => {
@@ -53,7 +97,7 @@ function fetchSitemap(url, urlFilter) {
       res.on('end', () => {
         const urls = [...data.matchAll(/<loc>(.*?)<\/loc>/g)]
           .map(m => m[1].trim())
-          .filter(filter);
+          .filter(urlFilter || (u => u.includes('/tools/')));
         log(`  Sitemap ${url}: 找到 ${urls.length} 个工具页`);
         resolve(urls);
       });
@@ -61,6 +105,110 @@ function fetchSitemap(url, urlFilter) {
     req.on('error', e => { log(`  Sitemap 抓取失败: ${e.message}`); resolve([]); });
     req.on('timeout', () => { req.destroy(); log(`  Sitemap 超时`); resolve([]); });
   });
+}
+
+// ── Blog Pin HTML 模板 ────────────────────────────────────────────────────────
+function makeBlogPinHtml(title, site) {
+  const safeTitle = title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const fontSize  = title.length > 60 ? 28 : title.length > 40 ? 32 : 36;
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  width:600px;height:900px;overflow:hidden;
+  background:linear-gradient(155deg,${site.bgColor} 0%,${site.darkColor} 100%);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  padding:64px 52px;text-align:center;
+}
+.domain{font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);
+  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:40px;}
+.emoji{font-size:54px;margin-bottom:28px;line-height:1;}
+.title{font-size:${fontSize}px;font-weight:800;color:#fff;
+  line-height:1.22;letter-spacing:-0.015em;word-break:break-word;}
+.bar{width:52px;height:4px;background:rgba(255,255,255,0.3);
+  border-radius:99px;margin:36px auto;}
+.cta{font-size:15px;font-weight:600;color:rgba(255,255,255,0.85);
+  border:2px solid rgba(255,255,255,0.28);padding:11px 30px;border-radius:999px;}
+</style></head>
+<body>
+  <div class="domain">${site.domain}</div>
+  <div class="emoji">${site.emoji}</div>
+  <div class="title">${safeTitle}</div>
+  <div class="bar"></div>
+  <div class="cta">Read Full Guide →</div>
+</body></html>`;
+}
+
+// ── 生成 Blog Pin 图（仅处理尚未生成的新文章）─────────────────────────────────
+async function generateBlogPins(site, browser) {
+  log(`\n── ${site.name} (blog) ──`);
+
+  if (!fs.existsSync(site.pinterestDir)) {
+    fs.mkdirSync(site.pinterestDir, { recursive: true });
+  }
+
+  let slugs = [];
+  try {
+    slugs = JSON.parse(fs.readFileSync(site.topicsFile, 'utf8')).used || [];
+  } catch (e) {
+    log(`  ⚠️  读取 topics-used.json 失败: ${e.message}`);
+    return;
+  }
+
+  const jsonPath = path.join(site.pinterestDir, 'pin-content.json');
+  let existing = [];
+  try { existing = JSON.parse(fs.readFileSync(jsonPath, 'utf8')); } catch (_) {}
+  const existingSlugs = new Set(existing.map(p => p.slug).filter(Boolean));
+
+  const newSlugs = slugs.filter(s => !existingSlugs.has(s));
+  if (newSlugs.length === 0) {
+    log(`  ✅ ${site.name}: 无新文章，跳过`);
+    return;
+  }
+  log(`  🎯 ${newSlugs.length} 篇新文章需生成 Pin`);
+
+  const page = await browser.newPage();
+  await page.setViewportSize({ width: 600, height: 900 });
+
+  const pins  = [];
+  const stamp = Date.now();
+
+  for (let i = 0; i < newSlugs.length; i++) {
+    const slug  = newSlugs[i];
+    const title = slugToTitle(slug);
+    try {
+      const html = makeBlogPinHtml(title, site);
+      await page.setContent(html, { waitUntil: 'load' });
+
+      const filename = `pin-blog-${stamp}-${i + 1}.png`;
+      const filepath = path.join(site.pinterestDir, filename);
+      await page.screenshot({ path: filepath });
+
+      pins.push({
+        slug,
+        file:  filename,
+        image: filename,
+        title,
+        name:  title,
+        desc:  `${title} — full guide at ${site.domain}`,
+        text:  `${title} — full guide at ${site.domain}`,
+        link:  `${site.articleBase}/${slug}.html`,
+        source: site.name,
+      });
+      log(`  📸 ${i + 1}/${newSlugs.length} ${filename} — ${title}`);
+    } catch (e) {
+      log(`  ❌ Blog pin 失败 ${slug}: ${e.message}`);
+    }
+  }
+
+  await page.close();
+
+  if (pins.length === 0) return;
+
+  const merged = [...existing, ...pins].slice(-50);
+  fs.writeFileSync(jsonPath, JSON.stringify(merged, null, 2), 'utf8');
+  log(`  ✅ ${site.name}: 新增 ${pins.length} 条，pin-content.json 共 ${merged.length} 条`);
 }
 
 // ── 主流程 ────────────────────────────────────────────────────────────────────
@@ -71,16 +219,15 @@ async function generatePins() {
 
   const browser = await chromium.launch({ headless: true });
 
+  // ── 工具站：sitemap 截图 ────────────────────────────────────────────────────
   for (const site of SITES) {
     log(`\n── ${site.name} ──`);
 
-    // 确保目录存在
     if (!fs.existsSync(site.pinterestDir)) {
       fs.mkdirSync(site.pinterestDir, { recursive: true });
       log(`  📁 创建目录: ${site.pinterestDir}`);
     }
 
-    // 发现工具页
     let urls = [];
     if (site.autoDiscover) {
       urls = await fetchSitemap(site.sitemapUrl, site.urlFilter);
@@ -91,11 +238,10 @@ async function generatePins() {
       continue;
     }
 
-    // 随机选最多 10 个
     const selected = urls.sort(() => Math.random() - 0.5).slice(0, 10);
     log(`  🎯 选中 ${selected.length} 个页面截图`);
 
-    const page = await browser.newPage();
+    const page  = await browser.newPage();
     await page.setViewportSize({ width: 1000, height: 1500 });
 
     const pins  = [];
@@ -111,26 +257,23 @@ async function generatePins() {
         const filepath = path.join(site.pinterestDir, filename);
         await page.screenshot({ path: filepath, fullPage: false });
 
-        // 提取 title / description
         const title = await page.title().catch(() => '');
         const desc  = await page.$eval(
           'meta[name="description"]', el => el.getAttribute('content')
         ).catch(() => title);
 
-        const cleanTitle = title
-          .replace(/ [-|–] .*$/, '')   // 去掉 " - SiteName" 后缀
-          .trim() || path.basename(url).replace(/-/g, ' ');
+        const cleanTitle = title.replace(/ [-|–] .*$/, '').trim()
+          || path.basename(url).replace(/-/g, ' ');
 
         pins.push({
           file:  filename,
           name:  cleanTitle,
-          image: filename,            // buffer-refill.js 旧字段兼容
+          image: filename,
           title: cleanTitle,
           desc:  desc || cleanTitle,
-          text:  desc || cleanTitle,  // 兼容字段
+          text:  desc || cleanTitle,
           link:  url,
         });
-
         log(`  📸 ${i + 1}/${selected.length} ${filename} — ${cleanTitle}`);
       } catch (e) {
         log(`  ❌ 截图失败 ${url}: ${e.message}`);
@@ -139,12 +282,8 @@ async function generatePins() {
 
     await page.close();
 
-    if (pins.length === 0) {
-      log(`  ⚠️ ${site.name}: 没有成功截图`);
-      continue;
-    }
+    if (pins.length === 0) { log(`  ⚠️ ${site.name}: 没有成功截图`); continue; }
 
-    // 追加写入 pin-content.json（保留最近 50 条）
     const jsonPath = path.join(site.pinterestDir, 'pin-content.json');
     let existing = [];
     if (fs.existsSync(jsonPath)) {
@@ -153,6 +292,11 @@ async function generatePins() {
     const merged = [...existing, ...pins].slice(-50);
     fs.writeFileSync(jsonPath, JSON.stringify(merged, null, 2), 'utf8');
     log(`  ✅ ${site.name}: 新增 ${pins.length} 条，pin-content.json 共 ${merged.length} 条`);
+  }
+
+  // ── Blog 站：HTML 模板 Pin 图 ───────────────────────────────────────────────
+  for (const site of BLOG_SITES) {
+    await generateBlogPins(site, browser);
   }
 
   await browser.close();
