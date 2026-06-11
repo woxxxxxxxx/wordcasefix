@@ -240,7 +240,7 @@ img{max-width:100%;height:auto}
 .author-bio p{font-size:.85rem;color:var(--text2);margin:0}
 
 /* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:20px}
+.sidebar{display:flex;flex-direction:column;gap:10px}
 .sidebar-sticky{position:sticky;top:80px;max-height:calc(100vh - 100px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 .sidebar-widget{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
 .sidebar-widget h3{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
