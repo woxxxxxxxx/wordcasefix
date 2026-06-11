@@ -1,39 +1,33 @@
 'use strict';
 /**
- * buffer-refill.js  v3
+ * buffer-refill.js  v4
  *
  * 流程:
- *   1. 生成最新截图 (generate-pins.js)
- *   2. 登录 Buffer → xiaohuixie3 Pinterest 账户
- *   3. 读取队列数量
- *   4. 从两个站点的 pin-content.json 交替取图，补到 MAX_QUEUE
+ *   1. 生成最新 Pin 截图 (generate-pins.js)
+ *   2. GraphQL API 查询 Pinterest 队列数
+ *   3. 若队列 < MAX_QUEUE，上传图片到 Imgur，通过 Buffer GraphQL createPost 补到满
  *
- * 通过调试确认的选择器:
- *   - 登录页: 单页表单, email + password 同时存在
- *   - Channel 页 New Post 按钮: button:has-text("New Post")
- *   - 文本区: div[contenteditable="true"] (第一个)
- *   - 图片上传: input[type="file"]
- *   - Title: input[placeholder="Your pin title"]
- *   - Destination Link: input[placeholder="Enter destination link..."]
- *   - 加入队列: button:has-text("Next Available")
- *   - 队列数: tab 文字 "Queue\n{N}\nposts" 或 "Queue{N}"
+ * 无 Playwright，无浏览器，纯 API 调用。
  */
 
-const { chromium } = require('playwright');
-const fs   = require('fs');
-const path = require('path');
+const fs    = require('fs');
+const path  = require('path');
+const https = require('https');
 const { execSync } = require('child_process');
+const { HttpsProxyAgent } = require('https-proxy-agent');
 
 // ── 配置 ──────────────────────────────────────────────────────────────────────
-const MAX_QUEUE        = 10;
-const BUFFER_EMAIL     = 'xiaohuixie3@gmail.com';
-const BUFFER_PASSWORD  = 'Xxh113324';
-const CHANNEL_ID       = '6a218b35c687a22dd45dac93';   // xiaohuixie3 Pinterest
-const CHANNEL_URL      = `https://publish.buffer.com/channels/${CHANNEL_ID}/queue`;
-const LOG_FILE         = 'C:\\Users\\Administrator\\pm-worker\\logs\\buffer-refill.log';
-const PM_DIR           = 'C:\\Users\\Administrator\\pm-worker';
+const MAX_QUEUE    = 10;
+const BUFFER_TOKEN = 'aPPMezKy_6SKLs8F-9iUzZo4vM959_4K8YKqHCe9iQU';
+const ORG_ID       = '6a2026ccd819e8c99b17eb9e';
+const CHANNEL_ID   = '6a218b35c687a22dd45dac93';  // xiaohuixie3 Pinterest
+const BOARD_SVC_ID = '1097119227915211401';        // "Productivity Apps" board
+const GQL_URL      = 'https://api.buffer.com/graphql';
+const IMGUR_CID    = '546c25a59c58ad7';
+const PROXY_URL    = 'http://127.0.0.1:7897';
+const LOG_FILE     = 'C:\\Users\\Administrator\\pm-worker\\logs\\buffer-refill.log';
+const PM_DIR       = 'C:\\Users\\Administrator\\pm-worker';
 
-// 两个站点的 Pin 目录（轮流取图，内容更丰富）
 const PIN_SOURCES = [
   { name: 'CoverageFixPro', dir: 'C:\\Users\\Administrator\\coveragefixpro\\pinterest' },
   { name: 'ContractFixPro', dir: 'C:\\Users\\Administrator\\contractfixpro\\pinterest' },
@@ -49,7 +43,49 @@ function log(msg) {
   } catch (_) {}
 }
 
-// ── 加载所有可用 Pin（合并两个站点，随机打乱）────────────────────────────────
+// ── HTTP 请求（带代理）──────────────────────────────────────────────────────
+function httpReq(urlStr, opts = {}, bodyBuf = null) {
+  return new Promise((resolve, reject) => {
+    const agent   = new HttpsProxyAgent(PROXY_URL);
+    const url     = new URL(urlStr);
+    const reqOpts = {
+      hostname: url.hostname,
+      port:     443,
+      path:     url.pathname + url.search,
+      method:   opts.method || 'GET',
+      headers:  { 'User-Agent': 'pm-worker/4.0', ...opts.headers },
+      agent,
+    };
+    if (bodyBuf) reqOpts.headers['Content-Length'] = bodyBuf.length;
+    const req = https.request(reqOpts, (res) => {
+      const chunks = [];
+      res.on('data', c => chunks.push(c));
+      res.on('end', () => {
+        const raw = Buffer.concat(chunks).toString('utf8');
+        let data;
+        try { data = JSON.parse(raw); } catch (_) { data = raw; }
+        resolve({ status: res.statusCode, data });
+      });
+    });
+    req.on('error', reject);
+    if (bodyBuf) req.write(bodyBuf);
+    req.end();
+  });
+}
+
+// ── Buffer GraphQL 请求 ───────────────────────────────────────────────────────
+async function gql(query, variables = {}) {
+  const body = Buffer.from(JSON.stringify({ query, variables }), 'utf8');
+  const resp = await httpReq(GQL_URL, {
+    method:  'POST',
+    headers: { 'Authorization': `Bearer ${BUFFER_TOKEN}`, 'Content-Type': 'application/json' },
+  }, body);
+  if (resp.status !== 200) throw new Error(`GraphQL HTTP ${resp.status}: ${JSON.stringify(resp.data).slice(0, 200)}`);
+  if (resp.data?.errors?.length) throw new Error(`GraphQL: ${resp.data.errors[0]?.message}`);
+  return resp.data?.data ?? resp.data;
+}
+
+// ── 加载 Pin（合并两站，随机打乱）──────────────────────────────────────────
 function loadAllPins() {
   const all = [];
   for (const src of PIN_SOURCES) {
@@ -69,7 +105,6 @@ function loadAllPins() {
       log(`  📌 ${src.name}: ${valid} 张可用`);
     } catch (e) { log(`  ⚠️  ${src.name} JSON 解析失败: ${e.message}`); }
   }
-  // Fisher-Yates 随机打乱
   for (let i = all.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [all[i], all[j]] = [all[j], all[i]];
@@ -77,96 +112,98 @@ function loadAllPins() {
   return all;
 }
 
-// ── 读取队列数量（从 tab 文字解析）────────────────────────────────────────────
-async function getQueueCount(page) {
-  try {
-    // Tab 文字形如 "Queue\n0\nposts" 或 "Queue0"
-    const tabText = await page.locator('[role="tab"], button[aria-label*="Queue" i]')
-      .filter({ hasText: /Queue/i }).first().textContent({ timeout: 5000 }).catch(() => '');
-    const m = tabText.match(/Queue\D*(\d+)/i);
-    if (m) { log(`  队列: ${m[1]} 条`); return parseInt(m[1]); }
-    // 备用：数页面上的 queue-post 元素
-    const cards = await page.$$('[data-testid*="queue"], [class*="QueuePost"], [class*="queue-post"]');
-    log(`  队列(元素计数): ${cards.length} 条`);
-    return cards.length;
-  } catch (e) {
-    log(`  队列检测失败: ${e.message}，默认 0`);
-    return 0;
-  }
+// ── 查询当前 Pinterest 队列数 ─────────────────────────────────────────────────
+async function getQueueCount() {
+  const query = `{
+    posts(input: {
+      organizationId: "${ORG_ID}"
+      filter: { channelIds: ["${CHANNEL_ID}"], status: [scheduled] }
+    }) {
+      edges { node { id } }
+    }
+  }`;
+  const data = await gql(query);
+  const edges = data?.posts?.edges || [];
+  const count = edges.length;
+  log(`  📊 队列(GraphQL): ${count} 条`);
+  return count;
 }
 
-// ── 添加一条 Post ─────────────────────────────────────────────────────────────
-async function addOnePost(page, pin) {
-  const title = pin.title || pin.name || path.basename(pin.imgPath, '.png');
-  const desc  = pin.desc  || pin.text || title;
-  const link  = pin.link  || '';
+// ── 上传图片到 Imgur → 获取公开 URL ──────────────────────────────────────────
+async function uploadToImgur(imgPath) {
+  const imageData = fs.readFileSync(imgPath);
+  const base64img = imageData.toString('base64');
+  const body = Buffer.from(JSON.stringify({
+    image: base64img,
+    type:  'base64',
+    name:  path.basename(imgPath),
+  }), 'utf8');
 
-  log(`  ➕ [${pin.source}] ${title.slice(0, 50)}`);
+  const resp = await httpReq('https://api.imgur.com/3/image', {
+    method:  'POST',
+    headers: { 'Authorization': `Client-ID ${IMGUR_CID}`, 'Content-Type': 'application/json' },
+  }, body);
 
-  try {
-    // 1. 点击 "New Post"
-    await page.locator('button:has-text("New Post")').first().click({ timeout: 10000 });
-    await page.waitForTimeout(2000);
-
-    // 2. 上传图片
-    await page.locator('input[type="file"]').first().setInputFiles(pin.imgPath);
-
-    // 3. 等待上传完成：没有任何按钮包含 "Uploading" 文字（最多 30s）
-    await page.waitForFunction(
-      () => !Array.from(document.querySelectorAll('button')).some(b => b.innerText.includes('Uploading')),
-      { timeout: 30000 }
-    ).catch(() => {});
-    log(`    📎 图片已上传`);
-
-    // 4. 填写 Post 文本
-    const textBox = page.locator('div[contenteditable="true"]').first();
-    await textBox.click();
-    await textBox.fill(desc.slice(0, 500));
-
-    // 5. 填写 Pin Title
-    const titleInput = page.locator('input[placeholder="Your pin title"]');
-    if (await titleInput.count() > 0) {
-      await titleInput.fill(title.slice(0, 100));
-    }
-
-    // 6. 填写 Destination Link
-    const linkInput = page.locator('input[placeholder="Enter destination link..."]');
-    if (await linkInput.count() > 0 && link) {
-      await linkInput.fill(link);
-    }
-
-    // 7. 点击 "Next Available" 加入队列
-    await page.waitForTimeout(500);
-    await page.locator('button:has-text("Next Available")').first().click({ timeout: 10000 });
-
-    // 8. 等待 composer 关闭：等 "Next Available" 按钮消失（最多 30s）
-    await page.locator('button:has-text("Next Available")')
-      .waitFor({ state: 'hidden', timeout: 30000 })
-      .catch(() => {});
-
-    log(`    ✅ 已加入队列`);
-
-    // 9. 导航回 queue 页，等 "New Post" 可见
-    await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
-    await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
-    await page.waitForTimeout(1000);
-    return true;
-
-  } catch (e) {
-    log(`    ❌ 失败: ${e.message.slice(0, 120)}`);
-    try {
-      await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 15000 });
-      await page.waitForSelector('button:has-text("New Post")', { timeout: 15000 });
-      await page.waitForTimeout(1500);
-    } catch (_) {}
-    return false;
+  if (!resp.data?.success) {
+    throw new Error(`Imgur upload 失败: ${JSON.stringify(resp.data).slice(0, 200)}`);
   }
+  return resp.data.data.link;
+}
+
+// ── 通过 Buffer GraphQL 创建 Post ─────────────────────────────────────────────
+async function createPost(pin, imgUrl) {
+  const title = (pin.title || pin.name || '').slice(0, 100);
+  const desc  = (pin.desc  || pin.text || title).slice(0, 500);
+  const link  = pin.link || '';
+
+  const data = await gql(`
+    mutation CreatePost($input: CreatePostInput!) {
+      createPost(input: $input) {
+        ... on PostActionSuccess {
+          post { id status dueAt shareMode }
+        }
+        ... on InvalidInputError { message }
+        ... on LimitReachedError { message }
+        ... on UnauthorizedError { message }
+        ... on UnexpectedError   { message }
+        ... on RestProxyError    { message }
+        ... on NotFoundError     { message }
+      }
+    }
+  `, {
+    input: {
+      channelId:      CHANNEL_ID,
+      schedulingType: 'automatic',
+      mode:           'addToQueue',
+      assets: [{
+        image: {
+          url:      imgUrl,
+          metadata: { altText: title },
+        },
+      }],
+      text: desc,
+      metadata: {
+        pinterest: {
+          title,
+          url:            link,
+          boardServiceId: BOARD_SVC_ID,
+        },
+      },
+    },
+  });
+
+  const result = data?.createPost;
+  if (result?.post?.id) {
+    log(`    📋 Post ID: ${result.post.id}，状态: ${result.post.status}，dueAt: ${result.post.dueAt || '待排队'}`);
+    return true;
+  }
+  throw new Error(result?.message || `createPost 返回异常: ${JSON.stringify(result).slice(0, 150)}`);
 }
 
 // ── 主流程 ────────────────────────────────────────────────────────────────────
 async function refillBuffer() {
   log('════════════════════════════════════════');
-  log('Buffer Refill v3 启动');
+  log('Buffer Refill v4 (GraphQL + Imgur) 启动');
   log('════════════════════════════════════════');
 
   // Step 1: 生成截图
@@ -176,78 +213,46 @@ async function refillBuffer() {
       cwd: PM_DIR, timeout: 180000, stdio: 'inherit',
     });
   } catch (e) {
-    log(`⚠️  截图生成超时/失败: ${e.message.slice(0,80)}，继续使用已有图片`);
+    log(`⚠️  截图生成超时/失败: ${e.message.slice(0, 80)}，继续使用已有图片`);
   }
 
-  // Step 2: 加载所有 Pin
+  // Step 2: 加载 Pins
   log('\n📌 Step 2: 加载 Pin 图片...');
   const pins = loadAllPins();
-  if (pins.length === 0) {
-    log('❌ 无可用 Pin 图片，退出');
-    return;
-  }
+  if (pins.length === 0) { log('❌ 无可用 Pin 图片，退出'); return; }
   log(`  合计 ${pins.length} 张可用`);
 
-  // Step 3: 启动浏览器 + 登录
-  log('\n🌐 Step 3: 启动浏览器...');
-  const browser = await chromium.launch({
-    headless: true,
-    slowMo: 300,
-    proxy: { server: 'http://127.0.0.1:7897' },
-    args: ['--no-sandbox'],
-  });
-  const page = await browser.newPage();
-  page.setDefaultTimeout(20000);
+  // Step 3: 检查队列
+  log('\n📊 Step 3: 检查 Buffer 队列...');
+  const currentCount = await getQueueCount();
+  const toAdd = Math.max(0, MAX_QUEUE - currentCount);
 
-  try {
-    // 登录
-    log('  🔑 登录 Buffer...');
-    await page.goto('https://login.buffer.com/login', { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForSelector('input[name="email"]', { timeout: 15000 });
-    await page.fill('input[name="email"]', BUFFER_EMAIL);
-    await page.fill('input[name="password"]', BUFFER_PASSWORD);
-    await page.locator('#login-form-submit').click();
-    await page.waitForURL(/publish\.buffer\.com/, { timeout: 20000, waitUntil: 'commit' });
-    log('  ✅ 登录成功');
-
-    // 导航到 Pinterest channel queue 页
-    log(`\n📋 Step 4: 导航到 channel queue...`);
-    await page.goto(CHANNEL_URL, { waitUntil: 'commit', timeout: 30000 });
-    // 等待页面 React 渲染（等 New Post 按钮出现）
-    await page.waitForSelector('button:has-text("New Post")', { timeout: 30000 });
-    await page.waitForTimeout(2000);
-    log(`  ✅ Channel 页已就绪`);
-
-    // 读取当前队列数
-    const currentCount = await getQueueCount(page);
-    const toAdd = Math.max(0, MAX_QUEUE - currentCount);
-
-    if (toAdd === 0) {
-      log(`\n✅ 队列已满 (${currentCount}/${MAX_QUEUE})，无需补充`);
-      await browser.close();
-      return;
-    }
-    log(`\n📥 Step 5: 队列 ${currentCount}/${MAX_QUEUE}，需补充 ${toAdd} 条`);
-
-    // 逐条添加
-    let added = 0;
-    for (let i = 0; i < toAdd; i++) {
-      const pin = pins[i % pins.length];
-      const ok  = await addOnePost(page, pin);
-      if (ok) added++;
-      await page.waitForTimeout(1000);
-    }
-
-    log(`\n════ 完成: 新增 ${added}/${toAdd} 条，队列约 ${currentCount + added}/${MAX_QUEUE} ════`);
-
-  } catch (e) {
-    log(`❌ 致命错误: ${e.message}`);
-    try {
-      await page.screenshot({ path: path.join(PM_DIR, 'logs', 'buffer-error.png') });
-    } catch (_) {}
-  } finally {
-    await browser.close();
+  if (toAdd === 0) {
+    log(`\n✅ 队列已满 (${currentCount}/${MAX_QUEUE})，无需补充`);
+    return;
   }
+  log(`\n📥 Step 4: 队列 ${currentCount}/${MAX_QUEUE}，需补充 ${toAdd} 条`);
+
+  // Step 4: 逐条添加
+  let added = 0;
+  for (let i = 0; i < toAdd; i++) {
+    const pin   = pins[i % pins.length];
+    const title = (pin.title || pin.name || '').slice(0, 50);
+    log(`\n  ➕ [${pin.source}] ${title}`);
+    try {
+      log(`    📤 上传图片: ${path.basename(pin.imgPath)}`);
+      const imgUrl = await uploadToImgur(pin.imgPath);
+      log(`    🖼️  Imgur URL: ${imgUrl}`);
+      await createPost(pin, imgUrl);
+      log(`    ✅ 已加入队列`);
+      added++;
+    } catch (e) {
+      log(`    ❌ 失败: ${e.message.slice(0, 200)}`);
+    }
+    if (i < toAdd - 1) await new Promise(r => setTimeout(r, 2000));
+  }
+
+  log(`\n════ 完成: 新增 ${added}/${toAdd} 条，队列约 ${currentCount + added}/${MAX_QUEUE} ════`);
 }
 
 if (require.main === module) {
