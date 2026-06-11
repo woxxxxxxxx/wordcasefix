@@ -1,108 +1,101 @@
-/**
- * ToolRankHQ FTP Deployment Script
- * Deploys all site files to the remote server via FTP.
- *
- * Usage:
- *   node deploy-ftp.js
- *
- * Requirements:
- *   npm install basic-ftp
- *
- * Proxy is configured via the HTTPS_PROXY environment variable or the
- * proxyOptions object below. The script uses http://127.0.0.1:7897 by default.
- */
-
-const ftp = require('basic-ftp');
+'use strict';
+const ftp  = require('basic-ftp');
 const path = require('path');
-const fs = require('fs');
+const fs   = require('fs');
+const net  = require('net');
 
-// ──────────────────────────────────────────────
-// Configuration
-// ──────────────────────────────────────────────
-const FTP_CONFIG = {
-  host: '212.85.28.149',
-  port: 21,
-  user: 'u868313694.toolrankhq.com',
-  password: 'Xxh113324~',
-  secure: false,       // set to 'implicit' or true for FTPS
-};
+const EXCLUDE = ['node_modules', 'deploy-ftp.js', '.git', '.gitignore',
+                 'package.json', 'package-lock.json'];
 
-const LOCAL_DIR  = path.resolve('C:\\Users\\Administrator\\toolrankhq');
-const REMOTE_DIR = '/public_html';
-
-// HTTP proxy (CONNECT-style, for FTP-over-proxy via tunnelling)
-const PROXY = 'http://127.0.0.1:7897';
-
-// ──────────────────────────────────────────────
-// Helper: set process-level proxy env vars so
-// basic-ftp / Node net can route through it.
-// ──────────────────────────────────────────────
-function applyProxy(proxyUrl) {
-  if (!proxyUrl) return;
-  process.env.HTTP_PROXY  = proxyUrl;
-  process.env.HTTPS_PROXY = proxyUrl;
-  process.env.http_proxy  = proxyUrl;
-  process.env.https_proxy = proxyUrl;
-  console.log(`[proxy] Using proxy: ${proxyUrl}`);
+async function uploadFile(client, localPath, remotePath) {
+  const MAX = 3;
+  for (let attempt = 1; attempt <= MAX; attempt++) {
+    try {
+      await client.uploadFrom(localPath, remotePath);
+      console.log('Uploaded:', remotePath);
+      return true;
+    } catch (e) {
+      const msg = e.message || '';
+      if (msg.includes('550')) {
+        console.warn(`Skip (550): ${remotePath}`);
+        return false;
+      }
+      if (attempt < MAX) {
+        console.warn(`Retry ${attempt}/${MAX - 1}: ${remotePath} — ${msg}`);
+        await new Promise(r => setTimeout(r, 1500 * attempt));
+      } else {
+        console.error(`FAILED: ${remotePath} — ${msg}`);
+        return false;
+      }
+    }
+  }
+  return false;
 }
 
-// ──────────────────────────────────────────────
-// Recursively upload a local directory to FTP
-// ──────────────────────────────────────────────
-async function uploadDirectory(client, localDir, remoteDir) {
-  // Ensure the remote directory exists
-  await client.ensureDir(remoteDir);
-
-  const entries = fs.readdirSync(localDir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const localPath  = path.join(localDir, entry.name);
-    const remotePath = `${remoteDir}/${entry.name}`;
-
-    if (entry.isDirectory()) {
-      // Skip node_modules and hidden directories
-      if (entry.name === 'node_modules' || entry.name.startsWith('.')) {
-        console.log(`[skip] ${localPath}`);
-        continue;
-      }
-      console.log(`[dir]  ${remotePath}`);
-      await uploadDirectory(client, localPath, remotePath);
+async function uploadDir(client, localDir, remoteDir, failed) {
+  const items = fs.readdirSync(localDir);
+  for (const item of items) {
+    if (EXCLUDE.includes(item)) continue;
+    const localPath  = path.join(localDir, item);
+    const remotePath = remoteDir + '/' + item;
+    if (fs.statSync(localPath).isDirectory()) {
+      try { await client.ensureDir(remotePath); } catch (_) {}
+      await uploadDir(client, localPath, remotePath, failed);
+      await client.cd('/public_html');
     } else {
-      // Skip this deploy script itself and hidden files
-      if (entry.name === 'deploy-ftp.js' || entry.name.startsWith('.')) {
-        console.log(`[skip] ${localPath}`);
-        continue;
-      }
-      console.log(`[up]   ${localPath}  →  ${remotePath}`);
-      await client.uploadFrom(localPath, remotePath);
+      const ok = await uploadFile(client, localPath, remotePath);
+      if (!ok) failed.push(remotePath);
     }
   }
 }
 
-// ──────────────────────────────────────────────
-// Main
-// ──────────────────────────────────────────────
-async function main() {
-  applyProxy(PROXY);
-
-  const client = new ftp.Client(30000); // 30-second timeout
-  client.ftp.verbose = false; // set to true for full FTP log
-
+async function deploy() {
+  const client = new ftp.Client();
+  client.ftp.verbose = true;
   try {
-    console.log(`\n[ftp]  Connecting to ${FTP_CONFIG.host}:${FTP_CONFIG.port} …`);
-    await client.access(FTP_CONFIG);
-    console.log('[ftp]  Connected.\n');
+    const socket = await new Promise((resolve, reject) => {
+      const s = net.createConnection({ host: '127.0.0.1', port: 7897 }, () => {
+        s.write(`CONNECT 212.85.28.149:21 HTTP/1.1\r\nHost: 212.85.28.149:21\r\n\r\n`);
+        let buf = '';
+        s.on('data', chunk => {
+          buf += chunk.toString();
+          if (buf.includes('\r\n\r\n')) {
+            if (buf.startsWith('HTTP/1.1 200') || buf.startsWith('HTTP/1.0 200')) {
+              s.removeAllListeners('data');
+              resolve(s);
+            } else {
+              reject(new Error('Proxy CONNECT failed: ' + buf.split('\r\n')[0]));
+            }
+          }
+        });
+      });
+      s.once('error', reject);
+    });
 
-    console.log(`[ftp]  Uploading ${LOCAL_DIR}  →  ${REMOTE_DIR}\n`);
-    await uploadDirectory(client, LOCAL_DIR, REMOTE_DIR);
+    await client.access({
+      host:     '212.85.28.149',
+      user:     'u868313694.toolrankhq.com',
+      password: 'Xxh113324~',
+      port:     21,
+      secure:   false,
+      socket,
+    });
+    console.log('Connected via proxy');
+    await client.ensureDir('/public_html');
 
-    console.log('\n[ftp]  Upload complete.');
-  } catch (err) {
-    console.error('\n[error]', err.message || err);
-    process.exit(1);
-  } finally {
-    client.close();
+    const failed = [];
+    await uploadDir(client, __dirname, '/public_html', failed);
+
+    if (failed.length) {
+      console.warn(`\nCompleted with ${failed.length} skipped/failed file(s):`);
+      failed.forEach(f => console.warn(' -', f));
+    } else {
+      console.log('\nUpload complete! All files uploaded.');
+    }
+  } catch (e) {
+    console.error('Error:', e.message);
   }
+  client.close();
 }
 
-main();
+deploy();
