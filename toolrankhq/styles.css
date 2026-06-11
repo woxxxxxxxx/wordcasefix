@@ -1410,7 +1410,9 @@ p { margin-bottom: 1rem; }
   background: #f1f5f9;
   border: 1px dashed #cbd5e1;
   border-radius: 10px;
-  height: 90px;
+  height: 90px !important;
+  min-height: 90px !important;
+  max-height: 90px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1427,7 +1429,9 @@ p { margin-bottom: 1rem; }
   background: #f1f5f9;
   border: 1px dashed #cbd5e1;
   border-radius: 10px;
-  height: 90px;
+  height: 90px !important;
+  min-height: 90px !important;
+  max-height: 90px !important;
   display: flex;
   align-items: center;
   justify-content: center;
