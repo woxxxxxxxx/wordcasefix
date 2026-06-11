@@ -1,477 +1,506 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PM Automation Dashboard</title>
+<title>PM 自动化仪表板</title>
 <style>
-/* ─── Reset & Base ────────────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0a0a0a;--bg2:#111;--bg3:#161616;--bg4:#1c1c1c;
   --border:#222;--border2:#2a2a2a;
-  --green:#00c896;--green-dim:#00c89622;--green-dark:#007a5e;
-  --red:#ff4d4d;--red-dim:#ff4d4d22;
-  --yellow:#f5a623;--yellow-dim:#f5a62322;
-  --blue:#4d9eff;--blue-dim:#4d9eff22;
-  --gray:#666;--gray2:#444;
+  --green:#00c896;--green-dim:#00c89618;--green-dark:#007a5e;
+  --red:#ff4d4d;--red-dim:#ff4d4d18;
+  --yellow:#f5a623;--yellow-dim:#f5a62318;
+  --blue:#4d9eff;--blue-dim:#4d9eff18;
+  --purple:#a78bfa;--purple-dim:#a78bfa18;
+  --gray:#555;--gray2:#333;
   --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
   --mono:'JetBrains Mono','Courier New',monospace;
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --radius:10px;--radius-sm:6px;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --r:10px;--rs:6px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6;min-height:100vh}
-
-/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
-::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--green)}
 
-/* ─── Layout ──────────────────────────────────────────────────────────────── */
-.page{max-width:1400px;margin:0 auto;padding:24px 20px}
-.section{margin-bottom:32px}
-.section-title{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.section-title .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.grid-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+/* ── Layout ── */
+.page{max-width:1440px;margin:0 auto;padding:20px 18px}
+.section{margin-bottom:28px}
+.sec-title{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec-badge{margin-left:auto;font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0}
+.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 
-/* ─── Header ─────────────────────────────────────────────────────────────── */
-.header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:28px}
-.header-left{display:flex;align-items:center;gap:16px}
-.header-logo{font-size:22px;font-weight:800;letter-spacing:-0.5px;color:var(--text)}
-.header-logo span{color:var(--green)}
-.header-sub{font-size:12px;color:var(--text3);font-family:var(--mono)}
-.header-right{display:flex;align-items:center;gap:20px}
-.last-update{font-size:11px;color:var(--text3);font-family:var(--mono)}
-.refresh-btn{background:var(--green-dim);border:1px solid var(--green);color:var(--green);padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;cursor:pointer;transition:.2s}
-.refresh-btn:hover{background:var(--green);color:#000}
-.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+/* ── Header ── */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(135deg,#111 0%,#0f1a0f 100%);border:1px solid var(--border);border-radius:var(--r);margin-bottom:24px}
+.hdr-logo{font-size:20px;font-weight:800;letter-spacing:-.5px}
+.hdr-logo em{color:var(--green);font-style:normal}
+.hdr-sub{font-size:11px;color:var(--text3);margin-top:3px;font-family:var(--mono)}
+.hdr-right{display:flex;align-items:center;gap:18px}
+.hdr-meta{text-align:right}
+.hdr-meta-label{font-size:10px;color:var(--text3)}
+.hdr-meta-val{font-size:12px;color:var(--text2);font-family:var(--mono)}
+.btn-refresh{background:var(--green-dim);border:1px solid var(--green-dark);color:var(--green);padding:7px 16px;border-radius:var(--rs);font-size:12px;cursor:pointer;transition:.15s;font-family:var(--sans)}
+.btn-refresh:hover{background:var(--green);color:#000;font-weight:600}
+.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;vertical-align:middle;margin-right:4px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* ─── Cards ───────────────────────────────────────────────────────────────── */
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:.2s}
+/* ── Todos ── */
+.todos{display:flex;flex-direction:column;gap:6px}
+.todo-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:var(--rs);border-left:3px solid transparent}
+.todo-high{background:#1a0a0a;border-color:var(--red)}
+.todo-medium{background:#1a1200;border-color:var(--yellow)}
+.todo-info{background:#0a1220;border-color:var(--blue)}
+.todo-low{background:var(--bg3);border-color:var(--border2)}
+.todo-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.todo-text{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* ── Cards ── */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px}
 .card:hover{border-color:var(--border2)}
-.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.card-title{font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
 
-/* ─── Badges ──────────────────────────────────────────────────────────────── */
-.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.3px;white-space:nowrap}
-.badge-green{background:var(--green-dim);color:var(--green);border:1px solid var(--green-dark)}
-.badge-red{background:var(--red-dim);color:var(--red);border:1px solid #7f1d1d}
-.badge-yellow{background:var(--yellow-dim);color:var(--yellow);border:1px solid #78350f}
-.badge-blue{background:var(--blue-dim);color:var(--blue);border:1px solid #1e3a5f}
-.badge-gray{background:#1a1a1a;color:var(--gray);border:1px solid var(--border2)}
+/* ── Badges ── */
+.badge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.2px;white-space:nowrap;line-height:1.6}
+.bg{background:var(--green-dim);color:var(--green);border:1px solid var(--green-dark)}
+.br{background:var(--red-dim);color:var(--red);border:1px solid #7f1d1d}
+.by{background:var(--yellow-dim);color:var(--yellow);border:1px solid #78350f}
+.bb{background:var(--blue-dim);color:var(--blue);border:1px solid #1e3a5f}
+.bgr{background:#1a1a1a;color:var(--gray);border:1px solid var(--border2)}
+.bpurple{background:var(--purple-dim);color:var(--purple);border:1px solid #4c1d95}
 
-/* ─── Status dot ──────────────────────────────────────────────────────────── */
-.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;display:inline-block}
-.sdot-green{background:var(--green)}
-.sdot-red{background:var(--red)}
-.sdot-yellow{background:var(--yellow)}
-.sdot-gray{background:var(--gray)}
+/* ── Site Cards ── */
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.site-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--border);border-radius:var(--r);padding:18px;transition:.2s;position:relative}
+.site-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,0,0,.5)}
+.sc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.sc-name{font-size:16px;font-weight:700;letter-spacing:-.3px}
+.sc-domain{font-size:11px;color:var(--text3);font-family:var(--mono);margin-top:2px}
+.sc-hosting{font-size:10px;color:var(--text3);background:var(--bg3);padding:2px 7px;border-radius:3px;border:1px solid var(--border);margin-top:4px;display:inline-block}
+.sc-badges{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
+.sc-metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.sc-metric{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:9px 11px}
+.sc-metric-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.sc-metric-val{font-size:12px;font-weight:600}
+.sc-last{padding:8px 11px;background:var(--bg3);border-radius:var(--rs);border:1px solid var(--border)}
+.sc-last-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;margin-bottom:3px}
+.sc-last-val{font-size:11px;color:var(--text2);font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sc-last-time{font-size:10px;color:var(--text3);margin-top:2px;font-family:var(--mono)}
+.online-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
-/* ─── Section 1: Sites Grid ───────────────────────────────────────────────── */
-.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.site-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;border-left:3px solid transparent;transition:.2s}
-.site-card:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,0,0,.4)}
-.site-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
-.site-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px}
-.site-domain{font-size:11px;color:var(--text3);font-family:var(--mono);margin-top:2px}
-.site-hosting{font-size:10px;color:var(--text3);background:var(--bg3);padding:2px 6px;border-radius:3px;border:1px solid var(--border)}
-.site-metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
-.site-metric{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 10px}
-.site-metric-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.site-metric-value{font-size:12px;font-weight:600;font-family:var(--mono)}
-.site-last{margin-top:8px;padding:6px 10px;background:var(--bg3);border-radius:var(--radius-sm);border:1px solid var(--border)}
-.site-last-label{font-size:9px;color:var(--text3);text-transform:uppercase;margin-bottom:2px}
-.site-last-val{font-size:11px;color:var(--text2);font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* ─── Section 2: Timeline ─────────────────────────────────────────────────── */
-.timeline{display:flex;flex-direction:column;gap:0}
-.tl-item{display:grid;grid-template-columns:80px 12px 1fr;gap:0 16px;align-items:start;padding:14px 0;border-bottom:1px solid var(--border)}
-.tl-item:last-child{border-bottom:none}
-.tl-time{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--green);text-align:right;padding-top:2px}
-.tl-line{display:flex;flex-direction:column;align-items:center}
-.tl-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg3);flex-shrink:0;margin-top:3px}
-.tl-dot-success{border-color:var(--green);background:var(--green-dim)}
+/* ── Timeline ── */
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:90px 14px 1fr;gap:0 14px;align-items:start;padding:13px 0;border-bottom:1px solid var(--border)}
+.tl-row:last-child{border-bottom:none}
+.tl-time{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--green);text-align:right;padding-top:3px}
+.tl-spine{display:flex;flex-direction:column;align-items:center}
+.tl-dot{width:13px;height:13px;border-radius:50%;border:2px solid var(--border2);background:var(--bg3);flex-shrink:0;margin-top:3px}
+.tl-dot-ok{border-color:var(--green);background:var(--green-dim)}
 .tl-dot-fail{border-color:var(--red);background:var(--red-dim)}
-.tl-connector{width:2px;background:var(--border);flex:1;min-height:20px;margin-top:4px}
-.tl-body{padding-bottom:4px}
-.tl-label{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
-.tl-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.tl-lastrun{font-size:11px;color:var(--text3);font-family:var(--mono)}
+.tl-conn{width:2px;background:var(--border);flex:1;min-height:18px;margin-top:3px}
+.tl-body{}
+.tl-label{font-size:14px;font-weight:600;margin-bottom:5px}
+.tl-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tl-ts{font-size:11px;color:var(--text3);font-family:var(--mono)}
+.tl-file{font-size:10px;color:var(--text3);font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;max-width:240px}
 
-/* ─── Section 3: Content Pipeline ────────────────────────────────────────── */
-.progress-bar{height:8px;background:var(--bg3);border-radius:4px;border:1px solid var(--border);overflow:hidden;margin:8px 0}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:4px;transition:width .5s}
-.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:12px}
-.day-cell{aspect-ratio:1;border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;color:var(--text3);border:1px solid var(--border)}
-.day-cell-active{background:var(--green-dim);border-color:var(--green);color:var(--green)}
-.day-cell-today{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)22}
-.day-label{font-family:var(--mono);font-size:8px;margin-top:2px}
+/* ── Progress bar ── */
+.pbar{height:8px;background:var(--bg3);border-radius:4px;border:1px solid var(--border);overflow:hidden;margin:6px 0}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:4px;transition:width .6s}
 
-/* ─── Section 4: Recent Articles ─────────────────────────────────────────── */
-.article-list{display:flex;flex-direction:column;gap:6px}
-.article-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm)}
-.article-num{width:22px;height:22px;border-radius:50%;background:var(--green-dim);border:1px solid var(--green-dark);color:var(--green);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono)}
-.article-title{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.article-title a{color:inherit;text-decoration:none}
-.article-title a:hover{color:var(--green)}
-.article-slug{font-size:10px;color:var(--text3);font-family:var(--mono)}
+/* ── Days grid ── */
+.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:10px}
+.day-cell{border-radius:var(--rs);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 2px;font-size:9px;color:var(--text3);border:1px solid var(--border);cursor:default}
+.day-cell-on{background:var(--green-dim);border-color:var(--green-dark);color:var(--green)}
+.day-cell-today{box-shadow:0 0 0 1px var(--blue)}
+.day-date{font-family:var(--mono);font-size:9px;margin-top:2px}
 
-/* ─── Section 5: Health ───────────────────────────────────────────────────── */
-.health-table{width:100%;border-collapse:collapse}
-.health-table th{text-align:left;padding:8px 12px;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);font-weight:600}
-.health-table td{padding:8px 12px;border-bottom:1px solid var(--border);font-size:12px}
-.health-table tr:last-child td{border-bottom:none}
-.health-table tr:hover td{background:var(--bg3)}
-.mono{font-family:var(--mono)}
-.check-icon{font-size:14px}
+/* ── Article list ── */
+.art-list{display:flex;flex-direction:column;gap:5px}
+.art-item{display:flex;align-items:flex-start;gap:9px;padding:8px 11px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs)}
+.art-num{width:22px;height:22px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);margin-top:1px}
+.art-title{font-size:12px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.art-slug{font-size:10px;color:var(--text3);font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-/* ─── Loading / Error ─────────────────────────────────────────────────────── */
-.loading{display:flex;align-items:center;justify-content:center;height:200px;color:var(--text3);font-size:13px;gap:10px}
-.spinner{width:20px;height:20px;border:2px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
+/* ── Health table ── */
+.htable{width:100%;border-collapse:collapse}
+.htable th{text-align:left;padding:9px 12px;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);font-weight:600;white-space:nowrap}
+.htable td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle}
+.htable tbody tr:last-child td{border-bottom:none}
+.htable tbody tr:hover td{background:var(--bg3)}
+.site-dot-row{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+
+/* ── Spinner ── */
+.spin-wrap{display:flex;align-items:center;justify-content:center;height:120px;color:var(--text3);gap:10px;font-size:13px}
+.spinner{width:18px;height:18px;border:2px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ─── Tooltip ─────────────────────────────────────────────────────────────── */
-[data-tip]{position:relative;cursor:default}
-[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100%+4px);left:50%;transform:translateX(-50%);background:#000;color:var(--text);font-size:11px;padding:4px 8px;border-radius:4px;white-space:nowrap;z-index:99;border:1px solid var(--border2);pointer-events:none}
-
-/* ─── Responsive ──────────────────────────────────────────────────────────── */
-@media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr}.sites-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.grid-3,.grid-2,.sites-grid{grid-template-columns:1fr}.header{flex-direction:column;gap:12px;text-align:center}}
+/* ── Responsive ── */
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.sites-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.sites-grid{grid-template-columns:1fr}.hdr{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- ─── Header ─────────────────────────────────────────────────────────── -->
-  <div class="header">
-    <div class="header-left">
-      <div>
-        <div class="header-logo">PM<span>Auto</span> Dashboard</div>
-        <div class="header-sub">9 sites · 5 cron jobs · real-time monitoring</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div>
-        <div class="last-update">Last updated: <span id="last-update-time">—</span></div>
-        <div style="font-size:10px;color:var(--text3);margin-top:2px">Auto-refresh every 60s &nbsp;<span class="pulse"></span></div>
-      </div>
-      <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
-    </div>
+<!-- ─── 顶栏 ─────────────────────────────────────────────────────────────── -->
+<div class="hdr">
+  <div>
+    <div class="hdr-logo">PM<em>Auto</em> 仪表板</div>
+    <div class="hdr-sub">9个站点 · 5个定时任务 · 实时自动化监控</div>
   </div>
-
-  <!-- ─── Section 1: Sites Overview ─────────────────────────────────────── -->
-  <div class="section">
-    <div class="section-title">
-      <div class="dot" style="background:#00c896"></div>
-      SITES OVERVIEW
-      <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="sites-summary">loading…</span>
+  <div class="hdr-right">
+    <div class="hdr-meta">
+      <div class="hdr-meta-label"><span class="pulse"></span>最后更新</div>
+      <div class="hdr-meta-val" id="last-update">加载中…</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">每60秒自动刷新</div>
     </div>
-    <div class="sites-grid" id="sites-grid">
-      <div class="loading"><div class="spinner"></div> Loading sites…</div>
-    </div>
+    <button class="btn-refresh" onclick="loadData()">↻ 刷新</button>
   </div>
-
-  <!-- ─── Section 2: Timeline ────────────────────────────────────────────── -->
-  <div class="section">
-    <div class="section-title">
-      <div class="dot" style="background:#4d9eff"></div>
-      TODAY'S AUTOMATION TIMELINE
-    </div>
-    <div class="card">
-      <div class="timeline" id="timeline">
-        <div class="loading"><div class="spinner"></div> Loading timeline…</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── Section 3 & 4 side-by-side ─────────────────────────────────────── -->
-  <div class="grid-2">
-
-    <!-- Section 3: Content Pipeline -->
-    <div class="section" style="margin-bottom:0">
-      <div class="section-title">
-        <div class="dot" style="background:#f5a623"></div>
-        CONTENT PIPELINE
-      </div>
-      <div class="card" id="content-pipeline">
-        <div class="loading"><div class="spinner"></div> Loading…</div>
-      </div>
-    </div>
-
-    <!-- Section 4: Recent Auto-Published Articles -->
-    <div class="section" style="margin-bottom:0">
-      <div class="section-title">
-        <div class="dot" style="background:#a78bfa"></div>
-        RECENT AUTO-PUBLISHED ARTICLES
-      </div>
-      <div class="card" id="recent-articles">
-        <div class="loading"><div class="spinner"></div> Loading…</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ─── Section 5: System Health ───────────────────────────────────────── -->
-  <div class="section" style="margin-top:24px">
-    <div class="section-title">
-      <div class="dot" style="background:#ff4d4d"></div>
-      SYSTEM HEALTH
-      <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="monitor-time">monitor: —</span>
-    </div>
-    <div class="card" id="health-section">
-      <div class="loading"><div class="spinner"></div> Loading…</div>
-    </div>
-  </div>
-
 </div>
 
+<!-- ─── 待办事项 ──────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="sec-title">
+    <div class="sdot" style="background:var(--yellow)"></div>
+    待办事项
+    <span class="sec-badge" id="todo-count"></span>
+  </div>
+  <div id="todos"><div class="spin-wrap"><div class="spinner"></div>加载中…</div></div>
+</div>
+
+<!-- ─── 站点总览 ──────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="sec-title">
+    <div class="sdot" style="background:var(--green)"></div>
+    站点总览
+    <span class="sec-badge" id="sites-summary"></span>
+  </div>
+  <div class="sites-grid" id="sites-grid">
+    <div class="spin-wrap"><div class="spinner"></div>加载中…</div>
+  </div>
+</div>
+
+<!-- ─── 时间轴 ───────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="sec-title">
+    <div class="sdot" style="background:var(--blue)"></div>
+    今日自动化执行时间轴
+  </div>
+  <div class="card">
+    <div class="tl" id="timeline">
+      <div class="spin-wrap"><div class="spinner"></div>加载中…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 内容流水线 + 最近文章 ───────────────────────────────────────────── -->
+<div class="grid2">
+  <div class="section" style="margin-bottom:0">
+    <div class="sec-title">
+      <div class="sdot" style="background:var(--yellow)"></div>
+      内容流水线
+    </div>
+    <div class="card" id="content-pipeline">
+      <div class="spin-wrap"><div class="spinner"></div>加载中…</div>
+    </div>
+  </div>
+  <div class="section" style="margin-bottom:0">
+    <div class="sec-title">
+      <div class="sdot" style="background:var(--purple)"></div>
+      最近自动发布文章
+    </div>
+    <div class="card" id="recent-articles">
+      <div class="spin-wrap"><div class="spinner"></div>加载中…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 系统健康状态 ───────────────────────────────────────────────────── -->
+<div class="section" style="margin-top:24px">
+  <div class="sec-title">
+    <div class="sdot" style="background:var(--red)"></div>
+    系统健康状态
+    <span class="sec-badge" id="monitor-time"></span>
+  </div>
+  <div class="card" id="health-section">
+    <div class="spin-wrap"><div class="spinner"></div>加载中…</div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
 <script>
-// ─── Utilities ────────────────────────────────────────────────────────────────
+// ─── 工具函数 ─────────────────────────────────────────────────────────────────
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 function fmtTime(iso){
   if(!iso) return '—';
   const d=new Date(iso);
-  return d.toLocaleDateString('zh-CN',{month:'2-digit',day:'2-digit'}) + ' ' +
-         d.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const mo=String(d.getMonth()+1).padStart(2,'0');
+  const dd=String(d.getDate()).padStart(2,'0');
+  const hh=String(d.getHours()).padStart(2,'0');
+  const mm=String(d.getMinutes()).padStart(2,'0');
+  const ss=String(d.getSeconds()).padStart(2,'0');
+  return `${mo}-${dd} ${hh}:${mm}:${ss}`;
 }
-function daysBadge(days, status){
-  if(days===null||days===undefined) return '<span class="badge badge-gray">未提交</span>';
-  if(status==='approved') return '<span class="badge badge-green">✓ 已通过</span>';
-  if(days<=3)  return `<span class="badge badge-yellow">${days}d 等待中</span>`;
-  if(days<=7)  return `<span class="badge badge-yellow">${days}d 审核中</span>`;
-  if(days<=14) return `<span class="badge badge-yellow">${days}d 审核中</span>`;
-  return `<span class="badge badge-red">${days}d 超时?</span>`;
+
+function adsenseBadge(adsense){
+  const {status, days, submitted} = adsense;
+  if(status==='approved') return '<span class="badge bg">✓ 已通过</span>';
+  if(status==='skip')     return '<span class="badge bgr">跳过</span>';
+  if(!submitted)          return '<span class="badge bgr">未提交</span>';
+  const cls = days<=7 ? 'by' : days<=14 ? 'by' : 'br';
+  return `<span class="badge ${cls}">审核中 ${days}天</span>`;
 }
-function boolBadge(val, trueLabel='✓', falseLabel='✗'){
-  if(val===null||val===undefined) return '<span class="badge badge-gray">—</span>';
+
+function boolBadge(val, trueText, falseText, nullText='—', falseClass='br', nullClass='bgr'){
+  if(val===null||val===undefined) return `<span class="badge ${nullClass}">${nullText}</span>`;
   return val
-    ? `<span class="badge badge-green">${trueLabel}</span>`
-    : `<span class="badge badge-red">${falseLabel}</span>`;
-}
-function sdot(val){
-  if(val===null||val===undefined) return '<span class="sdot sdot-gray"></span>';
-  return val ? '<span class="sdot sdot-green"></span>' : '<span class="sdot sdot-red"></span>';
+    ? `<span class="badge bg">${trueText}</span>`
+    : `<span class="badge ${falseClass}">${falseText}</span>`;
 }
 
-// ─── Section 1: Sites Grid ────────────────────────────────────────────────────
+function onlineBadge(h){
+  if(h.online===true)  return '<span class="badge bg">● 在线</span>';
+  if(h.online===false) return '<span class="badge br">● 离线</span>';
+  if(h.onlineLabel)    return `<span class="badge bb">${esc(h.onlineLabel)}</span>`;
+  return '<span class="badge bgr">— 未知</span>';
+}
+
+function adsTxtBadge(h){
+  if(h.ads_txt===true)  return '<span class="badge bg">✓ 正常</span>';
+  if(h.ads_txt===false) return '<span class="badge br">✗ 异常</span>';
+  if(h.adsTxtLabel)     return `<span class="badge bb">${esc(h.adsTxtLabel)}</span>`;
+  return '<span class="badge bgr">—</span>';
+}
+
+// ─── 待办事项 ─────────────────────────────────────────────────────────────────
+function renderTodos(todos){
+  document.getElementById('todo-count').textContent = todos.length + ' 项';
+  if(!todos.length){
+    document.getElementById('todos').innerHTML =
+      '<div style="padding:12px 16px;color:var(--green);font-size:13px;background:var(--green-dim);border:1px solid var(--green-dark);border-radius:var(--rs)">✅ 暂无待办事项</div>';
+    return;
+  }
+  document.getElementById('todos').innerHTML = '<div class="todos">' +
+    todos.map(t=>`<div class="todo-item todo-${t.level}">
+      <span class="todo-icon">${t.icon}</span>
+      <span class="todo-text">${esc(t.text)}</span>
+    </div>`).join('') + '</div>';
+}
+
+// ─── 站点总览 ─────────────────────────────────────────────────────────────────
 function renderSites(sites){
-  const total = sites.length;
-  const online = sites.filter(s=>s.health.online).length;
+  const online = sites.filter(s=>s.health.online===true).length;
+  const unknown = sites.filter(s=>s.health.online===null).length;
   document.getElementById('sites-summary').textContent =
-    `${online}/${total} online · ${sites.filter(s=>s.health.ads_txt).length} ads.txt ok`;
+    `${online} 在线 · ${unknown} 需验证 · ${sites.length} 总计`;
 
-  const html = sites.map(s=>{
-    const adsHtml = daysBadge(s.adsense.days, s.adsense.status);
-    const lastP = s.lastPublish
-      ? `<div class="site-last"><div class="site-last-label">Last Published</div><div class="site-last-val">${esc(s.lastPublish)}</div></div>`
-      : '';
+  document.getElementById('sites-grid').innerHTML = sites.map(s=>{
+    const dotColor = s.health.online===true ? 'var(--green)' : s.health.online===false ? 'var(--red)' : 'var(--yellow)';
+
+    const lastBlock = s.lastPublish ? `
+<div class="sc-last">
+  <div class="sc-last-lbl">最近发布</div>
+  <div class="sc-last-val">${esc(s.lastPublish)}</div>
+  ${s.lastPublishTime ? `<div class="sc-last-time">${fmtTime(s.lastPublishTime)}</div>` : ''}
+</div>` : '';
+
     return `
 <div class="site-card" style="border-left-color:${esc(s.color)}">
-  <div class="site-top">
+  <div class="sc-top">
     <div>
-      <div class="site-name">${esc(s.name)}</div>
-      <div class="site-domain"><a href="https://${esc(s.domain)}" target="_blank" style="color:inherit;text-decoration:none">${esc(s.domain)}</a></div>
+      <div class="sc-name">${esc(s.name)}</div>
+      <div class="sc-domain"><a href="https://${esc(s.domain)}" target="_blank">${esc(s.domain)}</a></div>
+      <span class="sc-hosting">${esc(s.hosting)}</span>
     </div>
-    <div>${sdot(s.health.online)}</div>
-  </div>
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
-    <span class="site-hosting">${esc(s.hosting)}</span>
-    ${boolBadge(s.health.ads_txt,'ads.txt ✓','ads.txt ✗')}
-    ${boolBadge(s.health.sitemap,'sitemap ✓','sitemap ✗')}
-  </div>
-  <div class="site-metrics">
-    <div class="site-metric">
-      <div class="site-metric-label">AdSense</div>
-      <div class="site-metric-value">${adsHtml}</div>
-    </div>
-    <div class="site-metric">
-      <div class="site-metric-label">GA4</div>
-      <div class="site-metric-value">${boolBadge(s.ga.connected,'connected','—')}</div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+      <div class="online-dot" style="background:${dotColor}" title="${s.health.detail||''}"></div>
     </div>
   </div>
-  ${lastP}
+  <div class="sc-badges">
+    ${onlineBadge(s.health)}
+    ${adsTxtBadge(s.health)}
+    ${boolBadge(s.health.sitemap,'站点地图 ✓','站点地图 ✗','站点地图 —','br','bgr')}
+  </div>
+  <div class="sc-metrics">
+    <div class="sc-metric">
+      <div class="sc-metric-lbl">AdSense</div>
+      <div class="sc-metric-val">${adsenseBadge(s.adsense)}</div>
+    </div>
+    <div class="sc-metric">
+      <div class="sc-metric-lbl">GA4</div>
+      <div class="sc-metric-val">${boolBadge(s.ga.connected,'已连接','未连接','—')}</div>
+    </div>
+  </div>
+  ${lastBlock}
 </div>`;
   }).join('');
-  document.getElementById('sites-grid').innerHTML = html;
 }
 
-// ─── Section 2: Timeline ──────────────────────────────────────────────────────
-function renderTimeline(timeline){
-  const html = timeline.map((t,i)=>{
-    const isLast = i===timeline.length-1;
-    const dotClass = t.success===true ? 'tl-dot-success' : t.success===false ? 'tl-dot-fail' : '';
-    const statusBadge = t.success===true
-      ? '<span class="badge badge-green">✓ success</span>'
+// ─── 时间轴 ───────────────────────────────────────────────────────────────────
+function renderTimeline(tl){
+  document.getElementById('timeline').innerHTML = tl.map((t,i)=>{
+    const isLast=i===tl.length-1;
+    const dotCls = t.success===true ? 'tl-dot-ok' : t.success===false ? 'tl-dot-fail' : '';
+    const stBadge = t.success===true
+      ? '<span class="badge bg">✓ 成功</span>'
       : t.success===false
-        ? '<span class="badge badge-red">✗ failed</span>'
-        : '<span class="badge badge-gray">no data</span>';
+        ? '<span class="badge br">✗ 失败</span>'
+        : '<span class="badge bgr">暂无数据</span>';
     return `
-<div class="tl-item">
+<div class="tl-row">
   <div class="tl-time">${esc(t.time)}</div>
-  <div class="tl-line">
-    <div class="tl-dot ${dotClass}"></div>
-    ${!isLast ? '<div class="tl-connector"></div>' : ''}
+  <div class="tl-spine">
+    <div class="tl-dot ${dotCls}"></div>
+    ${!isLast ? '<div class="tl-conn"></div>' : ''}
   </div>
   <div class="tl-body">
     <div class="tl-label">${esc(t.label)}</div>
     <div class="tl-meta">
-      ${statusBadge}
-      <span class="tl-lastrun">last: ${fmtTime(t.lastRun)}</span>
-      ${t.file ? `<span style="font-size:10px;color:var(--text3);font-family:var(--mono)">${esc(t.file)}</span>` : ''}
+      ${stBadge}
+      <span class="tl-ts">上次执行：${fmtTime(t.lastRun)}</span>
+      ${t.file ? `<span class="tl-file">${esc(t.file)}</span>` : ''}
     </div>
   </div>
 </div>`;
   }).join('');
-  document.getElementById('timeline').innerHTML = html;
 }
 
-// ─── Section 3: Content Pipeline ─────────────────────────────────────────────
+// ─── 内容流水线 ───────────────────────────────────────────────────────────────
 function renderContentPipeline(cp){
   const pct = cp.total ? Math.round(cp.used/cp.total*100) : 0;
   const daysHtml = cp.recentDays.map((d,i)=>{
-    const isToday = i===0;
-    const cls = d.hasOutput ? 'day-cell day-cell-active' : 'day-cell';
-    const todayCls = isToday ? ' day-cell-today' : '';
-    const shortDate = d.date.slice(5);
-    return `<div class="${cls}${todayCls}" data-tip="${esc(d.topic||d.date)}">
+    const cls = ['day-cell', d.hasOutput?'day-cell-on':'', i===0?'day-cell-today':''].filter(Boolean).join(' ');
+    const tip = d.hasOutput ? (d.topic||d.date) : d.date;
+    return `<div class="${cls}" title="${esc(tip)}">
       <span>${d.hasOutput ? '✓' : '·'}</span>
-      <span class="day-label">${shortDate}</span>
+      <span class="day-date">${d.date.slice(5)}</span>
     </div>`;
   }).join('');
 
   document.getElementById('content-pipeline').innerHTML = `
-<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
-  <span style="font-size:24px;font-weight:800;font-family:var(--mono);color:var(--green)">${cp.used}<span style="font-size:14px;color:var(--text3)">/${cp.total}</span></span>
-  <span class="badge badge-blue">${cp.remaining} remaining</span>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+  <span style="font-size:28px;font-weight:800;font-family:var(--mono);color:var(--green)">${cp.used}<span style="font-size:14px;color:var(--text3)"> / ${cp.total}</span></span>
+  <span class="badge bb">剩余 ${cp.remaining} 个选题</span>
 </div>
-<div style="font-size:11px;color:var(--text3);margin-bottom:4px">Topics used</div>
-<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:14px">
-  <span>0</span><span>${pct}% used</span><span>${cp.total}</span>
+<div style="font-size:11px;color:var(--text3);margin-bottom:4px">已使用选题</div>
+<div class="pbar"><div class="pbar-fill" style="width:${pct}%"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:16px">
+  <span>0</span><span>${pct}% 已用</span><span>${cp.total}</span>
 </div>
-<div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Last 7 Days Output</div>
+<div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">最近7天内容输出</div>
 <div class="days-grid">${daysHtml}</div>`;
 }
 
-// ─── Section 4: Recent Articles ───────────────────────────────────────────────
+// ─── 最近文章 ─────────────────────────────────────────────────────────────────
 function renderRecentArticles(ra){
   function listHtml(items, color){
     return items.map((a,i)=>`
-<div class="article-item">
-  <div class="article-num" style="background:${color}22;border-color:${color}66;color:${color}">${i+1}</div>
+<div class="art-item">
+  <div class="art-num" style="background:${color}22;border:1px solid ${color}55;color:${color}">${i+1}</div>
   <div style="min-width:0">
-    <div class="article-title"><a href="${esc(a.url)}" target="_blank">${esc(a.title)}</a></div>
-    <div class="article-slug">${esc(a.slug)}</div>
+    <div class="art-title"><a href="${esc(a.url)}" target="_blank">${esc(a.title)}</a></div>
+    <div class="art-slug">${esc(a.slug)}</div>
   </div>
 </div>`).join('');
   }
-
   document.getElementById('recent-articles').innerHTML = `
-<div style="margin-bottom:14px">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-    <div style="width:10px;height:10px;border-radius:50%;background:#1e40af"></div>
+<div style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+    <div style="width:8px;height:8px;border-radius:50%;background:#1e40af"></div>
     <span style="font-size:11px;font-weight:700;color:var(--text2)">InsuranceTipsPro</span>
-    <span style="font-size:10px;color:var(--text3)">${ra.insurancetipspro.length} recent</span>
+    <span style="font-size:10px;color:var(--text3)">${ra.insurancetipspro.length} 篇</span>
   </div>
-  <div class="article-list">${listHtml(ra.insurancetipspro,'#60a5fa')}</div>
+  <div class="art-list">${listHtml(ra.insurancetipspro,'#60a5fa')}</div>
 </div>
 <div>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-    <div style="width:10px;height:10px;border-radius:50%;background:#065f46"></div>
+  <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+    <div style="width:8px;height:8px;border-radius:50%;background:#065f46"></div>
     <span style="font-size:11px;font-weight:700;color:var(--text2)">FreelancerGuideHub</span>
-    <span style="font-size:10px;color:var(--text3)">${ra.freelancerguidehub.length} recent</span>
+    <span style="font-size:10px;color:var(--text3)">${ra.freelancerguidehub.length} 篇</span>
   </div>
-  <div class="article-list">${listHtml(ra.freelancerguidehub,'#34d399')}</div>
+  <div class="art-list">${listHtml(ra.freelancerguidehub,'#34d399')}</div>
 </div>`;
 }
 
-// ─── Section 5: System Health ─────────────────────────────────────────────────
+// ─── 系统健康 ─────────────────────────────────────────────────────────────────
 function renderHealth(data){
   if(data.health.monitorTime){
-    document.getElementById('monitor-time').textContent = 'monitor: ' + fmtTime(data.health.monitorTime);
+    document.getElementById('monitor-time').textContent =
+      '监控时间：' + fmtTime(data.health.monitorTime);
   }
-
-  // Build table from sites + monitor data
   const rows = data.sites.map(s=>{
-    const checks = data.health.monitorProjects[s.id] || [];
-    const reach  = checks.find(c=>c.check==='homepage_reachable');
-    const ads    = checks.find(c=>c.check==='ads_txt');
-    const sm     = checks.find(c=>c.check==='sitemap_xml');
-    const ga     = s.ga.connected;
-    const adsense= s.adsense;
-
-    const statusCell = reach?.ok
-      ? '<span class="badge badge-green">online</span>'
-      : reach?.ok===false
-        ? `<span class="badge badge-red" data-tip="${esc(reach.detail||'')}">offline</span>`
-        : '<span class="badge badge-gray">—</span>';
-
-    const adsenseCell = adsense.days!==null
-      ? `<span class="badge ${adsense.days<=14?'badge-yellow':'badge-red'}">${adsense.days}d</span>`
-      : '<span class="badge badge-gray">—</span>';
+    const sm = s.health.sitemap;
+    const smBadge = sm===true
+      ? `<span class="badge bg">✓</span> <span style="font-size:10px;color:var(--text3)">${esc(s.health.sitemapDetail||'')}</span>`
+      : sm===false ? '<span class="badge br">✗ 不可访问</span>'
+      : '<span class="badge bgr">—</span>';
 
     return `<tr>
       <td>
         <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:8px;height:8px;border-radius:50%;background:${esc(s.color)};flex-shrink:0"></div>
-          <span style="font-weight:600">${esc(s.name)}</span>
+          <div class="site-dot-row" style="background:${esc(s.color)}"></div>
+          <div>
+            <div style="font-weight:600">${esc(s.name)}</div>
+            <div style="font-size:10px;color:var(--text3)">${esc(s.hosting)}</div>
+          </div>
         </div>
-        <div style="font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:1px">${esc(s.hosting)}</div>
       </td>
-      <td>${statusCell}</td>
-      <td>${boolBadge(ads?.ok,'✓','✗')}</td>
-      <td>${boolBadge(sm?.ok,'✓','✗')} <span style="font-size:10px;color:var(--text3)">${sm?.detail||''}</span></td>
-      <td>${boolBadge(ga,'✓','—')}</td>
-      <td>${adsenseCell}</td>
+      <td>${onlineBadge(s.health)}</td>
+      <td>${adsTxtBadge(s.health)}</td>
+      <td>${smBadge}</td>
+      <td>${boolBadge(s.ga.connected,'已连接','—','—')}</td>
+      <td>${adsenseBadge(s.adsense)}</td>
     </tr>`;
   }).join('');
 
   document.getElementById('health-section').innerHTML = `
 <div style="overflow-x:auto">
-<table class="health-table">
+<table class="htable">
   <thead><tr>
-    <th>Site</th>
-    <th>Status</th>
+    <th>站点</th>
+    <th>在线状态</th>
     <th>ads.txt</th>
-    <th>Sitemap</th>
+    <th>站点地图</th>
     <th>GA4</th>
-    <th>AdSense Wait</th>
+    <th>AdSense</th>
   </tr></thead>
   <tbody>${rows}</tbody>
 </table>
 </div>
 ${data.health.recoveryOutput ? `
-<div style="margin-top:14px;padding:12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm)">
-  <div style="font-size:10px;color:var(--text3);text-transform:uppercase;margin-bottom:6px">Recovery Report</div>
+<div style="margin-top:14px;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs)">
+  <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">恢复报告</div>
   <pre style="font-size:11px;color:var(--text2);font-family:var(--mono);white-space:pre-wrap;line-height:1.6">${esc(data.health.recoveryOutput)}</pre>
 </div>` : ''}`;
 }
 
-// ─── Main Load ────────────────────────────────────────────────────────────────
+// ─── 主加载函数 ───────────────────────────────────────────────────────────────
 async function loadData(){
   try {
     const res = await fetch('/api/status');
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data = await res.json();
-
-    document.getElementById('last-update-time').textContent = fmtTime(data.timestamp);
-
+    document.getElementById('last-update').textContent = fmtTime(data.timestamp);
+    renderTodos(data.todos||[]);
     renderSites(data.sites);
     renderTimeline(data.timeline);
     renderContentPipeline(data.contentPipeline);
     renderRecentArticles(data.recentArticles);
     renderHealth(data);
-  } catch(e){
-    console.error('Dashboard fetch error:', e);
-    document.getElementById('last-update-time').textContent = 'Error: ' + e.message;
+  } catch(e) {
+    document.getElementById('last-update').textContent = '错误: '+e.message;
+    console.error(e);
   }
 }
 
-// Auto-refresh every 60 seconds
 loadData();
 setInterval(loadData, 60000);
 </script>
