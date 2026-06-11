@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /check-purchase.php
+Disallow: /*.php$
 Allow: /
 
 Sitemap: https://freelancerguidehub.com/sitemap.xml
