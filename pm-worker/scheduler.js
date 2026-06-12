@@ -345,7 +345,7 @@ async function runSchedule(mode = 'daily') {
         const result = spawnSync(
           'node',
           ['C:\\Users\\Administrator\\insurancetipspro\\auto-publish.js'],
-          { cwd: 'C:\\Users\\Administrator\\insurancetipspro', timeout: 660000, encoding: 'utf8' }
+          { cwd: 'C:\\Users\\Administrator\\insurancetipspro', timeout: 1800000, encoding: 'utf8' }
         );
         const output = (result.stdout || '') + (result.stderr || '');
         const success = result.status === 0;
@@ -371,7 +371,7 @@ async function runSchedule(mode = 'daily') {
         const result = spawnSync(
           'node',
           ['C:\\Users\\Administrator\\freelancerguidehub\\auto-publish.js'],
-          { cwd: 'C:\\Users\\Administrator\\freelancerguidehub', timeout: 660000, encoding: 'utf8' }
+          { cwd: 'C:\\Users\\Administrator\\freelancerguidehub', timeout: 1800000, encoding: 'utf8' }
         );
         const output = (result.stdout || '') + (result.stderr || '');
         const success = result.status === 0;
@@ -397,7 +397,7 @@ async function runSchedule(mode = 'daily') {
         const result = spawnSync(
           'node',
           ['C:\\Users\\Administrator\\toolrankhq\\auto-publish.js'],
-          { cwd: 'C:\\Users\\Administrator\\toolrankhq', timeout: 660000, encoding: 'utf8' }
+          { cwd: 'C:\\Users\\Administrator\\toolrankhq', timeout: 1800000, encoding: 'utf8' }
         );
         const output = (result.stdout || '') + (result.stderr || '');
         const success = result.status === 0;
