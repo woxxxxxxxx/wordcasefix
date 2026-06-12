@@ -390,6 +390,32 @@ async function runSchedule(mode = 'daily') {
       }
     }
 
+    if (mode === 'auto-publish-trh') {
+      console.log('\n📝 运行 ToolRankHQ Auto-Publish...');
+      try {
+        const { spawnSync } = require('child_process');
+        const result = spawnSync(
+          'node',
+          ['C:\\Users\\Administrator\\toolrankhq\\auto-publish.js'],
+          { cwd: 'C:\\Users\\Administrator\\toolrankhq', timeout: 660000, encoding: 'utf8' }
+        );
+        const output = (result.stdout || '') + (result.stderr || '');
+        const success = result.status === 0;
+        const summary = success
+          ? output.match(/New article: (.+)/)?.[1] || '文章已发布'
+          : `失败(code ${result.status}): ${(result.stderr || '').slice(0, 300)}`;
+        console.log(success ? `✅ Auto-Publish 完成: ${summary}` : `❌ Auto-Publish 失败: ${summary}`);
+        results.push({ worker: 'auto-publish-trh', result: summary });
+        writeLog('auto-publish-trh', { output, success, summary });
+        if (!success) {
+          await sendEmail(`ToolRankHQ Auto-Publish 失败 ${today()}`, `ToolRankHQ 自动发布失败:\n\n${summary}`).catch(() => {});
+        }
+      } catch (e) {
+        console.error('⚠️ ToolRankHQ Auto-Publish 异常:', e.message);
+        results.push({ worker: 'auto-publish-trh', result: `异常: ${e.message}` });
+      }
+    }
+
     if (mode === 'qa') {
       for (const project of config.projects) {
         console.log(`\n🔬 QA检查: ${project.id}...`);

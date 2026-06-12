@@ -45,6 +45,9 @@ cron.schedule('0 10 * * *', () => runScheduler('auto-publish'), { timezone: 'Asi
 // 每天 11:00 - FreelancerGuideHub 自动发布文章
 cron.schedule('0 11 * * *', () => runScheduler('auto-publish-flgh'), { timezone: 'Asia/Shanghai' });
 
+// 每天 12:00 - ToolRankHQ 自动发布文章
+cron.schedule('0 12 * * *', () => runScheduler('auto-publish-trh'), { timezone: 'Asia/Shanghai' });
+
 
 // ===== content-pipeline tasks (auto-added by cron-setup.js) =====
 const { exec } = require('child_process');
@@ -130,6 +133,7 @@ console.log('  每天 08:30  → daily');
 console.log('  每天 09:00  → buffer refill');
 console.log('  每天 10:00  → auto-publish (insurancetipspro)');
 console.log('  每天 11:00  → auto-publish-flgh (freelancerguidehub)');
+console.log('  每天 12:00  → auto-publish-trh (toolrankhq)');
 console.log('  每4小时     → monitor');
 console.log('  每周一09:00 → qa');
 console.log('  每30分钟    → recovery');
