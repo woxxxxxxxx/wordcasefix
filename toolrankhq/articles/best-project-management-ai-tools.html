@@ -1,6 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6W6MGYL95"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z6W6MGYL95');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>6 Best AI Project Management Tools in 2026 | ToolRankHQ</title>
@@ -12,9 +20,6 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1200&auto=format&fit=crop">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css">
-  <!-- TODO: Replace GA_MEASUREMENT_ID with real Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638874323475457" crossorigin="anonymous"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"6 Best AI Project Management Tools in 2026","datePublished":"2026-06-10","dateModified":"2026-06-12","image":{"@type":"ImageObject","url":"https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1200&auto=format&fit=crop"},"author":{"@type":"Organization","name":"ToolRankHQ"},"publisher":{"@type":"Organization","name":"ToolRankHQ","logo":{"@type":"ImageObject","url":"https://toolrankhq.com/favicon.svg"}}}</script>
 </head>
@@ -102,7 +107,7 @@
           <p>Two years ago, "AI project management" meant a chatbot you could ask questions about your projects. In 2026, it means substantially more: AI that automatically creates project templates from your brief, predicts task completion times based on historical data, suggests next steps when projects stall, rewrites task descriptions for clarity, summarizes project status for stakeholders, and identifies at-risk deadlines before they're missed.</p>
           <p>We tested each tool specifically on the quality and usefulness of these AI features — not just their overall feature set.</p>
 
-          <div class="ad-unit">Advertisement</div>
+          <div class="ad-unit" style="height:90px;min-height:90px;">Advertisement</div>
 
           <h2 id="clickup">1. ClickUp — Best Overall AI PM Tool</h2>
           <div class="tool-card">
@@ -254,7 +259,7 @@
             <li><a href="best-ai-tools-solopreneurs.html"><span class="rel-num">5</span>20 Best AI Tools for Solopreneurs</a></li>
           </ul>
         </div>
-        <div class="ad-unit">Advertisement</div>
+        <div class="ad-unit" style="height:90px;min-height:90px;">Advertisement</div>
         <div class="cta-block">
           <h3>Don't Forget Your Contracts</h3>
           <p>ContractFixPro generates AI contracts for every project. Free to try.</p>
@@ -281,6 +286,16 @@
 const navToggle=document.getElementById('nav-toggle');const siteNav=document.getElementById('site-nav');navToggle.addEventListener('click',()=>siteNav.classList.toggle('open'));
 window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('read-progress').style.width=(d>0?s/d*100:0)+'%';const b=document.getElementById('back-to-top');s>400?b.classList.add('visible'):b.classList.remove('visible');});
 document.getElementById('back-to-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    var isOpen = answer.style.display === 'block';
+    document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.display = 'none'; });
+    document.querySelectorAll('.faq-question').forEach(function(q2) { q2.classList.remove('active'); });
+    if (!isOpen) { answer.style.display = 'block'; this.classList.add('active'); }
+  });
+});
 </script>
 </body>
 </html>

@@ -1,6 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6W6MGYL95"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z6W6MGYL95');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>5 Best AI HR Tools for Growing Businesses in 2026 | ToolRankHQ</title>
@@ -12,9 +20,6 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css">
-  <!-- TODO: Replace GA_MEASUREMENT_ID with real Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638874323475457" crossorigin="anonymous"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"5 Best AI HR Tools for Growing Businesses in 2026","datePublished":"2026-06-10","dateModified":"2026-06-12","image":{"@type":"ImageObject","url":"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop"},"author":{"@type":"Organization","name":"ToolRankHQ"},"publisher":{"@type":"Organization","name":"ToolRankHQ","logo":{"@type":"ImageObject","url":"https://toolrankhq.com/favicon.svg"}}}</script>
 </head>
@@ -100,7 +105,7 @@
           <p>Most businesses start needing dedicated HR tools when they hire their 5th to 10th employee. Before that, a founder or office manager can manually handle onboarding, time off requests, and compliance. After 10 employees, manual processes break down: compliance requirements multiply, onboarding takes too long, performance conversations get dropped, and the founder is spending 10+ hours per week on HR administration instead of growing the business.</p>
           <p>Modern AI HR tools automate the administrative burden: auto-generating offer letters, collecting e-signatures on employment documents, setting up system access, tracking time off, sending performance review reminders, and monitoring compliance deadlines — all without human involvement.</p>
 
-          <div class="ad-unit">Advertisement</div>
+          <div class="ad-unit" style="height:90px;min-height:90px;">Advertisement</div>
 
           <h2 id="rippling">1. Rippling — Best AI HR + IT Platform</h2>
           <div class="tool-card">
@@ -235,7 +240,7 @@
             <li><a href="best-ai-tools-solopreneurs.html"><span class="rel-num">5</span>20 Best AI Tools for Solopreneurs</a></li>
           </ul>
         </div>
-        <div class="ad-unit">Advertisement</div>
+        <div class="ad-unit" style="height:90px;min-height:90px;">Advertisement</div>
         <div class="cta-block">
           <h3>Payroll Made Simple</h3>
           <p>PayrollFixPro handles payroll, taxes, and compliance with AI automation.</p>
@@ -262,6 +267,16 @@
 const navToggle=document.getElementById('nav-toggle');const siteNav=document.getElementById('site-nav');navToggle.addEventListener('click',()=>siteNav.classList.toggle('open'));
 window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('read-progress').style.width=(d>0?s/d*100:0)+'%';const b=document.getElementById('back-to-top');s>400?b.classList.add('visible'):b.classList.remove('visible');});
 document.getElementById('back-to-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    var isOpen = answer.style.display === 'block';
+    document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.display = 'none'; });
+    document.querySelectorAll('.faq-question').forEach(function(q2) { q2.classList.remove('active'); });
+    if (!isOpen) { answer.style.display = 'block'; this.classList.add('active'); }
+  });
+});
 </script>
 </body>
 </html>

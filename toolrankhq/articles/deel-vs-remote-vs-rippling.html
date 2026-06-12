@@ -1,6 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6W6MGYL95"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z6W6MGYL95');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deel vs Remote vs Rippling: Best Global Payroll? (2026) | ToolRankHQ</title>
@@ -12,11 +20,8 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1200&auto=format&fit=crop">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css">
-  <!-- TODO: Replace GA_MEASUREMENT_ID with real Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1638874323475457" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Deel vs Remote vs Rippling: Best Global Payroll? (2026)","datePublished":"2026-06-12","dateModified":"2026-06-12","image":{"@type":"ImageObject","url":"https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1200&auto=format&fit=crop"},"author":{"@type":"Organization","name":"ToolRankHQ"},"publisher":{"@type":"Organization","name":"ToolRankHQ","logo":{"@type":"ImageObject","url":"https://toolrankhq.com/favicon.svg"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Deel vs Remote vs Rippling: Best Global Payroll? (2026)","datePublished":"2026-06-09","dateModified":"2026-06-12","image":{"@type":"ImageObject","url":"https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1200&auto=format&fit=crop"},"author":{"@type":"Organization","name":"ToolRankHQ"},"publisher":{"@type":"Organization","name":"ToolRankHQ","logo":{"@type":"ImageObject","url":"https://toolrankhq.com/favicon.svg"}}}</script>
 </head>
 <body>
 <div id="read-progress"></div>
@@ -137,7 +142,7 @@
           <p>These three platforms exist to solve the increasingly common problem of paying people in other countries. Whether you're a US company paying overseas contractors, or hiring full-time employees in other countries without establishing a local entity, these platforms handle the legal, tax, and payment complexity.</p>
           <p>Two key concepts: <strong>Contractor payments</strong> (you pay freelancers/contractors internationally via the platform) and <strong>Employer of Record (EOR)</strong> (the platform becomes the legal employer in a foreign country so you can hire full-time employees there without setting up a local company).</p>
 
-          <div class="ad-unit">Advertisement</div>
+          <div class="ad-unit" style="height:90px;min-height:90px;">Advertisement</div>
 
           <h2 id="deel">Deel — Best for Contractor Payments</h2>
           <div class="tool-card">
@@ -248,7 +253,7 @@
             <li><a href="best-ai-tools-solopreneurs.html"><span class="rel-num">5</span>20 Best AI Tools for Solopreneurs</a></li>
           </ul>
         </div>
-        <div class="ad-unit">Advertisement</div>
+        <div class="ad-unit" style="height:90px;min-height:90px;">Advertisement</div>
         <div class="cta-block">
           <h3>Simplify Your Payroll</h3>
           <p>PayrollFixPro handles US payroll with AI-powered compliance. Free to try.</p>
@@ -275,6 +280,16 @@
 const navToggle=document.getElementById('nav-toggle');const siteNav=document.getElementById('site-nav');navToggle.addEventListener('click',()=>siteNav.classList.toggle('open'));
 window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('read-progress').style.width=(d>0?s/d*100:0)+'%';const b=document.getElementById('back-to-top');s>400?b.classList.add('visible'):b.classList.remove('visible');});
 document.getElementById('back-to-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    var isOpen = answer.style.display === 'block';
+    document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.display = 'none'; });
+    document.querySelectorAll('.faq-question').forEach(function(q2) { q2.classList.remove('active'); });
+    if (!isOpen) { answer.style.display = 'block'; this.classList.add('active'); }
+  });
+});
 </script>
 </body>
 </html>
