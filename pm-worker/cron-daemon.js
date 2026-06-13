@@ -24,6 +24,37 @@ function runScheduler(mode) {
   });
 }
 
+// 每天 08:00 - Post-Deploy Check 全站巡检
+cron.schedule('0 8 * * *', () => {
+  const { spawn } = require('child_process');
+  const checkScript = path.join(BASE_DIR, 'post-deploy-check.js');
+  const sites = [
+    'insurancetipspro', 'freelancerguidehub', 'toolrankhq',
+    'notiontemplafix', 'coveragefixpro', 'contractfixpro',
+    'billingfixpro', 'payrollfixpro', 'wordcasefix', 'vestcalc'
+  ];
+  const ts = new Date().toLocaleString('zh-CN');
+  console.log(`[${ts}] 触发 post-deploy-check 全站巡检 (${sites.length} 站点)`);
+  let idx = 0;
+  function runNext() {
+    if (idx >= sites.length) return;
+    const site = sites[idx++];
+    const child = spawn('node', [checkScript, site], {
+      cwd: BASE_DIR,
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+    let out = '';
+    child.stdout.on('data', d => { out += d; process.stdout.write(d); });
+    child.stderr.on('data', d => process.stderr.write(d));
+    child.on('close', () => {
+      const logFile = path.join(LOGS_DIR, `post-deploy-check-${new Date().toISOString().slice(0,10)}.log`);
+      fs.appendFileSync(logFile, `\n=== ${site} ${new Date().toISOString()} ===\n${out}\n`);
+      runNext();
+    });
+  }
+  runNext();
+}, { timezone: 'Asia/Shanghai' });
+
 // 每天 08:30 - Daily 计划
 cron.schedule('30 8 * * *', () => runScheduler('daily'), { timezone: 'Asia/Shanghai' });
 
@@ -129,6 +160,7 @@ console.log('  每周日 20:00      → content-pipeline/weekly-report.js');
 })();
 
 console.log('PM Worker Cron Daemon 已启动');
+console.log('  每天 08:00  → post-deploy-check (全站巡检 10 站)');
 console.log('  每天 08:30  → daily');
 console.log('  每天 09:00  → buffer refill');
 console.log('  每天 10:00  → auto-publish (insurancetipspro)');

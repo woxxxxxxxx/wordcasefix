@@ -96,6 +96,15 @@ async function deploy() {
     console.error('Error:', e.message);
   }
   client.close();
+  runPostDeployCheck('toolrankhq');
+}
+
+function runPostDeployCheck(siteName) {
+  const { spawn } = require('child_process');
+  const checkScript = 'C:\\Users\\Administrator\\pm-worker\\post-deploy-check.js';
+  console.log(`\n[Post-Deploy] Running check for ${siteName}...`);
+  const child = spawn('node', [checkScript, siteName], { stdio: 'inherit' });
+  child.on('error', e => console.error('[Post-Deploy] Check error:', e.message));
 }
 
 deploy();
