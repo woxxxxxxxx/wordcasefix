@@ -96,8 +96,8 @@ a{color:inherit;text-decoration:none}
 @keyframes fadeIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 .alert-item:last-child{margin-bottom:0}
 .alert-sev{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;font-family:var(--mono)}
-.alert-sev.high{background:#fee2e2;color:#dc2626}
-.alert-sev.medium{background:#fef3c7;color:#d97706}
+.alert-sev.high{background:#fee2e2;color:#b91c1c}
+.alert-sev.medium{background:#fef3c7;color:#b45309}
 .alert-body{flex:1;font-size:12px;color:var(--text2)}
 .alert-dm{background:none;border:1px solid var(--border2);border-radius:3px;color:var(--text3);font-size:10px;padding:2px 8px;cursor:pointer;flex-shrink:0;font-family:var(--sans)}
 .alert-dm:hover{background:var(--s2);color:var(--text)}
@@ -211,7 +211,7 @@ a{color:inherit;text-decoration:none}
 .log-item.expanded .log-chevron{transform:rotate(90deg)}
 .log-body{display:none;border-top:1px solid var(--border);padding:10px 12px}
 .log-item.expanded .log-body{display:block}
-.log-content{font-size:10px;font-family:var(--mono);color:var(--text2);white-space:pre-wrap;word-break:break-word;max-height:300px;overflow-y:auto;line-height:1.6;background:var(--bg);border-radius:4px;padding:10px}
+.log-content{font-size:10px;font-family:var(--mono);color:#e2e8f0;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow-y:auto;line-height:1.6;background:#1e293b;border-radius:4px;padding:10px}
 
 /* ── SPINNER ─────────────────────────────────────────────────────────── */
 .spin{display:flex;align-items:center;justify-content:center;padding:24px;gap:8px;color:var(--text3);font-size:12px}
@@ -446,7 +446,7 @@ const TOPIC_MAX = { insurancetipspro: 15, freelancerguidehub: 15, toolrankhq: 15
 // ─── Scheduled tasks (hardcoded, status from API) ──────────────────────────
 const SCHEDULE = [
   { id: 'generate-daily',    time: '06:00', label: 'Content Pipeline',        sub: 'generate-daily.js',   icon: '⬡' },
-  { id: 'post-deploy-check', time: '08:00', label: 'Post-Deploy Check',        sub: '全站巡检 10 sites',  icon: '⬡', isNew: true },
+  { id: 'post-deploy-check', time: '08:00', label: '全站部署验证',             sub: 'post-deploy-check.js', icon: '⬡', isNew: true },
   { id: 'daily',             time: '08:30', label: 'PM Daily Plan',            sub: 'scheduler daily',     icon: '⬡' },
   { id: 'buffer',            time: '09:00', label: 'Buffer Refill',            sub: 'Pinterest 队列补充',  icon: '⬡' },
   { id: 'auto-publish',      time: '10:00', label: 'InsuranceTipsPro Publish', sub: 'auto-publish.js',     icon: '⬡' },
@@ -461,9 +461,10 @@ const WORKERS = [
   { id: 'auto-publish',      label: 'Insurance',   sub: '每天10:00',  icon: '✍️', color: '#3b82f6' },
   { id: 'auto-publish-flgh', label: 'Freelancer',  sub: '每天11:00',  icon: '✍️', color: '#22c55e' },
   { id: 'auto-publish-trh',  label: 'ToolRank',    sub: '每天12:00',  icon: '✍️', color: '#f59e0b' },
-  { id: 'post-deploy-check', label: 'Deploy Check',sub: '每天08:00',  icon: '⚡', color: '#8b5cf6' },
-  { id: 'monitor',           label: 'Monitor',     sub: '每4小时',    icon: '🔍', color: '#22c55e' },
-  { id: 'recovery',          label: 'Recovery',    sub: '每30分钟',   icon: '🔧', color: '#ef4444' },
+  { id: 'post-deploy-check', label: '部署验证',    sub: 'post-deploy-check.js', icon: '🔍', color: '#7c3aed' },
+  { id: 'monitor',            label: 'Monitor',     sub: '每4小时',        icon: '👁', color: '#16a34a' },
+  { id: 'recovery',           label: 'Recovery',    sub: '每30分钟',       icon: '🔧', color: '#dc2626' },
+  { id: 'toolrankhq-publish', label: 'ToolRankHQ发文', sub: 'auto-publish.js', icon: '🤖', color: '#2563eb' },
 ];
 
 // ─── Clock ────────────────────────────────────────────────────────────────────
@@ -738,9 +739,9 @@ function renderArticles(ra) {
   </div>
 </div>`).join('');
   }
-  document.getElementById('arts-ins').innerHTML  = list(ra.insurancetipspro,  '#3b82f6', 'https://insurancetipspro.com/articles');
-  document.getElementById('arts-flgh').innerHTML = list(ra.freelancerguidehub,'#22c55e', 'https://freelancerguidehub.com/articles');
-  document.getElementById('arts-trh').innerHTML  = list(ra.toolrankhq || [],   '#f59e0b', 'https://toolrankhq.com/articles');
+  document.getElementById('arts-ins').innerHTML  = list(ra.insurancetipspro,        '#2563eb', 'https://insurancetipspro.com/articles');
+  document.getElementById('arts-flgh').innerHTML = list(ra.freelancerguidehub,      '#16a34a', 'https://freelancerguidehub.com/articles');
+  document.getElementById('arts-trh').innerHTML  = list(ra.toolrankhq || [],        '#3b82f6', 'https://toolrankhq.com/articles');
 }
 
 // ─── Workers ──────────────────────────────────────────────────────────────────
@@ -845,7 +846,7 @@ function logType(fname) {
 }
 
 const LOG_META = {
-  'post-deploy':  { dot: '#7c3aed', badge: '#ede9fe', bgtxt: '#5b21b6', label: 'Deploy' },
+  'post-deploy':  { dot: '#7c3aed', badge: '#ede9fe', bgtxt: '#6d28d9', label: 'Deploy' },
   'auto-publish': { dot: '#16a34a', badge: '#dcfce7', bgtxt: '#15803d', label: 'Publish' },
   'buffer':       { dot: '#d97706', badge: '#fef3c7', bgtxt: '#b45309', label: 'Buffer' },
   'monitor':      { dot: '#2563eb', badge: '#dbeafe', bgtxt: '#1d4ed8', label: 'Monitor' },
