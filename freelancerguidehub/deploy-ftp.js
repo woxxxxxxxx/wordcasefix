@@ -1,102 +1,215 @@
 'use strict';
-const ftp  = require('basic-ftp');
-const path = require('path');
-const fs   = require('fs');
-const net  = require('net');
+const ftp   = require('basic-ftp');
+const path  = require('path');
+const fs    = require('fs');
+const net   = require('net');
+const https = require('https');
+const http  = require('http');
 
-const EXCLUDE = ['node_modules', 'deploy-ftp.js', 'auto-publish.js', 'topics-used.json',
-                 '.git', '.gitignore', 'package.json', 'package-lock.json', 'ftp-test.js'];
+// ─── Site config ─────────────────────────────────────────────────────────────
+const FTP_HOST    = '212.85.28.149';
+const FTP_PORT    = 21;
+const FTP_USER    = 'u868313694.freelancerguidehub.com';
+const FTP_PASS    = 'Xxh113324~';
+const REMOTE_ROOT = '/public_html';
+const SITE_URL    = 'https://freelancerguidehub.com';
+const SITE_NAME   = 'freelancerguidehub';
+const CONCURRENCY = 5;
+const RETRY_MAX   = 3;
+const RETRY_DELAY = 5000;
+const CACHE_FILE  = path.join(__dirname, 'deploy-cache.json');
 
-async function uploadFile(client, localPath, remotePath) {
-  const MAX = 3;
-  for (let attempt = 1; attempt <= MAX; attempt++) {
+const EXCLUDE = new Set([
+  'node_modules', '.git', '.gitignore', 'deploy-ftp.js', 'deploy-cache.json',
+  'auto-publish.js', 'topics-used.json', 'package.json', 'package-lock.json', 'ftp-test.js',
+]);
+
+// ─── Cache ────────────────────────────────────────────────────────────────────
+function loadCache() {
+  try { return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')); }
+  catch (_) { return { files: {} }; }
+}
+function saveCache(cache) {
+  fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
+}
+
+// ─── Proxy connection ─────────────────────────────────────────────────────────
+function connectProxy() {
+  return new Promise((resolve, reject) => {
+    const s = net.createConnection({ host: '127.0.0.1', port: 7897 }, () => {
+      s.write(`CONNECT ${FTP_HOST}:${FTP_PORT} HTTP/1.1\r\nHost: ${FTP_HOST}:${FTP_PORT}\r\n\r\n`);
+      let buf = '';
+      s.on('data', chunk => {
+        buf += chunk.toString();
+        if (buf.includes('\r\n\r\n')) {
+          s.removeAllListeners('data');
+          if (buf.startsWith('HTTP/1.1 200') || buf.startsWith('HTTP/1.0 200')) resolve(s);
+          else reject(new Error('Proxy CONNECT failed: ' + buf.split('\r\n')[0]));
+        }
+      });
+    });
+    s.once('error', reject);
+  });
+}
+
+async function createClient() {
+  const socket = await connectProxy();
+  const client = new ftp.Client();
+  client.ftp.verbose = false;
+  await client.access({ host: FTP_HOST, user: FTP_USER, password: FTP_PASS, port: FTP_PORT, secure: false, socket });
+  return client;
+}
+
+// ─── File collection ──────────────────────────────────────────────────────────
+function collectFiles(localDir, remoteDir, cache) {
+  const toUpload = [], skipped = [];
+  function walk(dir, remote) {
+    let items;
+    try { items = fs.readdirSync(dir); } catch (_) { return; }
+    for (const item of items) {
+      if (EXCLUDE.has(item)) continue;
+      const localPath  = path.join(dir, item);
+      const remotePath = remote + '/' + item;
+      let stat;
+      try { stat = fs.statSync(localPath); } catch (_) { continue; }
+      if (stat.isDirectory()) {
+        walk(localPath, remotePath);
+      } else {
+        const mtime = stat.mtimeMs;
+        if (!cache.files[remotePath] || mtime > cache.files[remotePath]) {
+          toUpload.push({ localPath, remotePath, mtime });
+        } else {
+          skipped.push(remotePath);
+        }
+      }
+    }
+  }
+  walk(localDir, remoteDir);
+  return { toUpload, skipped };
+}
+
+// ─── Upload with retry ────────────────────────────────────────────────────────
+async function uploadWithRetry(client, localPath, remotePath, tag) {
+  for (let attempt = 1; attempt <= RETRY_MAX; attempt++) {
     try {
       await client.uploadFrom(localPath, remotePath);
-      console.log('Uploaded:', remotePath);
-      return true;
+      console.log(`  [${tag}] ✓ ${remotePath}`);
+      return { ok: true };
     } catch (e) {
       const msg = e.message || '';
       if (msg.includes('550')) {
-        console.warn(`Skip (550): ${remotePath}`);
-        return false;
+        console.warn(`  [${tag}] skip(550) ${remotePath}`);
+        return { ok: false, skip: true };
       }
-      if (attempt < MAX) {
-        console.warn(`Retry ${attempt}/${MAX - 1}: ${remotePath} — ${msg}`);
-        await new Promise(r => setTimeout(r, 1500 * attempt));
+      if (attempt < RETRY_MAX) {
+        console.warn(`  [${tag}] retry ${attempt}/${RETRY_MAX}: ${path.basename(remotePath)} — ${msg}`);
+        await new Promise(r => setTimeout(r, RETRY_DELAY));
       } else {
-        console.error(`FAILED: ${remotePath} — ${msg}`);
-        return false;
+        console.error(`  [${tag}] FAILED: ${remotePath} — ${msg}`);
+        return { ok: false, failed: true };
       }
     }
   }
-  return false;
+  return { ok: false, failed: true };
 }
 
-async function uploadDir(client, localDir, remoteDir, failed) {
-  const items = fs.readdirSync(localDir);
-  for (const item of items) {
-    if (EXCLUDE.includes(item)) continue;
-    const localPath  = path.join(localDir, item);
-    const remotePath = remoteDir + '/' + item;
-    if (fs.statSync(localPath).isDirectory()) {
-      try { await client.ensureDir(remotePath); } catch (_) {}
-      await uploadDir(client, localPath, remotePath, failed);
-      await client.cd('/public_html');
-    } else {
-      const ok = await uploadFile(client, localPath, remotePath);
-      if (!ok) failed.push(remotePath);
-    }
+// ─── Ensure remote dirs exist ─────────────────────────────────────────────────
+async function ensureRemoteDirs(client, files) {
+  const dirs = new Set();
+  for (const { remotePath } of files) {
+    const d = remotePath.substring(0, remotePath.lastIndexOf('/'));
+    if (d && d !== REMOTE_ROOT) dirs.add(d);
+  }
+  const sorted = [...dirs].sort((a, b) => a.split('/').length - b.split('/').length);
+  for (const d of sorted) {
+    try { await client.ensureDir(d); } catch (_) {}
   }
 }
 
+// ─── Live site check ──────────────────────────────────────────────────────────
+function checkLiveSite(url) {
+  return new Promise(resolve => {
+    const mod = url.startsWith('https') ? https : http;
+    const req = mod.get(url, { timeout: 15000 }, res => { res.resume(); resolve(res.statusCode); });
+    req.on('error', () => resolve(0));
+    req.on('timeout', () => { req.destroy(); resolve(0); });
+  });
+}
+
+// ─── Main deploy ─────────────────────────────────────────────────────────────
 async function deploy() {
-  const client = new ftp.Client();
-  client.ftp.verbose = true;
-  try {
-    const socket = await new Promise((resolve, reject) => {
-      const s = net.createConnection({ host: '127.0.0.1', port: 7897 }, () => {
-        s.write(`CONNECT 212.85.28.149:21 HTTP/1.1\r\nHost: 212.85.28.149:21\r\n\r\n`);
-        let buf = '';
-        s.on('data', chunk => {
-          buf += chunk.toString();
-          if (buf.includes('\r\n\r\n')) {
-            if (buf.startsWith('HTTP/1.1 200') || buf.startsWith('HTTP/1.0 200')) {
-              s.removeAllListeners('data');
-              resolve(s);
-            } else {
-              reject(new Error('Proxy CONNECT failed: ' + buf.split('\r\n')[0]));
-            }
-          }
-        });
-      });
-      s.once('error', reject);
-    });
+  const cache = loadCache();
+  const { toUpload, skipped } = collectFiles(__dirname, REMOTE_ROOT, cache);
 
-    await client.access({
-      host: '212.85.28.149',
-      user: 'u868313694.freelancerguidehub.com',
-      password: 'Xxh113324~',
-      port: 21,
-      secure: false,
-      socket,
-    });
-    console.log('Connected via proxy');
-    await client.ensureDir('/public_html');
+  console.log(`\nDeploy → ${SITE_URL}`);
+  console.log(`  Unchanged (skip): ${skipped.length}`);
+  console.log(`  To upload:        ${toUpload.length}`);
 
-    const failed = [];
-    await uploadDir(client, __dirname, '/public_html', failed);
-
-    if (failed.length) {
-      console.warn(`\nCompleted with ${failed.length} skipped/failed file(s):`);
-      failed.forEach(f => console.warn(' -', f));
-    } else {
-      console.log('\nUpload complete! All files uploaded.');
-    }
-  } catch (e) {
-    console.error('Error:', e.message);
+  if (toUpload.length === 0) {
+    console.log('\nAll files up to date — nothing to upload.');
+    runPostDeployCheck(SITE_NAME);
+    return;
   }
-  client.close();
-  runPostDeployCheck('freelancerguidehub');
+
+  console.log('\nConnecting to ensure remote directories...');
+  const setup = await createClient();
+  await setup.ensureDir(REMOTE_ROOT);
+  await ensureRemoteDirs(setup, toUpload);
+  setup.close();
+
+  const queue = [...toUpload];
+  let uploaded = 0;
+  const failed = [];
+  const numWorkers = Math.min(CONCURRENCY, toUpload.length);
+
+  console.log(`\nUploading ${toUpload.length} file(s) via ${numWorkers} parallel connection(s)...\n`);
+
+  async function worker(id) {
+    const client = await createClient();
+    try {
+      while (true) {
+        const file = queue.shift();
+        if (!file) break;
+        const r = await uploadWithRetry(client, file.localPath, file.remotePath, `c${id}`);
+        if (r.ok) {
+          uploaded++;
+          cache.files[file.remotePath] = file.mtime;
+        } else if (r.failed) {
+          failed.push(file.remotePath);
+        }
+      }
+    } finally {
+      client.close();
+    }
+  }
+
+  await Promise.all(Array.from({ length: numWorkers }, (_, i) => worker(i + 1)));
+
+  cache.lastDeploy = new Date().toISOString();
+  saveCache(cache);
+
+  console.log('\n─────────────────────────────────────────────');
+  console.log(`Uploaded:  ${uploaded} / ${toUpload.length}`);
+  console.log(`Skipped:   ${skipped.length} (unchanged)`);
+  console.log(`Failed:    ${failed.length}`);
+  if (failed.length) failed.forEach(f => console.warn('  ✗', f));
+
+  console.log('\nVerifying live site...');
+  const status = await checkLiveSite(SITE_URL + '/');
+  if (status === 200) {
+    console.log(`  ✓ ${SITE_URL}/ → 200 OK`);
+  } else {
+    console.warn(`  ✗ ${SITE_URL}/ → ${status || 'ERROR'} — re-uploading index.html`);
+    const indexLocal = path.join(__dirname, 'index.html');
+    if (fs.existsSync(indexLocal)) {
+      const repair = await createClient();
+      await repair.ensureDir(REMOTE_ROOT);
+      await uploadWithRetry(repair, indexLocal, REMOTE_ROOT + '/index.html', 'repair');
+      repair.close();
+    }
+  }
+
+  runPostDeployCheck(SITE_NAME);
 }
 
 function runPostDeployCheck(siteName) {
@@ -107,4 +220,4 @@ function runPostDeployCheck(siteName) {
   child.on('error', e => console.error('[Post-Deploy] Check error:', e.message));
 }
 
-deploy();
+deploy().catch(e => { console.error('\nDeploy failed:', e.message); process.exit(1); });
