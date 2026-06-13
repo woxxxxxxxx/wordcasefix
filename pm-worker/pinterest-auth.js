@@ -12,7 +12,7 @@ const REDIRECT_URI  = 'http://localhost:8888/callback';
 const TOKEN_FILE    = path.join(__dirname, 'pinterest-token.json');
 const PROXY_URL     = 'http://127.0.0.1:7897';
 
-const SCOPE = 'pins:read,pins:write,boards:read,user_accounts:read';
+const SCOPE = 'pins:read,pins:write,boards:read,boards:write,user_accounts:read';
 const AUTH_URL = `https://www.pinterest.com/oauth/?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${encodeURIComponent(SCOPE)}`;
 
 function httpsPost(urlStr, headers, body) {

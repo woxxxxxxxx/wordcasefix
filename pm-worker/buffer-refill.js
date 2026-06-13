@@ -1,11 +1,9 @@
 'use strict';
 /**
- * buffer-refill.js  v6  (Pinterest Direct API)
+ * buffer-refill.js  v7  (Buffer GraphQL + 站点公网图片 URL)
  *
- * 7 个站点轮换直接发布 Pin 到 Pinterest，每天各发 1 条。
- * 不再经过 Buffer——直接调用 Pinterest API v5。
- *
- * 依赖：https-proxy-agent（已在 pm-worker package.json 中）
+ * 7 个站点轮换发布 Pin 到 Buffer，每站 2 条/次。
+ * 图片直接使用各站点公网 URL，不再经过 Imgur。
  */
 
 const fs    = require('fs');
@@ -14,22 +12,25 @@ const https = require('https');
 const { HttpsProxyAgent } = require('https-proxy-agent');
 
 // ── 配置 ──────────────────────────────────────────────────────────────────────
-const TOKEN_FILE  = path.join(__dirname, 'pinterest-token.json');
-const PINNED_FILE = path.join(__dirname, 'logs', 'pinned-articles.json');
-const LOG_FILE    = path.join(__dirname, 'logs', 'buffer-refill.log');
-const PROXY_URL   = 'http://127.0.0.1:7897';
-const BOARD_ID    = '1097119227915211401'; // "Productivity Apps"
-const IMGUR_CID   = '546c25a59c58ad7';
+const BUFFER_TOKEN  = 'aPPMezKy_6SKLs8F-9iUzZo4vM959_4K8YKqHCe9iQU';
+const ORG_ID        = '6a2026ccd819e8c99b17eb9e';
+const CHANNEL_ID    = '6a218b35c687a22dd45dac93';
+const BOARD_SVC_ID  = '1097119227915211401';
+const GQL_URL       = 'https://api.buffer.com/graphql';
+const PROXY_URL     = 'http://127.0.0.1:7897';
+const LOG_FILE      = path.join(__dirname, 'logs', 'buffer-refill.log');
+const PINNED_FILE   = path.join(__dirname, 'logs', 'pinned-articles.json');
+const PINS_PER_SITE = 2;
 
-// ── 站点定义 ──────────────────────────────────────────────────────────────────
+// ── 站点定义（含公网图片 base URL）────────────────────────────────────────────
 const SOURCES = [
-  { name: 'ContractFixPro',    type: 'tool',   dir: 'C:\\Users\\Administrator\\contractfixpro\\pinterest',    link: 'https://contractfixpro.com' },
-  { name: 'CoverageFixPro',    type: 'tool',   dir: 'C:\\Users\\Administrator\\coveragefixpro\\pinterest',    link: 'https://coveragefixpro.com' },
-  { name: 'NotionTemplaFix',   type: 'notion', dir: 'C:\\Users\\Administrator\\notiontemplafix\\pinterest',   link: 'https://notiontemplafix.com' },
-  { name: 'InsuranceTipsPro',  type: 'blog',   dir: 'C:\\Users\\Administrator\\insurancetipspro\\pinterest',  link: 'https://insurancetipspro.com' },
-  { name: 'FreelancerGuideHub',type: 'blog',   dir: 'C:\\Users\\Administrator\\freelancerguidehub\\pinterest',link: 'https://freelancerguidehub.com' },
-  { name: 'BillingFixPro',     type: 'tool',   dir: 'C:\\Users\\Administrator\\billingfixpro\\pinterest',    link: 'https://billingfixpro.com' },
-  { name: 'PayrollFixPro',     type: 'tool',   dir: 'C:\\Users\\Administrator\\payrollfixpro\\pinterest',    link: 'https://payrollfixpro.com' },
+  { name: 'ContractFixPro',     type: 'tool',   urlBase: 'https://contractfixpro.com/pinterest/',     dir: 'C:\\Users\\Administrator\\contractfixpro\\pinterest',     link: 'https://contractfixpro.com' },
+  { name: 'CoverageFixPro',     type: 'tool',   urlBase: 'https://coveragefixpro.com/pinterest/',     dir: 'C:\\Users\\Administrator\\coveragefixpro\\pinterest',     link: 'https://coveragefixpro.com' },
+  { name: 'NotionTemplaFix',    type: 'notion', urlBase: 'https://notiontemplafix.com/pinterest/',    dir: 'C:\\Users\\Administrator\\notiontemplafix\\pinterest',    link: 'https://notiontemplafix.com' },
+  { name: 'InsuranceTipsPro',   type: 'blog',   urlBase: 'https://insurancetipspro.com/pinterest/',   dir: 'C:\\Users\\Administrator\\insurancetipspro\\pinterest',   link: 'https://insurancetipspro.com' },
+  { name: 'FreelancerGuideHub', type: 'blog',   urlBase: 'https://freelancerguidehub.com/pinterest/', dir: 'C:\\Users\\Administrator\\freelancerguidehub\\pinterest', link: 'https://freelancerguidehub.com' },
+  { name: 'BillingFixPro',      type: 'tool',   urlBase: 'https://billingfixpro.com/pinterest/',      dir: 'C:\\Users\\Administrator\\billingfixpro\\pinterest',      link: 'https://billingfixpro.com' },
+  { name: 'PayrollFixPro',      type: 'tool',   urlBase: 'https://payrollfixpro.com/pinterest/',      dir: 'C:\\Users\\Administrator\\payrollfixpro\\pinterest',      link: 'https://payrollfixpro.com' },
 ];
 
 // NotionTemplaFix 模板 metadata
@@ -71,7 +72,7 @@ function httpReq(urlStr, opts = {}, bodyBuf = null) {
       hostname: url.hostname, port: 443,
       path:     url.pathname + url.search,
       method:   opts.method || 'GET',
-      headers:  { 'User-Agent': 'pm-worker/6.0', ...opts.headers },
+      headers:  { 'User-Agent': 'pm-worker/7.0', ...opts.headers },
       agent,
     };
     if (bodyBuf) reqOpts.headers['Content-Length'] = bodyBuf.length;
@@ -90,12 +91,16 @@ function httpReq(urlStr, opts = {}, bodyBuf = null) {
   });
 }
 
-// ── Token 加载 ────────────────────────────────────────────────────────────────
-function loadToken() {
-  if (!fs.existsSync(TOKEN_FILE)) throw new Error(`pinterest-token.json 不存在，请先运行 node pinterest-auth.js`);
-  const t = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8'));
-  if (!t.access_token) throw new Error('pinterest-token.json 中无 access_token');
-  return t.access_token;
+// ── Buffer GraphQL ─────────────────────────────────────────────────────────────
+async function gql(query, variables = {}) {
+  const body = Buffer.from(JSON.stringify({ query, variables }), 'utf8');
+  const resp = await httpReq(GQL_URL, {
+    method:  'POST',
+    headers: { 'Authorization': `Bearer ${BUFFER_TOKEN}`, 'Content-Type': 'application/json' },
+  }, body);
+  if (resp.status !== 200) throw new Error(`GraphQL HTTP ${resp.status}: ${JSON.stringify(resp.data).slice(0, 200)}`);
+  if (resp.data?.errors?.length) throw new Error(`GraphQL: ${resp.data.errors[0]?.message}`);
+  return resp.data?.data ?? resp.data;
 }
 
 // ── Pinned 文章追踪 ───────────────────────────────────────────────────────────
@@ -107,10 +112,10 @@ function savePinned(pinned) {
   fs.writeFileSync(PINNED_FILE, JSON.stringify(pinned, null, 2), 'utf8');
 }
 
-// ── 加载各站 Pins ─────────────────────────────────────────────────────────────
+// ── 加载各站 Pins（返回 imgFile 而非 imgPath）────────────────────────────────
 function loadToolPins(src) {
   const jsonPath = path.join(src.dir, 'pin-content.json');
-  if (!fs.existsSync(jsonPath)) return [];
+  if (!fs.existsSync(jsonPath)) { log(`  ⚠️  ${src.name}: 无 pin-content.json`); return []; }
   try {
     const pins = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     const valid = pins.filter(p => {
@@ -118,13 +123,11 @@ function loadToolPins(src) {
       return f && fs.existsSync(path.join(src.dir, f));
     }).map(p => ({
       title:   (p.title || p.name || src.name).slice(0, 100),
-      desc:    (p.desc  || p.text || '').slice(0, 800),
+      desc:    (p.desc  || p.text || '').slice(0, 500),
       link:    p.link   || src.link,
-      imgPath: path.join(src.dir, p.file || p.image),
+      imgFile: p.file   || p.image,
       slug:    p.slug   || null,
-      source:  src.name,
     }));
-    // shuffle
     for (let i = valid.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [valid[i], valid[j]] = [valid[j], valid[i]];
@@ -134,9 +137,9 @@ function loadToolPins(src) {
 }
 
 function loadBlogPins(src, pinnedSlugs) {
-  const already = new Set(pinnedSlugs || []);
+  const already  = new Set(pinnedSlugs || []);
   const jsonPath = path.join(src.dir, 'pin-content.json');
-  if (!fs.existsSync(jsonPath)) return [];
+  if (!fs.existsSync(jsonPath)) { log(`  ⚠️  ${src.name}: 无 pin-content.json`); return []; }
   try {
     const pins = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     return pins
@@ -148,11 +151,10 @@ function loadBlogPins(src, pinnedSlugs) {
       .reverse()
       .map(p => ({
         title:   (p.title || p.name || src.name).slice(0, 100),
-        desc:    (p.desc  || p.text || '').slice(0, 800),
+        desc:    (p.desc  || p.text || '').slice(0, 500),
         link:    p.link   || src.link,
-        imgPath: path.join(src.dir, p.file || p.image),
+        imgFile: p.file   || p.image,
         slug:    p.slug   || null,
-        source:  src.name,
       }));
   } catch (e) { log(`  ⚠️  ${src.name} 解析失败: ${e.message}`); return []; }
 }
@@ -167,15 +169,13 @@ function loadNotionPins() {
       const slug = raw.replace(/-app$/, '');
       const meta = NOTION_META[slug];
       if (!meta) continue;
-      const imgPath = path.join(src.dir, file);
-      if (!fs.existsSync(imgPath)) continue;
+      if (!fs.existsSync(path.join(src.dir, file))) continue;
       pins.push({
         slug,
         title:   `Free Notion Template: ${meta.name}`,
-        desc:    meta.desc,
+        desc:    meta.desc.slice(0, 500),
         link:    'https://notiontemplafix.com',
-        imgPath,
-        source:  'NotionTemplaFix',
+        imgFile: file,
       });
     }
     for (let i = pins.length - 1; i > 0; i--) {
@@ -186,100 +186,94 @@ function loadNotionPins() {
   return pins;
 }
 
-// ── Imgur 上传（图片公网化）───────────────────────────────────────────────────
-async function uploadToImgur(imgPath) {
-  const base64 = fs.readFileSync(imgPath).toString('base64');
-  const body   = Buffer.from(JSON.stringify({ image: base64, type: 'base64', name: path.basename(imgPath) }), 'utf8');
-  const resp   = await httpReq('https://api.imgur.com/3/image', {
-    method: 'POST',
-    headers: { 'Authorization': `Client-ID ${IMGUR_CID}`, 'Content-Type': 'application/json' },
-  }, body);
-  if (!resp.data?.success) throw new Error(`Imgur 失败: ${JSON.stringify(resp.data).slice(0, 150)}`);
-  return resp.data.data.link;
-}
+// ── Buffer createPost ─────────────────────────────────────────────────────────
+async function createPost(pin, imgUrl) {
+  const title = pin.title.slice(0, 100);
+  const desc  = pin.desc.slice(0, 500);
+  const link  = pin.link || '';
 
-// ── Pinterest: 创建 Pin ───────────────────────────────────────────────────────
-async function createPin(token, pin, imgUrl) {
-  const body = Buffer.from(JSON.stringify({
-    board_id:    BOARD_ID,
-    title:       pin.title,
-    description: pin.desc,
-    link:        pin.link,
-    media_source: { source_type: 'image_url', url: imgUrl },
-  }), 'utf8');
-
-  const resp = await httpReq('https://api.pinterest.com/v5/pins', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type':  'application/json',
+  const data = await gql(`
+    mutation CreatePost($input: CreatePostInput!) {
+      createPost(input: $input) {
+        ... on PostActionSuccess  { post { id status dueAt } }
+        ... on InvalidInputError  { message }
+        ... on LimitReachedError  { message }
+        ... on UnauthorizedError  { message }
+        ... on UnexpectedError    { message }
+        ... on RestProxyError     { message }
+        ... on NotFoundError      { message }
+      }
+    }
+  `, {
+    input: {
+      channelId:      CHANNEL_ID,
+      schedulingType: 'automatic',
+      mode:           'addToQueue',
+      assets: [{ image: { url: imgUrl, metadata: { altText: title } } }],
+      text:   desc,
+      metadata: { pinterest: { title, url: link, boardServiceId: BOARD_SVC_ID } },
     },
-  }, body);
+  });
 
-  if (resp.status !== 201) {
-    throw new Error(`Pinterest API HTTP ${resp.status}: ${JSON.stringify(resp.data).slice(0, 250)}`);
-  }
-  return resp.data;
+  const result = data?.createPost;
+  if (result?.post?.id) return result.post;
+  throw new Error(result?.message || `createPost 未知错误: ${JSON.stringify(result).slice(0, 100)}`);
 }
 
 // ── 主流程 ────────────────────────────────────────────────────────────────────
 async function refillBuffer() {
-  log('════════════════════════════════════════════════════');
-  log('Pinterest Direct Publish v6 (7 Sites, 1 Pin/Site)');
-  log('════════════════════════════════════════════════════');
+  log('══════════════════════════════════════════════════════════');
+  log('Buffer Refill v7 — 站点公网图片 URL，无 Imgur，2 Pins/站点');
+  log('══════════════════════════════════════════════════════════');
 
-  const token  = loadToken();
   const pinned = loadPinned();
-  let   total  = 0;
-  let   failed = 0;
+  let total = 0, failed = 0;
 
   for (const src of SOURCES) {
     log(`\n📌 [${src.name}]`);
 
     let candidates;
-    if (src.type === 'tool')   candidates = loadToolPins(src);
+    if (src.type === 'tool')        candidates = loadToolPins(src);
     else if (src.type === 'blog')   candidates = loadBlogPins(src, pinned[src.name] || []);
     else if (src.type === 'notion') candidates = loadNotionPins();
     else candidates = [];
 
-    if (!candidates.length) {
-      log(`  ⚠️  无可用图片，跳过`);
-      continue;
-    }
+    if (!candidates.length) { log(`  ⚠️  无可用图片，跳过`); continue; }
 
-    const pin = candidates[0]; // top of shuffled list
-    log(`  🖼️  选图: ${path.basename(pin.imgPath)}`);
-    log(`  📝  标题: ${pin.title.slice(0, 60)}`);
+    const batch = candidates.slice(0, PINS_PER_SITE);
 
-    try {
-      log(`  📤 上传至 Imgur…`);
-      const imgUrl = await uploadToImgur(pin.imgPath);
-      log(`  🌐 图片 URL: ${imgUrl}`);
+    for (let pi = 0; pi < batch.length; pi++) {
+      const pin    = batch[pi];
+      const imgUrl = src.urlBase + encodeURIComponent(pin.imgFile);
 
-      log(`  🚀 发布至 Pinterest…`);
-      const result = await createPin(token, pin, imgUrl);
-      log(`  ✅ Pin 创建成功 → id: ${result.id}`);
+      log(`  [Pin ${pi + 1}/${batch.length}] 🖼️  ${pin.imgFile}`);
+      log(`          📝 ${pin.title.slice(0, 70)}`);
+      log(`          🌐 ${imgUrl}`);
 
-      // 标记 blog 站已钉
-      if (pin.slug && (src.type === 'blog')) {
-        if (!pinned[src.name]) pinned[src.name] = [];
-        if (!pinned[src.name].includes(pin.slug)) {
-          pinned[src.name].push(pin.slug);
-          savePinned(pinned);
+      try {
+        const post = await createPost(pin, imgUrl);
+        log(`          ✅ Buffer Post ID: ${post.id} | status: ${post.status} | dueAt: ${post.dueAt || '—'}`);
+
+        if (pin.slug && src.type === 'blog') {
+          if (!pinned[src.name]) pinned[src.name] = [];
+          if (!pinned[src.name].includes(pin.slug)) {
+            pinned[src.name].push(pin.slug);
+            savePinned(pinned);
+          }
         }
+        total++;
+      } catch (e) {
+        log(`          ❌ 失败: ${e.message.slice(0, 200)}`);
+        failed++;
       }
 
-      total++;
-    } catch (e) {
-      log(`  ❌ 失败: ${e.message.slice(0, 200)}`);
-      failed++;
+      if (pi < batch.length - 1) await new Promise(r => setTimeout(r, 2000));
     }
 
-    // 站点间间隔 3 秒，避免限速
     if (src !== SOURCES[SOURCES.length - 1]) await new Promise(r => setTimeout(r, 3000));
   }
 
-  log(`\n════ 完成: 发布 ${total}/${SOURCES.length} 条 Pin，失败 ${failed} 条 ════`);
+  log(`\n════ 完成: 加入队列 ${total} 条，失败 ${failed} 条 ════`);
 }
 
 if (require.main === module) {
