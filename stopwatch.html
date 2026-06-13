@@ -47,9 +47,17 @@
     ]
   }
   </script>
+
+  <meta property="og:image" content="https://wordcasefix.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Stopwatch","item":"https://wordcasefix.com/stopwatch.html"}]}
+  </script>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/">All Tools</a></nav>
+<nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Stopwatch</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap"> <main class="main-area"> <header><nav style="text-align:center;margin-bottom:12px;font-size:14px;color:#888;"><a href="/" style="color:#5b5bd6;text-decoration:none;font-weight:500;">Home</a><span style="margin:0 6px;color:#aaa;">></span><span style="color:#555;">Stopwatch</span></nav>
       <h1>Stopwatch</h1><p>Track time with precision and record lap times.</p></header><div class="card"> <div class="timer-display"> <div class="timer-time" id="timerDisplay">00:00:00<span class="ms">.00</span></div> </div> <div class="btn-group"><button class="btn-start" id="startBtn">Start</button><button class="btn-stop" id="stopBtn" disabled>Stop</button><button class="btn-lap" id="lapBtn" disabled>Lap</button><button class="btn-reset" id="resetBtn">Reset</button></div> </div> <div class="laps-section"> <div class="laps-header"><h3>Laps</h3><span id="lapCount">0 laps</span></div> <div class="laps-list" id="lapsList"><div class="empty-laps">No laps recorded yet.</div></div> </div> </main></div>
