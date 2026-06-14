@@ -79,7 +79,7 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
         <button class="btn-secondary" id="downloadBtn">Download PNG</button>
       </div>
     </div>
-    <div class="qr-output"><canvas id="qrCanvas"></canvas></div>
+    <div class="qr-output"><div id="qrCanvas" style="display:flex;align-items:center;justify-content:center;"></div></div>
   </div>
 </div>
 </main></div>
@@ -126,7 +126,7 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>QR Code Generator &mdash; Free custom QR code tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="/js/qrcode.min.js"></script>
 <script>
 (function(){
   var TEMPLATES={
@@ -140,16 +140,28 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   document.querySelectorAll('.tmpl-btn').forEach(function(btn){
     btn.addEventListener('click',function(){document.getElementById('qrContent').value=TEMPLATES[btn.dataset.tmpl];});
   });
+  var _qrObj=null;
   function generate(){
     var text=document.getElementById('qrContent').value.trim();if(!text)return;
     var fg=document.getElementById('fgColor').value;
     var bg=document.getElementById('bgColor').value;
     var size=parseInt(document.getElementById('qrSize').value)||200;
     var ec=document.getElementById('ecLevel').value;
-    QRCode.toCanvas(document.getElementById('qrCanvas'),text,{width:size,color:{dark:fg,light:bg},errorCorrectionLevel:ec},function(err){if(err)console.error(err);});
+    var lvl={L:QRCode.CorrectLevel.L,M:QRCode.CorrectLevel.M,Q:QRCode.CorrectLevel.Q,H:QRCode.CorrectLevel.H};
+    var container=document.getElementById('qrCanvas');
+    container.innerHTML='';
+    _qrObj=new QRCode(container,{text:text,width:size,height:size,colorDark:fg,colorLight:bg,correctLevel:lvl[ec]||QRCode.CorrectLevel.M});
   }
   document.getElementById('generateBtn').addEventListener('click',generate);
-  document.getElementById('downloadBtn').addEventListener('click',function(){var canvas=document.getElementById('qrCanvas');var link=document.createElement('a');link.download='qrcode.png';link.href=canvas.toDataURL();link.click();});
+  document.getElementById('downloadBtn').addEventListener('click',function(){
+    var container=document.getElementById('qrCanvas');
+    var cvs=container.querySelector('canvas');
+    var img=container.querySelector('img');
+    var dataUrl;
+    if(cvs){dataUrl=cvs.toDataURL('image/png');}
+    else if(img){var c=document.createElement('canvas');c.width=img.naturalWidth||200;c.height=img.naturalHeight||200;c.getContext('2d').drawImage(img,0,0);dataUrl=c.toDataURL('image/png');}
+    if(dataUrl){var link=document.createElement('a');link.download='qrcode.png';link.href=dataUrl;link.click();}
+  });
   setTimeout(generate,300);
   var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 })();

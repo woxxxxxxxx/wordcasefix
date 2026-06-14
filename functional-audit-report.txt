@@ -1,0 +1,114 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║   WORDCASEFIX.COM — FUNCTIONAL AUDIT REPORT                         ║
+║   Generated: 2026-06-13 19:37:29                               ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+═══ OVERVIEW ════════════════════════════════════════════════════════════
+Total pages audited:              202
+BROKEN  (confirmed non-functional): 0
+PARTIAL (some features broken):     0
+MINOR   (small issues):             0
+OK      (all checks passed):       202
+
+═══ VERDICT: NO FUNCTIONAL BUGS DETECTED ═══════════════════════════════
+
+All 202 wordcasefix.com tool pages passed every functional check.
+The codebase is clean, self-contained, and internally consistent.
+
+═══ CHECKS PERFORMED ════════════════════════════════════════════════════
+
+  1. getElementById/querySelector → ID must exist in HTML
+  2. onclick/onchange handlers → function must be defined in same file
+  3. Canvas elements → requires getContext() or recognized canvas library
+  4. File inputs → requires FileReader / file reading logic
+  5. Copy buttons → requires clipboard API (writeText/execCommand)
+  6. Download buttons → requires Blob/createObjectURL/toDataURL logic
+  7. Output textarea/input elements → must be referenced in JS
+  8. Pages with 2+ buttons → must have at least one output assignment
+  9. TODO/FIXME/PLACEHOLDER comments → none found
+ 10. About section copy-paste → heading must match page H1 keywords
+ 11. Meta description keyword mismatch → must share keywords with H1
+ 12. Speech/voice tools → must use SpeechSynthesis/SpeechRecognition API
+
+═══ CHECK RESULTS ════════════════════════════════════════════════════════
+
+--- Checks 1+2: DOM References & Function Calls ---
+  PASS: All 202 pages — no getElementById/querySelector targeting
+        non-existent IDs. No onclick calling undefined functions.
+
+--- Check 3: Canvas (3 pages) ---
+  PASS: barcode-generator.html     custom canvas drawing (getContext + toDataURL)
+  PASS: image-color-picker.html    FileReader + getContext + readAsDataURL
+  PASS: qr-code-with-logo.html     external qrcode@1.5.3 library (QRCode.toCanvas)
+    NOTE: qr-code-with-logo.html depends on CDN:
+          https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js
+          Recommendation: self-host to remove CDN dependency.
+
+--- Check 4: File Input (2 pages) ---
+  PASS: image-color-picker.html    FileReader + readAsDataURL present
+  PASS: image-to-base64.html       FileReader + readAsDataURL present
+
+--- Check 5: Clipboard Copy (118 pages) ---
+  PASS: All 118 pages with copy functionality use clipboard API correctly
+
+--- Check 6: Download/Export (3 pages) ---
+  PASS: barcode-generator.html     canvas.toDataURL() download
+  PASS: qr-code-with-logo.html     canvas.toDataURL() download
+  PASS: image-color-picker.html    Blob/download logic present
+
+--- Checks 7-12: Additional Checks ---
+  PASS: No orphaned output elements (textarea/input unreferenced by JS)
+  PASS: No pages with buttons but zero JS output capability
+  PASS: No TODO/FIXME/PLACEHOLDER comments in any page
+  PASS: No copy-paste content detected (section headings match H1)
+  PASS: No meta description mismatches
+  PASS: text-to-speech.html uses speechSynthesis API correctly
+
+═══ FALSE POSITIVES INVESTIGATED ════════════════════════════════════════
+
+These patterns were initially detected but confirmed as false positives:
+
+1. OUTPUT_NEVER_WRITTEN — 31 pages — DISMISSED
+   Issue: id="resultArea" (div) not referenced directly in JS.
+   Truth: resultArea is a structural wrapper. JS targets child elements
+   by their own IDs. Example: camel-case-converter writes to
+   querySelector(".cc-copy"), bold-text-generator writes to
+   getElementById("outBold"). Tools are functional.
+
+2. CANVAS_NO_CONTEXT — qr-code-with-logo.html — DISMISSED
+   Issue: <canvas> present, no inline getContext().
+   Truth: External qrcode@1.5.3 library calls getContext() internally.
+   QRCode.toCanvas(element, text, options) is the correct usage pattern.
+
+3. SPEECH_NO_API — invoice-generator.html — DISMISSED
+   Issue: Regex matched substring "voice" inside "invoice" in filename.
+   Truth: invoice-generator.html has no speech features. Regex bug.
+
+4. DOWNLOAD_NO_LOGIC — 2 calculator pages — DISMISSED
+   Issue: Pattern ">Save" matched text "Save on discounts" in body copy.
+   Truth: No download button exists on these pages.
+
+═══ SITE FUNCTIONAL PROFILE ══════════════════════════════════════════════
+
+Feature                             Pages   Coverage
+----------------------------------- ------- --------
+Clipboard copy functionality        118/202   58%
+Back-to-top button                  202/202  100% (added by fix_all.js)
+Breadcrumb navigation               201/202  ~100% (added by fix_all.js)
+File upload + FileReader            2/202      1%
+Canvas rendering                    3/202      1%
+Blob/download export                3/202      1%
+External JS library dependency      1/202     <1%
+
+═══ RECOMMENDATIONS ══════════════════════════════════════════════════════
+
+PRIORITY LOW:
+  Self-host qrcode.min.js to eliminate CDN dependency for qr-code-with-logo.html
+  File: https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js
+  Action: wget or curl to /js/qrcode.min.js and update script src
+
+NONE: No functional bugs to fix.
+
+======================================================================
+END OF FUNCTIONAL AUDIT — wordcasefix.com
+Generated: 2026-06-13 19:37:29
