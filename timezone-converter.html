@@ -69,7 +69,11 @@ footer a{color:#5b5bd6;text-decoration:none}
 footer a:hover{text-decoration:underline}
 @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
 @media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){header h1{font-size:22px}}.tz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}.tz-cell{margin:0}.tz-result{background:#f0f0fb;border-radius:10px;padding:16px;margin-bottom:16px;text-align:center}#tzFromLabel{font-size:13px;color:#888;margin-bottom:4px}#tzConvTime{font-size:24px;font-weight:800;color:#5b5bd6}#tzToLabel{font-size:13px;color:#888;margin-top:4px}.tz-world-wrap{margin-top:8px}.tz-world-title{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:10px}.tz-world-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.tz-city-card{background:#fff;border:1.5px solid #e8e9ed;border-radius:8px;padding:10px 12px}.tz-city-card:hover{border-color:#5b5bd6}@media(max-width:640px){.tz-grid{grid-template-columns:1fr}}</style>
+@media(max-width:600px){header h1{font-size:22px}}.tz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}.tz-cell{margin:0}.tz-result{background:#f0f0fb;border-radius:10px;padding:16px;margin-bottom:16px;text-align:center}#tzFromLabel{font-size:13px;color:#888;margin-bottom:4px}#tzConvTime{font-size:24px;font-weight:800;color:#5b5bd6}#tzToLabel{font-size:13px;color:#888;margin-top:4px}.tz-world-wrap{margin-top:8px}.tz-world-title{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:10px}.tz-world-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.tz-city-card{background:#fff;border:1.5px solid #e8e9ed;border-radius:8px;padding:10px 12px}.tz-city-card:hover{border-color:#5b5bd6}@media(max-width:640px){.tz-grid{grid-template-columns:1fr}}
+.dt-row{display:flex;gap:6px;align-items:center}
+.dt-sel{flex:1;min-width:0;padding:10px 8px;font-size:14px;font-family:inherit;border:1.5px solid #d0d5dd;border-radius:8px;background:#fff;color:#1a1a2e;cursor:pointer;transition:border-color .2s}
+.dt-sel:focus{outline:none;border-color:#5b5bd6;box-shadow:0 0 0 3px rgba(91,91,214,.15)}
+@media(max-width:640px){.dt-row{flex-wrap:wrap}.dt-sel{min-width:calc(50% - 3px)}}</style>
 
   <meta property="og:image" content="https://wordcasefix.com/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -91,7 +95,21 @@ footer a:hover{text-decoration:underline}
 <div class="card">
 <div class="tz-grid">
 <div class="input-group tz-cell"><label for="tzFrom">From Timezone</label><select id="tzFrom"></select></div>
-<div class="input-group tz-cell"><label for="tzTime">Date &amp; Time</label><input type="datetime-local" id="tzTime"></div>
+<div class="input-group tz-cell">
+  <label>Date &amp; Time</label>
+  <div class="dt-row">
+    <select id="tzYear" class="dt-sel"></select>
+    <select id="tzMonth" class="dt-sel">
+      <option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option>
+      <option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option>
+      <option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option>
+      <option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+    </select>
+    <select id="tzDay" class="dt-sel"></select>
+    <select id="tzHour" class="dt-sel"></select>
+    <select id="tzMinute" class="dt-sel"></select>
+  </div>
+</div>
 <div class="input-group tz-cell"><label for="tzTo">To Timezone</label><select id="tzTo"></select></div>
 </div>
 <div id="tzResult" class="tz-result" style="display:none">
@@ -120,13 +138,32 @@ TZ.forEach(function(tz){
   o2.value=tz[0];o2.textContent=tz[1];toSel.appendChild(o2);
 });
 fromSel.value='America/New_York';toSel.value='Europe/London';
-var now=new Date();var pad=function(n){return n<10?'0'+n:n;};
-document.getElementById('tzTime').value=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+'T'+pad(now.getHours())+':'+pad(now.getMinutes());
+var pad=function(n){return n<10?'0'+n:n;};
+(function initSelects(){
+  var now=new Date();
+  var yrSel=document.getElementById('tzYear');
+  for(var y=now.getFullYear()-2;y<=now.getFullYear()+2;y++){
+    var o=document.createElement('option');o.value=y;o.textContent=y;
+    if(y===now.getFullYear())o.selected=true;
+    yrSel.appendChild(o);
+  }
+  var daySel=document.getElementById('tzDay');
+  for(var d=1;d<=31;d++){var o=document.createElement('option');o.value=d;o.textContent=pad(d);if(d===now.getDate())o.selected=true;daySel.appendChild(o);}
+  var hrSel=document.getElementById('tzHour');
+  for(var h=0;h<=23;h++){var o=document.createElement('option');o.value=h;o.textContent=pad(h);if(h===now.getHours())o.selected=true;hrSel.appendChild(o);}
+  var minSel=document.getElementById('tzMinute');
+  for(var m=0;m<=59;m++){var o=document.createElement('option');o.value=m;o.textContent=pad(m);if(m===now.getMinutes())o.selected=true;minSel.appendChild(o);}
+  document.getElementById('tzMonth').value=now.getMonth()+1;
+})();
 function convert(){
-  var dt=document.getElementById('tzTime').value,from=fromSel.value,to=toSel.value;
-  if(!dt)return;
+  var from=fromSel.value,to=toSel.value;
   try{
-    var fromDate=new Date(dt);
+    var yr=parseInt(document.getElementById('tzYear').value);
+    var mo=parseInt(document.getElementById('tzMonth').value)-1;
+    var dy=parseInt(document.getElementById('tzDay').value);
+    var hr=parseInt(document.getElementById('tzHour').value);
+    var mn=parseInt(document.getElementById('tzMinute').value);
+    var fromDate=new Date(yr,mo,dy,hr,mn,0);
     var fromStr=fromDate.toLocaleString('en-US',{timeZone:from,dateStyle:'medium',timeStyle:'short'});
     var toStr=fromDate.toLocaleString('en-US',{timeZone:to,dateStyle:'medium',timeStyle:'short'});
     document.getElementById('tzFromLabel').textContent=TZ.filter(function(t){return t[0]===from;})[0][1]+': '+fromStr;
@@ -135,7 +172,7 @@ function convert(){
     document.getElementById('tzResult').style.display='block';
   }catch(e){}
 }
-['tzFrom','tzTo','tzTime'].forEach(function(id){document.getElementById(id).addEventListener('change',convert);});
+['tzFrom','tzTo','tzYear','tzMonth','tzDay','tzHour','tzMinute'].forEach(function(id){document.getElementById(id).addEventListener('change',convert);});
 convert();
 function updateWorld(){
   var container=document.getElementById('tzWorld');container.innerHTML='';
