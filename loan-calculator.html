@@ -119,12 +119,13 @@
     padding: 10px 12px; text-align: right; white-space: nowrap;
     border-bottom: 2px solid #e0dffc;
   }
-  thead th:first-child { text-align: center; }
+  thead th:first-child { text-align: center; width: 48px; min-width: 48px; }
+  thead th, tbody td { min-width: 80px; }
   tbody td {
     padding: 8px 12px; text-align: right; border-bottom: 1px solid #e8e9ed;
     white-space: nowrap;
   }
-  tbody td:first-child { text-align: center; font-weight: 600; color: #888; }
+  tbody td:first-child { text-align: center; font-weight: 600; color: #888; width: 48px; min-width: 48px; }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover td { background: #f8f8ff; }
 
@@ -248,11 +249,13 @@
         </div>
         <div class="summary-card">
           <div class="sum-label">Total Repayment</div>
-          <div class="sum-value" id="totalRepayment">$--<div class="sum-sub" id="totalInterest">Interest: $--</div>
+          <div class="sum-value" id="totalRepayment">$--</div>
+          <div class="sum-sub" id="totalInterest">Interest: $--</div>
         </div>
         <div class="summary-card">
           <div class="sum-label">Total Interest</div>
           <div class="sum-value" id="totalInterestOnly">$--</div>
+        </div>
       </div>
 
       <div class="section-title">Amortization Schedule</div>
