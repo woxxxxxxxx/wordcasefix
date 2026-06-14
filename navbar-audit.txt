@@ -1,0 +1,90 @@
+=== Navbar & Breadcrumb 一致性审计报告 ===
+扫描文件总数：206（已排除 index/about/404/privacy/terms/sitemap）
+
+=== 问题页面汇总 ===
+[文件名] | [问题列表]
+
+anagram-checker.html | All Tools href="/index.html"（应为"/"）
+ascii-table.html | All Tools href="/index.html"（应为"/"）
+average-calculator.html | All Tools href="/index.html"（应为"/"）
+binary-converter.html | All Tools href="/index.html"（应为"/"）
+binary-to-text.html | All Tools href="/index.html"（应为"/"）
+body-fat-calculator.html | All Tools href="/index.html"（应为"/"）
+break-even-calculator.html | All Tools href="/index.html"（应为"/"）
+calculator-tools.html | navbar使用nav-link变体（分类页专属多链接布局） / 缺少breadcrumb
+carbon-footprint.html | All Tools href="/index.html"（应为"/"）
+celsius-to-fahrenheit.html | 缺少breadcrumb
+chmod-calculator.html | All Tools href="/index.html"（应为"/"）
+color-converter.html | All Tools href="/index.html"（应为"/"）
+cron-generator.html | All Tools href="/index.html"（应为"/"）
+csv-to-json.html | All Tools href="/index.html"（应为"/"）
+date-calculator.html | All Tools href="/index.html"（应为"/"）
+days-between-dates.html | 缺少breadcrumb
+developer-tools.html | navbar使用nav-link变体（分类页专属多链接布局） / 缺少breadcrumb
+duplicate-remover.html | All Tools href="/index.html"（应为"/"）
+electricity-cost-calculator.html | All Tools href="/index.html"（应为"/"）
+flip-text-generator.html | All Tools href="/index.html"（应为"/"）
+fraction-calculator.html | All Tools href="/index.html"（应为"/"）
+fuel-cost-calculator.html | All Tools href="/index.html"（应为"/"）
+hex-to-rgb.html | All Tools href="/index.html"（应为"/"）
+hourly-to-salary.html | All Tools href="/index.html"（应为"/"）
+html-to-markdown.html | All Tools href="/index.html"（应为"/"）
+image-to-base64.html | All Tools href="/index.html"（应为"/"）
+inflation-calculator.html | All Tools href="/index.html"（应为"/"）
+json-formatter.html | All Tools href="/index.html"（应为"/"）
+json-to-csv.html | All Tools href="/index.html"（应为"/"）
+jwt-decoder.html | All Tools href="/index.html"（应为"/"）
+list-randomizer.html | All Tools href="/index.html"（应为"/"）
+lorem-ipsum-generator.html | All Tools href="/index.html"（应为"/"）
+markdown-to-html.html | All Tools href="/index.html"（应为"/"）
+markup-calculator.html | All Tools href="/index.html"（应为"/"）
+net-worth-calculator.html | All Tools href="/index.html"（应为"/"）
+number-sorter.html | All Tools href="/index.html"（应为"/"）
+overtime-calculator.html | All Tools href="/index.html"（应为"/"）
+palindrome-checker.html | All Tools href="/index.html"（应为"/"）
+percentage-calculator.html | All Tools href="/index.html"（应为"/"）
+prime-checker.html | All Tools href="/index.html"（应为"/"）
+privacy-policy.html | 缺少breadcrumb
+profit-margin-calculator.html | All Tools href="/index.html"（应为"/"）
+random-number-generator.html | All Tools href="/index.html"（应为"/"）
+ratio-calculator.html | All Tools href="/index.html"（应为"/"）
+reverse-text.html | All Tools href="/index.html"（应为"/"）
+rgb-to-hex.html | All Tools href="/index.html"（应为"/"）
+sales-tax-calculator.html | All Tools href="/index.html"（应为"/"）
+scientific-calculator.html | All Tools href="/index.html"（应为"/"）
+sentence-case.html | All Tools href="/index.html"（应为"/"）
+sleep-calculator.html | All Tools href="/index.html"（应为"/"）
+standard-deviation.html | All Tools href="/index.html"（应为"/"）
+string-utilities.html | All Tools href="/index.html"（应为"/"）
+text-cleaner.html | 缺少breadcrumb
+text-sorter.html | All Tools href="/index.html"（应为"/"）
+text-to-binary.html | All Tools href="/index.html"（应为"/"）
+text-tools.html | navbar使用nav-link变体（分类页专属多链接布局） / 缺少breadcrumb
+timezone-converter.html | All Tools href="/index.html"（应为"/"）
+typing-speed-test.html | All Tools href="/index.html"（应为"/"）
+url-encoder.html | 缺少breadcrumb
+utility-tools.html | navbar使用nav-link变体（分类页专属多链接布局） / 缺少breadcrumb
+vat-calculator.html | All Tools href="/index.html"（应为"/"）
+vowel-counter.html | All Tools href="/index.html"（应为"/"）
+water-intake-calculator.html | All Tools href="/index.html"（应为"/"）
+word-wrap.html | All Tools href="/index.html"（应为"/"）
+
+=== 按问题类型统计 ===
+
+1. All Tools href="/index.html"（应统一为"/"）：55 个文件
+2. 缺少breadcrumb：9 个文件
+   （含分类页 calculator-tools/developer-tools/text-tools/utility-tools，及工具页 celsius-to-fahrenheit/days-between-dates/text-cleaner/url-encoder/privacy-policy）
+3. navbar使用nav-link变体（分类页）：4 个文件
+   （calculator-tools/developer-tools/text-tools/utility-tools — 这些是分类导航页，多链接布局属设计差异，非问题）
+
+=== 注：以下是全站统一现状（非问题）===
+• Logo文字：全部为 "WordCaseFix" ✓
+• Logo href：全部为 "/" ✓
+• Breadcrumb结构：197个文件全部使用统一的内联style模板 ✓
+  模板：<nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888">...
+• 没有页面存在重复breadcrumb（header里+页面里各一个）的问题 ✓
+
+=== 需优先修复的问题 ===
+优先级1（批量可自动修复）：55个文件的 href="/index.html" → href="/"
+优先级2（逐页补充）：5个工具页缺少breadcrumb（celsius-to-fahrenheit/days-between-dates/text-cleaner/url-encoder/privacy-policy）
+优先级3（可选）：4个分类页navbar结构不同，但属于刻意设计，可忽略
