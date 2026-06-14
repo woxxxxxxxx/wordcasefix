@@ -69,9 +69,17 @@ footer a:hover{text-decoration:underline}
 @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
 @media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){header h1{font-size:22px}}</style>
+
+  <meta property="og:image" content="https://wordcasefix.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Net Worth Calculator","item":"https://wordcasefix.com/net-worth-calculator.html"}]}
+  </script>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/">WordCaseFix</a><a class="nav-all" href="/index.html">All Tools</a></nav>
+<nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Net Worth Calculator</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
 <main class="main-area">
@@ -161,7 +169,7 @@ window.doNW=function(){
     <p>No. Net Worth Calculator processes all calculations locally in your browser. No data is sent to or stored on any server.</p>
   </div>
 </section>
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/inflation-calculator.html"><div class="rc-name">Inflation Calc</div><div class="rc-desc">Inflation adjustment</div></a><a class="related-card" href="/compound-interest-calculator.html"><div class="rc-name">Compound Interest</div><div class="rc-desc">Investment growth</div></a><a class="related-card" href="/loan-calculator.html"><div class="rc-name">Loan Calculator</div><div class="rc-desc">Loan repayment</div></a><a class="related-card" href="/budget-tracker.html"><div class="rc-name">Budget Tracker</div><div class="rc-desc">Track budget</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/inflation-calculator.html"><div class="rc-name">Inflation Calc</div><div class="rc-desc">Inflation adjustment</div></a><a class="related-card" href="/compound-interest-calculator.html"><div class="rc-name">Compound Interest</div><div class="rc-desc">Investment growth</div></a><a class="related-card" href="/loan-calculator.html"><div class="rc-name">Loan Calculator</div><div class="rc-desc">Loan repayment</div></a>
 <a class="related-card" href="/percentage-calculator.html"><div class="rc-name">Percentage Calculator</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/discount-calculator.html"><div class="rc-name">Discount Calculator</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/average-calculator.html"><div class="rc-name">Average Calculator</div><div class="rc-desc">Free online tool</div></a></div></div>
@@ -169,5 +177,8 @@ window.doNW=function(){
 <footer>Net Worth Calculator &mdash; Free online calculator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 <button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
+
+<button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;line-height:1" aria-label="Back to top">&#8679;</button>
+<script>(function(){var b=document.getElementById("back-to-top");if(!b)return;window.addEventListener("scroll",function(){b.style.display=window.scrollY>300?"block":"none"});b.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();</script>
 </body>
 </html>
