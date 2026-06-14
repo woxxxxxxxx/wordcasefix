@@ -72,12 +72,9 @@
   .field input:focus { border-color: #5b5bd6; box-shadow: 0 0 0 3px rgba(91,91,214,.15); }
   .field input::placeholder { font-weight: 400; color: #bbb; }
 
-  .field-suffix { position: relative; }
-  .field-suffix input { padding-right: 44px; }
-  .field-suffix .suffix {
-    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-    font-size: 14px; font-weight: 600; color: #999; pointer-events: none;
-  }
+  .field-suffix{position:relative;display:flex;align-items:center}
+  .field-suffix input{width:100%;padding-right:44px}
+  .field-suffix .suffix{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:600;color:#999;pointer-events:none;line-height:1;z-index:1}
 
   /* Su */
   .summary-grid {
