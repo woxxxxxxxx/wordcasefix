@@ -138,12 +138,12 @@ function render(){
   viz.innerHTML='';
   var maxZ=Math.max.apply(null,LAYERS.map(function(l){return l.z;}));
   var minZ=Math.min.apply(null,LAYERS.map(function(l){return l.z;}));
-  var w=viz.offsetWidth||600;var h=360;var n=LAYERS.length;
+  var w=viz.offsetWidth||600;var h=600;var n=LAYERS.length;
   var sorted=LAYERS.slice().sort(function(a,b){return a.z-b.z;});
   sorted.forEach(function(l,i){
     var el=document.createElement('div');el.className='layer-item';
     var progress=maxZ===minZ?0.5:(l.z-minZ)/(maxZ-minZ);
-    var width=Math.round(w*0.6+i*8);var layerH=48;
+    var width=Math.round(w*0.6+i*8);var layerH=36;
     var left=Math.round((w-width)/2);
     var top=h-40-(i*(h-40)/(n>1?n-1:1));
     el.style.cssText='width:'+width+'px;height:'+layerH+'px;left:'+left+'px;top:'+Math.max(4,top-layerH/2)+'px;background:'+l.color+';color:#fff;opacity:'+(0.7+0.3*progress)+';z-index:'+(i+1);

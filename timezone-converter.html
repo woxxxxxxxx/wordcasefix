@@ -69,7 +69,7 @@ footer a{color:#5b5bd6;text-decoration:none}
 footer a:hover{text-decoration:underline}
 @media(max-width:820px){.sidebar{display:none}.main-area{padding:20px 16px 36px}.card{padding:20px}}
 @media(max-width:700px){.related-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){header h1{font-size:22px}}</style>
+@media(max-width:600px){header h1{font-size:22px}}.tz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}.tz-cell{margin:0}.tz-result{background:#f0f0fb;border-radius:10px;padding:16px;margin-bottom:16px;text-align:center}#tzFromLabel{font-size:13px;color:#888;margin-bottom:4px}#tzConvTime{font-size:24px;font-weight:800;color:#5b5bd6}#tzToLabel{font-size:13px;color:#888;margin-top:4px}.tz-world-wrap{margin-top:8px}.tz-world-title{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:10px}.tz-world-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.tz-city-card{background:#fff;border:1.5px solid #e8e9ed;border-radius:8px;padding:10px 12px}.tz-city-card:hover{border-color:#5b5bd6}@media(max-width:640px){.tz-grid{grid-template-columns:1fr}}</style>
 
   <meta property="og:image" content="https://wordcasefix.com/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -90,18 +90,18 @@ footer a:hover{text-decoration:underline}
 <p>Convert times between 22 world timezones. Live world clock included.</p>
 </header>
 <div class="card">
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
-<div class="input-group" style="margin:0"><label for="tzFrom">From Timezone</label><select id="tzFrom" style="font-family:inherit;"></select></div>
-<div class="input-group" style="margin:0"><label for="tzTime">Date &amp; Time</label><input type="datetime-local" id="tzTime"></div>
-<div class="input-group" style="margin:0"><label for="tzTo">To Timezone</label><select id="tzTo" style="font-family:inherit;"></select></div>
+<div class="tz-grid">
+<div class="input-group tz-cell"><label for="tzFrom">From Timezone</label><select id="tzFrom"></select></div>
+<div class="input-group tz-cell"><label for="tzTime">Date &amp; Time</label><input type="datetime-local" id="tzTime"></div>
+<div class="input-group tz-cell"><label for="tzTo">To Timezone</label><select id="tzTo"></select></div>
 </div>
-<div id="tzResult" style="display:none;background:#f0f0fb;border-radius:10px;padding:16px;margin-bottom:16px;text-align:center;">
+<div id="tzResult" class="tz-result" style="display:none">
 <div style="font-size:13px;color:#888;margin-bottom:4px;" id="tzFromLabel"></div>
 <div style="font-size:24px;font-weight:800;color:#5b5bd6;" id="tzConvTime"></div>
 <div style="font-size:13px;color:#888;margin-top:4px;" id="tzToLabel"></div>
 </div>
-<div style="margin-top:8px;"><div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:10px;">Current Time in Major Cities</div>
-<div id="tzWorld" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;"></div></div>
+<div class="tz-world-wrap"><div class="tz-world-title">Current Time in Major Cities</div>
+<div id="tzWorld" class="tz-world-grid"></div></div>
 <script>
 (function(){
 var TZ=[
@@ -144,7 +144,7 @@ function updateWorld(){
   TZ.forEach(function(tz){
     var t=now.toLocaleString('en-US',{timeZone:tz[0],hour:'2-digit',minute:'2-digit',hour12:false});
     var d=now.toLocaleString('en-US',{timeZone:tz[0],weekday:'short',month:'short',day:'numeric'});
-    var div=document.createElement('div');div.style.cssText='background:#fff;border:1.5px solid #e8e9ed;border-radius:8px;padding:10px 12px;';
+    var div=document.createElement('div');div.className='tz-city-card';
     div.innerHTML='<div style="font-size:11px;color:#888;margin-bottom:2px;">'+tz[1].replace(/\s*\(.*\)/,'')+'</div><div style="font-size:20px;font-weight:800;color:#5b5bd6;font-family:monospace;">'+t+'</div><div style="font-size:11px;color:#aaa;">'+d+'</div>';
     container.appendChild(div);
   });
