@@ -1,0 +1,64 @@
+{
+  "project_id": "vestcalc",
+  "domain": "vestcalc.com",
+  "qa_date": "2026-06-15",
+  "qa_timestamp": "2026-06-15T00:00:00Z",
+  "report": "=== QA Report: vestcalc [2026-06-15] ===\n\n【基础可访问性】\n✅ PASS: 首页HTTP状态码 200\n✅ PASS: 页面标题存在且不为空 - \"VestCalc — Free Online Financial Calculators\"\n⚠️ WARN: 页面描述meta标签 → 说明：WebFetch未能完整获取head内容，建议在浏览器DevTools中手动确认meta description是否存在\n\n【SEO基础】\n✅ PASS: /sitemap.xml 可访问 (HTTP 200, 包含120个URL条目)\n✅ PASS: /robots.txt 存在 (HTTP 200, 配置正确，允许所有爬虫，包含sitemap链接)\n✅ PASS: /ads.txt 存在且格式正确 (google.com, pub-1638874323475457, DIRECT, f08c47fec0942fa0)\n⚠️ WARN: canonical标签 → 说明：WebFetch未能完整获取head内容，建议在浏览器DevTools中手动确认canonical标签是否存在\n\n【变现相关】\n✅ PASS: AdSense广告占位代码存在（页面包含Advertisement标记）\n\n【内容质量】\n✅ PASS: 工具数量 - 实际101个，与projects.json记录一致\n✅ PASS: 404页面正常工作（测试URL返回404状态码）\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n总计：7/9 通过\n需要修复：0 项\n建议关注：2 项（meta标签需浏览器手动验证）\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+  "summary": {
+    "total_checks": 9,
+    "passed": 7,
+    "failed": 0,
+    "warnings": 2
+  },
+  "details": {
+    "基础可访问性": {
+      "首页状态码": {
+        "status": "PASS",
+        "value": "200"
+      },
+      "页面标题": {
+        "status": "PASS",
+        "value": "VestCalc — Free Online Financial Calculators"
+      },
+      "meta描述": {
+        "status": "WARN",
+        "note": "WebFetch未能获取完整head内容，建议手动确认"
+      }
+    },
+    "SEO基础": {
+      "sitemap.xml": {
+        "status": "PASS",
+        "value": "HTTP 200, 120个URL条目"
+      },
+      "robots.txt": {
+        "status": "PASS",
+        "value": "HTTP 200, 配置正确"
+      },
+      "ads.txt": {
+        "status": "PASS",
+        "value": "google.com, pub-1638874323475457, DIRECT, f08c47fec0942fa0"
+      },
+      "canonical标签": {
+        "status": "WARN",
+        "note": "WebFetch未能获取完整head内容，建议手动确认"
+      }
+    },
+    "变现相关": {
+      "AdSense广告代码": {
+        "status": "PASS",
+        "value": "存在Advertisement占位标记"
+      }
+    },
+    "内容质量": {
+      "工具数量": {
+        "status": "PASS",
+        "expected": 101,
+        "actual": 101
+      },
+      "404页面": {
+        "status": "PASS",
+        "value": "正常工作"
+      }
+    }
+  }
+}
