@@ -1,0 +1,64 @@
+{
+  "project_id": "wordcasefix",
+  "project_name": "WordCaseFix",
+  "domain": "wordcasefix.com",
+  "qa_date": "2026-06-15",
+  "qa_timestamp": "2026-06-15T00:00:00Z",
+  "results": {
+    "basic_accessibility": {
+      "homepage_status_200": {
+        "status": "PASS",
+        "detail": "首页正常访问，HTTP 200"
+      },
+      "page_title_exists": {
+        "status": "PASS",
+        "detail": "页面标题：WordCaseFix - Free Online Text, Math & Developer Tools"
+      },
+      "meta_description_exists": {
+        "status": "PASS",
+        "detail": "描述：200+ free online tools: case converter, word counter, password generator, QR code maker, BMI calculator and more. No signup required."
+      }
+    },
+    "seo_basics": {
+      "sitemap_accessible": {
+        "status": "PASS",
+        "detail": "sitemap.xml 可访问，包含 408 个 URL"
+      },
+      "robots_txt_exists": {
+        "status": "PASS",
+        "detail": "robots.txt 存在，配置正确，允许所有爬虫"
+      },
+      "ads_txt_exists": {
+        "status": "PASS",
+        "detail": "ads.txt 存在，包含 AdSense publisher ID: pub-1638874323475457"
+      },
+      "canonical_tag_exists": {
+        "status": "PASS",
+        "detail": "首页 canonical 标签：https://wordcasefix.com/"
+      }
+    },
+    "monetization": {
+      "adsense_code_check": {
+        "status": "WARN",
+        "detail": "页面有广告占位代码 (.ad-slot)，但 AdSense 状态为 pending（审核中）",
+        "suggestion": "等待 AdSense 审核通过后，替换占位代码为真实广告代码"
+      }
+    },
+    "content_quality": {
+      "tool_count_match": {
+        "status": "PASS",
+        "detail": "本地项目有 207 个 HTML 文件，排除非工具页面后约 200-203 个工具，与 projects.json 记录的 200 基本一致"
+      },
+      "404_page_working": {
+        "status": "PASS",
+        "detail": "测试不存在页面返回正确的 404 状态码"
+      }
+    }
+  },
+  "summary": {
+    "total_checks": 10,
+    "pass": 9,
+    "fail": 0,
+    "warn": 1
+  }
+}
