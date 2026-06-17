@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 52" width="260" height="52">
+  <defs>
+    <linearGradient id="wgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5b5bd6"/>
+      <stop offset="100%" stop-color="#7c7cf0"/>
+    </linearGradient>
+  </defs>
+  <polyline points="4,16 14,46 25,22 36,46 48,6" fill="none" stroke="url(#wgrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="62" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#1a1a2e" letter-spacing="-0.5" dominant-baseline="central">WordCase<tspan fill="#5b5bd6">Fix</tspan></text>
+</svg>

@@ -1,0 +1,31 @@
+# WordCaseFix 仓库 logo 审计（全量站点扫描）
+# 扫描日期: 2026-06-15
+
+## 一、仓库子目录结构（各站点 HTML 数量）
+------------------------------------------------------------
+[根目录html]               209 个html  logo: WordCaseFix
+coveragefixpro          126 个html  logo: CoverageFixPro
+invoicefixpro           103 个html  logo: InvoiceFixPro
+freelancerguidehub      27 个html  logo: [img-logo]
+toolrankhq              23 个html  logo: ToolRankHQ
+blog                    5 个html  logo: WordCaseFix
+.claude                 3 个html  logo: 
+dashboard               1 个html  logo: 
+Downloads               1 个html  logo: 
+pm-worker               1 个html  logo: 
+xwechat_files           1 个html  logo: 
+
+## 二、WordCaseFix 本站 logo 分布（已排除所有外来目录）
+# 本站真实HTML总数: 214
+------------------------------------------------------------
+"WordCaseFix"                             → 213 个文件 (99.5%)
+[内联SVG]                                   → 1 个文件 (0.5%)
+
+## 三、本地 logo/favicon 文件
+------------------------------------------------------------
+logo.svg    ❌ 不存在  (27个页面引用了 /logo.svg!)
+favicon.svg ❌ 不存在
+favicon.ico ✅ 存在
+
+## 四、/logo.svg 引用页面列表（文件不存在，全部404）
+------------------------------------------------------------
