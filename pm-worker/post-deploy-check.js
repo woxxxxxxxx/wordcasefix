@@ -83,7 +83,7 @@ const SITES = {
     checkPages: [
       '/',
       '/tools/auto/car-insurance-premium-estimator.html',
-      '/tools/home/homeowners-insurance-cost-estimator.html'
+      '/tools/home/home-insurance-estimator.html'
     ],
     checkJS: [
       'C:\\Users\\Administrator\\coveragefixpro\\deploy-ftp.js'
