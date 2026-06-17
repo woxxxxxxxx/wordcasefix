@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Naming Conventions: camelCase, BEM, and kebab-case Compared | WordCaseFix</title>
+<meta name="description" content="Compare CSS naming conventions including kebab-case, BEM, camelCase, and CSS modules. Learn which to use for class names, custom properties, and components.">
+<meta name="keywords" content="CSS naming conventions, BEM, kebab-case CSS, CSS class naming, CSS methodology, CSS custom properties naming">
+<meta property="og:title" content="CSS Naming Conventions: camelCase, BEM, and kebab-case Compared">
+<meta property="og:description" content="Compare CSS naming conventions including kebab-case, BEM, camelCase, and CSS modules — and learn when to use each.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/css-naming-conventions.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CSS Naming Conventions: camelCase, BEM, and kebab-case Compared",
+  "description": "Compare CSS naming conventions including kebab-case, BEM, camelCase, and CSS modules — and learn when to use each.",
+  "author": {"@type": "Organization", "name": "WordCaseFix"},
+  "publisher": {"@type": "Organization", "name": "WordCaseFix", "url": "https://wordcasefix.com"},
+  "url": "https://wordcasefix.com/blog/css-naming-conventions.html",
+  "datePublished": "2025-06-15",
+  "dateModified": "2025-06-15"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6;text-decoration:none;font-weight:500}
+article a:hover{text-decoration:underline}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>CSS Naming Conventions</span>
+  </div>
+
+  <article>
+    <h1>CSS Naming Conventions: camelCase, BEM, and kebab-case Compared</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; Front-End</div>
+
+    <p>CSS gives you almost total freedom in naming class names, IDs, and custom properties. That freedom is also the problem. Without a convention, large stylesheets become impossible to refactor, names collide, and styles override each other in ways no one intended. Over the years the front-end community has converged on a handful of naming methodologies — BEM, SMACSS, OOCSS, and utility-first systems like Tailwind. This guide compares the main casing styles you will encounter and helps you pick one that fits your project.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Kebab Case Converter</strong>
+        Convert any text to kebab-case CSS class names instantly.
+      </div>
+      <a class="cta-btn" href="/kebab-case-converter.html">Try Kebab Case Converter →</a>
+    </div>
+
+    <h2>kebab-case: The CSS Default</h2>
+    <p>The CSS specification itself uses kebab-case. Every built-in property — <code>background-color</code>, <code>font-family</code>, <code>border-top-left-radius</code> — is hyphenated lowercase. Following the same convention for your own class names creates visual consistency with the language.</p>
+
+    <div class="example-box">
+      <p><strong>kebab-case CSS:</strong><br><br>
+      <code>.user-card { ... }</code><br>
+      <code>.nav-bar-link { ... }</code><br>
+      <code>.btn-primary { ... }</code><br>
+      <code>--brand-color: #5b5bd6;</code></p>
+    </div>
+
+    <p>Pros: matches the language, URL- and HTML-friendly, easy to read. Cons: requires bracket notation if accessed from JavaScript (<code>element.dataset['userId']</code> vs <code>element.dataset.userId</code>). For more on the snake vs kebab question, see our <a href="/blog/snake-case-vs-kebab-case.html">snake_case vs kebab-case guide</a>.</p>
+
+    <h2>BEM: Block, Element, Modifier</h2>
+    <p>BEM is a naming methodology developed at Yandex that has become one of the most widely used systems in serious CSS codebases. It uses kebab-case for words within a name, double underscores (<code>__</code>) to separate an element from its block, and double hyphens (<code>--</code>) to separate a modifier from its base. The result looks unusual at first but conveys a huge amount of structural information.</p>
+
+    <div class="example-box">
+      <p><strong>BEM in action:</strong><br><br>
+      <code>.card</code> — the block<br>
+      <code>.card__title</code> — an element inside the block<br>
+      <code>.card__image</code> — another element<br>
+      <code>.card--featured</code> — a modifier of the block<br>
+      <code>.card__title--large</code> — a modified element</p>
+    </div>
+
+    <p>BEM's strength is that every selector is a single class, eliminating specificity wars. The downside is verbosity — names get long. But for design systems and component libraries where clarity matters more than terseness, BEM remains a strong choice in 2025.</p>
+
+    <h2>camelCase in CSS Modules and CSS-in-JS</h2>
+    <p>When CSS is imported into JavaScript via CSS Modules, styled-components, or Emotion, kebab-case names become awkward. <code>styles.user-card</code> is invalid JavaScript — you have to write <code>styles['user-card']</code>. Most CSS-in-JS ecosystems use camelCase for class names to avoid this friction.</p>
+
+    <div class="example-box">
+      <p><strong>CSS Modules + camelCase:</strong><br><br>
+      <code>/* card.module.css */</code><br>
+      <code>.userCard { padding: 16px; }</code><br>
+      <code>.userCardTitle { font-weight: 700; }</code><br><br>
+      <code>// React component</code><br>
+      <code>import styles from './card.module.css';</code><br>
+      <code>&lt;div className={styles.userCard}&gt;...&lt;/div&gt;</code></p>
+    </div>
+
+    <p>Use our <a href="/camel-case-converter.html">camelCase converter</a> to quickly convert kebab-case style names into JS-friendly camelCase identifiers.</p>
+
+    <h2>Utility-First (Tailwind): Atomic Naming</h2>
+    <p>Tailwind CSS replaces semantic class names with a fixed vocabulary of atomic, kebab-case utilities. Instead of writing <code>.card-title</code> and styling it in CSS, you compose <code>class="text-lg font-bold mb-2"</code> directly in the HTML. There is no naming convention to learn beyond what Tailwind provides — but you do need to enforce consistency in how you order and group classes. Plugins like Prettier's Tailwind formatter solve this automatically.</p>
+
+    <h2>Side-by-Side Comparison</h2>
+    <table>
+      <tr><th>Style</th><th>Example</th><th>Best for</th></tr>
+      <tr><td>kebab-case</td><td>.user-card</td><td>Traditional CSS, global stylesheets</td></tr>
+      <tr><td>BEM</td><td>.card__title--large</td><td>Design systems, large teams</td></tr>
+      <tr><td>camelCase</td><td>.userCard</td><td>CSS Modules, CSS-in-JS</td></tr>
+      <tr><td>Utility-first</td><td>text-lg font-bold</td><td>Component-based apps with Tailwind</td></tr>
+      <tr><td>SMACSS</td><td>.l-grid, .is-active</td><td>State and layout categorization</td></tr>
+    </table>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Case Converter</strong>
+        Switch any identifier between kebab-case, camelCase, and other styles.
+      </div>
+      <a class="cta-btn" href="/case-converter.html">Try Case Converter →</a>
+    </div>
+
+    <h2>Naming CSS Custom Properties</h2>
+    <p>CSS custom properties (variables) are case-sensitive and require a leading double-dash: <code>--brand-color</code>. The convention is kebab-case, matching the rest of CSS. For design tokens, prefix them by category: <code>--color-brand-primary</code>, <code>--space-md</code>, <code>--font-size-lg</code>. This makes IDE autocomplete and global search dramatically more useful.</p>
+
+    <h2>Naming Tips That Apply to Any Convention</h2>
+    <ul>
+      <li><strong>Be descriptive, not presentational.</strong> Use <code>.warning</code>, not <code>.red-text</code>. The color may change; the meaning won't.</li>
+      <li><strong>Avoid abbreviations.</strong> <code>.navigation</code> beats <code>.nv</code> every time.</li>
+      <li><strong>Singularize when an element is a single thing</strong> (<code>.menu</code>), pluralize when it's a list (<code>.menu-items</code>).</li>
+      <li><strong>Use a state prefix.</strong> SMACSS popularized <code>.is-active</code>, <code>.is-disabled</code>, <code>.has-error</code> — they read like English and clearly mark booleans.</li>
+      <li><strong>Pick one style and document it.</strong> The worst convention is the one half your codebase ignores.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+    <h3>Are CSS class names case-sensitive?</h3>
+    <p>Yes. <code>.userCard</code> and <code>.usercard</code> are two different selectors. Browsers will not silently match across cases.</p>
+    <h3>Should I use BEM in 2025?</h3>
+    <p>If you write traditional CSS or SCSS for a multi-developer codebase, yes — BEM still pays off. If you've adopted Tailwind or CSS-in-JS, BEM is unnecessary.</p>
+    <h3>Can I mix kebab-case and camelCase in the same project?</h3>
+    <p>Try not to. Mixing makes search-and-replace harder and increases the chance of typos. If you must mix, draw a clear line — for example, kebab-case for global utilities and camelCase only inside CSS Modules.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case</a>
+        <a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase</a>
+        <a href="/blog/pascal-case-guide.html">PascalCase Explained</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

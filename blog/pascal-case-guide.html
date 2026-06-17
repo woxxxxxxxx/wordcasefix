@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PascalCase Explained: When and How to Use It in Code | WordCaseFix</title>
+<meta name="description" content="A complete guide to PascalCase: what it is, where it is required, how it differs from camelCase, and concrete examples in C#, Java, TypeScript, and React.">
+<meta name="keywords" content="PascalCase, PascalCase guide, PascalCase vs camelCase, class naming, type naming, PascalCase converter">
+<meta property="og:title" content="PascalCase Explained: When and How to Use It in Code">
+<meta property="og:description" content="A complete guide to PascalCase: what it is, where it is required, how it differs from camelCase, and concrete examples.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/pascal-case-guide.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "PascalCase Explained: When and How to Use It in Code",
+  "description": "A complete guide to PascalCase: what it is, where it is required, how it differs from camelCase, and concrete examples.",
+  "author": {"@type": "Organization", "name": "WordCaseFix"},
+  "publisher": {"@type": "Organization", "name": "WordCaseFix", "url": "https://wordcasefix.com"},
+  "url": "https://wordcasefix.com/blog/pascal-case-guide.html",
+  "datePublished": "2025-06-15",
+  "dateModified": "2025-06-15"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6;text-decoration:none;font-weight:500}
+article a:hover{text-decoration:underline}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>PascalCase Explained</span>
+  </div>
+
+  <article>
+    <h1>PascalCase Explained: When and How to Use It in Code</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; Programming</div>
+
+    <p>PascalCase is the naming convention where every word in an identifier begins with a capital letter — including the first one — and there are no spaces or separators between the words. It is named after the Pascal programming language, where it was the recommended style for procedures and types. Today, PascalCase is the conventional style for class names, type names, and component names across nearly every modern object-oriented language.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>PascalCase Converter</strong>
+        Convert any text to clean PascalCase for class and type names.
+      </div>
+      <a class="cta-btn" href="/pascal-case-converter.html">Try PascalCase Converter →</a>
+    </div>
+
+    <h2>What PascalCase Looks Like</h2>
+    <p>The rules are simple: take the words that make up the identifier, capitalize the first letter of each, and concatenate them with nothing in between. Acronyms are typically treated as whole words and capitalized only on the first letter in modern style guides (e.g., <code>XmlHttpRequest</code> not <code>XMLHTTPRequest</code>), although older code often capitalizes the entire acronym.</p>
+
+    <div class="example-box">
+      <p><strong>PascalCase examples:</strong><br><br>
+      <code>UserProfile</code><br>
+      <code>HttpRequestHandler</code><br>
+      <code>InvoiceLineItem</code><br>
+      <code>ShoppingCartService</code><br>
+      <code>NotFoundException</code></p>
+    </div>
+
+    <h2>PascalCase vs camelCase</h2>
+    <p>The two styles are visually almost identical — only the first character differs. camelCase keeps the first word lowercase (<code>userProfile</code>); PascalCase capitalizes it (<code>UserProfile</code>). This tiny difference is used to encode semantic information in many languages: PascalCase signals a type or class, while camelCase signals a value, variable, or function.</p>
+
+    <table>
+      <tr><th>Style</th><th>Example</th><th>Typical use</th></tr>
+      <tr><td>PascalCase</td><td>UserProfile</td><td>Classes, types, components</td></tr>
+      <tr><td>camelCase</td><td>userProfile</td><td>Variables, functions, methods</td></tr>
+      <tr><td>SCREAMING_SNAKE</td><td>USER_PROFILE</td><td>Constants</td></tr>
+      <tr><td>snake_case</td><td>user_profile</td><td>Python/Ruby vars, DB columns</td></tr>
+    </table>
+
+    <p>For a deeper dive, see our comparison of <a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase</a>.</p>
+
+    <h2>Where PascalCase Is Required or Conventional</h2>
+
+    <h3>C# and .NET</h3>
+    <p>Microsoft's official C# naming guidelines mandate PascalCase for namespaces, classes, structs, enums, interfaces (prefixed with <code>I</code>: <code>IDisposable</code>), public methods, public properties, and public fields. camelCase is used only for private fields (often with a leading underscore) and local variables.</p>
+
+    <h3>Java</h3>
+    <p>Java uses PascalCase for class and interface names: <code>ArrayList</code>, <code>HttpServlet</code>, <code>RuntimeException</code>. Methods and variables use camelCase. Constants use SCREAMING_SNAKE_CASE.</p>
+
+    <h3>TypeScript and React</h3>
+    <p>TypeScript uses PascalCase for types, interfaces, enums, and class names. React components — whether function or class — must use PascalCase because JSX uses the leading capital letter to distinguish a component from a regular HTML tag. <code>&lt;Button /&gt;</code> renders a React component; <code>&lt;button /&gt;</code> renders an HTML element.</p>
+
+    <div class="example-box">
+      <p><strong>React component naming:</strong><br><br>
+      ✅ <code>function UserCard() { return &lt;div&gt;...&lt;/div&gt;; }</code><br>
+      ✅ <code>&lt;UserCard name="Alice" /&gt;</code><br>
+      ❌ <code>function userCard()</code> — React will treat &lt;userCard /&gt; as an unknown HTML tag.</p>
+    </div>
+
+    <h3>Go</h3>
+    <p>Go uses capitalization to control visibility. An identifier that starts with a capital letter (PascalCase) is exported from its package; one that starts lowercase (camelCase) is package-private. This means PascalCase is not just a style choice in Go — it changes the meaning of your code.</p>
+
+    <h2>Common PascalCase Mistakes</h2>
+
+    <h3>Mistake 1: Over-Capitalizing Acronyms</h3>
+    <p>Old code often wrote <code>parseHTMLString</code> or <code>HTTPSConnection</code>. Most modern style guides (Microsoft, Google, Airbnb) now recommend treating multi-letter acronyms like ordinary words: <code>parseHtmlString</code>, <code>HttpsConnection</code>. Two-letter acronyms like ID and IO are usually kept fully uppercase: <code>UserID</code>, <code>IOStream</code>.</p>
+
+    <h3>Mistake 2: Using PascalCase for Variables</h3>
+    <p>A variable named <code>UserName</code> in C# or Java will confuse other developers because it looks like a class. Use camelCase for variables and reserve PascalCase for types and constructors.</p>
+
+    <h3>Mistake 3: Lowercasing React Components</h3>
+    <p>This is the most common error for new React developers. If you name a component <code>menuItem</code>, React will not render it as a component — it will look for an HTML element called <code>menuitem</code> and warn that it is unknown.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>General Case Converter</strong>
+        Switch between PascalCase, camelCase, snake_case and more in one tool.
+      </div>
+      <a class="cta-btn" href="/case-converter.html">Try Case Converter →</a>
+    </div>
+
+    <h2>How to Convert to PascalCase Programmatically</h2>
+    <p>The basic algorithm is: split the input on whitespace, hyphens, and underscores; lowercase each token; capitalize the first letter of each token; concatenate. For tricky inputs like <code>iPhone</code> or <code>eBay</code>, you may need a dictionary of brand names to preserve their original casing. You can use our <a href="/pascal-case-converter.html">PascalCase converter</a> for one-off conversions, or implement the function in roughly five lines of JavaScript, Python, or any other language.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <h3>Is PascalCase the same as UpperCamelCase?</h3>
+    <p>Yes. "UpperCamelCase" is a synonym for PascalCase. Some style guides (notably Microsoft's older docs) call camelCase "lowerCamelCase" and PascalCase "UpperCamelCase" to emphasize they are variants of the same idea.</p>
+    <h3>Why is PascalCase used for class names?</h3>
+    <p>Convention. Most modern languages inherited the style from Smalltalk, where classes were always named with an initial capital. Visual contrast between class names and instance variables makes code easier to read.</p>
+    <h3>Should I use PascalCase or kebab-case for file names?</h3>
+    <p>It depends on the ecosystem. React projects commonly use PascalCase for component files (<code>UserCard.tsx</code>). Most other JavaScript projects prefer kebab-case (<code>user-card.js</code>). Python uses snake_case for module files.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase: When to Use Each</a>
+        <a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case in Programming</a>
+        <a href="/blog/css-naming-conventions.html">CSS Naming Conventions Compared</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

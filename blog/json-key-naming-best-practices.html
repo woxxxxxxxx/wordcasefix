@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Key Naming Best Practices: camelCase vs snake_case | WordCaseFix</title>
+<meta name="description" content="Should JSON keys use camelCase or snake_case? Learn the trade-offs, what major APIs do, and how to pick a convention that works across languages.">
+<meta name="keywords" content="JSON key naming, JSON camelCase vs snake_case, REST API naming, JSON best practices, API design naming">
+<meta property="og:title" content="JSON Key Naming Best Practices: camelCase vs snake_case">
+<meta property="og:description" content="Should JSON keys use camelCase or snake_case? Compare trade-offs and pick a convention that works across languages.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/json-key-naming-best-practices.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "JSON Key Naming Best Practices: camelCase vs snake_case",
+  "description": "Should JSON keys use camelCase or snake_case? Compare trade-offs and pick a convention that works across languages.",
+  "author": {"@type": "Organization", "name": "WordCaseFix"},
+  "publisher": {"@type": "Organization", "name": "WordCaseFix", "url": "https://wordcasefix.com"},
+  "url": "https://wordcasefix.com/blog/json-key-naming-best-practices.html",
+  "datePublished": "2025-06-15",
+  "dateModified": "2025-06-15"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6;text-decoration:none;font-weight:500}
+article a:hover{text-decoration:underline}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>JSON Key Naming Best Practices</span>
+  </div>
+
+  <article>
+    <h1>JSON Key Naming Best Practices: camelCase vs snake_case</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; API Design</div>
+
+    <p>The JSON specification does not say anything about how to name keys. <code>{"userId": 5}</code>, <code>{"user_id": 5}</code>, and <code>{"USER_ID": 5}</code> are all syntactically valid. That freedom is exactly why the question of naming conventions sparks so much debate in API design reviews. This guide lays out the pros and cons of the two main contenders — camelCase and snake_case — and offers concrete recommendations based on what major APIs actually do in production.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>JSON Formatter</strong>
+        Pretty-print and validate JSON to inspect your key naming.
+      </div>
+      <a class="cta-btn" href="/json-formatter.html">Try JSON Formatter →</a>
+    </div>
+
+    <h2>The Two Main Contenders</h2>
+    <p>Almost every JSON API in the wild picks one of two conventions for keys: camelCase (<code>firstName</code>, <code>createdAt</code>) or snake_case (<code>first_name</code>, <code>created_at</code>). A handful use kebab-case (<code>first-name</code>), but this is rare because the hyphen makes the key awkward to access in many languages without bracket notation.</p>
+
+    <div class="example-box">
+      <p><strong>Same response, three styles:</strong><br><br>
+      camelCase:<br>
+      <code>{"firstName": "Ana", "createdAt": "2025-01-15"}</code><br><br>
+      snake_case:<br>
+      <code>{"first_name": "Ana", "created_at": "2025-01-15"}</code><br><br>
+      kebab-case:<br>
+      <code>{"first-name": "Ana", "created-at": "2025-01-15"}</code></p>
+    </div>
+
+    <h2>The Case for camelCase</h2>
+    <p>JSON was born from JavaScript, and JavaScript uses camelCase for identifiers. When you parse a JSON response in JavaScript, camelCase keys can be accessed with dot notation directly: <code>response.firstName</code>. snake_case keys also work with dot notation, but they feel foreign to the language. Most TypeScript codebases assume camelCase keys.</p>
+    <p>Other languages that prefer camelCase: Java, C#, Swift, Kotlin, and most modern statically typed languages. If your API is consumed primarily by mobile apps or front-end JavaScript, camelCase is the path of least resistance.</p>
+    <p>Major APIs that use camelCase: Google Cloud APIs, Microsoft Graph, the Twitter v2 API, most AWS SDKs (in their JSON output), and Stripe (which actually uses snake_case in the wire format but exposes camelCase in its TypeScript bindings).</p>
+
+    <h2>The Case for snake_case</h2>
+    <p>If your backend is written in Python, Ruby, Rust, or any language that uses snake_case natively, returning snake_case JSON eliminates an entire layer of translation. The keys you read off the wire are the keys you bind to Python variables or Ruby symbols.</p>
+    <p>snake_case is also easier to read in long key names. <code>customer_account_holder_email</code> scans faster than <code>customerAccountHolderEmail</code> because the underscores act as real word breaks rather than visual case changes.</p>
+    <p>Major APIs that use snake_case: GitHub REST API, Stripe (wire format), Slack, GitLab, Twilio, Reddit, and most Python-backed services.</p>
+
+    <h2>What the Major APIs Actually Do</h2>
+    <table>
+      <tr><th>API</th><th>Convention</th><th>Backend language (mostly)</th></tr>
+      <tr><td>GitHub REST</td><td>snake_case</td><td>Ruby</td></tr>
+      <tr><td>Stripe</td><td>snake_case</td><td>Ruby</td></tr>
+      <tr><td>Google Cloud</td><td>camelCase</td><td>Mixed (proto3 default)</td></tr>
+      <tr><td>Microsoft Graph</td><td>camelCase</td><td>.NET</td></tr>
+      <tr><td>Twitter v2</td><td>camelCase</td><td>Scala/Java</td></tr>
+      <tr><td>Slack</td><td>snake_case</td><td>PHP/Hack</td></tr>
+      <tr><td>AWS</td><td>PascalCase</td><td>Mixed (unusual)</td></tr>
+      <tr><td>Twilio</td><td>snake_case</td><td>Python</td></tr>
+      <tr><td>OpenAI</td><td>snake_case</td><td>Python</td></tr>
+    </table>
+
+    <p>The takeaway: convention usually follows the language the backend was built in. There is no universal right answer.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>camelCase Converter</strong>
+        Convert snake_case JSON keys to camelCase for JavaScript clients.
+      </div>
+      <a class="cta-btn" href="/camel-case-converter.html">Try camelCase Converter →</a>
+    </div>
+
+    <h2>What About Mixing Conventions?</h2>
+    <p>The worst thing you can do is mix conventions within a single API. A response that contains <code>{"userId": 5, "first_name": "Ana"}</code> looks like the work of three different teams who never spoke to each other. It forces every client to handle both casing styles and makes the API harder to learn.</p>
+    <p>If your service evolved over time and you ended up with inconsistent keys, the right fix is a versioned migration: introduce <code>/v2/</code> that standardizes everything, deprecate <code>/v1/</code>, and remove it after a sunset period.</p>
+
+    <h2>Handling Translation at the Boundary</h2>
+    <p>When backend and frontend use different conventions, the cleanest pattern is to translate at the network boundary. A Python backend that returns snake_case keys can be consumed by a TypeScript frontend that automatically converts them to camelCase on receipt. Libraries like <code>humps</code> (JavaScript), <code>case-conversion</code>, and the built-in features of Axum (Rust) or FastAPI (Python via Pydantic aliases) make this trivial.</p>
+
+    <div class="example-box">
+      <p><strong>TypeScript boundary conversion (using humps):</strong><br><br>
+      <code>import { camelizeKeys } from 'humps';</code><br>
+      <code>const response = await fetch('/api/users/5').then(r =&gt; r.json());</code><br>
+      <code>const user = camelizeKeys(response); // user.firstName, user.createdAt</code></p>
+    </div>
+
+    <p>You can also do quick one-off conversions with our <a href="/snake-case-converter.html">snake_case converter</a> or <a href="/camel-case-converter.html">camelCase converter</a>.</p>
+
+    <h2>Other Rules That Apply Either Way</h2>
+    <ul>
+      <li><strong>Use plurals for arrays</strong> and singulars for single objects: <code>users</code>, <code>user</code>.</li>
+      <li><strong>Prefer full words to abbreviations.</strong> <code>address</code>, not <code>addr</code>.</li>
+      <li><strong>Date keys should end in suffixes that signal type</strong>: <code>createdAt</code> (ISO timestamp), <code>createdOn</code> (date only), <code>createdTimestamp</code> (Unix epoch).</li>
+      <li><strong>Boolean keys should read as questions or assertions</strong>: <code>isActive</code>, <code>hasPaid</code>, not <code>active</code> alone (which is ambiguous).</li>
+      <li><strong>Never use reserved JavaScript words</strong> as keys (<code>class</code>, <code>delete</code>, <code>function</code>) even though JSON permits them — they break some consumers.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+    <h3>Does JSON case-sensitivity matter?</h3>
+    <p>Yes. <code>{"User": 1}</code> and <code>{"user": 1}</code> are two different keys. Always be exact about case in client code, especially when parsing JSON manually.</p>
+    <h3>Is camelCase faster to parse than snake_case?</h3>
+    <p>No. Parsing speed is dominated by I/O and string length, not key style. Pick based on readability and consistency, not perceived performance.</p>
+    <h3>What if my consumers use multiple languages?</h3>
+    <p>Pick one wire format (usually based on what's most common in your consumer base) and provide SDKs in each major language that translate automatically. Most large APIs follow this pattern.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case</a>
+        <a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase</a>
+        <a href="/blog/database-naming-conventions.html">Database Naming Conventions</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

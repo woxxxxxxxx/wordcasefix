@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONSTANT_CASE Guide: Why Programmers Use All Caps with Underscores | WordCaseFix</title>
+<meta name="description" content="Why CONSTANT_CASE (SCREAMING_SNAKE_CASE) is used for constants, environment variables, and enums across programming languages — with rules and examples.">
+<meta name="keywords" content="CONSTANT_CASE, SCREAMING_SNAKE_CASE, naming constants, environment variable naming, enum naming">
+<meta property="og:title" content="CONSTANT_CASE Guide: Why Programmers Use All Caps with Underscores">
+<meta property="og:description" content="Why CONSTANT_CASE is used for constants, environment variables, and enums — with rules and examples across languages.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/constant-case-guide.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CONSTANT_CASE Guide: Why Programmers Use All Caps with Underscores",
+  "description": "Why CONSTANT_CASE is used for constants, environment variables, and enums — with rules and examples across languages.",
+  "author": {"@type": "Organization", "name": "WordCaseFix"},
+  "publisher": {"@type": "Organization", "name": "WordCaseFix", "url": "https://wordcasefix.com"},
+  "url": "https://wordcasefix.com/blog/constant-case-guide.html",
+  "datePublished": "2025-06-15",
+  "dateModified": "2025-06-15"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6;text-decoration:none;font-weight:500}
+article a:hover{text-decoration:underline}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>CONSTANT_CASE Guide</span>
+  </div>
+
+  <article>
+    <h1>CONSTANT_CASE Guide: Why Programmers Use All Caps with Underscores</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; Programming</div>
+
+    <p>If you have written code in almost any language, you have seen identifiers like <code>MAX_RETRY_COUNT</code>, <code>DATABASE_URL</code>, or <code>HTTP_TIMEOUT_SECONDS</code>. This is CONSTANT_CASE — also called SCREAMING_SNAKE_CASE, UPPER_SNAKE_CASE, or MACRO_CASE. It is the universal signal that a name represents a value that does not change at runtime. This guide explains where the convention comes from, where it is required, and how to apply it consistently.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Case Converter</strong>
+        Transform any text or identifier into CONSTANT_CASE in one click.
+      </div>
+      <a class="cta-btn" href="/case-converter.html">Try Case Converter →</a>
+    </div>
+
+    <h2>What Is CONSTANT_CASE?</h2>
+    <p>CONSTANT_CASE writes identifiers in all uppercase letters with underscores separating words. It is essentially snake_case (lowercase letters with underscores) but capitalized. Examples: <code>MAX_BUFFER_SIZE</code>, <code>API_BASE_URL</code>, <code>DEFAULT_LOCALE</code>, <code>USER_ROLE_ADMIN</code>.</p>
+    <p>The convention dates back to C, where the preprocessor's <code>#define</code> directive is conventionally written in all caps to distinguish macro substitutions from real variables. From there it spread to nearly every C-influenced language: Java, C++, JavaScript, Python, Ruby, Go, Rust, and PHP all use CONSTANT_CASE for the same purpose.</p>
+
+    <h2>Why All Caps?</h2>
+    <p>The convention exists for one reason: visual contrast. When you read code top to bottom, all-caps tokens jump out as different from everything around them. That visual difference is a useful cognitive signal — it tells you immediately "this value is fixed; you cannot reassign it." A variable named <code>maxRetries</code> blends in with the rest of the code; a constant named <code>MAX_RETRIES</code> stands apart.</p>
+
+    <div class="example-box">
+      <p><strong>Why CONSTANT_CASE helps readability:</strong><br><br>
+      <code>if (attempts &gt; MAX_RETRIES) throw new Error('Too many attempts');</code><br><br>
+      The reader instantly knows <code>MAX_RETRIES</code> is a fixed value defined elsewhere, while <code>attempts</code> is the runtime counter. No documentation needed.</p>
+    </div>
+
+    <h2>Where to Use CONSTANT_CASE</h2>
+
+    <h3>Compile-Time Constants</h3>
+    <p>Any value that is known at compile time and should never change at runtime: configuration limits, magic numbers, error codes, status strings, regex patterns. In Java these are <code>static final</code> fields; in C# they are <code>const</code>; in C++ they are <code>constexpr</code>; in Rust they are <code>const</code>.</p>
+
+    <h3>Enum Members</h3>
+    <p>Most enum conventions use CONSTANT_CASE for individual members. <code>enum Color { RED, GREEN, BLUE }</code> in Java, <code>OrderStatus.PENDING</code> in Python's Enum class, <code>HttpMethod.GET</code> in TypeScript enums. The capitalization signals that these are fixed, named constants rather than instance values.</p>
+
+    <h3>Environment Variables</h3>
+    <p>Environment variables in Unix-like systems are conventionally CONSTANT_CASE: <code>HOME</code>, <code>PATH</code>, <code>NODE_ENV</code>, <code>DATABASE_URL</code>, <code>AWS_SECRET_ACCESS_KEY</code>. This is technically a soft convention, but every tool, every Dockerfile, and every CI system follows it. Lowercase env vars work but look broken.</p>
+
+    <h3>Preprocessor Macros (C/C++)</h3>
+    <p>Anything defined with <code>#define</code> should be in CONSTANT_CASE so the reader knows it is a textual substitution, not a variable. <code>#define MAX_PATH 260</code>, <code>#define DEBUG_LOG(x)</code>.</p>
+
+    <h2>Cross-Language Examples</h2>
+    <table>
+      <tr><th>Language</th><th>Example</th><th>Notes</th></tr>
+      <tr><td>Java</td><td><code>public static final int MAX_SIZE = 100;</code></td><td>Required by Java conventions</td></tr>
+      <tr><td>JavaScript</td><td><code>const API_URL = 'https://api.example.com';</code></td><td>Convention for true module constants</td></tr>
+      <tr><td>Python</td><td><code>MAX_RETRIES = 3</code></td><td>PEP 8 standard for module-level constants</td></tr>
+      <tr><td>C/C++</td><td><code>#define BUFFER_SIZE 1024</code></td><td>Standard for macros</td></tr>
+      <tr><td>Go</td><td><code>const MaxSize = 100</code></td><td>Go prefers PascalCase — exception to the rule</td></tr>
+      <tr><td>Rust</td><td><code>const MAX_SIZE: u32 = 100;</code></td><td>Compiler warns if not CONSTANT_CASE</td></tr>
+      <tr><td>Ruby</td><td><code>MAX_SIZE = 100</code></td><td>Capital first letter makes it a constant</td></tr>
+      <tr><td>Shell</td><td><code>export NODE_ENV=production</code></td><td>Universal for env vars</td></tr>
+    </table>
+
+    <p>Go is the one major exception. Idiomatic Go uses PascalCase for exported constants and camelCase for package-private ones, treating constants like any other identifier and using capitalization for export visibility instead.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Snake Case Converter</strong>
+        Need the lowercase variant? Convert to snake_case instantly.
+      </div>
+      <a class="cta-btn" href="/snake-case-converter.html">Try Snake Case Converter →</a>
+    </div>
+
+    <h2>Rules for Writing Good CONSTANT_CASE Names</h2>
+    <ol>
+      <li><strong>Use full words, not abbreviations.</strong> <code>MAXIMUM_BUFFER_SIZE</code> reads better than <code>MAX_BUF_SZ</code>. The verbosity is fine because you only type the name once at the definition.</li>
+      <li><strong>Group related constants with a common prefix.</strong> <code>HTTP_STATUS_OK</code>, <code>HTTP_STATUS_NOT_FOUND</code>, <code>HTTP_STATUS_INTERNAL_ERROR</code>. This makes autocomplete more useful.</li>
+      <li><strong>Avoid putting units in values; put them in names.</strong> <code>TIMEOUT_MS = 5000</code> is clearer than just <code>TIMEOUT = 5000</code>.</li>
+      <li><strong>Don't use CONSTANT_CASE for things that aren't constants.</strong> A function parameter or local variable in all caps is misleading even if you never reassign it.</li>
+      <li><strong>Spell numbers, don't abbreviate.</strong> <code>TWO_HUNDRED_FIFTY_SIX</code> is silly; <code>BLOCK_SIZE_256</code> is clear.</li>
+    </ol>
+
+    <h2>Common Anti-Patterns</h2>
+
+    <h3>Anti-Pattern 1: SHOUTING in Logs and Comments</h3>
+    <p>CONSTANT_CASE is for identifiers, not prose. Writing log messages in all caps reads as shouting. Use sentence case in log strings and reserve CONSTANT_CASE for variable names.</p>
+
+    <h3>Anti-Pattern 2: Constants That Aren't Actually Constant</h3>
+    <p>In JavaScript, <code>const myArray = []</code> declares a constant binding, but the array itself can still be mutated. Naming it <code>MY_ARRAY</code> falsely suggests immutability. Reserve CONSTANT_CASE for primitive values or genuinely immutable structures.</p>
+
+    <h3>Anti-Pattern 3: Mixing CONSTANT_CASE with camelCase Members</h3>
+    <p>If your enum or class uses CONSTANT_CASE for some members and camelCase for others, the convention loses all signal value. Pick one and apply it across the entire type.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <h3>Is CONSTANT_CASE the same as SCREAMING_SNAKE_CASE?</h3>
+    <p>Yes — they are two names for the exact same convention. "SCREAMING_SNAKE_CASE" is the more colorful informal name; "CONSTANT_CASE" and "MACRO_CASE" are more technical synonyms.</p>
+    <h3>Should I use CONSTANT_CASE for class-level constants?</h3>
+    <p>Yes, in almost every language except Go. Java, C#, Python, JavaScript, Ruby, Rust, and PHP all expect CONSTANT_CASE for class-level constants and static finals.</p>
+    <h3>Why are environment variables uppercase?</h3>
+    <p>By convention dating to early Unix. The shell does not require it, but every tool, library, and documentation example assumes it. Lowercase env var names will work but will confuse every reader.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case</a>
+        <a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase</a>
+        <a href="/blog/database-naming-conventions.html">Database Naming Conventions</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

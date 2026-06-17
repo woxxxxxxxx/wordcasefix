@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Naming Conventions: snake_case, PascalCase & Best Practices | WordCaseFix</title>
+<meta name="description" content="Best practices for naming database tables, columns, indexes, and foreign keys. Compare snake_case vs PascalCase and learn rules that survive schema migrations.">
+<meta name="keywords" content="database naming conventions, SQL naming, table naming, column naming, snake_case database, database design">
+<meta property="og:title" content="Database Naming Conventions: snake_case, PascalCase & Best Practices">
+<meta property="og:description" content="Best practices for naming database tables, columns, indexes, and foreign keys across SQL engines.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/database-naming-conventions.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Database Naming Conventions: snake_case, PascalCase & Best Practices",
+  "description": "Best practices for naming database tables, columns, indexes, and foreign keys across SQL engines.",
+  "author": {"@type": "Organization", "name": "WordCaseFix"},
+  "publisher": {"@type": "Organization", "name": "WordCaseFix", "url": "https://wordcasefix.com"},
+  "url": "https://wordcasefix.com/blog/database-naming-conventions.html",
+  "datePublished": "2025-06-15",
+  "dateModified": "2025-06-15"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6;text-decoration:none;font-weight:500}
+article a:hover{text-decoration:underline}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>Database Naming Conventions</span>
+  </div>
+
+  <article>
+    <h1>Database Naming Conventions: snake_case, PascalCase & Best Practices</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; Databases</div>
+
+    <p>Database names live forever. A column name added in haste during a Friday afternoon deploy becomes the name your team grepped, queried, and joined against for the next ten years. Renaming it later means a migration, careful coordination, and downtime risk. That makes naming conventions one of the highest-leverage decisions in schema design. This guide covers the practical rules that survive contact with production.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Snake Case Converter</strong>
+        Convert any identifier to clean, database-friendly snake_case.
+      </div>
+      <a class="cta-btn" href="/snake-case-converter.html">Try Snake Case Converter →</a>
+    </div>
+
+    <h2>snake_case Is the De Facto Standard</h2>
+    <p>The overwhelming majority of SQL databases — PostgreSQL, MySQL, SQLite, Oracle, and most ORMs (Django, Rails, SQLAlchemy, Hibernate's default naming strategy) — use snake_case for table and column names. There are two reasons.</p>
+    <p>First, SQL identifiers are case-insensitive in most engines but case-folded inconsistently. PostgreSQL folds unquoted identifiers to lowercase. SQL Server preserves them but compares case-insensitively by default. MySQL behavior depends on the operating system. snake_case sidesteps all of this because all letters are already lowercase.</p>
+    <p>Second, snake_case visually separates words without requiring case sensitivity. <code>customer_account_holder</code> is unambiguous; <code>customeraccountholder</code> is unreadable; <code>CustomerAccountHolder</code> requires quoting in PostgreSQL.</p>
+
+    <div class="example-box">
+      <p><strong>Same schema, three styles:</strong><br><br>
+      snake_case (recommended):<br>
+      <code>CREATE TABLE order_items (order_id INT, product_id INT, quantity INT);</code><br><br>
+      PascalCase (requires quoting in Postgres):<br>
+      <code>CREATE TABLE "OrderItems" ("OrderId" INT, "ProductId" INT);</code><br><br>
+      camelCase (silently folded to lowercase in Postgres):<br>
+      <code>CREATE TABLE orderItems (orderId INT); -- becomes "orderitems"!</code></p>
+    </div>
+
+    <h2>Tables: Plural or Singular?</h2>
+    <p>The debate between plural (<code>users</code>) and singular (<code>user</code>) table names is one of the oldest in database design. Both have merit.</p>
+    <p>Plural names match the natural-language intuition: a table called <code>users</code> contains many users. Rails and most modern web frameworks default to plural.</p>
+    <p>Singular names emphasize that each row represents one entity, and they keep join syntax cleaner: <code>user.id = order.user_id</code> reads more naturally than <code>users.id = orders.user_id</code>. The classic Microsoft and Oracle data-modeling tradition is singular.</p>
+    <p>Either choice is defensible. The non-negotiable rule is consistency — apply the same style to every table in the schema.</p>
+
+    <h2>Column Naming Rules</h2>
+    <ol>
+      <li><strong>Primary keys: just <code>id</code></strong>. Don't prefix with the table name (<code>user_id</code> inside the <code>users</code> table is redundant). Some teams disagree and prefer fully prefixed PKs to make joins more readable — pick one rule.</li>
+      <li><strong>Foreign keys: <code>&lt;referenced_table_singular&gt;_id</code></strong>. A foreign key from <code>orders</code> to <code>users</code> should be <code>user_id</code>. This pattern lets natural joins work (<code>USING (user_id)</code>).</li>
+      <li><strong>Booleans: prefix with <code>is_</code> or <code>has_</code></strong>. <code>is_active</code>, <code>has_paid</code>, <code>is_deleted</code>. Avoid bare adjectives like <code>active</code> which read ambiguously.</li>
+      <li><strong>Timestamps: suffix with <code>_at</code></strong>. <code>created_at</code>, <code>updated_at</code>, <code>published_at</code>, <code>deleted_at</code>. Use <code>_on</code> for date-only fields (<code>birth_on</code>).</li>
+      <li><strong>Counters: suffix with <code>_count</code></strong>. <code>comment_count</code>, <code>view_count</code>.</li>
+      <li><strong>Currency: include the currency code</strong> or use a separate column. <code>price_cents</code> with implicit USD, or <code>price_amount</code> + <code>price_currency</code>.</li>
+    </ol>
+
+    <h2>Naming Indexes, Constraints, and Triggers</h2>
+    <p>Most databases will auto-generate ugly names like <code>fk_a8c3b9d_idx</code> if you let them. Explicit names make migrations and troubleshooting far easier. Follow a predictable pattern.</p>
+
+    <table>
+      <tr><th>Object</th><th>Pattern</th><th>Example</th></tr>
+      <tr><td>Primary key</td><td>pk_&lt;table&gt;</td><td>pk_users</td></tr>
+      <tr><td>Foreign key</td><td>fk_&lt;table&gt;_&lt;col&gt;</td><td>fk_orders_user_id</td></tr>
+      <tr><td>Unique constraint</td><td>uq_&lt;table&gt;_&lt;col&gt;</td><td>uq_users_email</td></tr>
+      <tr><td>Index</td><td>ix_&lt;table&gt;_&lt;col&gt;</td><td>ix_orders_created_at</td></tr>
+      <tr><td>Composite index</td><td>ix_&lt;table&gt;_&lt;c1&gt;_&lt;c2&gt;</td><td>ix_orders_user_id_created_at</td></tr>
+      <tr><td>Check constraint</td><td>ck_&lt;table&gt;_&lt;col&gt;</td><td>ck_orders_quantity_positive</td></tr>
+      <tr><td>Trigger</td><td>tr_&lt;table&gt;_&lt;action&gt;</td><td>tr_orders_set_updated_at</td></tr>
+    </table>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Case Converter</strong>
+        Switch identifiers between snake_case, PascalCase, and camelCase.
+      </div>
+      <a class="cta-btn" href="/case-converter.html">Try Case Converter →</a>
+    </div>
+
+    <h2>Reserved Words to Avoid</h2>
+    <p>Every SQL engine has a list of reserved words that cannot be used as bare identifiers. Common ones: <code>user</code>, <code>order</code>, <code>group</code>, <code>type</code>, <code>name</code>, <code>date</code>, <code>time</code>, <code>level</code>, <code>status</code>. PostgreSQL will let you use most of them with quoting; MySQL is stricter. Avoid them entirely. Use <code>users</code> instead of <code>user</code>, <code>orders</code> instead of <code>order</code>, <code>order_type</code> instead of <code>type</code>.</p>
+
+    <h2>Junction (Join) Tables</h2>
+    <p>For many-to-many relationships, name the junction table by concatenating both table names in alphabetical order, separated by an underscore: <code>posts_tags</code>, <code>users_roles</code>. Some teams prefer a more descriptive name when the relationship has meaning beyond a simple link: <code>memberships</code> instead of <code>users_groups</code>.</p>
+
+    <h2>Schema and Database Names</h2>
+    <p>Use lowercase with underscores or no separator at all for database names: <code>billing</code>, <code>analytics</code>, <code>app_production</code>. Avoid hyphens — they require quoting in nearly every engine. Schemas (PostgreSQL) follow the same rule.</p>
+
+    <h2>How This Plays with Your Application Code</h2>
+    <p>If your backend is Python, Ruby, or Go, snake_case database columns map directly to native identifiers — no translation needed. If your backend is Java, C#, or TypeScript, your ORM will convert snake_case columns to camelCase fields automatically (Hibernate's <code>snake_case</code> strategy, EF Core's naming conventions, Prisma's <code>@map</code> attributes). The database stays canonical; only the language layer changes. See our <a href="/blog/json-key-naming-best-practices.html">JSON key naming guide</a> for advice on the wire format.</p>
+
+    <div class="highlight-box">
+      <strong>Golden rule:</strong> The database is the canonical source of truth. Use snake_case in the schema, even if your application code uses camelCase. Translation belongs in the ORM layer, not in the column name.
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <h3>Can I use camelCase columns in PostgreSQL?</h3>
+    <p>Technically yes, but only if you double-quote them in every query (<code>SELECT "userId" FROM users</code>). Unquoted, PostgreSQL folds them to lowercase. snake_case avoids this trap entirely.</p>
+    <h3>Should foreign keys be indexed automatically?</h3>
+    <p>PostgreSQL does not create them automatically; MySQL InnoDB does. Always add explicit indexes on foreign keys regardless of engine. Naming them with the <code>ix_</code> prefix makes them findable.</p>
+    <h3>Is it OK to use plural table names with singular foreign keys?</h3>
+    <p>Yes, this is the most common pattern: <code>users</code> table, <code>user_id</code> foreign key column. The mismatch matches how English works ("the user's id").</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case</a>
+        <a href="/blog/json-key-naming-best-practices.html">JSON Key Naming Best Practices</a>
+        <a href="/blog/constant-case-guide.html">CONSTANT_CASE Guide</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>
