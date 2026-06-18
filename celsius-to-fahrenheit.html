@@ -72,6 +72,27 @@
 <div class="related-tools"><h3>Related Tools</h3><a href="/unit-converter.html">Unit Converter</a><a href="/calculator.html">Calculator</a><a href="/percentage-calculator.html">Percentage Calculator</a><a href="/discount-calculator.html">Discount Calculator</a><a href="/tip-calculator.html">Tip Calculator</a></div>
 </div>
 <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+<section class="content-modules" style="max-width:780px;margin:40px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">How to Use This Tool</h2>
+<ol style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
+<li>Type a temperature into the Celsius, Fahrenheit, or Kelvin field — the other two scales update instantly.</li>
+<li>Use decimals for precision (e.g. 36.6 °C for body temperature) — the converter accepts any numeric value, positive or negative.</li>
+<li>Copy the converted value directly, or clear the field to start a new conversion. No button click required.</li>
+</ol>
+<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Common Use Cases</h2>
+<ul style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
+<li><strong>Cooking &amp; baking:</strong> Convert oven temperatures from American recipes (°F) to European recipes (°C) when following international cookbooks.</li>
+<li><strong>Weather &amp; travel:</strong> Quickly translate a foreign weather forecast — most of the world reports in Celsius while the US still uses Fahrenheit.</li>
+<li><strong>Science &amp; engineering:</strong> Convert lab readings or HVAC specs between scales, including Kelvin for thermodynamics calculations.</li>
+</ul>
+<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Frequently Asked Questions</h2>
+<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">What is the formula for Celsius to Fahrenheit?</h3>
+<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">°F = (°C × 9/5) + 32. For example, 100 °C = (100 × 1.8) + 32 = 212 °F (water's boiling point at sea level).</p>
+<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">At what temperature are Celsius and Fahrenheit equal?</h3>
+<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">At −40°. That is the single point where both scales read the same number: −40 °C = −40 °F.</p>
+<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Does this tool work offline?</h3>
+<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">Yes. The conversion runs entirely in your browser with JavaScript — no values are sent to a server, so once the page loads you can use it without an internet connection.</p>
+</section>
 <footer>Celsius to Fahrenheit Converter &mdash; Free online temperature converter</footer>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Celsius to Fahrenheit Converter","url":"https://wordcasefix.com/celsius-to-fahrenheit.html","description":"Convert temperature between Celsius, Fahrenheit, and Kelvin instantly. Free online temperature converter with formulas.","applicationCategory":"Utilities","operatingSystem":"All","browserRequirements":"Requires JavaScript"}</script>
 <script>(function(){var c=document.getElementById('celsius'),f=document.getElementById('fahrenheit'),k=document.getElementById('kelvin');c.addEventListener('input',function(){var v=parseFloat(c.value);if(c.value===''){f.value='';k.value='';return;}if(isNaN(v))return;f.value=((v*9/5)+32).toFixed(1);k.value=(v+273.15).toFixed(2);});f.addEventListener('input',function(){var v=parseFloat(f.value);if(f.value===''){c.value='';k.value='';return;}if(isNaN(v))return;c.value=((v-32)*5/9).toFixed(1);k.value=((v-32)*5/9+273.15).toFixed(2);});k.addEventListener('input',function(){var v=parseFloat(k.value);if(k.value===''){c.value='';f.value='';return;}if(isNaN(v))return;c.value=(v-273.15).toFixed(1);f.value=((v-273.15)*9/5+32).toFixed(1);});var b=document.getElementById('backToTop');window.addEventListener('scroll',function(){if(window.scrollY>300)b.classList.add('visible');else b.classList.remove('visible');});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});var q=document.querySelectorAll('.faq-question');for(var i=0;i<q.length;i++){(function(btn){btn.addEventListener('click',function(){var item=btn.parentElement;item.classList.toggle('active');});})(q[i]);}})();</script>

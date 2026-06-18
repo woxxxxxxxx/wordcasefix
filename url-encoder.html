@@ -61,6 +61,27 @@
 <div class="related-tools"><h2>Related Tools</h2><ul><li><a href="/base64-encoder.html">Base64 Encoder/Decoder</a></li><li><a href="/html-encoder.html">HTML Encoder/Decoder</a></li><li><a href="/hash-generator.html">Hash Generator</a></li><li><a href="/slug-converter.html">Slug Converter</a></li><li><a href="/regex-tester.html">Regex Tester</a></li></ul></div></div>
 <div class="sidebar"><div class="ad-box"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div><div class="ad-box"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div></div></div></div>
 <div class="ad-box ad-top"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div>
+<section class="content-modules" style="max-width:780px;margin:40px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">How to Use This Tool</h2>
+<ol style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
+<li>Select mode: <em>Encode</em> turns plain text into percent-encoded URL-safe text; <em>Decode</em> reverses it.</li>
+<li>Paste your text or URL into the input field — the conversion runs as you type.</li>
+<li>Click "Copy Result" to put the encoded or decoded output on your clipboard. Use the swap button to reverse direction.</li>
+</ol>
+<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Common Use Cases</h2>
+<ul style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
+<li><strong>Building query strings:</strong> Safely embed user input, search terms, or special characters (spaces, &amp;, =, /) into URL parameters.</li>
+<li><strong>Debugging API requests:</strong> Decode the URL parameters from a webhook payload, OAuth callback, or browser address bar to see the original values.</li>
+<li><strong>Sharing links with special characters:</strong> Encode URLs containing non-ASCII characters (e.g. Chinese, emoji) before pasting them into chat, email, or QR codes.</li>
+</ul>
+<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Frequently Asked Questions</h2>
+<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">What's the difference between encodeURI and encodeURIComponent?</h3>
+<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">This tool uses <code>encodeURIComponent</code>, which escapes every reserved URL character (including <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code>). Use it when encoding a <em>value</em> inside a query string. <code>encodeURI</code> leaves those reserved characters alone — use it only when encoding a whole URL.</p>
+<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Why is a space sometimes <code>%20</code> and sometimes <code>+</code>?</h3>
+<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px"><code>%20</code> is the URL-path encoding; <code>+</code> is used in <code>application/x-www-form-urlencoded</code> query strings. This tool decodes both, but always encodes to <code>%20</code> for maximum compatibility.</p>
+<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Will it handle non-ASCII characters like 中文 or emoji?</h3>
+<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">Yes. Characters are encoded using UTF-8 byte sequences, the standard for modern URLs. So 中 becomes <code>%E4%B8%AD</code> and round-trips back cleanly on decode.</p>
+</section>
 <footer class="footer">URL Encoder Decoder &mdash; Free online URL encoding and decoding tool</footer>
 <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
 <script>(function(){var modeEncode=document.getElementById('modeEncode'),modeDecode=document.getElementById('modeDecode');var inp=document.getElementById('inputText'),out=document.getElementById('outputText');function convert(){var t=inp.value;if(!t){out.value='';return;}try{if(modeEncode.checked){out.value=encodeURIComponent(t);}else{out.value=decodeURIComponent(t.replace(/\+/g,' '));}}catch(e){out.value='Error: '+e.message;}}document.getElementById('convertBtn').addEventListener('click',convert);document.getElementById('swapBtn').addEventListener('click',function(){var tmp=inp.value;inp.value=out.value;out.value=tmp;convert();});document.getElementById('copyBtn').addEventListener('click',function(){if(!out.value)return;navigator.clipboard.writeText(out.value);this.textContent='Copied!';var btn=this;setTimeout(function(){btn.textContent='Copy Result';},1500);});modeEncode.addEventListener('change',convert);modeDecode.addEventListener('change',convert);inp.addEventListener('input',convert);convert();var backBtn=document.getElementById('backToTop');window.addEventListener('scroll',function(){if(window.scrollY>300){backBtn.classList.add('visible');}else{backBtn.classList.remove('visible');}});backBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});document.querySelectorAll('.faq-question').forEach(function(q){q.addEventListener('click',function(){var item=this.parentElement;item.classList.toggle('open');});});})();</script></body></html>
