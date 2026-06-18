@@ -132,15 +132,23 @@
 .cat-tab.active{background:#5b5bd6;color:#fff;border-color:#5b5bd6}
 .no-results{grid-column:1/-1;text-align:center;padding:40px 20px;color:#bbb;font-size:15px}
 .grid-ad{grid-column:1/-1;height:70px;margin:0}
-.pagination{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px}
-.pagination button{padding:8px 18px;font-size:13px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:6px;cursor:pointer;transition:background .2s;font-family:inherit}
-.pagination button:hover{background:#4a4ac2}
-.pagination button:disabled{background:#d0d5dd;cursor:default}
-.seo-content{margin:28px auto 0;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
+.pagination{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:32px;padding-top:32px;border-top:1px solid #e8e9ed}
+.page-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;font-size:13px;font-weight:600;color:#5b5bd6;background:#fff;border:1.5px solid #5b5bd6;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.page-btn:hover:not(:disabled){background:linear-gradient(135deg,#5b5bd6,#7c7ce0);color:#fff;border-color:#5b5bd6}
+.page-btn:disabled{color:#ccc;border-color:#e0e0e0;cursor:default;background:#fafafa}
+.page-btn svg{width:14px;height:14px}
+.page-numbers{display:flex;align-items:center;gap:4px}
+.page-num{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .15s;border:1.5px solid transparent;color:#555;background:transparent}
+.page-num:hover{background:#f0f0ff;color:#5b5bd6}
+.page-num.active{background:#5b5bd6;color:#fff;border-color:#5b5bd6}
+.page-num.ellipsis{cursor:default;color:#999;pointer-events:none}
+.page-showing{text-align:center;margin-top:12px;font-size:13px;color:#94a3b8;font-weight:500}
 .pagination .page-info{font-size:13px;color:#888;font-weight:600}
+.seo-content{margin:28px auto 0;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.seo-content h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:8px}.seo-content p{font-size:13px;color:#666;line-height:1.7;margin:0}footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
 footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:underline}
 .faq-section{margin:24px auto;padding:24px;max-width:720px;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 6px rgba(0,0,0,.04)}.faq-section h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.faq-item{margin-bottom:16px}.faq-item h3{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px}.faq-item p{font-size:13px;color:#666;line-height:1.7;margin:0}
 </style>
+<link rel="stylesheet" href="/assets/css/tool-modules.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://wordcasefix.com/">
 
@@ -226,10 +234,17 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
     </div>
 
     <div class="pagination" id="pagination">
-      <button id="prevPage" disabled>← Prev</button>
-      <span class="page-info" id="pageInfo">Page 1 / 1</span>
-      <button id="nextPage" disabled>Next →</button>
+      <button class="page-btn page-prev" id="prevPage" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Prev
+      </button>
+      <div class="page-numbers" id="pageNumbers"></div>
+      <button class="page-btn page-next" id="nextPage" disabled>
+        Next
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+    <div class="page-showing" id="pageShowing"></div>
 
   </main>
 
@@ -237,18 +252,28 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 
 
 
-<section id="guides" style="max-width:780px;margin:0 auto 40px;padding:0 24px">
-<h2 style="font-size:22px;font-weight:800;color:#1a1a2e;margin-bottom:6px;letter-spacing:-.3px">Guides &amp; Resources</h2>
-<p style="font-size:14px;color:#888;margin-bottom:20px">In-depth articles on text formatting, naming conventions, writing standards, and developer tools.</p>
-<div id="guidesGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px"></div>
-<div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px">
-  <div style="display:flex;align-items:center;gap:10px">
-    <button id="gPrev" disabled onclick="guidesNav(-1)" style="padding:7px 16px;font-size:13px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:6px;cursor:pointer;transition:background .2s;font-family:inherit">← Prev</button>
-    <span id="gPageInfo" style="font-size:13px;color:#888;font-weight:600">Page 1 / 5</span>
-    <button id="gNext" onclick="guidesNav(1)" style="padding:7px 16px;font-size:13px;font-weight:600;color:#fff;background:#5b5bd6;border:none;border-radius:6px;cursor:pointer;transition:background .2s;font-family:inherit">Next →</button>
+<section class="guides-section" id="guides">
+  <div class="guides-inner">
+    <div class="guides-decor"></div>
+    <h2 class="guides-heading">Guides &amp; Resources</h2>
+    <p class="guides-sub">In-depth articles on text formatting, naming conventions, writing standards, and developer tools.</p>
+    <div class="guides-grid" id="guidesGrid"></div>
+    <div class="guides-pagination" id="guidesPagination">
+      <button class="page-btn page-prev" id="gPrev" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Prev
+      </button>
+      <div class="page-numbers" id="gPageNumbers"></div>
+      <button class="page-btn page-next" id="gNext" disabled>
+        Next
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <a href="/blog/" class="guides-view-all">View all 27 guides →</a>
+    </div>
   </div>
-  <a href="/blog/" style="font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none">View all 27 guides →</a>
-</div>
+</section>
 <script>
 (function(){
 var GUIDES=[
@@ -280,29 +305,63 @@ var GUIDES=[
   {url:'/blog/technical-writing-basics.html',cat:'WRITING',title:'Technical Writing Basics: How to Write Docs People Actually Read',excerpt:'Active voice, sentence length, structure, and the patterns that make documentation scannable and useful.'},
   {url:'/blog/password-security-best-practices.html',cat:'SECURITY',title:'Password Security in 2026: Length, Entropy &amp; Best Practices',excerpt:'Why length beats complexity, what entropy means for passwords, and how to build a sustainable password strategy.'}
 ];
-var PER=6,page=0,total=Math.ceil(GUIDES.length/PER);
-var CARD_STYLE='display:block;background:#fff;border-radius:12px;padding:20px 22px;text-decoration:none;border:1.5px solid #e8e9ed;transition:border-color .2s,box-shadow .2s';
-function render(){
-  var s=page*PER,items=GUIDES.slice(s,s+PER);
-  document.getElementById('guidesGrid').innerHTML=items.map(function(g,i){
-    var span=items.length===5&&i===4?';grid-column:1/-1':'';
-    return '<a href="'+g.url+'" style="'+CARD_STYLE+span+'" onmouseover="this.style.borderColor=\'#5b5bd6\';this.style.boxShadow=\'0 4px 14px rgba(91,91,214,.1)\'" onmouseout="this.style.borderColor=\'#e8e9ed\';this.style.boxShadow=\'none\'">'
-      +'<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#5b5bd6;margin-bottom:6px">'+g.cat+'</div>'
-      +'<div style="font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:6px;line-height:1.3">'+g.title+'</div>'
-      +'<div style="font-size:13px;color:#888;line-height:1.5">'+g.excerpt+'</div>'
-      +'</a>';
-  }).join('');
-  document.getElementById('gPageInfo').textContent='Page '+(page+1)+' / '+total;
-  document.getElementById('gPrev').disabled=page===0;
-  document.getElementById('gNext').disabled=page===total-1;
-  document.getElementById('gPrev').style.background=page===0?'#d0d5dd':'#5b5bd6';
-  document.getElementById('gNext').style.background=page===total-1?'#d0d5dd':'#5b5bd6';
+var G_PER=6,gPage=0,gTotal=Math.ceil(GUIDES.length/G_PER);
+var catColors={
+  'WRITING':{bar:'#ec4899',bg:'#fce7f3',color:'#be185d'},
+  'ACADEMIC':{bar:'#ec4899',bg:'#fce7f3',color:'#be185d'},
+  'DEVELOPER':{bar:'#5b5bd6',bg:'#ede9fe',color:'#4c1d95'},
+  'PROGRAMMING':{bar:'#5b5bd6',bg:'#ede9fe',color:'#4c1d95'},
+  'DESIGN':{bar:'#f59e0b',bg:'#fef3c7',color:'#92400e'},
+  'PRODUCTIVITY':{bar:'#10b981',bg:'#d1fae5',color:'#065f46'},
+  'SEO':{bar:'#06b6d4',bg:'#cffafe',color:'#0e7490'},
+  'SECURITY':{bar:'#ef4444',bg:'#fee2e2',color:'#991b1b'}
+};
+function gPageRange(c,t,max){
+  var delta=Math.floor(max/2),s=Math.max(1,c-delta),e=Math.min(t,s+max-1);
+  if(e-s<max-1)s=Math.max(1,e-max+1);
+  var r=[];
+  if(s>1){r.push(1);if(s>2)r.push('...');}
+  for(var i=s;i<=e;i++)r.push(i);
+  if(e<t){if(e<t-1)r.push('...');r.push(t);}
+  return r;
 }
-window.guidesNav=function(d){page+=d;render();};
-render();
+function renderGuides(){
+  var s=gPage*G_PER,items=GUIDES.slice(s,s+G_PER);
+  document.getElementById('guidesGrid').innerHTML=items.map(function(g){
+    var cc=catColors[g.cat]||{bar:'#5b5bd6',bg:'#ede9fe',color:'#4c1d95'};
+    return '<a href="'+g.url+'" class="guide-card">'
+      +'<div class="guide-card-bar" style="background:'+cc.bar+'"></div>'
+      +'<div class="guide-card-body">'
+      +'<div class="guide-card-top">'
+      +'<span class="guide-badge" style="background:'+cc.bg+';color:'+cc.color+'">'+g.cat+'</span>'
+      +'</div>'
+      +'<h3 class="guide-card-title">'+g.title+'</h3>'
+      +'<p class="guide-card-excerpt">'+g.excerpt+'</p>'
+      +'<span class="guide-card-link">Read More <span class="arrow">→</span></span>'
+      +'</div></a>';
+  }).join('');
+  // Update pagination
+  var pnEl=document.getElementById('gPageNumbers');
+  var maxV=window.innerWidth<768?5:7;
+  var range=gPageRange(gPage+1,gTotal,maxV);
+  var nums='';
+  for(var r=0;r<range.length;r++){
+    if(range[r]==='...'){nums+='<span class="page-num ellipsis">…</span>';}
+    else{nums+='<span class="page-num'+(range[r]===gPage+1?' active':'')+'" data-page="'+range[r]+'">'+range[r]+'</span>';}
+  }
+  pnEl.innerHTML=nums;
+  document.getElementById('gPrev').disabled=gPage===0;
+  document.getElementById('gNext').disabled=gPage===gTotal-1;
+}
+document.getElementById('gPrev').addEventListener('click',function(){if(gPage>0){gPage--;renderGuides();}});
+document.getElementById('gNext').addEventListener('click',function(){if(gPage<gTotal-1){gPage++;renderGuides();}});
+document.getElementById('gPageNumbers').addEventListener('click',function(e){
+  var t=e.target.closest('.page-num');
+  if(t&&!t.classList.contains('ellipsis')){gPage=parseInt(t.dataset.page)-1;renderGuides();}
+});
+renderGuides();
 })();
 </script>
-</section>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 
 <!-- seo-expanded -->
@@ -521,7 +580,6 @@ render();
   var tabs=document.querySelectorAll('.cat-tab');
   var prevBtn=document.getElementById('prevPage');
   var nextBtn=document.getElementById('nextPage');
-  var pageInfo=document.getElementById('pageInfo');
   var activeCat='all',currentPage=1,totalPages=1;
 
   function render(){
@@ -545,7 +603,36 @@ render();
     }
     if(filtered.length===0)html='<div class="no-results">No tools found matching "'+searchInput.value+'".</div>';
     grid.innerHTML=html;
-    pageInfo.textContent='Page '+currentPage+' / '+totalPages;
+
+    // Generate page numbers
+    var pnEl = document.getElementById('pageNumbers');
+    var showEl = document.getElementById('pageShowing');
+    var nums = '';
+    var maxVisible = window.innerWidth < 768 ? 5 : 7;
+
+    function pageRange(c, t, max) {
+      var delta = Math.floor(max / 2);
+      var s2 = Math.max(1, c - delta);
+      var e2 = Math.min(t, s2 + max - 1);
+      if (e2 - s2 < max - 1) s2 = Math.max(1, e2 - max + 1);
+      var range = [];
+      if (s2 > 1) { range.push(1); if (s2 > 2) range.push('...'); }
+      for (var k = s2; k <= e2; k++) range.push(k);
+      if (e2 < t) { if (e2 < t - 1) range.push('...'); range.push(t); }
+      return range;
+    }
+
+    var range = pageRange(currentPage, totalPages, maxVisible);
+    for (var r = 0; r < range.length; r++) {
+      if (range[r] === '...') {
+        nums += '<span class="page-num ellipsis">…</span>';
+      } else {
+        nums += '<span class="page-num' + (range[r] === currentPage ? ' active' : '') + '" data-page="' + range[r] + '">' + range[r] + '</span>';
+      }
+    }
+    pnEl.innerHTML = nums;
+    showEl.textContent = 'Showing ' + (start + 1) + '–' + end + ' of ' + filtered.length + ' tools';
+
     prevBtn.disabled=currentPage<=1;
     nextBtn.disabled=currentPage>=totalPages
   }
@@ -562,6 +649,13 @@ render();
   }
   prevBtn.addEventListener('click',function(){if(currentPage>1){currentPage--;render()}});
   nextBtn.addEventListener('click',function(){if(currentPage<totalPages){currentPage++;render()}});
+  document.getElementById('pageNumbers').addEventListener('click', function(e) {
+    var t = e.target.closest('.page-num');
+    if (t && !t.classList.contains('ellipsis')) {
+      currentPage = parseInt(t.dataset.page);
+      render();
+    }
+  });
   render();
 })();
 </script>
