@@ -208,8 +208,9 @@
 
 nav[aria-label="breadcrumb"] {
   text-align: left !important;
-  padding-top: 10px !important;
-  padding-bottom: 6px !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 10px 24px 6px !important;
 }
 
 /* Compact header — no background, tight spacing */
