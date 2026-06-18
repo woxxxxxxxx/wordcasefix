@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Encoding: When, Why, and How (with Examples) | WordCaseFix</title>
+<meta name="description" content="A clear guide to URL encoding (percent-encoding): which characters need escaping, the difference between encodeURI and encodeURIComponent, and common bugs.">
+<meta name="keywords" content="url encoding, percent encoding, encodeURIComponent, url encoder, escape url, query string encoding">
+<meta property="og:title" content="URL Encoding: When, Why, and How (with Examples)">
+<meta property="og:description" content="When URL encoding is required, the characters that need escaping, and the common bugs.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/url-encoding-when-to-use.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"URL Encoding: When, Why, and How (with Examples)","description":"When URL encoding is required, the rules for which characters escape, and common bugs.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/url-encoding-when-to-use.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6}
+article code{background:#f0f0ff;padding:2px 6px;border-radius:4px;font-size:13px;font-family:Consolas,Monaco,monospace}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p,.example-box pre{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box pre{font-family:Consolas,Monaco,monospace;white-space:pre-wrap}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>URL Encoding</span>
+  </div>
+
+  <article>
+    <h1>URL Encoding: When, Why, and How (with Examples)</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; Programming</div>
+
+    <p>Every web developer eventually meets URL encoding through a bug. A query parameter with a plus sign turns into a space. A search term with an ampersand splits into two parameters. A redirect URL gets double-encoded and breaks. The root cause is always the same: a character had a special meaning in URL syntax, and something either escaped it that shouldn't have, or didn't escape it that should have. This guide explains the rules in enough depth to fix and prevent those bugs.</p>
+
+    <p>URL encoding — formally called percent-encoding and defined in RFC 3986 — is the mechanism by which characters that would otherwise have syntactic meaning in a URL get represented as <code>%</code> followed by their two-digit hexadecimal byte value. A space becomes <code>%20</code>; an at-sign becomes <code>%40</code>; a Chinese character becomes a three- or four-byte UTF-8 sequence, each byte percent-encoded.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>URL Encoder/Decoder</strong>
+        Encode or decode any string to and from percent-encoded form, instantly.
+      </div>
+      <a class="cta-btn" href="/url-encoder.html">Open URL Encoder →</a>
+    </div>
+
+    <h2>Why URLs Need Encoding at All</h2>
+    <p>URLs are not opaque blobs — they are structured strings with grammar. The structure uses certain characters as delimiters: <code>/</code> separates path segments, <code>?</code> begins the query string, <code>&amp;</code> separates parameters, <code>#</code> begins the fragment, <code>=</code> separates key from value. If the data you want to put inside a URL contains any of these delimiters, the parser will misinterpret your data as structure.</p>
+
+    <div class="example-box">
+      <p><strong>The problem, in one example:</strong><br>
+      Search query: <code>cats &amp; dogs</code><br>
+      Naive URL: <code>example.com/search?q=cats &amp; dogs</code><br>
+      Parser sees: query <code>q=cats </code>, then a second parameter <code> dogs</code>.<br><br>
+      Correct URL: <code>example.com/search?q=cats%20%26%20dogs</code><br>
+      Parser sees: one parameter, value <code>cats &amp; dogs</code>. ✓</p>
+    </div>
+
+    <p>Encoding draws a clean line between syntactic delimiters (kept as-is) and data (escaped where ambiguous). Without it, you cannot reliably round-trip arbitrary strings through a URL.</p>
+
+    <h2>The Character Classes: Reserved vs Unreserved</h2>
+    <p>RFC 3986 splits URL characters into three classes:</p>
+
+    <table>
+      <tr><th>Class</th><th>Characters</th><th>Behavior</th></tr>
+      <tr><td>Unreserved</td><td>A-Z a-z 0-9 <code>- _ . ~</code></td><td>Never need encoding</td></tr>
+      <tr><td>Reserved</td><td><code>: / ? # [ ] @ ! $ &amp; ' ( ) * + , ; =</code></td><td>Encode when used as data, leave as-is when used as delimiter</td></tr>
+      <tr><td>Other</td><td>Everything else (spaces, accented letters, &lt;, &gt;, quotes...)</td><td>Always encode</td></tr>
+    </table>
+
+    <p>The tricky class is "reserved." Whether they need encoding depends on where they appear. A forward slash in the path is a directory separator and stays unencoded. A forward slash inside a query parameter value should be encoded (<code>%2F</code>) because some servers treat slashes specially even in query strings.</p>
+
+    <h2>encodeURI vs encodeURIComponent: The Two JavaScript Functions</h2>
+    <p>JavaScript exposes two built-ins that look interchangeable but encode different sets of characters. Choosing the wrong one is the most common URL-encoding bug in front-end code.</p>
+
+    <table>
+      <tr><th>Function</th><th>Does NOT encode</th><th>Use for</th></tr>
+      <tr><td><code>encodeURI(str)</code></td><td><code>: / ? # &amp; = + , ; @ $</code></td><td>An entire URL where structure must be preserved</td></tr>
+      <tr><td><code>encodeURIComponent(str)</code></td><td>Only unreserved chars</td><td>A single value (query parameter, path segment, form field)</td></tr>
+    </table>
+
+    <p>The rule of thumb: if you are inserting user-provided text into one slot of a URL, always use <code>encodeURIComponent</code>. If you somehow have a full URL string with structure and only need to escape spaces and high-Unicode characters, use <code>encodeURI</code>. In practice, 95% of real use cases want <code>encodeURIComponent</code>.</p>
+
+    <div class="example-box">
+      <p><strong>Building a search URL correctly:</strong></p>
+      <pre>const query = "cats &amp; dogs";
+const url = `https://example.com/search?q=${encodeURIComponent(query)}`;
+// → https://example.com/search?q=cats%20%26%20dogs</pre>
+    </div>
+
+    <h2>The Plus Sign: Form Encoding vs URL Encoding</h2>
+    <p>There is one historical wrinkle that catches everyone. In the <code>application/x-www-form-urlencoded</code> media type — the format browsers use for HTML form submissions — spaces are encoded as <code>+</code>, not <code>%20</code>. This rule predates RFC 3986 and remains in force for compatibility.</p>
+
+    <p>The result: when a server reads a query string, it should decode <code>+</code> as space. But <code>+</code> outside a query string is a literal plus sign. <code>%2B</code> is the unambiguous escape for a literal plus everywhere.</p>
+
+    <div class="highlight-box">
+      <strong>If your phone-number query parameter contains "+1 555 1234" and arrives as "1 555 1234"</strong>, this is exactly what happened: the <code>+</code> was decoded as a space. Encode it as <code>%2B</code> on the way out, and the value survives the round trip.
+    </div>
+
+    <h2>Common Bugs and Their Fixes</h2>
+    <p>Three failure modes account for the vast majority of URL-encoding bugs in production code.</p>
+
+    <ol>
+      <li><strong>Forgetting to encode user input.</strong> Any string that goes into a URL from a user, a database, or another system must pass through an encoder. Hard-coded examples that work during development can break against real data.</li>
+      <li><strong>Double encoding.</strong> If a value arrives at your code already encoded and you encode it again, <code>%20</code> becomes <code>%2520</code>. Common in redirect chains where each system "helpfully" encodes the next URL. Decode first if you suspect the input is encoded, then re-encode if needed.</li>
+      <li><strong>Wrong charset.</strong> Modern URLs encode non-ASCII as UTF-8 percent-bytes. Legacy systems sometimes used the page's native charset (Latin-1, Shift-JIS, GB2312). If you receive garbled characters, suspect a charset mismatch. UTF-8 is the safe modern default.</li>
+    </ol>
+
+    <p>The diagnostic loop for any URL-encoding bug is: print the value at every stage, identify where the round trip changes shape, and confirm the encoder/decoder pair is consistent. Tools like a <a href="/url-encoder.html">URL encoder</a> or an <a href="/html-encoder.html">HTML encoder</a> let you reproduce the encoding manually and compare. For binary payloads inside URLs, encode to <a href="/base64-encoder.html">Base64URL</a> first, then percent-encode if needed.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Do I need to encode characters inside a URL path?</h3>
+    <p>Encode anything that isn't unreserved or a permitted path character. Spaces, parentheses, and non-ASCII characters always need encoding. Browsers will sometimes display unencoded versions of certain characters (like accented letters) in the address bar for readability, but the underlying request uses the encoded form.</p>
+
+    <h3>Are URL encoding and HTML encoding the same thing?</h3>
+    <p>No. URL encoding uses percent + hex bytes (<code>&amp;</code> → <code>%26</code>). HTML encoding uses named or numeric entities (<code>&amp;</code> → <code>&amp;amp;</code>). They solve different problems — URL syntax vs HTML syntax — and you sometimes need both, applied in the correct order, for a value rendered into an HTML attribute that points to a URL.</p>
+
+    <h3>What about international domain names?</h3>
+    <p>The hostname portion of a URL has its own encoding called Punycode, not percent-encoding. <code>café.com</code> is represented in DNS as <code>xn--caf-dma.com</code>. Modern browsers handle this transparently in the address bar but you may see Punycode in logs, certificates, and legacy systems.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: When and Why to Use It</a>
+        <a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a>
+        <a href="/blog/json-formatting-guide.html">JSON Formatting Best Practices for APIs and Configs</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

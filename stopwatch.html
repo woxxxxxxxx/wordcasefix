@@ -73,25 +73,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Focused work:</strong> Run Pomodoro-style sessions to block dedicated time for deep work or study.</li>
-      <li><strong>Cooking and exercise:</strong> Use the Stopwatch as a kitchen timer, workout interval clock, or meditation bell.</li>
-      <li><strong>Meetings and presentations:</strong> Keep talks and standups on schedule with a visible countdown everyone in the room can see.</li>
+      <li><strong>Workout intervals:</strong> Athletes time HIIT rounds, plank holds, or sprint splits with lap markers for each repetition.</li>
+      <li><strong>Task timing:</strong> Freelancers measure how long a deliverable actually takes to refine estimates for future client quotes.</li>
+      <li><strong>Speech rehearsal:</strong> Presenters time their delivery to fit a strict 5-minute lightning talk or 18-minute TED slot.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Stopwatch keep running if I switch tabs?</div>
-        <div class="tool-faq-a">Yes. The Stopwatch uses timestamps rather than tab focus, so elapsed time stays accurate in the background.</div>
+        <div class="tool-faq-q">Does the stopwatch keep accurate time when the tab is in the background?</div>
+        <div class="tool-faq-a">Yes. The stopwatch records a start timestamp and computes elapsed time as Date.now() - start on each tick, so accuracy is unaffected even if the browser throttles background tabs. The displayed value catches up immediately when you return.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Will the Stopwatch play a sound when finished?</div>
-        <div class="tool-faq-a">Yes, where supported. The Stopwatch plays an audible alert when the session ends as long as your browser allows it.</div>
+        <div class="tool-faq-q">How precise are the lap times?</div>
+        <div class="tool-faq-a">Laps are recorded to the millisecond, though browser timer resolution is typically clamped to 1-4ms for security reasons (Spectre mitigation). For sub-millisecond timing use the Performance API directly in a custom script.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I keep the Stopwatch visible on screen?</div>
-        <div class="tool-faq-a">Yes. Resize the window or use your browser's picture-in-picture or always-on-top mode to keep it visible.</div>
+        <div class="tool-faq-q">Can I export my lap times?</div>
+        <div class="tool-faq-a">Click the export button to copy all recorded laps to your clipboard as plain text or CSV. Paste into a spreadsheet to compute averages, splits, or pacing analysis without re-entering data.</div>
       </div>
     </div>
   </div>

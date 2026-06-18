@@ -91,25 +91,25 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Travel and shopping:</strong> Quickly translate prices, weights, or measurements between local and foreign units.</li>
-      <li><strong>Engineering and science:</strong> Convert between SI and imperial units for calculations, specs, or lab reports.</li>
-      <li><strong>Recipes and DIY:</strong> Adapt instructions written in unfamiliar units so they work with the equipment you actually own.</li>
+      <li><strong>Log timestamp decoding:</strong> SREs convert epoch seconds in CloudWatch or syslog entries to local time when investigating incidents.</li>
+      <li><strong>Token expiration debugging:</strong> Decode JWT exp/iat claims (Unix timestamps) to see whether a token is actually expired or just rejected for another reason.</li>
+      <li><strong>Database migrations:</strong> Convert legacy created_at integer columns to ISO 8601 strings for downstream BI tools that don't parse epoch.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How precise is the</div>
-        <div class="tool-faq-a">The Unix Timestamp Converter uses standard conversion factors at double-precision, which is well beyond what everyday use requires.</div>
+        <div class="tool-faq-q">What's the Unix epoch and why does it start in 1970?</div>
+        <div class="tool-faq-a">Unix epoch time counts seconds since 1970-01-01 00:00:00 UTC, the chosen origin for Unix systems developed at Bell Labs in 1971. The choice was arbitrary but stuck; it predates most of the data we store, so all historical timestamps remain positive integers.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Unix Timestamp Converter support reverse conversion?</div>
-        <div class="tool-faq-a">Yes. Swap the source and target units in the Unix Timestamp Converter and the conversion runs in the opposite direction instantly.</div>
+        <div class="tool-faq-q">What is the "Year 2038 problem"?</div>
+        <div class="tool-faq-a">Signed 32-bit Unix timestamps overflow on 2038-01-19 at 03:14:07 UTC, wrapping to 1901. Most modern systems already use 64-bit time_t (good for ~292 billion years), but embedded devices and legacy databases may still need migration before 2038.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the Unix Timestamp Converter mobile-friendly?</div>
-        <div class="tool-faq-a">Yes. The Unix Timestamp Converter is responsive and easy to operate on phones, tablets, and desktop browsers.</div>
+        <div class="tool-faq-q">Should I store milliseconds or seconds?</div>
+        <div class="tool-faq-a">JavaScript Date.now() and most APIs use milliseconds; Unix tools like date and cron use seconds. JWT spec mandates seconds. Pick one and document it; mixing the two by a factor of 1000 is a common source of "dates in 1970" or "dates in 53694" bugs.</div>
       </div>
     </div>
   </div>

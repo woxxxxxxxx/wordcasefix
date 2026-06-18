@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Functions Explained: MD5, SHA-1, SHA-256 Comparison | WordCaseFix</title>
+<meta name="description" content="A practical comparison of MD5, SHA-1, and SHA-256: what makes a good hash, where each remains acceptable, and which to use for passwords, files, and signatures.">
+<meta name="keywords" content="hash function, md5, sha-1, sha-256, password hashing, checksum, cryptographic hash">
+<meta property="og:title" content="Hash Functions Explained: MD5, SHA-1, SHA-256 Comparison">
+<meta property="og:description" content="MD5, SHA-1, SHA-256 compared: collisions, performance, and the right hash for each job.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/hash-functions-md5-sha256.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Hash Functions Explained: MD5, SHA-1, SHA-256 Comparison","description":"MD5, SHA-1, SHA-256 compared on security, performance, and appropriate use cases.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/hash-functions-md5-sha256.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6}
+article code{background:#f0f0ff;padding:2px 6px;border-radius:4px;font-size:13px;font-family:Consolas,Monaco,monospace}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>Hash Functions Explained</span>
+  </div>
+
+  <article>
+    <h1>Hash Functions Explained: MD5, SHA-1, SHA-256 Comparison</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; Security</div>
+
+    <p>A hash function takes input of any length and produces a fixed-size string of bytes — the digest — that acts as a fingerprint of the input. Change a single bit of the input, and the digest changes completely. Hash functions are foundational to nearly every modern computer system: Git stores objects by their SHA-1, package managers verify downloads by SHA-256, blockchains chain blocks by SHA-256, and operating systems detect file corruption by checksums. Understanding which hash to use for which job, and which are no longer safe for which purpose, is a working necessity.</p>
+
+    <p>This article compares MD5, SHA-1, and SHA-256 on the dimensions that actually matter: output size, collision resistance, performance, and current standing for security versus integrity use cases.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Hash Generator</strong>
+        Compute MD5, SHA-1, SHA-256, and SHA-512 of any text or file in your browser.
+      </div>
+      <a class="cta-btn" href="/hash-generator.html">Open Hash Generator →</a>
+    </div>
+
+    <h2>The Three Properties of a Good Hash</h2>
+    <p>A cryptographic hash function must satisfy three properties:</p>
+
+    <ol>
+      <li><strong>Preimage resistance:</strong> given a digest, it must be infeasible to find any input that produces that digest.</li>
+      <li><strong>Second preimage resistance:</strong> given an input and its digest, it must be infeasible to find a different input with the same digest.</li>
+      <li><strong>Collision resistance:</strong> it must be infeasible to find any two inputs producing the same digest.</li>
+    </ol>
+
+    <p>Of the three, collision resistance is the weakest property because of the birthday paradox: for a digest of N bits, finding a collision requires roughly 2^(N/2) operations, not 2^N. So a 128-bit hash provides only 64 bits of collision resistance — not enough against modern attackers. The other two properties degrade more slowly.</p>
+
+    <h2>MD5: Fast, Broken for Security, Still Useful</h2>
+    <p>MD5 was designed by Ron Rivest in 1992. It produces a 128-bit (32-character hexadecimal) digest. It was the workhorse of integrity checking for years and is still widely seen in download checksums, log fingerprints, and cache keys. But MD5's collision resistance was broken in 2004 — researchers can now produce two different files with identical MD5 hashes in seconds on a laptop. The famous Flame malware in 2012 used an MD5 collision to forge a Microsoft signing certificate.</p>
+
+    <p>This does not mean MD5 is useless. It means MD5 must never be used where collision resistance is a security property. Acceptable uses today:</p>
+
+    <ul>
+      <li><strong>File integrity in a non-adversarial setting:</strong> detecting accidental corruption in storage or transmission. The chance of an accidental MD5 collision is still negligible.</li>
+      <li><strong>Hash table keys:</strong> distributing data across buckets where adversarial input is not a concern.</li>
+      <li><strong>Cache keys, content addressing in trusted contexts:</strong> CDN edge caches, deduplication of files you control.</li>
+    </ul>
+
+    <p>Unacceptable uses: signing, certificate fingerprints, password hashing, anything where an attacker could craft an input. For those, use SHA-256 via a <a href="/sha256-generator.html">SHA-256 generator</a> or higher. A quick reference computation with an <a href="/md5-generator.html">MD5 generator</a> is fine for legacy compatibility.</p>
+
+    <h2>SHA-1: Phasing Out</h2>
+    <p>SHA-1 produces a 160-bit (40-character hex) digest. Designed by the NSA and published by NIST in 1995, it dominated the 2000s. Theoretical attacks against SHA-1 appeared in 2005; the first real-world collision (Google's "SHAttered" attack producing two PDFs with the same SHA-1) was demonstrated in 2017 at a cost of around $110,000 in cloud compute. By 2020 the cost was a fraction of that.</p>
+
+    <p>All major browser vendors stopped trusting SHA-1 in TLS certificates by 2017. Git still uses SHA-1 for object hashing but is in the process of migrating to SHA-256, and the SHAttered attack does not directly break Git because of Git's prefix counter and the difficulty of producing meaningful colliding commits. Nonetheless, treat SHA-1 the way you treat MD5: fine for non-adversarial fingerprinting, never for signatures or certificates.</p>
+
+    <h2>SHA-256: The Modern Default</h2>
+    <p>SHA-256 is part of the SHA-2 family (introduced 2001), and it produces a 256-bit (64-character hex) digest. No real-world attacks on its collision resistance exist after twenty-plus years of scrutiny — the best known attack remains a generic 2^128 birthday search, which is computationally infeasible.</p>
+
+    <p>SHA-256 is the recommended default for any new system needing a cryptographic hash. It is used by Bitcoin, by certificate authorities for TLS, by Linux package managers, and by modern Git repositories. SHA-512 (also SHA-2) and SHA-3 (a different design family from 2015) are both fine alternatives, but SHA-256 has the widest hardware acceleration and library support.</p>
+
+    <table>
+      <tr><th>Hash</th><th>Output size</th><th>Year</th><th>Collision status</th><th>Use today</th></tr>
+      <tr><td>MD5</td><td>128 bits</td><td>1992</td><td>Broken (seconds)</td><td>Non-security integrity only</td></tr>
+      <tr><td>SHA-1</td><td>160 bits</td><td>1995</td><td>Broken ($100k+)</td><td>Legacy compatibility only</td></tr>
+      <tr><td>SHA-256</td><td>256 bits</td><td>2001</td><td>No practical attack</td><td>Default for new systems</td></tr>
+      <tr><td>SHA-512</td><td>512 bits</td><td>2001</td><td>No practical attack</td><td>Faster than SHA-256 on 64-bit CPUs</td></tr>
+      <tr><td>SHA-3</td><td>Variable</td><td>2015</td><td>No practical attack</td><td>Alternative design family</td></tr>
+    </table>
+
+    <h2>Passwords Are a Special Case</h2>
+    <p>Do not use SHA-256 directly for password hashing. General-purpose hashes are designed to be fast — the opposite of what you want for passwords. An attacker who steals a database of SHA-256 password hashes can compute billions of guesses per second on a GPU.</p>
+
+    <p>Password hashes need three properties general hashes lack: deliberate slowness (memory-hard or compute-hard), per-user salt, and tunable cost parameters. Use Argon2id (current best practice), bcrypt (still acceptable), or scrypt. These are sometimes called "key derivation functions" or "password hashing functions." See the <a href="/blog/password-security-best-practices.html">password security guide</a> for more.</p>
+
+    <div class="highlight-box">
+      <strong>Quick decision table:</strong> file checksum where attackers can't influence input → MD5 is fine. File checksum where an attacker might craft an input → SHA-256. Code-signing or certificate use → SHA-256 minimum. Password storage → Argon2id, not a SHA at all. Bitcoin-style proof of work → SHA-256 (this is exactly what it does).
+    </div>
+
+    <h2>Performance Notes</h2>
+    <p>For pure throughput, MD5 is fastest, SHA-1 close behind, SHA-256 slower because of the larger state and round count. On modern x86 CPUs with the SHA Extensions instruction set (Intel SHA-NI, supported since Goldmont and Zen), SHA-256 narrows the gap dramatically and can match or beat SHA-1 in software. On 64-bit CPUs, SHA-512 is paradoxically often faster than SHA-256 because it processes data in 64-bit words.</p>
+
+    <p>For most applications the performance difference is irrelevant — hashing a few MB of data takes milliseconds regardless of the algorithm. The exceptions are streaming throughput-sensitive workloads (deduplication at PB scale, network packet hashing), where it pays to benchmark on your target hardware.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Can I "decrypt" an MD5 hash?</h3>
+    <p>No. Hashing is one-way by design — there is no inverse function. What rainbow-table sites do is look up the hash in a precomputed dictionary of common inputs. If your input was a common password or short string, it may appear in such a table. For unique random inputs (UUIDs, random keys), no lookup will work.</p>
+
+    <h3>Is SHA-256 quantum-safe?</h3>
+    <p>Grover's algorithm gives a quantum speedup for hash inversion, effectively halving the security level: SHA-256 would offer 128-bit preimage security against a sufficiently large quantum computer instead of 256-bit. 128-bit security is still considered safe. For very long-term archival you might prefer SHA-512, but for the foreseeable future SHA-256 is comfortable.</p>
+
+    <h3>Should I use HMAC?</h3>
+    <p>If you need a keyed hash (authentication, not just integrity), yes — use HMAC-SHA-256 rather than concatenating a key and hashing. HMAC has provable security properties that ad-hoc constructions do not. APIs that need request signatures should use HMAC, not a bare hash of the secret plus payload.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/password-security-best-practices.html">Password Security in 2026: Length, Entropy &amp; Best Practices</a>
+        <a href="/blog/uuid-vs-nanoid-comparison.html">UUID vs NanoID: Which Identifier Should You Choose?</a>
+        <a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: When and Why to Use It</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

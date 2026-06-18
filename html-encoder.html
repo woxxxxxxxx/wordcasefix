@@ -98,25 +98,25 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>API debugging:</strong> Inspect or craft payloads that need to be encoded for safe transport in URLs, headers, or JSON bodies.</li>
-      <li><strong>Web development:</strong> Use the HTML Encoder to test how strings are interpreted by browsers, servers, or HTTP clients.</li>
-      <li><strong>Data forensics:</strong> Decode unfamiliar strings found in logs, query parameters, or cookies to understand what they contain.</li>
+      <li><strong>API payload preparation:</strong> Developers run text through the Html Encoder before embedding in URLs, JSON, or HTTP headers that require safe character sets.</li>
+      <li><strong>Legacy system integration:</strong> Encode or decode data passing between modern apps and older systems that expect specific character encodings.</li>
+      <li><strong>Security and obfuscation:</strong> Use encoding to safely transport binary payloads through text-only channels like email or chat.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the HTML Encoder work offline?</div>
-        <div class="tool-faq-a">Yes. Once the page is loaded the HTML Encoder runs entirely in your browser, with no further network calls.</div>
+        <div class="tool-faq-q">Which character set does the Html Encoder use?</div>
+        <div class="tool-faq-a">The tool follows the relevant published specification (RFC or W3C standard) for this encoding scheme. Characters outside the supported set are escaped or replaced according to the spec; check the output for percent-escapes or backslash sequences.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is my data safe in the</div>
-        <div class="tool-faq-a">Yes. The HTML Encoder never transmits your input, so sensitive strings like tokens stay on your machine.</div>
+        <div class="tool-faq-q">Is encoding reversible without data loss?</div>
+        <div class="tool-faq-a">Yes for well-formed input. The encoder and matching decoder produce identical output on round trip, character for character. Edge cases like invalid byte sequences in the input may produce replacement characters; validate the source first.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can the HTML Encoder handle Unicode characters?</div>
-        <div class="tool-faq-a">Yes. The HTML Encoder uses UTF-8 internally and correctly processes emoji, accented characters, and non-Latin scripts.</div>
+        <div class="tool-faq-q">How do I handle Unicode characters?</div>
+        <div class="tool-faq-a">Modern encodings (UTF-8, percent-encoding, Base64) preserve all Unicode code points. Each multi-byte character is encoded as its byte sequence. Legacy schemes like ASCII strip or replace anything outside 0x00-0x7F; check the encoding spec for non-ASCII behavior.</div>
       </div>
     </div>
   </div>

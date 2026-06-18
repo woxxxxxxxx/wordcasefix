@@ -129,25 +129,25 @@ i.addEventListener('input',function(){clr();var r=i.value.trim();if(!r){o.value=
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Code review:</strong> Re-indent unfamiliar code so it is easier to read, diff, and discuss with teammates.</li>
-      <li><strong>Build pipelines:</strong> Validate minified or generated artifacts by reformatting them to confirm structure is intact.</li>
-      <li><strong>Learning:</strong> Beautify obfuscated examples found online so the underlying logic is easier to study.</li>
+      <li><strong>API debugging:</strong> Backend developers paste raw API responses to inspect nested structures, spot missing fields, and verify schema before integrating.</li>
+      <li><strong>Config file cleanup:</strong> DevOps engineers reformat minified package.json or tsconfig.json files to make diffs reviewable in pull requests.</li>
+      <li><strong>Log analysis:</strong> SREs paste single-line JSON log entries from CloudWatch or Datadog to expand them into readable, traversable trees.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Will the JSON Formatter change the meaning of my code?</div>
-        <div class="tool-faq-a">No. The JSON Formatter only adjusts whitespace and indentation; the parsed behavior of your code is preserved.</div>
+        <div class="tool-faq-q">How do I fix "Unexpected token" errors in JSON?</div>
+        <div class="tool-faq-a">Common causes: trailing commas (JSON forbids them, unlike JavaScript), single quotes instead of double quotes, unquoted keys, or JS comments. Paste your JSON above and the formatter highlights the line and column of the first parse error so you can fix it directly.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is anything uploaded when I use the</div>
-        <div class="tool-faq-a">No. All processing in the JSON Formatter happens locally in your browser, so your code stays private.</div>
+        <div class="tool-faq-q">What's the difference between JSON and JSON5?</div>
+        <div class="tool-faq-a">JSON5 is a superset that allows comments, trailing commas, unquoted keys, and single quotes. It's used in tsconfig.json and Babel configs but is not valid plain JSON. The formatter targets strict RFC 8259 JSON; use a JSON5 parser if you need the extras.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">What size of input does the JSON Formatter support?</div>
-        <div class="tool-faq-a">The JSON Formatter comfortably handles files of several megabytes; very large inputs are limited only by browser memory.</div>
+        <div class="tool-faq-q">How do I minify JSON for production?</div>
+        <div class="tool-faq-a">Strip all whitespace and newlines outside string literals; this typically shrinks files 20-40%. The formatter has a minify toggle that produces a single-line output. For larger savings, gzip the response: JSON compresses well because of repeated keys.</div>
       </div>
     </div>
   </div>

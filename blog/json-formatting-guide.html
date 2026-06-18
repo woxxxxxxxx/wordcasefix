@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatting Best Practices for APIs and Configs | WordCaseFix</title>
+<meta name="description" content="Practical JSON formatting guidance: key naming, indentation, ordering, comments, large numbers, and the trade-offs between compact and pretty-printed output.">
+<meta name="keywords" content="JSON formatting, JSON best practices, JSON API design, pretty JSON, JSON key naming, JSON config files">
+<meta property="og:title" content="JSON Formatting Best Practices for APIs and Configs">
+<meta property="og:description" content="JSON formatting that holds up in real APIs and config files: keys, indentation, numbers, and pitfalls.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/json-formatting-guide.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"JSON Formatting Best Practices for APIs and Configs","description":"JSON formatting decisions and pitfalls for production APIs and config files.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/json-formatting-guide.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6}
+article code{background:#f0f0ff;padding:2px 6px;border-radius:4px;font-size:13px;font-family:Consolas,Monaco,monospace}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p,.example-box pre{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.example-box pre{font-family:Consolas,Monaco,monospace;white-space:pre-wrap}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>JSON Formatting Best Practices</span>
+  </div>
+
+  <article>
+    <h1>JSON Formatting Best Practices for APIs and Configs</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; API Design</div>
+
+    <p>JSON has quietly become the lingua franca of modern software. It moves data between web services, defines the configuration of build tools, structures the manifests of package managers, and serializes most of the state we ship across networks. The format is simple enough that it is tempting to assume there is nothing to learn. In practice, the small formatting decisions you make — key style, indentation, number handling, ordering — are the difference between a JSON contract that ages well and one that becomes painful in six months.</p>
+
+    <p>This guide collects the practices that survive contact with real systems: production APIs, config files in version control, and machine-to-machine data exchange.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>JSON Formatter &amp; Validator</strong>
+        Paste raw JSON to format, minify, and validate it instantly. Errors are highlighted in place.
+      </div>
+      <a class="cta-btn" href="/json-formatter.html">Open JSON Formatter →</a>
+    </div>
+
+    <h2>Key Naming: Pick One Style and Hold It</h2>
+    <p>The first and most contentious decision is key naming. The two real choices are <code>camelCase</code> and <code>snake_case</code>. There is no technical advantage either way — JSON parsers do not care. The advantage comes from consistency.</p>
+
+    <p>Most large APIs follow one convention exclusively. Google, Twitter, and most cloud providers use <code>camelCase</code>; Stripe, Slack, and a number of Python-heavy services use <code>snake_case</code>. The wrong move is mixing them in the same payload (<code>{"userId": 1, "user_email": "..."}</code>). Mixed casing forces every consumer to remember which exception applies to which field.</p>
+
+    <p>If your backend is Python or Ruby, <code>snake_case</code> aligns naturally with the language and removes a translation step. If you serve JavaScript-heavy frontends, <code>camelCase</code> matches the language and avoids an unmapping layer. Either is defensible; pick once, document it, and enforce it with a linter.</p>
+
+    <h2>Indentation, Whitespace, and File Size</h2>
+    <p>JSON has two reasonable shapes: pretty (indented, one key per line) and minified (no whitespace at all). They are interchangeable for parsers and meaningfully different for humans and bandwidth.</p>
+
+    <div class="example-box">
+      <p><strong>Pretty (good for files in git):</strong></p>
+      <pre>{
+  "name": "WordCaseFix",
+  "version": "1.0.0",
+  "features": ["case", "regex", "json"]
+}</pre>
+    </div>
+
+    <div class="example-box">
+      <p><strong>Minified (good for API responses):</strong></p>
+      <pre>{"name":"WordCaseFix","version":"1.0.0","features":["case","regex","json"]}</pre>
+    </div>
+
+    <p>For configuration files committed to version control, use pretty JSON with two-space indentation. The size cost is irrelevant and the diff readability is huge. For API responses over the wire, minify by default; gzip will compress away most of the difference, but the bytes still travel through every proxy and log. Use a <a href="/json-formatter.html">formatter</a> to switch between the two, and a <a href="/javascript-minifier.html">minifier</a>-style mindset for production payloads.</p>
+
+    <h2>Numbers, Strings, and the Quiet Gotchas</h2>
+    <p>JSON has one number type. Internally, most parsers represent it as a 64-bit IEEE 754 float, which can exactly represent integers only up to 2^53 (9,007,199,254,740,992). If your API returns 64-bit integer IDs from a database, send them as strings, not numbers — otherwise JavaScript clients will silently corrupt the last few digits.</p>
+
+    <table>
+      <tr><th>Value type</th><th>JSON representation</th><th>Watch out for</th></tr>
+      <tr><td>Big integer ID</td><td>String: <code>"123456789012345678"</code></td><td>JS Number.MAX_SAFE_INTEGER ≈ 9.0×10^15</td></tr>
+      <tr><td>Money</td><td>String or integer cents</td><td>Never floats — <code>0.1+0.2 !== 0.3</code></td></tr>
+      <tr><td>Date/time</td><td>ISO 8601 string</td><td>Avoid epoch-seconds ambiguity</td></tr>
+      <tr><td>Null vs missing</td><td>Pick one explicitly</td><td>Document which means "unknown"</td></tr>
+      <tr><td>Boolean</td><td>true / false</td><td>Never "true"/"false" as strings</td></tr>
+    </table>
+
+    <p>Dates should always be ISO 8601 with explicit timezone (<code>2025-06-18T14:30:00Z</code> or <code>2025-06-18T14:30:00+02:00</code>). Naked dates without timezone information are a frequent source of off-by-one bugs across continents.</p>
+
+    <h2>Schema, Ordering, and Compatibility</h2>
+    <p>JSON itself has no schema, but real APIs need one. Use JSON Schema or OpenAPI to document the shape of every endpoint, and publish that schema alongside the API. Consumers will use it for code generation, validation, and documentation.</p>
+
+    <p>Key order in objects is officially insignificant — by the JSON spec, <code>{"a":1,"b":2}</code> equals <code>{"b":2,"a":1}</code>. In practice, deterministic key ordering makes diffs reviewable and makes deterministic hashing possible. Most formatters offer "sort keys" alphabetically; consider it for configuration files. For API responses, prefer a stable order chosen by your library to keep network traces consistent.</p>
+
+    <p>For long-term compatibility, follow two simple rules: never remove or rename a field — add new ones; treat unknown fields as ignorable on the consumer side. If you serve config that may evolve, you may also want to convert between <a href="/yaml-to-json.html">YAML and JSON</a> or <a href="/csv-to-json.html">CSV and JSON</a> at the edges, so users of each format don't fork your source of truth.</p>
+
+    <div class="highlight-box">
+      <strong>Comment-free reminder:</strong> standard JSON does not allow comments. Variants like JSON5 and JSONC (JSON with comments) do, but parsers must opt in. For VS Code settings comments work; for <code>package.json</code> they do not. Use a documented schema and meaningful key names instead of trying to comment inside data.
+    </div>
+
+    <h2>Validation and Tooling</h2>
+    <p>One of JSON's strengths is that the syntax is strict enough to be machine-verified before any application logic runs. A surprising number of production bugs come from JSON that "almost" validates — a trailing comma, an unescaped tab inside a string, a literal newline where a <code>\n</code> escape was intended. Adding a JSON validator to your build pipeline catches these in seconds instead of in production logs.</p>
+
+    <p>For source-controlled configuration, format-on-save is the simplest tooling improvement you can make. Every modern editor offers a JSON formatter as a built-in or extension, and the keyboard-shortcut habit removes whole categories of merge conflict. Where pretty-printing matters across machines, commit a <code>.editorconfig</code> file alongside the JSON to lock the indentation choice. For API responses, write at least one contract test per endpoint that loads a real sample of the response and validates it against a JSON Schema; this protects you from silent shape regressions when a backend team renames a field.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Can JSON have trailing commas?</h3>
+    <p>Not in standard JSON. <code>{"a":1,}</code> is invalid and most parsers will reject it. JSON5 and some lenient parsers accept trailing commas, but if your file might be read by anything else, leave them off. Use a <a href="/json-formatter.html">JSON validator</a> if you suspect a stray comma is breaking your payload.</p>
+
+    <h3>How should I represent enums in JSON?</h3>
+    <p>As strings, not integers. <code>"status": "active"</code> is self-documenting; <code>"status": 1</code> requires the consumer to know what 1 means. The few bytes saved by integers are never worth the readability cost in logs and dashboards.</p>
+
+    <h3>Is YAML better than JSON for configuration?</h3>
+    <p>For files humans edit by hand, YAML's comments and reduced punctuation are real advantages. For files programs generate or consume frequently, JSON's stricter syntax catches more errors. Many projects choose YAML for source-controlled config and JSON for machine output, converting between them with a <a href="/yaml-to-json.html">YAML-to-JSON converter</a> as needed.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a>
+        <a href="/blog/uuid-vs-nanoid-comparison.html">UUID vs NanoID: Which Identifier Should You Choose?</a>
+        <a href="/blog/url-encoding-when-to-use.html">URL Encoding: When, Why, and How (with Examples)</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

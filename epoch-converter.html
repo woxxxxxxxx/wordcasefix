@@ -104,25 +104,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Travel and shopping:</strong> Quickly translate prices, weights, or measurements between local and foreign units.</li>
-      <li><strong>Engineering and science:</strong> Convert between SI and imperial units for calculations, specs, or lab reports.</li>
-      <li><strong>Recipes and DIY:</strong> Adapt instructions written in unfamiliar units so they work with the equipment you actually own.</li>
+      <li><strong>Data migration:</strong> Engineers convert between formats when moving data between systems with incompatible representations.</li>
+      <li><strong>Educational verification:</strong> Students check homework answers by converting between standard units or notations.</li>
+      <li><strong>Cross-team collaboration:</strong> Teams using different conventions exchange data via a common intermediate format produced by the Epoch Converter.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How precise is the</div>
-        <div class="tool-faq-a">The Epoch Converter uses standard conversion factors at double-precision, which is well beyond what everyday use requires.</div>
+        <div class="tool-faq-q">What precision does the Epoch Converter preserve?</div>
+        <div class="tool-faq-a">Numeric conversions use IEEE 754 double-precision (15-17 significant decimal digits). Lossless integer conversions remain exact up to 2^53. For exact decimal arithmetic on very large or very small values, use a server-side BigDecimal or arbitrary-precision library.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Epoch Converter support reverse conversion?</div>
-        <div class="tool-faq-a">Yes. Swap the source and target units in the Epoch Converter and the conversion runs in the opposite direction instantly.</div>
+        <div class="tool-faq-q">What's the supported input range?</div>
+        <div class="tool-faq-a">The converter handles the full range allowed by the source format's specification. Values outside that range (e.g., negative durations, out-of-spec characters) are rejected with an error rather than silently truncated. Check the input format docs for exact limits.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the Epoch Converter mobile-friendly?</div>
-        <div class="tool-faq-a">Yes. The Epoch Converter is responsive and easy to operate on phones, tablets, and desktop browsers.</div>
+        <div class="tool-faq-q">Can I convert in both directions?</div>
+        <div class="tool-faq-a">Yes. The converter is bidirectional: switch the source and target fields to reverse the conversion. Round-trip conversions are exact for lossless format pairs and approximate (with documented precision) for lossy ones.</div>
       </div>
     </div>
   </div>

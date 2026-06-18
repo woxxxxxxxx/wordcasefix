@@ -181,25 +181,25 @@ document.getElementById('csvClr').onclick=function(){inp.value='';out.value='';e
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Day-to-day tasks:</strong> Reach for the CSV To JSON whenever you need a quick, no-friction answer without opening a heavyweight app.</li>
-      <li><strong>Work workflows:</strong> Use the CSV To JSON as a quick utility step inside larger workflows at the office.</li>
-      <li><strong>Learning and exploration:</strong> Experiment with different inputs in the CSV To JSON to understand how the underlying values relate.</li>
+      <li><strong>Spreadsheet imports:</strong> Convert exported CSV from Excel or Google Sheets into JSON arrays ready for REST API ingestion.</li>
+      <li><strong>ETL pipelines:</strong> Data engineers transform legacy CSV reports into JSON for loading into MongoDB, Elasticsearch, or DynamoDB.</li>
+      <li><strong>Mock API data:</strong> Frontend developers convert sample CSV datasets into JSON fixtures for unit tests and Storybook stories.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the CSV To JSON really free?</div>
-        <div class="tool-faq-a">Yes. The CSV To JSON is completely free with no account required and no hidden usage limits.</div>
+        <div class="tool-faq-q">How are CSV column headers mapped to JSON?</div>
+        <div class="tool-faq-a">The first row is treated as field names. Each subsequent row becomes a JSON object whose keys come from that header row. So a CSV with columns name,age,city produces objects like {"name":"Alice","age":"30","city":"NYC"} for each data row.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the CSV To JSON work on mobile?</div>
-        <div class="tool-faq-a">Yes. The CSV To JSON is responsive and works equally well on phones, tablets, and desktop browsers.</div>
+        <div class="tool-faq-q">How do you handle commas and quotes inside CSV fields?</div>
+        <div class="tool-faq-a">The parser follows RFC 4180: fields containing commas, line breaks, or quote characters must be wrapped in double quotes, with internal quotes escaped by doubling ("" inside ""). The converter handles this automatically; raw unquoted commas inside fields will be misparsed.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is my data private in the</div>
-        <div class="tool-faq-a">Yes. The CSV To JSON runs entirely in your browser, so the data you enter is never uploaded to a server.</div>
+        <div class="tool-faq-q">Does the converter type-detect numbers and booleans?</div>
+        <div class="tool-faq-a">By default it preserves all values as strings since CSV has no type system. Toggle "infer types" to convert "true"/"false" to booleans and pure-digit fields to numbers. Beware: leading zeros (like ZIP codes "00501") will be stripped if treated as numbers.</div>
       </div>
     </div>
   </div>

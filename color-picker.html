@@ -268,25 +268,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Daily lookups:</strong> Keep the Color Picker open in a tab as a quick reference instead of memorizing every value.</li>
-      <li><strong>Onboarding:</strong> Share the Color Picker with new teammates so they can self-serve answers to common questions.</li>
-      <li><strong>Documentation:</strong> Copy entries from the Color Picker straight into READMEs, wikis, or chat without retyping them.</li>
+      <li><strong>Web design palettes:</strong> Frontend developers grab HEX or HSL values to drop into Tailwind config, CSS variables, or design tokens.</li>
+      <li><strong>Brand color matching:</strong> Marketers sample a color from a logo screenshot and convert to RGB for use in PowerPoint or social media graphics.</li>
+      <li><strong>Accessibility checks:</strong> UI designers verify a foreground/background pair meets WCAG AA contrast ratio (4.5:1) before shipping a component.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the data shown in the Color Picker up to date?</div>
-        <div class="tool-faq-a">Yes. The Color Picker is reviewed regularly so the values, symbols, and shortcuts reflect the current standards.</div>
+        <div class="tool-faq-q">How do I convert HEX #5b5bd6 to RGB?</div>
+        <div class="tool-faq-a">Split the hex into pairs: 5b=91, 5b=91, d6=214, giving rgb(91, 91, 214). The picker shows HEX, RGB, HSL, and HSV side by side so you can copy any format without manual math. CSS accepts all formats interchangeably.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I use the Color Picker offline?</div>
-        <div class="tool-faq-a">Yes. After loading once, the Color Picker works without a connection because all data is bundled into the page.</div>
+        <div class="tool-faq-q">What's the difference between HSL and HSV?</div>
+        <div class="tool-faq-a">Both use Hue (0-360) but HSL's Lightness peaks at white (50% is pure color, 100% is white), while HSV's Value peaks at the color itself (100% is brightest pure color). Designers often prefer HSL because tints and shades feel symmetric around 50%.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the Color Picker free?</div>
-        <div class="tool-faq-a">Yes. The Color Picker is free to use with no signup and no usage limits.</div>
+        <div class="tool-faq-q">Why does my HEX color look different on print vs screen?</div>
+        <div class="tool-faq-a">HEX/RGB is additive (light), while print uses subtractive CMYK (ink). Many vivid screen colors (especially bright blues and greens) sit outside CMYK gamut and shift toward muddier hues when converted. Always proof critical brand colors in CMYK before printing.</div>
       </div>
     </div>
   </div>

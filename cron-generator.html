@@ -177,25 +177,25 @@ document.getElementById('cpCron').onclick=function(){
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Secure credentials:</strong> Use the Cron Generator when you need a fresh, unpredictable value for accounts, tokens, or test data.</li>
-      <li><strong>Test fixtures:</strong> Populate forms, databases, or QA environments with realistic sample data on demand.</li>
-      <li><strong>Creative inspiration:</strong> Spin the Cron Generator when you need a quick random pick to break decision paralysis.</li>
+      <li><strong>Rapid prototyping:</strong> Developers and designers use the Cron Generator to produce sample output for layouts, tests, and demos without manual creation.</li>
+      <li><strong>Bulk content creation:</strong> Marketers and content teams generate many variations quickly for A/B tests or template population.</li>
+      <li><strong>Configuration scaffolding:</strong> Engineers produce starter files or values that match a specific format spec, then customize as needed.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How random is the output of the</div>
-        <div class="tool-faq-a">The Cron Generator uses your browser's cryptographically secure randomness source where available, suitable for most security uses.</div>
+        <div class="tool-faq-q">How random is the output from the </div>
+        <div class="tool-faq-a">The generator uses window.crypto.getRandomValues() where randomness matters, drawing from the OS's cryptographic RNG. For non-security uses (placeholder text, sample data), it uses Math.random(). Both produce well-distributed output for typical use cases.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Are generated values logged or reused?</div>
-        <div class="tool-faq-a">No. Each output from the Cron Generator exists only in your browser session and is never sent anywhere.</div>
+        <div class="tool-faq-q">What's the maximum output length?</div>
+        <div class="tool-faq-a">Output size is limited only by browser memory and the input ranges you configure. Typical generators handle outputs in the tens of thousands of characters without lag. For multi-megabyte output, use a server-side tool or scripting language instead.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I generate many results at once?</div>
-        <div class="tool-faq-a">Yes. Most options in the Cron Generator accept a batch size so you can produce dozens of values in a single click.</div>
+        <div class="tool-faq-q">Can I customize the output format?</div>
+        <div class="tool-faq-a">Yes. Use the controls above to set length, character set, separators, or other format-specific options. Settings persist within your browser session, so reopening the page restores your last configuration.</div>
       </div>
     </div>
   </div>

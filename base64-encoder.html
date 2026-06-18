@@ -74,25 +74,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>API debugging:</strong> Inspect or craft payloads that need to be encoded for safe transport in URLs, headers, or JSON bodies.</li>
-      <li><strong>Web development:</strong> Use the Base64 Encoder to test how strings are interpreted by browsers, servers, or HTTP clients.</li>
-      <li><strong>Data forensics:</strong> Decode unfamiliar strings found in logs, query parameters, or cookies to understand what they contain.</li>
+      <li><strong>Email attachments:</strong> MIME-encoded email bodies use Base64 to safely transmit binary attachments through 7-bit SMTP infrastructure.</li>
+      <li><strong>Data URIs:</strong> Embed small images directly in CSS or HTML using data:image/png;base64,... to reduce HTTP requests on landing pages.</li>
+      <li><strong>API authentication:</strong> Encode "username:password" for HTTP Basic Auth headers, or pass binary payloads through JSON-only APIs.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Base64 Encoder work offline?</div>
-        <div class="tool-faq-a">Yes. Once the page is loaded the Base64 Encoder runs entirely in your browser, with no further network calls.</div>
+        <div class="tool-faq-q">Why does Base64 output use roughly 33% more characters than input?</div>
+        <div class="tool-faq-a">Base64 encodes every 3 bytes of binary data into 4 ASCII characters (6 bits each), so output size is ceil(n/3) * 4. A 300 KB image becomes a 400 KB Base64 string. Add gzip on top for transport to recover most of the overhead.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is my data safe in the</div>
-        <div class="tool-faq-a">Yes. The Base64 Encoder never transmits your input, so sensitive strings like tokens stay on your machine.</div>
+        <div class="tool-faq-q">What's the difference between standard and URL-safe Base64?</div>
+        <div class="tool-faq-a">Standard Base64 (RFC 4648 section 4) uses + and / which are reserved in URLs. URL-safe Base64 (section 5) substitutes - and _ and drops the = padding. JWTs use URL-safe Base64; choose the variant matching your downstream consumer.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can the Base64 Encoder handle Unicode characters?</div>
-        <div class="tool-faq-a">Yes. The Base64 Encoder uses UTF-8 internally and correctly processes emoji, accented characters, and non-Latin scripts.</div>
+        <div class="tool-faq-q">Can I Base64-decode any string?</div>
+        <div class="tool-faq-a">Only strings whose length is a multiple of 4 (or with proper = padding) and that contain only valid Base64 characters. Invalid input throws an error. Whitespace and line breaks are stripped before decoding, so wrapped Base64 from email headers works fine.</div>
       </div>
     </div>
   </div>

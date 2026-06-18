@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Cheatsheet: Patterns Every Developer Should Know | WordCaseFix</title>
+<meta name="description" content="A practical regex cheatsheet for developers: anchors, character classes, quantifiers, groups, lookarounds — with copy-paste examples for email, URL, and date patterns.">
+<meta name="keywords" content="regex cheatsheet, regular expression patterns, regex examples, regex tutorial, regex tester, regex syntax">
+<meta property="og:title" content="Regex Cheatsheet: Patterns Every Developer Should Know">
+<meta property="og:description" content="The regex patterns that come up every day, with worked examples and copy-paste snippets.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/regex-cheatsheet-beginners.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Regex Cheatsheet: Patterns Every Developer Should Know","description":"Practical regex patterns with copy-paste examples for email, URL, and date matching.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/regex-cheatsheet-beginners.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6}
+article code{background:#f0f0ff;padding:2px 6px;border-radius:4px;font-size:13px;font-family:Consolas,Monaco,monospace}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>Regex Cheatsheet</span>
+  </div>
+
+  <article>
+    <h1>Regex Cheatsheet: Patterns Every Developer Should Know</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; Programming</div>
+
+    <p>Regular expressions are one of those skills that pay back the investment many times over. Once you can write a precise pattern, tasks that would otherwise require ten lines of imperative code collapse to one. The bad news: the syntax is dense and unforgiving, and most regex tutorials drown you in edge cases before you have a working mental model. This cheatsheet focuses on the patterns you will actually use weekly, with worked examples you can paste into a tester and adapt.</p>
+
+    <p>Every example below uses standard PCRE/ECMAScript syntax — the dialect supported by JavaScript, Python's <code>re</code>, PHP, and most modern languages. Where a feature differs between flavors, that is noted explicitly.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Regex Tester</strong>
+        Paste a pattern and test it against sample text with live match highlighting.
+      </div>
+      <a class="cta-btn" href="/regex-tester.html">Open Regex Tester →</a>
+    </div>
+
+    <h2>The Building Blocks: Anchors, Classes, Quantifiers</h2>
+    <p>A regex is built from three kinds of pieces: things that match a specific character or set, anchors that match positions rather than characters, and quantifiers that say "how many." Once you internalize this trio you can read almost any pattern.</p>
+
+    <table>
+      <tr><th>Token</th><th>Meaning</th></tr>
+      <tr><td><code>.</code></td><td>Any character except newline</td></tr>
+      <tr><td><code>\d</code> / <code>\D</code></td><td>Digit / non-digit</td></tr>
+      <tr><td><code>\w</code> / <code>\W</code></td><td>Word char (a-z A-Z 0-9 _) / non-word</td></tr>
+      <tr><td><code>\s</code> / <code>\S</code></td><td>Whitespace / non-whitespace</td></tr>
+      <tr><td><code>[abc]</code></td><td>Any one of a, b, or c</td></tr>
+      <tr><td><code>[^abc]</code></td><td>Any character except a, b, c</td></tr>
+      <tr><td><code>[a-z]</code></td><td>Range a through z</td></tr>
+      <tr><td><code>^</code> / <code>$</code></td><td>Start / end of string (or line in multiline mode)</td></tr>
+      <tr><td><code>\b</code></td><td>Word boundary (zero-width)</td></tr>
+      <tr><td><code>*</code></td><td>0 or more (greedy)</td></tr>
+      <tr><td><code>+</code></td><td>1 or more (greedy)</td></tr>
+      <tr><td><code>?</code></td><td>0 or 1 (optional)</td></tr>
+      <tr><td><code>{n,m}</code></td><td>Between n and m repetitions</td></tr>
+      <tr><td><code>*?</code> <code>+?</code></td><td>Non-greedy versions</td></tr>
+    </table>
+
+    <p>Anchors are the most common source of confusion for beginners. <code>^abc</code> does not mean "no abc" — that is <code>[^abc]</code> inside a character class. <code>^</code> outside a character class means "start of input."</p>
+
+    <h2>Groups, Alternation, and Backreferences</h2>
+    <p>Parentheses serve two purposes: grouping for quantification and capturing for later use. <code>(abc)+</code> matches one or more occurrences of the literal sequence "abc." The captured text is available as group 1.</p>
+
+    <p>Use <code>(?:...)</code> for non-capturing groups when you only need grouping, not capture — it's slightly faster and keeps your group numbering clean. Named groups (<code>(?&lt;name&gt;...)</code>) make complex patterns much more readable.</p>
+
+    <div class="example-box">
+      <p><strong>Named groups example — parsing a date:</strong><br>
+      Pattern: <code>(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})</code><br>
+      Input: <code>2025-06-18</code><br>
+      Result: <code>year=2025, month=06, day=18</code></p>
+    </div>
+
+    <p>Alternation <code>|</code> means "or." <code>cat|dog</code> matches either word. Note that alternation has very low precedence: <code>^cat|dog$</code> means "starts with cat OR ends with dog," not "starts and ends with cat or dog." Wrap with a group: <code>^(cat|dog)$</code>.</p>
+
+    <h2>Lookarounds: Match Without Consuming</h2>
+    <p>Lookarounds are zero-width assertions — they check that something is or isn't present without including those characters in the match. There are four:</p>
+
+    <ul>
+      <li><code>(?=...)</code> — positive lookahead: "followed by..."</li>
+      <li><code>(?!...)</code> — negative lookahead: "not followed by..."</li>
+      <li><code>(?&lt;=...)</code> — positive lookbehind: "preceded by..."</li>
+      <li><code>(?&lt;!...)</code> — negative lookbehind: "not preceded by..."</li>
+    </ul>
+
+    <p>The classic example is password validation. Suppose you require at least 8 characters, one digit, and one uppercase. A single pattern handles this cleanly:</p>
+
+    <div class="example-box">
+      <p><strong>Password rule with lookaheads:</strong><br>
+      <code>^(?=.*\d)(?=.*[A-Z]).{8,}$</code><br><br>
+      Read it as: "from start, ahead is a digit somewhere, ahead is an uppercase somewhere, then 8+ of anything, then end."</p>
+    </div>
+
+    <h2>Common Patterns Worth Memorizing</h2>
+    <p>These are the patterns I find myself reaching for most weeks. Test each one against your own data before deploying — every real-world dataset has surprises.</p>
+
+    <table>
+      <tr><th>Task</th><th>Pattern</th></tr>
+      <tr><td>Simple email</td><td><code>^[\w.+-]+@[\w-]+\.[\w.-]+$</code></td></tr>
+      <tr><td>URL (http/https)</td><td><code>^https?://[\w.-]+(:\d+)?(/[^\s]*)?$</code></td></tr>
+      <tr><td>ISO date (YYYY-MM-DD)</td><td><code>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</code></td></tr>
+      <tr><td>Strong password (8+, mixed)</td><td><code>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$</code></td></tr>
+      <tr><td>IPv4 (loose)</td><td><code>^(\d{1,3}\.){3}\d{1,3}$</code></td></tr>
+      <tr><td>Hex color</td><td><code>^#([A-Fa-f0-9]{6}\|[A-Fa-f0-9]{3})$</code></td></tr>
+      <tr><td>UUID v4</td><td><code>^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code></td></tr>
+      <tr><td>Trim whitespace</td><td><code>^\s+|\s+$</code></td></tr>
+      <tr><td>Slug (kebab-case)</td><td><code>^[a-z0-9]+(-[a-z0-9]+)*$</code></td></tr>
+    </table>
+
+    <p>Note the email pattern is "simple" — a fully RFC-5322-compliant email regex is several thousand characters and rarely worth it. In practice, validate format loosely and confirm by sending a verification email.</p>
+
+    <div class="highlight-box">
+      <strong>Performance trap:</strong> patterns like <code>(a+)+b</code> can trigger catastrophic backtracking against input like <code>aaaaaaaaa</code> with no trailing <code>b</code>. Avoid nested unbounded quantifiers, and prefer possessive quantifiers (<code>a++</code>) or atomic groups (<code>(?&gt;...)</code>) where supported.
+    </div>
+
+    <h2>Flags That Change Everything</h2>
+    <p>Regex flags modify how the entire pattern is interpreted, and forgetting them is a top source of confusion. The four most important flags across languages are case insensitivity, multiline, dotall, and global. Case insensitivity makes <code>[a-z]</code> equivalent to <code>[a-zA-Z]</code> — convenient, but slower and sometimes wrong (Turkish "I" famously breaks naive case folding). Multiline mode changes the meaning of <code>^</code> and <code>$</code> from "start/end of string" to "start/end of each line," which matters whenever you process multi-line text. Dotall mode lets <code>.</code> match newlines, useful for parsing blocks that span lines. Global mode (in JavaScript) controls whether <code>.replace</code> swaps the first match or all of them.</p>
+
+    <p>One practical recommendation: explicitly set every flag your pattern depends on, even when the default would work. Future maintainers — including future-you — will appreciate the clarity. A pattern that silently relies on the default of the dotall flag becomes a Heisenbug when copied between languages with different defaults.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Should I parse HTML with regex?</h3>
+    <p>For one-off extraction of a known tag in known input, regex is fine. For anything resembling real HTML parsing, use an actual HTML parser. HTML is not a regular language — comments, CDATA, and nested tags will defeat any non-trivial regex. Tools like <a href="/html-stripper.html">HTML strippers</a> use proper parsers under the hood for this reason.</p>
+
+    <h3>What's the difference between greedy and lazy matching?</h3>
+    <p>Greedy quantifiers (<code>*</code>, <code>+</code>) match as much as possible, then back off if the rest of the pattern doesn't fit. Lazy quantifiers (<code>*?</code>, <code>+?</code>) match as little as possible and expand only when forced. Use lazy when extracting content between delimiters, like <code>"(.*?)"</code> to capture the smallest string between quotes.</p>
+
+    <h3>How do I match a literal special character like a dot?</h3>
+    <p>Escape it with a backslash: <code>\.</code> matches a literal period. The characters needing escape are <code>. ^ $ * + ? ( ) [ ] { } | \</code>. Inside a character class, fewer characters are special — usually only <code>] \ ^ -</code>. When in doubt, test in a <a href="/regex-tester.html">regex tester</a> before shipping the code.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/json-formatting-guide.html">JSON Formatting Best Practices for APIs and Configs</a>
+        <a href="/blog/url-encoding-when-to-use.html">URL Encoding: When, Why, and How (with Examples)</a>
+        <a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: When and Why to Use It</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

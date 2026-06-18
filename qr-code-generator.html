@@ -107,25 +107,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Secure credentials:</strong> Use the QR Code Generator when you need a fresh, unpredictable value for accounts, tokens, or test data.</li>
-      <li><strong>Test fixtures:</strong> Populate forms, databases, or QA environments with realistic sample data on demand.</li>
-      <li><strong>Creative inspiration:</strong> Spin the QR Code Generator when you need a quick random pick to break decision paralysis.</li>
+      <li><strong>Business cards:</strong> Encode vCard contact details so scanning a printed card auto-fills name, phone, and email into the recipient's phone.</li>
+      <li><strong>Restaurant menus:</strong> Generate stable URLs for table-side menu QRs that link to PDF or interactive ordering pages.</li>
+      <li><strong>Event tickets and WiFi:</strong> Encode WIFI:S:Network;T:WPA;P:password;; so guests join your WiFi instantly without typing the SSID.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How random is the output of the</div>
-        <div class="tool-faq-a">The QR Code Generator uses your browser's cryptographically secure randomness source where available, suitable for most security uses.</div>
+        <div class="tool-faq-q">What error correction level should I use?</div>
+        <div class="tool-faq-a">QR codes support L (7%), M (15%), Q (25%), and H (30%) error correction. Use H for printed codes that may smudge or be partially covered by a logo overlay. Use L for short-lived digital codes to maximize data capacity at the same module count.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Are generated values logged or reused?</div>
-        <div class="tool-faq-a">No. Each output from the QR Code Generator exists only in your browser session and is never sent anywhere.</div>
+        <div class="tool-faq-q">What's the maximum data a QR code can hold?</div>
+        <div class="tool-faq-a">At the largest size (Version 40, 177x177 modules) and lowest error correction, a QR can hold 7,089 numeric digits, 4,296 alphanumeric, or 2,953 bytes. Keep payloads under 300 characters for reliable scanning from phone cameras at typical distances.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I generate many results at once?</div>
-        <div class="tool-faq-a">Yes. Most options in the QR Code Generator accept a batch size so you can produce dozens of values in a single click.</div>
+        <div class="tool-faq-q">Why won't my QR code scan?</div>
+        <div class="tool-faq-a">Common causes: insufficient contrast (always dark-on-light, not inverted), printed too small (minimum 2cm side for 30cm scan distance), missing quiet zone (4-module border), or a damaged or low-resolution image. Test with multiple scanner apps before printing in bulk.</div>
       </div>
     </div>
   </div>

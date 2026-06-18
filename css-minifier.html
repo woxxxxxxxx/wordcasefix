@@ -123,25 +123,25 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Code review:</strong> Re-indent unfamiliar code so it is easier to read, diff, and discuss with teammates.</li>
-      <li><strong>Build pipelines:</strong> Validate minified or generated artifacts by reformatting them to confirm structure is intact.</li>
-      <li><strong>Learning:</strong> Beautify obfuscated examples found online so the underlying logic is easier to study.</li>
+      <li><strong>Code review prep:</strong> Developers run the Css Minifier to normalize formatting before opening a pull request, isolating logic changes from whitespace noise.</li>
+      <li><strong>Legacy code cleanup:</strong> Engineers tidy minified or inconsistently formatted code so the structure becomes scannable.</li>
+      <li><strong>Debugging:</strong> Format compressed responses or logs to make field boundaries and nesting visible during incident investigation.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Will the CSS Minifier change the meaning of my code?</div>
-        <div class="tool-faq-a">No. The CSS Minifier only adjusts whitespace and indentation; the parsed behavior of your code is preserved.</div>
+        <div class="tool-faq-q">What style does the Css Minifier apply?</div>
+        <div class="tool-faq-a">The formatter uses widely accepted defaults: 2-space indentation, line breaks at logical boundaries, and consistent quoting where applicable. Output is deterministic, so running it twice produces identical text.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is anything uploaded when I use the</div>
-        <div class="tool-faq-a">No. All processing in the CSS Minifier happens locally in your browser, so your code stays private.</div>
+        <div class="tool-faq-q">Does formatting change the meaning of my code?</div>
+        <div class="tool-faq-a">No. The formatter changes only whitespace and ordering of cosmetic elements; the parsed AST remains identical. Functional behavior, variable names, and value precision are preserved exactly.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">What size of input does the CSS Minifier support?</div>
-        <div class="tool-faq-a">The CSS Minifier comfortably handles files of several megabytes; very large inputs are limited only by browser memory.</div>
+        <div class="tool-faq-q">Can I minify instead of beautify?</div>
+        <div class="tool-faq-a">Yes. Toggle the minify option to strip all non-essential whitespace and comments, producing the smallest functionally equivalent output. Useful for production assets where every byte counts in download size.</div>
       </div>
     </div>
   </div>

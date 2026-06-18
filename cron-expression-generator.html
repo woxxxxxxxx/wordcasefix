@@ -109,25 +109,25 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Secure credentials:</strong> Use the Cron Expression Generator when you need a fresh, unpredictable value for accounts, tokens, or test data.</li>
-      <li><strong>Test fixtures:</strong> Populate forms, databases, or QA environments with realistic sample data on demand.</li>
-      <li><strong>Creative inspiration:</strong> Spin the Cron Expression Generator when you need a quick random pick to break decision paralysis.</li>
+      <li><strong>Scheduled backups:</strong> Sysadmins build crontab entries to dump databases every night at 03:00 when traffic is low.</li>
+      <li><strong>CI/CD scheduled jobs:</strong> DevOps engineers configure GitHub Actions or GitLab CI to run nightly regression tests on the main branch.</li>
+      <li><strong>Application background tasks:</strong> Build cron expressions for Quartz, node-cron, or Spring @Scheduled to drive billing, cleanup, and report-generation jobs.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How random is the output of the</div>
-        <div class="tool-faq-a">The Cron Expression Generator uses your browser's cryptographically secure randomness source where available, suitable for most security uses.</div>
+        <div class="tool-faq-q">What do the five fields in a cron expression mean?</div>
+        <div class="tool-faq-a">From left to right: minute (0-59), hour (0-23), day of month (1-31), month (1-12 or JAN-DEC), day of week (0-7, where both 0 and 7 are Sunday). "0 3 * * *" runs at 3:00 AM every day of every month.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Are generated values logged or reused?</div>
-        <div class="tool-faq-a">No. Each output from the Cron Expression Generator exists only in your browser session and is never sent anywhere.</div>
+        <div class="tool-faq-q">What's the difference between Unix cron and Quartz cron?</div>
+        <div class="tool-faq-a">Quartz (Java) adds a seconds field at the start and a year field at the end, so it uses 6-7 fields versus Unix's 5. Quartz also distinguishes ? from * in day-of-month vs day-of-week to avoid conflicts. The generator supports both formats.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I generate many results at once?</div>
-        <div class="tool-faq-a">Yes. Most options in the Cron Expression Generator accept a batch size so you can produce dozens of values in a single click.</div>
+        <div class="tool-faq-q">How do I run something every 15 minutes?</div>
+        <div class="tool-faq-a">Use */15 in the minute field: "*/15 * * * *" fires at :00, :15, :30, :45 of every hour. To run every 2 hours on the half-hour: "30 */2 * * *". Cron does not support intervals shorter than 1 minute; use a sleeping loop or systemd timer for sub-minute scheduling.</div>
       </div>
     </div>
   </div>

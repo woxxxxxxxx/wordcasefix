@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Syntax Guide: From Basics to Advanced | WordCaseFix</title>
+<meta name="description" content="A complete Markdown syntax reference covering basic formatting, tables, code blocks, footnotes, task lists, and the differences between CommonMark and GitHub Flavored Markdown.">
+<meta name="keywords" content="markdown syntax, markdown guide, GFM, CommonMark, markdown tables, markdown cheatsheet">
+<meta property="og:title" content="Markdown Syntax Guide: From Basics to Advanced">
+<meta property="og:description" content="Markdown from basics to advanced: tables, code blocks, footnotes, GFM extensions.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://wordcasefix.com/blog/markdown-syntax-guide.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Markdown Syntax Guide: From Basics to Advanced","description":"Complete Markdown syntax: basics, tables, code blocks, footnotes, and GFM extensions.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/markdown-syntax-guide.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
+.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
+.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
+.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
+.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;height:90px;margin-bottom:24px}
+.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
+.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;color:#aaa}
+article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
+.article-meta{font-size:13px;color:#888;margin-bottom:28px}
+article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
+article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
+article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
+article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
+article li{margin-bottom:6px}
+article a{color:#5b5bd6}
+article code{background:#f0f0ff;padding:2px 6px;border-radius:4px;font-size:13px;font-family:Consolas,Monaco,monospace}
+.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
+.example-box p,.example-box pre{margin:0;font-size:14px;color:#333;line-height:1.6}
+.example-box pre{font-family:Consolas,Monaco,monospace;white-space:pre-wrap}
+.example-box strong{color:#5b5bd6}
+.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
+.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
+.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
+.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.tool-cta a.cta-btn:hover{background:#4a4ac2}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
+tr:nth-child(even) td{background:#f9f9ff}
+.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
+.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
+.related-list{display:flex;flex-direction:column;gap:10px}
+.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
+.related-list a:hover{text-decoration:underline}
+footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
+footer a{color:#5b5bd6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span>›</span>
+    <a href="/#guides">Guides</a><span>›</span>
+    <span>Markdown Syntax Guide</span>
+  </div>
+
+  <article>
+    <h1>Markdown Syntax Guide: From Basics to Advanced</h1>
+    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; Writing</div>
+
+    <p>Markdown was designed in 2004 by John Gruber and Aaron Swartz as a way to write formatted text that remains readable as plain text. Twenty years later it has won — it is the default for README files, static-site blog posts, chat apps, documentation systems, and most note-taking tools. The reason for its longevity is simple: the source is almost as legible as the rendered output, and the syntax is small enough to memorize.</p>
+
+    <p>This guide covers the syntax in three layers: the core elements every Markdown variant supports, the GitHub Flavored Markdown (GFM) extensions that are now de-facto standards, and a few advanced features you will find in CommonMark-compliant renderers. By the end you should be able to write Markdown without looking anything up.</p>
+
+    <div class="tool-cta">
+      <div class="cta-text">
+        <strong>Markdown Editor</strong>
+        Write Markdown on the left, see formatted HTML on the right, copy either side.
+      </div>
+      <a class="cta-btn" href="/markdown-editor.html">Open Markdown Editor →</a>
+    </div>
+
+    <h2>The Core: Headings, Emphasis, Lists, Links</h2>
+    <p>Six levels of headings use the hash character. Use one <code>#</code> for the top-level heading and add hashes for deeper levels. Most renderers also accept an alternate "Setext" style for H1 and H2 using underlines, but the ATX hash style is more common.</p>
+
+    <div class="example-box">
+      <p><strong>Headings:</strong></p>
+      <pre># Top-level title
+## Section heading
+### Subsection
+#### Sub-subsection</pre>
+    </div>
+
+    <p>Emphasis uses asterisks or underscores. One delimiter on each side for italic, two for bold, three for both.</p>
+
+    <div class="example-box">
+      <p><strong>Emphasis:</strong></p>
+      <pre>*italic* or _italic_
+**bold** or __bold__
+***bold italic***
+~~strikethrough~~</pre>
+    </div>
+
+    <p>Unordered lists start with <code>-</code>, <code>*</code>, or <code>+</code> — they're equivalent. Ordered lists use any digit followed by a period; the renderer auto-numbers, so you can keep writing <code>1.</code> on every line if you want.</p>
+
+    <p>Links and images share a similar syntax: square brackets for the visible text, parentheses for the target. Images add a leading <code>!</code>.</p>
+
+    <div class="example-box">
+      <p><strong>Links and images:</strong></p>
+      <pre>[WordCaseFix](https://wordcasefix.com)
+[link with title](https://example.com "Hover text")
+![alt text for the image](/logo.svg)</pre>
+    </div>
+
+    <h2>Code: Inline and Fenced Blocks</h2>
+    <p>Inline code uses single backticks around the snippet. Fenced code blocks use three backticks on lines of their own; an optional language identifier after the opening fence enables syntax highlighting in renderers that support it.</p>
+
+    <div class="example-box">
+      <p><strong>Inline:</strong> Run <code>`npm install`</code> in your project root.</p>
+    </div>
+
+    <p>Fenced blocks with language identifiers:</p>
+
+    <div class="example-box">
+      <pre>```javascript
+function hello(name) {
+  return `Hello, ${name}!`;
+}
+```</pre>
+    </div>
+
+    <p>If your code contains backticks, use four or more backticks on the fence — the closing fence must have at least as many backticks as the opening one. For inline code containing a backtick, use double backticks with a space inside: <code>``code with ` inside``</code>.</p>
+
+    <h2>Tables, Task Lists, and GFM Extensions</h2>
+    <p>Tables are not part of original Markdown, but GitHub Flavored Markdown added them and almost every modern renderer supports them. Use pipes to separate columns and a row of hyphens to mark the header. Optional colons in the separator row set column alignment.</p>
+
+    <div class="example-box">
+      <pre>| Feature        | Original MD | GFM   |
+| -------------- |:-----------:| -----:|
+| Tables         | No          | Yes   |
+| Task lists     | No          | Yes   |
+| Strikethrough  | No          | Yes   |
+| Autolinks      | No          | Yes   |</pre>
+    </div>
+
+    <p>Writing tables by hand is painful for anything beyond four columns. A dedicated <a href="/markdown-table-generator.html">markdown table generator</a> is faster, and most editors with a Markdown mode include a table assistant.</p>
+
+    <p>Task lists are another GFM addition. A list item with <code>[ ]</code> or <code>[x]</code> immediately after the bullet renders as an interactive checkbox in many viewers:</p>
+
+    <div class="example-box">
+      <pre>- [x] Write outline
+- [x] Draft introduction
+- [ ] Add examples
+- [ ] Review and publish</pre>
+    </div>
+
+    <h2>Advanced: Footnotes, Definition Lists, HTML Escape Hatch</h2>
+    <p>Footnotes are supported in CommonMark extensions and in most static site generators. Use <code>[^label]</code> in text and define the footnote anywhere in the document:</p>
+
+    <div class="example-box">
+      <pre>Markdown was created in 2004[^1].
+
+[^1]: Originally by Gruber and Swartz.</pre>
+    </div>
+
+    <p>Definition lists, supported by Pandoc and some renderers but not all, are useful for glossaries:</p>
+
+    <div class="example-box">
+      <pre>HEX
+:   Six-digit color notation in base 16
+
+HSL
+:   Hue-saturation-lightness color model</pre>
+    </div>
+
+    <p>When you hit a wall — vertical alignment in tables, complex layouts, embedded video — Markdown lets you drop into raw HTML. Most renderers pass HTML through unchanged. This is the safety valve that lets Markdown remain small while still handling edge cases:</p>
+
+    <div class="example-box">
+      <pre>&lt;details&gt;
+&lt;summary&gt;Click to expand&lt;/summary&gt;
+
+Hidden content with **Markdown** still works inside.
+
+&lt;/details&gt;</pre>
+    </div>
+
+    <p>If you need to migrate Markdown into a CMS that expects HTML, use a <a href="/markdown-to-html.html">Markdown to HTML converter</a> for the bulk conversion, then hand-edit the few edge cases. The reverse direction — <a href="/html-to-markdown.html">HTML to Markdown</a> — is also commonly needed when moving content out of legacy systems.</p>
+
+    <table>
+      <tr><th>Variant</th><th>Tables</th><th>Task lists</th><th>Footnotes</th><th>Strikethrough</th></tr>
+      <tr><td>Original (Gruber 2004)</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+      <tr><td>CommonMark</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+      <tr><td>GitHub Flavored (GFM)</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes</td></tr>
+      <tr><td>Pandoc</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      <strong>Portability tip:</strong> when writing for unknown renderers (e.g., a README that may be viewed on GitHub, npm, and a personal site), stick to GFM. It is the largest common ground. If you find yourself reaching for features beyond GFM, you are probably writing for a specific tool and should document the assumption.
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Why are there so many Markdown flavors?</h3>
+    <p>The original spec was loose, so every tool that needed missing features (tables, footnotes, math) added its own. CommonMark is the formal standardization effort that nailed down ambiguities; GFM is the most widely adopted superset that adds tables, task lists, and strikethrough. The fragmentation is mostly settling, with most modern renderers targeting CommonMark + GFM extensions.</p>
+
+    <h3>How do I write a literal asterisk or backtick?</h3>
+    <p>Escape it with a backslash: <code>\*not italic\*</code> renders as *not italic*. For a literal backtick inside inline code, wrap the snippet in double backticks and pad with a space. The full set of escapable characters is documented in CommonMark, but in practice you'll only need to escape asterisks, underscores, brackets, and backticks.</p>
+
+    <h3>Should I learn Markdown or just use a WYSIWYG editor?</h3>
+    <p>Both. WYSIWYG editors are excellent for casual writing; Markdown is excellent for content that will be version-controlled, scripted, or shared between tools. The skill of writing Markdown takes about an hour to learn and pays back for years. Most professional writers, developers, and technical communicators use both depending on the task.</p>
+
+    <div class="related-articles">
+      <h2>Related Guides</h2>
+      <div class="related-list">
+        <a href="/blog/json-formatting-guide.html">JSON Formatting Best Practices for APIs and Configs</a>
+        <a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a>
+        <a href="/blog/url-encoding-when-to-use.html">URL Encoding: When, Why, and How (with Examples)</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+<footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+</body>
+</html>

@@ -69,25 +69,25 @@ textarea{width:100%;height:160px;padding:14px 16px;font-size:15px;font-family:in
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Code naming:</strong> Reformat variable names, function names, or class identifiers to match the case convention your codebase uses.</li>
-      <li><strong>Content cleanup:</strong> Quickly fix inconsistent capitalization in headings, titles, or copied text before publishing.</li>
-      <li><strong>Data normalization:</strong> Standardize CSV columns, database fields, or API keys to a single consistent case style.</li>
+      <li><strong>C# class names:</strong> Microsoft's .NET naming guidelines require PascalCase for classes, public methods, and properties; convert imported JavaScript code accordingly.</li>
+      <li><strong>TypeScript interfaces:</strong> Frontend teams convert payload field lists into PascalCase interface and type names (UserProfile, ApiResponse) for clean type definitions.</li>
+      <li><strong>React components:</strong> JSX requires component names to start with a capital letter; convert kebab-case design tokens like "primary-button" into PrimaryButton component identifiers.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the PascalCase Case Converter free to use?</div>
-        <div class="tool-faq-a">Yes. The PascalCase Case Converter is completely free with no signup, no character limits, and no watermarks on output.</div>
+        <div class="tool-faq-q">What's the difference between PascalCase and camelCase?</div>
+        <div class="tool-faq-a">PascalCase capitalizes every word including the first (UserProfile), camelCase keeps the first word lowercase (userProfile). C#, TypeScript, and Java use PascalCase for types and classes; camelCase is reserved for fields, parameters, and local variables.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the PascalCase Case Converter send my text to a server?</div>
-        <div class="tool-faq-a">No. All conversion happens locally in your browser, so your text never leaves your device.</div>
+        <div class="tool-faq-q">Should I use PascalCase for acronyms like "URL" or "ID"?</div>
+        <div class="tool-faq-a">Microsoft's guidelines say two-letter acronyms stay uppercase (IOStream, IDNumber) but longer ones use PascalCase (HtmlParser, not HTMLParser). Java's convention treats all acronyms as words: HtmlParser, XmlReader. The converter follows the two-letter rule by default.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I convert very large blocks of text?</div>
-        <div class="tool-faq-a">Yes. The PascalCase Case Converter handles documents of essentially any size limited only by your browser's memory.</div>
+        <div class="tool-faq-q">Can PascalCase identifiers start with a digit?</div>
+        <div class="tool-faq-a">No. Identifiers in C#, Java, Python, and most languages must start with a letter or underscore. PascalCase output like "2024Report" is invalid; prefix it with a letter such as "Report2024" or "FiscalYear2024".</div>
       </div>
     </div>
   </div>

@@ -150,25 +150,25 @@ document.getElementById('jwtClr').onclick=function(){document.getElementById('jw
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>API debugging:</strong> Inspect or craft payloads that need to be encoded for safe transport in URLs, headers, or JSON bodies.</li>
-      <li><strong>Web development:</strong> Use the Jwt Decoder to test how strings are interpreted by browsers, servers, or HTTP clients.</li>
-      <li><strong>Data forensics:</strong> Decode unfamiliar strings found in logs, query parameters, or cookies to understand what they contain.</li>
+      <li><strong>API debugging:</strong> Frontend developers decode JWTs from Authorization headers to inspect the sub, exp, and scope claims when troubleshooting 401 errors.</li>
+      <li><strong>Security review:</strong> Pentesters check for the "none" algorithm vulnerability and look for sensitive data leaking in unencrypted payloads.</li>
+      <li><strong>OAuth flow inspection:</strong> Verify that an id_token from Google, Auth0, or Okta carries the expected aud and iss claims for your application.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Jwt Decoder work offline?</div>
-        <div class="tool-faq-a">Yes. Once the page is loaded the Jwt Decoder runs entirely in your browser, with no further network calls.</div>
+        <div class="tool-faq-q">Is decoding a JWT the same as verifying it?</div>
+        <div class="tool-faq-a">No. Decoding splits the token on dots and Base64URL-decodes the header and payload, which anyone can do. Verification requires checking the signature against the issuer's public key (or shared secret). This decoder does not verify signatures; treat decoded payloads as untrusted.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is my data safe in the</div>
-        <div class="tool-faq-a">Yes. The Jwt Decoder never transmits your input, so sensitive strings like tokens stay on your machine.</div>
+        <div class="tool-faq-q">What's in a JWT's three parts?</div>
+        <div class="tool-faq-a">A JWT is header.payload.signature, each Base64URL-encoded and joined by dots. Header declares the algorithm (HS256, RS256, ES256). Payload holds claims (sub, exp, iat, custom data). Signature is HMAC or RSA of the header.payload using a key.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can the Jwt Decoder handle Unicode characters?</div>
-        <div class="tool-faq-a">Yes. The Jwt Decoder uses UTF-8 internally and correctly processes emoji, accented characters, and non-Latin scripts.</div>
+        <div class="tool-faq-q">Why should I never use the "none" algorithm?</div>
+        <div class="tool-faq-a">The "none" algorithm means no signature. Some older libraries accept "alg":"none" tokens as valid if the application doesn't enforce a whitelist. Attackers can forge any payload. Always validate that alg matches an expected value (e.g., RS256) before trusting a token.</div>
       </div>
     </div>
   </div>

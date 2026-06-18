@@ -102,25 +102,25 @@ Call +1-555-1234 for more information.</textarea></div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Day-to-day tasks:</strong> Reach for the Regex Tester whenever you need a quick, no-friction answer without opening a heavyweight app.</li>
-      <li><strong>Work workflows:</strong> Use the Regex Tester as a quick utility step inside larger workflows at the office.</li>
-      <li><strong>Learning and exploration:</strong> Experiment with different inputs in the Regex Tester to understand how the underlying values relate.</li>
+      <li><strong>Form validation:</strong> Frontend developers test email and phone patterns against real-world input edge cases before deploying to production.</li>
+      <li><strong>Log parsing:</strong> SREs build regexes to extract IP addresses, timestamps, or error codes from multi-line application logs.</li>
+      <li><strong>Code refactoring:</strong> Engineers craft search-and-replace patterns for VS Code or sed/awk pipelines, verifying captures before running against a large repo.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the Regex Tester really free?</div>
-        <div class="tool-faq-a">Yes. The Regex Tester is completely free with no account required and no hidden usage limits.</div>
+        <div class="tool-faq-q">What's the difference between greedy and lazy quantifiers?</div>
+        <div class="tool-faq-a">Greedy quantifiers (*, +, ?) match as much as possible; lazy versions (*?, +?, ??) match as little. For example, in "<a><b>" the regex <.+> greedily matches "<a><b>" but <.+?> matches just "<a>". Use lazy when extracting individual HTML tags or quoted strings.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Regex Tester work on mobile?</div>
-        <div class="tool-faq-a">Yes. The Regex Tester is responsive and works equally well on phones, tablets, and desktop browsers.</div>
+        <div class="tool-faq-q">How do I match an email address with regex?</div>
+        <div class="tool-faq-a">RFC 5322 allows characters that practical regexes ignore. A safe pattern is ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$. For full validation, send a confirmation email; regex alone cannot verify deliverability or catch all edge cases like quoted local parts.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is my data private in the</div>
-        <div class="tool-faq-a">Yes. The Regex Tester runs entirely in your browser, so the data you enter is never uploaded to a server.</div>
+        <div class="tool-faq-q">Does this tester support PCRE features like lookbehind?</div>
+        <div class="tool-faq-a">The tester uses the browser's JavaScript regex engine (ECMAScript 2018+), which supports lookbehind ((?<=...)), named groups ((?<name>...)), and Unicode property escapes (\p{L}). PCRE-only features like recursion and possessive quantifiers are not supported.</div>
       </div>
     </div>
   </div>

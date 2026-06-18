@@ -112,25 +112,25 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Secure credentials:</strong> Use the Hash Generator when you need a fresh, unpredictable value for accounts, tokens, or test data.</li>
-      <li><strong>Test fixtures:</strong> Populate forms, databases, or QA environments with realistic sample data on demand.</li>
-      <li><strong>Creative inspiration:</strong> Spin the Hash Generator when you need a quick random pick to break decision paralysis.</li>
+      <li><strong>File integrity checks:</strong> Verify downloads match published SHA-256 checksums to detect corruption or man-in-the-middle tampering.</li>
+      <li><strong>Cache busting:</strong> Compute MD5 or SHA-1 of asset contents to generate fingerprinted filenames like app.a3f8b2.js for long-term browser caching.</li>
+      <li><strong>Database deduplication:</strong> Hash large blobs (images, documents) and store the digest as a unique index to detect and reject duplicate uploads.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How random is the output of the</div>
-        <div class="tool-faq-a">The Hash Generator uses your browser's cryptographically secure randomness source where available, suitable for most security uses.</div>
+        <div class="tool-faq-q">Which hash should I use for passwords?</div>
+        <div class="tool-faq-a">None of the fast hashes on this page. MD5, SHA-1, and even SHA-256 are too fast and vulnerable to GPU brute force. Use bcrypt, scrypt, Argon2id, or PBKDF2 with a high iteration count for password storage. This tool is for file integrity, not credential storage.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Are generated values logged or reused?</div>
-        <div class="tool-faq-a">No. Each output from the Hash Generator exists only in your browser session and is never sent anywhere.</div>
+        <div class="tool-faq-q">Is SHA-256 still secure?</div>
+        <div class="tool-faq-a">Yes. As of 2026, SHA-256 has no known practical collisions or preimage attacks. Bitcoin and TLS rely on it. SHA-1 and MD5, however, are broken: SHA-1 collisions were demonstrated in 2017 (SHAttered), and MD5 collisions are trivial in seconds on commodity hardware.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I generate many results at once?</div>
-        <div class="tool-faq-a">Yes. Most options in the Hash Generator accept a batch size so you can produce dozens of values in a single click.</div>
+        <div class="tool-faq-q">Why do MD5 and SHA-1 produce different hash lengths?</div>
+        <div class="tool-faq-a">MD5 outputs 128 bits (32 hex chars), SHA-1 outputs 160 bits (40 hex chars), SHA-256 outputs 256 bits (64 hex chars). Longer hashes have larger output space, reducing collision probability and increasing brute-force cost.</div>
       </div>
     </div>
   </div>

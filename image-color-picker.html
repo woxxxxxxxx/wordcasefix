@@ -95,25 +95,25 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Daily lookups:</strong> Keep the Image Color Picker open in a tab as a quick reference instead of memorizing every value.</li>
-      <li><strong>Onboarding:</strong> Share the Image Color Picker with new teammates so they can self-serve answers to common questions.</li>
-      <li><strong>Documentation:</strong> Copy entries from the Image Color Picker straight into READMEs, wikis, or chat without retyping them.</li>
+      <li><strong>Design system tokens:</strong> Frontend devs translate brand colors between HEX, RGB, and HSL formats for CSS variables and Tailwind config.</li>
+      <li><strong>Accessibility audits:</strong> UI designers verify foreground/background pairs meet WCAG contrast ratios before shipping a component.</li>
+      <li><strong>Brand consistency:</strong> Marketing teams sample logo or photo colors for use in PowerPoint, social graphics, and print collateral.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the data shown in the Image Color Picker up to date?</div>
-        <div class="tool-faq-a">Yes. The Image Color Picker is reviewed regularly so the values, symbols, and shortcuts reflect the current standards.</div>
+        <div class="tool-faq-q">What's the difference between sRGB and Display P3?</div>
+        <div class="tool-faq-a">sRGB is the web default color space, covering about 35% of visible colors. Display P3 (used by modern iPhones and Macs) covers ~50%, allowing more saturated reds and greens. CSS color(display-p3 ...) targets P3 explicitly; HEX/rgb() remain in sRGB.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I use the Image Color Picker offline?</div>
-        <div class="tool-faq-a">Yes. After loading once, the Image Color Picker works without a connection because all data is bundled into the page.</div>
+        <div class="tool-faq-q">How is the Image Color Picker accurate for accessibility?</div>
+        <div class="tool-faq-a">The tool computes contrast using the WCAG 2.1 luminance formula. AA-level body text requires a 4.5:1 ratio; large text (18pt+ or 14pt bold) needs 3:1. AAA requires 7:1. Run your final color pairs through the contrast checker before publishing.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the Image Color Picker free?</div>
-        <div class="tool-faq-a">Yes. The Image Color Picker is free to use with no signup and no usage limits.</div>
+        <div class="tool-faq-q">Why do colors look different in print versus on screen?</div>
+        <div class="tool-faq-a">Screens use additive RGB light; print uses subtractive CMYK ink. Many vivid screen colors (bright blues, greens, oranges) sit outside CMYK gamut and shift to muddier hues when converted. Always proof brand colors in CMYK before mass printing.</div>
       </div>
     </div>
   </div>

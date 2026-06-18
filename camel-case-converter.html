@@ -94,25 +94,25 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Code naming:</strong> Reformat variable names, function names, or class identifiers to match the case convention your codebase uses.</li>
-      <li><strong>Content cleanup:</strong> Quickly fix inconsistent capitalization in headings, titles, or copied text before publishing.</li>
-      <li><strong>Data normalization:</strong> Standardize CSV columns, database fields, or API keys to a single consistent case style.</li>
+      <li><strong>JavaScript variable naming:</strong> Convert "user profile data" to userProfileData for ES6/Node.js variable and function declarations following standard JS conventions.</li>
+      <li><strong>Java method names:</strong> Backend developers reformat database column names like "first_name" into firstName for POJO getter/setter methods and JPA entity fields.</li>
+      <li><strong>API JSON keys:</strong> Convert snake_case server responses (created_at, user_id) into camelCase for clean frontend consumption in React or Vue components.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the camelCase Case Converter free to use?</div>
-        <div class="tool-faq-a">Yes. The camelCase Case Converter is completely free with no signup, no character limits, and no watermarks on output.</div>
+        <div class="tool-faq-q">How does camelCase differ from PascalCase?</div>
+        <div class="tool-faq-a">camelCase keeps the first letter lowercase and capitalizes every subsequent word (userName, getFullName), while PascalCase capitalizes the first letter too (UserName). camelCase is used for variables and methods in JavaScript and Java; PascalCase is used for classes and types.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the camelCase Case Converter send my text to a server?</div>
-        <div class="tool-faq-a">No. All conversion happens locally in your browser, so your text never leaves your device.</div>
+        <div class="tool-faq-q">How do I convert snake_case like "user_first_name" to camelCase?</div>
+        <div class="tool-faq-a">Split on underscores, lowercase the first chunk, and capitalize the first letter of each remaining chunk. "user_first_name" becomes "userFirstName". Paste the snake_case string into the input box above and the converter handles delimiters, hyphens, and spaces automatically.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I convert very large blocks of text?</div>
-        <div class="tool-faq-a">Yes. The camelCase Case Converter handles documents of essentially any size limited only by your browser's memory.</div>
+        <div class="tool-faq-q">Should JSON API keys use camelCase or snake_case?</div>
+        <div class="tool-faq-a">Google's JSON style guide recommends camelCase (firstName), while Python/Ruby APIs often use snake_case (first_name). JavaScript clients typically map snake_case responses to camelCase using libraries like humps or lodash.camelCase before binding to view models.</div>
       </div>
     </div>
   </div>

@@ -136,25 +136,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Secure credentials:</strong> Use the UUID Generator when you need a fresh, unpredictable value for accounts, tokens, or test data.</li>
-      <li><strong>Test fixtures:</strong> Populate forms, databases, or QA environments with realistic sample data on demand.</li>
-      <li><strong>Creative inspiration:</strong> Spin the UUID Generator when you need a quick random pick to break decision paralysis.</li>
+      <li><strong>Database primary keys:</strong> Backend devs use UUIDs instead of auto-increment IDs to allow client-side generation and avoid leaking row counts.</li>
+      <li><strong>Distributed systems:</strong> Microservices generate UUIDs locally to avoid coordinator round-trips when creating entities across nodes.</li>
+      <li><strong>Test fixture isolation:</strong> QA engineers tag test data with fresh UUIDs so parallel test runs don't collide on shared records.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">How random is the output of the</div>
-        <div class="tool-faq-a">The UUID Generator uses your browser's cryptographically secure randomness source where available, suitable for most security uses.</div>
+        <div class="tool-faq-q">What's the difference between UUID v4 and UUID v7?</div>
+        <div class="tool-faq-a">v4 is fully random (122 bits of entropy) but unordered, hurting B-tree index performance. v7 (RFC 9562) embeds a millisecond Unix timestamp in the first 48 bits, so v7s sort chronologically and are friendlier to database indexes while keeping collision resistance.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Are generated values logged or reused?</div>
-        <div class="tool-faq-a">No. Each output from the UUID Generator exists only in your browser session and is never sent anywhere.</div>
+        <div class="tool-faq-q">What's the chance of a UUID v4 collision?</div>
+        <div class="tool-faq-a">With 122 random bits, you'd need to generate about 2.71 quintillion UUIDs to have a 50% chance of a single collision (birthday paradox). For practical purposes, treat v4 collisions as impossible at any realistic application scale.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I generate many results at once?</div>
-        <div class="tool-faq-a">Yes. Most options in the UUID Generator accept a batch size so you can produce dozens of values in a single click.</div>
+        <div class="tool-faq-q">Should I store UUIDs as strings or binary in PostgreSQL?</div>
+        <div class="tool-faq-a">Use the native uuid type (16 bytes binary), not varchar(36) (37 bytes plus overhead). The uuid type is 2.3x smaller, faster to compare, and indexed more efficiently. Cast to text only when displaying.</div>
       </div>
     </div>
   </div>

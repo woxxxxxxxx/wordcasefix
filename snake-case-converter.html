@@ -95,25 +95,25 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Code naming:</strong> Reformat variable names, function names, or class identifiers to match the case convention your codebase uses.</li>
-      <li><strong>Content cleanup:</strong> Quickly fix inconsistent capitalization in headings, titles, or copied text before publishing.</li>
-      <li><strong>Data normalization:</strong> Standardize CSV columns, database fields, or API keys to a single consistent case style.</li>
+      <li><strong>Python variable names:</strong> PEP 8 mandates snake_case for functions and variables; convert "getUserData" to "get_user_data" when porting JavaScript logic into Django or Flask backends.</li>
+      <li><strong>PostgreSQL columns:</strong> Database designers normalize mixed-case column names to lowercase snake_case (user_email, created_at) so SQL avoids quoting and case-folding surprises.</li>
+      <li><strong>Ruby on Rails:</strong> Rails relies on snake_case for table names, migration files, and ActiveRecord attributes; convert imported schemas to match convention.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the snake_case Case Converter free to use?</div>
-        <div class="tool-faq-a">Yes. The snake_case Case Converter is completely free with no signup, no character limits, and no watermarks on output.</div>
+        <div class="tool-faq-q">Why does Python use snake_case instead of camelCase?</div>
+        <div class="tool-faq-a">PEP 8 specifies snake_case for functions and variables to favor readability with underscores acting as visual separators. The convention dates to early Unix tools and the C standard library, and it's enforced by linters like flake8 and pylint.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the snake_case Case Converter send my text to a server?</div>
-        <div class="tool-faq-a">No. All conversion happens locally in your browser, so your text never leaves your device.</div>
+        <div class="tool-faq-q">How do I convert "XMLHttpRequest" to snake_case?</div>
+        <div class="tool-faq-a">Insert an underscore before each uppercase letter (except the first), then lowercase everything: xml_http_request. The converter detects acronym boundaries so consecutive capitals collapse correctly instead of becoming x_m_l_http_request.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I convert very large blocks of text?</div>
-        <div class="tool-faq-a">Yes. The snake_case Case Converter handles documents of essentially any size limited only by your browser's memory.</div>
+        <div class="tool-faq-q">Can snake_case identifiers contain digits?</div>
+        <div class="tool-faq-a">Yes. Most languages allow digits in identifiers as long as the name doesn't start with one. "user_id_2024" is valid in Python, Ruby, and Rust, but PostgreSQL limits identifiers to 63 bytes by default.</div>
       </div>
     </div>
   </div>

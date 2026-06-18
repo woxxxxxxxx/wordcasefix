@@ -105,25 +105,25 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Writing for limits:</strong> Check length against character or word limits for tweets, meta descriptions, essays, or form fields.</li>
-      <li><strong>Editorial review:</strong> Use the Line Counter to spot overlong sentences, repeated words, or readability issues before publishing.</li>
-      <li><strong>SEO and content ops:</strong> Track keyword counts and density to keep on-page content within target ranges.</li>
+      <li><strong>Writing quotas:</strong> Authors and bloggers verify they've hit a target before publishing or submitting.</li>
+      <li><strong>SEO planning:</strong> Content marketers measure article length against target word counts for ranking signals.</li>
+      <li><strong>Form constraint checks:</strong> Users verify input fits within character limits before submitting to platforms like Twitter, LinkedIn, or job application forms.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is the Line Counter accurate for word and character counts?</div>
-        <div class="tool-faq-a">Yes. The Line Counter follows standard Unicode segmentation rules so counts match what editors and CMS platforms report.</div>
+        <div class="tool-faq-q">How does the Line Counter define a 'word' or unit?</div>
+        <div class="tool-faq-a">The counter splits input on whitespace (spaces, tabs, newlines) and counts each non-empty run. Hyphenated phrases count as one; punctuation does not produce extra tokens. Counts update live as you type.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Line Counter store any of my text?</div>
-        <div class="tool-faq-a">No. All analysis happens in your browser and nothing you paste into the Line Counter is sent to a server.</div>
+        <div class="tool-faq-q">Does the count include HTML or markdown syntax?</div>
+        <div class="tool-faq-a">By default yes; the tool counts the literal characters you paste. To count only visible text, strip markup first with an HTML-to-text or markdown-to-text converter. The character count then reflects what your readers actually see.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can the Line Counter handle non-English text?</div>
-        <div class="tool-faq-a">Yes. The Line Counter supports any language your browser can render, including CJK and right-to-left scripts.</div>
+        <div class="tool-faq-q">Why might my count differ from Microsoft Word?</div>
+        <div class="tool-faq-a">Word and Google Docs differ slightly on hyphenated words and contractions. Microsoft Word may count 'state-of-the-art' as one word while some tools count it as four. Pick one tool and stick with it for consistent reporting.</div>
       </div>
     </div>
   </div>

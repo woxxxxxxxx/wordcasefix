@@ -102,25 +102,25 @@
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Focused work:</strong> Run Pomodoro-style sessions to block dedicated time for deep work or study.</li>
-      <li><strong>Cooking and exercise:</strong> Use the Countdown Timer as a kitchen timer, workout interval clock, or meditation bell.</li>
-      <li><strong>Meetings and presentations:</strong> Keep talks and standups on schedule with a visible countdown everyone in the room can see.</li>
+      <li><strong>Pomodoro sessions:</strong> Knowledge workers set 25-minute focus blocks followed by 5-minute breaks to combat distraction and track deep work.</li>
+      <li><strong>Cooking and baking:</strong> Set parallel timers for multiple dishes (12-min pasta, 45-min roast) without juggling kitchen timers.</li>
+      <li><strong>Meeting time-boxing:</strong> Scrum masters display a visible countdown during standups or retrospective exercises to keep discussion bounded.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the Countdown Timer keep running if I switch tabs?</div>
-        <div class="tool-faq-a">Yes. The Countdown Timer uses timestamps rather than tab focus, so elapsed time stays accurate in the background.</div>
+        <div class="tool-faq-q">How do I set a 25-minute Pomodoro timer?</div>
+        <div class="tool-faq-a">Enter 25 in the minutes field and click Start. The display counts down to 00:00 and triggers an alarm. For a full Pomodoro cycle, run four 25-minute focus sessions separated by 5-minute breaks, then take a longer 15-30 minute rest.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Will the Countdown Timer play a sound when finished?</div>
-        <div class="tool-faq-a">Yes, where supported. The Countdown Timer plays an audible alert when the session ends as long as your browser allows it.</div>
+        <div class="tool-faq-q">Does the timer keep running if I close the tab?</div>
+        <div class="tool-faq-a">No. Closing the tab terminates the JavaScript timer. Minimizing the window or switching tabs is fine because the countdown runs on Date.now() rather than setInterval ticks, so it stays accurate even when the browser throttles background tabs.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I keep the Countdown Timer visible on screen?</div>
-        <div class="tool-faq-a">Yes. Resize the window or use your browser's picture-in-picture or always-on-top mode to keep it visible.</div>
+        <div class="tool-faq-q">Can I get a sound alert when time's up?</div>
+        <div class="tool-faq-a">Yes. The timer plays a built-in chime when the count reaches zero. Make sure your browser tab isn't muted (click the speaker icon next to the tab title) and that your system volume is up. Mobile Safari requires a user interaction before audio plays.</div>
       </div>
     </div>
   </div>
