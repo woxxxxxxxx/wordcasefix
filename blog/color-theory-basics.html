@@ -5,158 +5,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Color Theory Basics: HEX, RGB, HSL Explained for Designers | WordCaseFix</title>
-<meta name="description" content="A clear explanation of HEX, RGB, and HSL color models, when to use each, and how they map to real design decisions. Includes conversion examples and accessibility tips.">
-<meta name="keywords" content="color theory, HEX, RGB, HSL, color models, web design colors, color conversion">
+<meta name="description" content="How color models work, when to use HEX vs RGB vs HSL, and how to build accessible palettes.">
 <meta property="og:title" content="Color Theory Basics: HEX, RGB, HSL Explained for Designers">
-<meta property="og:description" content="HEX vs RGB vs HSL — how they differ, when to use each, and how to convert between them.">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://wordcasefix.com/blog/color-theory-basics.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico" type="image/x-icon">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Color Theory Basics: HEX, RGB, HSL Explained for Designers","description":"HEX vs RGB vs HSL color models explained with conversion examples and accessibility guidance.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/color-theory-basics.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}
-</script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
-.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}
-.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
-.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
-.navbar .nav-all:hover{background:#5b5bd6;color:#fff}
-.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
-.ad-top{width:100%;height:90px;margin-bottom:24px}
-.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
-.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}
-.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
-.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
-.breadcrumb a:hover{text-decoration:underline}
-.breadcrumb span{margin:0 6px;color:#aaa}
-article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}
-.article-meta{font-size:13px;color:#888;margin-bottom:28px}
-article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}
-article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}
-article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}
-article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}
-article li{margin-bottom:6px}
-article a{color:#5b5bd6}
-.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}
-.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}
-.example-box strong{color:#5b5bd6}
-.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}
-.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}
-.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}
-.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
-.tool-cta a.cta-btn:hover{background:#4a4ac2}
-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
-th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}
-td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}
-tr:nth-child(even) td{background:#f9f9ff}
-.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}
-.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}
-.related-list{display:flex;flex-direction:column;gap:10px}
-.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}
-.related-list a:hover{text-decoration:underline}
-footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}
-footer a{color:#5b5bd6;text-decoration:none}
-footer a:hover{text-decoration:underline}
-@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}
-</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Color Theory Basics: HEX, RGB, HSL Explained for Designers","description":"How color models work, when to use HEX vs RGB vs HSL, and how to build accessible palettes.","author":{"@type":"Organization","name":"WordCaseFix"},"publisher":{"@type":"Organization","name":"WordCaseFix","url":"https://wordcasefix.com"},"url":"https://wordcasefix.com/blog/color-theory-basics.html","datePublished":"2025-06-18","dateModified":"2025-06-18"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}.navbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#fff;border-bottom:1.5px solid #e8e9ed;flex-shrink:0}.navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}.navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px}.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}.ad-top{width:100%;height:90px;margin-bottom:24px}.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}.page-wrap{max-width:780px;margin:0 auto;width:100%;padding:36px 24px 60px}.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}.breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}.breadcrumb span{margin:0 6px;color:#aaa}article h1{font-size:32px;font-weight:800;line-height:1.25;color:#1a1a2e;margin-bottom:12px;letter-spacing:-.5px}.article-meta{font-size:13px;color:#888;margin-bottom:28px}article h2{font-size:20px;font-weight:700;color:#1a1a2e;margin:32px 0 12px}article h3{font-size:16px;font-weight:700;color:#1a1a2e;margin:22px 0 8px}article p{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px}article ul,article ol{font-size:15px;color:#444;line-height:1.75;margin-bottom:16px;padding-left:24px}article li{margin-bottom:6px}article a{color:#5b5bd6}.example-box{background:#f0f0ff;border-left:4px solid #5b5bd6;border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0}.example-box p{margin:0;font-size:14px;color:#333;line-height:1.6}.example-box strong{color:#5b5bd6}.tool-cta{background:#fff;border:1.5px solid #e0dffc;border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 1px 4px rgba(91,91,214,.08)}.tool-cta .cta-text{font-size:14px;color:#555;line-height:1.5}.tool-cta .cta-text strong{color:#1a1a2e;font-size:15px;display:block;margin-bottom:3px}.tool-cta a.cta-btn{flex-shrink:0;padding:9px 20px;background:#5b5bd6;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}th{background:#5b5bd6;color:#fff;padding:10px 14px;text-align:left;font-weight:600}td{padding:10px 14px;border-bottom:1px solid #e8e9ed;color:#444}tr:nth-child(even) td{background:#f9f9ff}.highlight-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.6}.related-articles{background:#fff;border-radius:12px;padding:24px;margin-top:36px;box-shadow:0 1px 3px rgba(0,0,0,.08)}.related-articles h2{font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px}.related-list{display:flex;flex-direction:column;gap:10px}.related-list a{color:#5b5bd6;text-decoration:none;font-size:14px;font-weight:500}footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer a{color:#5b5bd6;text-decoration:none}@media(max-width:600px){article h1{font-size:24px}.tool-cta{flex-direction:column;align-items:flex-start}}</style>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
-
 <div class="page-wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>›</span>
-    <a href="/#guides">Guides</a><span>›</span>
-    <span>Color Theory Basics</span>
-  </div>
-
-  <article>
-    <h1>Color Theory Basics: HEX, RGB, HSL Explained for Designers</h1>
-    <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; Design</div>
-
-    <p>Every digital designer eventually needs to fluently move between the three dominant color notations on the web: HEX, RGB, and HSL. They all describe the same colors, but they serve very different purposes. HEX is compact and copy-pasteable, RGB maps directly to how screens emit light, and HSL is the only model that lets you reason about color the way humans actually perceive it. Choosing the right model for the task in front of you is the difference between fighting a color system and shipping one.</p>
-
-    <p>This guide walks through the math behind each notation, when to prefer one over the others, and the accessibility implications. You will also see how to convert between them, both manually and with conversion tools.</p>
-
-    <div class="tool-cta">
-      <div class="cta-text">
-        <strong>Live Color Picker</strong>
-        Pick a color and instantly see its HEX, RGB, and HSL values side by side.
-      </div>
-      <a class="cta-btn" href="/color-picker.html">Open Color Picker →</a>
-    </div>
-
-    <h2>The RGB Model: How Screens Actually Work</h2>
-    <p>RGB stands for red, green, blue — the three primary colors of additive light. Every pixel on your monitor is composed of three sub-pixels, one for each channel, and each sub-pixel can emit a brightness from 0 (off) to 255 (maximum). With 256 possible values per channel and three channels, the total color space is 256 × 256 × 256 = 16,777,216 distinct colors.</p>
-
-    <p>RGB is the "native" model in the sense that it corresponds to physical hardware. When you write <code>rgb(255, 0, 0)</code> in CSS, you are telling the screen to fire the red sub-pixel at full intensity and leave the others off. RGB is great for programmatic color work — animation, image processing, generative art — because the three numbers map cleanly to channel arithmetic.</p>
-
-    <p>What RGB is bad at is human reasoning. If I show you <code>rgb(120, 80, 200)</code> and ask "what does that look like?", you probably can't picture it. RGB obscures hue, saturation, and lightness behind three raw channel values.</p>
-
-    <h2>HEX: Compact and Copy-Paste-Friendly</h2>
-    <p>HEX is just RGB written in base 16. Each pair of hex digits represents one of the three channels, in the order red, green, blue. So <code>#FF0000</code> is <code>rgb(255, 0, 0)</code>, because <code>FF</code> in hex equals 255 in decimal. The popular three-digit shorthand like <code>#F00</code> expands to <code>#FF0000</code> by duplicating each digit.</p>
-
-    <div class="example-box">
-      <p><strong>HEX to RGB worked example:</strong><br>
-      Color: <code>#3A7BD5</code><br>
-      Red: <code>3A</code> = 3×16 + 10 = <strong>58</strong><br>
-      Green: <code>7B</code> = 7×16 + 11 = <strong>123</strong><br>
-      Blue: <code>D5</code> = 13×16 + 5 = <strong>213</strong><br>
-      Result: <code>rgb(58, 123, 213)</code></p>
-    </div>
-
-    <p>The advantage of HEX is that it is short, unambiguous, and easy to share. Designers paste <code>#5B5BD6</code> in Slack rather than <code>rgb(91, 91, 214)</code>. The disadvantage is that it does not natively support alpha (transparency) until you use the 8-digit form <code>#5B5BD6FF</code>, which most tools support but many people don't know about. You can quickly switch direction with a dedicated <a href="/hex-to-rgb.html">HEX to RGB converter</a> or the reverse <a href="/rgb-to-hex.html">RGB to HEX converter</a>.</p>
-
-    <h2>HSL: The Designer-Friendly Model</h2>
-    <p>HSL stands for hue, saturation, and lightness. It is a cylindrical reparametrization of the RGB cube designed to match how humans talk about color. The hue is an angle from 0 to 360 around the color wheel — red sits at 0, green at 120, blue at 240. Saturation is a percentage from 0 (gray) to 100 (vivid). Lightness is a percentage from 0 (black) to 100 (white), with 50 being the "pure" version of the hue.</p>
-
-    <p>HSL becomes powerful the moment you want to build a theme. Want a darker version of your brand color? Lower the L. Want a muted version? Lower the S. Want the complementary color? Add 180 to the H. These operations are nearly impossible to perform mentally in RGB.</p>
-
-    <table>
-      <tr><th>Goal</th><th>HSL operation</th><th>Example</th></tr>
-      <tr><td>Darker shade</td><td>Reduce lightness</td><td>hsl(240, 60%, 50%) → hsl(240, 60%, 30%)</td></tr>
-      <tr><td>Lighter tint</td><td>Increase lightness</td><td>hsl(240, 60%, 50%) → hsl(240, 60%, 80%)</td></tr>
-      <tr><td>Muted version</td><td>Reduce saturation</td><td>hsl(240, 60%, 50%) → hsl(240, 20%, 50%)</td></tr>
-      <tr><td>Complementary</td><td>Hue + 180</td><td>hsl(240, 60%, 50%) → hsl(60, 60%, 50%)</td></tr>
-      <tr><td>Analogous palette</td><td>Hue ± 30</td><td>hsl(240) + hsl(210) + hsl(270)</td></tr>
-    </table>
-
-    <p>When constructing palettes, generate the base hue in HSL and convert to HEX at the end for storage. A <a href="/color-palette-generator.html">palette generator</a> can automate this entire workflow.</p>
-
-    <h2>Accessibility and Contrast</h2>
-    <p>None of these color models, by themselves, guarantee accessibility. WCAG 2.1 requires a minimum contrast ratio of 4.5:1 for normal body text and 3:1 for large text. The contrast ratio is calculated from the relative luminance of foreground and background — which is an RGB-based formula, not HSL. A color with low lightness in HSL is not automatically high-contrast against white.</p>
-
-    <p>For example, pure yellow <code>hsl(60, 100%, 50%)</code> looks visually bright but has a contrast ratio against white of only about 1.07:1 — completely unreadable. Meanwhile, dark blue <code>hsl(240, 100%, 30%)</code> hits roughly 13:1 against white. Always check the actual ratio with a <a href="/color-contrast-checker.html">contrast checker</a> before approving body text colors.</p>
-
-    <div class="highlight-box">
-      <strong>Rule of thumb:</strong> design your theme in HSL, store the final colors as HEX, and verify accessibility against the RGB-based contrast formula. All three models earn their place.
-    </div>
-
-    <h2>Frequently Asked Questions</h2>
-
-    <h3>Should I use HEX or HSL in my CSS?</h3>
-    <p>Use HSL for design tokens you intend to manipulate programmatically (themes, dark mode variants, hover states) and HEX or RGB for static brand colors. Modern CSS supports HSL natively in custom properties, so there is no performance reason to avoid it.</p>
-
-    <h3>What about HSV and other models like LCH?</h3>
-    <p>HSV (sometimes called HSB) is similar to HSL but defines lightness differently — in HSV, 100% V is the pure hue, not white. LCH and OKLCH are perceptually uniform models that produce more visually consistent palettes than HSL, and they are gradually gaining browser support. For most production work, HSL is still the practical default.</p>
-
-    <h3>Why do my colors look different in print?</h3>
-    <p>Print uses CMYK, a subtractive model that mixes pigments rather than light. Many vivid screen colors — especially saturated blues and greens — cannot be reproduced in CMYK. If your work will be printed, convert to CMYK in your design tool and review proofs before approving.</p>
-
-    <div class="related-articles">
-      <h2>Related Guides</h2>
-      <div class="related-list">
-        <a href="/blog/pomodoro-technique-guide.html">The Pomodoro Technique: Complete Guide to 25-Minute Focus Sessions</a>
-        <a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a>
-        <a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: When and Why to Use It</a>
-      </div>
-    </div>
-  </article>
+<div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/#guides">Guides</a><span>›</span><span>Design</span></div>
+<article><h1>Color Theory Basics: HEX, RGB, HSL Explained for Designers</h1><div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; Design</div><p>HEX, RGB, and HSL describe the same colors in different ways. Understanding how they relate makes picking, adjusting, and communicating colors far more reliable.</p><div class="tool-cta"><div class="cta-text"><strong>Free Color Picker &amp; Converter</strong>Convert between HEX, RGB, and HSL instantly.</div><a class="cta-btn" href="/color-picker.html">Open Color Picker →</a></div><h2>HEX (#RRGGBB)</h2><p>Two hex digits each for red, green, blue (00–FF). <code>#5b5bd6</code> = R=91 G=91 B=214. Compact and copy-paste friendly — the dominant format in CSS and design tools. Shorthand: <code>#aabbcc</code> → <code>#abc</code> when both digits in each pair match.</p><h2>RGB (Red, Green, Blue)</h2><p>Each channel as decimal 0–255. <code>rgb(91,91,214)</code> equals <code>#5b5bd6</code>. Additive: all max = white, all zero = black. <code>rgba()</code> adds transparency (0=transparent, 1=opaque).</p><h2>HSL (Hue, Saturation, Lightness)</h2><p>Most human-friendly model. Hue = color wheel degrees (0=red, 120=green, 240=blue). Saturation = vividness (0%=grey, 100%=fully saturated). Lightness: 0%=black, 50%=normal, 100%=white. Fix hue and saturation, step lightness to generate color scales.</p><div class="example-box"><p><strong>#5b5bd6 in all three:</strong><br>HEX: <code>#5b5bd6</code> &nbsp; RGB: <code>rgb(91,91,214)</code> &nbsp; HSL: <code>hsl(240,62%,60%)</code></p></div><h2>When to Use Each</h2><table><tr><th>Format</th><th>Best for</th></tr><tr><td>HEX</td><td>Design tokens, brand colors, Figma output</td></tr><tr><td>RGB</td><td>Canvas, image processing, alpha compositing</td></tr><tr><td>HSL</td><td>Building scales, hover states, dark mode</td></tr></table><h2>Accessibility</h2><p>WCAG 2.1 requires 4.5:1 contrast for normal text, 3:1 for large text. The purple #5b5bd6 on white gives ~4.5:1 — just at the threshold. Always test with a contrast checker.</p><div class="highlight-box"><strong>Tip:</strong> Use CSS custom properties for all brand colors. Theme switching and dark mode become a one-file change.</div><div class="related-articles"><h2>Related Guides</h2><div class="related-list"><a href="/blog/hex-color-codes-guide.html">Hex Color Codes Guide</a><a href="/blog/typography-for-web.html">Web Typography Basics</a><a href="/blog/css-naming-conventions.html">CSS Naming Conventions</a></div></div></article>
 </div>
-
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
 <footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
 </body>
