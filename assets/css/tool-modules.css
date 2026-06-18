@@ -203,19 +203,68 @@
   display: none !important;
 }
 
-/* === Tool Page Header === */
-/* Subtle gradient on breadcrumb + header area */
+/* === Tool Page Layout Polish === */
+/* Tool-first: minimal header, visual weight on the tool card itself */
+
 nav[aria-label="breadcrumb"] {
   text-align: left !important;
+  padding-top: 10px !important;
+  padding-bottom: 6px !important;
 }
 
+/* Compact header — no background, tight spacing */
 .main-area > header,
 .container > header,
 main > header {
-  background: linear-gradient(135deg, #f5f5ff 0%, #faf9ff 100%);
-  border-radius: 12px;
-  padding: 24px 24px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  padding: 0;
+  text-align: left;
+}
+
+.main-area > header h1,
+.container > header h1,
+main > header h1 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.main-area > header > p,
+.container > header > p,
+main > header > p {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* Tool card: the real hero — elevated with subtle purple accent */
+.card,
+.tool-card-main,
+.main-area > .card:first-of-type {
+  border: 1.5px solid #e8e9ed;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(91, 91, 214, 0.06), 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+
+/* Focused state: when user interacts, card gets subtle glow */
+.card:focus-within {
+  border-color: #c7c7f0;
+  box-shadow: 0 4px 20px rgba(91, 91, 214, 0.10), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* Sidebar ad placeholders */
+.sidebar .ad-slot,
+.sidebar .ad-box {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .main-area > header h1,
+  .container > header h1,
+  main > header h1 {
+    font-size: 22px;
+  }
 }
 
 /* 2. Enhanced card shadow — scoped to content-modules only */
