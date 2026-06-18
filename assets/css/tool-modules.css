@@ -195,9 +195,27 @@
 
 /* === Visual Enhancements (scoped) === */
 
-/* 1. Hide empty ad slots */
+/* 1. Hide placeholder ad slots (no real ads loaded yet) */
 .ad-slot:empty {
   display: none !important;
+}
+.ad-slot.ad-top {
+  display: none !important;
+}
+
+/* === Tool Page Header === */
+/* Subtle gradient on breadcrumb + header area */
+nav[aria-label="breadcrumb"] {
+  text-align: left !important;
+}
+
+.main-area > header,
+.container > header,
+main > header {
+  background: linear-gradient(135deg, #f5f5ff 0%, #faf9ff 100%);
+  border-radius: 12px;
+  padding: 24px 24px 20px;
+  margin-bottom: 20px;
 }
 
 /* 2. Enhanced card shadow — scoped to content-modules only */
