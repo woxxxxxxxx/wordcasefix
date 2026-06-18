@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
@@ -18,6 +18,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Text Cleaner","item":"https://wordcasefix.com/text-cleaner.html"}]}
   </script>
+  <link rel="stylesheet" href="/assets/css/tool-modules.css">
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
@@ -109,26 +110,40 @@
 <div class="ad-slot">Ad Space</div>
 </div>
 </div>
-<section class="content-modules" style="max-width:780px;margin:40px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
-<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">How to Use This Tool</h2>
-<ol style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-<li>Paste your messy text into the input area — works for copied web pages, PDFs, emails, or anything with stray formatting.</li>
-<li>Toggle the cleanup options you need: collapse multiple spaces, strip line breaks, remove non-printable characters, or normalize quotes.</li>
-<li>Copy the cleaned output and paste it wherever you need clean, normalized text.</li>
-</ol>
-<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Common Use Cases</h2>
-<ul style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-<li><strong>Cleaning PDF copy-paste:</strong> Remove the broken line breaks and hyphenation that PDFs introduce when you copy text out of them.</li>
-<li><strong>Preparing data imports:</strong> Strip invisible characters and double spaces before pasting content into spreadsheets, CMS fields, or databases.</li>
-<li><strong>Tidying user-submitted text:</strong> Normalize comments, survey answers, or scraped content before analysis or publishing.</li>
-</ul>
-<h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Frequently Asked Questions</h2>
-<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">What counts as "extra whitespace"?</h3>
-<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">Any run of two or more spaces, tabs, or trailing whitespace at the end of lines. The cleaner collapses them down to a single space, while preserving intentional paragraph breaks if you choose to.</p>
-<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Will it remove emoji or special characters?</h3>
-<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No — emoji and standard Unicode punctuation are preserved. Only zero-width and other non-printable control characters are stripped by default.</p>
-<h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Is my text sent to a server?</h3>
-<p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No. All cleaning happens locally in your browser via JavaScript. Nothing is uploaded, logged, or stored.</p>
+<section class="tool-content-modules">
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">How to Use This Tool</h2>
+    <ol class="tool-steps">
+      <li>Paste your messy text into the input area — works for copied web pages, PDFs, emails, or anything with stray formatting.</li>
+      <li>Toggle the cleanup options you need: collapse multiple spaces, strip line breaks, remove non-printable characters, or normalize quotes.</li>
+      <li>Copy the cleaned output and paste it wherever you need clean, normalized text.</li>
+    </ol>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Common Use Cases</h2>
+    <ul class="tool-use-cases">
+      <li><strong>Cleaning PDF copy-paste:</strong> Remove the broken line breaks and hyphenation that PDFs introduce when you copy text out of them.</li>
+      <li><strong>Preparing data imports:</strong> Strip invisible characters and double spaces before pasting content into spreadsheets, CMS fields, or databases.</li>
+      <li><strong>Tidying user-submitted text:</strong> Normalize comments, survey answers, or scraped content before analysis or publishing.</li>
+    </ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Frequently Asked Questions</h2>
+    <div class="tool-faq">
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">What counts as "extra whitespace"?</div>
+        <div class="tool-faq-a">Any run of two or more spaces, tabs, or trailing whitespace at the end of lines. The cleaner collapses them down to a single space, while preserving intentional paragraph breaks if you choose to.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Will it remove emoji or special characters?</div>
+        <div class="tool-faq-a">No — emoji and standard Unicode punctuation are preserved. Only zero-width and other non-printable control characters are stripped by default.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Is my text sent to a server?</div>
+        <div class="tool-faq-a">No. All cleaning happens locally in your browser via JavaScript. Nothing is uploaded, logged, or stored.</div>
+      </div>
+    </div>
+  </div>
 </section>
 <footer class="footer">Text Cleaner &mdash; Free online text cleaner tool</footer>
 <button id="back-to-top" title="Back to top">&#8593;</button>

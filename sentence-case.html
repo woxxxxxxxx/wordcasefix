@@ -79,6 +79,7 @@ footer a:hover{text-decoration:underline}
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Sentence Case","item":"https://wordcasefix.com/sentence-case.html"}]}
   </script>
+  <link rel="stylesheet" href="/assets/css/tool-modules.css">
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
@@ -130,26 +131,40 @@ document.getElementById('scCopy').onclick=function(){
 document.getElementById('scClr').onclick=function(){inp.value='';out.value='';info.textContent='';};
 })();</script>
 </div>
-<section class="content-modules" style="max-width:780px;margin:40px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">How to Use This Tool</h2>
-  <ol style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-    <li>Paste or type the text you want to reformat into the Sentence Case input area at the top of the page.</li>
-    <li>The Sentence Case instantly transforms your text into the target case style as you type, with no button click required.</li>
-    <li>Copy the converted result to your clipboard with one click and paste it wherever you need it.</li>
-  </ol>
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Common Use Cases</h2>
-  <ul style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-    <li><strong>Code naming:</strong> Reformat variable names, function names, or class identifiers to match the case convention your codebase uses.</li>
-    <li><strong>Content cleanup:</strong> Quickly fix inconsistent capitalization in headings, titles, or copied text before publishing.</li>
-    <li><strong>Data normalization:</strong> Standardize CSV columns, database fields, or API keys to a single consistent case style.</li>
-  </ul>
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Frequently Asked Questions</h2>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Is the Sentence Case free to use?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">Yes. The Sentence Case is completely free with no signup, no character limits, and no watermarks on output.</p>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Does the Sentence Case send my text to a server?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No. All conversion happens locally in your browser, so your text never leaves your device.</p>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Can I convert very large blocks of text?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">Yes. The Sentence Case handles documents of essentially any size limited only by your browser's memory.</p>
+<section class="tool-content-modules">
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">How to Use This Tool</h2>
+    <ol class="tool-steps">
+      <li>Paste or type the text you want to reformat into the Sentence Case input area at the top of the page.</li>
+      <li>The Sentence Case instantly transforms your text into the target case style as you type, with no button click required.</li>
+      <li>Copy the converted result to your clipboard with one click and paste it wherever you need it.</li>
+    </ol>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Common Use Cases</h2>
+    <ul class="tool-use-cases">
+      <li><strong>Code naming:</strong> Reformat variable names, function names, or class identifiers to match the case convention your codebase uses.</li>
+      <li><strong>Content cleanup:</strong> Quickly fix inconsistent capitalization in headings, titles, or copied text before publishing.</li>
+      <li><strong>Data normalization:</strong> Standardize CSV columns, database fields, or API keys to a single consistent case style.</li>
+    </ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Frequently Asked Questions</h2>
+    <div class="tool-faq">
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Is the Sentence Case free to use?</div>
+        <div class="tool-faq-a">Yes. The Sentence Case is completely free with no signup, no character limits, and no watermarks on output.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Does the Sentence Case send my text to a server?</div>
+        <div class="tool-faq-a">No. All conversion happens locally in your browser, so your text never leaves your device.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Can I convert very large blocks of text?</div>
+        <div class="tool-faq-a">Yes. The Sentence Case handles documents of essentially any size limited only by your browser's memory.</div>
+      </div>
+    </div>
+  </div>
 </section>
 </main></div>
 <!-- seo-expanded -->

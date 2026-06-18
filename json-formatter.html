@@ -76,6 +76,7 @@ footer a:hover{text-decoration:underline}
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Json Formatter","item":"https://wordcasefix.com/json-formatter.html"}]}
   </script>
+  <link rel="stylesheet" href="/assets/css/tool-modules.css">
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
@@ -116,26 +117,40 @@ i.addEventListener('input',function(){clr();var r=i.value.trim();if(!r){o.value=
 })();
 </script>
 </div>
-<section class="content-modules" style="max-width:780px;margin:40px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">How to Use This Tool</h2>
-  <ol style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-    <li>Paste your raw or minified code into the JSON Formatter input area at the top of the page.</li>
-    <li>Adjust formatting options if shown, then watch the JSON Formatter produce clean, readable output in real time.</li>
-    <li>Copy the formatted result to your clipboard and paste it straight into your editor or pull request.</li>
-  </ol>
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Common Use Cases</h2>
-  <ul style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-    <li><strong>Code review:</strong> Re-indent unfamiliar code so it is easier to read, diff, and discuss with teammates.</li>
-    <li><strong>Build pipelines:</strong> Validate minified or generated artifacts by reformatting them to confirm structure is intact.</li>
-    <li><strong>Learning:</strong> Beautify obfuscated examples found online so the underlying logic is easier to study.</li>
-  </ul>
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Frequently Asked Questions</h2>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Will the JSON Formatter change the meaning of my code?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No. The JSON Formatter only adjusts whitespace and indentation; the parsed behavior of your code is preserved.</p>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Is anything uploaded when I use the </h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No. All processing in the JSON Formatter happens locally in your browser, so your code stays private.</p>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">What size of input does the JSON Formatter support?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">The JSON Formatter comfortably handles files of several megabytes; very large inputs are limited only by browser memory.</p>
+<section class="tool-content-modules">
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">How to Use This Tool</h2>
+    <ol class="tool-steps">
+      <li>Paste your raw or minified code into the JSON Formatter input area at the top of the page.</li>
+      <li>Adjust formatting options if shown, then watch the JSON Formatter produce clean, readable output in real time.</li>
+      <li>Copy the formatted result to your clipboard and paste it straight into your editor or pull request.</li>
+    </ol>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Common Use Cases</h2>
+    <ul class="tool-use-cases">
+      <li><strong>Code review:</strong> Re-indent unfamiliar code so it is easier to read, diff, and discuss with teammates.</li>
+      <li><strong>Build pipelines:</strong> Validate minified or generated artifacts by reformatting them to confirm structure is intact.</li>
+      <li><strong>Learning:</strong> Beautify obfuscated examples found online so the underlying logic is easier to study.</li>
+    </ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Frequently Asked Questions</h2>
+    <div class="tool-faq">
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Will the JSON Formatter change the meaning of my code?</div>
+        <div class="tool-faq-a">No. The JSON Formatter only adjusts whitespace and indentation; the parsed behavior of your code is preserved.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Is anything uploaded when I use the</div>
+        <div class="tool-faq-a">No. All processing in the JSON Formatter happens locally in your browser, so your code stays private.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">What size of input does the JSON Formatter support?</div>
+        <div class="tool-faq-a">The JSON Formatter comfortably handles files of several megabytes; very large inputs are limited only by browser memory.</div>
+      </div>
+    </div>
+  </div>
 </section>
 </main></div>
 <!-- seo-expanded -->

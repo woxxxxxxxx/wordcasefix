@@ -39,6 +39,7 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Html Beautifier","item":"https://wordcasefix.com/html-beautifier.html"}]}
   </script>
+  <link rel="stylesheet" href="/assets/css/tool-modules.css">
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
@@ -111,26 +112,41 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
 (function(){
   var VOID=['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'];
   var INLINE=['a','abbr','b','bdi','bdo','cite','code','data','dfn','em','i','kbd','mark','q','rp','rt','ruby','s','samp','small','span','strong','sub','sup','time','u','var','wbr'];
-  var SAMPLE='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sample Page</title></head><body><header><nav><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li></ul></nav></header><main><p>This is a <strong>sample</strong> HTML page.</p><section class="content-modules" style="max-width:780px;margin:40px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">How to Use This Tool</h2>
-  <ol style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-    <li>Paste your raw or minified code into the HTML Beautifier input area at the top of the page.</li>
-    <li>Adjust formatting options if shown, then watch the HTML Beautifier produce clean, readable output in real time.</li>
-    <li>Copy the formatted result to your clipboard and paste it straight into your editor or pull request.</li>
-  </ol>
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Common Use Cases</h2>
-  <ul style="font-size:15px;color:#444;line-height:1.75;padding-left:24px">
-    <li><strong>Code review:</strong> Re-indent unfamiliar code so it is easier to read, diff, and discuss with teammates.</li>
-    <li><strong>Build pipelines:</strong> Validate minified or generated artifacts by reformatting them to confirm structure is intact.</li>
-    <li><strong>Learning:</strong> Beautify obfuscated examples found online so the underlying logic is easier to study.</li>
-  </ul>
-  <h2 style="font-size:22px;font-weight:700;color:#1a1a2e;margin:32px 0 14px">Frequently Asked Questions</h2>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Will the HTML Beautifier change the meaning of my code?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No. The HTML Beautifier only adjusts whitespace and indentation; the parsed behavior of your code is preserved.</p>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">Is anything uploaded when I use the </h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">No. All processing in the HTML Beautifier happens locally in your browser, so your code stays private.</p>
-  <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin:18px 0 6px">What size of input does the HTML Beautifier support?</h3>
-  <p style="font-size:15px;color:#444;line-height:1.7;margin-bottom:14px">The HTML Beautifier comfortably handles files of several megabytes; very large inputs are limited only by browser memory.</p>
+  var SAMPLE='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sample Page</title>  <link rel="stylesheet" href="/assets/css/tool-modules.css">
+</head><body><header><nav><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li></ul></nav></header><main><p>This is a <strong>sample</strong> HTML page.</p><section class="tool-content-modules">
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">How to Use This Tool</h2>
+    <ol class="tool-steps">
+      <li>Paste your raw or minified code into the HTML Beautifier input area at the top of the page.</li>
+      <li>Adjust formatting options if shown, then watch the HTML Beautifier produce clean, readable output in real time.</li>
+      <li>Copy the formatted result to your clipboard and paste it straight into your editor or pull request.</li>
+    </ol>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Common Use Cases</h2>
+    <ul class="tool-use-cases">
+      <li><strong>Code review:</strong> Re-indent unfamiliar code so it is easier to read, diff, and discuss with teammates.</li>
+      <li><strong>Build pipelines:</strong> Validate minified or generated artifacts by reformatting them to confirm structure is intact.</li>
+      <li><strong>Learning:</strong> Beautify obfuscated examples found online so the underlying logic is easier to study.</li>
+    </ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Frequently Asked Questions</h2>
+    <div class="tool-faq">
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Will the HTML Beautifier change the meaning of my code?</div>
+        <div class="tool-faq-a">No. The HTML Beautifier only adjusts whitespace and indentation; the parsed behavior of your code is preserved.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">Is anything uploaded when I use the</div>
+        <div class="tool-faq-a">No. All processing in the HTML Beautifier happens locally in your browser, so your code stays private.</div>
+      </div>
+      <div class="tool-faq-item">
+        <div class="tool-faq-q">What size of input does the HTML Beautifier support?</div>
+        <div class="tool-faq-a">The HTML Beautifier comfortably handles files of several megabytes; very large inputs are limited only by browser memory.</div>
+      </div>
+    </div>
+  </div>
 </section>
 </main><footer><p>&copy; 2024</p></footer></body></html>';
   function beautifyHtml(html){
