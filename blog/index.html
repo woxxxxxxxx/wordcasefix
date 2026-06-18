@@ -4,10 +4,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordCaseFix Blog — Guides on Text Case, Naming Conventions & Style</title>
+<title>WordCaseFix Blog — Guides on Text Case, Naming Conventions &amp; Style</title>
 <meta name="description" content="In-depth guides on text case, capitalization rules, programming naming conventions, SEO, and writing style from the WordCaseFix team.">
 <meta name="keywords" content="text case blog, capitalization guides, naming convention guides, writing style blog, SEO writing">
-<meta property="og:title" content="WordCaseFix Blog — Guides on Text Case, Naming Conventions & Style">
+<meta property="og:title" content="WordCaseFix Blog — Guides on Text Case, Naming Conventions &amp; Style">
 <meta property="og:description" content="In-depth guides on text case, capitalization rules, naming conventions, SEO, and writing style.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://wordcasefix.com/blog/">
@@ -19,288 +19,512 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
 .navbar .logo{font-size:18px;font-weight:800;color:#5b5bd6;text-decoration:none;letter-spacing:-.3px}
 .navbar .nav-all{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;padding:6px 14px;border:1.5px solid #5b5bd6;border-radius:6px;transition:background .2s,color .2s}
 .navbar .nav-all:hover{background:#5b5bd6;color:#fff}
-.ad-slot{background:#e8e9ed;border:1px dashed #bbb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
-.ad-top{width:100%;height:90px;margin-bottom:24px}
-.ad-label{position:absolute;top:6px;left:10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#999}
-.page-wrap{max-width:1100px;margin:0 auto;width:100%;padding:36px 24px 60px}
-.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.ad-slot:empty{display:none!important}
+.ad-slot{border-radius:8px;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;position:relative}
+.ad-top{width:100%;max-width:1100px;margin:0 auto;height:90px;padding:0 24px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#f5f5ff 0%,#faf9ff 100%);padding:56px 24px 48px}
+.hero::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(91,91,214,.18) 0%,transparent 70%);top:-80px;right:10%;pointer-events:none}
+.hero::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(91,91,214,.11) 0%,transparent 70%);bottom:-40px;left:5%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-size:13px;color:#888;margin-bottom:18px}
 .breadcrumb a{color:#5b5bd6;text-decoration:none;font-weight:500}
 .breadcrumb a:hover{text-decoration:underline}
 .breadcrumb span{margin:0 6px;color:#aaa}
-h1.page-h1{font-size:34px;font-weight:800;line-height:1.2;color:#1a1a2e;margin-bottom:8px;letter-spacing:-.5px}
-.page-sub{font-size:15px;color:#666;margin-bottom:32px;line-height:1.6}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:#fff;border-radius:12px;padding:22px 22px 20px;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(91,91,214,.12)}
-.card h2{font-size:17px;font-weight:700;line-height:1.35;margin-bottom:10px}
+.hero h1{font-size:48px;font-weight:800;line-height:1.15;color:#1a1a2e;margin-bottom:14px;letter-spacing:-.5px}
+.hero h1 .accent{color:#5b5bd6}
+.hero-sub{font-size:16px;color:#555;margin-bottom:32px;line-height:1.65;max-width:560px}
+.stats-row{display:flex;gap:40px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;align-items:flex-start}
+.stat-num{font-size:32px;font-weight:800;color:#5b5bd6;line-height:1}
+.stat-label{font-size:13px;color:#666;margin-top:5px}
+.filter-bar{background:#fff;border-bottom:1.5px solid #e8e9ed;position:sticky;top:56px;z-index:40}
+.filter-inner{max-width:1100px;margin:0 auto;padding:12px 24px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.filter-inner::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;padding:7px 18px;border-radius:20px;border:1.5px solid #5b5bd6;background:#fff;color:#5b5bd6;font-size:13px;font-weight:600;cursor:pointer;transition:background .18s,color .18s;white-space:nowrap;line-height:1.4}
+.cat-btn:hover{background:#f0f0ff}
+.cat-btn.active{background:#5b5bd6;color:#fff}
+.page-wrap{max-width:1100px;margin:0 auto;width:100%;padding:32px 24px 60px;flex:1}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(91,91,214,.14)}
+.card-color-bar{height:4px;flex-shrink:0;width:100%}
+.bar-writing{background:#ec4899}
+.bar-academic{background:#ec4899}
+.bar-programming{background:#5b5bd6}
+.bar-developer{background:#5b5bd6}
+.bar-seo{background:#06b6d4}
+.bar-design{background:#f59e0b}
+.bar-productivity{background:#10b981}
+.card-body{padding:20px 22px 18px;display:flex;flex-direction:column;flex:1}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.cat-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.3px;text-transform:uppercase}
+.badge-writing{background:#fce7f3;color:#be185d}
+.badge-academic{background:#fce7f3;color:#be185d}
+.badge-programming{background:#ede9fe;color:#4c1d95}
+.badge-developer{background:#ede9fe;color:#4c1d95}
+.badge-seo{background:#cffafe;color:#0e7490}
+.badge-design{background:#fef3c7;color:#92400e}
+.badge-productivity{background:#d1fae5;color:#065f46}
+.card-date{font-size:12px;color:#94a3b8;margin-left:auto}
+.card h2{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:10px}
 .card h2 a{color:#1a1a2e;text-decoration:none}
 .card h2 a:hover{color:#5b5bd6}
-.card p.excerpt{font-size:14px;color:#555;line-height:1.6;margin-bottom:14px;flex-grow:1}
-.card .meta{font-size:12px;color:#999;margin-bottom:10px;letter-spacing:.3px}
-.card .read-more{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none}
-.card .read-more:hover{text-decoration:underline}
+.card p.excerpt{font-size:14px;color:#555;line-height:1.65;flex:1;margin-bottom:14px}
+.read-more{font-size:13px;font-weight:600;color:#5b5bd6;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:auto}
+.read-more:hover{text-decoration:underline}
+.arrow{display:inline-block;transition:transform .18s}
+.read-more:hover .arrow{transform:translateX(3px)}
+.card.featured{grid-column:1/-1;display:grid;grid-template-columns:3fr 2fr;overflow:hidden}
+.card.featured .card-body{border-left:5px solid #5b5bd6;padding:28px 32px;display:flex;flex-direction:column}
+.card.featured h2{font-size:22px;margin-bottom:12px}
+.card.featured .excerpt{font-size:15px}
+.featured-badge{font-size:11px;font-weight:800;background:#5b5bd6;color:#fff;padding:3px 11px;border-radius:20px;letter-spacing:.5px}
+.featured-deco{background:linear-gradient(135deg,#5b5bd6 0%,#7c7cde 60%,#a78bfa 100%);display:flex;align-items:center;justify-content:center;padding:24px;min-height:180px}
+.cta-banner{background:linear-gradient(90deg,#f0f0ff 0%,#e8e8ff 100%);border-top:1.5px solid #d4d4f5;padding:40px 24px;text-align:center}
+.cta-inner{max-width:600px;margin:0 auto}
+.cta-title{font-size:22px;font-weight:800;color:#1a1a2e;margin-bottom:8px}
+.cta-sub{font-size:15px;color:#555;margin-bottom:22px;line-height:1.6}
+.cta-btn{display:inline-block;background:#5b5bd6;color:#fff;font-size:15px;font-weight:700;padding:13px 30px;border-radius:8px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(91,91,214,.3)}
+.cta-btn:hover{background:#4747c0;transform:translateY(-2px);box-shadow:0 6px 18px rgba(91,91,214,.35)}
 footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999;margin-top:auto}
 footer a{color:#5b5bd6;text-decoration:none}
 footer a:hover{text-decoration:underline}
-@media(max-width:600px){h1.page-h1{font-size:26px}}
+@media(max-width:900px){
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .card.featured{grid-template-columns:1fr;grid-column:auto}
+  .featured-deco{display:none}
+  .hero h1{font-size:36px}
+  .stats-row{gap:28px}
+}
+@media(max-width:600px){
+  .card-grid{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .hero{padding:36px 16px 32px}
+  .stats-row{gap:20px}
+  .stat-num{font-size:24px}
+  .page-wrap{padding:24px 16px 40px}
+  .filter-inner{padding:10px 16px}
+  .card.featured .card-body{padding:20px 22px 18px}
+  .card.featured h2{font-size:18px}
+}
 </style>
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 
-<div class="page-wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a><span>›</span>
-    <span>Blog & Guides</span>
+<div class="ad-slot ad-top"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a><span>›</span><span>Blog &amp; Guides</span></div>
+    <h1>In-Depth <span class="accent">Guides</span> for Developers &amp; Writers</h1>
+    <p class="hero-sub">Practical articles on text case, naming conventions, developer tools, design, and writing standards — no fluff, just clarity.</p>
+    <div class="stats-row">
+      <div class="stat"><span class="stat-num">34</span><span class="stat-label">Guides</span></div>
+      <div class="stat"><span class="stat-num">7</span><span class="stat-label">Categories</span></div>
+      <div class="stat"><span class="stat-num">↑</span><span class="stat-label">Updated Weekly</span></div>
+    </div>
   </div>
+</section>
 
-  <h1 class="page-h1">Blog & Guides</h1>
-  <p class="page-sub">In-depth articles on text case, capitalization rules, programming naming conventions, developer tools, design, and writing standards. Bookmark this page — we publish new guides every month.</p>
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="cat-btn active" data-filter="all">All</button>
+    <button class="cat-btn" data-filter="writing">Writing</button>
+    <button class="cat-btn" data-filter="programming">Programming</button>
+    <button class="cat-btn" data-filter="developer">Developer</button>
+    <button class="cat-btn" data-filter="design">Design</button>
+    <button class="cat-btn" data-filter="productivity">Productivity</button>
+    <button class="cat-btn" data-filter="academic">Academic</button>
+    <button class="cat-btn" data-filter="seo">SEO</button>
+  </div>
+</div>
 
+<main class="page-wrap">
   <div class="card-grid">
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Writing & Style</div>
-      <h2><a href="/blog/title-case-guide.html">The Complete Guide to Title Case: Rules, Examples & Common Mistakes</a></h2>
-      <p class="excerpt">Master the core title case rules, learn the differences between AP, Chicago, APA and MLA, and avoid the most frequent capitalization mistakes.</p>
-      <a class="read-more" href="/blog/title-case-guide.html">Read More →</a>
+    <div class="card featured" data-category="writing">
+      <div class="card-body">
+        <div class="card-top">
+          <span class="featured-badge">⭐ FEATURED</span>
+          <span class="cat-badge badge-writing">Writing</span>
+          <span class="card-date">June 15, 2025</span>
+        </div>
+        <h2><a href="/blog/title-case-guide.html">The Complete Guide to Title Case: Rules, Examples &amp; Common Mistakes</a></h2>
+        <p class="excerpt">Master the core title case rules, learn the differences between AP, Chicago, APA and MLA, and avoid the most frequent capitalization mistakes writers and editors make every day.</p>
+        <a class="read-more" href="/blog/title-case-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
+      <div class="featured-deco">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="55" stroke="rgba(255,255,255,0.22)" stroke-width="2" fill="none"/>
+          <circle cx="60" cy="60" r="38" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+          <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-size="58" font-weight="800" fill="rgba(255,255,255,0.28)" font-family="Arial,sans-serif">Aa</text>
+        </svg>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Programming</div>
-      <h2><a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case: Which Should You Use in Programming?</a></h2>
-      <p class="excerpt">A head-to-head comparison of snake_case and kebab-case: language support, URL safety, readability, and the right choice for every context.</p>
-      <a class="read-more" href="/blog/snake-case-vs-kebab-case.html">Read More →</a>
+    <div class="card" data-category="programming">
+      <div class="card-color-bar bar-programming"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-programming">Programming</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/snake-case-vs-kebab-case.html">Snake Case vs Kebab Case: Which Should You Use in Programming?</a></h2>
+        <p class="excerpt">A head-to-head comparison of snake_case and kebab-case: language support, URL safety, readability, and the right choice for every context.</p>
+        <a class="read-more" href="/blog/snake-case-vs-kebab-case.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Programming</div>
-      <h2><a href="/blog/pascal-case-guide.html">PascalCase Explained: When and How to Use It in Code</a></h2>
-      <p class="excerpt">Where PascalCase is required, how it differs from camelCase, and concrete examples in C#, Java, TypeScript, React, and Go.</p>
-      <a class="read-more" href="/blog/pascal-case-guide.html">Read More →</a>
+    <div class="card" data-category="programming">
+      <div class="card-color-bar bar-programming"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-programming">Programming</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/pascal-case-guide.html">PascalCase Explained: When and How to Use It in Code</a></h2>
+        <p class="excerpt">Where PascalCase is required, how it differs from camelCase, and concrete examples in C#, Java, TypeScript, React, and Go.</p>
+        <a class="read-more" href="/blog/pascal-case-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · SEO</div>
-      <h2><a href="/blog/text-case-seo.html">How Text Case Affects SEO: Title Tags, Headings & URLs</a></h2>
-      <p class="excerpt">Does capitalization affect rankings? Learn how text case influences click-through rates, URL canonicalization, and snippet display.</p>
-      <a class="read-more" href="/blog/text-case-seo.html">Read More →</a>
+    <div class="card" data-category="seo">
+      <div class="card-color-bar bar-seo"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-seo">SEO</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/text-case-seo.html">How Text Case Affects SEO: Title Tags, Headings &amp; URLs</a></h2>
+        <p class="excerpt">Does capitalization affect rankings? Learn how text case influences click-through rates, URL canonicalization, and snippet display.</p>
+        <a class="read-more" href="/blog/text-case-seo.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Business Writing</div>
-      <h2><a href="/blog/email-capitalization-rules.html">Professional Email Capitalization: Rules Every Writer Should Know</a></h2>
-      <p class="excerpt">Subject lines, greetings, sign-offs, job titles, and the common mistakes that make business emails look unprofessional.</p>
-      <a class="read-more" href="/blog/email-capitalization-rules.html">Read More →</a>
+    <div class="card" data-category="writing">
+      <div class="card-color-bar bar-writing"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-writing">Writing</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/email-capitalization-rules.html">Professional Email Capitalization: Rules Every Writer Should Know</a></h2>
+        <p class="excerpt">Subject lines, greetings, sign-offs, job titles, and the common mistakes that make business emails look unprofessional.</p>
+        <a class="read-more" href="/blog/email-capitalization-rules.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Front-End</div>
-      <h2><a href="/blog/css-naming-conventions.html">CSS Naming Conventions: camelCase, BEM, and kebab-case Compared</a></h2>
-      <p class="excerpt">A practical comparison of BEM, kebab-case, camelCase in CSS Modules, and utility-first systems like Tailwind.</p>
-      <a class="read-more" href="/blog/css-naming-conventions.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/css-naming-conventions.html">CSS Naming Conventions: camelCase, BEM, and kebab-case Compared</a></h2>
+        <p class="excerpt">A practical comparison of BEM, kebab-case, camelCase in CSS Modules, and utility-first systems like Tailwind.</p>
+        <a class="read-more" href="/blog/css-naming-conventions.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Writing & Style</div>
-      <h2><a href="/blog/ap-style-vs-chicago-capitalization.html">AP Style vs Chicago Style Capitalization: Key Differences</a></h2>
-      <p class="excerpt">How AP and Chicago handle prepositions, hyphenated compounds, headlines, and job titles — and which to pick for your project.</p>
-      <a class="read-more" href="/blog/ap-style-vs-chicago-capitalization.html">Read More →</a>
+    <div class="card" data-category="writing">
+      <div class="card-color-bar bar-writing"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-writing">Writing</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/ap-style-vs-chicago-capitalization.html">AP Style vs Chicago Style Capitalization: Key Differences</a></h2>
+        <p class="excerpt">How AP and Chicago handle prepositions, hyphenated compounds, headlines, and job titles — and which to pick for your project.</p>
+        <a class="read-more" href="/blog/ap-style-vs-chicago-capitalization.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Programming</div>
-      <h2><a href="/blog/constant-case-guide.html">CONSTANT_CASE Guide: Why Programmers Use All Caps with Underscores</a></h2>
-      <p class="excerpt">Why CONSTANT_CASE is used for constants, env vars, and enums across languages — with rules and concrete examples.</p>
-      <a class="read-more" href="/blog/constant-case-guide.html">Read More →</a>
+    <div class="card" data-category="programming">
+      <div class="card-color-bar bar-programming"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-programming">Programming</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/constant-case-guide.html">CONSTANT_CASE Guide: Why Programmers Use All Caps with Underscores</a></h2>
+        <p class="excerpt">Why CONSTANT_CASE is used for constants, env vars, and enums across languages — with rules and concrete examples.</p>
+        <a class="read-more" href="/blog/constant-case-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · API Design</div>
-      <h2><a href="/blog/json-key-naming-best-practices.html">JSON Key Naming Best Practices: camelCase vs snake_case</a></h2>
-      <p class="excerpt">What major APIs do, the trade-offs of each style, and how to translate cleanly between backend and frontend.</p>
-      <a class="read-more" href="/blog/json-key-naming-best-practices.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/json-key-naming-best-practices.html">JSON Key Naming Best Practices: camelCase vs snake_case</a></h2>
+        <p class="excerpt">What major APIs do, the trade-offs of each style, and how to translate cleanly between backend and frontend.</p>
+        <a class="read-more" href="/blog/json-key-naming-best-practices.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 15, 2025 · Databases</div>
-      <h2><a href="/blog/database-naming-conventions.html">Database Naming Conventions: snake_case, PascalCase & Best Practices</a></h2>
-      <p class="excerpt">Best practices for naming tables, columns, indexes and constraints — rules that survive schema migrations.</p>
-      <a class="read-more" href="/blog/database-naming-conventions.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 15, 2025</span></div>
+        <h2><a href="/blog/database-naming-conventions.html">Database Naming Conventions: snake_case, PascalCase &amp; Best Practices</a></h2>
+        <p class="excerpt">Best practices for naming tables, columns, indexes and constraints — rules that survive schema migrations.</p>
+        <a class="read-more" href="/blog/database-naming-conventions.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 1, 2025 · Academic Writing</div>
-      <h2><a href="/blog/apa-title-case-rules.html">APA Title Case Rules: Complete Guide for 7th Edition</a></h2>
-      <p class="excerpt">Master APA 7th edition title case: which words to capitalize, heading levels, and common exceptions — with examples.</p>
-      <a class="read-more" href="/blog/apa-title-case-rules.html">Read More →</a>
+    <div class="card" data-category="academic">
+      <div class="card-color-bar bar-academic"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-academic">Academic</span><span class="card-date">June 1, 2025</span></div>
+        <h2><a href="/blog/apa-title-case-rules.html">APA Title Case Rules: Complete Guide for 7th Edition</a></h2>
+        <p class="excerpt">Master APA 7th edition title case: which words to capitalize, heading levels, and common exceptions — with examples.</p>
+        <a class="read-more" href="/blog/apa-title-case-rules.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 1, 2025 · Programming</div>
-      <h2><a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase: When to Use Each</a></h2>
-      <p class="excerpt">The visual differences, semantic meaning, and language conventions that determine when to use camelCase vs PascalCase.</p>
-      <a class="read-more" href="/blog/camel-case-vs-pascal-case.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 1, 2025</span></div>
+        <h2><a href="/blog/camel-case-vs-pascal-case.html">camelCase vs PascalCase: When to Use Each</a></h2>
+        <p class="excerpt">The visual differences, semantic meaning, and language conventions that determine when to use camelCase vs PascalCase.</p>
+        <a class="read-more" href="/blog/camel-case-vs-pascal-case.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 1, 2025 · SEO</div>
-      <h2><a href="/blog/how-to-capitalize-headings.html">How to Capitalize Headings for SEO</a></h2>
-      <p class="excerpt">A practical guide to choosing the right heading capitalization style for blog posts, landing pages, and documentation.</p>
-      <a class="read-more" href="/blog/how-to-capitalize-headings.html">Read More →</a>
+    <div class="card" data-category="seo">
+      <div class="card-color-bar bar-seo"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-seo">SEO</span><span class="card-date">June 1, 2025</span></div>
+        <h2><a href="/blog/how-to-capitalize-headings.html">How to Capitalize Headings for SEO</a></h2>
+        <p class="excerpt">A practical guide to choosing the right heading capitalization style for blog posts, landing pages, and documentation.</p>
+        <a class="read-more" href="/blog/how-to-capitalize-headings.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 1, 2025 · Writing & Style</div>
-      <h2><a href="/blog/sentence-case-vs-title-case.html">Sentence Case vs. Title Case: When to Use Each</a></h2>
-      <p class="excerpt">Which capitalization style fits your brand voice? Compare readability, formality, and modern publishing trends.</p>
-      <a class="read-more" href="/blog/sentence-case-vs-title-case.html">Read More →</a>
+    <div class="card" data-category="writing">
+      <div class="card-color-bar bar-writing"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-writing">Writing</span><span class="card-date">June 1, 2025</span></div>
+        <h2><a href="/blog/sentence-case-vs-title-case.html">Sentence Case vs. Title Case: When to Use Each</a></h2>
+        <p class="excerpt">Which capitalization style fits your brand voice? Compare readability, formality, and modern publishing trends.</p>
+        <a class="read-more" href="/blog/sentence-case-vs-title-case.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 1, 2025 · Writing & Style</div>
-      <h2><a href="/blog/when-to-use-title-case.html">When to Use Title Case: Rules, Examples & Style Guides</a></h2>
-      <p class="excerpt">Where title case is expected, where sentence case wins, and how to apply the right style across your content.</p>
-      <a class="read-more" href="/blog/when-to-use-title-case.html">Read More →</a>
+    <div class="card" data-category="writing">
+      <div class="card-color-bar bar-writing"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-writing">Writing</span><span class="card-date">June 1, 2025</span></div>
+        <h2><a href="/blog/when-to-use-title-case.html">When to Use Title Case: Rules, Examples &amp; Style Guides</a></h2>
+        <p class="excerpt">Where title case is expected, where sentence case wins, and how to apply the right style across your content.</p>
+        <a class="read-more" href="/blog/when-to-use-title-case.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Productivity</div>
-      <h2><a href="/blog/pomodoro-technique-guide.html">The Pomodoro Technique: Complete Guide to 25-Minute Focus Sessions</a></h2>
-      <p class="excerpt">How 25-minute intervals work, the science behind timed focus, and how to adapt the method for deep work, study, and coding.</p>
-      <a class="read-more" href="/blog/pomodoro-technique-guide.html">Read More →</a>
+    <div class="card" data-category="productivity">
+      <div class="card-color-bar bar-productivity"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-productivity">Productivity</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/pomodoro-technique-guide.html">The Pomodoro Technique: Complete Guide to 25-Minute Focus Sessions</a></h2>
+        <p class="excerpt">How 25-minute intervals work, the science behind timed focus, and how to adapt the method for deep work, study, and coding.</p>
+        <a class="read-more" href="/blog/pomodoro-technique-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: How It Works and When to Use It</a></h2>
-      <p class="excerpt">Why Base64 exists, how to encode and decode, and where it appears in JWTs, data URLs, email attachments, and HTTP Basic Auth.</p>
-      <a class="read-more" href="/blog/base64-encoding-explained.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: How It Works and When to Use It</a></h2>
+        <p class="excerpt">Why Base64 exists, how to encode and decode, and where it appears in JWTs, data URLs, email attachments, and HTTP Basic Auth.</p>
+        <a class="read-more" href="/blog/base64-encoding-explained.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Design</div>
-      <h2><a href="/blog/color-theory-basics.html">Color Theory Basics: HEX, RGB, HSL Explained for Designers</a></h2>
-      <p class="excerpt">How color models work, when to use each format, and how to build accessible palettes for web and UI design.</p>
-      <a class="read-more" href="/blog/color-theory-basics.html">Read More →</a>
+    <div class="card" data-category="design">
+      <div class="card-color-bar bar-design"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-design">Design</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/color-theory-basics.html">Color Theory Basics: HEX, RGB, HSL Explained for Designers</a></h2>
+        <p class="excerpt">How color models work, when to use each format, and how to build accessible palettes for web and UI design.</p>
+        <a class="read-more" href="/blog/color-theory-basics.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/markdown-guide.html">Markdown Guide: Syntax, Flavors, and Best Practices</a></h2>
-      <p class="excerpt">Complete reference for Markdown — headers, links, tables, code blocks, and the differences between CommonMark, GFM, and MDX.</p>
-      <a class="read-more" href="/blog/markdown-guide.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/markdown-guide.html">Markdown Guide: Syntax, Flavors, and Best Practices</a></h2>
+        <p class="excerpt">Complete reference for Markdown — headers, links, tables, code blocks, and the differences between CommonMark, GFM, and MDX.</p>
+        <a class="read-more" href="/blog/markdown-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/url-encoding-explained.html">URL Encoding Explained: Percent-Encoding and Special Characters</a></h2>
-      <p class="excerpt">Why spaces become %20, how percent-encoding works, and what to encode in paths versus query strings.</p>
-      <a class="read-more" href="/blog/url-encoding-explained.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/url-encoding-explained.html">URL Encoding Explained: Percent-Encoding and Special Characters</a></h2>
+        <p class="excerpt">Why spaces become %20, how percent-encoding works, and what to encode in paths versus query strings.</p>
+        <a class="read-more" href="/blog/url-encoding-explained.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a></h2>
-      <p class="excerpt">Anchors, quantifiers, groups, lookaheads, and common real-world patterns with examples.</p>
-      <a class="read-more" href="/blog/regex-cheatsheet-beginners.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a></h2>
+        <p class="excerpt">Anchors, quantifiers, groups, lookaheads, and common real-world patterns with examples.</p>
+        <a class="read-more" href="/blog/regex-cheatsheet-beginners.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/unicode-vs-ascii.html">Unicode vs ASCII: What Every Developer Should Know</a></h2>
-      <p class="excerpt">How ASCII, UTF-8, and Unicode relate, why emojis are 4 bytes, and how to handle encoding bugs.</p>
-      <a class="read-more" href="/blog/unicode-vs-ascii.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/unicode-vs-ascii.html">Unicode vs ASCII: What Every Developer Should Know</a></h2>
+        <p class="excerpt">How ASCII, UTF-8, and Unicode relate, why emojis are 4 bytes, and how to handle encoding bugs.</p>
+        <a class="read-more" href="/blog/unicode-vs-ascii.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/git-commit-best-practices.html">Git Commit Message Best Practices: The 7 Rules</a></h2>
-      <p class="excerpt">Write clear, consistent commit messages that make git log useful — with before/after examples and Conventional Commits.</p>
-      <a class="read-more" href="/blog/git-commit-best-practices.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/git-commit-best-practices.html">Git Commit Message Best Practices: The 7 Rules</a></h2>
+        <p class="excerpt">Write clear, consistent commit messages that make git log useful — with before/after examples and Conventional Commits.</p>
+        <a class="read-more" href="/blog/git-commit-best-practices.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Design</div>
-      <h2><a href="/blog/hex-color-codes-guide.html">Hex Color Codes: A Complete Guide for Designers and Developers</a></h2>
-      <p class="excerpt">How #RRGGBB works, shorthand notation, 8-digit hex with transparency, and converting between HEX, RGB, and HSL.</p>
-      <a class="read-more" href="/blog/hex-color-codes-guide.html">Read More →</a>
+    <div class="card" data-category="design">
+      <div class="card-color-bar bar-design"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-design">Design</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/hex-color-codes-guide.html">Hex Color Codes: A Complete Guide for Designers and Developers</a></h2>
+        <p class="excerpt">How #RRGGBB works, shorthand notation, 8-digit hex with transparency, and converting between HEX, RGB, and HSL.</p>
+        <a class="read-more" href="/blog/hex-color-codes-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Design</div>
-      <h2><a href="/blog/typography-for-web.html">Web Typography Basics: Font Size, Line Height, and Readability</a></h2>
-      <p class="excerpt">Optimal font size, line height, measure, system font stacks, and the decisions that affect reading comfort.</p>
-      <a class="read-more" href="/blog/typography-for-web.html">Read More →</a>
+    <div class="card" data-category="design">
+      <div class="card-color-bar bar-design"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-design">Design</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/typography-for-web.html">Web Typography Basics: Font Size, Line Height, and Readability</a></h2>
+        <p class="excerpt">Optimal font size, line height, measure, system font stacks, and the decisions that affect reading comfort.</p>
+        <a class="read-more" href="/blog/typography-for-web.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Writing</div>
-      <h2><a href="/blog/technical-writing-basics.html">Technical Writing Basics: How to Write Docs People Actually Read</a></h2>
-      <p class="excerpt">Active voice, sentence length, and the patterns that make technical documentation scannable and useful.</p>
-      <a class="read-more" href="/blog/technical-writing-basics.html">Read More →</a>
+    <div class="card" data-category="writing">
+      <div class="card-color-bar bar-writing"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-writing">Writing</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/technical-writing-basics.html">Technical Writing Basics: How to Write Docs People Actually Read</a></h2>
+        <p class="excerpt">Active voice, sentence length, and the patterns that make technical documentation scannable and useful.</p>
+        <a class="read-more" href="/blog/technical-writing-basics.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Security</div>
-      <h2><a href="/blog/password-security-best-practices.html">Password Security in 2026: Length, Entropy & Best Practices</a></h2>
-      <p class="excerpt">Why length beats complexity, what entropy means for passwords, and what current NIST guidance actually says.</p>
-      <a class="read-more" href="/blog/password-security-best-practices.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/password-security-best-practices.html">Password Security in 2026: Length, Entropy &amp; Best Practices</a></h2>
+        <p class="excerpt">Why length beats complexity, what entropy means for passwords, and what current NIST guidance actually says.</p>
+        <a class="read-more" href="/blog/password-security-best-practices.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/hash-functions-md5-sha256.html">Hash Functions Explained: MD5, SHA-256, and When to Use Each</a></h2>
-      <p class="excerpt">How cryptographic hash functions work, the difference between MD5 and SHA-256, and which to use for checksums vs password hashing.</p>
-      <a class="read-more" href="/blog/hash-functions-md5-sha256.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/hash-functions-md5-sha256.html">Hash Functions Explained: MD5, SHA-256, and When to Use Each</a></h2>
+        <p class="excerpt">How cryptographic hash functions work, the difference between MD5 and SHA-256, and which to use for checksums vs password hashing.</p>
+        <a class="read-more" href="/blog/hash-functions-md5-sha256.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/json-formatting-guide.html">JSON Formatting Guide: Syntax, Validation, and Best Practices</a></h2>
-      <p class="excerpt">JSON syntax rules, common validation errors, pretty-printing conventions, and when to use JSON vs other data formats.</p>
-      <a class="read-more" href="/blog/json-formatting-guide.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/json-formatting-guide.html">JSON Formatting Guide: Syntax, Validation, and Best Practices</a></h2>
+        <p class="excerpt">JSON syntax rules, common validation errors, pretty-printing conventions, and when to use JSON vs other data formats.</p>
+        <a class="read-more" href="/blog/json-formatting-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/markdown-syntax-guide.html">Markdown Syntax Quick Reference: Tables, Code, and Extensions</a></h2>
-      <p class="excerpt">A concise reference for Markdown syntax with emphasis on tables, fenced code blocks, task lists, and GFM extensions.</p>
-      <a class="read-more" href="/blog/markdown-syntax-guide.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/markdown-syntax-guide.html">Markdown Syntax Quick Reference: Tables, Code, and Extensions</a></h2>
+        <p class="excerpt">A concise reference for Markdown syntax with emphasis on tables, fenced code blocks, task lists, and GFM extensions.</p>
+        <a class="read-more" href="/blog/markdown-syntax-guide.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/qr-code-best-practices.html">QR Code Best Practices: Size, Error Correction, and Design Tips</a></h2>
-      <p class="excerpt">Optimal QR code size, error correction levels, color contrast requirements, and how to embed logos without breaking scannability.</p>
-      <a class="read-more" href="/blog/qr-code-best-practices.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/qr-code-best-practices.html">QR Code Best Practices: Size, Error Correction, and Design Tips</a></h2>
+        <p class="excerpt">Optimal QR code size, error correction levels, color contrast requirements, and how to embed logos without breaking scannability.</p>
+        <a class="read-more" href="/blog/qr-code-best-practices.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/unit-conversion-reference.html">Unit Conversion Reference: Length, Weight, Temperature & More</a></h2>
-      <p class="excerpt">Quick reference for the most common unit conversions across length, weight, temperature, area, and volume.</p>
-      <a class="read-more" href="/blog/unit-conversion-reference.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/unit-conversion-reference.html">Unit Conversion Reference: Length, Weight, Temperature &amp; More</a></h2>
+        <p class="excerpt">Quick reference for the most common unit conversions across length, weight, temperature, area, and volume.</p>
+        <a class="read-more" href="/blog/unit-conversion-reference.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/url-encoding-when-to-use.html">URL Encoding: When and What to Encode in Practice</a></h2>
-      <p class="excerpt">Practical guidance on which characters to encode in path segments, query strings, hash fragments, and HTTP headers.</p>
-      <a class="read-more" href="/blog/url-encoding-when-to-use.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/url-encoding-when-to-use.html">URL Encoding: When and What to Encode in Practice</a></h2>
+        <p class="excerpt">Practical guidance on which characters to encode in path segments, query strings, hash fragments, and HTTP headers.</p>
+        <a class="read-more" href="/blog/url-encoding-when-to-use.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="meta">June 18, 2025 · Developer</div>
-      <h2><a href="/blog/uuid-vs-nanoid-comparison.html">UUID vs NanoID: Which Unique Identifier Should You Use?</a></h2>
-      <p class="excerpt">A side-by-side comparison of UUID v4 and NanoID — size, collision probability, URL-safety, and which to choose.</p>
-      <a class="read-more" href="/blog/uuid-vs-nanoid-comparison.html">Read More →</a>
+    <div class="card" data-category="developer">
+      <div class="card-color-bar bar-developer"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="cat-badge badge-developer">Developer</span><span class="card-date">June 18, 2025</span></div>
+        <h2><a href="/blog/uuid-vs-nanoid-comparison.html">UUID vs NanoID: Which Unique Identifier Should You Use?</a></h2>
+        <p class="excerpt">A side-by-side comparison of UUID v4 and NanoID — size, collision probability, URL-safety, and which to choose.</p>
+        <a class="read-more" href="/blog/uuid-vs-nanoid-comparison.html">Read More <span class="arrow">→</span></a>
+      </div>
     </div>
 
+  </div>
+</main>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <p class="cta-title">Need to Convert Text Fast?</p>
+    <p class="cta-sub">WordCaseFix has 30+ free tools for text case, encoding, formatting, and more — no sign-up required.</p>
+    <a class="cta-btn" href="/">Browse All Tools →</a>
   </div>
 </div>
 
 <footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.cat-btn');
+  var cards=document.querySelectorAll('.card-grid .card');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btns.forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      var filter=btn.getAttribute('data-filter');
+      cards.forEach(function(card){
+        if(filter==='all'||card.getAttribute('data-category')===filter){
+          card.style.display='';
+        }else{
+          card.style.display='none';
+        }
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
