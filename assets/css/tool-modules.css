@@ -211,13 +211,23 @@ nav[aria-label="breadcrumb"] {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 10px 24px 6px !important;
+  font-size: 13px !important;
+  color: #94a3b8 !important;
+}
+nav[aria-label="breadcrumb"] a {
+  color: #5b5bd6 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+nav[aria-label="breadcrumb"] a:hover {
+  text-decoration: underline !important;
 }
 
 /* Compact header — no background, tight spacing */
 .main-area > header,
 .container > header,
 main > header {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   padding: 0;
   text-align: left;
 }
@@ -225,17 +235,20 @@ main > header {
 .main-area > header h1,
 .container > header h1,
 main > header h1 {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
+  color: #1a1a2e;
+  margin-bottom: 4px;
 }
 
 .main-area > header > p,
 .container > header > p,
 main > header > p {
   color: #64748b;
-  font-size: 14px;
-  margin-top: 2px;
+  font-size: 15px;
+  margin-top: 4px;
+  line-height: 1.5;
 }
 
 /* Tool card: the real hero — elevated with subtle purple accent */
@@ -244,14 +257,149 @@ main > header > p {
 .main-area > .card:first-of-type {
   border: 1.5px solid #e8e9ed;
   border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(91, 91, 214, 0.06), 0 1px 3px rgba(0,0,0,0.04);
-  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 16px rgba(91, 91, 214, 0.07), 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s, border-color 0.25s;
+  background: #ffffff;
 }
 
 /* Focused state: when user interacts, card gets subtle glow */
 .card:focus-within {
   border-color: #c7c7f0;
-  box-shadow: 0 4px 20px rgba(91, 91, 214, 0.10), 0 1px 3px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 24px rgba(91, 91, 214, 0.12), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* === Common Form Elements === */
+.card input[type="text"],
+.card input[type="number"],
+.card input[type="url"],
+.card input[type="email"],
+.card input[type="search"],
+.card select {
+  border: 1.5px solid #e2e4ea !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  color: #1a1a2e !important;
+  background: #f9fafb !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  outline: none !important;
+}
+.card input[type="text"]:focus,
+.card input[type="number"]:focus,
+.card input[type="url"]:focus,
+.card input[type="email"]:focus,
+.card input[type="search"]:focus,
+.card select:focus {
+  border-color: #5b5bd6 !important;
+  box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.1) !important;
+  background: #fff !important;
+}
+
+.card textarea {
+  border: 1.5px solid #e2e4ea !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+  font-size: 14px !important;
+  color: #1a1a2e !important;
+  background: #f9fafb !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  outline: none !important;
+  resize: vertical;
+}
+.card textarea:focus {
+  border-color: #5b5bd6 !important;
+  box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.1) !important;
+  background: #fff !important;
+}
+
+/* === Buttons — universal styling for tool page buttons === */
+.card button,
+.card .btn,
+.card [class*="copy"] {
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  font-family: inherit !important;
+}
+
+/* Primary action buttons */
+.card button:not([class*="copy"]):not(.secondary),
+.card .btn:not(.secondary) {
+  background: #5b5bd6 !important;
+  color: #fff !important;
+}
+.card button:not([class*="copy"]):not(.secondary):hover,
+.card .btn:not(.secondary):hover {
+  background: #4a4ac4 !important;
+  box-shadow: 0 2px 8px rgba(91, 91, 214, 0.25) !important;
+}
+
+/* Copy / secondary buttons */
+.card [class*="copy"],
+.card button.secondary {
+  background: #f0effd !important;
+  color: #5b5bd6 !important;
+}
+.card [class*="copy"]:hover,
+.card button.secondary:hover {
+  background: #e4e3fb !important;
+  box-shadow: 0 2px 6px rgba(91, 91, 214, 0.15) !important;
+}
+
+/* === Related Tools Section === */
+.related-tools {
+  max-width: 780px;
+  margin: 36px auto 0;
+  padding: 0 24px;
+}
+.related-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1a1a2e !important;
+  margin-bottom: 16px !important;
+}
+.related-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.related-card {
+  background: #f8f9fc !important;
+  border: 1px solid #ededf5 !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  text-decoration: none !important;
+  transition: all 0.2s !important;
+  flex: 0 0 auto;
+}
+.related-card:hover {
+  border-color: #c7c7f0 !important;
+  background: #f0effd !important;
+  box-shadow: 0 2px 8px rgba(91, 91, 214, 0.1) !important;
+}
+.rc-name {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1a1a2e !important;
+}
+.rc-desc {
+  font-size: 12px !important;
+  color: #64748b !important;
+  margin-top: 2px;
+}
+
+/* === Back to Top Button === */
+#back-to-top {
+  box-shadow: 0 4px 12px rgba(91, 91, 214, 0.2) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+#back-to-top:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(91, 91, 214, 0.3) !important;
 }
 
 /* Sidebar ad placeholders */
@@ -265,6 +413,9 @@ main > header > p {
   .container > header h1,
   main > header h1 {
     font-size: 22px;
+  }
+  .related-tools {
+    padding: 0 16px;
   }
 }
 
