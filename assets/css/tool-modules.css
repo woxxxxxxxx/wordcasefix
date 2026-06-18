@@ -257,9 +257,9 @@ main > header > p {
 }
 
 /* Tool card: the real hero — elevated with subtle purple accent */
-.card,
-.tool-card-main,
-.main-area > .card:first-of-type {
+/* Scope tightly: only .card directly inside main-area, NOT .related-card etc. */
+.main-area > .card,
+.tool-card-main {
   border: 1.5px solid #e8e9ed;
   border-radius: 14px;
   box-shadow: 0 2px 16px rgba(91, 91, 214, 0.07), 0 1px 3px rgba(0,0,0,0.04);
@@ -268,9 +268,17 @@ main > header > p {
 }
 
 /* Focused state: when user interacts, card gets subtle glow */
-.card:focus-within {
+.main-area > .card:focus-within,
+.tool-card-main:focus-within {
   border-color: #c7c7f0;
   box-shadow: 0 4px 24px rgba(91, 91, 214, 0.12), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* Reset: prevent related-tools from inheriting card-like styles */
+.related-tools {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 /* === Common Form Elements === */
@@ -358,19 +366,26 @@ main > header > p {
 /* === Related Tools Section === */
 .related-tools {
   max-width: 780px;
-  margin: 36px auto 0;
-  padding: 0 24px;
+  margin: 40px auto 0 !important;
+  padding: 0 24px !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
 }
 .related-title {
-  font-size: 18px !important;
+  font-size: 17px !important;
   font-weight: 700 !important;
   color: #1a1a2e !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 14px !important;
+  padding-left: 14px !important;
+  border-left: 3px solid #5b5bd6 !important;
+  text-align: left !important;
 }
 .related-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
 }
 .related-card {
   background: #f8f9fc !important;
@@ -380,6 +395,7 @@ main > header > p {
   text-decoration: none !important;
   transition: all 0.2s !important;
   flex: 0 0 auto;
+  box-shadow: none !important;
 }
 .related-card:hover {
   border-color: #c7c7f0 !important;
