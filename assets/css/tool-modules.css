@@ -193,6 +193,69 @@
   font-family: 'SF Mono', Menlo, Consolas, monospace;
 }
 
+/* === Visual Enhancements (appended upgrade) === */
+
+/* 1. Hide empty ad slots */
+.ad-slot:empty {
+  display: none !important;
+}
+
+/* 2. Enhanced card shadow */
+.tool-info-card {
+  box-shadow: 0 4px 24px rgba(91, 91, 214, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+  border: 1px solid rgba(91, 91, 214, 0.08);
+  background: #ffffff;
+}
+
+/* 3. Body: off-white to float white cards */
+body {
+  background: #fafbfc !important;
+}
+
+/* 4. Hero area: gradient + geometric blur decoration */
+header {
+  position: relative;
+  background: linear-gradient(135deg, #f5f4ff 0%, #faf9ff 60%, #f0f4ff 100%);
+  border-radius: 14px;
+  padding: 28px 24px 24px !important;
+  margin-bottom: 20px !important;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,91,214,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,91,214,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* 5. Tool result/output area: purple left-border accent */
+.result,
+.output-box,
+[class*="result"],
+[id*="result"],
+[id*="output"] {
+  border-left: 3px solid #5b5bd6 !important;
+  padding-left: 12px !important;
+}
+
 /* === Mobile === */
 @media (max-width: 768px) {
   .tool-content-modules {
