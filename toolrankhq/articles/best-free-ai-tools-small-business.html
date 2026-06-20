@@ -64,28 +64,26 @@
     ]
   }
   </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these tools really free, or is there a catch?","acceptedAnswer":{"@type":"Answer","text":"The tools on this list have genuinely useful free tiers that don't expire. Some have usage limits (like Tidio's 50 chatbot conversations/month or Signaturely's 3 docs/month), but these limits are clearly disclosed. We excluded any tool with a \"free trial\" that required a credit card or expired within 30 days. Wave, HubSpot CRM, Notion, ClickUp, Canva, and Grammarly are all permanently free for their core features."}},{"@type":"Question","name":"Can these free tools really replace paid software?","acceptedAnswer":{"@type":"Answer","text":"For most small businesses with under 10 people, yes. Wave replaces FreshBooks and QuickBooks for accounting and invoicing. HubSpot CRM replaces Salesforce Starter for contact management. ClickUp Free replaces Asana Starter for project management. The combination of Claude + ChatGPT free tiers replaces Jasper for AI writing. The upgrade triggers are usually: needing multiple team seats with admin controls, needing API access for automation, or exceeding specific usage limits."}},{"@type":"Question","name":"Which free tool has the highest ROI?","acceptedAnswer":{"@type":"Answer","text":"Wave, by a significant margin. If you're currently paying for FreshBooks ($228/year) or QuickBooks Self-Employed ($360/year), switching to Wave immediately saves $228–$360 with zero capability loss. For invoicing and basic accounting, Wave matches or beats both products on feature quality. Second place goes to HubSpot CRM, which replaces $1,200–$3,600/year in CRM spending for growing small businesses."}},{"@type":"Question","name":"Do AI writing tools like Claude and ChatGPT free tiers have data privacy issues?","acceptedAnswer":{"@type":"Answer","text":"Both Claude and ChatGPT have data privacy controls. Claude's free tier gives you the option to opt out of training data use in settings. ChatGPT allows you to disable chat history and training. For sensitive business information (client contracts, financial data, personnel matters), use these tools with care — avoid pasting sensitive PII or confidential data into public AI tools unless you've reviewed and accepted their terms. Paid/enterprise tiers of both platforms offer stronger data privacy guarantees."}},{"@type":"Question","name":"What's the best first free AI tool for a new small business?","acceptedAnswer":{"@type":"Answer","text":"Start with this sequence: (1) Wave for invoicing and accounting — immediate financial impact, (2) Claude or ChatGPT for writing — saves hours per week, (3) Canva for design — eliminates designer dependency, (4) HubSpot CRM for customer management — structures your client relationships. These four tools alone will handle the most time-consuming administrative tasks in your first year of business."}}]}</script>
 </head>
 <body>
   <div id="read-progress"></div>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="../index.html" class="site-logo">ToolRank<span>HQ</span></a>
-      <nav class="site-nav">
-        <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-        <ul class="nav-links">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#contracts">Contracts</a></li>
-          <li><a href="../index.html#finance">Finance</a></li>
-          <li><a href="../index.html#payroll">Payroll</a></li>
-          <li><a href="../index.html#productivity">Productivity</a></li>
-          <li><a href="../index.html#roundups">Roundups</a></li>
-          <li><a href="../about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../" class="site-logo">
+      <img src="../favicon.svg" class="logo-icon" alt="ToolRankHQ Logo">
+      <span class="logo-text">ToolRank<span>HQ</span></span>
+    </a>
+    <nav class="site-nav" id="site-nav">
+      <a href="../">Home</a>
+      <a href="../index.html#latest">Reviews</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
   <!-- Category Nav -->
   <div class="cat-nav">
@@ -1031,7 +1029,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 ToolRankHQ. All rights reserved. | <a href="../about.html#disclosure">Affiliate Disclosure</a> | Reviews are independent and not influenced by advertisers.</p>
+      <p>&copy; 2026 ToolRankHQ. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../sitemap.xml">Sitemap</a>
+      </div>
     </div>
   </footer>
 
