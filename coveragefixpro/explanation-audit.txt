@@ -1,0 +1,113 @@
+# Auto 工具页 说明区结构审计
+# 扫描日期: 2026-06-15
+# 文件数: 25
+
+## STEP 1：逐文件明细
+文件名                                                    说明区class                      内部结构                     CSS覆盖
+------------------------------------------------------------------------------------------------------------------------
+accident-forgiveness-value-calculator.html             explanation                   explanation:h2+p+ul+li   ✅
+annual-vs-monthly-payment-calculator.html              info-section                  info-section:h2+p        ❌ 缺CSS
+bundling-discount-calculator.html                      info-section                  info-section:h2+p        ❌ 缺CSS
+car-insurance-premium-estimator.html                   info-section                  info-section:h2+p+ul+li  ❌ 缺CSS
+classic-car-insurance-calculator.html                  explanation                   explanation:h2+p+ul+li   ✅
+collision-coverage-breakeven-calculator.html           explanation                   explanation:h2+p+ul+li   ✅
+comprehensive-vs-liability-calculator.html             info-section                  info-section:h2+p        ❌ 缺CSS
+coverage-gap-analyzer.html                             explanation                   explanation:h2+ul+li     ✅
+deductible-optimizer.html                              info-section                  info-section:h2+p        ❌ 缺CSS
+dui-insurance-rate-calculator.html                     info-section                  info-section:h2+p        ❌ 缺CSS
+electric-vehicle-insurance-calculator.html             info-section                  info-section:h2+p+ul+li  ❌ 缺CSS
+gap-insurance-calculator.html                          info-section                  info-section:h2+p        ❌ 缺CSS
+good-driver-discount-calculator.html                   info-section                  info-section:h2+p        ❌ 缺CSS
+insurance-after-accident-calculator.html               explanation                   explanation:h2+p+ul+li   ✅
+insurance-score-estimator.html                         explanation                   explanation:h2+p+ul+li+table✅
+liability-coverage-limits-calculator.html              explanation                   explanation:h2+p+ul+li   ✅
+mileage-based-insurance-calculator.html                info-section                  info-section:h2+p        ❌ 缺CSS
+multi-car-discount-calculator.html                     info-section                  info-section:h2+p        ❌ 缺CSS
+new-car-insurance-cost-calculator.html                 explanation                   explanation:h2+p+ul+li   ✅
+policy-renewal-savings-calculator.html                 explanation                   explanation:h2+h3+p+ul+li✅
+rideshare-insurance-cost-calculator.html               explanation                   explanation:h2+p+ul+li+table✅
+sr22-insurance-calculator.html                         info-section                  info-section:h2+p        ❌ 缺CSS
+teen-driver-cost-calculator.html                       info-section                  info-section:h2+p        ❌ 缺CSS
+total-cost-of-ownership-calculator.html                explanation                   explanation:h2+p+ul+li   ✅
+uninsured-motorist-coverage-calculator.html            explanation                   explanation:h2+p+ul+li   ✅
+
+## STEP 2：说明区class变体统计
+info-section                  13个文件  ❌缺CSS
+    annual-vs-monthly-payment-calculator.html
+    bundling-discount-calculator.html
+    car-insurance-premium-estimator.html
+    comprehensive-vs-liability-calculator.html
+    deductible-optimizer.html
+    dui-insurance-rate-calculator.html
+    electric-vehicle-insurance-calculator.html
+    gap-insurance-calculator.html
+    good-driver-discount-calculator.html
+    mileage-based-insurance-calculator.html
+    multi-car-discount-calculator.html
+    sr22-insurance-calculator.html
+    teen-driver-cost-calculator.html
+explanation                   12个文件  ✅已有CSS
+    accident-forgiveness-value-calculator.html
+    classic-car-insurance-calculator.html
+    collision-coverage-breakeven-calculator.html
+    coverage-gap-analyzer.html
+    insurance-after-accident-calculator.html
+    insurance-score-estimator.html
+    liability-coverage-limits-calculator.html
+    new-car-insurance-cost-calculator.html
+    policy-renewal-savings-calculator.html
+    rideshare-insurance-cost-calculator.html
+    total-cost-of-ownership-calculator.html
+    uninsured-motorist-coverage-calculator.html
+
+## 重点10个文件说明区详情
+
+### annual-vs-monthly-payment-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### deductible-optimizer.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### car-insurance-premium-estimator.html
+说明区class: info-section
+  info-section 内部: h2+p+ul+li
+CSS状态: ❌ 缺CSS
+
+### dui-insurance-rate-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### electric-vehicle-insurance-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p+ul+li
+CSS状态: ❌ 缺CSS
+
+### comprehensive-vs-liability-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### gap-insurance-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### good-driver-discount-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### bundling-discount-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS
+
+### multi-car-discount-calculator.html
+说明区class: info-section
+  info-section 内部: h2+p
+CSS状态: ❌ 缺CSS

@@ -1,0 +1,105 @@
+# coveragefixpro 表单组件HTML结构审计
+# 扫描文件数: 125
+
+## 1A: input/select 父容器class统计
+class="form-group"                      文件数:106	示例:auto/annual-vs-monthly-payment-calculator.html, auto/bundling-discount-calculator.html
+class="input-group"                     文件数:11	示例:auto/accident-forgiveness-value-calculator.html, auto/classic-car-insurance-calculator.html
+class="label-hint"                      文件数:3	示例:auto/classic-car-insurance-calculator.html, auto/insurance-score-estimator.html
+
+## 1B: 含radio的工具页 (3个)
+  auto/coverage-gap-analyzer.html
+  home/water-damage-coverage-calculator.html
+  life/disability-vs-life-insurance-calculator.html
+
+## 1B 样本HTML (前3个radio页的关键片段)
+
+### auto/coverage-gap-analyzer.html
+ass="tool-intro">Answer 5 quick questions to identify potential gaps in your auto insurance coverage. Get targeted recommendations for coverage you may be missing.</p>
+
+  <div class="calculator-card">
+    <form id="gap-form">
+      <div class="question-group">
+        <p class="question-text"><strong>Q1:</strong> Do you have a car loan or lease?</p>
+        <label class="radio-label"><input type="radio" name="q1" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q1" value="no"> No</label>
+      </div>
+      <div class="question-group">
+        <p class="question-text"><strong>Q2:</strong> Is your car less than 3 years old?</p>
+        <label class="radio-label"><input type="radio" name="q2" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q2" value="no"> No</label>
+      </div>
+      <div class="question-group">
+        <p class="question-text"><strong>Q3:</strong> Do you drive more than 15,000 miles per year?</p>
+        <label class="radio-label"><input type="radio" name="q3" value="yes"> Yes</label>
+        <label class="radio-label"><input type="radio" name="q3" value="no"> No</label>
+   
+--- 片段结束 ---
+
+### home/water-damage-coverage-calculator.html
+e</a> › Water Damage Insurance Coverage Calculator
+  </nav>
+
+  <h1>Water Damage Insurance Coverage Calculator</h1>
+
+  <div class="calculator-box">
+    <p style="margin-bottom:1rem;color:#555;">Answer 5 questions to assess your water damage risk and coverage needs.</p>
+
+    <div class="form-group">
+      <p><strong>Q1: Is your home more than 20 years old?</strong></p>
+      <label><input type="radio" name="q1" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q1" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q2: Does your home have a basement?</strong></p>
+      <label><input type="radio" name="q2" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q2" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q3: Are you within 1 mile of a river, lake, or ocean?</strong></p>
+      <label><input type="radio" name="q3" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q3" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q4: Have you had water damage in 
+--- 片段结束 ---
+
+### life/disability-vs-life-insurance-calculator.html
+nsurance</a> &rsaquo; Disability vs Life Insurance
+</nav>
+
+<h1>Disability vs Life Insurance: What Do You Need More?</h1>
+
+<div class="ad-placeholder">Advertisement</div>
+
+<div class="calculator-box">
+  <h2>Answer 5 Questions to Get Your Recommendation</h2>
+
+  <div class="form-group">
+    <p><strong>Q1: Are you the primary income earner in your household?</strong></p>
+    <label><input type="radio" name="q1" value="yes"> Yes</label>
+    <label><input type="radio" name="q1" value="no"> No</label>
+  </div>
+
+  <div class="form-group">
+    <p><strong>Q2: Do you have dependents relying on your income?</strong></p>
+    <label><input type="radio" name="q2" value="yes"> Yes</label>
+    <label><input type="radio" name="q2" value="no"> No</label>
+  </div>
+
+  <div class="form-group">
+    <p><strong>Q3: Do you have less than 6 months of emergency savings?</strong></p>
+    <label><input type="radio" name="q3" value="yes"> Yes</label>
+    <label><input type="radio" name="q3" value="no"> No</label>
+  </div>
+
+  <div class="form-group">
+    <p><strong>Q4: Do you currently have life insurance?</strong></p>
+    <label><input type="radio" name="q4" value="yes"> Yes</label>
+--- 片段结束 ---
+
+## 1C: FAQ结构统计
+.faq（无-section）: 25 个文件
+.faq-section: 50 个文件
+.faq-item + h3/p结构: 49 个文件
+.faq-item + button折叠: 0 个文件
+.faq + details/summary: 25 个文件

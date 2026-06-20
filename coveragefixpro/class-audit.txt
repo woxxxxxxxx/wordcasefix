@@ -1,0 +1,48 @@
+# coveragefixpro 工具页 class 使用统计
+# 扫描文件数: 125
+# 扫描日期: 2026-06-15
+
+## 计算器容器类
+class名               | 文件数 | 示例
+----------------------------------------------------------------------
+calculator-box        | 95    | business/bop-business-owners-policy-calculator.html, business/business-income-insurance-calculator.html
+calculator-card       | 12    | auto/accident-forgiveness-value-calculator.html, auto/classic-car-insurance-calculator.html
+calc-box              | 0     | 
+
+## 输入组类
+class名               | 文件数 | 示例
+----------------------------------------------------------------------
+form-group            | 108   | auto/annual-vs-monthly-payment-calculator.html, auto/bundling-discount-calculator.html
+input-group           | 11    | auto/accident-forgiveness-value-calculator.html, auto/classic-car-insurance-calculator.html
+
+## 结果容器/展示类
+class名               | 文件数 | 示例
+----------------------------------------------------------------------
+result-box            | 120   | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+result-row            | 24    | home/bundling-home-auto-calculator.html, home/condo-insurance-calculator.html
+result-grid           | 47    | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+result-item           | 92    | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+result-label          | 67    | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+result-value          | 68    | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+result-note           | 12    | auto/accident-forgiveness-value-calculator.html, auto/classic-car-insurance-calculator.html
+
+## FAQ类
+class名               | 文件数 | 示例
+----------------------------------------------------------------------
+faq-section           | 50    | auto/annual-vs-monthly-payment-calculator.html, auto/bundling-discount-calculator.html
+faq-item              | 87    | auto/accident-forgiveness-value-calculator.html, auto/classic-car-insurance-calculator.html
+
+## 其他组件类
+class名               | 文件数 | 示例
+----------------------------------------------------------------------
+explanation           | 12    | auto/accident-forgiveness-value-calculator.html, auto/classic-car-insurance-calculator.html
+about-section         | 114   | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+related-tools         | 120   | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+tool-intro            | 25    | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+disclaimer            | 120   | auto/accident-forgiveness-value-calculator.html, auto/annual-vs-monthly-payment-calculator.html
+
+## 模板分类推断
+模板A (calculator-box+form-group): ~108 个文件
+模板B (calculator-card+input-group): ~12 个文件
+使用 result-row: 24 个文件
+使用 result-grid/item: 92 个文件

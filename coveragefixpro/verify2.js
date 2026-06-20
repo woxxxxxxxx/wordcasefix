@@ -1,0 +1,10 @@
+const fs=require('fs');
+const html=fs.readFileSync('C:/Users/Administrator/coveragefixpro/index.html','utf8');
+const toolCards=(html.match(/class="tool-card">/g)||[]).length;
+const icons=(html.match(/tool-card-icon/g)||[]).length;
+console.log('tool-card数量:',toolCards);
+console.log('tool-card-icon数量:',icons);
+console.log('trust-bar存在:',html.includes('class="trust-bar"'));
+console.log('cat-nav存在:',html.includes('class="cat-nav"'));
+console.log('CTA存在:',html.includes('Browse Calculators'));
+console.log('site-intro HTML div:',html.includes('class="site-intro"'));

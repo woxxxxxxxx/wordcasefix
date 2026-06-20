@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CoverageFixPro — Free Insurance Calculators</title>
-<meta name="description" content="120 free insurance calculators for auto, health, home, life, and business coverage. Get instant estimates — no signup, no ads, no tracking.">
+<title>CoverageFixPro &mdash; Free Insurance Calculators</title>
+<meta name="description" content="120 free insurance calculators for auto, health, home, life, and business coverage. Get instant estimates for premiums, deductibles, and coverage needs.">
 <link rel="canonical" href="https://coveragefixpro.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
 <meta property="og:type" content="website">
-<meta property="og:title" content="CoverageFixPro — Free Insurance Calculators">
-<meta property="og:description" content="120 free insurance calculators for auto, health, home, life, and business coverage. Get instant estimates — no signup required.">
+<meta property="og:title" content="CoverageFixPro &mdash; Free Insurance Calculators">
+<meta property="og:description" content="120 free insurance calculators for auto, health, home, life, and business coverage. Get instant estimates &mdash; no signup required.">
 <meta property="og:url" content="https://coveragefixpro.com/">
 <meta property="og:image" content="https://coveragefixpro.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CoverageFixPro — Free Insurance Calculators">
+<meta name="twitter:title" content="CoverageFixPro &mdash; Free Insurance Calculators">
 <meta name="twitter:description" content="120 free insurance calculators. No signup. Instant results.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "CoverageFixPro — Free Insurance Calculators",
+  "name": "CoverageFixPro &mdash; Free Insurance Calculators",
   "url": "https://coveragefixpro.com/",
   "description": "120 free insurance calculators covering auto, health, home, life, and business insurance. Get instant estimates with no signup required.",
   "publisher": {
@@ -93,12 +95,22 @@
 .site-intro{text-align:center;margin-bottom:48px}
 .site-intro h2{font-size:1.3rem;font-weight:700;margin-bottom:8px}
 .site-intro p{font-size:15px;color:var(--text-muted);max-width:640px;margin:0 auto}
+.cat-nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:64px;z-index:40;overflow-x:auto;scrollbar-width:none}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-nav-inner{max-width:1100px;margin:0 auto;display:flex;padding:0 20px;height:44px;align-items:center;gap:0}
+.cat-nav-link{display:flex;align-items:center;height:44px;padding:0 16px;font-size:13px;font-weight:600;color:#475569;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s}
+.cat-nav-link:hover{color:#1d4ed8;border-bottom-color:#1d4ed8}
+.tool-card-icon{font-size:24px;margin-bottom:10px;display:block}
+
+#btt{position:fixed;bottom:28px;right:24px;width:42px;height:42px;background:var(--primary,#0891b2);color:#fff;border:none;border-radius:50%;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:all .2s;z-index:99}
+#btt.show{display:flex}
+#btt:hover{background:var(--primary-dark,#0e7490);transform:translateY(-2px)}
 </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <a href="/" class="logo">CoverageFixPro</a>
+    <a href="/" class="logo"><img src="/logo.svg" alt="CoverageFixPro" height="40"></a>
     <div class="hamburger"><span></span><span></span><span></span></div>
     <nav>
       <a href="/tools/auto/">Auto</a>
@@ -107,18 +119,28 @@
       <a href="/tools/home/">Home</a>
       <a href="/tools/business/">Business</a>
       <a href="/about.html">About</a>
-    </nav>
+    <a href="/blog/">Blog</a>
+</nav>
   </div>
 </header>
+<nav class="cat-nav" aria-label="Categories">
+  <div class="cat-nav-inner">
+    <a class="cat-nav-link" href="#auto">Auto (25)</a>
+    <a class="cat-nav-link" href="#health">Health (25)</a>
+    <a class="cat-nav-link" href="#home">Home (25)</a>
+    <a class="cat-nav-link" href="#life">Life (25)</a>
+    <a class="cat-nav-link" href="#business">Business (20)</a>
+  </div>
+</nav>
 
 <div class="hero">
   <h1>Free Insurance Calculators</h1>
-  <p>120 free tools for auto, health, home, life, and business insurance — no signup, instant results.</p>
+  <p>120 free tools for auto, health, home, life, and business insurance &mdash; no signup, instant results.</p>
   <div class="hero-badges">
-    <span class="badge">✓ 100% Free</span>
-    <span class="badge">✓ No Signup</span>
-    <span class="badge">✓ 120 Calculators</span>
-    <span class="badge">✓ Instant Results</span>
+    <span class="badge">100% Free</span>
+    <span class="badge">No Signup</span>
+    <span class="badge">120 Calculators</span>
+    <span class="badge">Instant Results</span>
   </div>
 </div>
 
@@ -126,114 +148,89 @@
 
   <div class="site-intro">
     <h2>Every Insurance Calculator You Need</h2>
-    <p>CoverageFixPro provides free, no-registration insurance calculators across five major coverage categories. Enter your details and get an instant estimate — use the results as a starting point when shopping for coverage or reviewing your existing policy.</p>
+    <p>CoverageFixPro provides free, no-registration insurance calculators across five major coverage categories. Enter your details and get an instant estimate &mdash; use the results as a starting point when shopping for coverage or reviewing your existing policy.</p>
   </div>
 
     <section class="cat-section" id="auto">
       <div class="cat-header">
         <h2>Auto Insurance Calculators</h2>
-        <a href="/tools/auto/" class="cat-link">View all 25 tools →</a>
+        <a href="/tools/auto/" class="cat-link">View all 25 tools &rarr;</a>
       </div>
       <p class="cat-intro">Compare rates, understand coverage options, and find ways to lower your auto insurance costs with our free calculators.</p>
       <div class="tool-grid">
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/accident-forgiveness-value-calculator.html" class="tool-card">
-          <h3>Accident Forgiveness Insurance Value Calculator</h3>
+        <a href="/tools/auto/accident-forgiveness-value-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Accident Forgiveness Insurance Value Calculator</h3>
           <p>Calculate whether accident forgiveness coverage is worth the cost. Compare expected value against the annual add-on fee based on your accident probability.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/annual-vs-monthly-payment-calculator.html" class="tool-card">
-          <h3>Annual vs Monthly Car Insurance Payment Calculator</h3>
+        <a href="/tools/auto/annual-vs-monthly-payment-calculator.html" class="tool-card"><span class="tool-card-icon">🚙</span><h3>Annual vs Monthly Car Insurance Payment Calculator</h3>
           <p>See how much extra you pay by choosing monthly installments over an annual lump sum for your car insurance premium.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/coverage-gap-analyzer.html" class="tool-card">
-          <h3>Auto Insurance Coverage Gap Analyzer</h3>
+        <a href="/tools/auto/coverage-gap-analyzer.html" class="tool-card"><span class="tool-card-icon">🏎️</span><h3>Auto Insurance Coverage Gap Analyzer</h3>
           <p>Identify gaps in your auto insurance coverage with our 5-question analyzer. Get personalized recommendations for gap insurance, UM coverage, umbrella policies, and more.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/deductible-optimizer.html" class="tool-card">
-          <h3>Auto Insurance Deductible Optimizer</h3>
+        <a href="/tools/auto/deductible-optimizer.html" class="tool-card"><span class="tool-card-icon">🚘</span><h3>Auto Insurance Deductible Optimizer</h3>
           <p>Find the optimal auto insurance deductible for your situation. Compare expected annual costs across $500, $1,000, $1,500, and $2,000 deductibles.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/liability-coverage-limits-calculator.html" class="tool-card">
-          <h3>Auto Liability Coverage Limits Calculator</h3>
+        <a href="/tools/auto/liability-coverage-limits-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Auto Liability Coverage Limits Calculator</h3>
           <p>Calculate the right auto liability coverage limits based on your net worth and income. Get personalized 50/100/50, 100/300/100, or 250/500/250 recommendations.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/car-insurance-premium-estimator.html" class="tool-card">
-          <h3>Car Insurance Premium Estimator</h3>
+        <a href="/tools/auto/car-insurance-premium-estimator.html" class="tool-card"><span class="tool-card-icon">🚙</span><h3>Car Insurance Premium Estimator</h3>
           <p>Estimate your car insurance premium based on age, vehicle year, driving history, and state. Get instant low and high estimates.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/insurance-after-accident-calculator.html" class="tool-card">
-          <h3>Car Insurance Rate After Accident Calculator</h3>
+        <a href="/tools/auto/insurance-after-accident-calculator.html" class="tool-card"><span class="tool-card-icon">🏎️</span><h3>Car Insurance Rate After Accident Calculator</h3>
           <p>Calculate how much your car insurance rate will increase after an accident. See your new premium and 3-year extra cost for at-fault and not-at-fault accidents.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/policy-renewal-savings-calculator.html" class="tool-card">
-          <h3>Car Insurance Renewal Savings Calculator</h3>
+        <a href="/tools/auto/policy-renewal-savings-calculator.html" class="tool-card"><span class="tool-card-icon">🚘</span><h3>Car Insurance Renewal Savings Calculator</h3>
           <p>Calculate how much you can save by switching car insurance at renewal. Compare your current premium vs new quote and see 3-year savings after switching costs.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/total-cost-of-ownership-calculator.html" class="tool-card">
-          <h3>Car Total Cost of Ownership Calculator</h3>
+        <a href="/tools/auto/total-cost-of-ownership-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Car Total Cost of Ownership Calculator</h3>
           <p>Calculate the true 5-year total cost of owning a car including loan payments, insurance, fuel, and maintenance. Get a complete monthly and annual cost breakdown.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/classic-car-insurance-calculator.html" class="tool-card">
-          <h3>Classic Car Insurance Cost Calculator</h3>
+        <a href="/tools/auto/classic-car-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🚙</span><h3>Classic Car Insurance Cost Calculator</h3>
           <p>Calculate classic car insurance costs based on agreed value and annual mileage. See how much you save vs standard auto insurance for qualifying vintage vehicles.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/collision-coverage-breakeven-calculator.html" class="tool-card">
-          <h3>Collision Coverage Break-Even Calculator</h3>
+        <a href="/tools/auto/collision-coverage-breakeven-calculator.html" class="tool-card"><span class="tool-card-icon">🏎️</span><h3>Collision Coverage Break-Even Calculator</h3>
           <p>Find out how many years it takes for collision coverage to pay off. Calculate the break-even point and decide if keeping collision coverage makes financial sense.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/dui-insurance-rate-calculator.html" class="tool-card">
-          <h3>DUI Car Insurance Rate Calculator</h3>
+        <a href="/tools/auto/dui-insurance-rate-calculator.html" class="tool-card"><span class="tool-card-icon">🚘</span><h3>DUI Car Insurance Rate Calculator</h3>
           <p>Calculate how much a DUI will raise your car insurance rates. See your new premium and 3-year extra cost instantly.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/electric-vehicle-insurance-calculator.html" class="tool-card">
-          <h3>Electric Vehicle Insurance Cost Calculator</h3>
+        <a href="/tools/auto/electric-vehicle-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Electric Vehicle Insurance Cost Calculator</h3>
           <p>Compare EV vs gas car insurance costs. Calculate your electric vehicle insurance premium by brand and age with instant results.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/comprehensive-vs-liability-calculator.html" class="tool-card">
-          <h3>Full Coverage vs Liability Only Calculator</h3>
+        <a href="/tools/auto/comprehensive-vs-liability-calculator.html" class="tool-card"><span class="tool-card-icon">🚙</span><h3>Full Coverage vs Liability Only Calculator</h3>
           <p>Decide whether full coverage or liability-only car insurance makes financial sense for your vehicle. Uses the 10% rule and break-even analysis.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/gap-insurance-calculator.html" class="tool-card">
-          <h3>GAP Insurance Calculator</h3>
+        <a href="/tools/auto/gap-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏎️</span><h3>GAP Insurance Calculator</h3>
           <p>Find out if you need GAP insurance. Calculate the difference between your car</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/good-driver-discount-calculator.html" class="tool-card">
-          <h3>Good Driver Discount Calculator</h3>
+        <a href="/tools/auto/good-driver-discount-calculator.html" class="tool-card"><span class="tool-card-icon">🚘</span><h3>Good Driver Discount Calculator</h3>
           <p>Find out if you qualify for a good driver discount and how much you could save on your car insurance premium.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/bundling-discount-calculator.html" class="tool-card">
-          <h3>Home and Auto Insurance Bundle Discount Calculator</h3>
+        <a href="/tools/auto/bundling-discount-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Home and Auto Insurance Bundle Discount Calculator</h3>
           <p>Calculate how much you save by bundling your home and auto insurance with the same carrier. Adjust your bundle discount percentage and see instant savings.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/insurance-score-estimator.html" class="tool-card">
-          <h3>Insurance Score Estimator</h3>
+        <a href="/tools/auto/insurance-score-estimator.html" class="tool-card"><span class="tool-card-icon">🚙</span><h3>Insurance Score Estimator</h3>
           <p>Estimate your insurance score based on credit score, years of driving experience, and at-fault accidents. See what discount or surcharge you may qualify for.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/multi-car-discount-calculator.html" class="tool-card">
-          <h3>Multi-Car Insurance Discount Calculator</h3>
+        <a href="/tools/auto/multi-car-discount-calculator.html" class="tool-card"><span class="tool-card-icon">🏎️</span><h3>Multi-Car Insurance Discount Calculator</h3>
           <p>Calculate how much you save with a multi-car insurance discount. Enter up to 4 vehicles and see your discounted total instantly.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/new-car-insurance-cost-calculator.html" class="tool-card">
-          <h3>New Car Insurance Cost Estimator</h3>
+        <a href="/tools/auto/new-car-insurance-cost-calculator.html" class="tool-card"><span class="tool-card-icon">🚘</span><h3>New Car Insurance Cost Estimator</h3>
           <p>Estimate your new car insurance cost based on car price, safety rating, car type, and driver age. Get instant annual and monthly premium estimates.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/mileage-based-insurance-calculator.html" class="tool-card">
-          <h3>Pay-Per-Mile Insurance Calculator</h3>
+        <a href="/tools/auto/mileage-based-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Pay-Per-Mile Insurance Calculator</h3>
           <p>Find out if pay-per-mile car insurance saves you money. Calculate your break-even mileage and compare costs vs standard insurance.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/rideshare-insurance-cost-calculator.html" class="tool-card">
-          <h3>Rideshare Insurance Cost Calculator (Uber/Lyft)</h3>
+        <a href="/tools/auto/rideshare-insurance-cost-calculator.html" class="tool-card"><span class="tool-card-icon">🚙</span><h3>Rideshare Insurance Cost Calculator (Uber/Lyft)</h3>
           <p>Calculate your total rideshare insurance cost for Uber or Lyft driving. Find the monthly add-on fee based on weekly driving hours and your annual total cost.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/sr22-insurance-calculator.html" class="tool-card">
-          <h3>SR-22 Insurance Cost Calculator</h3>
+        <a href="/tools/auto/sr22-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏎️</span><h3>SR-22 Insurance Cost Calculator</h3>
           <p>Calculate the full cost of SR-22 insurance including premium increases and filing fees. See your 3-year total extra cost by state and violation type.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/teen-driver-cost-calculator.html" class="tool-card">
-          <h3>Teen Driver Insurance Cost Calculator</h3>
+        <a href="/tools/auto/teen-driver-cost-calculator.html" class="tool-card"><span class="tool-card-icon">🚘</span><h3>Teen Driver Insurance Cost Calculator</h3>
           <p>Calculate how much adding a teen driver will increase your car insurance premium. See good student discount savings instantly.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/auto/uninsured-motorist-coverage-calculator.html" class="tool-card">
-          <h3>Uninsured Motorist Coverage Calculator</h3>
+        <a href="/tools/auto/uninsured-motorist-coverage-calculator.html" class="tool-card"><span class="tool-card-icon">🚗</span><h3>Uninsured Motorist Coverage Calculator</h3>
           <p>Calculate recommended uninsured motorist coverage limits based on your state</p>
         </a>
       </div>
@@ -242,108 +239,83 @@
     <section class="cat-section" id="health">
       <div class="cat-header">
         <h2>Health Insurance Calculators</h2>
-        <a href="/tools/health/" class="cat-link">View all 25 tools →</a>
+        <a href="/tools/health/" class="cat-link">View all 25 tools &rarr;</a>
       </div>
       <p class="cat-intro">Navigate health insurance costs with confidence. Our calculators help you compare plans, estimate subsidies, and maximize your benefits.</p>
       <div class="tool-grid">
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/premium-tax-credit-2026.html" class="tool-card">
-          <h3>2026 Premium Tax Credit Calculator</h3>
+        <a href="/tools/health/premium-tax-credit-2026.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>2026 Premium Tax Credit Calculator</h3>
           <p>Free online 2026 premium tax credit calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/aca-subsidy-calculator.html" class="tool-card">
-          <h3>ACA Health Insurance Subsidy Calculator 2026</h3>
+        <a href="/tools/health/aca-subsidy-calculator.html" class="tool-card"><span class="tool-card-icon">💊</span><h3>ACA Health Insurance Subsidy Calculator 2026</h3>
           <p>Free online aca health insurance subsidy calculator 2026 for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/catastrophic-plan-eligibility.html" class="tool-card">
-          <h3>Catastrophic Health Plan Eligibility Checker</h3>
+        <a href="/tools/health/catastrophic-plan-eligibility.html" class="tool-card"><span class="tool-card-icon">🩺</span><h3>Catastrophic Health Plan Eligibility Checker</h3>
           <p>Free online catastrophic health plan eligibility checker for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/cobra-cost-estimator.html" class="tool-card">
-          <h3>COBRA Insurance Cost Calculator</h3>
+        <a href="/tools/health/cobra-cost-estimator.html" class="tool-card"><span class="tool-card-icon">⚕️</span><h3>COBRA Insurance Cost Calculator</h3>
           <p>Free online cobra insurance cost calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/cobra-vs-marketplace-calculator.html" class="tool-card">
-          <h3>COBRA vs Marketplace Insurance Comparison</h3>
+        <a href="/tools/health/cobra-vs-marketplace-calculator.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>COBRA vs Marketplace Insurance Comparison</h3>
           <p>Free online cobra vs marketplace insurance comparison for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/dependent-coverage-calculator.html" class="tool-card">
-          <h3>Dependent Health Insurance Coverage Cost Calculator</h3>
+        <a href="/tools/health/dependent-coverage-calculator.html" class="tool-card"><span class="tool-card-icon">💊</span><h3>Dependent Health Insurance Coverage Cost Calculator</h3>
           <p>Free online dependent health insurance coverage cost calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/employer-benefits-value-calculator.html" class="tool-card">
-          <h3>Employer Health Insurance Benefits Value Calculator</h3>
+        <a href="/tools/health/employer-benefits-value-calculator.html" class="tool-card"><span class="tool-card-icon">🩺</span><h3>Employer Health Insurance Benefits Value Calculator</h3>
           <p>Free online employer health insurance benefits value calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/fsa-calculator.html" class="tool-card">
-          <h3>FSA Contribution Calculator & Tax Savings</h3>
+        <a href="/tools/health/fsa-calculator.html" class="tool-card"><span class="tool-card-icon">⚕️</span><h3>FSA Contribution Calculator & Tax Savings</h3>
           <p>Free online fsa contribution calculator & tax savings for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/health-insurance-affordability-checker.html" class="tool-card">
-          <h3>Health Insurance Affordability Checker</h3>
+        <a href="/tools/health/health-insurance-affordability-checker.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>Health Insurance Affordability Checker</h3>
           <p>Free online health insurance affordability checker for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/deductible-met-tracker.html" class="tool-card">
-          <h3>Health Insurance Deductible Tracker</h3>
+        <a href="/tools/health/deductible-met-tracker.html" class="tool-card"><span class="tool-card-icon">💊</span><h3>Health Insurance Deductible Tracker</h3>
           <p>Free online health insurance deductible tracker for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/out-of-pocket-max-calculator.html" class="tool-card">
-          <h3>Health Insurance Out-of-Pocket Maximum Calculator</h3>
+        <a href="/tools/health/out-of-pocket-max-calculator.html" class="tool-card"><span class="tool-card-icon">🩺</span><h3>Health Insurance Out-of-Pocket Maximum Calculator</h3>
           <p>Free online health insurance out-of-pocket maximum calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/health-insurance-penalty-calculator.html" class="tool-card">
-          <h3>Health Insurance Penalty Calculator by State</h3>
+        <a href="/tools/health/health-insurance-penalty-calculator.html" class="tool-card"><span class="tool-card-icon">⚕️</span><h3>Health Insurance Penalty Calculator by State</h3>
           <p>Free online health insurance penalty calculator by state for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/hmo-vs-ppo-cost-calculator.html" class="tool-card">
-          <h3>HMO vs PPO Health Insurance Cost Calculator</h3>
+        <a href="/tools/health/hmo-vs-ppo-cost-calculator.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>HMO vs PPO Health Insurance Cost Calculator</h3>
           <p>Free online hmo vs ppo health insurance cost calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/hsa-contribution-calculator.html" class="tool-card">
-          <h3>HSA Contribution Limit & Tax Savings Calculator 2026</h3>
+        <a href="/tools/health/hsa-contribution-calculator.html" class="tool-card"><span class="tool-card-icon">💊</span><h3>HSA Contribution Limit & Tax Savings Calculator 2026</h3>
           <p>Free online hsa contribution limit & tax savings calculator 2026 for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/hsa-growth-calculator.html" class="tool-card">
-          <h3>HSA Investment Growth Calculator</h3>
+        <a href="/tools/health/hsa-growth-calculator.html" class="tool-card"><span class="tool-card-icon">🩺</span><h3>HSA Investment Growth Calculator</h3>
           <p>Free online hsa investment growth calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/dental-insurance-worth-it-calculator.html" class="tool-card">
-          <h3>Is Dental Insurance Worth It Calculator</h3>
+        <a href="/tools/health/dental-insurance-worth-it-calculator.html" class="tool-card"><span class="tool-card-icon">⚕️</span><h3>Is Dental Insurance Worth It Calculator</h3>
           <p>Free online is dental insurance worth it calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/maternity-insurance-calculator.html" class="tool-card">
-          <h3>Maternity & Pregnancy Insurance Cost Calculator</h3>
+        <a href="/tools/health/maternity-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>Maternity & Pregnancy Insurance Cost Calculator</h3>
           <p>Free online maternity & pregnancy insurance cost calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/medical-expense-tax-deduction-calculator.html" class="tool-card">
-          <h3>Medical Expense Tax Deduction Calculator</h3>
+        <a href="/tools/health/medical-expense-tax-deduction-calculator.html" class="tool-card"><span class="tool-card-icon">💊</span><h3>Medical Expense Tax Deduction Calculator</h3>
           <p>Free online medical expense tax deduction calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/medicare-part-b-premium-calculator.html" class="tool-card">
-          <h3>Medicare Part B Premium Calculator 2026</h3>
+        <a href="/tools/health/medicare-part-b-premium-calculator.html" class="tool-card"><span class="tool-card-icon">🩺</span><h3>Medicare Part B Premium Calculator 2026</h3>
           <p>Free online medicare part b premium calculator 2026 for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/mental-health-coverage-calculator.html" class="tool-card">
-          <h3>Mental Health Insurance Coverage Calculator</h3>
+        <a href="/tools/health/mental-health-coverage-calculator.html" class="tool-card"><span class="tool-card-icon">⚕️</span><h3>Mental Health Insurance Coverage Calculator</h3>
           <p>Free online mental health insurance coverage calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/open-enrollment-calculator.html" class="tool-card">
-          <h3>Open Enrollment Health Plan Comparison Tool</h3>
+        <a href="/tools/health/open-enrollment-calculator.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>Open Enrollment Health Plan Comparison Tool</h3>
           <p>Free online open enrollment health plan comparison tool for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/prescription-drug-cost-calculator.html" class="tool-card">
-          <h3>Prescription Drug Cost Calculator</h3>
+        <a href="/tools/health/prescription-drug-cost-calculator.html" class="tool-card"><span class="tool-card-icon">💊</span><h3>Prescription Drug Cost Calculator</h3>
           <p>Free online prescription drug cost calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/short-term-health-insurance-calculator.html" class="tool-card">
-          <h3>Short-Term Health Insurance Cost Estimator</h3>
+        <a href="/tools/health/short-term-health-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🩺</span><h3>Short-Term Health Insurance Cost Estimator</h3>
           <p>Free online short-term health insurance cost estimator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/telehealth-savings-calculator.html" class="tool-card">
-          <h3>Telehealth vs In-Person Visit Savings Calculator</h3>
+        <a href="/tools/health/telehealth-savings-calculator.html" class="tool-card"><span class="tool-card-icon">⚕️</span><h3>Telehealth vs In-Person Visit Savings Calculator</h3>
           <p>Free online telehealth vs in-person visit savings calculator for insurance planning.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/health/vision-insurance-calculator.html" class="tool-card">
-          <h3>Vision Insurance Worth It Calculator</h3>
+        <a href="/tools/health/vision-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏥</span><h3>Vision Insurance Worth It Calculator</h3>
           <p>Free online vision insurance worth it calculator for insurance planning.</p>
         </a>
       </div>
@@ -352,108 +324,83 @@
     <section class="cat-section" id="home">
       <div class="cat-header">
         <h2>Home Insurance Calculators</h2>
-        <a href="/tools/home/" class="cat-link">View all 25 tools →</a>
+        <a href="/tools/home/" class="cat-link">View all 25 tools &rarr;</a>
       </div>
       <p class="cat-intro">Find the right home insurance coverage at the best price. Our tools estimate premiums, replacement costs, and coverage gaps.</p>
       <div class="tool-grid">
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/condo-insurance-calculator.html" class="tool-card">
-          <h3>Condo Insurance (HO-6) Calculator</h3>
+        <a href="/tools/home/condo-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>Condo Insurance (HO-6) Calculator</h3>
           <p>Estimate HO-6 condo insurance premiums based on unit value, personal property, deductible, and state.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/earthquake-insurance-calculator.html" class="tool-card">
-          <h3>Earthquake Insurance Cost Calculator</h3>
+        <a href="/tools/home/earthquake-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏡</span><h3>Earthquake Insurance Cost Calculator</h3>
           <p>Estimate earthquake insurance premiums based on your state, home value, and year built to assess whether coverage is right for you.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/flood-insurance-calculator.html" class="tool-card">
-          <h3>Flood Insurance Cost Calculator</h3>
+        <a href="/tools/home/flood-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏘️</span><h3>Flood Insurance Cost Calculator</h3>
           <p>Calculate estimated flood insurance premiums based on your flood zone, home value, and basement presence.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/bundling-home-auto-calculator.html" class="tool-card">
-          <h3>Home and Auto Insurance Bundle Savings Calculator</h3>
+        <a href="/tools/home/bundling-home-auto-calculator.html" class="tool-card"><span class="tool-card-icon">🔑</span><h3>Home and Auto Insurance Bundle Savings Calculator</h3>
           <p>Calculate how much you can save by bundling your home and auto insurance policies with the same insurer.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/home-insurance-deductible-calculator.html" class="tool-card">
-          <h3>Home Insurance Deductible Optimizer</h3>
+        <a href="/tools/home/home-insurance-deductible-calculator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>Home Insurance Deductible Optimizer</h3>
           <p>Find the optimal home insurance deductible by comparing expected annual costs across $500, $1,000, $2,500, and $5,000 deductible options.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/home-insurance-comparison-tool.html" class="tool-card">
-          <h3>Home Insurance Quote Comparison Tool</h3>
+        <a href="/tools/home/home-insurance-comparison-tool.html" class="tool-card"><span class="tool-card-icon">🏡</span><h3>Home Insurance Quote Comparison Tool</h3>
           <p>Compare up to three homeowners insurance quotes side by side to find the best value based on premium, deductible, and coverage amount.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/insurance-to-value-ratio-calculator.html" class="tool-card">
-          <h3>Home Insurance to Value Ratio Calculator</h3>
+        <a href="/tools/home/insurance-to-value-ratio-calculator.html" class="tool-card"><span class="tool-card-icon">🏘️</span><h3>Home Insurance to Value Ratio Calculator</h3>
           <p>Calculate your home</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/liability-coverage-calculator.html" class="tool-card">
-          <h3>Home Liability Insurance Coverage Calculator</h3>
+        <a href="/tools/home/liability-coverage-calculator.html" class="tool-card"><span class="tool-card-icon">🔑</span><h3>Home Liability Insurance Coverage Calculator</h3>
           <p>Calculate recommended home liability insurance coverage based on net worth, pool, dog ownership, and visitor frequency.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/replacement-cost-estimator.html" class="tool-card">
-          <h3>Home Replacement Cost Estimator</h3>
+        <a href="/tools/home/replacement-cost-estimator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>Home Replacement Cost Estimator</h3>
           <p>Estimate your home</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/home-security-discount-calculator.html" class="tool-card">
-          <h3>Home Security System Insurance Discount Calculator</h3>
+        <a href="/tools/home/home-security-discount-calculator.html" class="tool-card"><span class="tool-card-icon">🏡</span><h3>Home Security System Insurance Discount Calculator</h3>
           <p>Calculate your homeowners insurance discount for having a home security system and determine the payback period for your investment.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/home-warranty-vs-insurance-calculator.html" class="tool-card">
-          <h3>Home Warranty vs Homeowners Insurance Comparison</h3>
+        <a href="/tools/home/home-warranty-vs-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏘️</span><h3>Home Warranty vs Homeowners Insurance Comparison</h3>
           <p>Compare the costs and benefits of home warranties versus homeowners insurance to determine which coverage is right for your situation.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/home-insurance-estimator.html" class="tool-card">
-          <h3>Homeowners Insurance Cost Estimator</h3>
+        <a href="/tools/home/home-insurance-estimator.html" class="tool-card"><span class="tool-card-icon">🔑</span><h3>Homeowners Insurance Cost Estimator</h3>
           <p>Estimate your homeowners insurance annual and monthly premium based on home value, year built, state, and construction type.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/home-insurance-claims-impact-calculator.html" class="tool-card">
-          <h3>How Home Insurance Claims Affect Your Premium</h3>
+        <a href="/tools/home/home-insurance-claims-impact-calculator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>How Home Insurance Claims Affect Your Premium</h3>
           <p>Calculate how filing a home insurance claim will impact your annual premium and whether it</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/hurricane-insurance-calculator.html" class="tool-card">
-          <h3>Hurricane Insurance Cost Estimator</h3>
+        <a href="/tools/home/hurricane-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏡</span><h3>Hurricane Insurance Cost Estimator</h3>
           <p>Estimate hurricane insurance premiums based on your coastal state, home value, and distance from the coast.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/landlord-insurance-calculator.html" class="tool-card">
-          <h3>Landlord Insurance Cost Calculator</h3>
+        <a href="/tools/home/landlord-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏘️</span><h3>Landlord Insurance Cost Calculator</h3>
           <p>Estimate landlord insurance premiums for rental properties based on property value, monthly rent, number of units, and state.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/loss-of-use-coverage-calculator.html" class="tool-card">
-          <h3>Loss of Use Insurance Coverage Calculator</h3>
+        <a href="/tools/home/loss-of-use-coverage-calculator.html" class="tool-card"><span class="tool-card-icon">🔑</span><h3>Loss of Use Insurance Coverage Calculator</h3>
           <p>Calculate how much loss of use (additional living expenses) coverage you need based on your monthly housing costs and estimated rebuild time.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/mobile-home-insurance-calculator.html" class="tool-card">
-          <h3>Mobile Home Insurance Calculator</h3>
+        <a href="/tools/home/mobile-home-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>Mobile Home Insurance Calculator</h3>
           <p>Estimate mobile home insurance premiums based on home value, age, state, and whether you own the land.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/new-home-insurance-calculator.html" class="tool-card">
-          <h3>New Home Insurance Cost Estimator</h3>
+        <a href="/tools/home/new-home-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏡</span><h3>New Home Insurance Cost Estimator</h3>
           <p>Estimate first-year homeowners insurance costs for your new home purchase based on price, square footage, state, and construction age.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/personal-property-calculator.html" class="tool-card">
-          <h3>Personal Property Coverage Calculator</h3>
+        <a href="/tools/home/personal-property-calculator.html" class="tool-card"><span class="tool-card-icon">🏘️</span><h3>Personal Property Coverage Calculator</h3>
           <p>Calculate the total value of your personal property and determine if you need a scheduled personal property rider for high-value items.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/pmi-removal-date-calculator.html" class="tool-card">
-          <h3>PMI Removal Date Calculator</h3>
+        <a href="/tools/home/pmi-removal-date-calculator.html" class="tool-card"><span class="tool-card-icon">🔑</span><h3>PMI Removal Date Calculator</h3>
           <p>Calculate when you can remove PMI (Private Mortgage Insurance) based on your loan balance, home value, and monthly payment.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/renters-insurance-calculator.html" class="tool-card">
-          <h3>Renters Insurance Cost Calculator</h3>
+        <a href="/tools/home/renters-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>Renters Insurance Cost Calculator</h3>
           <p>Estimate renters insurance monthly and annual premiums based on personal property value, state, and deductible choice.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/umbrella-insurance-calculator.html" class="tool-card">
-          <h3>Umbrella Insurance Coverage Calculator</h3>
+        <a href="/tools/home/umbrella-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏡</span><h3>Umbrella Insurance Coverage Calculator</h3>
           <p>Calculate recommended umbrella insurance coverage based on your net worth, number of cars, pool, and dog ownership.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/vacation-home-insurance-calculator.html" class="tool-card">
-          <h3>Vacation Home Insurance Calculator</h3>
+        <a href="/tools/home/vacation-home-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏘️</span><h3>Vacation Home Insurance Calculator</h3>
           <p>Calculate vacation home insurance premiums based on property value, location type, and number of rental days per year.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/water-damage-coverage-calculator.html" class="tool-card">
-          <h3>Water Damage Insurance Coverage Calculator</h3>
+        <a href="/tools/home/water-damage-coverage-calculator.html" class="tool-card"><span class="tool-card-icon">🔑</span><h3>Water Damage Insurance Coverage Calculator</h3>
           <p>Assess your water damage risk level and get personalized insurance coverage recommendations based on your home</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/home/wildfire-risk-insurance-calculator.html" class="tool-card">
-          <h3>Wildfire Risk Home Insurance Calculator</h3>
+        <a href="/tools/home/wildfire-risk-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏠</span><h3>Wildfire Risk Home Insurance Calculator</h3>
           <p>Calculate homeowners insurance premiums for wildfire-prone areas based on state, home value, and fire zone classification.</p>
         </a>
       </div>
@@ -462,108 +409,83 @@
     <section class="cat-section" id="life">
       <div class="cat-header">
         <h2>Life Insurance Calculators</h2>
-        <a href="/tools/life/" class="cat-link">View all 25 tools →</a>
+        <a href="/tools/life/" class="cat-link">View all 25 tools &rarr;</a>
       </div>
       <p class="cat-intro">Determine how much life insurance you need and find the most affordable policy type for your family's situation.</p>
       <div class="tool-grid">
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/child-life-insurance-calculator.html" class="tool-card">
-          <h3>Child Life Insurance Calculator</h3>
+        <a href="/tools/life/child-life-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>Child Life Insurance Calculator</h3>
           <p>Calculate child life insurance costs and the long-term value of locking in low rates early. Compare current vs adult premiums.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/disability-vs-life-insurance-calculator.html" class="tool-card">
-          <h3>Disability vs Life Insurance: What Do You Need More</h3>
-          <p>Answer 5 quick questions to find out whether you need disability insurance or life insurance more urgently — and what your coverage priorities should be.</p>
+        <a href="/tools/life/disability-vs-life-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">👨‍👩‍👧‍👦</span><h3>Disability vs Life Insurance: What Do You Need More</h3>
+          <p>Answer 5 quick questions to find out whether you need disability insurance or life insurance more urgently &mdash; and what your coverage priorities should be.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/final-expense-insurance-calculator.html" class="tool-card">
-          <h3>Final Expense Insurance Calculator</h3>
+        <a href="/tools/life/final-expense-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">📊</span><h3>Final Expense Insurance Calculator</h3>
           <p>Calculate final expense insurance costs to cover funeral expenses and outstanding debts. Get a personalized coverage recommendation.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/group-vs-individual-life-insurance.html" class="tool-card">
-          <h3>Group vs Individual Life Insurance Comparison</h3>
+        <a href="/tools/life/group-vs-individual-life-insurance.html" class="tool-card"><span class="tool-card-icon">🛡️</span><h3>Group vs Individual Life Insurance Comparison</h3>
           <p>Compare group life insurance from your employer vs individual life insurance. Find your coverage gap and estimate supplemental policy costs.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-affordability-calculator.html" class="tool-card">
-          <h3>How Much Life Insurance Can I Afford</h3>
+        <a href="/tools/life/life-insurance-affordability-calculator.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>How Much Life Insurance Can I Afford</h3>
           <p>Find out how much life insurance coverage you can afford based on your monthly budget, age, and health. Instant estimate.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/income-replacement-calculator.html" class="tool-card">
-          <h3>Income Replacement Life Insurance Calculator</h3>
+        <a href="/tools/life/income-replacement-calculator.html" class="tool-card"><span class="tool-card-icon">👨‍👩‍👧‍👦</span><h3>Income Replacement Life Insurance Calculator</h3>
           <p>Calculate how much life insurance you need to replace your income. Based on present value of future earnings until retirement.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/joint-life-insurance-calculator.html" class="tool-card">
-          <h3>Joint Life Insurance vs Separate Policies Calculator</h3>
+        <a href="/tools/life/joint-life-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">📊</span><h3>Joint Life Insurance vs Separate Policies Calculator</h3>
           <p>Compare joint life insurance vs two separate policies. Calculate premiums and find out which option saves more money for couples.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/beneficiary-needs-assessment.html" class="tool-card">
-          <h3>Life Insurance Beneficiary Needs Assessment</h3>
+        <a href="/tools/life/beneficiary-needs-assessment.html" class="tool-card"><span class="tool-card-icon">🛡️</span><h3>Life Insurance Beneficiary Needs Assessment</h3>
           <p>Assess how much life insurance your beneficiaries truly need. Calculate income replacement, children</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-needs-by-age.html" class="tool-card">
-          <h3>Life Insurance Coverage by Age Calculator</h3>
+        <a href="/tools/life/life-insurance-needs-by-age.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>Life Insurance Coverage by Age Calculator</h3>
           <p>Calculate how much life insurance you need based on your age. Get an age-appropriate income multiplier recommendation plus adjustments for mortgage and children.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/death-benefit-calculator.html" class="tool-card">
-          <h3>Life Insurance Death Benefit Calculator</h3>
+        <a href="/tools/life/death-benefit-calculator.html" class="tool-card"><span class="tool-card-icon">👨‍👩‍👧‍👦</span><h3>Life Insurance Death Benefit Calculator</h3>
           <p>Calculate the right life insurance death benefit for your family using present value of future expenses, debts, and existing assets.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/estate-planning-life-insurance-calculator.html" class="tool-card">
-          <h3>Life Insurance for Estate Planning Calculator</h3>
+        <a href="/tools/life/estate-planning-life-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">📊</span><h3>Life Insurance for Estate Planning Calculator</h3>
           <p>Calculate federal and state estate taxes and determine how much life insurance you need to cover estate tax obligations and protect your heirs</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-needs-calculator.html" class="tool-card">
-          <h3>Life Insurance Needs Calculator</h3>
+        <a href="/tools/life/life-insurance-needs-calculator.html" class="tool-card"><span class="tool-card-icon">🛡️</span><h3>Life Insurance Needs Calculator</h3>
           <p>Calculate how much life insurance you need using the DIME method. Free calculator for debt, income, mortgage, and education funding needs.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/policy-loan-calculator.html" class="tool-card">
-          <h3>Life Insurance Policy Loan Calculator</h3>
+        <a href="/tools/life/policy-loan-calculator.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>Life Insurance Policy Loan Calculator</h3>
           <p>Calculate life insurance policy loan payments and interest. See how unpaid loans affect your cash value and death benefit.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/premium-financing-calculator.html" class="tool-card">
-          <h3>Life Insurance Premium Financing Calculator</h3>
+        <a href="/tools/life/premium-financing-calculator.html" class="tool-card"><span class="tool-card-icon">👨‍👩‍👧‍👦</span><h3>Life Insurance Premium Financing Calculator</h3>
           <p>Calculate the true cost of financing life insurance premiums vs paying directly. Compare total interest paid and extra financing costs over the policy term.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-roi-calculator.html" class="tool-card">
-          <h3>Life Insurance ROI Calculator</h3>
+        <a href="/tools/life/life-insurance-roi-calculator.html" class="tool-card"><span class="tool-card-icon">📊</span><h3>Life Insurance ROI Calculator</h3>
           <p>Calculate the return on investment of your life insurance policy. Compare term vs whole life insurance ROI and investment alternatives.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-settlement-calculator.html" class="tool-card">
-          <h3>Life Insurance Settlement vs Cash Surrender Calculator</h3>
+        <a href="/tools/life/life-insurance-settlement-calculator.html" class="tool-card"><span class="tool-card-icon">🛡️</span><h3>Life Insurance Settlement vs Cash Surrender Calculator</h3>
           <p>Compare life settlement value versus cash surrender value for your life insurance policy. Estimate which option gives you more money when you no longer need coverage.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-tax-calculator.html" class="tool-card">
-          <h3>Life Insurance Tax Benefits Calculator</h3>
+        <a href="/tools/life/life-insurance-tax-calculator.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>Life Insurance Tax Benefits Calculator</h3>
           <p>Calculate the tax advantages of life insurance including income-tax-free death benefits, cash value tax deferral, and tax-free policy loans based on your tax bracket.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-for-mortgage.html" class="tool-card">
-          <h3>Mortgage Life Insurance Calculator</h3>
+        <a href="/tools/life/life-insurance-for-mortgage.html" class="tool-card"><span class="tool-card-icon">👨‍👩‍👧‍👦</span><h3>Mortgage Life Insurance Calculator</h3>
           <p>Compare mortgage life insurance vs term life insurance for home loan protection. See which option saves more money.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-medical-exam-waiver-calculator.html" class="tool-card">
-          <h3>No-Medical-Exam Life Insurance Cost Calculator</h3>
+        <a href="/tools/life/life-insurance-medical-exam-waiver-calculator.html" class="tool-card"><span class="tool-card-icon">📊</span><h3>No-Medical-Exam Life Insurance Cost Calculator</h3>
           <p>Compare the cost of no-exam life insurance vs traditional medically underwritten life insurance. See how much extra you pay for the convenience of skipping the exam.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/return-of-premium-calculator.html" class="tool-card">
-          <h3>Return of Premium Life Insurance Calculator</h3>
+        <a href="/tools/life/return-of-premium-calculator.html" class="tool-card"><span class="tool-card-icon">🛡️</span><h3>Return of Premium Life Insurance Calculator</h3>
           <p>Calculate the cost difference between standard term and return-of-premium (ROP) life insurance. See your premium refund amount and implied return on the extra cost.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/smoker-life-insurance-calculator.html" class="tool-card">
-          <h3>Smoker Life Insurance Cost Calculator</h3>
+        <a href="/tools/life/smoker-life-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>Smoker Life Insurance Cost Calculator</h3>
           <p>Calculate how smoking affects your life insurance premiums and how much you can save by quitting. Compare smoker vs non-smoker rates.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/survivorship-life-insurance-calculator.html" class="tool-card">
-          <h3>Survivorship Life Insurance Calculator</h3>
+        <a href="/tools/life/survivorship-life-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">👨‍👩‍👧‍👦</span><h3>Survivorship Life Insurance Calculator</h3>
           <p>Calculate survivorship (second-to-die) life insurance premiums and check if coverage is sufficient to cover estate taxes for married couples.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/life-insurance-conversion-calculator.html" class="tool-card">
-          <h3>Term to Permanent Life Insurance Conversion Calculator</h3>
+        <a href="/tools/life/life-insurance-conversion-calculator.html" class="tool-card"><span class="tool-card-icon">📊</span><h3>Term to Permanent Life Insurance Conversion Calculator</h3>
           <p>Calculate the cost of converting your term life insurance to permanent coverage versus re-applying for a new policy. See when conversion makes financial sense.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/term-vs-whole-life-calculator.html" class="tool-card">
-          <h3>Term vs Whole Life Insurance Cost Comparison</h3>
+        <a href="/tools/life/term-vs-whole-life-calculator.html" class="tool-card"><span class="tool-card-icon">🛡️</span><h3>Term vs Whole Life Insurance Cost Comparison</h3>
           <p>Compare term life vs whole life insurance costs. See monthly premiums, 20-year total costs, and get a personalized recommendation.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/life/cash-value-growth-calculator.html" class="tool-card">
-          <h3>Whole Life Insurance Cash Value Growth Calculator</h3>
+        <a href="/tools/life/cash-value-growth-calculator.html" class="tool-card"><span class="tool-card-icon">💰</span><h3>Whole Life Insurance Cash Value Growth Calculator</h3>
           <p>Project your whole life insurance cash value growth over time. See year-by-year values and available policy loan amounts.</p>
         </a>
       </div>
@@ -572,88 +494,68 @@
     <section class="cat-section" id="business">
       <div class="cat-header">
         <h2>Business Insurance Calculators</h2>
-        <a href="/tools/business/" class="cat-link">View all 20 tools →</a>
+        <a href="/tools/business/" class="cat-link">View all 20 tools &rarr;</a>
       </div>
       <p class="cat-intro">Protect your business with the right coverage at the right cost. Estimate premiums for every major commercial insurance type.</p>
       <div class="tool-grid">
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/business-income-insurance-calculator.html" class="tool-card">
-          <h3>Business Income Insurance Calculator</h3>
+        <a href="/tools/business/business-income-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏢</span><h3>Business Income Insurance Calculator</h3>
           <p>Calculate business income insurance coverage based on annual net income and fixed costs. Ensure your business survives an interruption.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/business-interruption-calculator.html" class="tool-card">
-          <h3>Business Interruption Insurance Calculator</h3>
+        <a href="/tools/business/business-interruption-calculator.html" class="tool-card"><span class="tool-card-icon">💼</span><h3>Business Interruption Insurance Calculator</h3>
           <p>Calculate business interruption insurance coverage needs. Estimate how much you need to survive a temporary closure.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/bop-business-owners-policy-calculator.html" class="tool-card">
-          <h3>Business Owner's Policy (BOP) Cost Calculator</h3>
+        <a href="/tools/business/bop-business-owners-policy-calculator.html" class="tool-card"><span class="tool-card-icon">📋</span><h3>Business Owner's Policy (BOP) Cost Calculator</h3>
           <p>Calculate BOP insurance costs and compare to buying general liability and commercial property separately. See how much a BOP saves.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/commercial-auto-insurance-calculator.html" class="tool-card">
-          <h3>Commercial Auto Insurance Calculator</h3>
+        <a href="/tools/business/commercial-auto-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🔒</span><h3>Commercial Auto Insurance Calculator</h3>
           <p>Calculate commercial vehicle insurance costs for business fleets. Estimate premiums based on vehicle type, mileage, and driver age.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/commercial-property-insurance-calculator.html" class="tool-card">
-          <h3>Commercial Property Insurance Calculator</h3>
+        <a href="/tools/business/commercial-property-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏢</span><h3>Commercial Property Insurance Calculator</h3>
           <p>Calculate commercial property insurance costs for offices, warehouses, retail stores, and restaurants. Instant premium estimate.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/commercial-umbrella-calculator.html" class="tool-card">
-          <h3>Commercial Umbrella Insurance Calculator</h3>
+        <a href="/tools/business/commercial-umbrella-calculator.html" class="tool-card"><span class="tool-card-icon">💼</span><h3>Commercial Umbrella Insurance Calculator</h3>
           <p>Calculate commercial umbrella insurance needs and costs. Extra liability protection above your general liability and other policies.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/contractor-insurance-calculator.html" class="tool-card">
-          <h3>Contractor Insurance Cost Calculator</h3>
+        <a href="/tools/business/contractor-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">📋</span><h3>Contractor Insurance Cost Calculator</h3>
           <p>Calculate contractor insurance costs including general liability and workers comp. Estimates for general, electrical, plumbing, roofing, and landscaping contractors.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/cyber-insurance-calculator.html" class="tool-card">
-          <h3>Cyber Insurance Cost Calculator</h3>
+        <a href="/tools/business/cyber-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🔒</span><h3>Cyber Insurance Cost Calculator</h3>
           <p>Estimate cyber liability insurance costs for your business. Based on revenue, data records, industry, and security practices.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/directors-officers-insurance-calculator.html" class="tool-card">
-          <h3>Directors & Officers (D&O) Insurance Calculator</h3>
+        <a href="/tools/business/directors-officers-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏢</span><h3>Directors & Officers (D&O) Insurance Calculator</h3>
           <p>Calculate D&O insurance costs for private companies, nonprofits, and public companies. Protect your board of directors and officers.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/employment-practices-liability-calculator.html" class="tool-card">
-          <h3>Employment Practices Liability (EPLI) Insurance Calculator</h3>
+        <a href="/tools/business/employment-practices-liability-calculator.html" class="tool-card"><span class="tool-card-icon">💼</span><h3>Employment Practices Liability (EPLI) Insurance Calculator</h3>
           <p>Calculate EPLI insurance costs to protect your business from wrongful termination, discrimination, and harassment claims.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/general-liability-calculator.html" class="tool-card">
-          <h3>General Liability Insurance Cost Calculator</h3>
+        <a href="/tools/business/general-liability-calculator.html" class="tool-card"><span class="tool-card-icon">📋</span><h3>General Liability Insurance Cost Calculator</h3>
           <p>Estimate general liability insurance costs for your business. Calculate premiums based on business type, revenue, and number of employees.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/inland-marine-insurance-calculator.html" class="tool-card">
-          <h3>Inland Marine (Equipment) Insurance Calculator</h3>
+        <a href="/tools/business/inland-marine-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🔒</span><h3>Inland Marine (Equipment) Insurance Calculator</h3>
           <p>Calculate inland marine insurance costs for business equipment and tools. Covers equipment in transit and at job sites.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/key-person-insurance-calculator.html" class="tool-card">
-          <h3>Key Person Life Insurance Calculator</h3>
+        <a href="/tools/business/key-person-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏢</span><h3>Key Person Life Insurance Calculator</h3>
           <p>Calculate key person life insurance needs for critical employees. Protect your business from the financial impact of losing a key person.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/liquor-liability-calculator.html" class="tool-card">
-          <h3>Liquor Liability Insurance Calculator</h3>
+        <a href="/tools/business/liquor-liability-calculator.html" class="tool-card"><span class="tool-card-icon">💼</span><h3>Liquor Liability Insurance Calculator</h3>
           <p>Calculate liquor liability insurance costs for bars, restaurants, event venues, and breweries. Protect against alcohol-related claims.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/product-liability-calculator.html" class="tool-card">
-          <h3>Product Liability Insurance Cost Calculator</h3>
+        <a href="/tools/business/product-liability-calculator.html" class="tool-card"><span class="tool-card-icon">📋</span><h3>Product Liability Insurance Cost Calculator</h3>
           <p>Calculate product liability insurance costs based on product type and annual sales. Essential for manufacturers and retailers.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/professional-liability-eo-calculator.html" class="tool-card">
-          <h3>Professional Liability (E&O) Insurance Calculator</h3>
+        <a href="/tools/business/professional-liability-eo-calculator.html" class="tool-card"><span class="tool-card-icon">🔒</span><h3>Professional Liability (E&O) Insurance Calculator</h3>
           <p>Calculate errors and omissions (E&O) insurance costs for professionals. Covers consultants, lawyers, accountants, engineers, and more.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/restaurant-insurance-calculator.html" class="tool-card">
-          <h3>Restaurant Insurance Cost Calculator</h3>
+        <a href="/tools/business/restaurant-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">🏢</span><h3>Restaurant Insurance Cost Calculator</h3>
           <p>Calculate restaurant insurance costs including general liability, commercial property, workers comp, and liquor liability. Complete restaurant coverage estimate.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/startup-insurance-calculator.html" class="tool-card">
-          <h3>Startup Business Insurance Calculator</h3>
+        <a href="/tools/business/startup-insurance-calculator.html" class="tool-card"><span class="tool-card-icon">💼</span><h3>Startup Business Insurance Calculator</h3>
           <p>Find out what insurance your startup needs. Answer 5 questions to get a personalized insurance checklist with priority and cost estimates.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/surety-bond-calculator.html" class="tool-card">
-          <h3>Surety Bond Cost Calculator</h3>
+        <a href="/tools/business/surety-bond-calculator.html" class="tool-card"><span class="tool-card-icon">📋</span><h3>Surety Bond Cost Calculator</h3>
           <p>Calculate surety bond costs for license bonds, contract bonds, and court bonds. Estimate annual premiums based on credit score.</p>
         </a>
-        <a href="C:/Users/Administrator/wordcasefix/coveragefixpro/tools/business/workers-comp-calculator.html" class="tool-card">
-          <h3>Workers Compensation Insurance Calculator</h3>
+        <a href="/tools/business/workers-comp-calculator.html" class="tool-card"><span class="tool-card-icon">🔒</span><h3>Workers Compensation Insurance Calculator</h3>
           <p>Calculate workers compensation insurance premiums based on payroll, industry, and state. Free workers comp cost estimator.</p>
         </a>
       </div>
@@ -661,8 +563,8 @@
 
   <section class="seo-block" style="max-width:720px;margin:48px auto 0;padding:28px;background:#f8faff;border-radius:12px;border:1px solid #e0e7ff">
     <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:12px">Why Use CoverageFixPro?</h2>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin-bottom:10px">Insurance premiums are complex — they depend on dozens of factors unique to your situation. CoverageFixPro's calculators apply the most important rating variables to give you a realistic estimate range before you talk to an agent. All tools run in your browser with no data collection and no spam.</p>
-    <p style="font-size:14px;color:var(--text-muted);line-height:1.75">Use our estimates to understand what drives your costs, identify savings opportunities, compare coverage options, and arrive at agent conversations better informed. Results are educational estimates — always get binding quotes from licensed professionals.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin-bottom:10px">Insurance premiums are complex &mdash; they depend on dozens of factors unique to your situation. CoverageFixPro's calculators apply the most important rating variables to give you a realistic estimate range before you talk to an agent. All tools run in your browser with no data collection and no spam.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.75">Use our estimates to understand what drives your costs, identify savings opportunities, compare coverage options, and arrive at agent conversations better informed. Results are educational estimates &mdash; always get binding quotes from licensed professionals.</p>
   </section>
 
 </main>
@@ -678,7 +580,11 @@
     <p>Results are estimates only. Consult a licensed insurance professional for actual quotes.</p>
   </div>
 </footer>
+<button id="btt" aria-label="Back to top">&uarr;</button>
 
 <script src="/js/main.js"></script>
+<script>
+document.addEventListener('scroll',function(){var b=document.getElementById('btt');if(b)b.classList.toggle('show',(window.scrollY||document.documentElement.scrollTop)>100);},true);
+</script>
 </body>
 </html>

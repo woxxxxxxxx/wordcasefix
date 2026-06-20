@@ -1,0 +1,176 @@
+# coveragefixpro 全站审计报告
+# 扫描日期: 2026-06-14
+# 扫描页面: 125
+
+## 1. canonical URL异常 [17个]
+auto/index.html => https://coveragefixpro.com/tools/auto/
+business/index.html => https://coveragefixpro.com/tools/business/
+health/index.html => https://coveragefixpro.com/tools/health/
+home/index.html => https://coveragefixpro.com/tools/home/
+life/beneficiary-needs-assessment.html => https://www.coveragefixpro.com/tools/life/beneficiary-needs-assessment.html
+life/disability-vs-life-insurance-calculator.html => https://www.coveragefixpro.com/tools/life/disability-vs-life-insurance-calculator.html
+life/estate-planning-life-insurance-calculator.html => https://www.coveragefixpro.com/tools/life/estate-planning-life-insurance-calculator.html
+life/group-vs-individual-life-insurance.html => https://www.coveragefixpro.com/tools/life/group-vs-individual-life-insurance.html
+life/index.html => https://coveragefixpro.com/tools/life/
+life/life-insurance-conversion-calculator.html => https://www.coveragefixpro.com/tools/life/life-insurance-conversion-calculator.html
+life/life-insurance-medical-exam-waiver-calculator.html => https://www.coveragefixpro.com/tools/life/life-insurance-medical-exam-waiver-calculator.html
+life/life-insurance-needs-by-age.html => https://www.coveragefixpro.com/tools/life/life-insurance-needs-by-age.html
+life/life-insurance-settlement-calculator.html => https://www.coveragefixpro.com/tools/life/life-insurance-settlement-calculator.html
+life/life-insurance-tax-calculator.html => https://www.coveragefixpro.com/tools/life/life-insurance-tax-calculator.html
+life/premium-financing-calculator.html => https://www.coveragefixpro.com/tools/life/premium-financing-calculator.html
+life/return-of-premium-calculator.html => https://www.coveragefixpro.com/tools/life/return-of-premium-calculator.html
+life/survivorship-life-insurance-calculator.html => https://www.coveragefixpro.com/tools/life/survivorship-life-insurance-calculator.html
+
+## 2. og:url异常 [5个]
+auto/index.html => https://coveragefixpro.com/tools/auto/
+business/index.html => https://coveragefixpro.com/tools/business/
+health/index.html => https://coveragefixpro.com/tools/health/
+home/index.html => https://coveragefixpro.com/tools/home/
+life/index.html => https://coveragefixpro.com/tools/life/
+
+## 3. og:description被截断 [1个]
+home/home-insurance-claims-impact-calculator.html => ...aim will impact your annual premium and whether it
+
+## 4. JSON-LD item URL异常 [0个]
+无
+
+## 5. 缺少twitter:card [125个]
+auto/accident-forgiveness-value-calculator.html
+auto/annual-vs-monthly-payment-calculator.html
+auto/bundling-discount-calculator.html
+auto/car-insurance-premium-estimator.html
+auto/classic-car-insurance-calculator.html
+auto/collision-coverage-breakeven-calculator.html
+auto/comprehensive-vs-liability-calculator.html
+auto/coverage-gap-analyzer.html
+auto/deductible-optimizer.html
+auto/dui-insurance-rate-calculator.html
+auto/electric-vehicle-insurance-calculator.html
+auto/gap-insurance-calculator.html
+auto/good-driver-discount-calculator.html
+auto/index.html
+auto/insurance-after-accident-calculator.html
+auto/insurance-score-estimator.html
+auto/liability-coverage-limits-calculator.html
+auto/mileage-based-insurance-calculator.html
+auto/multi-car-discount-calculator.html
+auto/new-car-insurance-cost-calculator.html
+auto/policy-renewal-savings-calculator.html
+auto/rideshare-insurance-cost-calculator.html
+auto/sr22-insurance-calculator.html
+auto/teen-driver-cost-calculator.html
+auto/total-cost-of-ownership-calculator.html
+auto/uninsured-motorist-coverage-calculator.html
+business/bop-business-owners-policy-calculator.html
+business/business-income-insurance-calculator.html
+business/business-interruption-calculator.html
+business/commercial-auto-insurance-calculator.html
+business/commercial-property-insurance-calculator.html
+business/commercial-umbrella-calculator.html
+business/contractor-insurance-calculator.html
+business/cyber-insurance-calculator.html
+business/directors-officers-insurance-calculator.html
+business/employment-practices-liability-calculator.html
+business/general-liability-calculator.html
+business/index.html
+business/inland-marine-insurance-calculator.html
+business/key-person-insurance-calculator.html
+business/liquor-liability-calculator.html
+business/product-liability-calculator.html
+business/professional-liability-eo-calculator.html
+business/restaurant-insurance-calculator.html
+business/startup-insurance-calculator.html
+business/surety-bond-calculator.html
+business/workers-comp-calculator.html
+health/aca-subsidy-calculator.html
+health/catastrophic-plan-eligibility.html
+health/cobra-cost-estimator.html
+health/cobra-vs-marketplace-calculator.html
+health/deductible-met-tracker.html
+health/dental-insurance-worth-it-calculator.html
+health/dependent-coverage-calculator.html
+health/employer-benefits-value-calculator.html
+health/fsa-calculator.html
+health/health-insurance-affordability-checker.html
+health/health-insurance-penalty-calculator.html
+health/hmo-vs-ppo-cost-calculator.html
+health/hsa-contribution-calculator.html
+health/hsa-growth-calculator.html
+health/index.html
+health/maternity-insurance-calculator.html
+health/medical-expense-tax-deduction-calculator.html
+health/medicare-part-b-premium-calculator.html
+health/mental-health-coverage-calculator.html
+health/open-enrollment-calculator.html
+health/out-of-pocket-max-calculator.html
+health/premium-tax-credit-2026.html
+health/prescription-drug-cost-calculator.html
+health/short-term-health-insurance-calculator.html
+health/telehealth-savings-calculator.html
+health/vision-insurance-calculator.html
+home/bundling-home-auto-calculator.html
+home/condo-insurance-calculator.html
+home/earthquake-insurance-calculator.html
+home/flood-insurance-calculator.html
+home/home-insurance-claims-impact-calculator.html
+home/home-insurance-comparison-tool.html
+home/home-insurance-deductible-calculator.html
+home/home-insurance-estimator.html
+home/home-security-discount-calculator.html
+home/home-warranty-vs-insurance-calculator.html
+home/hurricane-insurance-calculator.html
+home/index.html
+home/insurance-to-value-ratio-calculator.html
+home/landlord-insurance-calculator.html
+home/liability-coverage-calculator.html
+home/loss-of-use-coverage-calculator.html
+home/mobile-home-insurance-calculator.html
+home/new-home-insurance-calculator.html
+home/personal-property-calculator.html
+home/pmi-removal-date-calculator.html
+home/renters-insurance-calculator.html
+home/replacement-cost-estimator.html
+home/umbrella-insurance-calculator.html
+home/vacation-home-insurance-calculator.html
+home/water-damage-coverage-calculator.html
+home/wildfire-risk-insurance-calculator.html
+life/beneficiary-needs-assessment.html
+life/cash-value-growth-calculator.html
+life/child-life-insurance-calculator.html
+life/death-benefit-calculator.html
+life/disability-vs-life-insurance-calculator.html
+life/estate-planning-life-insurance-calculator.html
+life/final-expense-insurance-calculator.html
+life/group-vs-individual-life-insurance.html
+life/income-replacement-calculator.html
+life/index.html
+life/joint-life-insurance-calculator.html
+life/life-insurance-affordability-calculator.html
+life/life-insurance-conversion-calculator.html
+life/life-insurance-for-mortgage.html
+life/life-insurance-medical-exam-waiver-calculator.html
+life/life-insurance-needs-by-age.html
+life/life-insurance-needs-calculator.html
+life/life-insurance-roi-calculator.html
+life/life-insurance-settlement-calculator.html
+life/life-insurance-tax-calculator.html
+life/policy-loan-calculator.html
+life/premium-financing-calculator.html
+life/return-of-premium-calculator.html
+life/smoker-life-insurance-calculator.html
+life/survivorship-life-insurance-calculator.html
+life/term-vs-whole-life-calculator.html
+
+## 6. 缺少breadcrumb HTML [0个]
+无
+
+## 7. 缺少JS calc函数 [5个]
+auto/index.html
+business/index.html
+health/index.html
+home/index.html
+life/index.html
+
+## 8. ad-placeholder未隐藏 [2个]
+business/index.html
+home/index.html

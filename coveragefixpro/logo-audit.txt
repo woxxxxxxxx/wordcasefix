@@ -1,0 +1,39 @@
+# 全站 logo + favicon 引用审计
+# 扫描日期: 2026-06-15
+# 扫描文件总数: 130
+
+## 一、logo 引用方式分布
+----------------------------------------------------------------------
+/logo.svg                                    → 126 个文件
+[文字logo或其他]                                  → 4 个文件
+
+Logo img标签样本（来自index.html）:
+  
+
+## 二、favicon 引用方式分布（按href分组）
+----------------------------------------------------------------------
+/favicon.svg                                 → 250 个文件
+【无favicon link】                           → 4 个文件
+
+## 三、favicon rel属性分布
+----------------------------------------------------------------------
+icon                                         → 126 个文件
+shortcut icon                                → 124 个文件
+
+Favicon link标签样本（来自第一个html）:
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+
+## 四、本地 logo/favicon 文件清单
+----------------------------------------------------------------------
+logo.svg            ✅ 存在  大小: 630 bytes (0.6 KB)
+logo.png            ❌ 不存在
+favicon.svg         ✅ 存在  大小: 383 bytes (0.4 KB)
+favicon.ico         ❌ 不存在
+favicon.png         ❌ 不存在
+
+## 五、一致性检查
+Logo src 变体数: 2 ⚠️ 存在多种
+Favicon href 变体数: 1 ✅ 全站统一
+无logo页面: 0
+无favicon页面: 4

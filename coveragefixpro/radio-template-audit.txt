@@ -1,0 +1,42 @@
+# radio 问答页 HTML 结构审计
+# 扫描日期: 2026-06-15
+# 含radio页面总数: 3
+
+## 汇总
+模板X (.radio-label): 1 个
+模板Y (plain label / other): 2 个
+
+## 模板Y 文件清单（需关注）
+  home/water-damage-coverage-calculator.html  容器:form-group  包裹:plain label
+  life/disability-vs-life-insurance-calculator.html  容器:form-group  包裹:plain label
+
+## 逐文件明细
+文件                                                          容器class                                 radio包裹
+--------------------------------------------------------------------------------------------------------------
+auto/coverage-gap-analyzer.html                             question-group                          .radio-label
+home/water-damage-coverage-calculator.html                  form-group                              plain label
+life/disability-vs-life-insurance-calculator.html           form-group                              plain label
+
+## 模板Y 第一个文件的题目区HTML样本
+### home/water-damage-coverage-calculator.html
+siness/">Business</a><a href="/about.html">About</a></nav></div></header>
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> › <a href="/tools/home/">Home Insurance</a> › Water Damage Insurance Coverage Calculator
+  </nav>
+
+  <h1>Water Damage Insurance Coverage Calculator</h1>
+
+  <div class="calculator-box">
+    <p style="margin-bottom:1rem;color:#555;">Answer 5 questions to assess your water damage risk and coverage needs.</p>
+
+    <div class="form-group">
+      <p><strong>Q1: Is your home more than 20 years old?</strong></p>
+      <label><input type="radio" name="q1" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q1" value="no"> No</label>
+    </div>
+    <div class="form-group">
+      <p><strong>Q2: Does your home have a basement?</strong></p>
+      <label><input type="radio" name="q2" value="yes"> Yes</label>
+      <label style="margin-left:1.5rem;"><input type="radio" name="q2" value="

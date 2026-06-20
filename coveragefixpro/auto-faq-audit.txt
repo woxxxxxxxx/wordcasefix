@@ -1,0 +1,82 @@
+# Auto 工具页 FAQ + about 结构审计
+# 扫描文件数: 26
+# 扫描日期: 2026-06-15
+
+## FAQ类型统计
+类型A (faq+faq-item+h3): 12 个
+类型B (faq-section+faq-item): 0 个
+类型C (details/summary): 13 个
+类型D (其他/无FAQ): 1 个
+
+## about-section统计
+内联style: 21 个
+纯class无style: 0 个
+无about-section: 5 个
+
+## 逐文件明细
+文件名                                                    FAQ类型                         about类型
+--------------------------------------------------------------------------------------------------------------
+accident-forgiveness-value-calculator.html             A-faq+faq-item+h3             内联style
+annual-vs-monthly-payment-calculator.html              C-details/summary             内联style
+bundling-discount-calculator.html                      C-details/summary             内联style
+car-insurance-premium-estimator.html                   C-details/summary             内联style
+classic-car-insurance-calculator.html                  A-faq+faq-item+h3             内联style
+collision-coverage-breakeven-calculator.html           A-faq+faq-item+h3             内联style
+comprehensive-vs-liability-calculator.html             C-details/summary             内联style
+coverage-gap-analyzer.html                             A-faq+faq-item+h3             无about-section
+deductible-optimizer.html                              C-details/summary             无about-section
+dui-insurance-rate-calculator.html                     C-details/summary             内联style
+electric-vehicle-insurance-calculator.html             C-details/summary             内联style
+gap-insurance-calculator.html                          C-details/summary             内联style
+good-driver-discount-calculator.html                   C-details/summary             内联style
+index.html                                             D-其他                          无about-section
+insurance-after-accident-calculator.html               A-faq+faq-item+h3             内联style
+insurance-score-estimator.html                         A-faq+faq-item+h3             内联style
+liability-coverage-limits-calculator.html              A-faq+faq-item+h3             内联style
+mileage-based-insurance-calculator.html                C-details/summary             内联style
+multi-car-discount-calculator.html                     C-details/summary             内联style
+new-car-insurance-cost-calculator.html                 A-faq+faq-item+h3             内联style
+policy-renewal-savings-calculator.html                 A-faq+faq-item+h3             内联style
+rideshare-insurance-cost-calculator.html               A-faq+faq-item+h3             内联style
+sr22-insurance-calculator.html                         C-details/summary             无about-section
+teen-driver-cost-calculator.html                       C-details/summary             内联style
+total-cost-of-ownership-calculator.html                A-faq+faq-item+h3             无about-section
+uninsured-motorist-coverage-calculator.html            A-faq+faq-item+h3             内联style
+
+## C类 details/summary 文件列表
+  annual-vs-monthly-payment-calculator.html
+  bundling-discount-calculator.html
+  car-insurance-premium-estimator.html
+  comprehensive-vs-liability-calculator.html
+  deductible-optimizer.html
+  dui-insurance-rate-calculator.html
+  electric-vehicle-insurance-calculator.html
+  gap-insurance-calculator.html
+  good-driver-discount-calculator.html
+  mileage-based-insurance-calculator.html
+  multi-car-discount-calculator.html
+  sr22-insurance-calculator.html
+  teen-driver-cost-calculator.html
+
+## 内联style about-section 文件列表
+  accident-forgiveness-value-calculator.html
+  annual-vs-monthly-payment-calculator.html
+  bundling-discount-calculator.html
+  car-insurance-premium-estimator.html
+  classic-car-insurance-calculator.html
+  collision-coverage-breakeven-calculator.html
+  comprehensive-vs-liability-calculator.html
+  dui-insurance-rate-calculator.html
+  electric-vehicle-insurance-calculator.html
+  gap-insurance-calculator.html
+  good-driver-discount-calculator.html
+  insurance-after-accident-calculator.html
+  insurance-score-estimator.html
+  liability-coverage-limits-calculator.html
+  mileage-based-insurance-calculator.html
+  multi-car-discount-calculator.html
+  new-car-insurance-cost-calculator.html
+  policy-renewal-savings-calculator.html
+  rideshare-insurance-cost-calculator.html
+  teen-driver-cost-calculator.html
+  uninsured-motorist-coverage-calculator.html

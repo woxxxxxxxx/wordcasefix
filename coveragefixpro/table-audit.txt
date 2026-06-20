@@ -1,0 +1,65 @@
+# 说明区 <table> 全站审计
+# 扫描日期: 2026-06-15
+# 含table页面数: 2
+
+## table class 变体统计
+------------------------------------------------------------
+data-table                           2个  →  auto/insurance-score-estimator.html(explanation), auto/rideshare-insurance-cost-calculator.html(explanation)
+
+## 逐文件明细
+文件                                                     容器class               table-class              结构
+-------------------------------------------------------------------------------------------------------------------
+auto/insurance-score-estimator.html                    explanation           data-table               th+tr+td
+auto/rideshare-insurance-cost-calculator.html          explanation           data-table               th+tr+td
+
+## 各含table页面的table HTML样本
+
+### auto/insurance-score-estimator.html [容器: .explanation]
+<table class="data-table">
+      <tr><th>Score Range</th><th>Tier</th><th>Premium Effect</th></tr>
+      <tr><td>700+</td><td>Excellent</td><td>15% discount</td></tr>
+      <tr><td>600–699</td><td>Good</td><td>5% discount</td></tr>
+      <tr><td>500–599</td><td>Fair</td><td>No change</td></tr>
+      <tr><td>Under 500</td><td>Poor</td><td>10% surcharge</td></tr>
+    </table>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Is an insurance score the same as a credit score?</h3>
+      <p>No — an insurance score is deri
+--- 样本结束 ---
+
+### auto/rideshare-insurance-cost-calculator.html [容器: .explanation]
+<table class="data-table">
+      <tr><th>Weekly Hours</th><th>Monthly Add-On</th></tr>
+      <tr><td>10 hours or less</td><td>$15/mo</td></tr>
+      <tr><td>10–20 hours</td><td>$25/mo</td></tr>
+      <tr><td>20–40 hours</td><td>$40/mo</td></tr>
+      <tr><td>Over 40 hours</td><td>$60/mo</td></tr>
+    </table>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Does Uber or Lyft cover me between rides?</h3>
+      <p>Only partially. During Period 1 (app on, no passenger), Uber and Lyft provide contingent liability covera
+--- 样本结束 ---
+
+## STEP 3: 伪表格检测（无<table>的数据对照区）
+
+### home/home-insurance-comparison-tool.html [容器: .info-box]
+
+    <h2>How to Compare Home Insurance Quotes</h2>
+    <p>Comparing home insurance quotes goes beyond just looking at the annual premium. A lower-priced quote with a much higher deductible may cost more in the event of a claim. Compare coverage amounts to ensure both quotes cover the same dwelling, personal property, and liability limits. Review policy exclusions, customer service ratings (J.D. Power), and financial strength ratings (AM Best A or better). The cheapest policy isn't always the best — consider the insurer's claims handling reputation and your specific coverage needs.</p>
+  </d
+
+### home/home-insurance-deductible-calculator.html [容器: .info-box]
+
+    <h2>How to Choose Your Deductible</h2>
+    <p>Your deductible is the amount you pay out of pocket before insurance kicks in. Higher deductibles lower your annual premium but increase your out-of-pocket cost at claim time. The optimal deductible depends on your claim history, risk tolerance, and emergency savings. Generally, if you rarely file claims, a higher deductible saves money long-term. If you live in a high-risk area for weather events, a lower deductible may be worth the added premium cost. Always choose a deductible you can comfortably afford to pay.</p>
+  </div>
+
+  <div cla
