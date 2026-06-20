@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://freelancerguidehub.com/</loc><lastmod>2026-06-10</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://freelancerguidehub.com/</loc><lastmod>2026-06-20</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://freelancerguidehub.com/about.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://freelancerguidehub.com/contact.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://freelancerguidehub.com/page2.html</loc><lastmod>2026-06-10</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -27,4 +27,12 @@
   <url><loc>https://freelancerguidehub.com/articles/how-to-scale-freelance-business.html</loc><lastmod>2026-05-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://freelancerguidehub.com/articles/freelance-insurance-guide.html</loc><lastmod>2026-05-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://freelancerguidehub.com/articles/freelance-scope-creep-prevention.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/articles/contract-red-flags-freelancers.html</loc><lastmod>2026-06-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/articles/video-production-contract-guide.html</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/articles/web-designer-contract-guide.html</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/articles/freelance-retainer-agreements.html</loc><lastmod>2026-06-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/articles/how-to-raise-freelance-rates.html</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/articles/freelance-pricing-strategies.html</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freelancerguidehub.com/privacy.html</loc><lastmod>2026-06-20</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://freelancerguidehub.com/terms.html</loc><lastmod>2026-06-20</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

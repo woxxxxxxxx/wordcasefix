@@ -54,6 +54,26 @@ const TOPIC_CANDIDATES = [
   { title: 'Best Project Management Tools for Freelancers in 2026',         slug: 'project-management-tools-freelancers',  category: 'Tools',           keyword: 'project management tools freelancers' },
   { title: 'Best Invoicing Apps for Freelancers: 2026 Comparison',          slug: 'best-invoicing-apps-freelancers',       category: 'Tools',           keyword: 'best invoicing apps freelancers comparison' },
   { title: 'Time Tracking for Freelancers: Best Methods and Tools',         slug: 'freelance-time-tracking-guide',         category: 'Tools',           keyword: 'time tracking freelancers tools methods' },
+  { title: 'Freelance Client Discovery Questions: What to Ask Before You Quote', slug: 'freelance-client-discovery-questions', category: 'Career', keyword: 'freelance client discovery questions' },
+  { title: 'How to Build a Freelance Proposal That Wins Better Clients',     slug: 'freelance-proposal-guide',              category: 'Career',          keyword: 'freelance proposal guide' },
+  { title: 'Freelance Payment Terms: Net 7 vs Net 15 vs Upfront Deposits',   slug: 'freelance-payment-terms-guide',         category: 'Finance/Billing', keyword: 'freelance payment terms net 15 deposit' },
+  { title: 'How to Price Rush Fees for Freelance Projects',                  slug: 'freelance-rush-fee-pricing',            category: 'Finance/Billing', keyword: 'freelance rush fee pricing' },
+  { title: 'Freelance Change Order Template: When Scope Changes Mid-Project', slug: 'freelance-change-order-guide',        category: 'Contracts',       keyword: 'freelance change order template' },
+  { title: 'Kill Fees for Freelancers: How to Protect Cancelled Work',       slug: 'freelance-kill-fee-guide',              category: 'Contracts',       keyword: 'freelance kill fee contract' },
+  { title: 'How to Write a Statement of Work for Freelance Projects',        slug: 'freelance-statement-of-work-guide',     category: 'Contracts',       keyword: 'freelance statement of work guide' },
+  { title: 'Freelance Milestone Payments: How to Structure Safer Projects',  slug: 'freelance-milestone-payments',          category: 'Finance/Billing', keyword: 'freelance milestone payments' },
+  { title: 'Estimated Tax Safe Harbor Rules for Freelancers',                slug: 'freelance-tax-safe-harbor-rules',       category: 'Taxes',           keyword: 'estimated tax safe harbor freelancers' },
+  { title: '1099-K Rules for Freelancers Using Payment Apps',                slug: 'freelance-1099-k-payment-apps',         category: 'Taxes',           keyword: '1099-K payment apps freelancers' },
+  { title: 'Freelance Bookkeeping Setup: Chart of Accounts and Monthly Routine', slug: 'freelance-bookkeeping-setup',      category: 'Finance/Billing', keyword: 'freelance bookkeeping setup chart of accounts' },
+  { title: 'How to Separate Personal and Business Finances as a Freelancer', slug: 'separate-personal-business-finances-freelancer', category: 'Finance/Billing', keyword: 'separate personal business finances freelancer' },
+  { title: 'Freelance Client Red Flags Before the Contract Stage',           slug: 'freelance-client-red-flags',            category: 'Career',          keyword: 'freelance client red flags' },
+  { title: 'How to Create a Freelancer Case Study Portfolio Page',           slug: 'freelance-case-study-portfolio',        category: 'Career',          keyword: 'freelance case study portfolio' },
+  { title: 'Freelance Referral Systems: How to Get Warm Leads Every Month',  slug: 'freelance-referral-system',             category: 'Career',          keyword: 'freelance referral system' },
+  { title: 'How to Handle International Freelance Contracts',                slug: 'international-freelance-contracts',      category: 'Contracts',       keyword: 'international freelance contract guide' },
+  { title: 'Freelance Copyright Ownership: Work Made for Hire Explained',    slug: 'freelance-copyright-ownership',         category: 'Contracts',       keyword: 'freelance copyright ownership work made for hire' },
+  { title: 'How to Run a Freelance Business Review Each Month',              slug: 'monthly-freelance-business-review',     category: 'Career',          keyword: 'monthly freelance business review' },
+  { title: 'Freelance Emergency Fund: How Much to Save and Where to Keep It', slug: 'freelance-emergency-fund-guide',       category: 'Finance/Billing', keyword: 'freelance emergency fund guide' },
+  { title: 'Quarterly Freelance Planning: Goals, Revenue, and Capacity',     slug: 'quarterly-freelance-planning',          category: 'Career',          keyword: 'quarterly freelance planning goals revenue capacity' },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -211,7 +231,7 @@ Requirements:
       'claude',
       [
         '-p', prompt,
-        '--model', 'claude-sonnet-4-6',
+        '--model', process.env.CLAUDE_MODEL || 'claude-sonnet-4-5',
         '--dangerously-skip-permissions',
         '--disallowed-tools', 'Bash,Edit,Write,Read,Glob,Grep,Agent,WebSearch,WebFetch',
         '--system-prompt', 'You are a JSON content generator for a freelance business website. Return ONLY valid JSON. Never use tools, never create files, never run shell commands, never commit to git.',
@@ -284,7 +304,7 @@ function buildArticleHTML(topic, article, imageFilename, photographer, photograp
     ? `<!-- Photo by <a href="${photographerUrl}?utm_source=freelancerguidehub&utm_medium=referral" target="_blank" rel="noopener">${photographer}</a> on <a href="https://unsplash.com/?utm_source=freelancerguidehub&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a> -->`
     : '';
 
-  const adUnit = `<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="${ADSENSE}" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>`;
+  const adUnit = '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -545,6 +565,7 @@ function deploy() {
   if (result.status !== 0) {
     console.error('FTP deploy failed (status ' + result.status + ')');
     if (result.stderr) console.error(result.stderr.slice(0, 300));
+    throw new Error('FTP deploy failed');
   } else {
     console.log('  FTP deploy complete');
   }

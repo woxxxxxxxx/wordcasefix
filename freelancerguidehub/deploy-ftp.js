@@ -18,10 +18,21 @@ const CONCURRENCY = 5;
 const RETRY_MAX   = 3;
 const RETRY_DELAY = 5000;
 const CACHE_FILE  = path.join(__dirname, 'deploy-cache.json');
+const REMOTE_CLEANUP = [
+  `${REMOTE_ROOT}/AGENTS.md`,
+  `${REMOTE_ROOT}/CLAUDE.md`,
+  `${REMOTE_ROOT}/ftp-test.js`,
+  `${REMOTE_ROOT}/auto-publish.js`,
+  `${REMOTE_ROOT}/topics-used.json`,
+  `${REMOTE_ROOT}/package.json`,
+  `${REMOTE_ROOT}/package-lock.json`,
+  `${REMOTE_ROOT}/deploy-cache.json`,
+];
 
 const EXCLUDE = new Set([
   'node_modules', '.git', '.gitignore', 'deploy-ftp.js', 'deploy-cache.json',
   'auto-publish.js', 'topics-used.json', 'package.json', 'package-lock.json', 'ftp-test.js',
+  'AGENTS.md', 'CLAUDE.md', '.env', '.env.local',
 ]);
 
 // ─── Cache ────────────────────────────────────────────────────────────────────
@@ -141,21 +152,27 @@ async function deploy() {
   const cache = loadCache();
   const { toUpload, skipped } = collectFiles(__dirname, REMOTE_ROOT, cache);
 
-  console.log(`\nDeploy → ${SITE_URL}`);
+  console.log(`\nDeploy -> ${SITE_URL}`);
   console.log(`  Unchanged (skip): ${skipped.length}`);
   console.log(`  To upload:        ${toUpload.length}`);
-
-  if (toUpload.length === 0) {
-    console.log('\nAll files up to date — nothing to upload.');
-    runPostDeployCheck(SITE_NAME);
-    return;
-  }
 
   console.log('\nConnecting to ensure remote directories...');
   const setup = await createClient();
   await setup.ensureDir(REMOTE_ROOT);
-  await ensureRemoteDirs(setup, toUpload);
+  if (toUpload.length) await ensureRemoteDirs(setup, toUpload);
+  for (const remoteFile of REMOTE_CLEANUP) {
+    try {
+      await setup.remove(remoteFile);
+      console.log(`  Removed stale remote file: ${remoteFile}`);
+    } catch (_) {}
+  }
   setup.close();
+
+  if (toUpload.length === 0) {
+    console.log('\nAll files up to date - nothing to upload.');
+    runPostDeployCheck(SITE_NAME);
+    return;
+  }
 
   const queue = [...toUpload];
   let uploaded = 0;
@@ -188,18 +205,18 @@ async function deploy() {
   cache.lastDeploy = new Date().toISOString();
   saveCache(cache);
 
-  console.log('\n─────────────────────────────────────────────');
+  console.log('\n---------------------------------------------');
   console.log(`Uploaded:  ${uploaded} / ${toUpload.length}`);
   console.log(`Skipped:   ${skipped.length} (unchanged)`);
   console.log(`Failed:    ${failed.length}`);
-  if (failed.length) failed.forEach(f => console.warn('  ✗', f));
+  if (failed.length) failed.forEach(f => console.warn('  FAILED:', f));
 
   console.log('\nVerifying live site...');
   const status = await checkLiveSite(SITE_URL + '/');
   if (status === 200) {
-    console.log(`  ✓ ${SITE_URL}/ → 200 OK`);
+    console.log(`  OK ${SITE_URL}/ -> 200`);
   } else {
-    console.warn(`  ✗ ${SITE_URL}/ → ${status || 'ERROR'} — re-uploading index.html`);
+    console.warn(`  WARN ${SITE_URL}/ -> ${status || 'ERROR'} - re-uploading index.html`);
     const indexLocal = path.join(__dirname, 'index.html');
     if (fs.existsSync(indexLocal)) {
       const repair = await createClient();
