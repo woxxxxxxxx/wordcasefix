@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 96" role="img" aria-labelledby="title">
+  <title id="title">BusinessPolicyGuide</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 72 63 22a7 7 0 0 1 11 0l39 50" stroke="#1d4ed8" stroke-width="8"/>
+    <path d="M40 72h56" stroke="#0f766e" stroke-width="8"/>
+    <path d="M52 52h25" stroke="#1d4ed8" stroke-width="7"/>
+    <path d="M58 39h14" stroke="#93c5fd" stroke-width="6"/>
+    <path d="m77 44 11 11 22-27" stroke="#f5a524" stroke-width="8"/>
+    <path d="M32 72c6 10 18 16 36 16s30-6 36-16" stroke="#dbeafe" stroke-width="6"/>
+  </g>
+  <text x="132" y="59" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="34" font-weight="850" fill="#111827">BusinessPolicy<tspan fill="#1d4ed8">Guide</tspan></text>
+</svg>
