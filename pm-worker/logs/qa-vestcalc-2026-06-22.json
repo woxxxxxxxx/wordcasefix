@@ -1,71 +1,82 @@
-{
-  "project": "vestcalc",
+﻿{
+  "project_id": "vestcalc",
   "domain": "vestcalc.com",
-  "date": "2026-06-22",
-  "timestamp": "2026-06-22T00:00:00Z",
-  "checks": {
-    "accessibility": {
-      "homepage_status": {
-        "status": "PASS",
-        "detail": "首页 HTTP 状态码 200"
-      },
-      "page_title": {
-        "status": "PASS",
-        "detail": "页面标题存在: VestCalc — Free Online Financial Calculators"
-      },
-      "meta_description": {
-        "status": "FAIL",
-        "detail": "页面描述 meta 标签不存在",
-        "suggestion": "添加 <meta name=\"description\" content=\"...\" /> 标签以改善SEO和搜索结果展示"
-      }
+  "qa_date": "2026-06-22",
+  "qa_timestamp": "2026-06-22T10:30:00+08:00",
+  "checks": [
+    {
+      "category": "基础可访问性",
+      "item": "首页 HTTP 状态码",
+      "status": "PASS",
+      "detail": "HTTP 200 OK"
     },
-    "seo": {
-      "sitemap": {
-        "status": "PASS",
-        "detail": "/sitemap.xml 可访问且有效，包含130+个URL条目"
-      },
-      "robots_txt": {
-        "status": "PASS",
-        "detail": "/robots.txt 存在且有效，正确配置了爬虫规则"
-      },
-      "ads_txt": {
-        "status": "WARN",
-        "detail": "/ads.txt 存在但发布商ID格式有误: pub-1638874323475457",
-        "suggestion": "应修改为 ca-pub-1638874323475457 以匹配标准AdSense格式"
-      },
-      "canonical": {
-        "status": "FAIL",
-        "detail": "首页缺少 canonical 标签",
-        "suggestion": "添加 <link rel=\"canonical\" href=\"https://vestcalc.com/\" /> 标签以避免重复内容问题"
-      }
+    {
+      "category": "基础可访问性",
+      "item": "页面标题",
+      "status": "PASS",
+      "detail": "VestCalc — Free Online Financial Calculators"
     },
-    "monetization": {
-      "adsense_code": {
-        "status": "PASS",
-        "detail": "页面包含AdSense广告占位代码"
-      }
+    {
+      "category": "基础可访问性",
+      "item": "页面描述 meta",
+      "status": "FAIL",
+      "detail": "缺少 meta description 标签",
+      "suggestion": "添加 <meta name=\"description\" content=\"...\" /> 提升SEO效果"
     },
-    "content": {
-      "tool_count": {
-        "status": "PASS",
-        "detail": "工具数量为101，与projects.json记录一致"
-      },
-      "404_handling": {
-        "status": "PASS",
-        "detail": "不存在的页面正确返回404状态码"
-      }
+    {
+      "category": "SEO基础",
+      "item": "/sitemap.xml",
+      "status": "PASS",
+      "detail": "sitemap.xml 有效，包含130+个URL"
+    },
+    {
+      "category": "SEO基础",
+      "item": "/robots.txt",
+      "status": "PASS",
+      "detail": "robots.txt 有效，包含 sitemap 引用"
+    },
+    {
+      "category": "SEO基础",
+      "item": "/ads.txt",
+      "status": "PASS",
+      "detail": "ads.txt 有效，包含正确的 AdSense 账号 (pub-1638874323475457)"
+    },
+    {
+      "category": "SEO基础",
+      "item": "canonical 标签",
+      "status": "PASS",
+      "detail": "<link rel=\"canonical\" href=\"https://vestcalc.com/\">"
+    },
+    {
+      "category": "变现相关",
+      "item": "AdSense 广告代码",
+      "status": "PASS",
+      "detail": "包含 AdSense 脚本，client=ca-pub-1638874323475457"
+    },
+    {
+      "category": "内容质量",
+      "item": "工具/产品数量",
+      "status": "WARN",
+      "detail": "首页包含122个.html链接，projects.json记录101个工具",
+      "note": "差异可能来自分类页、关于页等非工具页面，需人工确认"
+    },
+    {
+      "category": "内容质量",
+      "item": "404页面处理",
+      "status": "WARN",
+      "detail": "访问不存在页面未返回明显404提示",
+      "note": "建议添加自定义404页面提升用户体验"
     }
-  },
+  ],
   "summary": {
-    "total_checks": 10,
-    "passed": 7,
-    "failed": 2,
-    "warnings": 1,
-    "pass_rate": "70%"
+    "total": 10,
+    "pass": 7,
+    "fail": 1,
+    "warn": 2
   },
-  "recommendations": [
-    "【高优先级】添加首页 meta description 标签以改善SEO",
-    "【高优先级】添加首页 canonical 标签避免重复内容问题",
-    "【中优先级】修正 ads.txt 中的发布商ID格式: pub-1638874323475457 → ca-pub-1638874323475457"
+  "next_actions": [
+    "添加 meta description 标签到首页和主要工具页",
+    "考虑添加自定义404错误页面",
+    "确认工具数量统计是否准确（101 vs 122个链接）"
   ]
 }
