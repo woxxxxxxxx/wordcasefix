@@ -1,0 +1,77 @@
+{
+  "project_id": "notiontemplafix",
+  "project_name": "NotionTemplaFix",
+  "domain": "notiontemplafix.com",
+  "timestamp": "2026-06-22T10:30:00Z",
+  "report": {
+    "basic_accessibility": {
+      "homepage_status_200": {
+        "status": "PASS",
+        "value": 200,
+        "message": "首页 HTTP 状态码正常"
+      },
+      "page_title_exists": {
+        "status": "PASS",
+        "value": "NotionTemplaFix - Free & Premium Notion Templates",
+        "message": "页面标题存在且不为空"
+      },
+      "meta_description_exists": {
+        "status": "PASS",
+        "value": "Download free and premium Notion templates for productivity, project management, habit tracking, and more. Beautiful, ready-to-use templates for every need.",
+        "message": "页面描述 meta 存在"
+      }
+    },
+    "seo_basics": {
+      "sitemap_accessible": {
+        "status": "PASS",
+        "value": 200,
+        "message": "/sitemap.xml 可访问"
+      },
+      "robots_txt_exists": {
+        "status": "PASS",
+        "value": 200,
+        "message": "/robots.txt 存在"
+      },
+      "ads_txt_exists": {
+        "status": "PASS",
+        "value": 200,
+        "message": "/ads.txt 存在（虽然项目标记为 adsense: skip）"
+      },
+      "canonical_tag": {
+        "status": "PASS",
+        "value": "https://notiontemplafix.com/",
+        "message": "首页有 canonical 标签"
+      }
+    },
+    "monetization": {
+      "payhip_products": {
+        "status": "PASS",
+        "message": "Payhip 产品链接可访问",
+        "tested_links": [
+          "https://payhip.com/order?link=NdT6c (Bundle) - 200",
+          "https://payhip.com/buy?link=TRndY (Personal Dashboard) - 200"
+        ]
+      }
+    },
+    "content_quality": {
+      "tool_count_match": {
+        "status": "PASS",
+        "expected": 16,
+        "actual": 16,
+        "message": "工具/产品数量与 projects.json 记录一致"
+      },
+      "404_page": {
+        "status": "PASS",
+        "value": 404,
+        "message": "404页面正常工作"
+      }
+    }
+  },
+  "summary": {
+    "total_checks": 10,
+    "passed": 10,
+    "failed": 0,
+    "warnings": 0
+  },
+  "text_report": "=== QA Report: notiontemplafix [2026-06-22] ===\n\n【基础可访问性】\n✅ PASS: 首页 HTTP 状态码 200\n✅ PASS: 页面标题存在且不为空 - \"NotionTemplaFix - Free & Premium Notion Templates\"\n✅ PASS: 页面描述 meta 存在\n\n【SEO基础】\n✅ PASS: /sitemap.xml 可访问 (200)\n✅ PASS: /robots.txt 存在 (200)\n✅ PASS: /ads.txt 存在 (200)\n✅ PASS: 首页有 canonical 标签\n\n【变现相关】\n✅ PASS: Payhip 产品链接可访问（抽查 Bundle 和 Personal Dashboard）\n\n【内容质量】\n✅ PASS: 工具/产品数量与 projects.json 记录一致 (16个)\n✅ PASS: 404页面正常工作\n\n总计：10/10 通过\n需要修复：0 项\n建议关注：0 项\n\n✨ 所有检查项目均通过！notiontemplafix.com 运行状态良好。"
+}
