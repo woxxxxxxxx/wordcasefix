@@ -1,0 +1,71 @@
+{
+  "project": "vestcalc",
+  "domain": "vestcalc.com",
+  "date": "2026-06-22",
+  "timestamp": "2026-06-22T00:00:00Z",
+  "checks": {
+    "accessibility": {
+      "homepage_status": {
+        "status": "PASS",
+        "detail": "首页 HTTP 状态码 200"
+      },
+      "page_title": {
+        "status": "PASS",
+        "detail": "页面标题存在: VestCalc — Free Online Financial Calculators"
+      },
+      "meta_description": {
+        "status": "FAIL",
+        "detail": "页面描述 meta 标签不存在",
+        "suggestion": "添加 <meta name=\"description\" content=\"...\" /> 标签以改善SEO和搜索结果展示"
+      }
+    },
+    "seo": {
+      "sitemap": {
+        "status": "PASS",
+        "detail": "/sitemap.xml 可访问且有效，包含130+个URL条目"
+      },
+      "robots_txt": {
+        "status": "PASS",
+        "detail": "/robots.txt 存在且有效，正确配置了爬虫规则"
+      },
+      "ads_txt": {
+        "status": "WARN",
+        "detail": "/ads.txt 存在但发布商ID格式有误: pub-1638874323475457",
+        "suggestion": "应修改为 ca-pub-1638874323475457 以匹配标准AdSense格式"
+      },
+      "canonical": {
+        "status": "FAIL",
+        "detail": "首页缺少 canonical 标签",
+        "suggestion": "添加 <link rel=\"canonical\" href=\"https://vestcalc.com/\" /> 标签以避免重复内容问题"
+      }
+    },
+    "monetization": {
+      "adsense_code": {
+        "status": "PASS",
+        "detail": "页面包含AdSense广告占位代码"
+      }
+    },
+    "content": {
+      "tool_count": {
+        "status": "PASS",
+        "detail": "工具数量为101，与projects.json记录一致"
+      },
+      "404_handling": {
+        "status": "PASS",
+        "detail": "不存在的页面正确返回404状态码"
+      }
+    }
+  },
+  "summary": {
+    "total_checks": 10,
+    "passed": 7,
+    "failed": 2,
+    "warnings": 1,
+    "pass_rate": "70%"
+  },
+  "recommendations": [
+    "【高优先级】添加首页 meta description 标签以改善SEO",
+    "【高优先级】添加首页 canonical 标签避免重复内容问题",
+    "【中优先级】修正 ads.txt 中的发布商ID格式: pub-1638874323475457 → ca-pub-1638874323475457"
+  ]
+}

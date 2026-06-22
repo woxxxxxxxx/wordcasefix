@@ -1,0 +1,31 @@
+=== QA Report: vestcalc [2026-06-22] ===
+
+【基础可访问性】
+✅ PASS: 首页 HTTP 状态码 200
+✅ PASS: 页面标题存在 "VestCalc — Free Online Financial Calculators"
+❌ FAIL: 页面描述 meta 标签不存在 → 建议：添加 <meta name="description" content="..." /> 标签以改善SEO和搜索结果展示
+
+【SEO基础】
+✅ PASS: /sitemap.xml 可访问且有效（包含130+个URL条目）
+✅ PASS: /robots.txt 存在且有效
+⚠️ WARN: /ads.txt 存在但发布商ID格式有误 → 说明：当前为 pub-1638874323475457，应修改为 ca-pub-1638874323475457
+❌ FAIL: 首页缺少 canonical 标签 → 建议：添加 <link rel="canonical" href="https://vestcalc.com/" /> 标签以避免重复内容问题
+
+【变现相关】
+✅ PASS: AdSense 广告占位代码存在
+
+【内容质量】
+✅ PASS: 工具数量为101，与projects.json记录一致
+✅ PASS: 不存在的页面正确返回404状态码
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+总计：7/10 通过 (70%)
+需要修复：2 项
+建议关注：1 项
+
+【需要修复的问题】
+1. 添加首页 meta description 标签
+2. 添加首页 canonical 标签
+
+【建议关注】
+1. ads.txt 发布商ID格式：pub-1638874323475457 → ca-pub-1638874323475457
