@@ -1,0 +1,68 @@
+{
+  "project": "coveragefixpro",
+  "domain": "coveragefixpro.com",
+  "date": "2026-06-22",
+  "timestamp": "2026-06-22T00:00:00Z",
+  "checks": {
+    "基础可访问性": {
+      "首页HTTP状态码": {
+        "status": "PASS",
+        "detail": "返回 200 OK"
+      },
+      "页面标题": {
+        "status": "PASS",
+        "detail": "CoverageFixPro — Free Insurance Calculators"
+      },
+      "页面描述meta": {
+        "status": "FAIL",
+        "detail": "meta description 标签不存在",
+        "suggestion": "在首页添加 <meta name=\"description\" content=\"...\"> 标签，建议内容：'Free insurance calculators for auto, health, home, life, and business coverage. Calculate premiums, compare quotes, and make informed decisions.'"
+      }
+    },
+    "SEO基础": {
+      "sitemap.xml": {
+        "status": "PASS",
+        "detail": "存在且格式正确，包含218个URL"
+      },
+      "robots.txt": {
+        "status": "PASS",
+        "detail": "存在且包含sitemap引用"
+      },
+      "ads.txt": {
+        "status": "WARN",
+        "detail": "文件存在但格式可能不完整，当前只显示 'pub-1638874323475457'",
+        "suggestion": "标准格式应为：google.com, pub-1638874323475457, DIRECT, f08c47fec0942fa0"
+      },
+      "canonical标签": {
+        "status": "FAIL",
+        "detail": "首页缺少 canonical 标签",
+        "suggestion": "在首页 <head> 中添加 <link rel=\"canonical\" href=\"https://coveragefixpro.com/\" />"
+      }
+    },
+    "变现相关": {
+      "AdSense代码": {
+        "status": "FAIL",
+        "detail": "页面未检测到 AdSense 代码 (ca-pub-1638874323475457)",
+        "suggestion": "在页面中添加 AdSense 广告单元代码或自动广告代码"
+      }
+    },
+    "内容质量": {
+      "工具数量": {
+        "status": "WARN",
+        "detail": "首页显示120个工具，但 projects.json 中未记录 tool_count 字段",
+        "suggestion": "建议在 projects.json 中添加 'tool_count': 120"
+      },
+      "404页面": {
+        "status": "PASS",
+        "detail": "404页面正确返回404状态码"
+      }
+    }
+  },
+  "summary": {
+    "total": 10,
+    "pass": 5,
+    "fail": 3,
+    "warn": 2
+  },
+  "report": "=== QA Report: coveragefixpro [2026-06-22] ===\n\n【基础可访问性】\n✅ PASS: 首页HTTP状态码 → 返回 200 OK\n✅ PASS: 页面标题 → CoverageFixPro — Free Insurance Calculators\n❌ FAIL: 页面描述meta → 建议：在首页添加 <meta name=\"description\" content=\"...\"> 标签，建议内容：'Free insurance calculators for auto, health, home, life, and business coverage. Calculate premiums, compare quotes, and make informed decisions.'\n\n【SEO基础】\n✅ PASS: sitemap.xml → 存在且格式正确，包含218个URL\n✅ PASS: robots.txt → 存在且包含sitemap引用\n⚠️ WARN: ads.txt → 说明：文件存在但格式可能不完整，当前只显示 'pub-1638874323475457'，标准格式应为：google.com, pub-1638874323475457, DIRECT, f08c47fec0942fa0\n❌ FAIL: canonical标签 → 建议：在首页 <head> 中添加 <link rel=\"canonical\" href=\"https://coveragefixpro.com/\" />\n\n【变现相关】\n❌ FAIL: AdSense代码 → 建议：在页面中添加 AdSense 广告单元代码或自动广告代码\n\n【内容质量】\n⚠️ WARN: 工具数量 → 说明：首页显示120个工具，但 projects.json 中未记录 tool_count 字段，建议添加 'tool_count': 120\n✅ PASS: 404页面 → 404页面正确返回404状态码\n\n总计：5/10 通过\n需要修复：3 项\n建议关注：2 项"
+}
