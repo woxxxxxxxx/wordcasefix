@@ -1,0 +1,67 @@
+{
+  "project": "insurancetipspro",
+  "domain": "insurancetipspro.com",
+  "timestamp": "2026-06-22 09:20:26",
+  "checks": {
+    "accessibility": {
+      "homepage_status_200": {
+        "status": "PASS",
+        "detail": "首页可正常访问"
+      },
+      "page_title_exists": {
+        "status": "PASS",
+        "detail": "页面标题: InsuranceTipsPro - Plain-English Insurance Guides"
+      },
+      "meta_description_exists": {
+        "status": "PASS",
+        "detail": "Meta description已设置"
+      }
+    },
+    "seo": {
+      "sitemap_accessible": {
+        "status": "PASS",
+        "detail": "sitemap.xml有效，包含39个URL"
+      },
+      "robots_txt_exists": {
+        "status": "PASS",
+        "detail": "robots.txt存在且格式正确"
+      },
+      "ads_txt_exists": {
+        "status": "PASS",
+        "detail": "ads.txt包含正确的AdSense pub-ID: ca-pub-1638874323475457"
+      },
+      "canonical_tag_exists": {
+        "status": "PASS",
+        "detail": "首页包含canonical标签"
+      }
+    },
+    "monetization": {
+      "adsense_code_deployed": {
+        "status": "PASS",
+        "detail": "AdSense代码已部署在<head>中"
+      },
+      "google_analytics_deployed": {
+        "status": "PASS",
+        "detail": "Google Analytics (G-DQ4ZT8RD2R) 已部署"
+      }
+    },
+    "content": {
+      "404_page_works": {
+        "status": "PASS",
+        "detail": "404页面正常返回404错误"
+      },
+      "content_count": {
+        "status": "WARN",
+        "detail": "本地41个HTML文件，sitemap 39个URL，Search Console显示26页",
+        "note": "Search Console索引可能存在延迟，建议持续观察"
+      }
+    }
+  },
+  "summary": {
+    "total_checks": 10,
+    "passed": 10,
+    "failed": 0,
+    "warnings": 1
+  },
+  "report_text": "=== QA Report: insurancetipspro [2026-06-22 09:20:26] ===\n\n【基础可访问性】\n✅ PASS: 首页HTTP状态码200\n✅ PASS: 页面标题存在且不为空 - InsuranceTipsPro - Plain-English Insurance Guides\n✅ PASS: 页面meta description存在\n\n【SEO基础】\n✅ PASS: /sitemap.xml可访问 (包含39个URL)\n✅ PASS: /robots.txt存在且格式正确\n✅ PASS: /ads.txt存在且包含正确的AdSense pub-ID (ca-pub-1638874323475457)\n✅ PASS: 首页canonical标签存在\n\n【变现相关】\n✅ PASS: AdSense代码已部署在<head>中\n✅ PASS: Google Analytics (G-DQ4ZT8RD2R) 已部署\n\n【内容质量】\n✅ PASS: 404页面正常返回404错误\n⚠️ WARN: 内容数量 - 本地41个HTML文件，sitemap 39个URL，Search Console显示26页 → 说明：Search Console索引可能存在延迟，建议持续观察\n\n总计：10/10 检查通过\n需要修复：0 项\n建议关注：1 项"
+}
