@@ -1,95 +1,58 @@
 {
   "project": "toolrankhq",
   "domain": "toolrankhq.com",
-  "date": "2026-06-22",
-  "timestamp": "2026-06-22T00:00:00Z",
-  "summary": {
-    "total_checks": 10,
-    "passed": 5,
-    "failed": 4,
-    "warnings": 1
-  },
+  "timestamp": "2026-06-22T01:28:55.384Z",
   "checks": [
     {
-      "category": "基础可访问性",
-      "items": [
-        {
-          "status": "PASS",
-          "name": "首页 HTTP 状态码",
-          "detail": "页面成功加载，内容可访问"
-        },
-        {
-          "status": "PASS",
-          "name": "页面标题",
-          "detail": "存在：ToolRankHQ - Best AI Tools Reviews for Freelancers & Small Business"
-        },
-        {
-          "status": "FAIL",
-          "name": "页面描述 meta",
-          "detail": "首页和文章页均未找到 meta description 标签",
-          "suggestion": "为所有页面添加 meta description，提升搜索引擎摘要展示效果"
-        }
-      ]
+      "type": "PASS",
+      "name": "首页可访问",
+      "detail": "HTTP 200"
     },
     {
-      "category": "SEO基础",
-      "items": [
-        {
-          "status": "PASS",
-          "name": "sitemap.xml",
-          "detail": "可访问，格式有效，包含 43 个 URL"
-        },
-        {
-          "status": "PASS",
-          "name": "robots.txt",
-          "detail": "存在，配置正确，允许所有爬虫访问"
-        },
-        {
-          "status": "WARN",
-          "name": "ads.txt",
-          "detail": "文件存在，但发布商 ID 格式为 pub-1638874323475457，而不是标准的 ca-pub-1638874323475457",
-          "note": "AdSense ads.txt 通常使用 ca-pub- 前缀，建议核实是否需要更新"
-        },
-        {
-          "status": "FAIL",
-          "name": "canonical 标签",
-          "detail": "首页和文章页均未找到 canonical 标签",
-          "suggestion": "为所有页面添加 canonical 标签，避免重复内容问题"
-        }
-      ]
+      "type": "PASS",
+      "name": "页面标题存在",
+      "detail": "ToolRankHQ - Best AI Tools Reviews for Freelancers &amp; Small Business"
     },
     {
-      "category": "变现相关",
-      "items": [
-        {
-          "status": "FAIL",
-          "name": "AdSense 代码",
-          "detail": "页面中只有 'Advertisement' 占位符，未检测到实际的 AdSense 代码（ca-pub- 或 adsbygoogle）",
-          "suggestion": "部署实际的 AdSense 广告代码，替换占位符"
-        }
-      ]
+      "type": "PASS",
+      "name": "meta description 存在",
+      "detail": ""
     },
     {
-      "category": "内容质量",
-      "items": [
-        {
-          "status": "PASS",
-          "name": "404 页面处理",
-          "detail": "不存在的页面正确返回 HTTP 404"
-        },
-        {
-          "status": "PASS",
-          "name": "内容数量",
-          "detail": "首页展示 12 个工具，23 篇文章（与 search_console_pages: 23 一致）"
-        }
-      ]
+      "type": "PASS",
+      "name": "canonical 标签存在",
+      "detail": ""
+    },
+    {
+      "type": "PASS",
+      "name": "AdSense 广告代码已部署",
+      "detail": ""
+    },
+    {
+      "type": "PASS",
+      "name": "sitemap.xml 可访问",
+      "detail": ""
+    },
+    {
+      "type": "PASS",
+      "name": "robots.txt 存在",
+      "detail": ""
+    },
+    {
+      "type": "PASS",
+      "name": "ads.txt 存在",
+      "detail": ""
+    },
+    {
+      "type": "PASS",
+      "name": "ads.txt 包含正确的发布商ID",
+      "detail": ""
     }
   ],
-  "report_text": "=== QA Report: toolrankhq [2026-06-22] ===\n\n【基础可访问性】\n✅ PASS: 首页 HTTP 状态码 - 页面成功加载\n✅ PASS: 页面标题 - ToolRankHQ - Best AI Tools Reviews for Freelancers & Small Business\n❌ FAIL: 页面描述 meta → 建议：为所有页面添加 meta description\n\n【SEO基础】\n✅ PASS: sitemap.xml - 包含 43 个 URL\n✅ PASS: robots.txt - 配置正确\n⚠️ WARN: ads.txt → 说明：发布商 ID 格式为 pub- 而非 ca-pub-，建议核实\n❌ FAIL: canonical 标签 → 建议：为所有页面添加 canonical 标签\n\n【变现相关】\n❌ FAIL: AdSense 代码 → 建议：部署实际 AdSense 代码替换占位符\n\n【内容质量】\n✅ PASS: 404 页面处理正确\n✅ PASS: 内容数量与记录一致（23篇）\n\n总计：5/10 通过\n需要修复：4 项\n建议关注：1 项",
-  "priority_fixes": [
-    "部署实际的 AdSense 广告代码",
-    "添加所有页面的 meta description",
-    "添加所有页面的 canonical 标签",
-    "核实并更新 ads.txt 中的发布商 ID 格式"
-  ]
+  "summary": {
+    "total": 9,
+    "pass": 9,
+    "fail": 0,
+    "warn": 0
+  }
 }
