@@ -1,0 +1,67 @@
+﻿{
+    "date":  "2026-06-22 09:10:22",
+    "project":  "contractfixpro",
+    "checks":  [
+                   {
+                       "detail":  "返回200",
+                       "status":  "PASS",
+                       "item":  "首页HTTP状态码"
+                   },
+                   {
+                       "detail":  "ContractFixPro - Free Freelance Contract Generator",
+                       "status":  "PASS",
+                       "item":  "页面标题"
+                   },
+                   {
+                       "detail":  "存在",
+                       "status":  "PASS",
+                       "item":  "页面描述meta"
+                   },
+                   {
+                       "detail":  "可访问",
+                       "status":  "PASS",
+                       "item":  "sitemap.xml"
+                   },
+                   {
+                       "detail":  "存在",
+                       "status":  "PASS",
+                       "item":  "robots.txt"
+                   },
+                   {
+                       "detail":  "存在（AdSense项目必需）",
+                       "status":  "PASS",
+                       "item":  "ads.txt"
+                   },
+                   {
+                       "detail":  "存在",
+                       "status":  "PASS",
+                       "item":  "canonical标签"
+                   },
+                   {
+                       "detail":  "检测到广告占位代码",
+                       "status":  "PASS",
+                       "item":  "AdSense广告代码"
+                   },
+                   {
+                       "detail":  "检测到Payhip链接",
+                       "status":  "PASS",
+                       "item":  "Payhip产品链接"
+                   },
+                   {
+                       "detail":  "20个工具（与配置一致）",
+                       "status":  "PASS",
+                       "item":  "工具数量"
+                   },
+                   {
+                       "detail":  "正确返回404状态",
+                       "status":  "PASS",
+                       "item":  "404页面"
+                   }
+               ],
+    "summary":  {
+                    "failed":  0,
+                    "warnings":  0,
+                    "total":  11,
+                    "passed":  11
+                }
+}
