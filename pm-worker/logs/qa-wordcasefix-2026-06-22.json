@@ -1,0 +1,86 @@
+﻿{
+    "qa_date":  "2026-06-22 09:02:19",
+    "project_id":  "wordcasefix",
+    "checks":  [
+                   {
+                       "detail":  "HTTP 200",
+                       "category":  "基础可访问性",
+                       "item":  "首页 HTTP 状态码",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "WordCaseFix - Free Online Text, Math \u0026 Developer Tools",
+                       "category":  "基础可访问性",
+                       "item":  "页面标题",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "存在且不为空",
+                       "category":  "基础可访问性",
+                       "item":  "页面描述 meta",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "可访问，包含208个URL",
+                       "category":  "SEO基础",
+                       "item":  "sitemap.xml",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "存在",
+                       "category":  "SEO基础",
+                       "item":  "robots.txt",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "存在且包含 Google AdSense",
+                       "category":  "SEO基础",
+                       "item":  "ads.txt",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "首页存在",
+                       "category":  "SEO基础",
+                       "item":  "canonical 标签",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "未检测到实际广告代码",
+                       "category":  "变现相关",
+                       "suggestion":  "项目处于 AdSense 审核中，审核通过后需替换占位代码",
+                       "item":  "AdSense 广告代码",
+                       "result":  "WARN"
+                   },
+                   {
+                       "detail":  "sitemap 208页 vs projects.json 204页，基本一致",
+                       "category":  "内容质量",
+                       "item":  "工具页面数量",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "随机抽查5个页面均正常",
+                       "category":  "内容质量",
+                       "item":  "页面可访问性",
+                       "result":  "PASS"
+                   },
+                   {
+                       "detail":  "无明显404页面",
+                       "category":  "内容质量",
+                       "item":  "404检查",
+                       "result":  "PASS"
+                   }
+               ],
+    "domain":  "wordcasefix.com",
+    "summary":  {
+                    "passed":  10,
+                    "next_actions":  [
+                                         "等待 AdSense 审核通过",
+                                         "审核通过后替换广告占位代码"
+                                     ],
+                    "failed":  0,
+                    "overall_status":  "优秀",
+                    "total_checks":  11,
+                    "warnings":  1
+                },
+    "project_name":  "WordCaseFix"
+}
