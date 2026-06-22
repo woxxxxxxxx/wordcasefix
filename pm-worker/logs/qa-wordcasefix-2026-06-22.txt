@@ -1,0 +1,28 @@
+﻿=== QA Report: wordcasefix [2026-06-22 09:02:06] ===
+
+【基础可访问性】
+✅ PASS: 首页 HTTP 状态码 200
+✅ PASS: 页面标题存在 - 'WordCaseFix - Free Online Text, Math & Developer Tools'
+✅ PASS: 页面描述 meta 存在
+
+【SEO基础】
+✅ PASS: /sitemap.xml 可访问 (208个URL)
+✅ PASS: /robots.txt 存在
+✅ PASS: /ads.txt 存在且包含 Google AdSense 配置
+✅ PASS: 首页有 canonical 标签
+
+【变现相关】
+⚠️  WARN: 未检测到实际广告代码 → 说明：项目处于 AdSense 审核中，使用占位代码属于正常状态
+
+【内容质量】
+✅ PASS: sitemap.xml 包含 208 个 URL，与 projects.json 记录的 204 页基本一致
+✅ PASS: 随机抽查 5 个工具页面均可正常访问 (HTTP 200)
+✅ PASS: 无明显 404 页面
+
+=== 总结 ===
+总计：10/11 通过
+需要修复：0 项
+建议关注：1 项 (AdSense 审核通过后需替换广告代码)
+
+整体评估：✅ 优秀
+项目状态健康，所有核心指标正常。唯一待办项为等待 AdSense 审核通过后替换占位代码。
