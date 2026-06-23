@@ -78,6 +78,13 @@ p { margin-bottom: 1rem; }
   height: 32px;
 }
 
+.site-logo .brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 220px;
+}
+
 .site-logo .logo-text {
   font-size: 1.25rem;
   font-weight: 800;
@@ -759,6 +766,53 @@ p { margin-bottom: 1rem; }
 .verdict-box strong {
   color: #1e3a5f;
 }
+
+/* Featured Partner CTA (affiliate placement) */
+.partner-cta {
+  background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+  border: 1px solid #fbbf24;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0 1.25rem;
+  box-shadow: 0 2px 8px rgba(251, 146, 60, 0.08);
+}
+.partner-cta-tag {
+  display: inline-block;
+  background: #fbbf24;
+  color: #78350f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+.partner-cta-headline {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.35;
+}
+.partner-cta-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+.partner-cta-desc strong { color: #1e3a5f; }
+.partner-cta-btn {
+  display: inline-block;
+  background: #ea580c;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.partner-cta-btn:hover { background: #c2410c; color: #ffffff; }
 
 /* ============================================
    AFFILIATE DISCLOSURE
