@@ -23,6 +23,7 @@ const EXCLUDE = new Set([
   'deploy-cache.json',
   'package.json', 'package-lock.json',
   'AGENTS.md', 'CLAUDE.md', 'README.md',
+  '.agents-buffer.md',
 ]);
 
 const REMOTE_CLEANUP_FILES = [
@@ -40,6 +41,7 @@ const REMOTE_CLEANUP_FILES = [
   '/public_html/package-lock.json',
   '/public_html/AGENTS.md',
   '/public_html/CLAUDE.md',
+  '/public_html/.agents-buffer.md',
   '/public_html/README.md',
   '/public_html/.env',
 ];
