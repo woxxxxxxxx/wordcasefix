@@ -130,6 +130,27 @@
 - **不能自动化的事**：注册联盟账号（涉及个人信息+密码+条款接受，Claude硬限制禁止）— 只能给"填表速查卡"辅助手工填写
 - **变现内容矩阵思路**：在BPG建商业类产品对比页(书单/报税软件/LLC注册/会计软件)，每页2-3本Amazon书 + 多个品牌mention（Skimlinks自动转链）= 多渠道收益
 
+### CJ API 自动化工具链 [2026-06-24]
+- **Personal Access Token**：`nSXbXj79rgeI8K9BH6A4BZfngw`（存 `pm-worker/credentials/cj-api.json`，已加 .gitignore）
+- **生成路径**：CJ 后台 → Developer Portal → Authentication → Personal Access Tokens → Register
+- **CLI 工具**：`pm-worker/cj-links.js`
+  ```bash
+  node cj-links.js us <site> <advertiser> [keyword]   # 仅 US 链接 + EPC 排序
+  node cj-links.js get <site> <link-id> <sid>         # 生成跟踪 URL
+  node cj-links.js websites                           # 列站点配置
+  ```
+- **REST API 端点**：`https://link-search.api.cj.com/v2/link-search?website-id=PUB&advertiser-ids=joined&keywords=KW`
+  - 返回 XML，单页 ≤100 条；广告主 ID 不传时全部 joined
+  - **关键发现**：keyword 在 link 名称里做模糊匹配，**搜不到时换近义词**（LawDepot 把 NDA 命名为 "Confidentiality Agreement"）
+- **GraphQL 端点**：`https://commissions.api.cj.com/query`（只读 publisherCommissions / advertiserCommissions，**不含 publisher info / link search**）
+- **站点 → CJ Pub ID 映射**（写在 cj-links.js 的 SITES 常量）：
+  - ContractFixPro = `101808177`
+  - FreelancerGuideHub = `101808336`
+  - ToolRankHQ = `101808341`
+  - BillingFixPro = `101808324`
+  - 其余 8 站待生成首个 CJ 链接后从 click URL 中抓 pub-id 补入
+- **API 能 / 不能**：✅ 查广告主链接 / 查佣金 / 查转化 | ❌ 申请加入广告主（必须 UI 操作）/ 添加推广媒介
+
 ### CJ / Amazon 接入审计记录 [2026-06-23]
 - **本轮已上线站点**：businesspolicyguide.com / insurancetipspro.com / freelancerguidehub.com / toolrankhq.com / crmcomparelab.com / billingfixpro.com / payrollfixpro.com / contractfixpro.com
 - **Amazon Associates 已接入**：
@@ -139,10 +160,17 @@
   - 所有 Amazon 链接统一使用 `tag=bizpolicyguid-20`，页面必须有 `As an Amazon Associate...` 披露
 - **CJ 已接入真实链接**：
   - ToolRankHQ：Omneky 真实 CJ 链 `https://www.tkqlhce.com/click-101808341-17290970?...`，SID 例子：`toolrank-free-ai-small-business`
-  - ContractFixPro：LawDepot 5 处（首页 Evergreen + 4 个合同生成器页深链）— SID 前缀 `contractfix-lawdepot-{type}`
-  - FreelancerGuideHub：LawDepot 1 处（freelance-contract-template-guide）— SID `freelancerguide-lawdepot-contractor`
+  - ContractFixPro：LawDepot **6 处** — 首页 Evergreen + freelance/service/consulting/independent-contractor/**nda-generator** 深链；SID 前缀 `contractfix-lawdepot-{type}`
+  - FreelancerGuideHub：LawDepot **2 处** — freelance-contract-template-guide（Contractor 16995973）+ employee-vs-contractor-guide（**LLC 16995795**）；SID 前缀 `freelancerguide-lawdepot-{type}`
   - **共用 CSS**：`{site}/assets/css/partner-cta.css`（ContractFixPro / FreelancerGuideHub / 后续新站可直接复用模板）
+  - **共用 SVG Logo**：`{site}/assets/img/{brand}-logo.svg`（自绘高保真，深蓝方块 + 文档折角 + 白 L + 蓝色 wordmark）
+  - **按钮色覆盖**：`.partner-cta-btn` 必须用 `color:#fff!important` + `:link/:visited/:active` 同样 !important，否则会被站点全局 `a{color:inherit}` 覆盖导致按钮文字看不见
   - **品牌色变体**：ToolRankHQ 橙（#ea580c 配 Omneky）；ContractFixPro/FreelancerGuide 蓝（#1e40af 配 LawDepot）
+- **LawDepot 关键词检索经验** [2026-06-24]：
+  - "NDA" 搜不到 → 用 "Confidentiality Agreement"（link 16995997）
+  - "LLC" 关键词太宽（命中全部），用 "Articles of Organization"（link 16995795）
+  - "Photography Contract" / "Web Development" → LawDepot 无 US 版本，无法精准对接
+  - CJ link search 是 **link-name 模糊匹配**，搜不到时换 LawDepot 官方命名
 - **CJ 尚无真实深链时的处理**：
   - CRMCompareLab / BillingFixPro / PayrollFixPro / ContractFixPro 只能先放 direct-link placeholder，必须写注释 `CJ_PLACEHOLDER_DIRECT_LINK`
   - 不允许凭品牌名伪造 CJ/Impact/PartnerStack 链接
