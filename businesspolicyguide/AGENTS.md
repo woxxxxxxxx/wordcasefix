@@ -160,6 +160,7 @@
 - Git: ab80134 已push
 
 ## 关键修复历史
+- 2026-06-24：全局 `C:\Users\Administrator\CLAUDE.md` 新增「AGENTS.md 自动迭代规则」(9 类节点强制写入) + 「Buffer 队列机制」(`.agents-buffer.md` 累积小改动,关键节点直接 flush)。Commit `c7aaacf` / `def1f61`。
 - 2026-06-24：接入 Pinterest/Buffer 自动推送管道,12 站全覆盖 (新增 wordcasefix/vestcalc/toolrankhq/BPG/crmcomparelab)。pm-worker `generate-pins.js` + `buffer-refill.js` 每日 09:00 cron 自动从各站抓 sitemap 截图，BPG 首批生成 10 张 Pin 图（business-insurance/guides/industries 等正文页），通过 `deploy-ftp.js` 上传到 `/pinterest/`。
 - 2026-06-22：修复 Claude 更新后产生的联盟 CTA 乱码（`鈥?`、`鈫?/a>`、坏勾号）。`build-site.js` 现在会自动修复乱码、把未获批保险联盟 CTA 保持为站内安全链接；`audit.js` 会拦截乱码、坏锚点和泄露的 `PENDING_*` URL；`inject-affiliates.js` 在真实联盟链接未填入前只报警不改页面。已部署 42 个文件，线上确认 CTA 干净，Amazon 与 Skimlinks 仍正常。
 - 2026-06-22：上线3个产品对比页（报税软件/LLC注册/会计软件）— 7491词 + 20个品牌锚链接（Skimlinks待用）+ 16个Amazon链接
