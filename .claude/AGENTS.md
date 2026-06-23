@@ -130,6 +130,56 @@
 - **不能自动化的事**：注册联盟账号（涉及个人信息+密码+条款接受，Claude硬限制禁止）— 只能给"填表速查卡"辅助手工填写
 - **变现内容矩阵思路**：在BPG建商业类产品对比页(书单/报税软件/LLC注册/会计软件)，每页2-3本Amazon书 + 多个品牌mention（Skimlinks自动转链）= 多渠道收益
 
+### CJ / Amazon 接入审计记录 [2026-06-23]
+- **本轮已上线站点**：businesspolicyguide.com / insurancetipspro.com / freelancerguidehub.com / toolrankhq.com / crmcomparelab.com / billingfixpro.com / payrollfixpro.com / contractfixpro.com
+- **Amazon Associates 已接入**：
+  - BusinessPolicyGuide：`tools/commercial-auto-exposure-checklist.html` 加车辆安全用品 Amazon 搜索链接
+  - InsuranceTipsPro：`articles/how-much-car-insurance-do-i-need.html` 加车载应急包 / dash cam / 打气泵
+  - FreelancerGuideHub：`articles/best-tools-for-freelancers.html` 加办公硬件/扫描仪/UPS
+  - 所有 Amazon 链接统一使用 `tag=bizpolicyguid-20`，页面必须有 `As an Amazon Associate...` 披露
+- **CJ 已接入真实链接**：
+  - ToolRankHQ：Omneky 真实 CJ 链 `https://www.tkqlhce.com/click-101808341-17290970?...`，SID 例子：`toolrank-free-ai-small-business`
+  - ContractFixPro：LawDepot 5 处（首页 Evergreen + 4 个合同生成器页深链）— SID 前缀 `contractfix-lawdepot-{type}`
+  - FreelancerGuideHub：LawDepot 1 处（freelance-contract-template-guide）— SID `freelancerguide-lawdepot-contractor`
+  - **共用 CSS**：`{site}/assets/css/partner-cta.css`（ContractFixPro / FreelancerGuideHub / 后续新站可直接复用模板）
+  - **品牌色变体**：ToolRankHQ 橙（#ea580c 配 Omneky）；ContractFixPro/FreelancerGuide 蓝（#1e40af 配 LawDepot）
+- **CJ 尚无真实深链时的处理**：
+  - CRMCompareLab / BillingFixPro / PayrollFixPro / ContractFixPro 只能先放 direct-link placeholder，必须写注释 `CJ_PLACEHOLDER_DIRECT_LINK`
+  - 不允许凭品牌名伪造 CJ/Impact/PartnerStack 链接
+  - 占位直链也按广告/商业链接处理：`target="_blank" rel="sponsored nofollow noopener"`
+- **适合继续接联盟的站**：
+  - ToolRankHQ：CJ/SaaS/AI 工具优先，Amazon 不优先
+  - CRMCompareLab：CRM/SaaS trial 类适合，Amazon 不优先
+  - BillingFixPro：会计/发票/收款 SaaS 适合，Amazon 不优先
+  - PayrollFixPro：payroll/HR/benefits SaaS 适合，Amazon 不优先
+  - ContractFixPro：法律文档/电子签/合同 SaaS 谨慎接，必须避免“法律建议/律师替代”暗示
+  - BusinessPolicyGuide：Amazon 书单/用品 + Skimlinks/CJ 商业服务适合，但保险/税务内容必须强披露
+  - FreelancerGuideHub：会计/合同/支付/生产力 SaaS + 少量 Amazon 办公用品/书单适合
+  - InsuranceTipsPro：只适合少量 Amazon 书单/安全用品；不建议直接接保险 lead/CJ
+- **暂不建议接联盟的站**：
+  - WordCaseFix：工具站低商业意图，优先 AdSense；另需注意不要混入其他站目录
+  - VestCalc：金融 YMYL，优先 AdSense；Amazon 仅可少量金融书单
+  - NotionTemplaFix：PayHip 自营产品优先，不要混淆 affiliate 披露
+  - CoverageFixPro：保险报价/估算风险高，不建议直接接保险 lead/CJ，除非补强免责声明和合规页面
+- **本轮审计通过项**：
+  - BusinessPolicyGuide：`node build-site.js` + `node audit.js`，50 HTML / 0 issues
+  - CRMCompareLab：`node build-site.js` + `node audit.js`，40 HTML / 0 issues
+  - 工具站 affiliate-card 全量检查：Billing 302 / Payroll 202 / Contract 62，全部带 sponsored/nofollow/noopener
+  - 线上抽查 8 个重点 URL 均 200 且包含新增 affiliate/placeholder 内容
+- **本轮 GitHub Pages 提交**：
+  - BillingFixPro：`63b57e9` Add affiliate disclosure link attributes
+  - PayrollFixPro：`5a7650f` Add compliant payroll partner links
+  - ContractFixPro：`a9ad9c4` Add compliant contract partner links
+- **部署经验**：
+  - Hostinger 站仍用 `node deploy-ftp.js` 或站点自己的 FTP 脚本；CRMCompareLab 用 `python deploy-ftp.py`
+  - GitHub Pages 站推送后等 1-2 分钟，再用线上 URL 内容检查，不只看 git push 成功
+- **Amazon 外链样式修正规则 [2026-06-23]**：
+  - Amazon 资源链接不要用纯文字 `<a>` 连续排列，视觉上不像按钮且容易挤在一起
+  - 优先使用卡片结构：`.amazon-resource-grid` + `.amazon-resource-card`，每张卡包含 `h3` 标题、1 句说明、橙色 `Browse on Amazon` 按钮
+  - 按钮样式必须明显：橙色背景、白字、8px 圆角、hover 状态、移动端满宽
+  - BPG 已修复示例：`businesspolicyguide/tools/commercial-auto-exposure-checklist.html` 的 `Vehicle safety supplies to consider`
+  - 修改后必须部署 `node deploy-ftp.js`，并用线上 HTML/CSS 检查 `amazon-resource-grid` / `amazon-resource-card` / `Browse on Amazon` 是否存在
+
 ### 批量改造扫描原则
 - 扫描时排除 .git/ .claude/ node_modules/ 外来子目录
 - 批量替换 generateDoc 等共用函数时，必须排除 payment-history 等专属页面（脚本里加 if 'payment-history' in fpath: continue）
