@@ -28,3 +28,23 @@
 - 涉及账户/密钥/Tracking ID 用反引号包裹原始值
 - 同一天多条节点合并在"关键修复历史"顶部
 - 写完不需要单独 commit,跟随主任务一起 push
+
+## Buffer 队列机制
+为避免高频小改动反复 Edit AGENTS.md 造成 token 浪费和 git 噪声,采用 buffer 累积 + 批量 flush:
+
+**Buffer 文件**:`<项目根>/.agents-buffer.md`(已加入 `deploy-ftp.js` EXCLUDE,不上线;加入 `.gitignore` 不入库)
+
+**写入规则**:
+- **直接 flush(立即写 AGENTS.md)**:9 类节点中的 **1/3/5/6/8**(账户状态、生产部署、收入里程碑、配置变更、架构调整)— 这些关键性强、查询频率高
+- **进 buffer(只 append 到 `.agents-buffer.md`)**:**2/4/7/9** 中的轻量项(单页修复、小 bug、待办增减、单条 cron 状态)— 频率高但单条价值低
+- **格式**:`- [YYYY-MM-DD HH:mm] <节点类型> <一行描述>`
+
+**Flush 触发**(任一即可):
+- buffer 行数 ≥ 10
+- buffer 内出现任一"直接 flush"类节点(此时把 buffer 全部清空一起写进 AGENTS.md)
+- 用户显式说"刷新 md / 更新 md / flush buffer"
+- 任一会话开始时,如发现 buffer 非空且最早一条 ≥ 24 小时前,立即 flush
+
+**Flush 动作**:把 buffer 内多条按类型归并(同类合并成 1-2 行),追加到 AGENTS.md 对应板块,然后清空 `.agents-buffer.md`。
+
+**查询规则**:用户问项目状态时,先读 AGENTS.md,再读 `.agents-buffer.md`(可能含尚未 flush 的最新动态),合并答复。
