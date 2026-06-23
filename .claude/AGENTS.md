@@ -97,7 +97,14 @@
 - **W-8BEN 预扣税 0%**：中国创作者填W-8BEN时税率0%（境外服务收入），不是30%
 - **180天3单规则**：Amazon账号通过后必须180天内产生3笔合格销售，否则永久关闭。账号开通日：2026-06-22
 
-### CJ Affiliate（已激活）[2026-06-23]
+### 联盟广告位标准模板 [2026-06-23]
+- **CSS 模板**：`.partner-cta` + 子元素（brand/logo/category/stars/content/tag/headline/desc/badges/badge/btn/sublabel）
+- **首次实现**：toolrankhq/styles.css 的 `═══ Featured Partner CTA` 块
+- **结构**：2 栏布局（左品牌面板 200px + 右内容自适应），移动端单列
+- **必填元素**：品牌首字母 Logo / 品牌名 / 类目 / 5 星 / Featured Partner 徽章 / 标题 / 描述 / 3 个 ✓ Badge / 橙色渐变 CTA 按钮 / 联盟披露小字
+- **链接属性**：`target="_blank" rel="sponsored noopener nofollow"`
+- **SID 命名规范**：`{站点缩写}-{品牌名}-{位置}` 如 `toolrank-omneky-home` / `toolrank-omneky-writing`
+- **以后所有联盟广告位都套用此模板**，不要再用纯文字 paragraph+link 的简陋形式
 - **登录**：xiaohuixie3@gmail.com（密码未存）
 - **CJ 组织名**：Xie Xiaohui Studio
 - **付款方式**：Payoneer USD 虚拟美国账户（Citibank / Routing 031100209 / Acct 70587310002476747 / CITIUS33 / Xiaohui Xie）— 详情见 `C:\Users\Administrator\pm-worker\credentials\payoneer-usd-account.md`
