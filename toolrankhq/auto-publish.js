@@ -4,7 +4,6 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawnSync } = require('child_process');
-const Anthropic = require('@anthropic-ai/sdk');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const BASE_DIR     = __dirname;
@@ -334,7 +333,7 @@ function buildArticleHTML(topic, article, imageFilename, photographer, photograp
   "datePublished": "${today}",
   "dateModified": "${today}",
   "author": {"@type":"Organization","name":"${SITE_NAME} Editorial Team"},
-  "publisher": {"@type":"Organization","name":"${SITE_NAME}","logo":{"@type":"ImageObject","url":"${DOMAIN}/favicon.svg"}},
+  "publisher": {"@type":"Organization","name":"${SITE_NAME}","logo":{"@type":"ImageObject","url":"${DOMAIN}/logo.svg"}},
   "mainEntityOfPage": {"@type":"WebPage","@id":"${canonicalUrl}"}
 }
 </script>
@@ -354,10 +353,7 @@ function buildArticleHTML(topic, article, imageFilename, photographer, photograp
 <div id="read-progress"></div>
 <header class="site-header">
   <div class="header-inner">
-    <a href="../" class="site-logo">
-      <img src="../favicon.svg" class="logo-icon" alt="${SITE_NAME} Logo">
-      <span class="logo-text">ToolRank<span>HQ</span></span>
-    </a>
+    <a href="../" class="site-logo"><img src="../logo.svg" class="brand-logo" alt="${SITE_NAME}" loading="eager"></a>
     <nav class="site-nav" id="site-nav">
       <a href="../">Home</a>
       <a href="../about.html">About</a>
@@ -684,13 +680,13 @@ async function main() {
   updateIndexHTML(topic, article, topic.slug, imageFilename, today, todayFmt);
   updateSitemap(topic.slug, today);
 
-  // Step 5: Deploy
-  deploy();
-
-  // Mark topic as used
+  // Mark topic as used (before deploy so a deploy crash doesn't cause duplicates)
   topicsData.used.push(topic.slug);
   saveTopicsUsed(topicsData);
   console.log('\n✓ topics-used.json updated');
+
+  // Step 5: Deploy
+  deploy();
 
   console.log('\n=== Done ===');
   console.log('New article:', `${DOMAIN}/articles/${topic.slug}.html`);

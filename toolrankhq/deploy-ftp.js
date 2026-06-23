@@ -20,8 +20,10 @@ const RETRY_DELAY = 5000;
 const CACHE_FILE  = path.join(__dirname, 'deploy-cache.json');
 
 const EXCLUDE = new Set([
-  'node_modules', '.git', '.gitignore', 'deploy-ftp.js', 'deploy-cache.json',
+  'node_modules', '.git', '.gitignore', '.claude', '.env',
+  'deploy-ftp.js', 'deploy-cache.json', 'auto-publish.js',
   'package.json', 'package-lock.json',
+  'topics-used.json', 'AGENTS.md', 'CLAUDE.md',
 ]);
 
 // ─── Cache ────────────────────────────────────────────────────────────────────
