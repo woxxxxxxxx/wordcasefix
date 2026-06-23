@@ -37,6 +37,11 @@ const SITES = [
   { id: 'payrollfixpro',   domain: 'payrollfixpro.com',   local: 'C:\\Users\\Administrator\\payrollfixpro',   ftp_hosted: false },
   { id: 'notiontemplafix', domain: 'notiontemplafix.com', local: null,                                         ftp_hosted: true  },
   { id: 'coveragefixpro', domain: 'coveragefixpro.com', local: 'C:\\Users\\Administrator\\coveragefixpro',   ftp_hosted: true  },
+  { id: 'insurancetipspro', domain: 'insurancetipspro.com', local: 'C:\\Users\\Administrator\\insurancetipspro', ftp_hosted: true },
+  { id: 'freelancerguidehub', domain: 'freelancerguidehub.com', local: 'C:\\Users\\Administrator\\freelancerguidehub', ftp_hosted: true },
+  { id: 'toolrankhq', domain: 'toolrankhq.com', local: 'C:\\Users\\Administrator\\toolrankhq', ftp_hosted: true },
+  { id: 'businesspolicyguide', domain: 'businesspolicyguide.com', local: 'C:\\Users\\Administrator\\businesspolicyguide', ftp_hosted: true },
+  { id: 'crmcomparelab', domain: 'crmcomparelab.com', local: 'C:\\Users\\Administrator\\crmcomparelab', ftp_hosted: true },
 ];
 
 // ── 工具 ─────────────────────────────────────────────────────────────────────
@@ -54,7 +59,16 @@ function shell(cmd, cwd, timeoutMs = 30000) {
 
 // ── 邮件节流 ──────────────────────────────────────────────────────────────────
 function loadThrottle() {
-  try { return JSON.parse(fs.readFileSync(THROTTLE_FILE, 'utf8')); } catch (_) { return {}; }
+  try {
+    const data = JSON.parse(fs.readFileSync(THROTTLE_FILE, 'utf8'));
+    // 自动剪枝：清掉 7 天前的条目，防止历史误报永久残留
+    const cutoff = Date.now() - 7 * 24 * 3600 * 1000;
+    const pruned = {};
+    for (const [k, v] of Object.entries(data)) {
+      if (typeof v === 'number' && v >= cutoff) pruned[k] = v;
+    }
+    return pruned;
+  } catch (_) { return {}; }
 }
 function saveThrottle(data) {
   try { fs.writeFileSync(THROTTLE_FILE, JSON.stringify(data, null, 2), 'utf8'); } catch (_) {}

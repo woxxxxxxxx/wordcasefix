@@ -1,0 +1,307 @@
+{
+  "projects": [
+    {
+      "id": "wordcasefix",
+      "domain": "wordcasefix.com",
+      "local": "C:\\Users\\Administrator\\wordcasefix\\",
+      "github": "woxxxxxxxx/wordcasefix",
+      "color": "#5b5bd6",
+      "ga_id": "G-ZRF2KKPS30",
+      "ga_numeric": "539531639",
+      "adsense": "pending",
+      "monetization": [
+        "adsense"
+      ],
+      "tool_count": 200,
+      "search_console_pages": 204,
+      "status": "adsense审核中",
+      "next_actions": [
+        "等待AdSense审核通过",
+        "审核通过后替换广告占位代码"
+      ]
+    },
+    {
+      "id": "vestcalc",
+      "domain": "vestcalc.com",
+      "local": "C:\\Users\\Administrator\\vestcalc\\",
+      "github": "woxxxxxxxx/vestcalc",
+      "color": "#0d9488",
+      "ga_id": "G-EDVND7BVGL",
+      "ga_numeric": "539700100",
+      "adsense": "pending",
+      "monetization": [
+        "adsense"
+      ],
+      "tool_count": 101,
+      "search_console_pages": 105,
+      "status": "adsense审核中",
+      "next_actions": [
+        "等待AdSense审核通过",
+        "审核通过后替换广告占位代码"
+      ]
+    },
+    {
+      "id": "notiontemplafix",
+      "domain": "notiontemplafix.com",
+      "local": "C:\\Users\\Administrator\\notiontemplafix\\",
+      "github": "woxxxxxxxx/notiontemplafix",
+      "hosting": "ftp",
+      "color": "#f59e0b",
+      "ga_id": "G-9221BZJVY1",
+      "ga_numeric": "539119398",
+      "adsense": "skip",
+      "monetization": [
+        "payhip"
+      ],
+      "payhip_key": "a2aba929e0ecce6a493a078d35f674eae304e244",
+      "notion_token": "REDACTED_SEE_LOCAL_ENV",
+      "notion_orders_db": "36d9846f2bc38103ba55d811803b5570",
+      "tool_count": 16,
+      "status": "pinterest引流中",
+      "next_actions": [
+        "完成真实购买测试",
+        "持续Pinterest引流"
+      ]
+    },
+    {
+      "id": "contractfixpro",
+      "domain": "contractfixpro.com",
+      "local": "C:\\Users\\Administrator\\contractfixpro\\",
+      "github": "woxxxxxxxx/contractfixpro",
+      "color": "#2563eb",
+      "ga_id": "G-ZPN71NWZGK",
+      "ga_numeric": "539948742",
+      "adsense": "pending",
+      "monetization": [
+        "adsense",
+        "payhip"
+      ],
+      "tool_count": 20,
+      "search_console_pages": 23,
+      "pinterest_pins_ready": 20,
+      "pinterest_pins_pushed": 0,
+      "status": "adsense审核中，pinterest待推",
+      "next_actions": [
+        "等待AdSense审核通过",
+        "Buffer队列空出后推Pin"
+      ]
+    },
+    {
+      "id": "billingfixpro",
+      "domain": "billingfixpro.com",
+      "local": "C:\\Users\\Administrator\\billingfixpro\\",
+      "github": "woxxxxxxxx/billingfixpro",
+      "color": "#0891b2",
+      "ga_id": "G-TPVMTCEC3E",
+      "adsense": "pending",
+      "monetization": [
+        "adsense"
+      ],
+      "tool_count": 100,
+      "search_console_pages": 103,
+      "status": "新站建立，AdSense审核中",
+      "next_actions": [
+        "提交Search Console",
+        "等待AdSense审核通过",
+        "审核通过后替换广告占位代码"
+      ]
+    },
+    {
+      "id": "payrollfixpro",
+      "domain": "payrollfixpro.com",
+      "local": "C:\\Users\\Administrator\\payrollfixpro\\",
+      "github": "woxxxxxxxx/payrollfixpro",
+      "color": "#7c3aed",
+      "ga_id": "G-PLWJ8VEN8D",
+      "adsense": "pending",
+      "monetization": [
+        "adsense"
+      ],
+      "tool_count": 100,
+      "search_console_pages": 103,
+      "status": "新站建立，AdSense审核中",
+      "next_actions": [
+        "提交Search Console",
+        "等待AdSense审核通过",
+        "审核通过后替换广告占位代码"
+      ]
+    },
+    {
+      "id": "coveragefixpro",
+      "domain": "coveragefixpro.com",
+      "local": "C:\\Users\\Administrator\\coveragefixpro\\",
+      "github": "woxxxxxxxx/coveragefixpro",
+      "hosting": "ftp",
+      "ftp_host": "212.85.28.149",
+      "ftp_user": "u868313694.coveragefixpro.com",
+      "color": "#1d4ed8",
+      "ga_id": "G-5XX4CE3YBR",
+      "ga_numeric": "540484051",
+      "adsense": "ca-pub-1638874323475457",
+      "monetization": [
+        "adsense"
+      ],
+      "status": "新站建立，FTP托管",
+      "next_actions": [
+        "完善工具页内容",
+        "提交Search Console",
+        "等待AdSense审核通过"
+      ]
+    },
+    {
+      "id": "insurancetipspro",
+      "domain": "insurancetipspro.com",
+      "local": "C:\\Users\\Administrator\\insurancetipspro\\",
+      "github": "woxxxxxxxx/insurancetipspro",
+      "hosting": "ftp",
+      "ftp_host": "212.85.28.149",
+      "ftp_user": "u868313694.insurancetipspro.com",
+      "color": "#1e40af",
+      "ga_id": "G-DQ4ZT8RD2R",
+      "ga_numeric": "540994505",
+      "adsense": "pending",
+      "monetization": [
+        "adsense"
+      ],
+      "search_console_pages": 26,
+      "status": "新站建立，FTP托管，AdSense审核中",
+      "next_actions": [
+        "等待AdSense审核通过",
+        "审核通过后替换广告占位代码",
+        "获取GA4 numeric property ID"
+      ]
+    },
+    {
+      "id": "freelancerguidehub",
+      "domain": "freelancerguidehub.com",
+      "local": "C:\\Users\\Administrator\\freelancerguidehub\\",
+      "github": null,
+      "hosting": "ftp",
+      "ftp_host": "212.85.28.149",
+      "ftp_user": "u868313694.freelancerguidehub.com",
+      "color": "#065f46",
+      "ga_id": "G-8FJRW549B6",
+      "ga_numeric": null,
+      "adsense": "ca-pub-1638874323475457",
+      "monetization": [
+        "adsense",
+        "affiliate"
+      ],
+      "affiliates": [
+        { "name": "Fiverr Affiliates", "status": "todo", "note": "自由职业垂直，转化最匹配" },
+        { "name": "Upwork", "status": "todo", "note": "需邀请，可申请" },
+        { "name": "FreshBooks/QuickBooks", "status": "todo", "note": "自由职业开票/记账软件" },
+        { "name": "Bonsai", "status": "todo", "note": "自由职业一体化 SaaS" }
+      ],
+      "search_console_pages": 37,
+      "status": "FTP托管，AdSense就绪，自动发文已启用",
+      "next_actions": [
+        "提交 AdSense 审核",
+        "获取 GA4 numeric property ID",
+        "继续 auto-publish 内容扩张",
+        "添加真实联盟链接"
+      ]
+    },
+    {
+      "id": "toolrankhq",
+      "domain": "toolrankhq.com",
+      "local": "C:\\Users\\Administrator\\toolrankhq\\",
+      "github": null,
+      "hosting": "ftp",
+      "ftp_host": "212.85.28.149",
+      "ftp_user": "u868313694.toolrankhq.com",
+      "color": "#1e3a5f",
+      "ga_id": "G-Z6W6MGYL95",
+      "ga_numeric": null,
+      "adsense": "ca-pub-1638874323475457",
+      "monetization": [
+        "adsense",
+        "affiliate"
+      ],
+      "search_console_pages": 23,
+      "status": "新站建立，FTP托管，AdSense已部署，auto-publish已配置",
+      "next_actions": [
+        "提交Search Console",
+        "获取GA4 numeric property ID",
+        "等待AdSense收益累积"
+      ],
+      "affiliates": [
+        { "name": "AppSumo", "status": "todo", "note": "SaaS 工具一次性 deal，转化高" },
+        { "name": "Impact.com", "status": "todo", "note": "工具类商家批量申请" }
+      ]
+    },
+    {
+      "id": "businesspolicyguide",
+      "domain": "businesspolicyguide.com",
+      "local": "C:\\Users\\Administrator\\businesspolicyguide\\",
+      "github": null,
+      "hosting": "ftp",
+      "ftp_host": "212.85.28.149",
+      "ftp_user": "u868313694.businesspolicyguide.com",
+      "color": "#1d4ed8",
+      "ga_id": "G-VGYQ2VWNT9",
+      "ga_numeric": "542448049",
+      "adsense": "ca-pub-1638874323475457",
+      "monetization": [
+        "adsense",
+        "affiliate",
+        "amazon"
+      ],
+      "search_console_pages": 45,
+      "status": "FTP托管，GA4/AdSense 已部署，联盟和 Amazon 变现中",
+      "next_actions": [
+        "确认 Search Console sitemap",
+        "等待 AdSense 审核",
+        "替换 pending 联盟链接"
+      ],
+      "affiliates": [
+        { "name": "Amazon Associates", "status": "active", "tracking_id": "bizpolicyguid-20", "note": "54链接 / 180天3单计时器到 2026-12-19" },
+        { "name": "Skimlinks", "status": "pending", "note": "申请 2026-06-22，1-3工作日审核" },
+        { "name": "Awin", "status": "pending", "note": "申请 2026-06-22，£5押金已付" },
+        { "name": "CJ Affiliate", "status": "pending", "note": "通过后接 Hartford/QuickBooks/TurboTax/LegalZoom" },
+        { "name": "Impact.com", "status": "todo", "note": "Marketplace 批量申请 Embroker/CoverWallet 等" },
+        { "name": "Payoneer", "status": "in_progress", "note": "拿虚拟美国银行账户给 Amazon Direct Deposit" }
+      ]
+    },
+    {
+      "id": "crmcomparelab",
+      "domain": "crmcomparelab.com",
+      "local": "C:\\Users\\Administrator\\crmcomparelab\\",
+      "github": null,
+      "hosting": "ftp",
+      "ftp_host": "212.85.28.149",
+      "ftp_user": "u868313694.crmcomparelab.com",
+      "color": "#2563eb",
+      "ga_id": "G-9HCY46JDOY",
+      "ga_numeric": "542620404",
+      "adsense": "ca-pub-1638874323475457",
+      "monetization": [
+        "adsense",
+        "affiliate"
+      ],
+      "search_console_pages": 42,
+      "status": "FTP托管，Search Console meta 和 AdSense 已部署，GA4 待补",
+      "next_actions": [
+        "创建 GA4 property 并写入 measurement ID",
+        "在 Search Console 提交 sitemap",
+        "等待 AdSense 审核",
+        "添加真实 CRM 联盟链接"
+      ],
+      "affiliates": [
+        { "name": "Impact.com", "status": "todo", "note": "申请 HubSpot/Pipedrive/Monday/Salesforce CRM" },
+        { "name": "PartnerStack", "status": "todo", "note": "B2B SaaS 联盟，CRM 商家全" }
+      ]
+    }
+  ],
+  "global_config": {
+    "gmail": "xiaohuixie3@gmail.com",
+    "adsense_pub": "ca-pub-1638874323475457",
+    "report_email": "295965231@qq.com",
+    "smtp_host": "smtp.qq.com",
+    "smtp_port": 465,
+    "git_proxy": "http://127.0.0.1:7897",
+    "claude_code_cmd": "claude --model claude-sonnet-4-5 --dangerously-skip-permissions",
+    "daily_report_path": "C:\\Users\\Administrator\\daily-report\\report.js",
+    "buffer_mode": "playwright"
+  }
+}
