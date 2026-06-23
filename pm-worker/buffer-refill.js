@@ -14,7 +14,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 // ── 配置 ──────────────────────────────────────────────────────────────────────
 const BUFFER_TOKEN  = 'aPPMezKy_6SKLs8F-9iUzZo4vM959_4K8YKqHCe9iQU';
 const ORG_ID        = '6a2026ccd819e8c99b17eb9e';
-const CHANNEL_ID    = '6a218b35c687a22dd45dac93';
+const CHANNEL_ID    = '6a3806215ab6d2f10657ce52';
 const BOARD_SVC_ID  = '1097119227915211401';
 const GQL_URL       = 'https://api.buffer.com/graphql';
 const PROXY_URL     = 'http://127.0.0.1:7897';
@@ -31,6 +31,11 @@ const SOURCES = [
   { name: 'FreelancerGuideHub', type: 'blog',   urlBase: 'https://freelancerguidehub.com/pinterest/', dir: 'C:\\Users\\Administrator\\freelancerguidehub\\pinterest', link: 'https://freelancerguidehub.com' },
   { name: 'BillingFixPro',      type: 'tool',   urlBase: 'https://billingfixpro.com/pinterest/',      dir: 'C:\\Users\\Administrator\\billingfixpro\\pinterest',      link: 'https://billingfixpro.com' },
   { name: 'PayrollFixPro',      type: 'tool',   urlBase: 'https://payrollfixpro.com/pinterest/',      dir: 'C:\\Users\\Administrator\\payrollfixpro\\pinterest',      link: 'https://payrollfixpro.com' },
+  { name: 'WordCaseFix',         type: 'tool',  urlBase: 'https://wordcasefix.com/pinterest/',         dir: 'C:\\Users\\Administrator\\wordcasefix\\pinterest',         link: 'https://wordcasefix.com' },
+  { name: 'VestCalc',            type: 'tool',  urlBase: 'https://vestcalc.com/pinterest/',            dir: 'C:\\Users\\Administrator\\vestcalc\\pinterest',            link: 'https://vestcalc.com' },
+  { name: 'ToolRankHQ',          type: 'blog',  urlBase: 'https://toolrankhq.com/pinterest/',          dir: 'C:\\Users\\Administrator\\toolrankhq\\pinterest',          link: 'https://toolrankhq.com' },
+  { name: 'BusinessPolicyGuide', type: 'blog',  urlBase: 'https://businesspolicyguide.com/pinterest/', dir: 'C:\\Users\\Administrator\\businesspolicyguide\\pinterest', link: 'https://businesspolicyguide.com' },
+  { name: 'CRMCompareLab',       type: 'blog',  urlBase: 'https://crmcomparelab.com/pinterest/',       dir: 'C:\\Users\\Administrator\\crmcomparelab\\pinterest',       link: 'https://crmcomparelab.com' },
 ];
 
 // NotionTemplaFix 模板 metadata
