@@ -146,7 +146,8 @@
         "完善工具页内容",
         "提交Search Console",
         "等待AdSense审核通过"
-      ]
+      ],
+      "adsense_review_status": "pending"
     },
     {
       "id": "insurancetipspro",
@@ -188,10 +189,26 @@
         "affiliate"
       ],
       "affiliates": [
-        { "name": "Fiverr Affiliates", "status": "todo", "note": "自由职业垂直，转化最匹配" },
-        { "name": "Upwork", "status": "todo", "note": "需邀请，可申请" },
-        { "name": "FreshBooks/QuickBooks", "status": "todo", "note": "自由职业开票/记账软件" },
-        { "name": "Bonsai", "status": "todo", "note": "自由职业一体化 SaaS" }
+        {
+          "name": "Fiverr Affiliates",
+          "status": "todo",
+          "note": "自由职业垂直，转化最匹配"
+        },
+        {
+          "name": "Upwork",
+          "status": "todo",
+          "note": "需邀请，可申请"
+        },
+        {
+          "name": "FreshBooks/QuickBooks",
+          "status": "todo",
+          "note": "自由职业开票/记账软件"
+        },
+        {
+          "name": "Bonsai",
+          "status": "todo",
+          "note": "自由职业一体化 SaaS"
+        }
       ],
       "search_console_pages": 37,
       "status": "FTP托管，AdSense就绪，自动发文已启用",
@@ -200,7 +217,8 @@
         "获取 GA4 numeric property ID",
         "继续 auto-publish 内容扩张",
         "添加真实联盟链接"
-      ]
+      ],
+      "adsense_review_status": "pending"
     },
     {
       "id": "toolrankhq",
@@ -226,9 +244,18 @@
         "等待AdSense收益累积"
       ],
       "affiliates": [
-        { "name": "AppSumo", "status": "todo", "note": "SaaS 工具一次性 deal，转化高" },
-        { "name": "Impact.com", "status": "todo", "note": "工具类商家批量申请" }
-      ]
+        {
+          "name": "AppSumo",
+          "status": "todo",
+          "note": "SaaS 工具一次性 deal，转化高"
+        },
+        {
+          "name": "Impact.com",
+          "status": "todo",
+          "note": "工具类商家批量申请"
+        }
+      ],
+      "adsense_review_status": "pending"
     },
     {
       "id": "businesspolicyguide",
@@ -255,13 +282,39 @@
         "替换 pending 联盟链接"
       ],
       "affiliates": [
-        { "name": "Amazon Associates", "status": "active", "tracking_id": "bizpolicyguid-20", "note": "54链接 / 180天3单计时器到 2026-12-19" },
-        { "name": "Skimlinks", "status": "pending", "note": "申请 2026-06-22，1-3工作日审核" },
-        { "name": "Awin", "status": "pending", "note": "申请 2026-06-22，£5押金已付" },
-        { "name": "CJ Affiliate", "status": "pending", "note": "通过后接 Hartford/QuickBooks/TurboTax/LegalZoom" },
-        { "name": "Impact.com", "status": "todo", "note": "Marketplace 批量申请 Embroker/CoverWallet 等" },
-        { "name": "Payoneer", "status": "in_progress", "note": "拿虚拟美国银行账户给 Amazon Direct Deposit" }
-      ]
+        {
+          "name": "Amazon Associates",
+          "status": "active",
+          "tracking_id": "bizpolicyguid-20",
+          "note": "54链接 / 180天3单计时器到 2026-12-19"
+        },
+        {
+          "name": "Skimlinks",
+          "status": "pending",
+          "note": "申请 2026-06-22，1-3工作日审核"
+        },
+        {
+          "name": "Awin",
+          "status": "pending",
+          "note": "申请 2026-06-22，£5押金已付"
+        },
+        {
+          "name": "CJ Affiliate",
+          "status": "pending",
+          "note": "通过后接 Hartford/QuickBooks/TurboTax/LegalZoom"
+        },
+        {
+          "name": "Impact.com",
+          "status": "todo",
+          "note": "Marketplace 批量申请 Embroker/CoverWallet 等"
+        },
+        {
+          "name": "Payoneer",
+          "status": "in_progress",
+          "note": "拿虚拟美国银行账户给 Amazon Direct Deposit"
+        }
+      ],
+      "adsense_review_status": "pending"
     },
     {
       "id": "crmcomparelab",
@@ -288,9 +341,18 @@
         "添加真实 CRM 联盟链接"
       ],
       "affiliates": [
-        { "name": "Impact.com", "status": "todo", "note": "申请 HubSpot/Pipedrive/Monday/Salesforce CRM" },
-        { "name": "PartnerStack", "status": "todo", "note": "B2B SaaS 联盟，CRM 商家全" }
-      ]
+        {
+          "name": "Impact.com",
+          "status": "todo",
+          "note": "申请 HubSpot/Pipedrive/Monday/Salesforce CRM"
+        },
+        {
+          "name": "PartnerStack",
+          "status": "todo",
+          "note": "B2B SaaS 联盟，CRM 商家全"
+        }
+      ],
+      "adsense_review_status": "pending"
     }
   ],
   "global_config": {

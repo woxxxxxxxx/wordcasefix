@@ -641,11 +641,11 @@ async function loadProjects() {
     const totalPages = _projects.reduce((s,p) => s + (p.search_console_pages||0), 0);
     const totalTools = _projects.reduce((s,p) => s + (p.tool_count||0), 0);
     const approved   = _projects.filter(p => p.adsense === 'approved').length;
-    const pending    = _projects.filter(p => p.adsense === 'pending').length;
+    const pending    = _projects.filter(p => p.adsense === 'pending' || p.adsense_review_status === 'pending').length;
     document.getElementById('s-pages').textContent = totalPages || '-';
     document.getElementById('s-tools').textContent = totalTools || '-';
     document.getElementById('s-uv').textContent    = _gaCache ? Object.values(_gaCache).reduce((s,g)=>s+(g?.daily?.users||0),0) : '—';
-    document.getElementById('s-adsense').textContent = approved > 0 ? `${approved}通过` : `${pending}审核中`;
+    document.getElementById('s-adsense').textContent = approved > 0 ? `${approved}通过 / ${pending}审核中` : `${pending}审核中`;
 
   } catch (e) {
     document.getElementById('projects-grid').innerHTML = `<div class="empty" style="color:var(--red)">加载失败: ${e.message}</div>`;
@@ -712,8 +712,8 @@ function renderProjects() {
 
       <div class="pc-badges">
         <span class="badge badge-purple">${p.tool_count} 工具</span>
-        ${p.adsense==='pending'  ? '<span class="badge badge-yellow">AdSense 审核中</span>' : ''}
-        ${p.adsense==='approved' ? '<span class="badge badge-green">AdSense ✓</span>'       : ''}
+        ${(p.adsense==='pending' || p.adsense_review_status==='pending')  ? '<span class="badge badge-yellow">AdSense 审核中</span>' : ''}
+        ${(p.adsense==='approved' || p.adsense_review_status==='approved') ? '<span class="badge badge-green">AdSense ✓</span>'       : ''}
         ${p.adsense==='skip'     ? '<span class="badge badge-gray">跳过AdSense</span>'       : ''}
         ${p.monetization?.includes('payhip') ? '<span class="badge badge-blue">Payhip</span>' : ''}
         <span class="badge badge-gray" title="AdSense预估收入">💰 ${adsenseIncome}</span>
