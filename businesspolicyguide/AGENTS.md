@@ -160,6 +160,8 @@
 - Git: ab80134 已push
 
 ## 关键修复历史
+- 2026-06-24:换皮治理 — billingfixpro(20%→0%,107 文件)+ payrollfixpro(27%→0%,27 文件)逐工具差异化 JS 业务逻辑(estimate/invoice/payroll/tax 各按真实领域规则),HTML 表单/样式未动。配套修复:payrollfixpro 全站 114 页缺失 AdSense 脚本已批量注入 `ca-pub-1638874323475457`(包含 google-adsense-account meta 验证),GitHub Pages 部署中。Commits `billingfixpro/payrollfixpro` master + `payrollfixpro@189bbee`。
+- 2026-06-24:PM Worker 看板修复 — AdSense 计数从 6→11(原 `adsense==='pending'` 只算字符串,漏了 5 个有 `ca-pub-xxx` 的实际审核中站点);新增 `adsense_review_status` 字段;recovery-throttle 加 7 天自动剪枝防止历史误报永久残留;dashboard 新增 📣 联盟变现板块(5 状态色标:已激活/审核中/进行中/被拒/待申请),BPG/crmcomparelab/freelancerguidehub/toolrankhq 4 站联盟矩阵入库。Commit `c3968f4`。
 - 2026-06-24：全局 `C:\Users\Administrator\CLAUDE.md` 新增「AGENTS.md 自动迭代规则」(9 类节点强制写入) + 「Buffer 队列机制」(`.agents-buffer.md` 累积小改动,关键节点直接 flush)。Commit `c7aaacf` / `def1f61`。
 - 2026-06-24：接入 Pinterest/Buffer 自动推送管道,12 站全覆盖 (新增 wordcasefix/vestcalc/toolrankhq/BPG/crmcomparelab)。pm-worker `generate-pins.js` + `buffer-refill.js` 每日 09:00 cron 自动从各站抓 sitemap 截图，BPG 首批生成 10 张 Pin 图（business-insurance/guides/industries 等正文页），通过 `deploy-ftp.js` 上传到 `/pinterest/`。
 - 2026-06-22：修复 Claude 更新后产生的联盟 CTA 乱码（`鈥?`、`鈫?/a>`、坏勾号）。`build-site.js` 现在会自动修复乱码、把未获批保险联盟 CTA 保持为站内安全链接；`audit.js` 会拦截乱码、坏锚点和泄露的 `PENDING_*` URL；`inject-affiliates.js` 在真实联盟链接未填入前只报警不改页面。已部署 42 个文件，线上确认 CTA 干净，Amazon 与 Skimlinks 仍正常。
