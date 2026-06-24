@@ -14,7 +14,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 // ── 配置 ──────────────────────────────────────────────────────────────────────
 const BUFFER_TOKEN  = 'aPPMezKy_6SKLs8F-9iUzZo4vM959_4K8YKqHCe9iQU';
 const ORG_ID        = '6a2026ccd819e8c99b17eb9e';
-const CHANNEL_ID    = '6a3806215ab6d2f10657ce52';
+const CHANNEL_ID    = '6a3aba225ab6d2f1066341a5';
 const BOARD_SVC_ID  = '1097119227915211401';
 const GQL_URL       = 'https://api.buffer.com/graphql';
 const PROXY_URL     = 'http://127.0.0.1:7897';
