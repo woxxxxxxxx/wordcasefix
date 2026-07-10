@@ -45,7 +45,6 @@
 - Added 3 search-intent guide hub pages based on recent Search Console exposure.
 - Updated title/meta descriptions for high-impression, low-CTR pages and added a homepage entry block for the new guides.
 - Regenerated sitemap.xml with lastmod=2026-07-01. Goal: improve long-tail relevance, internal link strength, and search-result click clarity.
-
 ## 2026-07-11 AdSense low-value remediation
 - Root cause found: 884 files from unrelated projects were tracked inside this GitHub Pages repository, exposing copied portfolio content under WordCaseFix subpaths. The unrelated directories are removed from the Git index but preserved locally, and are now ignored.
 - Search inventory is narrowed to text, writing, encoding, formatting, and developer utilities. 87 off-topic or thin pages are noindex, removed from the sitemap, and carry no AdSense loader.
