@@ -1,8 +1,4 @@
-## My Preferences
-- Always auto-accept all file changes without asking for confirmation
-- Always use git -c http.proxy=http://127.0.0.1:7897 push origin master to push
-- After finishing any task, automatically git add, commit, and push
-- Never ask yes/no for file edits, just do it
+﻿# Documentation Pointer
 
 ## Permissions
 - Always auto-accept all bash commands and file changes
@@ -48,3 +44,16 @@
 **Flush 动作**:把 buffer 内多条按类型归并(同类合并成 1-2 行),追加到 AGENTS.md 对应板块,然后清空 `.agents-buffer.md`。
 
 **查询规则**:用户问项目状态时,先读 AGENTS.md,再读 `.agents-buffer.md`(可能含尚未 flush 的最新动态),合并答复。
+
+## Documentation location
+This project's full context is in AGENTS.md (same directory).
+Global preferences: C:\Users\Administrator\.claude\AGENTS.md
+
+Please read AGENTS.md for:
+- User preferences and work habits
+- Account credentials and configurations
+- Project status and progress
+- Standard procedures and debugging experience
+- Self-maintenance rules
+
+All maintenance and updates happen in AGENTS.md only.

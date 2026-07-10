@@ -1,4 +1,0 @@
-{
-  "timestamp": "2026-06-22T01:16:56.615Z",
-  "output": "## QA报告完成\n\n**payrollfixpro 质量检查结果：7/11 通过**\n\n### ✅ 通过项目 (7项)\n- 首页 HTTP 状态码 200\n- 页面标题正常\n- meta description 存在\n- canonical 标签存在\n- /sitemap.xml 可访问\n- /robots.txt 存在\n- /ads.txt 存在\n\n### ❌ 需要修复 (3项)\n1. **广告占位代码缺失** - 需要添加 AdSense 代码或占位符\n2. **tools.json 不可访问** - 工具动态加载依赖此文件\n3. **工具数量无法验证** - 因 tools.json 缺失导致\n\n### ⚠️ 建议关注 (1项)\n- 404页面响应需手动验证\n\n报告已保存至：`logs/qa-payrollfixpro-2026-06-22.json`  \n已提交并推送到远程仓库。\n"
-}

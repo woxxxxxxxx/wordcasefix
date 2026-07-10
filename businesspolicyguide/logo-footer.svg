@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 44" role="img" aria-label="BusinessPolicyGuide">
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 34 37 8l25 26" stroke="#60a5fa" stroke-width="6"/>
-    <path d="M22 25h29" stroke="#fbbf24" stroke-width="5"/>
-    <path d="M32 34h36" stroke="#5eead4" stroke-width="5"/>
-    <path d="M43 20 54 31 73 10" stroke="#fbbf24" stroke-width="5"/>
-  </g>
-  <text x="88" y="29" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" fill="#ffffff">BusinessPolicy<tspan fill="#93c5fd">Guide</tspan></text>
-</svg>
