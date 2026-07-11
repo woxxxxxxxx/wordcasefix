@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="robots" content="noindex,follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invoice Generator - Free Online Tool | WordCaseFix</title>
@@ -55,21 +56,25 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Invoice Generator","item":"https://wordcasefix.com/invoice-generator.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/invoice-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Invoice Generator</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>Invoice Generator</h1><p>Create and print professional invoices instantly.</p></header>
 <div class="card" id="invoiceCard">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div class="input-group"><label>Client Name</label><input type="text" id="clientName" value="John Doe"></div>
-<div class="input-group"><label>Company Name</label><input type="text" id="companyName" value="Acme Inc."></div>
-<div class="input-group"><label>Invoice #</label><input type="text" id="invoiceNum" value="INV-001"></div>
-<div class="input-group"><label>Tax Rate (%)</label><input type="number" id="taxRate" value="10" min="0" max="100" step="0.5"></div>
+<div class="input-group"><label>Client Name</label><input type="text" id="clientName" value="John Doe" aria-label="ClientName"></div>
+<div class="input-group"><label>Company Name</label><input type="text" id="companyName" value="Acme Inc." aria-label="CompanyName"></div>
+<div class="input-group"><label>Invoice #</label><input type="text" id="invoiceNum" value="INV-001" aria-label="InvoiceNum"></div>
+<div class="input-group"><label>Tax Rate (%)</label><input type="number" id="taxRate" value="10" min="0" max="100" step="0.5" aria-label="TaxRate"></div>
 </div>
 <div style="margin-top:18px">
 <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 40px;gap:8px;font-size:12px;font-weight:700;color:#5b5bd6;text-transform:uppercase;letter-spacing:.3px;padding:0 4px 6px"><span>Description</span><span style="text-align:right">Qty</span><span style="text-align:right">Unit Price</span><span style="text-align:right">Total</span><span></span></div>
@@ -129,7 +134,7 @@
 <a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/qr-code-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Invoice Generator &mdash; Free online invoice generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Invoice Generator &mdash; Free online invoice generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>
 (function(){
@@ -139,7 +144,7 @@ ic=document.getElementById('itemsContainer'),ab=document.getElementById('addItem
 sv=document.getElementById('subtotalVal'),tv=document.getElementById('taxVal'),
 tt=document.getElementById('totalVal'),trd=document.getElementById('taxRateDisplay'),
 pr=document.getElementById('printBtn');
-function addItem(desc,qty,price){var d=document.createElement('div');d.className='entry-row';d.innerHTML='<div class="input-row inv-item-row"><input class="inv-desc" value="'+desc+'" placeholder="Description"><input type="number" class="inv-qty" value="'+qty+'" min="0" step="1"><input type="number" class="inv-price" value="'+price+'" min="0" step="0.01"><span class="inv-line-total">$'+(parseFloat(qty||0)*parseFloat(price||0)).toFixed(2)+'</span><button class="btn-danger" style="padding:4px 8px;font-size:14px">X</button></div>';d.querySelector('.btn-danger').addEventListener('click',function(){d.remove();calc();});d.querySelectorAll('.inv-qty,.inv-price').forEach(function(el){el.addEventListener('input',function(){var q=parseFloat(d.querySelector('.inv-qty').value)||0,p=parseFloat(d.querySelector('.inv-price').value)||0;d.querySelector('.inv-line-total').textContent='$'+(q*p).toFixed(2);calc();});});ic.appendChild(d);calc();}
+function addItem(desc,qty,price){var d=document.createElement('div');d.className='entry-row';d.innerHTML='<div class="input-row inv-item-row"><input class="inv-desc" value="'+desc+'" placeholder="Description" aria-label="Description"><input type="number" class="inv-qty" value="'+qty+'" min="0" step="1" aria-label="Input Input"><input type="number" class="inv-price" value="'+price+'" min="0" step="0.01" aria-label="Input Input"><span class="inv-line-total">$'+(parseFloat(qty||0)*parseFloat(price||0)).toFixed(2)+'</span><button class="btn-danger" style="padding:4px 8px;font-size:14px">X</button></div>';d.querySelector('.btn-danger').addEventListener('click',function(){d.remove();calc();});d.querySelectorAll('.inv-qty,.inv-price').forEach(function(el){el.addEventListener('input',function(){var q=parseFloat(d.querySelector('.inv-qty').value)||0,p=parseFloat(d.querySelector('.inv-price').value)||0;d.querySelector('.inv-line-total').textContent='$'+(q*p).toFixed(2);calc();});});ic.appendChild(d);calc();}
 function calc(){var rows=ic.querySelectorAll('.entry-row');var sub=0;rows.forEach(function(r){var q=parseFloat(r.querySelector('.inv-qty').value)||0,p=parseFloat(r.querySelector('.inv-price').value)||0;sub+=q*p;});var rate=parseFloat(tx.value)||0;var tax=sub*rate/100;var total=sub+tax;sv.textContent='$'+sub.toFixed(2);tv.textContent='$'+tax.toFixed(2);tt.textContent='$'+total.toFixed(2);trd.textContent=rate;}
 ab.addEventListener('click',function(){addItem('Item '+(ic.children.length+1),1,0);});
 pr.addEventListener('click',function(){window.print();});

@@ -96,13 +96,17 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Text Diff","item":"https://wordcasefix.com/text-diff.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/text-diff.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Text Diff</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>Text Diff Checker</h1><p>Compare two texts and see the differences highlighted.</p></header>
 <div class="card">
@@ -113,8 +117,8 @@
 <div class="btn-row">
 <button class="btn-primary" id="diffBtn">Compare</button>
 <div class="option-group">
-<label><input type="checkbox" id="chkCase"> Case sensitive</label>
-<label><input type="checkbox" id="chkTrim"> Trim lines</label>
+<label><input type="checkbox" id="chkCase" aria-label="ChkCase"> Case sensitive</label>
+<label><input type="checkbox" id="chkTrim" aria-label="ChkTrim"> Trim lines</label>
 </div>
 </div>
 <div class="input-group"><label>Diff Output</label><div class="diff-output" id="diffOutput"><div class="empty-state">Enter two texts and click <strong>Compare</strong>.</div></div></div>
@@ -162,7 +166,7 @@
 <a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/character-counter.html"><div class="rc-name">Character Counter</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Text Diff Checker &mdash; Free online diff checker tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Text Diff Checker &mdash; Free online diff checker tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>
 (function(){

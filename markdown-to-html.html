@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Markdown to HTML Converter | WordCaseFix</title>
@@ -119,57 +120,8 @@ This is **bold** and *italic* text.
 </div>
 <div class="input-group"><label for="htmlOut">HTML Output</label><textarea id="htmlOut" rows="8" readonly placeholder="HTML will appear here..."></textarea></div>
 <script>(function(){
-function md2html(t){
-  t=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  var lines=t.split('
-'),out=[],inUl=false,inOl=false,inCode=false,codeBuf=[];
-  for(var i=0;i<lines.length;i++){
-    var l=lines[i];
-    if(l.startsWith('```')){
-      if(!inCode){inCode=true;codeBuf=[];}
-      else{out.push('<pre><code>'+codeBuf.join('
-')+'</code></pre>');inCode=false;codeBuf=[];}
-      continue;
-    }
-    if(inCode){codeBuf.push(l);continue;}
-    if(l.startsWith('### ')){if(inUl){out.push('</ul>');inUl=false;}if(inOl){out.push('</ol>');inOl=false;}out.push('<h3>'+inline(l.slice(4))+'</h3>');continue;}
-    if(l.startsWith('## ')){if(inUl){out.push('</ul>');inUl=false;}if(inOl){out.push('</ol>');inOl=false;}out.push('<h2>'+inline(l.slice(3))+'</h2>');continue;}
-    if(l.startsWith('# ')){if(inUl){out.push('</ul>');inUl=false;}if(inOl){out.push('</ol>');inOl=false;}out.push('');continue;}
-    if(l.startsWith('> ')){if(inUl){out.push('</ul>');inUl=false;}if(inOl){out.push('</ol>');inOl=false;}out.push('<blockquote>'+inline(l.slice(2))+'</blockquote>');continue;}
-    if(l.startsWith('---')||l.startsWith('***')){if(inUl){out.push('</ul>');inUl=false;}if(inOl){out.push('</ol>');inOl=false;}out.push('<hr>');continue;}
-    var ulm=l.match(/^[-*] (.+)/);
-    if(ulm){if(inOl){out.push('</ol>');inOl=false;}if(!inUl){out.push('<ul>');inUl=true;}out.push('<li>'+inline(ulm[1])+'</li>');continue;}
-    var olm=l.match(/^(\d+)\. (.+)/);
-    if(olm){if(inUl){out.push('</ul>');inUl=false;}if(!inOl){out.push('<ol>');inOl=true;}out.push('<li>'+inline(olm[2])+'</li>');continue;}
-    if(inUl){out.push('</ul>');inUl=false;}if(inOl){out.push('</ol>');inOl=false;}
-    if(l.trim()===''){out.push('');continue;}
-    out.push('<p>'+inline(l)+'</p>');
-  }
-  if(inUl)out.push('</ul>');if(inOl)out.push('</ol>');
-  return out.join('
-');
-}
-function inline(t){
-  t=t.replace(/`([^`]+)`/g,'<code>$1</code>');
-  t=t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
-  t=t.replace(/__([^_]+)__/g,'<strong>$1</strong>');
-  t=t.replace(/\*([^*]+)\*/g,'<em>$1</em>');
-  t=t.replace(/_([^_]+)_/g,'<em>$1</em>');
-  t=t.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
-  return t;
-}
-var inp=document.getElementById('mdIn'),out=document.getElementById('htmlOut'),prev=document.getElementById('mdPrev');
-function doConvert(){var h=md2html(inp.value);out.value=h;prev.innerHTML=md2html(inp.value.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>'));}
-inp.addEventListener('input',doConvert);
-document.getElementById('mdConv').onclick=doConvert;
-document.getElementById('mdCopy').onclick=function(){
-  if(!out.value)return;
-  navigator.clipboard.writeText(out.value);
-  var b=document.getElementById('mdCopy');b.textContent='Copied!';b.classList.add('copied');
-  setTimeout(function(){b.textContent='Copy HTML';b.classList.remove('copied');},1500);
-};
-document.getElementById('mdClr').onclick=function(){inp.value='';out.value='';prev.innerHTML='';};
-})();</script>
+function inline(text){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');}function md2html(text){var out=[],list=false;String(text).split(/\r?\n/).forEach(function(line){if(/^[-*] /.test(line)){if(!list){out.push('<ul>');list=true;}out.push('<li>'+inline(line.slice(2))+'</li>');return;}if(list){out.push('</ul>');list=false;}if(/^### /.test(line))out.push('<h3>'+inline(line.slice(4))+'</h3>');else if(/^## /.test(line))out.push('<h2>'+inline(line.slice(3))+'</h2>');else if(/^# /.test(line))out.push('<h1>'+inline(line.slice(2))+'</h1>');else if(/^> /.test(line))out.push('<blockquote>'+inline(line.slice(2))+'</blockquote>');else if(/^---+$/.test(line))out.push('<hr>');else if(line.trim())out.push('<p>'+inline(line)+'</p>');});if(list)out.push('</ul>');return out.join('\n');}
+var inp=document.getElementById('mdIn'),out=document.getElementById('htmlOut'),prev=document.getElementById('mdPrev');function convert(){var html=md2html(inp.value);out.value=html;prev.innerHTML=html;}inp.addEventListener('input',convert);document.getElementById('mdConv').onclick=convert;document.getElementById('mdCopy').onclick=function(){if(out.value)navigator.clipboard.writeText(out.value);};document.getElementById('mdClr').onclick=function(){inp.value='';out.value='';prev.innerHTML='';};})();</script>
 </div>
 <section class="tool-content-modules">
   <div class="tool-info-card">
@@ -213,7 +165,7 @@ document.getElementById('mdClr').onclick=function(){inp.value='';out.value='';pr
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Markdown to HTML Converter &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Markdown to HTML Converter &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
 

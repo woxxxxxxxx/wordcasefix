@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="robots" content="noindex,follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Typing Speed Test - Free Online Typing Test Tool | WordCaseFix</title>
@@ -36,13 +37,17 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Typing Test","item":"https://wordcasefix.com/typing-test.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/typing-test.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Typing Test</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>Typing Speed Test</h1><p>Measure your typing speed and accuracy with a real-time WPM test.</p></header>
 <div class="card">
@@ -53,7 +58,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="stat-box"><div class="stat-value" id="timerDisplay">0s</div><div class="stat-label">Time</div></div>
 </div>
 <div class="passage-box" id="passageBox"></div>
-<textarea id="userInput" placeholder="Start typing here..." rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" disabled></textarea>
+<textarea id="userInput" placeholder="Start typing here..." rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" disabled aria-label="Start Typing Here..."></textarea>
 <div class="btn-row">
 <button class="btn-primary" id="startBtn">Start Test</button>
 <button class="btn-secondary" id="resetBtn">Reset</button>
@@ -102,7 +107,7 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/character-counter.html"><div class="rc-name">Character Counter</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Typing Speed Test &mdash; Free online typing test tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Typing Speed Test &mdash; Free online typing test tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <script>
 (function(){ const passages=['The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump. The five boxing wizards jump quickly. Sphinx of black quartz, judge my vow.','Success is not final, failure is not fatal. It is the courage to continue that counts. Every moment is a fresh beginning. Believe you can and you are halfway there. The only way to do great work is to love what you do.','Technology is best when it brings people together. The advance of technology is based on making it fit in so that you do not really even notice it. It has become appallingly obvious that our technology has exceeded our humanity.','In the middle of difficulty lies opportunity. The secret of getting ahead is getting started. Do not watch the clock. Do what it does. Keep going. The future belongs to those who believe in the beauty of their dreams.','Practice makes perfect. After a long day of typing practice, your fingers will grow stronger and more accurate. The key to improving your typing speed is consistent daily practice with proper finger placement on the keyboard.' ]; const passageBox=document.getElementById('passageBox'); const userInput=document.getElementById('userInput'); const startBtn=document.getElementById('startBtn'); const resetBtn=document.getElementById('resetBtn'); const wpmDisplay=document.getElementById('wpmDisplay'); const cpmDisplay=document.getElementById('cpmDisplay'); const accDisplay=document.getElementById('accDisplay'); const timerDisplay=document.getElementById('timerDisplay'); const hintText=document.getElementById('hintText'); let passage='',startTime=null,timerInterval=null,started=false,finished=false; let correctChars=0,totalTyped=0; function shuffle(arr){ for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]} return arr } function loadPassage(){ passage=shuffle(passages.slice())[0]; let h=''; for(const ch of passage){ h+='<span class="char pending" data-char="'+ch.replace(/"/g,'&quot;')+'">'+ch+'</span>' } passageBox.innerHTML=h; if(passageBox.firstChild)passageBox.firstChild.className='char current' } function resetTest(){ clearInterval(timerInterval); started=false;finished=false;startTime=null; correctChars=0;totalTyped=0; userInput.value='';userInput.disabled=true; wpmDisplay.textContent='0';cpmDisplay.textContent='0'; accDisplay.textContent='0%';timerDisplay.textContent='0s'; hintText.textContent='Press Start to begin'; loadPassage() } function calcStats(){ const elapsed=(Date.now()-startTime)/1000/60; const wpm=elapsed>0?Math.round((correctChars/5)/elapsed):0; const cpm=elapsed>0?Math.round(totalTyped/elapsed):0; const acc=totalTyped>0?Math.round(correctChars/totalTyped*100):0; wpmDisplay.textContent=wpm; cpmDisplay.textContent=cpm; accDisplay.textContent=acc+'%'; timerDisplay.textContent=Math.round(elapsed*60)+'s'; return {wpm,cpm,acc,elapsed} } function finishTest(){ finished=true;userInput.disabled=true;clearInterval(timerInterval); const stats=calcStats(); let rating=''; if(stats.wpm>=80)rating=' Excellent'; else if(stats.wpm>=60)rating=' Great'; else if(stats.wpm>=40)rating=' Good'; else if(stats.wpm>=20)rating=' Keep Practicing'; else rating=' Start Again'; hintText.innerHTML='<b>Done!</b>'+rating+' -- ' + stats.wpm + ' WPM, ' + stats.acc + '% accuracy' } function startTest(){ resetTest(); startTime=Date.now(); started=true;finished=false; userInput.disabled=false;userInput.focus(); hintText.textContent='Type the passage above'; timerInterval=setInterval(function(){if(started&&!finished)calcStats()},200); } userInput.addEventListener('input',function(){ if(!started||finished)return; const val=userInput.value; const chars=passageBox.querySelectorAll('.char'); correctChars=0;totalTyped=0; for(let i=0;i<chars.length;i++){ chars[i].className='char'; if(i<val.length){ totalTyped++; if(val[i]===passage[i]){chars[i].className='char correct';correctChars++} else{chars[i].className='char incorrect'} }else{ chars[i].className='char pending' } } if(val.length<passage.length){ chars[val.length].className='char current' } calcStats(); if(val.length>=passage.length)finishTest() }); startBtn.addEventListener('click',startTest); resetBtn.addEventListener('click',resetTest); loadPassage();
 })();

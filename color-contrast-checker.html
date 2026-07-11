@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="robots" content="noindex,follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Color Contrast Checker - WCAG Accessibility Contrast Ratio | WordCaseFix</title>
 <meta name="description" content="Check WCAG color contrast ratio between foreground and background colors. See AA and AAA compliance status for normal and large text. Free contrast checker.">
@@ -51,13 +52,18 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Color Contrast Checker","item":"https://wordcasefix.com/color-contrast-checker.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/color-contrast-checker.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Color Contrast Checker</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>Color Contrast Checker</h1><p>Check WCAG AA and AAA color contrast ratios for accessibility compliance.</p>
 </header>
@@ -66,15 +72,15 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
     <div class="color-field">
       <label>Foreground Color</label>
       <div class="color-input-wrap">
-        <input type="color" class="color-swatch" id="fgColor" value="#1a1a2e">
-        <input type="text" class="color-text" id="fgHex" value="#1a1a2e" placeholder="#000000">
+        <input type="color" class="color-swatch" id="fgColor" value="#1a1a2e" aria-label="FgColor">
+        <input type="text" class="color-text" id="fgHex" value="#1a1a2e" placeholder="#000000" aria-label="#000000">
       </div>
     </div>
     <div class="color-field">
       <label>Background Color</label>
       <div class="color-input-wrap">
-        <input type="color" class="color-swatch" id="bgColor" value="#ffffff">
-        <input type="text" class="color-text" id="bgHex" value="#ffffff" placeholder="#ffffff">
+        <input type="color" class="color-swatch" id="bgColor" value="#ffffff" aria-label="BgColor">
+        <input type="text" class="color-text" id="bgHex" value="#ffffff" placeholder="#ffffff" aria-label="#Ffffff">
       </div>
     </div>
   </div>
@@ -133,7 +139,7 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
 <a class="related-card" href="/color-picker.html"><div class="rc-name">Color Picker</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/gradient-generator.html"><div class="rc-name">Gradient Generator</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Color Contrast Checker &mdash; Free WCAG accessibility tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Color Contrast Checker &mdash; Free WCAG accessibility tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>
 (function(){

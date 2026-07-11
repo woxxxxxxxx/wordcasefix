@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="robots" content="noindex,follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unit Converter - Free Online Tool | WordCaseFix</title>
@@ -56,12 +57,16 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Unit Converter","item":"https://wordcasefix.com/unit-converter.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/unit-converter.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Unit Converter</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
-<div class="page-wrap"> <main class="main-area"> <header>
+<div class="page-wrap"> <main class="main-area" id="main-content"> <header>
 <h1>Unit Converter</h1> <p>Convert between different units of measurement.</p> </header><div class="card" id="app"> <div class="tab-bar" id="tabBar"></div> <div id="sections"></div> </div> <section class="tool-content-modules">
   <div class="tool-info-card">
     <h2 class="tool-info-title">How to Use This Tool</h2>
@@ -103,7 +108,7 @@
 <a class="related-card" href="/celsius-to-fahrenheit.html"><div class="rc-name">Celsius to Fahrenheit</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/currency-converter.html"><div class="rc-name">Currency Converter</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Unit Converter &mdash; Free online unit conversion tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Unit Converter &mdash; Free online unit conversion tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>
 (function(){
@@ -115,7 +120,7 @@ var current='length';
 function build(){var html='<div style="display:flex;gap:4px;margin-bottom:16px">';Object.keys(cats).forEach(function(k){html+='<button class="cat-btn" data-cat="'+k+'" style="flex:1;padding:8px;font-size:13px;font-weight:600;border-radius:6px;border:1.5px solid #d0d5dd;cursor:pointer;background:'+(k===current?'#5b5bd6;color:#fff':'#f0f0f5;color:#555')+'">'+cats[k].label+'</button>';});html+='</div>';html+='<div id="convRows"></div>';app.innerHTML=html;
 document.querySelectorAll('.cat-btn').forEach(function(b){b.addEventListener('click',function(){current=this.getAttribute('data-cat');build();buildRows();});});
 buildRows();}
-function buildRows(){var cat=cats[current];var units=cat.units;var container=document.getElementById('convRows');var html='';units.forEach(function(u,i){var val=i===0?'1':'';html+='<div style="margin-bottom:8px"><label style="display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;margin-bottom:2px">'+u+'</label><input type="text" class="conv-input" data-unit="'+u+'" value="'+val+'" style="width:100%;padding:10px 12px;font-size:16px;font-weight:600;border:1.5px solid #d0d5dd;border-radius:8px;outline:none;font-family:monospace"></div>';});container.innerHTML=html;
+function buildRows(){var cat=cats[current];var units=cat.units;var container=document.getElementById('convRows');var html='';units.forEach(function(u,i){var val=i===0?'1':'';html+='<div style="margin-bottom:8px"><label style="display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;margin-bottom:2px">'+u+'</label><input type="text" class="conv-input" data-unit="'+u+'" value="'+val+'" style="width:100%;padding:10px 12px;font-size:16px;font-weight:600;border:1.5px solid #d0d5dd;border-radius:8px;outline:none;font-family:monospace" aria-label="Input Input"></div>';});container.innerHTML=html;
 var inputs=container.querySelectorAll('.conv-input');
 inputs.forEach(function(inp){inp.addEventListener('input',function(){var val=parseFloat(this.value);if(isNaN(val))return;var unit=this.getAttribute('data-unit');var other=inputs;if(cat.custom){other.forEach(function(o){if(o===inp)return;var u=o.getAttribute('data-unit');var result=convertTemp(unit,u,val);o.value=result;});return;}
 var baseVal=val*(cat.base[unit]||1);other.forEach(function(o){if(o===inp)return;var u=o.getAttribute('data-unit');var result=baseVal/(cat.base[u]||1);o.value=parseFloat(result.toFixed(6)).toString();});});});}

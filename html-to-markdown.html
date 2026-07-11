@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HTML to Markdown Converter | WordCaseFix</title>
@@ -110,71 +111,8 @@ tr:hover td{background:#f9f9fd}
 </div>
 <div class="input-group"><label for="mdOut">Markdown Output</label><textarea id="mdOut" rows="10" readonly placeholder="Markdown will appear here..."></textarea></div>
 <script>(function(){
-function htmlToMd(html){
-  html=html.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi,'
-# $1
-');
-  html=html.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi,'
-## $1
-');
-  html=html.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi,'
-### $1
-');
-  html=html.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi,'
-#### $1
-');
-  html=html.replace(/<h5[^>]*>([\s\S]*?)<\/h5>/gi,'
-##### $1
-');
-  html=html.replace(/<h6[^>]*>([\s\S]*?)<\/h6>/gi,'
-###### $1
-');
-  html=html.replace(/<strong[^>]*>([\s\S]*?)<\/strong>/gi,'**$1**');
-  html=html.replace(/<b[^>]*>([\s\S]*?)<\/b>/gi,'**$1**');
-  html=html.replace(/<em[^>]*>([\s\S]*?)<\/em>/gi,'*$1*');
-  html=html.replace(/<i[^>]*>([\s\S]*?)<\/i>/gi,'*$1*');
-  html=html.replace(/<a[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,'[$2]($1)');
-  html=html.replace(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*\/?>/gi,'![$2]($1)');
-  html=html.replace(/<img[^>]*src="([^"]*)"[^>]*\/?>/gi,'![]($1)');
-  html=html.replace(/<code[^>]*>([\s\S]*?)<\/code>/gi,'`$1`');
-  html=html.replace(/<pre[^>]*>([\s\S]*?)<\/pre>/gi,'
-```
-$1
-```
-');
-  html=html.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi,function(m,c){return c.trim().split('
-').map(function(l){return'> '+l;}).join('
-');});
-  html=html.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi,'- $1
-');
-  html=html.replace(/<ul[^>]*>([\s\S]*?)<\/ul>/gi,'$1');
-  html=html.replace(/<ol[^>]*>([\s\S]*?)<\/ol>/gi,'$1');
-  html=html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi,'
-$1
-');
-  html=html.replace(/<br\s*\/?>/gi,'
-');
-  html=html.replace(/<hr\s*\/?>/gi,'
----
-');
-  html=html.replace(/<[^>]+>/g,'');
-  html=html.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&nbsp;/g,' ');
-  html=html.replace(/
-{3,}/g,'
-
-');
-  return html.trim();
-}
-var inp=document.getElementById('htmlIn'),out=document.getElementById('mdOut');
-document.getElementById('htmConv').onclick=function(){out.value=htmlToMd(inp.value);};
-document.getElementById('htmCopy').onclick=function(){
-  if(!out.value)return;
-  navigator.clipboard.writeText(out.value);
-  var b=document.getElementById('htmCopy');b.textContent='Copied!';b.classList.add('copied');
-  setTimeout(function(){b.textContent='Copy Markdown';b.classList.remove('copied');},1500);
-};
-document.getElementById('htmClr').onclick=function(){inp.value='';out.value='';};
-})();</script>
+function htmlToMd(html){var doc=new DOMParser().parseFromString(html,'text/html');function walk(node){if(node.nodeType===3)return node.textContent;if(node.nodeType!==1)return '';var tag=node.tagName.toLowerCase(),text=Array.from(node.childNodes).map(walk).join(''),tick=String.fromCharCode(96);if(/^h[1-6]$/.test(tag))return '\n'+ '#'.repeat(Number(tag[1]))+' '+text.trim()+'\n';if(tag==='strong'||tag==='b')return '**'+text+'**';if(tag==='em'||tag==='i')return '*'+text+'*';if(tag==='a')return '['+text+']('+(node.getAttribute('href')||'')+')';if(tag==='img')return '!['+(node.getAttribute('alt')||'')+']('+(node.getAttribute('src')||'')+')';if(tag==='code')return tick+text+tick;if(tag==='pre')return '\n'+tick.repeat(3)+'\n'+node.textContent+'\n'+tick.repeat(3)+'\n';if(tag==='li')return '- '+text.trim()+'\n';if(tag==='br')return '\n';if(tag==='hr')return '\n---\n';if(tag==='p'||tag==='blockquote')return '\n'+(tag==='blockquote'?'> ':'')+text.trim()+'\n';return text;}return walk(doc.body).replace(/\n{3,}/g,'\n\n').trim();}
+var inp=document.getElementById('htmlIn'),out=document.getElementById('mdOut');document.getElementById('htmConv').onclick=function(){out.value=htmlToMd(inp.value);};document.getElementById('htmCopy').onclick=function(){if(out.value)navigator.clipboard.writeText(out.value);};document.getElementById('htmClr').onclick=function(){inp.value='';out.value='';};})();</script>
 </div>
 <section class="tool-content-modules">
   <div class="tool-info-card">
@@ -218,7 +156,7 @@ document.getElementById('htmClr').onclick=function(){inp.value='';out.value='';}
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>HTML to Markdown Converter &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>HTML to Markdown Converter &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
 

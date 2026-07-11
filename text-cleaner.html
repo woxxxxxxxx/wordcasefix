@@ -19,6 +19,9 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Text Cleaner","item":"https://wordcasefix.com/text-cleaner.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/text-cleaner.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
@@ -30,15 +33,15 @@
 <h1>Text Cleaner</h1>
 <p class="subtitle">Remove extra spaces, line breaks, HTML tags, and clean up your text.</p>
 <div class="io-pair">
-<div class="io-box"><label>Input</label><textarea id="inputText" placeholder="Paste your text here..."></textarea></div>
-<div class="io-box"><label>Cleaned Output</label><textarea id="outputText" readonly placeholder="Cleaned text will appear here..."></textarea></div>
+<div class="io-box"><label>Input</label><textarea id="inputText" placeholder="Paste your text here..." aria-label="Paste Your Text Here..."></textarea></div>
+<div class="io-box"><label>Cleaned Output</label><textarea id="outputText" readonly placeholder="Cleaned text will appear here..." aria-label="Cleaned Text Will Appear Here..."></textarea></div>
 </div>
 <div class="options">
-<label><input type="checkbox" id="optTrim" checked> Trim whitespace</label>
-<label><input type="checkbox" id="optSpaces" checked> Remove extra spaces</label>
-<label><input type="checkbox" id="optBreaks"> Remove extra line breaks</label>
-<label><input type="checkbox" id="optAllBreaks"> Remove ALL line breaks</label>
-<label><input type="checkbox" id="optHtml"> Strip HTML tags</label>
+<label><input type="checkbox" id="optTrim" checked aria-label="OptTrim"> Trim whitespace</label>
+<label><input type="checkbox" id="optSpaces" checked aria-label="OptSpaces"> Remove extra spaces</label>
+<label><input type="checkbox" id="optBreaks" aria-label="OptBreaks"> Remove extra line breaks</label>
+<label><input type="checkbox" id="optAllBreaks" aria-label="OptAllBreaks"> Remove ALL line breaks</label>
+<label><input type="checkbox" id="optHtml" aria-label="OptHtml"> Strip HTML tags</label>
 </div>
 <div class="btn-group">
 <button class="btn-primary" id="cleanBtn">Clean Text</button>
@@ -115,7 +118,7 @@
     </div>
   </div>
 </section>
-<footer class="footer">Text Cleaner &mdash; Free online text cleaner tool</footer>
+<footer class="footer">Text Cleaner &mdash; Free online text cleaner tool<p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="back-to-top" title="Back to top">&#8593;</button>
 <script>(function(){var inp=document.getElementById('inputText'),out=document.getElementById('outputText');function clean(){var t=inp.value;if(document.getElementById('optHtml').checked)t=t.replace(/<[^>]*>/g,'');if(document.getElementById('optBreaks').checked)t=t.replace(/\n\s*\n\s*\n+/g,'\n\n');if(document.getElementById('optAllBreaks').checked)t=t.replace(/\n+/g,' ');if(document.getElementById('optSpaces').checked)t=t.replace(/[ \t]+/g,' ');if(document.getElementById('optTrim').checked)t=t.trim();out.value=t;}document.getElementById('cleanBtn').addEventListener('click',clean);document.getElementById('copyBtn').addEventListener('click',function(){if(!out.value)return;navigator.clipboard.writeText(out.value);this.textContent='Copied!';var btn=this;setTimeout(function(){btn.textContent='Copy Result';},1500);});var btt=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btt.style.display=window.scrollY>300?'flex':'none';});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
 </body>

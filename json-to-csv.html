@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
+<head>
+  <meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-ZRF2KKPS30');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSON to CSV Converter | WordCaseFix</title>
@@ -89,13 +90,17 @@ tr:hover td{background:#f9f9fd}
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Json To Csv","item":"https://wordcasefix.com/json-to-csv.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/json-to-csv.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Json To Csv</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>JSON to CSV Converter</h1>
 <p>Paste a JSON array of objects and convert it to CSV with headers automatically extracted.</p>
@@ -110,35 +115,8 @@ tr:hover td{background:#f9f9fd}
 <div class="err-box" id="jErr"></div>
 <div class="input-group"><label for="csvOut">CSV Output</label><textarea id="csvOut" rows="8" readonly placeholder="CSV will appear here..."></textarea></div>
 <script>(function(){
-function toCSV(arr){
-  var keys=[];
-  arr.forEach(function(obj){Object.keys(obj).forEach(function(k){if(keys.indexOf(k)<0)keys.push(k);});});
-  function esc(v){var s=String(v==null?'':v);if(s.includes(',')||s.includes('"')||s.includes('
-'))s='"'+s.replace(/"/g,'""')+'"';return s;}
-  var rows=[keys.map(esc).join(',')];
-  arr.forEach(function(obj){rows.push(keys.map(function(k){return esc(obj[k]!=null?obj[k]:'');}).join(','));});
-  return rows.join('
-');
-}
-var inp=document.getElementById('jIn'),out=document.getElementById('csvOut'),err=document.getElementById('jErr');
-document.getElementById('jConv').onclick=function(){
-  err.style.display='none';
-  var raw=inp.value.trim();if(!raw){out.value='';return;}
-  try{
-    var data=JSON.parse(raw);
-    if(!Array.isArray(data)){err.textContent='Input must be a JSON array (starts with [).';err.style.display='block';return;}
-    if(data.length===0){out.value='';return;}
-    out.value=toCSV(data);
-  }catch(e){err.textContent='Invalid JSON: '+e.message;err.style.display='block';}
-};
-document.getElementById('jCopy').onclick=function(){
-  var t=out.value;if(!t)return;
-  navigator.clipboard.writeText(t);
-  var b=document.getElementById('jCopy');b.textContent='Copied!';b.classList.add('copied');
-  setTimeout(function(){b.textContent='Copy CSV';b.classList.remove('copied');},1500);
-};
-document.getElementById('jClr').onclick=function(){inp.value='';out.value='';err.style.display='none';};
-})();</script>
+function csvEscape(value){var text=String(value==null?'':value);return /[",\n\r]/.test(text)?'"'+text.replace(/"/g,'""')+'"':text;}function convert(value){var rows=Array.isArray(value)?value:[value];var keys=[];rows.forEach(function(item){Object.keys(item||{}).forEach(function(key){if(!keys.includes(key))keys.push(key);});});return [keys.map(csvEscape).join(',')].concat(rows.map(function(item){return keys.map(function(key){return csvEscape(item&&item[key]);}).join(',');})).join('\n');}
+var inp=document.getElementById('jIn'),out=document.getElementById('csvOut'),err=document.getElementById('jErr');document.getElementById('jConv').onclick=function(){try{err.style.display='none';out.value=convert(JSON.parse(inp.value));}catch(e){err.textContent=e.message;err.style.display='block';}};document.getElementById('jCopy').onclick=function(){if(out.value)navigator.clipboard.writeText(out.value);};document.getElementById('jClr').onclick=function(){inp.value='';out.value='';};})();</script>
 </div>
 <section class="tool-content-modules">
   <div class="tool-info-card">
@@ -182,7 +160,7 @@ document.getElementById('jClr').onclick=function(){inp.value='';out.value='';err
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>JSON to CSV Converter &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>JSON to CSV Converter &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>
 

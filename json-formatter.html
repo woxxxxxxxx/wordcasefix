@@ -77,20 +77,24 @@ footer a:hover{text-decoration:underline}
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Json Formatter","item":"https://wordcasefix.com/json-formatter.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/json-formatter.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Json Formatter</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>JSON Formatter &amp; Validator</h1>
 <p>Paste your JSON to format, validate, and beautify it instantly.</p>
 </header>
 <div class="card">
 <div class="input-group"><label for="jIn">JSON Input</label><textarea id="jIn" rows="11" placeholder='Paste JSON here, e.g. {"name":"Alice","age":30}'></textarea></div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:14px;font-weight:600;color:#333;">Indent:</span><select id="jIndent" style="width:auto;padding:6px 12px;"><option value="2">2 spaces</option><option value="4" selected>4 spaces</option></select></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:14px;font-weight:600;color:#333;">Indent:</span><select id="jIndent" style="width:auto;padding:6px 12px;" aria-label="JIndent"><option value="2">2 spaces</option><option value="4" selected>4 spaces</option></select></div>
 <div class="btn-row">
 <button class="btn-primary" id="jFmt">Format</button>
 <button class="btn-secondary" id="jValidate">Validate</button>
@@ -158,7 +162,7 @@ i.addEventListener('input',function(){clr();var r=i.value.trim();if(!r){o.value=
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>JSON Formatter &mdash; Free online JSON beautifier and validator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>JSON Formatter &mdash; Free online JSON beautifier and validator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});</script>
 </body>

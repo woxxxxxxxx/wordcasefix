@@ -57,24 +57,28 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Regex Tester","item":"https://wordcasefix.com/regex-tester.html"}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
+<meta property="og:url" content="https://wordcasefix.com/regex-tester.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>.portfolio-skip-link{position:fixed;left:12px;top:12px;z-index:10000;padding:.65rem .9rem;background:#111827;color:#fff;border-radius:4px;transform:translateY(-160%)}.portfolio-skip-link:focus{transform:none}</style>
 </head>
 <body>
+<a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
 <nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Regex Tester</span></nav>
 <div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
 <div class="page-wrap">
-<main class="main-area">
+<main class="main-area" id="main-content">
 <header>
 <h1>Regex Tester</h1><p>Test regular expressions in real time. Match, replace, or split text with flexible flags.</p></header>
 <div class="card">
 <div class="field"><label for="pattern">Regular Expression</label><input id="pattern" value="\b[A-Z][a-z]+\b" placeholder="Enter regex pattern"></div>
 <div class="flags">
-<label><input type="checkbox" id="flagG" checked> g (global)</label>
-<label><input type="checkbox" id="flagI"> i (case insensitive)</label>
-<label><input type="checkbox" id="flagM"> m (multiline)</label>
-<label><input type="checkbox" id="flagS"> s (dotall)</label>
-<label><input type="checkbox" id="flagU"> u (unicode)</label>
-<label><input type="checkbox" id="flagY"> y (sticky)</label>
+<label><input type="checkbox" id="flagG" checked aria-label="FlagG"> g (global)</label>
+<label><input type="checkbox" id="flagI" aria-label="FlagI"> i (case insensitive)</label>
+<label><input type="checkbox" id="flagM" aria-label="FlagM"> m (multiline)</label>
+<label><input type="checkbox" id="flagS" aria-label="FlagS"> s (dotall)</label>
+<label><input type="checkbox" id="flagU" aria-label="FlagU"> u (unicode)</label>
+<label><input type="checkbox" id="flagY" aria-label="FlagY"> y (sticky)</label>
 </div>
 <div class="field"><label for="testString">Test String</label><textarea id="testString">Hello World! The quick brown fox jumps over the lazy dog.
 Contact me at john@example.com or support@test.com.
@@ -84,7 +88,7 @@ Call +1-555-1234 for more information.</textarea></div>
 <button data-mode="replace">Replace</button>
 <button data-mode="split">Split</button>
 </div>
-<div class="replace-row" id="replaceRow" style="display:none"><label>Replace With</label><input id="replaceStr" value="REPLACED" placeholder="Replacement text"></div>
+<div class="replace-row" id="replaceRow" style="display:none"><label>Replace With</label><input id="replaceStr" value="REPLACED" placeholder="Replacement text" aria-label="Replacement Text"></div>
 <div class="summary"><span>Matches: <strong id="matchCount">0</strong></span><span>Pattern: <strong id="patternDisplay">/\b[A-Z][a-z]+\b/g</strong></span></div>
 <div class="result-box" id="resultBox"><span class="match-info">Enter a regex and test string to see matches highlighted here.</span></div>
 <div class="error-box" id="errorBox"></div>
@@ -132,7 +136,7 @@ Call +1-555-1234 for more information.</textarea></div>
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
 <div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
-<footer>Regex Tester &mdash; Free online regular expression tester tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a></footer>
+<footer>Regex Tester &mdash; Free online regular expression tester tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>
 (function(){
