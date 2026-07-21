@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="robots" content="noindex, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
+<head><meta name="robots" content="index, follow"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRF2KKPS30"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRF2KKPS30');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tailwind CSS Cheatsheet: Utility Classes and Layout Reference | WordCaseFix</title>
-<meta name="description" content="Find common Tailwind CSS utility classes for layout, spacing, color, typography, flexbox, grid, and responsive design.">
+<title>Tailwind CSS Cheat Sheet: Search &amp; Copy Utility Classes</title>
+<meta name="description" content="Search and copy common Tailwind CSS utility classes for layout, flexbox, grid, spacing, sizing, typography, colors, borders, and effects.">
 <meta name="keywords" content="tailwind css cheatsheet, tailwind reference, tailwind classes, tailwind css guide">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f4f5f7;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
@@ -35,13 +35,16 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <meta property="og:image" content="https://wordcasefix.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:title" content="Tailwind CSS Cheatsheet - Quick Reference Guide | WordCaseFix">
-  <meta property="og:description" content="Complete Tailwind CSS cheatsheet with searchable class reference. Find classes for layout, flexbox, grid, spacing, typography, colors, and more. Free Tailwind reference.">
+  <meta property="og:title" content="Tailwind CSS Cheat Sheet: Search &amp; Copy Utility Classes">
+  <meta property="og:description" content="Search and copy common Tailwind CSS utility classes for layout, flexbox, grid, spacing, sizing, typography, colors, borders, and effects.">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Tailwind CSS Cheatsheet - Quick Reference Guide | WordCaseFix","url":"https://wordcasefix.com/tailwind-cheatsheet.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Complete Tailwind CSS cheatsheet with searchable class reference. Find classes for layout, flexbox, grid, spacing, typography, colors, and more. Free Tailwind reference."}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Tailwind CSS Cheat Sheet","url":"https://wordcasefix.com/tailwind-cheatsheet.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","dateModified":"2026-07-21","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Search and copy common Tailwind CSS utility classes for layout, flexbox, grid, spacing, sizing, typography, colors, borders, and effects."}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wordcasefix.com/"},{"@type":"ListItem","position":2,"name":"Tailwind Cheatsheet","item":"https://wordcasefix.com/tailwind-cheatsheet.html"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is included in this Tailwind CSS cheat sheet?","acceptedAnswer":{"@type":"Answer","text":"The reference covers commonly used utility classes for layout, flexbox, grid, spacing, typography, colors, borders, effects, and sizing."}},{"@type":"Question","name":"Does this reference include every Tailwind CSS class?","acceptedAnswer":{"@type":"Answer","text":"No. It is a focused quick reference for common utilities. Projects can also contain custom theme values, arbitrary values, variants, and plugin classes that are not listed here."}},{"@type":"Question","name":"How do I copy a Tailwind class?","acceptedAnswer":{"@type":"Answer","text":"Search or browse the categories, then select a class card. The class name is copied to your clipboard."}}]}
   </script>
   <link rel="stylesheet" href="/assets/css/tool-modules.css">
 </head>
@@ -52,10 +55,10 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
 <div class="page-wrap">
 <main class="main-area">
 <header>
-<h1>Tailwind CSS Cheatsheet</h1><p>Searchable Tailwind CSS class reference. Click any class to copy it.</p>
+<h1>Tailwind CSS Cheat Sheet</h1><p>Search common utility classes by name or CSS output, then click any result to copy the class.</p>
 </header>
 <div class="card">
-  <input class="search-box" id="searchBox" placeholder="Search classes (e.g. flex, text, bg, p-4)...">
+  <input class="search-box" id="searchBox" type="search" aria-label="Search Tailwind CSS utility classes" autocomplete="off" placeholder="Search classes (e.g. flex, text, bg, p-4)...">
   <div class="cat-tabs" id="catTabs"></div>
   <div id="content"></div>
 </div>
@@ -63,33 +66,33 @@ footer{text-align:center;padding:24px 16px 32px;font-size:13px;color:#999}footer
   <div class="tool-info-card">
     <h2 class="tool-info-title">How to Use This Tool</h2>
     <ol class="tool-steps">
-      <li>Open the Tailwind Cheatsheet and browse the entries listed in the main panel above.</li>
-      <li>Use the search box or filters to jump directly to the value, symbol, or shortcut you need.</li>
-      <li>Click any entry to copy it to your clipboard or to see a more detailed description.</li>
+      <li>Browse all utilities or choose a category such as Flexbox, Grid, Spacing, or Typography.</li>
+      <li>Search by class name or CSS output, such as <code>flex</code>, <code>padding</code>, or <code>1rem</code>.</li>
+      <li>Click a result to copy the Tailwind class name to your clipboard.</li>
     </ol>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Common Use Cases</h2>
     <ul class="tool-use-cases">
-      <li><strong>Quick lookups:</strong> Developers and writers consult the Tailwind Cheatsheet to jog memory on a specific code, symbol, or value without leaving the workflow.</li>
-      <li><strong>Teaching aids:</strong> Instructors share the page link with students learning the underlying notation or specification.</li>
-      <li><strong>Offline printout:</strong> Print the reference for a desk-side cheat sheet during interviews, certification prep, or fieldwork.</li>
+      <li><strong>Utility lookup:</strong> Find the class for a CSS property without searching through a long documentation page.</li>
+      <li><strong>Layout work:</strong> Compare flexbox, grid, sizing, and spacing utilities while building a component.</li>
+      <li><strong>Learning:</strong> See the approximate CSS output beside each class to reinforce how common utilities work.</li>
     </ul>
   </div>
   <div class="tool-info-card">
     <h2 class="tool-info-title">Frequently Asked Questions</h2>
     <div class="tool-faq">
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Where does the data in the Tailwind Cheatsheet come from?</div>
-        <div class="tool-faq-a">Entries are sourced from the official published specification (IANA, RFC, W3C, or vendor docs) and cross-checked against multiple references. Updates are applied when specs revise their assigned codes or descriptions.</div>
+        <div class="tool-faq-q">What is included in this Tailwind CSS cheat sheet?</div>
+        <div class="tool-faq-a">The reference covers commonly used utility classes for layout, flexbox, grid, spacing, typography, colors, borders, effects, and sizing.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I search by code or by name?</div>
-        <div class="tool-faq-a">Yes. Use the search box to filter by either the code value or its descriptive name. Filtering happens live as you type, narrowing the list to entries that match in either column.</div>
+        <div class="tool-faq-q">Does this reference include every Tailwind CSS class?</div>
+        <div class="tool-faq-a">No. It is a focused quick reference for common utilities. Projects can also contain custom theme values, arbitrary values, variants, and plugin classes that are not listed here.</div>
       </div>
       <div class="tool-faq-item">
-        <div class="tool-faq-q">Is there a printable or exportable version?</div>
-        <div class="tool-faq-a">Use your browser's print function to produce a paginated PDF or hard copy. Layout is optimized for letter and A4. For machine-readable export, copy the table content and paste into Excel or a CSV file.</div>
+        <div class="tool-faq-q">How do I copy a Tailwind class?</div>
+        <div class="tool-faq-a">Search or browse the categories, then select a class card. The class name is copied to your clipboard.</div>
       </div>
     </div>
   </div>
@@ -140,6 +143,7 @@ function render(search,cat){
   contentEl.querySelectorAll('.class-chip').forEach(function(el){
     el.addEventListener('click',function(){
       navigator.clipboard&&navigator.clipboard.writeText(el.dataset.cls);
+      if(typeof gtag==='function')gtag('event','tailwind_class_copy',{class_name:el.dataset.cls,category:activeCat});
       var v=el.querySelector('.cc-val');var old=v.textContent;v.textContent='Copied!';v.style.color='#5b5bd6';
       setTimeout(function(){v.textContent=old;v.style.color='';},1200);
     });
@@ -153,7 +157,7 @@ cats.forEach(function(c){
   tab.addEventListener('click',function(){activeCat=c;tabsEl.querySelectorAll('.cat-tab').forEach(function(t){t.classList.remove('active');});tab.classList.add('active');render(document.getElementById('searchBox').value,activeCat);});
   tabsEl.appendChild(tab);
 });
-document.getElementById('searchBox').addEventListener('input',function(){render(this.value.toLowerCase(),activeCat);});
+var searchTimer;document.getElementById('searchBox').addEventListener('input',function(){var value=this.value.toLowerCase();render(value,activeCat);clearTimeout(searchTimer);searchTimer=setTimeout(function(){if(value&&typeof gtag==='function')gtag('event','tailwind_class_search',{search_term:value});},700);});
 render('','All');
 var b=document.getElementById('back-to-top');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none';});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 })();
