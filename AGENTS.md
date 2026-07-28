@@ -49,3 +49,8 @@
 - Root cause found: 884 files from unrelated projects were tracked inside this GitHub Pages repository, exposing copied portfolio content under WordCaseFix subpaths. The unrelated directories are removed from the Git index but preserved locally, and are now ignored.
 - Search inventory is narrowed to text, writing, encoding, formatting, and developer utilities. 87 off-topic or thin pages are noindex, removed from the sitemap, and carry no AdSense loader.
 - Homepage positioning no longer claims math coverage or no tracking; added editorial-policy.html. Resubmit only after the cleanup commit is live and Search Console has recrawled the sitemap.
+
+## 2026-07-29 search-result and accuracy update
+- `blog/ap-style-vs-chicago-capitalization.html`: rebuilt the page after Search Console showed an average position near 9 with zero clicks. The current copy distinguishes Chicago 17 from Chicago 18, cites primary references, fixes mojibake, and gives a direct AP-versus-Chicago answer before the detailed rules.
+- `blog/email-capitalization-rules.html`: rebuilt the page after 142 impressions and one click in the latest 28-day window. The page now answers subject-line, greeting, sign-off, job-title, and email-address casing intent without unsupported spam-filter claims.
+- Both pages have `dateModified` and sitemap `lastmod` set to 2026-07-29. Hold further edits until the 2026-08-12 Search Console review unless a functional defect appears.
