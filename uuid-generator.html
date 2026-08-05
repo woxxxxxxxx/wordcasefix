@@ -107,9 +107,9 @@
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Uuid Generator</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
   <main class="main-area" id="main-content">
     <header>
@@ -128,48 +128,45 @@
         <div class="uuid-list" id="uuidList"></div>
       </div>
     </div>
-  <section class="tool-content-modules">
+  <section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Choose the options or parameters you want the UUID Generator to use, such as length, character set, or quantity.</li>
-      <li>Click the generate button and the UUID Generator will produce a fresh result instantly.</li>
-      <li>Copy the output to your clipboard, or click generate again for another unique result.</li>
-    </ol>
+    <h2 class="tool-info-title">UUID v4 generation method and collision assumptions</h2>
+    <p>The generator creates version 4 UUIDs from browser cryptographic randomness and sets the required version and variant bits. A UUID is an identifier, not a secret, password, signature, or proof that a record exists. Lowercase and uppercase display options do not change the underlying 128-bit value.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Database primary keys:</strong> Backend devs use UUIDs instead of auto-increment IDs to allow client-side generation and avoid leaking row counts.</li>
-      <li><strong>Distributed systems:</strong> Microservices generate UUIDs locally to avoid coordinator round-trips when creating entities across nodes.</li>
-      <li><strong>Test fixture isolation:</strong> QA engineers tag test data with fresh UUIDs so parallel test runs don't collide on shared records.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>The preferred implementation uses crypto.randomUUID when available.</li><li>A compatible fallback fills random bytes with crypto.getRandomValues, then sets the version and variant fields.</li><li>Bytes are formatted in the standard 8-4-4-4-12 hexadecimal layout.</li><li>Bulk generation repeats the same independent process and does not derive later identifiers from earlier output.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the difference between UUID v4 and UUID v7?</div>
-        <div class="tool-faq-a">v4 is fully random (122 bits of entropy) but unordered, hurting B-tree index performance. v7 (RFC 9562) embeds a millisecond Unix timestamp in the first 48 bits, so v7s sort chronologically and are friendlier to database indexes while keeping collision resistance.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the chance of a UUID v4 collision?</div>
-        <div class="tool-faq-a">With 122 random bits, you'd need to generate about 2.71 quintillion UUIDs to have a 50% chance of a single collision (birthday paradox). For practical purposes, treat v4 collisions as impossible at any realistic application scale.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Should I store UUIDs as strings or binary in PostgreSQL?</div>
-        <div class="tool-faq-a">Use the native uuid type (16 bytes binary), not varchar(36) (37 bytes plus overhead). The uuid type is 2.3x smaller, faster to compare, and indexed more efficiently. Cast to text only when displaying.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>A value such as 550e8400-e29b-41d4-a716-446655440000 shows the expected text shape, but example values should never be copied as supposedly unique production IDs. Generate a new value at the point of record creation. Database constraints should still enforce uniqueness because application correctness should not depend only on probability.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Checks include format, hyphen positions, hexadecimal characters, version nibble 4, RFC variant bits, uppercase display, bulk count, and duplicate detection within test batches. A finite test cannot prove that collisions are impossible; it verifies implementation shape and random-source use.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Choose a UUID only when a random opaque identifier fits the data model. Store it in a native UUID type when available, or validate and normalize the textual form at system boundaries. Add a database uniqueness constraint and handle the unlikely conflict path rather than assuming an insert can never collide. Do not sort version 4 UUIDs as creation time, expose them as proof of authorization, or embed sensitive meaning in adjacent URL behavior. If ordered identifiers are required for index locality or event chronology, evaluate a suitable time-ordered scheme and its privacy tradeoffs instead of rewriting a v4 value. Test serialization through APIs, databases, logs, and case-normalizing systems. The generator is appropriate for fixtures, local records, and interoperability checks; production services should normally create identifiers in the trusted application or database layer where lifecycle and constraints are enforced.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>UUIDs reveal no trustworthy creation time, owner, or authorization.</li><li>Do not use UUID v4 as an authentication token without a separate security design.</li><li>Weak or replaced browser randomness undermines the collision assumptions.</li><li>Case-insensitive storage is normally appropriate for the textual form.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.rfc-editor.org/rfc/rfc9562" rel="noopener noreferrer">RFC 9562 UUIDs</a></li><li><a href="https://www.w3.org/TR/WebCryptoAPI/" rel="noopener noreferrer">Web Cryptography API</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder/Decoder</div><div class="rc-desc">Base64 encode & decode</div></a><a class="related-card" href="/epoch-converter.html"><div class="rc-name">Unix Timestamp Converter</div><div class="rc-desc">Epoch & date converter</div></a><a class="related-card" href="/markdown-editor.html"><div class="rc-name">Markdown Editor</div><div class="rc-desc">Write & preview Markdown</div></a><a class="related-card" href="/html-encoder.html"><div class="rc-name">HTML Encoder/Decoder</div><div class="rc-desc">Encode HTML entities</div></a><a class="related-card" href="/color-picker.html"><div class="rc-name">Color Picker</div><div class="rc-desc">Pick & convert colors</div></a>
-<a class="related-card" href="/lorem-ipsum-generator.html"><div class="rc-name">Lorem Ipsum Generator</div><div class="rc-desc">Free online tool</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder/Decoder</div><div class="rc-desc">Base64 encode & decode</div></a>
+
 <a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/qr-code-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+
 <footer>UUID Generator &mdash; Free online UUID v4 generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

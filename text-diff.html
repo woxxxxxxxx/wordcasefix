@@ -102,9 +102,9 @@
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Text Diff</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
 <main class="main-area" id="main-content">
 <header>
@@ -124,48 +124,45 @@
 <div class="input-group"><label>Diff Output</label><div class="diff-output" id="diffOutput"><div class="empty-state">Enter two texts and click <strong>Compare</strong>.</div></div></div>
 <div class="status-bar" id="statusBar"></div>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Open the Text Diff and provide the inputs requested in the form above.</li>
-      <li>The Text Diff processes your input directly in your browser and shows the result on the same page.</li>
-      <li>Copy or save the output, then adjust the inputs anytime to see an updated result.</li>
-    </ol>
+    <h2 class="tool-info-title">Comparison method and interpretation guide</h2>
+    <p>Text Diff compares two supplied versions and highlights additions, removals, and unchanged material. It is a review aid, not a version-control system and not proof of authorship. The usefulness of a diff depends on the comparison unit: line-oriented output is easy to scan for documents and code, but a wrapped or reformatted paragraph can appear more different than its meaning suggests.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Professional workflows:</strong> Specialists in relevant fields use the Text Diff as a daily productivity tool to handle routine tasks faster.</li>
-      <li><strong>Learning and exploration:</strong> Students and curious users experiment with inputs to understand how the underlying system or rules behave.</li>
-      <li><strong>Quick one-off tasks:</strong> Anyone needing this transformation occasionally can finish in seconds rather than installing dedicated software.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Each input is normalized only as required by the interface, then divided into comparison units.</li><li>The comparison algorithm finds an ordered sequence of matching units and marks units present only on the left as removed and only on the right as added.</li><li>Unchanged sections provide context so a reviewer can locate edits without reading both documents from the beginning.</li><li>The original text is not overwritten. Copy or save the reviewed version separately after checking every highlighted block.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What does the Text Diff actually do?</div>
-        <div class="tool-faq-a">It performs the specific transformation or computation indicated by its name on the input you provide above. Output appears live as you type or after clicking the action button, depending on the workflow.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Are there limits on input size?</div>
-        <div class="tool-faq-a">The tool runs in your browser, so practical limits depend on your device's memory and processing power. Inputs of tens of thousands of characters complete instantly; multi-megabyte inputs may show noticeable processing time.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I integrate this into a script or pipeline?</div>
-        <div class="tool-faq-a">The page itself is interactive only. For automation, look for open-source libraries that implement the same algorithm in your language (Python, Node.js, Go), or use a CLI wrapper. The web tool is best for ad-hoc tasks.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>If version A contains “Payment is due in 30 days” and version B contains “Payment is due in 15 calendar days,” the changed line should be reviewed as a substantive timing change. If the same paragraph is merely wrapped at a different column width, a line comparison may highlight several lines even though the words are nearly identical. Normalize formatting first when the goal is semantic review.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes identical input, a single inserted line, a single deletion, moved text, empty sides, Unicode characters, and line-ending differences. Manual verification covers short cases where the expected added and removed lines are unambiguous. Large documents should still be reviewed in their source application.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Define what kind of change matters before comparing. A line diff is effective for configuration files, clauses, and structured drafts where line breaks are stable. It is less effective after automatic wrapping, OCR, or a formatter has rearranged the document. If formatting noise dominates, normalize line endings and agreed whitespace first, but retain an untouched copy so meaningful spaces are not lost. Review deletions before additions because removed qualifiers, dates, units, and negations are easy to miss. Then inspect numbers, names, URLs, obligations, and modal verbs such as must, may, and should. A clean diff does not prove two rendered files are equivalent: fonts, formulas, tracked comments, hidden spreadsheet cells, and document metadata can sit outside plain text. Use the original application’s review features for contracts, code merges, or regulated records when those layers matter.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Moved text can appear as a deletion plus an insertion.</li><li>Line-oriented comparison does not determine whether wording has the same legal or technical meaning.</li><li>Whitespace-only changes can create noise unless normalized deliberately.</li><li>Do not paste confidential documents into a web tool unless your organization permits browser-based processing.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://dl.acm.org/doi/10.1145/359460.359467" rel="noopener noreferrer">Myers diff algorithm paper</a></li><li><a href="https://git-scm.com/docs/git-diff" rel="noopener noreferrer">Git diff documentation</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/text-repeater.html"><div class="rc-name">Text Repeater</div><div class="rc-desc">Repeat text strings</div></a><a class="related-card" href="/slug-converter.html"><div class="rc-name">Slug Converter</div><div class="rc-desc">Create URL slugs</div></a><a class="related-card" href="/fancy-text.html"><div class="rc-name">Fancy Text Generator</div><div class="rc-desc">Fancy Unicode text</div></a><a class="related-card" href="/text-to-speech.html"><div class="rc-name">Text to Speech</div><div class="rc-desc">Read text aloud</div></a><a class="related-card" href="/morse-translator.html"><div class="rc-name">Morse Code Translator</div><div class="rc-desc">Translate Morse code</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
 <a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/character-counter.html"><div class="rc-name">Character Counter</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>Text Diff Checker &mdash; Free online diff checker tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

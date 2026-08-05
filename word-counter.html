@@ -181,11 +181,11 @@
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Word Counter</span></nav>
 
 <!-- Ad -->
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 
 <div class="page-wrap">
   <main class="main-area" id="main-content">
@@ -236,39 +236,36 @@
       </div>
     </div>
 
-  <section class="tool-content-modules">
+  <section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Paste or type the text you want to inspect into the Word Counter input area above.</li>
-      <li>The Word Counter analyzes your text instantly and updates all statistics as you edit.</li>
-      <li>Review the metrics shown and refine your text directly in the box to see numbers update live.</li>
-    </ol>
+    <h2 class="tool-info-title">Counting method, reading-time estimate, and limitations</h2>
+    <p>Word counting is not universal: a browser cannot infer every language’s editorial tokenization rules from plain text. This tool reports a practical writing estimate based on detected non-empty tokens, alongside characters, sentences, paragraphs, and an estimated reading time. The figures are intended for drafting and content planning rather than contractual publishing limits.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Essay assignments:</strong> Students verify their essay falls within the 500-750 word range assigned by an instructor before submitting.</li>
-      <li><strong>Blog post SEO:</strong> Content writers target 1,500-2,500 words for long-form articles competing on high-intent search terms.</li>
-      <li><strong>Twitter/X drafting:</strong> Writers check character counts to fit within the 280-character limit before posting.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Characters include every Unicode code unit in the input; the without-spaces figure removes whitespace before counting.</li><li>Words are estimated from non-empty runs separated by whitespace. Punctuation attached to a token does not create a second word.</li><li>Sentences are estimated from sentence-ending punctuation and non-empty text segments. Paragraphs are non-empty blocks separated by line breaks.</li><li>Reading time divides the estimated word count by the stated words-per-minute assumption and rounds for display.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">How are words counted?</div>
-        <div class="tool-faq-a">The counter splits on whitespace (spaces, tabs, newlines) and treats each non-empty run as one word. Hyphenated terms like "state-of-the-art" count as one word, while em-dash-separated phrases count as two. URLs and numbers also count as single words.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's a typical reading speed?</div>
-        <div class="tool-faq-a">Adults read prose at 200-300 words per minute; technical material drops to 50-100 WPM. The counter shows estimated reading time at 225 WPM, the average for online articles. Audiobook narration is slower, around 150-160 WPM.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Does the counter ignore HTML tags?</div>
-        <div class="tool-faq-a">No. If you paste raw HTML, tags like <p> and <div> won't inflate word count (no whitespace inside them) but tag attributes will. Strip markup first using an HTML-to-text tool for accurate counts on web content.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>For “Plan, test, revise.” the tool reports three whitespace-delimited words even though punctuation is attached to two tokens. A URL such as “https://example.com/a-b” is one token. Chinese or Japanese text without spaces may be reported as one token, which is why the result should not be used as an authoritative CJK word count. Character limits should be checked with the character result rather than the word result.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Checks include blank text, repeated spaces, tabs, multiple paragraphs, emoji, hyphenated terms, URLs, and English sentence punctuation. We compared the visible totals with hand-counted short examples. The test set intentionally includes cases where the displayed estimate is useful but not linguistically exact.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Decide which metric controls the task before interpreting the result. Advertising platforms may impose character limits, schools may define words differently, and publishing contracts may specify whether footnotes, captions, or references count. Keep those rules beside the draft. For an English article, inspect a short hand-counted paragraph and confirm how the tool treats contractions, numbers, hyphenated compounds, and URLs. For multilingual text, use the character total or a language-aware editor when whitespace is not a reliable word boundary. Reading time is useful for comparing two drafts under the same assumption, but it should not be presented as a measured completion time for every reader. Screen readers, technical notation, tables, and unfamiliar vocabulary can change the experience substantially. When an exact limit has legal, academic, or payment consequences, verify the final document in the submission system that will enforce the limit.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>CJK and Thai text often require language-specific segmentation.</li><li>Hyphenated compounds and contractions may be counted differently by publishers.</li><li>Emoji can use multiple code points even when shown as one visible symbol.</li><li>Reading speed varies by audience, subject, accessibility needs, and document complexity.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.unicode.org/reports/tr29/" rel="noopener noreferrer">Unicode text segmentation</a></li><li><a href="https://www.unicode.org/versions/latest/" rel="noopener noreferrer">Unicode Standard</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main>
@@ -276,10 +273,10 @@
 </div>
 
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Transform text case</div></a><a class="related-card" href="/text-diff.html"><div class="rc-name">Text Diff Checker</div><div class="rc-desc">Compare text differences</div></a><a class="related-card" href="/slug-converter.html"><div class="rc-name">Slug Converter</div><div class="rc-desc">Create URL slugs</div></a><a class="related-card" href="/lorem-ipsum-generator.html"><div class="rc-name">Lorem Ipsum Generator</div><div class="rc-desc">Generate placeholder text</div></a><a class="related-card" href="/morse-translator.html"><div class="rc-name">Morse Code Translator</div><div class="rc-desc">Translate Morse code</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Transform text case</div></a><a class="related-card" href="/text-diff.html"><div class="rc-name">Text Diff Checker</div><div class="rc-desc">Compare text differences</div></a>
 <a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/character-counter.html"><div class="rc-name">Character Counter</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>Word Counter &mdash; Free online word count tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

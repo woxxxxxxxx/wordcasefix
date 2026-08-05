@@ -70,8 +70,8 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+
 
 <div class="page-wrap">
   <div class="breadcrumb">
@@ -81,7 +81,7 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <article role="main" id="main-content">
-    <h1>JSON Formatting Best Practices for APIs and Configs</h1>
+    <h1>JSON Formatting Best Practices for APIs and Configs</h1><p class="editorial-review-note" style="margin:10px 0 22px;color:#667085;font-size:14px">Content owner: <span class="author">WordCaseFix Editorial</span> · Page structure last modified: August 6, 2026 · <a href="/editorial-policy.html">Review standards</a></p>
     <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; API Design</div>
 
     <p>JSON has quietly become the lingua franca of modern software. It moves data between web services, defines the configuration of build tools, structures the manifests of package managers, and serializes most of the state we ship across networks. The format is simple enough that it is tempting to assume there is nothing to learn. In practice, the small formatting decisions you make — key style, indentation, number handling, ordering — are the difference between a JSON contract that ages well and one that becomes painful in six months.</p>
@@ -120,7 +120,7 @@ footer a:hover{text-decoration:underline}
       <pre>{"name":"WordCaseFix","version":"1.0.0","features":["case","regex","json"]}</pre>
     </div>
 
-    <p>For configuration files committed to version control, use pretty JSON with two-space indentation. The size cost is irrelevant and the diff readability is huge. For API responses over the wire, minify by default; gzip will compress away most of the difference, but the bytes still travel through every proxy and log. Use a <a href="/json-formatter.html">formatter</a> to switch between the two, and a <a href="/javascript-minifier.html">minifier</a>-style mindset for production payloads.</p>
+    <p>For configuration files committed to version control, use pretty JSON with two-space indentation. The size cost is irrelevant and the diff readability is huge. For API responses over the wire, minify by default; gzip will compress away most of the difference, but the bytes still travel through every proxy and log. Use a <a href="/json-formatter.html">formatter</a> to switch between the two, and a -style mindset for production payloads.</p>
 
     <h2>Numbers, Strings, and the Quiet Gotchas</h2>
     <p>JSON has one number type. Internally, most parsers represent it as a 64-bit IEEE 754 float, which can exactly represent integers only up to 2^53 (9,007,199,254,740,992). If your API returns 64-bit integer IDs from a database, send them as strings, not numbers — otherwise JavaScript clients will silently corrupt the last few digits.</p>
@@ -141,7 +141,7 @@ footer a:hover{text-decoration:underline}
 
     <p>Key order in objects is officially insignificant — by the JSON spec, <code>{"a":1,"b":2}</code> equals <code>{"b":2,"a":1}</code>. In practice, deterministic key ordering makes diffs reviewable and makes deterministic hashing possible. Most formatters offer "sort keys" alphabetically; consider it for configuration files. For API responses, prefer a stable order chosen by your library to keep network traces consistent.</p>
 
-    <p>For long-term compatibility, follow two simple rules: never remove or rename a field — add new ones; treat unknown fields as ignorable on the consumer side. If you serve config that may evolve, you may also want to convert between <a href="/yaml-to-json.html">YAML and JSON</a> or <a href="/csv-to-json.html">CSV and JSON</a> at the edges, so users of each format don't fork your source of truth.</p>
+    <p>For long-term compatibility, follow two simple rules: never remove or rename a field — add new ones; treat unknown fields as ignorable on the consumer side. If you serve config that may evolve, you may also want to convert between  or  at the edges, so users of each format don't fork your source of truth.</p>
 
     <div class="highlight-box">
       <strong>Comment-free reminder:</strong> standard JSON does not allow comments. Variants like JSON5 and JSONC (JSON with comments) do, but parsers must opt in. For VS Code settings comments work; for <code>package.json</code> they do not. Use a documented schema and meaningful key names instead of trying to comment inside data.
@@ -161,12 +161,12 @@ footer a:hover{text-decoration:underline}
     <p>As strings, not integers. <code>"status": "active"</code> is self-documenting; <code>"status": 1</code> requires the consumer to know what 1 means. The few bytes saved by integers are never worth the readability cost in logs and dashboards.</p>
 
     <h3>Is YAML better than JSON for configuration?</h3>
-    <p>For files humans edit by hand, YAML's comments and reduced punctuation are real advantages. For files programs generate or consume frequently, JSON's stricter syntax catches more errors. Many projects choose YAML for source-controlled config and JSON for machine output, converting between them with a <a href="/yaml-to-json.html">YAML-to-JSON converter</a> as needed.</p>
+    <p>For files humans edit by hand, YAML's comments and reduced punctuation are real advantages. For files programs generate or consume frequently, JSON's stricter syntax catches more errors. Many projects choose YAML for source-controlled config and JSON for machine output, converting between them with a  as needed.</p>
 
     <div class="related-articles">
       <h2>Related Guides</h2>
       <div class="related-list">
-        <a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a>
+
         <a href="/blog/uuid-vs-nanoid-comparison.html">UUID vs NanoID: Which Identifier Should You Choose?</a>
         <a href="/blog/url-encoding-when-to-use.html">URL Encoding: When, Why, and How (with Examples)</a>
       </div>
@@ -174,7 +174,7 @@ footer a:hover{text-decoration:underline}
   </article>
 </div>
 
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+
 <footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="../editorial-policy.html">Editorial Policy</a></p></footer>
 </body>
 </html>

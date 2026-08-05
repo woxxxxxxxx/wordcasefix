@@ -95,9 +95,9 @@ tr:hover td{background:#f9f9fd}
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Jwt Decoder</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
 <main class="main-area" id="main-content">
 <header>
@@ -142,48 +142,45 @@ document.getElementById('jwtDec').onclick=function(){
 document.getElementById('jwtClr').onclick=function(){document.getElementById('jwtIn').value='';document.getElementById('jwtErr').style.display='none';document.getElementById('jwtResult').style.display='none';};
 })();</script>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Paste the source string or data into the Jwt Decoder input box above.</li>
-      <li>The Jwt Decoder processes the input instantly and shows the result in the output box below.</li>
-      <li>Copy the encoded or decoded result with one click, or switch direction to reverse the operation.</li>
-    </ol>
+    <h2 class="tool-info-title">JWT decoding method and security boundary</h2>
+    <p>This page decodes the readable header and payload segments of a JSON Web Token. It does not verify the signature, issuer, audience, expiration policy, key rotation, or revocation state. A token that displays valid JSON can still be forged, expired, intended for another service, or unsafe to trust.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>API debugging:</strong> Frontend developers decode JWTs from Authorization headers to inspect the sub, exp, and scope claims when troubleshooting 401 errors.</li>
-      <li><strong>Security review:</strong> Pentesters check for the "none" algorithm vulnerability and look for sensitive data leaking in unencrypted payloads.</li>
-      <li><strong>OAuth flow inspection:</strong> Verify that an id_token from Google, Auth0, or Okta carries the expected aud and iss claims for your application.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>The compact token is split on periods into header, payload, and signature segments.</li><li>Base64url characters are converted for decoding and missing padding is handled as required.</li><li>The first two decoded byte sequences are interpreted as UTF-8 JSON and formatted for inspection.</li><li>The signature segment is shown only as token structure; no trust decision is made without the correct verification key and policy.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Is decoding a JWT the same as verifying it?</div>
-        <div class="tool-faq-a">No. Decoding splits the token on dots and Base64URL-decodes the header and payload, which anyone can do. Verification requires checking the signature against the issuer's public key (or shared secret). This decoder does not verify signatures; treat decoded payloads as untrusted.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's in a JWT's three parts?</div>
-        <div class="tool-faq-a">A JWT is header.payload.signature, each Base64URL-encoded and joined by dots. Header declares the algorithm (HS256, RS256, ES256). Payload holds claims (sub, exp, iat, custom data). Signature is HMAC or RSA of the header.payload using a key.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Why should I never use the "none" algorithm?</div>
-        <div class="tool-faq-a">The "none" algorithm means no signature. Some older libraries accept "alg":"none" tokens as valid if the application doesn't enforce a whitelist. Attackers can forge any payload. Always validate that alg matches an expected value (e.g., RS256) before trusting a token.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>A payload may contain an exp number and an admin-looking claim. Decoding proves only that those bytes were present; it does not prove who created them. Production software must verify the allowed algorithm, signature, issuer, audience, time-based claims, and application-specific authorization using a maintained JWT library.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes a three-segment sample, Base64url characters, missing padding, malformed JSON, too few segments, and non-UTF-8 output. The interface confirms that the interface labels decoded claims as unverified. We do not use live account tokens in testing.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Use decoding only to understand token structure during authorized development. Redact or replace every live token in screenshots, tickets, chat, and documentation because a bearer token can grant access until it expires or is revoked. After reading claims, verify them in the server implementation with a maintained library and a fixed algorithm allowlist. Check signature, issuer, audience, expiration, not-before time, key identifier handling, key source, and application authorization separately. Do not infer a user’s permissions from a decoded role claim without completing those checks. If a token appears in logs or has been shared with an unintended party, rotate or revoke it according to the provider’s process rather than assuming short expiry is enough. The page is suitable for fabricated samples and local debugging; it is intentionally incapable of declaring a token authentic.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Never paste a live bearer token into a third-party site or support ticket.</li><li>The alg header must not be accepted without an application allowlist.</li><li>Clock skew and expiration policy require server-side rules.</li><li>Decoding cannot detect revocation or prove that a user still has permission.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.rfc-editor.org/rfc/rfc7519" rel="noopener noreferrer">RFC 7519 JSON Web Token</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc8725" rel="noopener noreferrer">RFC 8725 JWT Best Current Practices</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">Generate HMAC hashes</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Decode Base64 strings</div></a><a class="related-card" href="/url-encoder.html"><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode URL strings</div></a><a class="related-card" href="/cron-generator.html"><div class="rc-name">Cron Generator</div><div class="rc-desc">Build cron expressions</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">Generate HMAC hashes</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Decode Base64 strings</div></a><a class="related-card" href="/url-encoder.html"><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode URL strings</div></a>
 <a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>JWT Decoder &mdash; Free online tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="btt" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.style.display=window.scrollY>300?'block':'none'});b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};</script>

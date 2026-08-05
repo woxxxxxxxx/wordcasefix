@@ -63,9 +63,9 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Regex Tester</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
 <main class="main-area" id="main-content">
 <header>
@@ -94,48 +94,45 @@ Call +1-555-1234 for more information.</textarea></div>
 <div class="error-box" id="errorBox"></div>
 <div class="btn-row"><button class="btn-secondary" id="clearTest">Clear Test String</button></div>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Open the Regex Tester and provide the inputs requested in the form above.</li>
-      <li>The Regex Tester processes your input directly in your browser and shows the result on the same page.</li>
-      <li>Copy or save the output, then adjust the inputs anytime to see an updated result.</li>
-    </ol>
+    <h2 class="tool-info-title">JavaScript regex semantics and safe testing</h2>
+    <p>The tester uses the regular-expression behavior provided by the current JavaScript engine. A pattern that works here may differ in Python, Java, .NET, PCRE, RE2, or a database. The page is designed for short representative samples and highlights matches; it is not a production safety analyzer.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Form validation:</strong> Frontend developers test email and phone patterns against real-world input edge cases before deploying to production.</li>
-      <li><strong>Log parsing:</strong> SREs build regexes to extract IP addresses, timestamps, or error codes from multi-line application logs.</li>
-      <li><strong>Code refactoring:</strong> Engineers craft search-and-replace patterns for VS Code or sed/awk pipelines, verifying captures before running against a large repo.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>The entered pattern and flags are passed to the JavaScript RegExp constructor.</li><li>Matches are evaluated against the supplied sample with the engine’s Unicode, multiline, dotAll, case, sticky, and global behavior as selected.</li><li>Match locations and captured text are displayed for inspection.</li><li>Syntax errors are surfaced directly so an invalid expression is not silently treated as no match.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the difference between greedy and lazy quantifiers?</div>
-        <div class="tool-faq-a">Greedy quantifiers (*, +, ?) match as much as possible; lazy versions (*?, +?, ??) match as little. For example, in "<a><b>" the regex <.+> greedily matches "<a><b>" but <.+?> matches just "<a>". Use lazy when extracting individual HTML tags or quoted strings.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">How do I match an email address with regex?</div>
-        <div class="tool-faq-a">RFC 5322 allows characters that practical regexes ignore. A safe pattern is ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$. For full validation, send a confirmation email; regex alone cannot verify deliverability or catch all edge cases like quoted local parts.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Does this tester support PCRE features like lookbehind?</div>
-        <div class="tool-faq-a">The tester uses the browser's JavaScript regex engine (ECMAScript 2018+), which supports lookbehind ((?<=...)), named groups ((?<name>...)), and Unicode property escapes (\p{L}). PCRE-only features like recursion and possessive quantifiers are not supported.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>The pattern ^\d+$ checks an entire ASCII-digit sample only when anchors and the intended multiline behavior are understood. An email-shaped regex can demonstrate structure but should not replace confirmation mail or standards-aware validation. Before deployment, test accepted, rejected, empty, long, Unicode, and adversarial inputs in the same runtime that will execute the pattern.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes literals, groups, alternation, anchors, global matching, Unicode flags, zero-length matches, invalid syntax, and multiline samples. We also use nested-quantifier examples to confirm that the page does not describe a successful match as proof of safe runtime behavior.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Copy the exact runtime and flags into the test plan. Build a table of inputs that must match, must not match, may be empty, contain Unicode, and approach the maximum expected length. Add adversarial near-matches because they often trigger much slower backtracking than successful examples. Anchor the pattern when the entire value must conform, and avoid using a regex alone to validate ownership, reachability, dates, numeric ranges, or complex standardized addresses. Measure performance in the production engine under realistic limits. If patterns can come from users, use a safe engine, restricted syntax, timeouts, or isolation rather than executing arbitrary JavaScript regexes on the main thread. The browser tester is useful for explaining captures and flags, but a green sample is only one observation; deployment requires negative tests and resource controls.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Catastrophic backtracking can freeze a JavaScript thread on crafted input.</li><li>Regex flavor differences affect escapes, lookbehind, Unicode properties, and flags.</li><li>Matching a format does not verify ownership, existence, or business validity.</li><li>Never run an untrusted pattern against large production input without controls.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://tc39.es/ecma262/#sec-regexp-regular-expression-objects" rel="noopener noreferrer">ECMAScript RegExp specification</a></li><li><a href="https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS" rel="noopener noreferrer">OWASP ReDoS guidance</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/uuid-generator.html"><div class="rc-name">UUID Generator</div><div class="rc-desc">Generate UUIDs</div></a><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">MD5 & SHA hashes</div></a><a class="related-card" href="/http-status-codes.html"><div class="rc-name">HTTP Status Codes</div><div class="rc-desc">HTTP status reference</div></a><a class="related-card" href="/epoch-converter.html"><div class="rc-name">Unix Timestamp Converter</div><div class="rc-desc">Epoch & date converter</div></a><a class="related-card" href="/html-encoder.html"><div class="rc-name">HTML Encoder/Decoder</div><div class="rc-desc">Encode HTML entities</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/uuid-generator.html"><div class="rc-name">UUID Generator</div><div class="rc-desc">Generate UUIDs</div></a><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">MD5 & SHA hashes</div></a>
 <a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>Regex Tester &mdash; Free online regular expression tester tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

@@ -218,11 +218,11 @@
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Case Converter</span></nav>
 
 <!-- Ad -->
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 
 <div class="page-wrap">
   <main class="main-area" id="main-content">
@@ -266,39 +266,36 @@
       </div>
     </div>
 
-  <section class="tool-content-modules">
+  <section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Paste or type the text you want to reformat into the Case Converter input area at the top of the page.</li>
-      <li>The Case Converter instantly transforms your text into the target case style as you type, with no button click required.</li>
-      <li>Copy the converted result to your clipboard with one click and paste it wherever you need it.</li>
-    </ol>
+    <h2 class="tool-info-title">Case conversion method and review notes</h2>
+    <p>The converter changes letter casing; it does not rewrite grammar or decide which words are proper nouns. Punctuation, digits, line breaks, and the order of characters remain in place. Uppercase and lowercase modes apply the browser’s Unicode-aware casing functions. Sentence and title modes first identify word boundaries, then apply a documented capitalization rule.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Data migration:</strong> Engineers convert between formats when moving data between systems with incompatible representations.</li>
-      <li><strong>Educational verification:</strong> Students check homework answers by converting between standard units or notations.</li>
-      <li><strong>Cross-team collaboration:</strong> Teams using different conventions exchange data via a common intermediate format produced by the Case Converter.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>UPPERCASE and lowercase use JavaScript string casing on the complete input, so alphabetic characters can change while punctuation and spacing are retained.</li><li>Sentence case lowers the working string, then capitalizes the first letter after the beginning of the text or sentence-ending punctuation. This is a mechanical rule, not a grammar parser.</li><li>Title case capitalizes detected words but keeps a short list of common articles, conjunctions, and prepositions lowercase when they are not the first or last word.</li><li>Alternating case changes successive letters only. Spaces and punctuation do not advance the upper/lower sequence.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What precision does the Case Converter preserve?</div>
-        <div class="tool-faq-a">Numeric conversions use IEEE 754 double-precision (15-17 significant decimal digits). Lossless integer conversions remain exact up to 2^53. For exact decimal arithmetic on very large or very small values, use a server-side BigDecimal or arbitrary-precision library.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the supported input range?</div>
-        <div class="tool-faq-a">The converter handles the full range allowed by the source format's specification. Values outside that range (e.g., negative durations, out-of-spec characters) are rejected with an error rather than silently truncated. Check the input format docs for exact limits.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I convert in both directions?</div>
-        <div class="tool-faq-a">Yes. The converter is bidirectional: switch the source and target fields to reverse the conversion. Round-trip conversions are exact for lossless format pairs and approximate (with documented precision) for lossy ones.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>Input “an API guide: using JSON in iOS” demonstrates the main limitation. A mechanical title-case result may change API, JSON, or iOS incorrectly because those spellings depend on domain knowledge. Use the output as a draft, then restore brands, acronyms, surnames, and style-guide exceptions. For a safer check, compare a short sample in every mode before processing a long document.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes empty input, multiline text, apostrophes, hyphenated words, accented Latin letters, emoji, and mixed acronym examples. Additional checks include that punctuation and line breaks survive a round trip through upper- and lowercase modes. The page does not claim locale-specific linguistic accuracy.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Choose the target style from the document that will receive the text, not from personal preference. For a publication, identify its named style guide and keep a short exception list for brands, products, people, geographic names, abbreviations, and technical identifiers. Convert one representative heading and one difficult sentence first. Compare those samples with an approved document before changing the full source. After conversion, search for words that were originally mixed case, all caps, or intentionally lowercase. Pay special attention to iPhone-style brands, API names, surnames with particles, hyphenated compounds, and text inside code. If the source contains IDs, passwords, case-sensitive URLs, filenames, or program symbols, isolate them before conversion. The tool is appropriate for drafting display text; it is not appropriate for changing case-sensitive data in bulk without a backup and a domain-specific validation step.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Turkish dotted and dotless I, Greek sigma, and other locale-sensitive casing can differ from an English editorial expectation.</li><li>Title-case rules vary among AP, Chicago, APA, MLA, and house styles.</li><li>The tool cannot identify names, trademarks, chemical symbols, or intentionally styled words.</li><li>Changing case can alter string length for a small number of Unicode characters, so do not use character offsets from the original after conversion.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.unicode.org/versions/latest/" rel="noopener noreferrer">Unicode casing specification</a></li><li><a href="https://tc39.es/ecma262/#sec-string.prototype.tolowercase" rel="noopener noreferrer">ECMAScript String case conversion</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main>
@@ -306,10 +303,10 @@
 </div>
 
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words & chars</div></a><a class="related-card" href="/text-diff.html"><div class="rc-name">Text Diff Checker</div><div class="rc-desc">Compare text differences</div></a><a class="related-card" href="/text-repeater.html"><div class="rc-name">Text Repeater</div><div class="rc-desc">Repeat text strings</div></a><a class="related-card" href="/slug-converter.html"><div class="rc-name">Slug Converter</div><div class="rc-desc">Create URL slugs</div></a><a class="related-card" href="/emoji-picker.html"><div class="rc-name">Emoji Picker</div><div class="rc-desc">Browse & copy emojis</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Count words & chars</div></a><a class="related-card" href="/text-diff.html"><div class="rc-name">Text Diff Checker</div><div class="rc-desc">Compare text differences</div></a>
 <a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/character-counter.html"><div class="rc-name">Character Counter</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>Case Converter &mdash; Free online text case transformer | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

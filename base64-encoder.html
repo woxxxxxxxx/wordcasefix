@@ -62,51 +62,48 @@
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Base64 Encoder</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap"> <main class="main-area" id="main-content"> <header>
-<h1>Base64 Encoder/ Decoder</h1><p>Encode text to Base64 or decode Base64 back to text.</p></header><div class="card"> <div class="unit-toggle"> <input type="radio" name="mode" id="modeEncode" value="encode" checked><label for="modeEncode">Encode</label> <input type="radio" name="mode" id="modeDecode" value="decode"><label for="modeDecode">Decode</label> </div> <div class="input-group"><label for="inputText">Input</label><textarea id="inputText" placeholder="Enter text to encode/decode..."></textarea></div> <div class="btn-row"> <button class="btn-primary" id="convertBtn">Convert</button> <button class="btn-secondary" id="swapBtn">Swap Input/Output</button> </div> <div class="input-group"><label for="outputText">Output</label><textarea id="outputText" placeholder="Result will appear here..." readonly></textarea></div> <div class="status-bar" id="statusBar"><span>Select mode, enter text, and click <strong>Convert</strong>.</span></div> <div class="btn-row" style="margin-top:8px;"> <button class="btn-secondary" id="copyBtn">Copy Result</button> </div> </div> <section class="tool-content-modules">
+<h1>Base64 Encoder/ Decoder</h1><p>Encode text to Base64 or decode Base64 back to text.</p></header><div class="card"> <div class="unit-toggle"> <input type="radio" name="mode" id="modeEncode" value="encode" checked><label for="modeEncode">Encode</label> <input type="radio" name="mode" id="modeDecode" value="decode"><label for="modeDecode">Decode</label> </div> <div class="input-group"><label for="inputText">Input</label><textarea id="inputText" placeholder="Enter text to encode/decode..."></textarea></div> <div class="btn-row"> <button class="btn-primary" id="convertBtn">Convert</button> <button class="btn-secondary" id="swapBtn">Swap Input/Output</button> </div> <div class="input-group"><label for="outputText">Output</label><textarea id="outputText" placeholder="Result will appear here..." readonly></textarea></div> <div class="status-bar" id="statusBar"><span>Select mode, enter text, and click <strong>Convert</strong>.</span></div> <div class="btn-row" style="margin-top:8px;"> <button class="btn-secondary" id="copyBtn">Copy Result</button> </div> </div> <section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Paste the source string or data into the Base64 Encoder input box above.</li>
-      <li>The Base64 Encoder processes the input instantly and shows the result in the output box below.</li>
-      <li>Copy the encoded or decoded result with one click, or switch direction to reverse the operation.</li>
-    </ol>
+    <h2 class="tool-info-title">Base64 method, UTF-8 handling, and verification</h2>
+    <p>Base64 represents binary data with a restricted text alphabet. It is encoding, not encryption: anyone who receives the output can decode it. This page converts text to UTF-8 bytes before Base64 encoding and reverses that process when decoding. That extra UTF-8 step matters because the browser’s basic btoa function accepts only byte-sized characters.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Email attachments:</strong> MIME-encoded email bodies use Base64 to safely transmit binary attachments through 7-bit SMTP infrastructure.</li>
-      <li><strong>Data URIs:</strong> Embed small images directly in CSS or HTML using data:image/png;base64,... to reduce HTTP requests on landing pages.</li>
-      <li><strong>API authentication:</strong> Encode "username:password" for HTTP Basic Auth headers, or pass binary payloads through JSON-only APIs.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Encode mode converts the JavaScript string to UTF-8 bytes with TextEncoder.</li><li>Each byte sequence is converted to the standard RFC 4648 Base64 alphabet with equals-sign padding when required.</li><li>Decode mode validates and decodes the Base64 bytes, then uses TextDecoder to reconstruct UTF-8 text.</li><li>The tool uses standard Base64, not the Base64url alphabet used by JWT segments. Plus and slash are therefore not automatically replaced.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Why does Base64 output use roughly 33% more characters than input?</div>
-        <div class="tool-faq-a">Base64 encodes every 3 bytes of binary data into 4 ASCII characters (6 bits each), so output size is ceil(n/3) * 4. A 300 KB image becomes a 400 KB Base64 string. Add gzip on top for transport to recover most of the overhead.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the difference between standard and URL-safe Base64?</div>
-        <div class="tool-faq-a">Standard Base64 (RFC 4648 section 4) uses + and / which are reserved in URLs. URL-safe Base64 (section 5) substitutes - and _ and drops the = padding. JWTs use URL-safe Base64; choose the variant matching your downstream consumer.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Can I Base64-decode any string?</div>
-        <div class="tool-faq-a">Only strings whose length is a multiple of 4 (or with proper = padding) and that contain only valid Base64 characters. Invalid input throws an error. Whitespace and line breaks are stripped before decoding, so wrapped Base64 from email headers works fine.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>ASCII input “hello” encodes to “aGVsbG8=”. Unicode input such as “你好” must first become its UTF-8 byte sequence; direct btoa use would throw an error or encourage a lossy workaround. Decode a known short value before processing a larger payload. If the source is a file rather than text, use a file-aware workflow so arbitrary binary bytes are not interpreted as UTF-8.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes empty input, ASCII, accented text, CJK characters, emoji, padding, malformed Base64, and a known RFC-style vector. Verification covers that valid UTF-8 samples survive encode then decode without changing the visible text. Invalid input produces an error instead of a fabricated result.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Identify the payload type before conversion. Use this text page only when the source and expected result are UTF-8 text. For an image, archive, certificate, or other binary file, use a byte-preserving file encoder and compare a checksum after decoding. Confirm which alphabet the receiving system expects: standard Base64, Base64url, MIME-wrapped output, and unpadded forms are related but not interchangeable in every protocol. Preserve the original value and test a round trip with a small sample that includes non-ASCII characters when international text is possible. Do not paste API secrets, private keys, session tokens, or customer records merely to inspect them. Encoding does not reduce sensitivity. In integration code, rely on the platform’s maintained byte APIs and define the character encoding explicitly; a browser tool is most useful for diagnostics, documentation examples, and short non-sensitive payloads.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Base64 increases size and provides no confidentiality or integrity.</li><li>Standard Base64 and Base64url use different characters and padding conventions.</li><li>Decoded bytes that are not valid UTF-8 cannot be represented faithfully as text.</li><li>Never treat a successfully decoded JWT or credential-looking string as verified or safe.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.rfc-editor.org/rfc/rfc4648" rel="noopener noreferrer">RFC 4648 Base-N Encodings</a></li><li><a href="https://encoding.spec.whatwg.org/" rel="noopener noreferrer">Encoding Standard</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">MD5 & SHA hashes</div></a><a class="related-card" href="/markdown-editor.html"><div class="rc-name">Markdown Editor</div><div class="rc-desc">Write & preview Markdown</div></a><a class="related-card" href="/regex-tester.html"><div class="rc-name">Regex Tester</div><div class="rc-desc">Test regular expressions</div></a><a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Minify CSS code</div></a><a class="related-card" href="/color-palette-generator.html"><div class="rc-name">Color Palette Generator</div><div class="rc-desc">Color scheme designer</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">MD5 & SHA hashes</div></a><a class="related-card" href="/regex-tester.html"><div class="rc-name">Regex Tester</div><div class="rc-desc">Test regular expressions</div></a>
 <a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>Base64 Encoder &mdash; Free online Base64 encoding and decoding tool | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>
@@ -115,7 +112,9 @@ var convertBtn=document.getElementById('convertBtn'),swapBtn=document.getElement
 inputText=document.getElementById('inputText'),outputText=document.getElementById('outputText'),
 modeEncode=document.getElementById('modeEncode'),modeDecode=document.getElementById('modeDecode'),
 statusBar=document.getElementById('statusBar');
-function convert(){try{var t=inputText.value;if(!t){outputText.value='';statusBar.textContent='Waiting for input...';return;}if(modeEncode.checked){outputText.value=btoa(t);statusBar.textContent='Encoded successfully';}else{outputText.value=atob(t);statusBar.textContent='Decoded successfully';}}catch(e){outputText.value='Error: '+e.message;statusBar.textContent='Conversion failed';}}
+function utf8ToBase64(value){var bytes=new TextEncoder().encode(value);var binary='';for(var i=0;i<bytes.length;i++)binary+=String.fromCharCode(bytes[i]);return btoa(binary)}
+function base64ToUtf8(value){var normalized=value.replace(/\s+/g,'');var binary=atob(normalized);var bytes=new Uint8Array(binary.length);for(var i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);return new TextDecoder('utf-8',{fatal:true}).decode(bytes)}
+function convert(){try{var t=inputText.value;if(!t){outputText.value='';statusBar.textContent='Waiting for input...';return;}if(modeEncode.checked){outputText.value=utf8ToBase64(t);statusBar.textContent='Encoded UTF-8 text successfully';}else{outputText.value=base64ToUtf8(t);statusBar.textContent='Decoded Base64 as UTF-8 successfully';}}catch(e){outputText.value='Error: invalid Base64 or UTF-8 input';statusBar.textContent='Conversion failed';}}
 convertBtn.addEventListener('click',convert);swapBtn.addEventListener('click',function(){var tmp=inputText.value;inputText.value=outputText.value;outputText.value=tmp;convert();});
 copyBtn.addEventListener('click',function(){if(!outputText.value)return;navigator.clipboard.writeText(outputText.value).then(function(){copyBtn.textContent='Copied!';setTimeout(function(){copyBtn.textContent='Copy Result';},1500);});});
 modeEncode.addEventListener('change',convert);modeDecode.addEventListener('change',convert);

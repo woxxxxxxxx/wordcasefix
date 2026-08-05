@@ -54,3 +54,11 @@
 - `blog/ap-style-vs-chicago-capitalization.html`: rebuilt the page after Search Console showed an average position near 9 with zero clicks. The current copy distinguishes Chicago 17 from Chicago 18, cites primary references, fixes mojibake, and gives a direct AP-versus-Chicago answer before the detailed rules.
 - `blog/email-capitalization-rules.html`: rebuilt the page after 142 impressions and one click in the latest 28-day window. The page now answers subject-line, greeting, sign-off, job-title, and email-address casing intent without unsupported spam-filter claims.
 - Both pages have `dateModified` and sitemap `lastmod` set to 2026-07-29. Hold further edits until the 2026-08-12 Search Console review unless a functional defect appears.
+
+## 2026-08-06 AdSense approval-surface rebuild
+- Root cause: the July cleanup left roughly 200 old `noindex` HTML templates publicly reachable. Although they were absent from the sitemap, AdSense could still evaluate the site as a mass-generated utility inventory.
+- Rebuilt the public corpus from 251 tracked HTML files to 46 retained files: 43 indexable pages, including 14 maintained interactive tools and 23 reviewed guides, plus 3 necessary `noindex` utility pages (`404.html`, `contact.html`, and `terms.html`). Removed 205 obsolete HTML templates from the deployment.
+- Rebuilt the homepage, text workflow hub, and guide index around a narrow text/developer-tools scope. Removed stale links and ad placeholders, added editorial ownership/review dates, and versioned the logo asset to prevent cross-site cache leakage.
+- Added tool-specific methodology, worked examples, objective test coverage, limitations, and primary sources to all 14 retained tools. Base64 now handles UTF-8 text with `TextEncoder` and `TextDecoder`.
+- Added repeatable builders `rebuild-approval-surface.js` and `deepen-core-tools.js`. Both the technical and value release gates pass; local desktop/mobile visual QA, Unicode Base64 round-trip, internal-link checks, and retired-page 404 checks pass.
+- Deployment date: 2026-08-06. Do not resubmit immediately. Earliest review window is 2026-08-16; preferred resubmission date is 2026-08-19 after Search Console has processed the new sitemap and retired URLs return 404 in live inspection.

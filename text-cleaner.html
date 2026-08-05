@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">›</span><span>Text Cleaner</span></nav>
 <div class="breadcrumb"><a href="/">Home</a> &gt; Text Cleaner</div>
 <div class="page-wrap">
@@ -68,54 +68,51 @@
 <div class="related-tools">
 <h2>Related Tools</h2>
 <div class="related-grid">
-<a class="related-card" href="/html-encoder.html">HTML Encoder/Decoder</a>
+
 <a class="related-card" href="/case-converter.html">Case Converter</a>
-<a class="related-card" href="/slug-converter.html">Slug Converter</a>
-<a class="related-card" href="/text-repeater.html">Text Repeater</a>
+
+
 <a class="related-card" href="/url-encoder.html">URL Encoder/Decoder</a>
 
 <a class="related-card" href="/word-counter.html"><div class="rc-name">Word Counter</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/case-converter.html"><div class="rc-name">Case Converter</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/character-counter.html"><div class="rc-name">Character Counter</div><div class="rc-desc">Free online tool</div></a></div>
+</div>
 </div>
 </div>
 <div class="sidebar">
 <div class="ad-slot">Ad Space</div>
 </div>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Paste your messy text into the input area — works for copied web pages, PDFs, emails, or anything with stray formatting.</li>
-      <li>Toggle the cleanup options you need: collapse multiple spaces, strip line breaks, remove non-printable characters, or normalize quotes.</li>
-      <li>Copy the cleaned output and paste it wherever you need clean, normalized text.</li>
-    </ol>
+    <h2 class="tool-info-title">Cleanup rules and safe review workflow</h2>
+    <p>Text Cleaner applies explicit whitespace and line-break operations selected in the interface. It is meant for copied documents, web text, and drafts with accidental formatting artifacts. It does not summarize, rewrite, spell-check, or silently remove ordinary words. Review the selected options before cleaning because meaningful indentation and blank lines can be part of code, poetry, tables, or legal text.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Cleaning PDF copy-paste:</strong> Remove the broken line breaks and hyphenation that PDFs introduce when you copy text out of them.</li>
-      <li><strong>Preparing data imports:</strong> Strip invisible characters and double spaces before pasting content into spreadsheets, CMS fields, or databases.</li>
-      <li><strong>Tidying user-submitted text:</strong> Normalize comments, survey answers, or scraped content before analysis or publishing.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Whitespace cleanup targets repeated spaces or tabs according to the selected control.</li><li>Line cleanup can trim leading or trailing blank lines and reduce repeated empty lines without changing the order of the remaining text.</li><li>Case and punctuation are not altered unless the interface explicitly offers and enables that operation.</li><li>Processing happens in the current browser session; the cleaned result is produced from the input field and can be copied after review.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What counts as "extra whitespace"?</div>
-        <div class="tool-faq-a">Any run of two or more spaces, tabs, or trailing whitespace at the end of lines. The cleaner collapses them down to a single space, while preserving intentional paragraph breaks if you choose to.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Will it remove emoji or special characters?</div>
-        <div class="tool-faq-a">No — emoji and standard Unicode punctuation are preserved. Only zero-width and other non-printable control characters are stripped by default.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Is my text sent to a server?</div>
-        <div class="tool-faq-a">No. All cleaning happens locally in your browser via JavaScript. Nothing is uploaded, logged, or stored.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>A pasted paragraph may contain two spaces after periods, tabs from a table, and four empty lines between sections. Enable only the spacing operations you need, run the cleaner, and compare the paragraph count before copying. Do not use aggressive whitespace removal on Python, YAML, Markdown code blocks, postal addresses, or aligned plain-text tables because spaces and indentation can carry meaning.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes leading and trailing whitespace, Windows and Unix line endings, tabs, non-breaking spaces, empty input, emoji, and multiline prose. Checks include that ordinary letters and punctuation remain unchanged under whitespace-only options. Representative output is reviewed visually rather than treated as a language correction.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Use a reversible workflow. Preserve the original, clean a duplicate, and compare the two before replacing anything. Start with the least destructive option: trimming outer whitespace is lower risk than collapsing every repeated space or removing every blank line. Inspect list indentation, code blocks, postal addresses, poetry, signatures, tabular text, and Markdown fences separately. A visual result can appear normal while a non-breaking space or special line separator remains, so check the downstream application when the goal is machine import. If text came from a PDF, confirm reading order before cleanup; merged columns cannot be repaired by whitespace rules. For CSV, YAML, Python, fixed-width exports, or evidence records, use a format-aware parser instead. The cleaner is best for ordinary prose copied between editors, where the intended paragraph and sentence order is already clear.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Non-breaking spaces may be intentional in names, measurements, or typography.</li><li>Indentation-sensitive code can break if tabs or leading spaces are removed.</li><li>PDF extraction can scramble reading order, which whitespace cleanup cannot reconstruct.</li><li>Always retain the source when cleaning contracts, records, or evidence.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.unicode.org/reports/tr44/" rel="noopener noreferrer">Unicode whitespace properties</a></li><li><a href="https://tc39.es/ecma262/#sec-ecmascript-language-lexical-grammar" rel="noopener noreferrer">ECMAScript lexical grammar</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 <footer class="footer">Text Cleaner &mdash; Free online text cleaner tool<p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>

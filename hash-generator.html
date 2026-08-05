@@ -93,9 +93,9 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Hash Generator</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
 <main class="main-area" id="main-content">
 <header>
@@ -104,48 +104,45 @@ footer a{color:#5b5bd6;text-decoration:none}footer a:hover{text-decoration:under
 <div class="input-group"><label for="hashInput">Input Text</label><textarea id="hashInput" placeholder="Enter text to hash..." rows="4"></textarea></div>
 <div id="hashResults"></div>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Choose the options or parameters you want the Hash Generator to use, such as length, character set, or quantity.</li>
-      <li>Click the generate button and the Hash Generator will produce a fresh result instantly.</li>
-      <li>Copy the output to your clipboard, or click generate again for another unique result.</li>
-    </ol>
+    <h2 class="tool-info-title">Digest method, algorithm choice, and verification</h2>
+    <p>A cryptographic hash maps input bytes to a fixed-length digest. The same bytes produce the same digest, while a one-byte change should produce a very different result. Hashes are not encryption and cannot be decrypted. This page uses browser cryptographic APIs for supported SHA algorithms and clearly separates legacy compatibility options from security recommendations.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>File integrity checks:</strong> Verify downloads match published SHA-256 checksums to detect corruption or man-in-the-middle tampering.</li>
-      <li><strong>Cache busting:</strong> Compute MD5 or SHA-1 of asset contents to generate fingerprinted filenames like app.a3f8b2.js for long-term browser caching.</li>
-      <li><strong>Database deduplication:</strong> Hash large blobs (images, documents) and store the digest as a unique index to detect and reject duplicate uploads.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Text is converted to UTF-8 bytes before hashing, so encoding is part of the result.</li><li>Supported SHA digests are computed with the browser Web Crypto implementation.</li><li>Output is rendered as hexadecimal bytes in a stable order.</li><li>To compare files or systems, both sides must use the same bytes, character encoding, algorithm, and line endings.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Which hash should I use for passwords?</div>
-        <div class="tool-faq-a">None of the fast hashes on this page. MD5, SHA-1, and even SHA-256 are too fast and vulnerable to GPU brute force. Use bcrypt, scrypt, Argon2id, or PBKDF2 with a high iteration count for password storage. This tool is for file integrity, not credential storage.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Is SHA-256 still secure?</div>
-        <div class="tool-faq-a">Yes. As of 2026, SHA-256 has no known practical collisions or preimage attacks. Bitcoin and TLS rely on it. SHA-1 and MD5, however, are broken: SHA-1 collisions were demonstrated in 2017 (SHAttered), and MD5 collisions are trivial in seconds on commodity hardware.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Why do MD5 and SHA-1 produce different hash lengths?</div>
-        <div class="tool-faq-a">MD5 outputs 128 bits (32 hex chars), SHA-1 outputs 160 bits (40 hex chars), SHA-256 outputs 256 bits (64 hex chars). Longer hashes have larger output space, reducing collision probability and increasing brute-force cost.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>Hashing “hello” is different from hashing “hello” followed by a newline. Copying text between Windows and Unix tools can therefore change a digest when line endings differ. For a release checksum, hash the original file bytes rather than text copied from an editor. For passwords, use a dedicated salted password-hashing function instead of a fast general-purpose digest.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Checks include known short vectors, empty input, Unicode text, line-ending changes, and repeated runs. We verify deterministic output for the same byte sequence and a changed digest after editing one character. We do not claim collision resistance for algorithms that standards treat as obsolete.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Write down the verification goal before choosing an algorithm. For a public file checksum, use the algorithm published by the distributor and compare every hexadecimal character through a trusted channel. For deduplication, understand that equal digests are a practical signal, not proof that content is benign. For digital signatures, message authentication, and password storage, a bare hash is the wrong construction; use a protocol or library designed for that purpose. Make the byte representation reproducible by agreeing on UTF-8, line endings, normalization, and whether a final newline is present. Test one known vector and one changed input before trusting an integration. If a downloaded file’s checksum differs, do not keep retrying until a value happens to match; obtain the file and expected digest again from the authoritative source and investigate transport or version differences.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>MD5 and SHA-1 are unsuitable for collision-sensitive security uses.</li><li>A plain SHA digest is unsuitable for password storage.</li><li>A matching hash checks byte equality, not whether content is trustworthy.</li><li>Browser memory limits can affect very large inputs.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.w3.org/TR/WebCryptoAPI/" rel="noopener noreferrer">Web Cryptography API</a></li><li><a href="https://csrc.nist.gov/pubs/fips/180-4/upd1/final" rel="noopener noreferrer">NIST Secure Hash Standard</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Strong password creator</div></a><a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format & validate JSON</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder/Decoder</div><div class="rc-desc">Base64 encode & decode</div></a><a class="related-card" href="/epoch-converter.html"><div class="rc-name">Unix Timestamp Converter</div><div class="rc-desc">Epoch & date converter</div></a><a class="related-card" href="/color-palette-generator.html"><div class="rc-name">Color Palette Generator</div><div class="rc-desc">Color scheme designer</div></a>
-<a class="related-card" href="/lorem-ipsum-generator.html"><div class="rc-name">Lorem Ipsum Generator</div><div class="rc-desc">Free online tool</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Strong password creator</div></a><a class="related-card" href="/json-formatter.html"><div class="rc-name">JSON Formatter</div><div class="rc-desc">Format & validate JSON</div></a><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder/Decoder</div><div class="rc-desc">Base64 encode & decode</div></a>
+
 <a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Free online tool</div></a>
 <a class="related-card" href="/qr-code-generator.html"><div class="rc-name">QR Code Generator</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+
 <footer>Hash Generator &mdash; Free online MD5 SHA hash generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

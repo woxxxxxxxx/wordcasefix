@@ -75,9 +75,9 @@
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Qr Code Generator</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
 <main class="main-area" id="main-content">
 <header>
@@ -99,47 +99,44 @@
 </div>
 </div>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Choose the options or parameters you want the QR Code Generator to use, such as length, character set, or quantity.</li>
-      <li>Click the generate button and the QR Code Generator will produce a fresh result instantly.</li>
-      <li>Copy the output to your clipboard, or click generate again for another unique result.</li>
-    </ol>
+    <h2 class="tool-info-title">QR construction method and scanning checks</h2>
+    <p>The generator converts supplied text into a QR symbol that a compatible scanner can decode. It does not verify that a URL is safe, that contact information is correct, or that a printed code will scan at every size. The most reliable workflow uses concise input, adequate contrast, a quiet border, and a test scan from the final medium.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Business cards:</strong> Encode vCard contact details so scanning a printed card auto-fills name, phone, and email into the recipient's phone.</li>
-      <li><strong>Restaurant menus:</strong> Generate stable URLs for table-side menu QRs that link to PDF or interactive ordering pages.</li>
-      <li><strong>Event tickets and WiFi:</strong> Encode WIFI:S:Network;T:WPA;P:password;; so guests join your WiFi instantly without typing the SSID.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Input text is encoded into a QR data stream by the included browser library.</li><li>The library selects a symbol version large enough for the data and chosen error-correction setting.</li><li>The matrix is rendered to a downloadable image without sending the input to a WordCaseFix server.</li><li>The scanner reconstructs text from the modules; any action after decoding is controlled by the scanning application.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What error correction level should I use?</div>
-        <div class="tool-faq-a">QR codes support L (7%), M (15%), Q (25%), and H (30%) error correction. Use H for printed codes that may smudge or be partially covered by a logo overlay. Use L for short-lived digital codes to maximize data capacity at the same module count.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the maximum data a QR code can hold?</div>
-        <div class="tool-faq-a">At the largest size (Version 40, 177x177 modules) and lowest error correction, a QR can hold 7,089 numeric digits, 4,296 alphanumeric, or 2,953 bytes. Keep payloads under 300 characters for reliable scanning from phone cameras at typical distances.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Why won't my QR code scan?</div>
-        <div class="tool-faq-a">Common causes: insufficient contrast (always dark-on-light, not inverted), printed too small (minimum 2cm side for 30cm scan distance), missing quiet zone (4-module border), or a damaged or low-resolution image. Test with multiple scanner apps before printing in bulk.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>A short HTTPS URL usually produces a less dense symbol than a long tracking URL and can remain readable at a smaller printed size. Generate the code, download it, place it with a clear margin, then test the actual PDF, label, screen, or sign from multiple devices. Shorten or simplify the payload if modules become too dense.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes plain text, HTTPS URLs, Unicode, empty input, long values, different image sizes, and download behavior. We scan representative codes from a screen after generation. That check does not replace testing the final printed dimensions, material, lighting, and camera distance.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Plan from the final scanning environment backward. Decide the physical size, expected viewing distance, print method, background, lighting, and minimum camera quality before selecting a dense payload. Prefer a short HTTPS destination that you control, and make the visible surrounding text state where it leads so users are not forced to trust an opaque symbol. Retain the quiet zone and avoid stretching the exported image. Print or export a realistic proof, then scan it with multiple devices from the expected distance and angle. Re-test after any resize, color change, lamination, label stock change, or placement over a patterned surface. For long-lived materials, use a stable redirect you control so the destination can be maintained without replacing every code. The generator creates the symbol only; destination security, analytics consent, accessibility, and content maintenance remain separate responsibilities.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Error correction helps with limited damage but does not make arbitrary cropping safe.</li><li>Low contrast, distortion, glare, and insufficient quiet zone can prevent scanning.</li><li>A QR code can contain a malicious destination; inspect decoded URLs before opening.</li><li>Some payload types rely on scanner-specific conventions.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.qrcode.com/en/about/" rel="noopener noreferrer">DENSO WAVE QR Code essentials</a></li><li><a href="https://www.qrcode.com/en/about/error_correction.html" rel="noopener noreferrer">DENSO WAVE error correction</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/unit-converter.html"><div class="rc-name">Unit Converter</div><div class="rc-desc">Convert measurements</div></a><a class="related-card" href="/stopwatch.html"><div class="rc-name">Stopwatch</div><div class="rc-desc">Track time and laps</div></a><a class="related-card" href="/bmi-calculator.html"><div class="rc-name">BMI Calculator</div><div class="rc-desc">Calculate body mass index</div></a><a class="related-card" href="/typing-test.html"><div class="rc-name">Typing Speed Test</div><div class="rc-desc">Measure WPM speed</div></a><a class="related-card" href="/pomodoro-timer.html"><div class="rc-name">Pomodoro Timer</div><div class="rc-desc">Focus session timer</div></a>
-<a class="related-card" href="/lorem-ipsum-generator.html"><div class="rc-name">Lorem Ipsum Generator</div><div class="rc-desc">Free online tool</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid">
+
 <a class="related-card" href="/password-generator.html"><div class="rc-name">Password Generator</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+
 <footer>QR Code Generator &mdash; Free online QR code generator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 
 <script>

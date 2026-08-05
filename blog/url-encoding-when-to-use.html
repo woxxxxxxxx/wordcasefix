@@ -70,8 +70,8 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+
 
 <div class="page-wrap">
   <div class="breadcrumb">
@@ -81,7 +81,7 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <article role="main" id="main-content">
-    <h1>URL Encoding: When, Why, and How (with Examples)</h1>
+    <h1>URL Encoding: When, Why, and How (with Examples)</h1><p class="editorial-review-note" style="margin:10px 0 22px;color:#667085;font-size:14px">Content owner: <span class="author">WordCaseFix Editorial</span> · Page structure last modified: August 6, 2026 · <a href="/editorial-policy.html">Review standards</a></p>
     <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; Programming</div>
 
     <p>Every web developer eventually meets URL encoding through a bug. A query parameter with a plus sign turns into a space. A search term with an ampersand splits into two parameters. A redirect URL gets double-encoded and breaks. The root cause is always the same: a character had a special meaning in URL syntax, and something either escaped it that shouldn't have, or didn't escape it that should have. This guide explains the rules in enough depth to fix and prevent those bugs.</p>
@@ -158,7 +158,7 @@ const url = `https://example.com/search?q=${encodeURIComponent(query)}`;
       <li><strong>Wrong charset.</strong> Modern URLs encode non-ASCII as UTF-8 percent-bytes. Legacy systems sometimes used the page's native charset (Latin-1, Shift-JIS, GB2312). If you receive garbled characters, suspect a charset mismatch. UTF-8 is the safe modern default.</li>
     </ol>
 
-    <p>The diagnostic loop for any URL-encoding bug is: print the value at every stage, identify where the round trip changes shape, and confirm the encoder/decoder pair is consistent. Tools like a <a href="/url-encoder.html">URL encoder</a> or an <a href="/html-encoder.html">HTML encoder</a> let you reproduce the encoding manually and compare. For binary payloads inside URLs, encode to <a href="/base64-encoder.html">Base64URL</a> first, then percent-encode if needed.</p>
+    <p>The diagnostic loop for any URL-encoding bug is: print the value at every stage, identify where the round trip changes shape, and confirm the encoder/decoder pair is consistent. Tools like a <a href="/url-encoder.html">URL encoder</a> or an  let you reproduce the encoding manually and compare. For binary payloads inside URLs, encode to <a href="/base64-encoder.html">Base64URL</a> first, then percent-encode if needed.</p>
 
     <h2>Frequently Asked Questions</h2>
 
@@ -174,15 +174,15 @@ const url = `https://example.com/search?q=${encodeURIComponent(query)}`;
     <div class="related-articles">
       <h2>Related Guides</h2>
       <div class="related-list">
-        <a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: When and Why to Use It</a>
-        <a href="/blog/regex-cheatsheet-beginners.html">Regex Cheatsheet: Patterns Every Developer Should Know</a>
+
+
         <a href="/blog/json-formatting-guide.html">JSON Formatting Best Practices for APIs and Configs</a>
       </div>
     </div>
   </article>
 </div>
 
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+
 <footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="../editorial-policy.html">Editorial Policy</a></p></footer>
 </body>
 </html>

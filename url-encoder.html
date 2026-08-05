@@ -12,9 +12,9 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 </head><body>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">›</span><span>URL Encoder / Decoder</span></nav>
-<div class="ad-box ad-top"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div>
+
 <div class="page-wrap"><div class="breadcrumb"><a href="/">Home</a><span>&gt;</span>URL Encoder/Decoder</div><h1>URL Encoder/Decoder</h1><p class="header-desc">Encode text for URLs or decode percent-encoded strings back to plain text.</p>
 <div class="sidebar-layout"><div class="main-content"><div class="card">
 <div class="unit-toggle">
@@ -32,42 +32,39 @@
 <div class="faq-item"><div class="faq-question">What is URL Encoder Decoder?</div><div class="faq-answer">A URL encoder decoder is a free online tool that converts text to URL-safe percent encoding and decodes percent-encoded strings back to plain text.</div></div>
 <div class="faq-item"><div class="faq-question">How do I use this URL Encoder Decoder?</div><div class="faq-answer">Select Encode or Decode mode, type or paste your text in the input area, and the result appears instantly in the output area.</div></div>
 <div class="faq-item"><div class="faq-question">Is this URL Encoder Decoder free?</div><div class="faq-answer">Yes, this tool is completely free to use with no signup required.</div></div></div>
-<div class="related-tools"><h2>Related Tools</h2><ul><li><a href="/base64-encoder.html">Base64 Encoder/Decoder</a></li><li><a href="/html-encoder.html">HTML Encoder/Decoder</a></li><li><a href="/hash-generator.html">Hash Generator</a></li><li><a href="/slug-converter.html">Slug Converter</a></li><li><a href="/regex-tester.html">Regex Tester</a></li></ul></div></div>
-<div class="sidebar"><div class="ad-box"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div><div class="ad-box"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div></div></div></div>
-<div class="ad-box ad-top"><span>Advertisement</span><div class="ad-box-inner">Ad Placeholder</div></div>
-<section class="tool-content-modules">
+<div class="related-tools"><h2>Related Tools</h2><ul><li><a href="/base64-encoder.html">Base64 Encoder/Decoder</a></li><li></li><li><a href="/hash-generator.html">Hash Generator</a></li><li></li><li><a href="/regex-tester.html">Regex Tester</a></li></ul></div></div>
+
+
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Select mode: <em>Encode</em> turns plain text into percent-encoded URL-safe text; <em>Decode</em> reverses it.</li>
-      <li>Paste your text or URL into the input field — the conversion runs as you type.</li>
-      <li>Click "Copy Result" to put the encoded or decoded output on your clipboard. Use the swap button to reverse direction.</li>
-    </ol>
+    <h2 class="tool-info-title">Percent-encoding method and component boundaries</h2>
+    <p>URL encoding replaces characters that are not safe in a specific URL component with percent-encoded UTF-8 bytes. The correct operation depends on whether the input is an entire URL, one path segment, a query key, or a query value. This tool is designed for component values and does not claim that repeatedly encoding a complete URL will preserve its structure.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>Building query strings:</strong> Safely embed user input, search terms, or special characters (spaces, &amp;, =, /) into URL parameters.</li>
-      <li><strong>Debugging API requests:</strong> Decode the URL parameters from a webhook payload, OAuth callback, or browser address bar to see the original values.</li>
-      <li><strong>Sharing links with special characters:</strong> Encode URLs containing non-ASCII characters (e.g. Chinese, emoji) before pasting them into chat, email, or QR codes.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>Encode mode follows encodeURIComponent-style behavior for a component value.</li><li>Unicode text is represented as UTF-8 before percent escapes are formed.</li><li>Decode mode reverses valid percent escapes and reports malformed sequences rather than guessing.</li><li>Reserved delimiters such as slash, question mark, ampersand, and equals have structural meaning and should be handled according to their location.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the difference between encodeURI and encodeURIComponent?</div>
-        <div class="tool-faq-a">This tool uses <code>encodeURIComponent</code>, which escapes every reserved URL character (including <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code>). Use it when encoding a <em>value</em> inside a query string. <code>encodeURI</code> leaves those reserved characters alone — use it only when encoding a whole URL.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Why is a space sometimes <code>%20</code> and sometimes <code>+</code>?</div>
-        <div class="tool-faq-a"><code>%20</code> is the URL-path encoding; <code>+</code> is used in <code>application/x-www-form-urlencoded</code> query strings. This tool decodes both, but always encodes to <code>%20</code> for maximum compatibility.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">Will it handle non-ASCII characters like 中文 or emoji?</div>
-        <div class="tool-faq-a">Yes. Characters are encoded using UTF-8 byte sequences, the standard for modern URLs. So 中 becomes <code>%E4%B8%AD</code> and round-trips back cleanly on decode.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>A query value “red shoes & socks” can be encoded before insertion into a URL so the ampersand is not mistaken for a second parameter. Encoding the complete string “https://example.com/search?q=red shoes” as one component would also encode its colon and slashes, producing a value rather than a navigable URL. Build the URL from separately encoded values or use URLSearchParams in application code.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes spaces, plus signs, ampersands, slashes, percent signs, CJK text, emoji, already encoded values, and malformed percent sequences. We compared representative output with browser URL APIs. The page distinguishes percent encoding from HTML escaping and Base64.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>First separate the URL into semantic parts. Keep the scheme and host intact, split path segments at their intended slashes, and encode each dynamic query key or value independently. In application code, prefer URL and URLSearchParams so delimiters are assembled by an API rather than string concatenation. Test values containing spaces, plus, ampersand, equals, percent, slash, non-Latin characters, and emoji because these expose most boundary mistakes. Compare the decoded value at the receiver, not only the appearance of the outgoing URL. Avoid encoding a value twice: if input may already contain percent escapes, establish whether it is raw or encoded at the interface boundary. The tool can explain and debug component encoding, but it cannot determine whether a destination is legitimate, prevent open redirects, or replace output encoding appropriate to HTML, JavaScript, SQL, or shell contexts.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>application/x-www-form-urlencoded commonly represents spaces as plus signs, unlike generic percent encoding.</li><li>Double encoding changes existing percent signs and is a frequent integration bug.</li><li>Internationalized host names use a separate domain-name conversion process.</li><li>Successful decoding does not make an untrusted URL safe to open.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.rfc-editor.org/rfc/rfc3986" rel="noopener noreferrer">RFC 3986 URI syntax</a></li><li><a href="https://url.spec.whatwg.org/" rel="noopener noreferrer">WHATWG URL Standard</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 <footer class="footer">URL Encoder Decoder &mdash; Free online URL encoding and decoding tool<p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>

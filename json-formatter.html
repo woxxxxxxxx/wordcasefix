@@ -83,9 +83,9 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
 <nav aria-label="breadcrumb" style="max-width:1280px;margin:0 auto;padding:8px 24px;font-size:13px;color:#888"><a href="/" style="color:#5b5bd6;text-decoration:none">Home</a><span style="margin:0 6px">&#8250;</span><span>Json Formatter</span></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+
 <div class="page-wrap">
 <main class="main-area" id="main-content">
 <header>
@@ -121,47 +121,44 @@ i.addEventListener('input',function(){clr();var r=i.value.trim();if(!r){o.value=
 })();
 </script>
 </div>
-<section class="tool-content-modules">
+<section class="tool-content-modules evidence-section">
   <div class="tool-info-card">
-    <h2 class="tool-info-title">How to Use This Tool</h2>
-    <ol class="tool-steps">
-      <li>Paste your raw or minified code into the JSON Formatter input area at the top of the page.</li>
-      <li>Adjust formatting options if shown, then watch the JSON Formatter produce clean, readable output in real time.</li>
-      <li>Copy the formatted result to your clipboard and paste it straight into your editor or pull request.</li>
-    </ol>
+    <h2 class="tool-info-title">JSON parsing method and data-loss boundaries</h2>
+    <p>Formatting is performed by parsing the input as JSON and serializing the resulting value with the selected indentation. This validates JSON syntax, but it does not validate a business schema or prove that fields contain correct data. Minification removes insignificant whitespace only after a successful parse.</p>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Common Use Cases</h2>
-    <ul class="tool-use-cases">
-      <li><strong>API debugging:</strong> Backend developers paste raw API responses to inspect nested structures, spot missing fields, and verify schema before integrating.</li>
-      <li><strong>Config file cleanup:</strong> DevOps engineers reformat minified package.json or tsconfig.json files to make diffs reviewable in pull requests.</li>
-      <li><strong>Log analysis:</strong> SREs paste single-line JSON log entries from CloudWatch or Datadog to expand them into readable, traversable trees.</li>
-    </ul>
+    <h2 class="tool-info-title">Methodology</h2>
+    <ol class="tool-steps"><li>The parser requires JSON syntax: double-quoted strings, valid escapes, and no trailing commas or comments.</li><li>Formatted output serializes arrays and object members with the requested indentation.</li><li>Minified output serializes the same parsed value without presentation whitespace.</li><li>An error identifies invalid syntax instead of trying to repair ambiguous input automatically.</li></ol>
   </div>
   <div class="tool-info-card">
-    <h2 class="tool-info-title">Frequently Asked Questions</h2>
-    <div class="tool-faq">
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">How do I fix "Unexpected token" errors in JSON?</div>
-        <div class="tool-faq-a">Common causes: trailing commas (JSON forbids them, unlike JavaScript), single quotes instead of double quotes, unquoted keys, or JS comments. Paste your JSON above and the formatter highlights the line and column of the first parse error so you can fix it directly.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">What's the difference between JSON and JSON5?</div>
-        <div class="tool-faq-a">JSON5 is a superset that allows comments, trailing commas, unquoted keys, and single quotes. It's used in tsconfig.json and Babel configs but is not valid plain JSON. The formatter targets strict RFC 8259 JSON; use a JSON5 parser if you need the extras.</div>
-      </div>
-      <div class="tool-faq-item">
-        <div class="tool-faq-q">How do I minify JSON for production?</div>
-        <div class="tool-faq-a">Strip all whitespace and newlines outside string literals; this typically shrinks files 20-40%. The formatter has a minify toggle that produces a single-line output. For larger savings, gzip the response: JSON compresses well because of repeated keys.</div>
-      </div>
-    </div>
+    <h2 class="tool-info-title">Worked review example</h2>
+    <p>Input {"active":true,"count":3} formats predictably. JavaScript-style input containing single quotes, undefined, or a trailing comma is not valid JSON and should be corrected at the source. A duplicated object key is especially risky: parsers may retain only one value, so formatting should not be used as a preservation step for malformed records.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Test coverage and expected behavior</h2>
+    <p>Test coverage includes objects, arrays, primitives, escaped Unicode, nested structures, empty input, trailing commas, comments, and malformed strings. Verification covers parse-format-parse equivalence for valid samples. Schema correctness, numerical meaning, and field-level requirements remain outside the tool.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Decision checklist before using the output</h2>
+    <p>Treat successful formatting as syntax validation only. Before using the result, identify the schema owner and check required fields, allowed types, ranges, enumerations, and unknown-property policy. For financial identifiers, account numbers, and large database keys, confirm whether they should be JSON strings rather than numbers to avoid precision loss. Preserve the original when duplicate keys are possible, because a parse-and-serialize cycle may discard information. Compare a representative record with the producer and consumer, including null, empty string, zero, false, missing property, and an empty array; those states often have different business meanings. Large API responses are better inspected with a streaming or schema-aware tool. Never paste production credentials or personal records into an unapproved utility. This formatter is appropriate for small diagnostics, examples, and local browser validation.</p>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Important limitations</h2>
+    <ul class="tool-use-cases"><li>Very large integers can exceed JavaScript’s exact numeric range.</li><li>Duplicate object names have unpredictable interoperability and may collapse during parsing.</li><li>Property order should not be treated as semantic meaning.</li><li>Secrets and personal records should not be pasted into unapproved browser tools.</li></ul>
+  </div>
+  <div class="tool-info-card">
+    <h2 class="tool-info-title">Sources and specifications</h2>
+    <p>These references define the relevant format or browser behavior. They do not endorse WordCaseFix.</p>
+    <ul class="tool-use-cases"><li><a href="https://www.rfc-editor.org/rfc/rfc8259" rel="noopener noreferrer">RFC 8259 JSON</a></li><li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-404/" rel="noopener noreferrer">ECMA-404 JSON syntax</a></li></ul>
+    <p><strong>Last reviewed:</strong> August 6, 2026</p>
   </div>
 </section>
 </main></div>
 <!-- seo-expanded -->
-<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Encode & decode Base64</div></a><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">MD5, SHA-256 and more</div></a><a class="related-card" href="/url-encoder.html"><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode URL strings</div></a><a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Minify CSS files</div></a>
+<div class="related-tools"><div class="related-title">Related Tools</div><div class="related-grid"><a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Encode & decode Base64</div></a><a class="related-card" href="/hash-generator.html"><div class="rc-name">Hash Generator</div><div class="rc-desc">MD5, SHA-256 and more</div></a><a class="related-card" href="/url-encoder.html"><div class="rc-name">URL Encoder</div><div class="rc-desc">Encode URL strings</div></a>
 <a class="related-card" href="/base64-encoder.html"><div class="rc-name">Base64 Encoder</div><div class="rc-desc">Free online tool</div></a>
-<a class="related-card" href="/css-minifier.html"><div class="rc-name">CSS Minifier</div><div class="rc-desc">Free online tool</div></a></div></div>
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+</div></div>
+
 <footer>JSON Formatter &mdash; Free online JSON beautifier and validator | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="editorial-policy.html">Editorial Policy</a></p></footer>
 <button id="back-to-top" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#5b5bd6;color:white;border:none;font-size:22px;cursor:pointer;display:none;z-index:9999;">^</button>
 <script>var bttBtn=document.getElementById("back-to-top");function bttToggle(){if(bttBtn)bttBtn.style.display=window.scrollY>300?"block":"none"}window.addEventListener("scroll",bttToggle);bttToggle();bttBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});</script>

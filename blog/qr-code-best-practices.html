@@ -69,8 +69,8 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <a class="portfolio-skip-link" href="#main-content">Skip to main content</a>
-<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
-<div class="ad-slot ad-top"><span class="ad-label">Advertisement</span></div>
+<nav class="navbar"><a class="logo" href="/"><img src="/logo.svg?v=20260806" alt="WordCaseFix" height="32"></a><a class="nav-all" href="/">All Tools</a></nav>
+
 
 <div class="page-wrap">
   <div class="breadcrumb">
@@ -80,7 +80,7 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <article role="main" id="main-content">
-    <h1>QR Code Best Practices: Size, Error Correction, Use Cases</h1>
+    <h1>QR Code Best Practices: Size, Error Correction, Use Cases</h1><p class="editorial-review-note" style="margin:10px 0 22px;color:#667085;font-size:14px">Content owner: <span class="author">WordCaseFix Editorial</span> · Page structure last modified: August 6, 2026 · <a href="/editorial-policy.html">Review standards</a></p>
     <div class="article-meta">By WordCaseFix &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; Design</div>
 
     <p>QR codes had a quiet decade and then exploded back into mainstream use during the pandemic. Restaurant menus, payment systems, public-transport tickets, and event check-ins all rely on them now. But many of the QR codes you see in the wild are slightly broken — too small to scan reliably, too low-contrast, or designed in a way that defeats the underlying error-correction mechanism. This article walks through the design decisions that determine whether a QR code works the first time, every time, or whether it becomes the kind of code that requires three attempts and an apologetic shrug.</p>
@@ -120,7 +120,7 @@ footer a:hover{text-decoration:underline}
       <tr><td>H (High)</td><td>~30%</td><td>Industrial labels, large logo center</td></tr>
     </table>
 
-    <p>If you want a logo or icon in the center of the QR — a popular branding move — use error correction level H. The Reed-Solomon code can usually reconstruct the data behind a logo that covers up to about 25% of the area. Keep the logo centered and circular or rounded-square; jagged or off-center overlays confuse the decoder's alignment. A purpose-built <a href="/qr-code-with-logo.html">QR code with logo generator</a> handles the math automatically.</p>
+    <p>If you want a logo or icon in the center of the QR — a popular branding move — use error correction level H. The Reed-Solomon code can usually reconstruct the data behind a logo that covers up to about 25% of the area. Keep the logo centered and circular or rounded-square; jagged or off-center overlays confuse the decoder's alignment. A purpose-built  handles the math automatically.</p>
 
     <h2>Color, Contrast, and Inversion</h2>
     <p>The classical QR code is black on white. You can deviate, but with care. Scanners look for contrast, not literal black. The foreground should be significantly darker than the background — a Michelson contrast ratio of at least 50% is a useful floor.</p>
@@ -131,7 +131,7 @@ footer a:hover{text-decoration:underline}
       <li><strong>Low-contrast pairings</strong> like dark blue on dark gray look modern but scan poorly in bad light. If you must brand the code, keep the foreground near black and the background near white, then add a colored frame around the outside.</li>
     </ul>
 
-    <p>A useful test: convert your design to grayscale. If the QR is still clearly visible, the contrast is sufficient. If it disappears, scanners will struggle. You can verify the chosen colors with a <a href="/color-contrast-checker.html">contrast checker</a> the same way you would for text accessibility.</p>
+    <p>A useful test: convert your design to grayscale. If the QR is still clearly visible, the contrast is sufficient. If it disappears, scanners will struggle. You can verify the chosen colors with a  the same way you would for text accessibility.</p>
 
     <h2>Dynamic vs Static, and Use Cases That Hold Up</h2>
     <p>A static QR code encodes its data directly — the URL or text is literally in the pattern. A dynamic QR code encodes a short redirector URL pointing to a service that resolves to the real destination, which can be changed later. Dynamic codes also enable scan analytics.</p>
@@ -151,20 +151,20 @@ footer a:hover{text-decoration:underline}
     <p>A version-40 QR at error level L holds up to 4,296 alphanumeric characters or 2,953 bytes. In practice, anything over a few hundred characters produces a code so dense it requires a large, clean print to scan reliably. For long content, encode a short URL and let the page hold the real data.</p>
 
     <h3>Should I use a barcode or a QR code?</h3>
-    <p>Use a 1D barcode (UPC, Code 128) when the data is short, the layout is wide, and the readers are dedicated scanners — retail, warehousing, inventory. Use a QR code when the audience reads it with a phone and the data is a URL or moderate-length text. A <a href="/barcode-generator.html">barcode generator</a> covers the 1D side; QR is the right call for everything consumer-facing.</p>
+    <p>Use a 1D barcode (UPC, Code 128) when the data is short, the layout is wide, and the readers are dedicated scanners — retail, warehousing, inventory. Use a QR code when the audience reads it with a phone and the data is a URL or moderate-length text. A  covers the 1D side; QR is the right call for everything consumer-facing.</p>
 
     <div class="related-articles">
       <h2>Related Guides</h2>
       <div class="related-list">
-        <a href="/blog/color-theory-basics.html">Color Theory Basics: HEX, RGB, HSL Explained for Designers</a>
+
         <a href="/blog/url-encoding-when-to-use.html">URL Encoding: When, Why, and How (with Examples)</a>
-        <a href="/blog/base64-encoding-explained.html">Base64 Encoding Explained: When and Why to Use It</a>
+
       </div>
     </div>
   </article>
 </div>
 
-<div class="ad-slot ad-top" style="height:70px;margin-bottom:12px;"><span class="ad-label">Advertisement</span></div>
+
 <footer>WordCaseFix &mdash; Free online text &amp; utility tools | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/about.html">About</a><p class="editorial-policy-link"><a href="../editorial-policy.html">Editorial Policy</a></p></footer>
 </body>
 </html>
