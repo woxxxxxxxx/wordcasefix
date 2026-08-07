@@ -2,7 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://wordcasefix.com/</loc><lastmod>2026-08-06</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://wordcasefix.com/about.html</loc><lastmod>2026-08-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wordcasefix.com/contact.html</loc><lastmod>2026-08-08</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://wordcasefix.com/editorial-policy.html</loc><lastmod>2026-07-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wordcasefix.com/terms.html</loc><lastmod>2026-08-08</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://wordcasefix.com/base64-encoder.html</loc><lastmod>2026-08-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wordcasefix.com/case-converter.html</loc><lastmod>2026-08-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wordcasefix.com/hash-generator.html</loc><lastmod>2026-08-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
